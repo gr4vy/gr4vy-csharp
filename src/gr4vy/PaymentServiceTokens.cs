@@ -32,7 +32,7 @@ namespace gr4vy
         /// List all gateway tokens stored for a payment method.
         /// </remarks>
         /// </summary>
-        Task<ListPaymentMethodPaymentServiceTokensResponse> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<CollectionNoCursorPaymentServiceToken> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Create payment service token
@@ -41,7 +41,7 @@ namespace gr4vy
         /// Create a gateway tokens for a payment method.
         /// </remarks>
         /// </summary>
-        Task<CreatePaymentMethodPaymentServiceTokenResponse> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
 
         /// <summary>
         /// Delete payment service token
@@ -50,17 +50,17 @@ namespace gr4vy
         /// Delete a gateway tokens for a payment method.
         /// </remarks>
         /// </summary>
-        Task<DeletePaymentMethodPaymentServiceTokenResponse> DeleteAsync(string paymentMethodId, string paymentServiceTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
     }
 
     public class PaymentServiceTokens: IPaymentServiceTokens
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.4";
+        private const string _sdkVersion = "0.0.5";
         private const string _sdkGenVersion = "2.598.22";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.598.22 1.0.0 gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.598.22 1.0.0 gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<gr4vy.Models.Components.Security>? _securitySource;
@@ -73,7 +73,7 @@ namespace gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<ListPaymentMethodPaymentServiceTokensResponse> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<CollectionNoCursorPaymentServiceToken> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListPaymentMethodPaymentServiceTokensRequest()
             {
@@ -169,19 +169,10 @@ namespace gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorPaymentServiceToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new ListPaymentMethodPaymentServiceTokensResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.CollectionNoCursorPaymentServiceToken = obj;
-                    return response;
+                    return obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 400)
             {
@@ -191,7 +182,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 401)
             {
@@ -201,37 +192,26 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 403)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Response403ListPaymentMethodPaymentServiceTokens>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var httpMeta = new Models.Components.HTTPMetadata()
-                    {
-                        Response = httpResponse,
-                        Request = httpRequest
-                    };
                     switch (obj!.Type.ToString()) {
                         case "Error403":
-                              var error403 = obj!.Error403!;
-                              error403.HttpMeta = httpMeta;
-                              throw error403;
+                              throw obj!.Error403!;
                         case "Error403Forbidden":
-                              var error403Forbidden = obj!.Error403Forbidden!;
-                              error403Forbidden.HttpMeta = httpMeta;
-                              throw error403Forbidden;
+                              throw obj!.Error403Forbidden!;
                         case "Error403Active":
-                              var error403Active = obj!.Error403Active!;
-                              error403Active.HttpMeta = httpMeta;
-                              throw error403Active;
+                              throw obj!.Error403Active!;
                         default:
                             throw new InvalidOperationException("Unknown error type.");
                     };
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 404)
             {
@@ -241,7 +221,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 405)
             {
@@ -251,7 +231,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 409)
             {
@@ -261,7 +241,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 422)
             {
@@ -271,7 +251,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 425)
             {
@@ -281,7 +261,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 429)
             {
@@ -291,7 +271,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 500)
             {
@@ -301,7 +281,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 502)
             {
@@ -311,7 +291,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 504)
             {
@@ -321,21 +301,21 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
 
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+            throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<CreatePaymentMethodPaymentServiceTokenResponse> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
         {
             var request = new CreatePaymentMethodPaymentServiceTokenRequest()
             {
@@ -405,19 +385,10 @@ namespace gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<PaymentServiceToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new CreatePaymentMethodPaymentServiceTokenResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.PaymentServiceToken = obj;
-                    return response;
+                    return obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 400)
             {
@@ -427,7 +398,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 401)
             {
@@ -437,37 +408,26 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 403)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Response403CreatePaymentMethodPaymentServiceToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var httpMeta = new Models.Components.HTTPMetadata()
-                    {
-                        Response = httpResponse,
-                        Request = httpRequest
-                    };
                     switch (obj!.Type.ToString()) {
                         case "Error403":
-                              var error403 = obj!.Error403!;
-                              error403.HttpMeta = httpMeta;
-                              throw error403;
+                              throw obj!.Error403!;
                         case "Error403Forbidden":
-                              var error403Forbidden = obj!.Error403Forbidden!;
-                              error403Forbidden.HttpMeta = httpMeta;
-                              throw error403Forbidden;
+                              throw obj!.Error403Forbidden!;
                         case "Error403Active":
-                              var error403Active = obj!.Error403Active!;
-                              error403Active.HttpMeta = httpMeta;
-                              throw error403Active;
+                              throw obj!.Error403Active!;
                         default:
                             throw new InvalidOperationException("Unknown error type.");
                     };
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 404)
             {
@@ -477,7 +437,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 405)
             {
@@ -487,7 +447,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 409)
             {
@@ -497,7 +457,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 422)
             {
@@ -507,7 +467,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 425)
             {
@@ -517,7 +477,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 429)
             {
@@ -527,7 +487,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 500)
             {
@@ -537,7 +497,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 502)
             {
@@ -547,7 +507,7 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 504)
             {
@@ -557,21 +517,21 @@ namespace gr4vy
                     throw obj!;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
 
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+            throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<DeletePaymentMethodPaymentServiceTokenResponse> DeleteAsync(string paymentMethodId, string paymentServiceTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
         {
             var request = new DeletePaymentMethodPaymentServiceTokenRequest()
             {
@@ -632,165 +592,138 @@ namespace gr4vy
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 204)
             {                
-                return new DeletePaymentMethodPaymentServiceTokenResponse()
-                {
-                    HttpMeta = new Models.Components.HTTPMetadata()
-                    {
-                        Response = httpResponse,
-                        Request = httpRequest
-                    }
-                };
+                return;
             }
             else if(responseStatusCode == 400)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error400>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 401)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 403)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403DeletePaymentMethodPaymentServiceToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var httpMeta = new Models.Components.HTTPMetadata()
-                    {
-                        Response = httpResponse,
-                        Request = httpRequest
-                    };
-                    switch (obj!.Type.ToString()) {
-                        case "Error403":
-                              var error403 = obj!.Error403!;
-                              error403.HttpMeta = httpMeta;
-                              throw error403;
-                        case "Error403Forbidden":
-                              var error403Forbidden = obj!.Error403Forbidden!;
-                              error403Forbidden.HttpMeta = httpMeta;
-                              throw error403Forbidden;
-                        case "Error403Active":
-                              var error403Active = obj!.Error403Active!;
-                              error403Active.HttpMeta = httpMeta;
-                              throw error403Active;
-                        default:
-                            throw new InvalidOperationException("Unknown error type.");
-                    };
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 404)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error404>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 405)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error405>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 409)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error409>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 422)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<HTTPValidationError>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 425)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error425>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 429)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error429>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 500)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error500>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 502)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error502>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode == 504)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error504>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
+                    
+                    return;
                 }
 
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 400 && responseStatusCode < 500)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
             else if(responseStatusCode >= 500 && responseStatusCode < 600)
             {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+                throw new Models.Errors.APIException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
             }
 
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
+            throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
     }
 }

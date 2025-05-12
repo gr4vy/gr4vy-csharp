@@ -16,9 +16,9 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 csharp:
-  version: 0.0.4
+  version: 0.0.5
   additionalDependencies: []
-  author: Speakeasy
+  author: Gr4vy
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIException
   disableNamespacePascalCasingApr2024: true
@@ -40,6 +40,6 @@ csharp:
   methodArguments: infer-optional-args
   outputModelSuffix: output
   packageName: gr4vy
-  packageTags: ""
-  responseFormat: envelope-http
+  packageTags: gr4vy payments orchestration sdk pci credit cards
+  responseFormat: flat
   sourceDirectory: src

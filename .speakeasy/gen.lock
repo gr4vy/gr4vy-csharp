@@ -5,8 +5,8 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.543.6
   generationVersion: 2.598.22
-  releaseVersion: 0.0.4
-  configChecksum: c941f99d83b072cc167945df07fd2a9a
+  releaseVersion: 0.0.5
+  configChecksum: e3c28bafa30fa96ccd1dd1fb25e28b63
   published: true
 features:
   csharp:
@@ -135,7 +135,6 @@ generatedFiles:
   - docs/Models/Components/GooglePaySessionRequest.md
   - docs/Models/Components/GuestBuyerInput.md
   - docs/Models/Components/GuestBuyerOutput.md
-  - docs/Models/Components/HTTPMetadata.md
   - docs/Models/Components/InstrumentType.md
   - docs/Models/Components/Item.md
   - docs/Models/Components/Loc.md
@@ -320,123 +319,69 @@ generatedFiles:
   - docs/Models/Errors/Response403VerifyPaymentServiceCredentials.md
   - docs/Models/Errors/Response403VoidTransaction.md
   - docs/Models/Requests/AddBuyerRequest.md
-  - docs/Models/Requests/AddBuyerResponse.md
   - docs/Models/Requests/AddBuyerShippingDetailsRequest.md
-  - docs/Models/Requests/AddBuyerShippingDetailsResponse.md
   - docs/Models/Requests/Body.md
   - docs/Models/Requests/CaptureTransactionRequest.md
-  - docs/Models/Requests/CaptureTransactionResponse.md
   - docs/Models/Requests/ConfigureDigitalWalletRequest.md
-  - docs/Models/Requests/ConfigureDigitalWalletResponse.md
   - docs/Models/Requests/CreateAccountUpdaterJobRequest.md
-  - docs/Models/Requests/CreateAccountUpdaterJobResponse.md
   - docs/Models/Requests/CreateApplePayDigitalWalletSessionRequest.md
-  - docs/Models/Requests/CreateApplePayDigitalWalletSessionResponse.md
   - docs/Models/Requests/CreateCheckoutSessionRequest.md
-  - docs/Models/Requests/CreateCheckoutSessionResponse.md
-  - docs/Models/Requests/CreateClickToPayDigitalWalletSessionResponse.md
   - docs/Models/Requests/CreateFullTransactionRefundRequest.md
-  - docs/Models/Requests/CreateFullTransactionRefundResponse.md
   - docs/Models/Requests/CreateGiftCardRequest.md
-  - docs/Models/Requests/CreateGiftCardResponse.md
   - docs/Models/Requests/CreateGooglePayDigitalWalletSessionRequest.md
-  - docs/Models/Requests/CreateGooglePayDigitalWalletSessionResponse.md
   - docs/Models/Requests/CreateMerchantAccountRequest.md
-  - docs/Models/Requests/CreateMerchantAccountResponse.md
   - docs/Models/Requests/CreatePaymentMethodNetworkTokenCryptogramRequest.md
-  - docs/Models/Requests/CreatePaymentMethodNetworkTokenCryptogramResponse.md
   - docs/Models/Requests/CreatePaymentMethodNetworkTokenRequest.md
-  - docs/Models/Requests/CreatePaymentMethodNetworkTokenResponse.md
   - docs/Models/Requests/CreatePaymentMethodPaymentServiceTokenRequest.md
-  - docs/Models/Requests/CreatePaymentMethodPaymentServiceTokenResponse.md
   - docs/Models/Requests/CreatePaymentMethodRequest.md
-  - docs/Models/Requests/CreatePaymentMethodResponse.md
   - docs/Models/Requests/CreatePaymentServiceDefinitionSessionRequest.md
-  - docs/Models/Requests/CreatePaymentServiceDefinitionSessionResponse.md
   - docs/Models/Requests/CreatePaymentServiceRequest.md
-  - docs/Models/Requests/CreatePaymentServiceResponse.md
   - docs/Models/Requests/CreatePaymentServiceSessionRequest.md
-  - docs/Models/Requests/CreatePaymentServiceSessionResponse.md
   - docs/Models/Requests/CreatePayoutRequest.md
-  - docs/Models/Requests/CreatePayoutResponse.md
   - docs/Models/Requests/CreateTransactionRefundRequest.md
-  - docs/Models/Requests/CreateTransactionRefundResponse.md
   - docs/Models/Requests/CreateTransactionRequest.md
-  - docs/Models/Requests/CreateTransactionResponse.md
   - docs/Models/Requests/DeleteBuyerRequest.md
-  - docs/Models/Requests/DeleteBuyerResponse.md
   - docs/Models/Requests/DeleteBuyerShippingDetailsRequest.md
-  - docs/Models/Requests/DeleteBuyerShippingDetailsResponse.md
   - docs/Models/Requests/DeleteCheckoutSessionRequest.md
-  - docs/Models/Requests/DeleteCheckoutSessionResponse.md
   - docs/Models/Requests/DeleteDigitalWalletRequest.md
-  - docs/Models/Requests/DeleteDigitalWalletResponse.md
   - docs/Models/Requests/DeleteGiftCardRequest.md
-  - docs/Models/Requests/DeleteGiftCardResponse.md
   - docs/Models/Requests/DeletePaymentMethodNetworkTokenRequest.md
-  - docs/Models/Requests/DeletePaymentMethodNetworkTokenResponse.md
   - docs/Models/Requests/DeletePaymentMethodPaymentServiceTokenRequest.md
-  - docs/Models/Requests/DeletePaymentMethodPaymentServiceTokenResponse.md
   - docs/Models/Requests/DeletePaymentMethodRequest.md
-  - docs/Models/Requests/DeletePaymentMethodResponse.md
   - docs/Models/Requests/DeletePaymentServiceRequest.md
-  - docs/Models/Requests/DeletePaymentServiceResponse.md
   - docs/Models/Requests/GetBuyerRequest.md
-  - docs/Models/Requests/GetBuyerResponse.md
   - docs/Models/Requests/GetBuyerShippingDetailsRequest.md
-  - docs/Models/Requests/GetBuyerShippingDetailsResponse.md
   - docs/Models/Requests/GetCheckoutSessionRequest.md
-  - docs/Models/Requests/GetCheckoutSessionResponse.md
   - docs/Models/Requests/GetDigitalWalletRequest.md
-  - docs/Models/Requests/GetDigitalWalletResponse.md
   - docs/Models/Requests/GetGiftCardRequest.md
-  - docs/Models/Requests/GetGiftCardResponse.md
   - docs/Models/Requests/GetMerchantAccountRequest.md
-  - docs/Models/Requests/GetMerchantAccountResponse.md
   - docs/Models/Requests/GetPaymentMethodRequest.md
-  - docs/Models/Requests/GetPaymentMethodResponse.md
   - docs/Models/Requests/GetPaymentServiceDefinitionRequest.md
-  - docs/Models/Requests/GetPaymentServiceDefinitionResponse.md
   - docs/Models/Requests/GetPaymentServiceRequest.md
-  - docs/Models/Requests/GetPaymentServiceResponse.md
   - docs/Models/Requests/GetPayoutRequest.md
-  - docs/Models/Requests/GetPayoutResponse.md
   - docs/Models/Requests/GetRefundRequest.md
-  - docs/Models/Requests/GetRefundResponse.md
   - docs/Models/Requests/GetTransactionRefundRequest.md
-  - docs/Models/Requests/GetTransactionRefundResponse.md
   - docs/Models/Requests/GetTransactionRequest.md
-  - docs/Models/Requests/GetTransactionResponse.md
   - docs/Models/Requests/GetTransactionSummaryRequest.md
-  - docs/Models/Requests/GetTransactionSummaryResponse.md
   - docs/Models/Requests/ListAuditLogsRequest.md
   - docs/Models/Requests/ListAuditLogsResponse.md
   - docs/Models/Requests/ListBuyerGiftCardsRequest.md
-  - docs/Models/Requests/ListBuyerGiftCardsResponse.md
   - docs/Models/Requests/ListBuyerPaymentMethodsRequest.md
-  - docs/Models/Requests/ListBuyerPaymentMethodsResponse.md
   - docs/Models/Requests/ListBuyerShippingDetailsRequest.md
-  - docs/Models/Requests/ListBuyerShippingDetailsResponse.md
   - docs/Models/Requests/ListBuyersRequest.md
   - docs/Models/Requests/ListBuyersResponse.md
   - docs/Models/Requests/ListCardSchemeDefinitionsRequest.md
-  - docs/Models/Requests/ListCardSchemeDefinitionsResponse.md
   - docs/Models/Requests/ListDigitalWalletsRequest.md
-  - docs/Models/Requests/ListDigitalWalletsResponse.md
   - docs/Models/Requests/ListGiftCardBalancesRequest.md
-  - docs/Models/Requests/ListGiftCardBalancesResponse.md
   - docs/Models/Requests/ListGiftCardsRequest.md
   - docs/Models/Requests/ListGiftCardsResponse.md
   - docs/Models/Requests/ListMerchantAccountsRequest.md
   - docs/Models/Requests/ListMerchantAccountsResponse.md
   - docs/Models/Requests/ListPaymentMethodNetworkTokensRequest.md
-  - docs/Models/Requests/ListPaymentMethodNetworkTokensResponse.md
   - docs/Models/Requests/ListPaymentMethodPaymentServiceTokensRequest.md
-  - docs/Models/Requests/ListPaymentMethodPaymentServiceTokensResponse.md
   - docs/Models/Requests/ListPaymentMethodsRequest.md
   - docs/Models/Requests/ListPaymentMethodsResponse.md
   - docs/Models/Requests/ListPaymentOptionsRequest.md
-  - docs/Models/Requests/ListPaymentOptionsResponse.md
   - docs/Models/Requests/ListPaymentServiceDefinitionsRequest.md
   - docs/Models/Requests/ListPaymentServiceDefinitionsResponse.md
   - docs/Models/Requests/ListPaymentServicesRequest.md
@@ -444,36 +389,22 @@ generatedFiles:
   - docs/Models/Requests/ListPayoutsRequest.md
   - docs/Models/Requests/ListPayoutsResponse.md
   - docs/Models/Requests/ListTransactionRefundsRequest.md
-  - docs/Models/Requests/ListTransactionRefundsResponse.md
   - docs/Models/Requests/ListTransactionsRequest.md
   - docs/Models/Requests/ListTransactionsResponse.md
   - docs/Models/Requests/OrderBy.md
   - docs/Models/Requests/RegisterDigitalWalletDomainRequest.md
-  - docs/Models/Requests/RegisterDigitalWalletDomainResponse.md
   - docs/Models/Requests/ResumePaymentMethodNetworkTokenRequest.md
-  - docs/Models/Requests/ResumePaymentMethodNetworkTokenResponse.md
   - docs/Models/Requests/SuspendPaymentMethodNetworkTokenRequest.md
-  - docs/Models/Requests/SuspendPaymentMethodNetworkTokenResponse.md
   - docs/Models/Requests/SyncTransactionRequest.md
-  - docs/Models/Requests/SyncTransactionResponse.md
   - docs/Models/Requests/UnregisterDigitalWalletDomainRequest.md
-  - docs/Models/Requests/UnregisterDigitalWalletDomainResponse.md
   - docs/Models/Requests/UpdateBuyerRequest.md
-  - docs/Models/Requests/UpdateBuyerResponse.md
   - docs/Models/Requests/UpdateBuyerShippingDetailsRequest.md
-  - docs/Models/Requests/UpdateBuyerShippingDetailsResponse.md
   - docs/Models/Requests/UpdateCheckoutSessionRequest.md
-  - docs/Models/Requests/UpdateCheckoutSessionResponse.md
   - docs/Models/Requests/UpdateDigitalWalletRequest.md
-  - docs/Models/Requests/UpdateDigitalWalletResponse.md
   - docs/Models/Requests/UpdateMerchantAccountRequest.md
-  - docs/Models/Requests/UpdateMerchantAccountResponse.md
   - docs/Models/Requests/UpdatePaymentServiceRequest.md
-  - docs/Models/Requests/UpdatePaymentServiceResponse.md
   - docs/Models/Requests/VerifyPaymentServiceCredentialsRequest.md
-  - docs/Models/Requests/VerifyPaymentServiceCredentialsResponse.md
   - docs/Models/Requests/VoidTransactionRequest.md
-  - docs/Models/Requests/VoidTransactionResponse.md
   - docs/sdks/accountupdater/README.md
   - docs/sdks/all/README.md
   - docs/sdks/auditlogs/README.md
@@ -622,7 +553,6 @@ generatedFiles:
   - src/gr4vy/Models/Components/GooglePaySessionRequest.cs
   - src/gr4vy/Models/Components/GuestBuyerInput.cs
   - src/gr4vy/Models/Components/GuestBuyerOutput.cs
-  - src/gr4vy/Models/Components/HTTPMetadata.cs
   - src/gr4vy/Models/Components/InstrumentType.cs
   - src/gr4vy/Models/Components/Item.cs
   - src/gr4vy/Models/Components/Loc.cs
@@ -808,123 +738,69 @@ generatedFiles:
   - src/gr4vy/Models/Errors/Response403VerifyPaymentServiceCredentials.cs
   - src/gr4vy/Models/Errors/Response403VoidTransaction.cs
   - src/gr4vy/Models/Requests/AddBuyerRequest.cs
-  - src/gr4vy/Models/Requests/AddBuyerResponse.cs
   - src/gr4vy/Models/Requests/AddBuyerShippingDetailsRequest.cs
-  - src/gr4vy/Models/Requests/AddBuyerShippingDetailsResponse.cs
   - src/gr4vy/Models/Requests/Body.cs
   - src/gr4vy/Models/Requests/CaptureTransactionRequest.cs
-  - src/gr4vy/Models/Requests/CaptureTransactionResponse.cs
   - src/gr4vy/Models/Requests/ConfigureDigitalWalletRequest.cs
-  - src/gr4vy/Models/Requests/ConfigureDigitalWalletResponse.cs
   - src/gr4vy/Models/Requests/CreateAccountUpdaterJobRequest.cs
-  - src/gr4vy/Models/Requests/CreateAccountUpdaterJobResponse.cs
   - src/gr4vy/Models/Requests/CreateApplePayDigitalWalletSessionRequest.cs
-  - src/gr4vy/Models/Requests/CreateApplePayDigitalWalletSessionResponse.cs
   - src/gr4vy/Models/Requests/CreateCheckoutSessionRequest.cs
-  - src/gr4vy/Models/Requests/CreateCheckoutSessionResponse.cs
-  - src/gr4vy/Models/Requests/CreateClickToPayDigitalWalletSessionResponse.cs
   - src/gr4vy/Models/Requests/CreateFullTransactionRefundRequest.cs
-  - src/gr4vy/Models/Requests/CreateFullTransactionRefundResponse.cs
   - src/gr4vy/Models/Requests/CreateGiftCardRequest.cs
-  - src/gr4vy/Models/Requests/CreateGiftCardResponse.cs
   - src/gr4vy/Models/Requests/CreateGooglePayDigitalWalletSessionRequest.cs
-  - src/gr4vy/Models/Requests/CreateGooglePayDigitalWalletSessionResponse.cs
   - src/gr4vy/Models/Requests/CreateMerchantAccountRequest.cs
-  - src/gr4vy/Models/Requests/CreateMerchantAccountResponse.cs
   - src/gr4vy/Models/Requests/CreatePaymentMethodNetworkTokenCryptogramRequest.cs
-  - src/gr4vy/Models/Requests/CreatePaymentMethodNetworkTokenCryptogramResponse.cs
   - src/gr4vy/Models/Requests/CreatePaymentMethodNetworkTokenRequest.cs
-  - src/gr4vy/Models/Requests/CreatePaymentMethodNetworkTokenResponse.cs
   - src/gr4vy/Models/Requests/CreatePaymentMethodPaymentServiceTokenRequest.cs
-  - src/gr4vy/Models/Requests/CreatePaymentMethodPaymentServiceTokenResponse.cs
   - src/gr4vy/Models/Requests/CreatePaymentMethodRequest.cs
-  - src/gr4vy/Models/Requests/CreatePaymentMethodResponse.cs
   - src/gr4vy/Models/Requests/CreatePaymentServiceDefinitionSessionRequest.cs
-  - src/gr4vy/Models/Requests/CreatePaymentServiceDefinitionSessionResponse.cs
   - src/gr4vy/Models/Requests/CreatePaymentServiceRequest.cs
-  - src/gr4vy/Models/Requests/CreatePaymentServiceResponse.cs
   - src/gr4vy/Models/Requests/CreatePaymentServiceSessionRequest.cs
-  - src/gr4vy/Models/Requests/CreatePaymentServiceSessionResponse.cs
   - src/gr4vy/Models/Requests/CreatePayoutRequest.cs
-  - src/gr4vy/Models/Requests/CreatePayoutResponse.cs
   - src/gr4vy/Models/Requests/CreateTransactionRefundRequest.cs
-  - src/gr4vy/Models/Requests/CreateTransactionRefundResponse.cs
   - src/gr4vy/Models/Requests/CreateTransactionRequest.cs
-  - src/gr4vy/Models/Requests/CreateTransactionResponse.cs
   - src/gr4vy/Models/Requests/DeleteBuyerRequest.cs
-  - src/gr4vy/Models/Requests/DeleteBuyerResponse.cs
   - src/gr4vy/Models/Requests/DeleteBuyerShippingDetailsRequest.cs
-  - src/gr4vy/Models/Requests/DeleteBuyerShippingDetailsResponse.cs
   - src/gr4vy/Models/Requests/DeleteCheckoutSessionRequest.cs
-  - src/gr4vy/Models/Requests/DeleteCheckoutSessionResponse.cs
   - src/gr4vy/Models/Requests/DeleteDigitalWalletRequest.cs
-  - src/gr4vy/Models/Requests/DeleteDigitalWalletResponse.cs
   - src/gr4vy/Models/Requests/DeleteGiftCardRequest.cs
-  - src/gr4vy/Models/Requests/DeleteGiftCardResponse.cs
   - src/gr4vy/Models/Requests/DeletePaymentMethodNetworkTokenRequest.cs
-  - src/gr4vy/Models/Requests/DeletePaymentMethodNetworkTokenResponse.cs
   - src/gr4vy/Models/Requests/DeletePaymentMethodPaymentServiceTokenRequest.cs
-  - src/gr4vy/Models/Requests/DeletePaymentMethodPaymentServiceTokenResponse.cs
   - src/gr4vy/Models/Requests/DeletePaymentMethodRequest.cs
-  - src/gr4vy/Models/Requests/DeletePaymentMethodResponse.cs
   - src/gr4vy/Models/Requests/DeletePaymentServiceRequest.cs
-  - src/gr4vy/Models/Requests/DeletePaymentServiceResponse.cs
   - src/gr4vy/Models/Requests/GetBuyerRequest.cs
-  - src/gr4vy/Models/Requests/GetBuyerResponse.cs
   - src/gr4vy/Models/Requests/GetBuyerShippingDetailsRequest.cs
-  - src/gr4vy/Models/Requests/GetBuyerShippingDetailsResponse.cs
   - src/gr4vy/Models/Requests/GetCheckoutSessionRequest.cs
-  - src/gr4vy/Models/Requests/GetCheckoutSessionResponse.cs
   - src/gr4vy/Models/Requests/GetDigitalWalletRequest.cs
-  - src/gr4vy/Models/Requests/GetDigitalWalletResponse.cs
   - src/gr4vy/Models/Requests/GetGiftCardRequest.cs
-  - src/gr4vy/Models/Requests/GetGiftCardResponse.cs
   - src/gr4vy/Models/Requests/GetMerchantAccountRequest.cs
-  - src/gr4vy/Models/Requests/GetMerchantAccountResponse.cs
   - src/gr4vy/Models/Requests/GetPaymentMethodRequest.cs
-  - src/gr4vy/Models/Requests/GetPaymentMethodResponse.cs
   - src/gr4vy/Models/Requests/GetPaymentServiceDefinitionRequest.cs
-  - src/gr4vy/Models/Requests/GetPaymentServiceDefinitionResponse.cs
   - src/gr4vy/Models/Requests/GetPaymentServiceRequest.cs
-  - src/gr4vy/Models/Requests/GetPaymentServiceResponse.cs
   - src/gr4vy/Models/Requests/GetPayoutRequest.cs
-  - src/gr4vy/Models/Requests/GetPayoutResponse.cs
   - src/gr4vy/Models/Requests/GetRefundRequest.cs
-  - src/gr4vy/Models/Requests/GetRefundResponse.cs
   - src/gr4vy/Models/Requests/GetTransactionRefundRequest.cs
-  - src/gr4vy/Models/Requests/GetTransactionRefundResponse.cs
   - src/gr4vy/Models/Requests/GetTransactionRequest.cs
-  - src/gr4vy/Models/Requests/GetTransactionResponse.cs
   - src/gr4vy/Models/Requests/GetTransactionSummaryRequest.cs
-  - src/gr4vy/Models/Requests/GetTransactionSummaryResponse.cs
   - src/gr4vy/Models/Requests/ListAuditLogsRequest.cs
   - src/gr4vy/Models/Requests/ListAuditLogsResponse.cs
   - src/gr4vy/Models/Requests/ListBuyerGiftCardsRequest.cs
-  - src/gr4vy/Models/Requests/ListBuyerGiftCardsResponse.cs
   - src/gr4vy/Models/Requests/ListBuyerPaymentMethodsRequest.cs
-  - src/gr4vy/Models/Requests/ListBuyerPaymentMethodsResponse.cs
   - src/gr4vy/Models/Requests/ListBuyerShippingDetailsRequest.cs
-  - src/gr4vy/Models/Requests/ListBuyerShippingDetailsResponse.cs
   - src/gr4vy/Models/Requests/ListBuyersRequest.cs
   - src/gr4vy/Models/Requests/ListBuyersResponse.cs
   - src/gr4vy/Models/Requests/ListCardSchemeDefinitionsRequest.cs
-  - src/gr4vy/Models/Requests/ListCardSchemeDefinitionsResponse.cs
   - src/gr4vy/Models/Requests/ListDigitalWalletsRequest.cs
-  - src/gr4vy/Models/Requests/ListDigitalWalletsResponse.cs
   - src/gr4vy/Models/Requests/ListGiftCardBalancesRequest.cs
-  - src/gr4vy/Models/Requests/ListGiftCardBalancesResponse.cs
   - src/gr4vy/Models/Requests/ListGiftCardsRequest.cs
   - src/gr4vy/Models/Requests/ListGiftCardsResponse.cs
   - src/gr4vy/Models/Requests/ListMerchantAccountsRequest.cs
   - src/gr4vy/Models/Requests/ListMerchantAccountsResponse.cs
   - src/gr4vy/Models/Requests/ListPaymentMethodNetworkTokensRequest.cs
-  - src/gr4vy/Models/Requests/ListPaymentMethodNetworkTokensResponse.cs
   - src/gr4vy/Models/Requests/ListPaymentMethodPaymentServiceTokensRequest.cs
-  - src/gr4vy/Models/Requests/ListPaymentMethodPaymentServiceTokensResponse.cs
   - src/gr4vy/Models/Requests/ListPaymentMethodsRequest.cs
   - src/gr4vy/Models/Requests/ListPaymentMethodsResponse.cs
   - src/gr4vy/Models/Requests/ListPaymentOptionsRequest.cs
-  - src/gr4vy/Models/Requests/ListPaymentOptionsResponse.cs
   - src/gr4vy/Models/Requests/ListPaymentServiceDefinitionsRequest.cs
   - src/gr4vy/Models/Requests/ListPaymentServiceDefinitionsResponse.cs
   - src/gr4vy/Models/Requests/ListPaymentServicesRequest.cs
@@ -932,36 +808,22 @@ generatedFiles:
   - src/gr4vy/Models/Requests/ListPayoutsRequest.cs
   - src/gr4vy/Models/Requests/ListPayoutsResponse.cs
   - src/gr4vy/Models/Requests/ListTransactionRefundsRequest.cs
-  - src/gr4vy/Models/Requests/ListTransactionRefundsResponse.cs
   - src/gr4vy/Models/Requests/ListTransactionsRequest.cs
   - src/gr4vy/Models/Requests/ListTransactionsResponse.cs
   - src/gr4vy/Models/Requests/OrderBy.cs
   - src/gr4vy/Models/Requests/RegisterDigitalWalletDomainRequest.cs
-  - src/gr4vy/Models/Requests/RegisterDigitalWalletDomainResponse.cs
   - src/gr4vy/Models/Requests/ResumePaymentMethodNetworkTokenRequest.cs
-  - src/gr4vy/Models/Requests/ResumePaymentMethodNetworkTokenResponse.cs
   - src/gr4vy/Models/Requests/SuspendPaymentMethodNetworkTokenRequest.cs
-  - src/gr4vy/Models/Requests/SuspendPaymentMethodNetworkTokenResponse.cs
   - src/gr4vy/Models/Requests/SyncTransactionRequest.cs
-  - src/gr4vy/Models/Requests/SyncTransactionResponse.cs
   - src/gr4vy/Models/Requests/UnregisterDigitalWalletDomainRequest.cs
-  - src/gr4vy/Models/Requests/UnregisterDigitalWalletDomainResponse.cs
   - src/gr4vy/Models/Requests/UpdateBuyerRequest.cs
-  - src/gr4vy/Models/Requests/UpdateBuyerResponse.cs
   - src/gr4vy/Models/Requests/UpdateBuyerShippingDetailsRequest.cs
-  - src/gr4vy/Models/Requests/UpdateBuyerShippingDetailsResponse.cs
   - src/gr4vy/Models/Requests/UpdateCheckoutSessionRequest.cs
-  - src/gr4vy/Models/Requests/UpdateCheckoutSessionResponse.cs
   - src/gr4vy/Models/Requests/UpdateDigitalWalletRequest.cs
-  - src/gr4vy/Models/Requests/UpdateDigitalWalletResponse.cs
   - src/gr4vy/Models/Requests/UpdateMerchantAccountRequest.cs
-  - src/gr4vy/Models/Requests/UpdateMerchantAccountResponse.cs
   - src/gr4vy/Models/Requests/UpdatePaymentServiceRequest.cs
-  - src/gr4vy/Models/Requests/UpdatePaymentServiceResponse.cs
   - src/gr4vy/Models/Requests/VerifyPaymentServiceCredentialsRequest.cs
-  - src/gr4vy/Models/Requests/VerifyPaymentServiceCredentialsResponse.cs
   - src/gr4vy/Models/Requests/VoidTransactionRequest.cs
-  - src/gr4vy/Models/Requests/VoidTransactionResponse.cs
   - src/gr4vy/NetworkTokens.cs
   - src/gr4vy/PaymentMethods.cs
   - src/gr4vy/PaymentOptions.cs
@@ -1010,7 +872,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1047,7 +909,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1083,7 +945,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1117,7 +979,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1155,7 +1017,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1189,7 +1051,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1227,7 +1089,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1261,7 +1123,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1295,7 +1157,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1333,7 +1195,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1368,7 +1230,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1407,7 +1269,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1444,7 +1306,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1482,7 +1344,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1518,7 +1380,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1552,7 +1414,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1584,7 +1446,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1620,7 +1482,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1658,7 +1520,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1693,7 +1555,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1727,7 +1589,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1765,7 +1627,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1802,7 +1664,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1839,7 +1701,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1874,7 +1736,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1913,7 +1775,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1947,7 +1809,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -1983,7 +1845,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2017,7 +1879,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2053,7 +1915,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2089,7 +1951,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2121,7 +1983,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2153,7 +2015,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2189,7 +2051,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2223,7 +2085,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2261,7 +2123,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2297,7 +2159,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2331,7 +2193,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2365,7 +2227,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2396,7 +2258,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2434,7 +2296,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2472,7 +2334,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2542,7 +2404,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2579,7 +2441,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2613,7 +2475,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2651,7 +2513,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2687,7 +2549,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2721,7 +2583,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2757,7 +2619,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2791,7 +2653,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2829,7 +2691,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2864,7 +2726,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2902,7 +2764,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2936,7 +2798,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -2970,7 +2832,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3003,7 +2865,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3035,7 +2897,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3069,7 +2931,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3105,7 +2967,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3139,7 +3001,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3173,7 +3035,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3209,7 +3071,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3245,7 +3107,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3281,7 +3143,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3317,7 +3179,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3355,7 +3217,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3391,7 +3253,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3427,7 +3289,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3463,7 +3325,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3497,7 +3359,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3531,7 +3393,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3565,7 +3427,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3597,7 +3459,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3633,7 +3495,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "The resource could not be removed as it is currently active", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3668,7 +3530,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3704,7 +3566,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "header", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Invalid credentials", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":
@@ -3738,7 +3600,7 @@ examples:
         "401":
           application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "403":
-          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}], "": {}}
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "unknown", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "404":
           application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "body", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "query", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "405":

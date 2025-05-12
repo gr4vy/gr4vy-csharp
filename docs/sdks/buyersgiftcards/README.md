@@ -43,7 +43,7 @@ var res = await sdk.Buyers.GiftCards.ListAsync(
 
 ### Response
 
-**[ListBuyerGiftCardsResponse](../../Models/Requests/ListBuyerGiftCardsResponse.md)**
+**[CollectionNoCursorGiftCardSummary](../../Models/Components/CollectionNoCursorGiftCardSummary.md)**
 
 ### Errors
 

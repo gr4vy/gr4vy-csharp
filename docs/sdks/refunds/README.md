@@ -39,7 +39,7 @@ var res = await sdk.Refunds.GetAsync(
 
 ### Response
 
-**[GetRefundResponse](../../Models/Requests/GetRefundResponse.md)**
+**[Refund](../../Models/Components/Refund.md)**
 
 ### Errors
 

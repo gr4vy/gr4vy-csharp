@@ -47,7 +47,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
 
 ### Response
 
-**[CreateAccountUpdaterJobResponse](../../Models/Requests/CreateAccountUpdaterJobResponse.md)**
+**[AccountUpdaterJob](../../Models/Components/AccountUpdaterJob.md)**
 
 ### Errors
 

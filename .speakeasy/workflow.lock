@@ -8,7 +8,7 @@ sources:
             - latest
     openapi:
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:49654c86fdc67b7202c3e1de46ea79349417a16431ff747029044fcb40814636
+        sourceRevisionDigest: sha256:95eb650ecacb975eb9073815235a8b8ab7406f8cd531ee233acda5897c4342b2
         sourceBlobDigest: sha256:401058100c062781b727963b34eca9058a912382df5931b40d824efb3a76e4f8
         tags:
             - latest
@@ -17,10 +17,10 @@ targets:
     csharp:
         source: openapi
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:49654c86fdc67b7202c3e1de46ea79349417a16431ff747029044fcb40814636
+        sourceRevisionDigest: sha256:95eb650ecacb975eb9073815235a8b8ab7406f8cd531ee233acda5897c4342b2
         sourceBlobDigest: sha256:401058100c062781b727963b34eca9058a912382df5931b40d824efb3a76e4f8
         codeSamplesNamespace: openapi-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:3f14c31f0773a521b9c1e8b9a94096235bd5695c5d6a910ecf55ffdbdc5bcc00
+        codeSamplesRevisionDigest: sha256:d7fbc0b4260c8b29f6a86dfccc7fa5402d2f3d8bd01c79fe9decab46812e1559
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

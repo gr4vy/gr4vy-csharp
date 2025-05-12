@@ -3,10 +3,11 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>gr4vy</PackageId>
-    <Version>0.0.4</Version>
+    <Version>0.0.5</Version>
     <TargetFramework>net8.0</TargetFramework>
-    <Authors>Speakeasy</Authors>
-    <Copyright>Copyright (c) Speakeasy 2025</Copyright>
+    <Authors>Gr4vy</Authors>
+    <Copyright>Copyright (c) Gr4vy 2025</Copyright>
+    <PackageTags>gr4vy payments orchestration sdk pci credit cards</PackageTags>
     <Description>Gr4vy: The Gr4vy API.</Description>
   </PropertyGroup>
 

@@ -167,7 +167,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
 
 ### Response
 
-**[CreateCheckoutSessionResponse](../../Models/Requests/CreateCheckoutSessionResponse.md)**
+**[CheckoutSession](../../Models/Components/CheckoutSession.md)**
 
 ### Errors
 
@@ -348,7 +348,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
 
 ### Response
 
-**[UpdateCheckoutSessionResponse](../../Models/Requests/UpdateCheckoutSessionResponse.md)**
+**[CheckoutSession](../../Models/Components/CheckoutSession.md)**
 
 ### Errors
 
@@ -404,7 +404,7 @@ var res = await sdk.CheckoutSessions.GetAsync(
 
 ### Response
 
-**[GetCheckoutSessionResponse](../../Models/Requests/GetCheckoutSessionResponse.md)**
+**[CheckoutSession](../../Models/Components/CheckoutSession.md)**
 
 ### Errors
 
@@ -440,7 +440,7 @@ var sdk = new Gr4vy(
     merchantAccountId: "default"
 );
 
-var res = await sdk.CheckoutSessions.DeleteAsync(
+await sdk.CheckoutSessions.DeleteAsync(
     sessionId: "4137b1cf-39ac-42a8-bad6-1c680d5dab6b",
     timeoutInSeconds: 1D,
     merchantAccountId: "default"
@@ -456,10 +456,6 @@ var res = await sdk.CheckoutSessions.DeleteAsync(
 | `SessionId`                                             | *string*                                                | :heavy_check_mark:                                      | The ID of the checkout session.                         | 4137b1cf-39ac-42a8-bad6-1c680d5dab6b                    |
 | `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
-
-### Response
-
-**[DeleteCheckoutSessionResponse](../../Models/Requests/DeleteCheckoutSessionResponse.md)**
 
 ### Errors
 

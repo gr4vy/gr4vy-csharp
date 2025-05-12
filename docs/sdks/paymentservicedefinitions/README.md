@@ -97,7 +97,7 @@ var res = await sdk.PaymentServiceDefinitions.GetAsync(paymentServiceDefinitionI
 
 ### Response
 
-**[GetPaymentServiceDefinitionResponse](../../Models/Requests/GetPaymentServiceDefinitionResponse.md)**
+**[PaymentServiceDefinition](../../Models/Components/PaymentServiceDefinition.md)**
 
 ### Errors
 
@@ -154,7 +154,7 @@ var res = await sdk.PaymentServiceDefinitions.SessionAsync(
 
 ### Response
 
-**[CreatePaymentServiceDefinitionSessionResponse](../../Models/Requests/CreatePaymentServiceDefinitionSessionResponse.md)**
+**[CreateSession](../../Models/Components/CreateSession.md)**
 
 ### Errors
 

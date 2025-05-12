@@ -368,7 +368,7 @@ var res = await sdk.Transactions.CreateAsync(
 
 ### Response
 
-**[CreateTransactionResponse](../../Models/Requests/CreateTransactionResponse.md)**
+**[Transaction](../../Models/Components/Transaction.md)**
 
 ### Errors
 
@@ -422,7 +422,7 @@ var res = await sdk.Transactions.GetAsync(
 
 ### Response
 
-**[GetTransactionResponse](../../Models/Requests/GetTransactionResponse.md)**
+**[Transaction](../../Models/Components/Transaction.md)**
 
 ### Errors
 
@@ -538,7 +538,7 @@ var res = await sdk.Transactions.CaptureAsync(
 
 ### Response
 
-**[CaptureTransactionResponse](../../Models/Requests/CaptureTransactionResponse.md)**
+**[Transaction](../../Models/Components/Transaction.md)**
 
 ### Errors
 
@@ -594,7 +594,7 @@ var res = await sdk.Transactions.VoidAsync(
 
 ### Response
 
-**[VoidTransactionResponse](../../Models/Requests/VoidTransactionResponse.md)**
+**[Transaction](../../Models/Components/Transaction.md)**
 
 ### Errors
 
@@ -648,7 +648,7 @@ var res = await sdk.Transactions.SummaryAsync(
 
 ### Response
 
-**[GetTransactionSummaryResponse](../../Models/Requests/GetTransactionSummaryResponse.md)**
+**[TransactionStatusSummary](../../Models/Components/TransactionStatusSummary.md)**
 
 ### Errors
 
@@ -704,7 +704,7 @@ var res = await sdk.Transactions.SyncAsync(
 
 ### Response
 
-**[SyncTransactionResponse](../../Models/Requests/SyncTransactionResponse.md)**
+**[Transaction](../../Models/Components/Transaction.md)**
 
 ### Errors
 

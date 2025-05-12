@@ -42,7 +42,7 @@ var res = await sdk.GiftCards.GetAsync(
 
 ### Response
 
-**[GetGiftCardResponse](../../Models/Requests/GetGiftCardResponse.md)**
+**[GiftCard](../../Models/Components/GiftCard.md)**
 
 ### Errors
 
@@ -98,7 +98,7 @@ var res = await sdk.GiftCards.DeleteAsync(
 
 ### Response
 
-**[DeleteGiftCardResponse](../../Models/Requests/DeleteGiftCardResponse.md)**
+**[object](../../Models/.md)**
 
 ### Errors
 
@@ -159,7 +159,7 @@ var res = await sdk.GiftCards.CreateAsync(
 
 ### Response
 
-**[CreateGiftCardResponse](../../Models/Requests/CreateGiftCardResponse.md)**
+**[GiftCard](../../Models/Components/GiftCard.md)**
 
 ### Errors
 

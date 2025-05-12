@@ -46,7 +46,7 @@ var res = await sdk.DigitalWallets.Domains.CreateAsync(
 
 ### Response
 
-**[RegisterDigitalWalletDomainResponse](../../Models/Requests/RegisterDigitalWalletDomainResponse.md)**
+**[object](../../Models/.md)**
 
 ### Errors
 
@@ -106,7 +106,7 @@ var res = await sdk.DigitalWallets.Domains.DeleteAsync(
 
 ### Response
 
-**[UnregisterDigitalWalletDomainResponse](../../Models/Requests/UnregisterDigitalWalletDomainResponse.md)**
+**[object](../../Models/.md)**
 
 ### Errors
 

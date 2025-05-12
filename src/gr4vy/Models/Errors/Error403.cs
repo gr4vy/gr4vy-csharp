@@ -48,8 +48,5 @@ namespace gr4vy.Models.Errors
         /// </summary>
         [JsonProperty("details")]
         public List<ErrorDetail>? Details { get; set; }
-
-        [JsonProperty("-")]
-        public HTTPMetadata HttpMeta { get; set; } = default!;
     }
 }

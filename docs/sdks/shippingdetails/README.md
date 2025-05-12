@@ -63,7 +63,7 @@ var res = await sdk.Buyers.ShippingDetails.CreateAsync(
 
 ### Response
 
-**[AddBuyerShippingDetailsResponse](../../Models/Requests/AddBuyerShippingDetailsResponse.md)**
+**[Models.Components.ShippingDetails](../../Models/Components/ShippingDetails.md)**
 
 ### Errors
 
@@ -117,7 +117,7 @@ var res = await sdk.Buyers.ShippingDetails.ListAsync(
 
 ### Response
 
-**[ListBuyerShippingDetailsResponse](../../Models/Requests/ListBuyerShippingDetailsResponse.md)**
+**[CollectionNoCursorShippingDetails](../../Models/Components/CollectionNoCursorShippingDetails.md)**
 
 ### Errors
 
@@ -173,7 +173,7 @@ var res = await sdk.Buyers.ShippingDetails.GetAsync(
 
 ### Response
 
-**[GetBuyerShippingDetailsResponse](../../Models/Requests/GetBuyerShippingDetailsResponse.md)**
+**[Models.Components.ShippingDetails](../../Models/Components/ShippingDetails.md)**
 
 ### Errors
 
@@ -246,7 +246,7 @@ var res = await sdk.Buyers.ShippingDetails.UpdateAsync(req);
 
 ### Response
 
-**[UpdateBuyerShippingDetailsResponse](../../Models/Requests/UpdateBuyerShippingDetailsResponse.md)**
+**[Models.Components.ShippingDetails](../../Models/Components/ShippingDetails.md)**
 
 ### Errors
 
@@ -304,7 +304,7 @@ var res = await sdk.Buyers.ShippingDetails.DeleteAsync(
 
 ### Response
 
-**[DeleteBuyerShippingDetailsResponse](../../Models/Requests/DeleteBuyerShippingDetailsResponse.md)**
+**[object](../../Models/.md)**
 
 ### Errors
 

@@ -41,7 +41,7 @@ var res = await sdk.Transactions.Refunds.ListAsync(
 
 ### Response
 
-**[ListTransactionRefundsResponse](../../Models/Requests/ListTransactionRefundsResponse.md)**
+**[CollectionRefund](../../Models/Components/CollectionRefund.md)**
 
 ### Errors
 
@@ -104,7 +104,7 @@ var res = await sdk.Transactions.Refunds.CreateAsync(
 
 ### Response
 
-**[CreateTransactionRefundResponse](../../Models/Requests/CreateTransactionRefundResponse.md)**
+**[Refund](../../Models/Components/Refund.md)**
 
 ### Errors
 
@@ -160,7 +160,7 @@ var res = await sdk.Transactions.Refunds.GetAsync(
 
 ### Response
 
-**[GetTransactionRefundResponse](../../Models/Requests/GetTransactionRefundResponse.md)**
+**[Refund](../../Models/Components/Refund.md)**
 
 ### Errors
 

@@ -44,7 +44,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.Cryptogram.CreateAsync(req);
 
 ### Response
 
-**[CreatePaymentMethodNetworkTokenCryptogramResponse](../../Models/Requests/CreatePaymentMethodNetworkTokenCryptogramResponse.md)**
+**[Models.Components.Cryptogram](../../Models/Components/Cryptogram.md)**
 
 ### Errors
 

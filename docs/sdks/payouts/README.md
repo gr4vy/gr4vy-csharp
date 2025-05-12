@@ -185,7 +185,7 @@ var res = await sdk.Payouts.CreateAsync(
 
 ### Response
 
-**[CreatePayoutResponse](../../Models/Requests/CreatePayoutResponse.md)**
+**[PayoutSummary](../../Models/Components/PayoutSummary.md)**
 
 ### Errors
 
@@ -239,7 +239,7 @@ var res = await sdk.Payouts.GetAsync(
 
 ### Response
 
-**[GetPayoutResponse](../../Models/Requests/GetPayoutResponse.md)**
+**[PayoutSummary](../../Models/Components/PayoutSummary.md)**
 
 ### Errors
 

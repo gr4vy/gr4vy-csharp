@@ -9,7 +9,6 @@
 #nullable enable
 namespace gr4vy.Models.Requests
 {
-    using Newtonsoft.Json;
     using System;
     using System.Threading.Tasks;
     using gr4vy.Models.Components;
@@ -19,12 +18,7 @@ namespace gr4vy.Models.Requests
     {
         public Func<Task<ListPaymentServicesResponse?>>? Next {get;set;}
 
-        [JsonProperty("-")]
-        public HTTPMetadata HttpMeta { get; set; } = default!;
-
-        /// <summary>
-        /// Successful Response
-        /// </summary>
-        public CollectionPaymentService? CollectionPaymentService { get; set; }
+        [SpeakeasyMetadata("")]
+        public CollectionPaymentService Result { get; set; } = default!;
     }
 }

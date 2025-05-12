@@ -50,7 +50,7 @@ var res = await sdk.GiftCards.Balances.ListAsync(
 
 ### Response
 
-**[ListGiftCardBalancesResponse](../../Models/Requests/ListGiftCardBalancesResponse.md)**
+**[CollectionNoCursorGiftCardSummary](../../Models/Components/CollectionNoCursorGiftCardSummary.md)**
 
 ### Errors
 

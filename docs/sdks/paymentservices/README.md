@@ -147,7 +147,7 @@ var res = await sdk.PaymentServices.CreateAsync(
 
 ### Response
 
-**[UpdatePaymentServiceResponse](../../Models/Requests/UpdatePaymentServiceResponse.md)**
+**[PaymentService](../../Models/Components/PaymentService.md)**
 
 ### Errors
 
@@ -201,7 +201,7 @@ var res = await sdk.PaymentServices.GetAsync(
 
 ### Response
 
-**[GetPaymentServiceResponse](../../Models/Requests/GetPaymentServiceResponse.md)**
+**[PaymentService](../../Models/Components/PaymentService.md)**
 
 ### Errors
 
@@ -286,7 +286,7 @@ var res = await sdk.PaymentServices.UpdateAsync(
 
 ### Response
 
-**[CreatePaymentServiceResponse](../../Models/Requests/CreatePaymentServiceResponse.md)**
+**[PaymentService](../../Models/Components/PaymentService.md)**
 
 ### Errors
 
@@ -342,7 +342,7 @@ var res = await sdk.PaymentServices.DeleteAsync(
 
 ### Response
 
-**[DeletePaymentServiceResponse](../../Models/Requests/DeletePaymentServiceResponse.md)**
+**[object](../../Models/.md)**
 
 ### Errors
 
@@ -408,7 +408,7 @@ var res = await sdk.PaymentServices.VerifyAsync(
 
 ### Response
 
-**[VerifyPaymentServiceCredentialsResponse](../../Models/Requests/VerifyPaymentServiceCredentialsResponse.md)**
+**[object](../../Models/.md)**
 
 ### Errors
 
@@ -467,7 +467,7 @@ var res = await sdk.PaymentServices.SessionAsync(
 
 ### Response
 
-**[CreatePaymentServiceSessionResponse](../../Models/Requests/CreatePaymentServiceSessionResponse.md)**
+**[CreateSession](../../Models/Components/CreateSession.md)**
 
 ### Errors
 

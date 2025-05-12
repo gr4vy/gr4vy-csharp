@@ -128,7 +128,7 @@ var res = await sdk.MerchantAccounts.CreateAsync(
 
 ### Response
 
-**[CreateMerchantAccountResponse](../../Models/Requests/CreateMerchantAccountResponse.md)**
+**[MerchantAccount](../../Models/Components/MerchantAccount.md)**
 
 ### Errors
 
@@ -178,7 +178,7 @@ var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345
 
 ### Response
 
-**[GetMerchantAccountResponse](../../Models/Requests/GetMerchantAccountResponse.md)**
+**[MerchantAccount](../../Models/Components/MerchantAccount.md)**
 
 ### Errors
 
@@ -257,7 +257,7 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
 
 ### Response
 
-**[UpdateMerchantAccountResponse](../../Models/Requests/UpdateMerchantAccountResponse.md)**
+**[MerchantAccount](../../Models/Components/MerchantAccount.md)**
 
 ### Errors
 

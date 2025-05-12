@@ -46,7 +46,7 @@ var res = await sdk.Transactions.Refunds.All.CreateAsync(
 
 ### Response
 
-**[CreateFullTransactionRefundResponse](../../Models/Requests/CreateFullTransactionRefundResponse.md)**
+**[CollectionNoCursorRefund](../../Models/Components/CollectionNoCursorRefund.md)**
 
 ### Errors
 

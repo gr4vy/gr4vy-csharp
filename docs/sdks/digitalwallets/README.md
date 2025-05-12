@@ -50,7 +50,7 @@ var res = await sdk.DigitalWallets.CreateAsync(
 
 ### Response
 
-**[ConfigureDigitalWalletResponse](../../Models/Requests/ConfigureDigitalWalletResponse.md)**
+**[DigitalWallet](../../Models/Components/DigitalWallet.md)**
 
 ### Errors
 
@@ -100,7 +100,7 @@ var res = await sdk.DigitalWallets.ListAsync(merchantAccountId: "default");
 
 ### Response
 
-**[ListDigitalWalletsResponse](../../Models/Requests/ListDigitalWalletsResponse.md)**
+**[CollectionNoCursorDigitalWallet](../../Models/Components/CollectionNoCursorDigitalWallet.md)**
 
 ### Errors
 
@@ -154,7 +154,7 @@ var res = await sdk.DigitalWallets.GetAsync(
 
 ### Response
 
-**[GetDigitalWalletResponse](../../Models/Requests/GetDigitalWalletResponse.md)**
+**[DigitalWallet](../../Models/Components/DigitalWallet.md)**
 
 ### Errors
 
@@ -210,7 +210,7 @@ var res = await sdk.DigitalWallets.DeleteAsync(
 
 ### Response
 
-**[DeleteDigitalWalletResponse](../../Models/Requests/DeleteDigitalWalletResponse.md)**
+**[object](../../Models/.md)**
 
 ### Errors
 
@@ -270,7 +270,7 @@ var res = await sdk.DigitalWallets.UpdateAsync(
 
 ### Response
 
-**[UpdateDigitalWalletResponse](../../Models/Requests/UpdateDigitalWalletResponse.md)**
+**[DigitalWallet](../../Models/Components/DigitalWallet.md)**
 
 ### Errors
 

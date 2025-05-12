@@ -43,7 +43,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.ListAsync(
 
 ### Response
 
-**[ListPaymentMethodNetworkTokensResponse](../../Models/Requests/ListPaymentMethodNetworkTokensResponse.md)**
+**[CollectionNoCursorNetworkToken](../../Models/Components/CollectionNoCursorNetworkToken.md)**
 
 ### Errors
 
@@ -105,7 +105,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.CreateAsync(
 
 ### Response
 
-**[CreatePaymentMethodNetworkTokenResponse](../../Models/Requests/CreatePaymentMethodNetworkTokenResponse.md)**
+**[NetworkToken](../../Models/Components/NetworkToken.md)**
 
 ### Errors
 
@@ -163,7 +163,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.SuspendAsync(
 
 ### Response
 
-**[SuspendPaymentMethodNetworkTokenResponse](../../Models/Requests/SuspendPaymentMethodNetworkTokenResponse.md)**
+**[NetworkToken](../../Models/Components/NetworkToken.md)**
 
 ### Errors
 
@@ -221,7 +221,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.ResumeAsync(
 
 ### Response
 
-**[ResumePaymentMethodNetworkTokenResponse](../../Models/Requests/ResumePaymentMethodNetworkTokenResponse.md)**
+**[NetworkToken](../../Models/Components/NetworkToken.md)**
 
 ### Errors
 
@@ -258,7 +258,7 @@ var sdk = new Gr4vy(
     merchantAccountId: "default"
 );
 
-var res = await sdk.PaymentMethods.NetworkTokens.DeleteAsync(
+await sdk.PaymentMethods.NetworkTokens.DeleteAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298",
     timeoutInSeconds: 1D,
@@ -276,10 +276,6 @@ var res = await sdk.PaymentMethods.NetworkTokens.DeleteAsync(
 | `NetworkTokenId`                                        | *string*                                                | :heavy_check_mark:                                      | The ID of the network token                             | f8dd5cfc-7834-4847-95dc-f75a360e2298                    |
 | `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
-
-### Response
-
-**[DeletePaymentMethodNetworkTokenResponse](../../Models/Requests/DeletePaymentMethodNetworkTokenResponse.md)**
 
 ### Errors
 

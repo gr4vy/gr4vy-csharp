@@ -117,7 +117,7 @@ var res = await sdk.PaymentMethods.CreateAsync(
 
 ### Response
 
-**[CreatePaymentMethodResponse](../../Models/Requests/CreatePaymentMethodResponse.md)**
+**[PaymentMethod](../../Models/Components/PaymentMethod.md)**
 
 ### Errors
 
@@ -171,7 +171,7 @@ var res = await sdk.PaymentMethods.GetAsync(
 
 ### Response
 
-**[GetPaymentMethodResponse](../../Models/Requests/GetPaymentMethodResponse.md)**
+**[PaymentMethod](../../Models/Components/PaymentMethod.md)**
 
 ### Errors
 
@@ -208,7 +208,7 @@ var sdk = new Gr4vy(
     merchantAccountId: "default"
 );
 
-var res = await sdk.PaymentMethods.DeleteAsync(
+await sdk.PaymentMethods.DeleteAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     merchantAccountId: "default"
 );
@@ -222,10 +222,6 @@ var res = await sdk.PaymentMethods.DeleteAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
-
-### Response
-
-**[DeletePaymentMethodResponse](../../Models/Requests/DeletePaymentMethodResponse.md)**
 
 ### Errors
 

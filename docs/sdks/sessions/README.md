@@ -43,7 +43,7 @@ var res = await sdk.DigitalWallets.Sessions.GooglePayAsync(
 
 ### Response
 
-**[CreateGooglePayDigitalWalletSessionResponse](../../Models/Requests/CreateGooglePayDigitalWalletSessionResponse.md)**
+**[GooglePaySession](../../Models/Components/GooglePaySession.md)**
 
 ### Errors
 
@@ -100,7 +100,7 @@ var res = await sdk.DigitalWallets.Sessions.ApplePayAsync(
 
 ### Response
 
-**[CreateApplePayDigitalWalletSessionResponse](../../Models/Requests/CreateApplePayDigitalWalletSessionResponse.md)**
+**[Dictionary<string, object>](../../Models/.md)**
 
 ### Errors
 
@@ -154,7 +154,7 @@ var res = await sdk.DigitalWallets.Sessions.ClickToPayAsync(req);
 
 ### Response
 
-**[CreateClickToPayDigitalWalletSessionResponse](../../Models/Requests/CreateClickToPayDigitalWalletSessionResponse.md)**
+**[ClickToPaySession](../../Models/Components/ClickToPaySession.md)**
 
 ### Errors
 

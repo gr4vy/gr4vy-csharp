@@ -43,7 +43,7 @@ var res = await sdk.Buyers.PaymentMethods.ListAsync(req);
 
 ### Response
 
-**[ListBuyerPaymentMethodsResponse](../../Models/Requests/ListBuyerPaymentMethodsResponse.md)**
+**[CollectionNoCursorPaymentMethodSummary](../../Models/Components/CollectionNoCursorPaymentMethodSummary.md)**
 
 ### Errors
 

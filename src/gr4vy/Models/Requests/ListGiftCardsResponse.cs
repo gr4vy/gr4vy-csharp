@@ -9,7 +9,6 @@
 #nullable enable
 namespace gr4vy.Models.Requests
 {
-    using Newtonsoft.Json;
     using System;
     using System.Threading.Tasks;
     using gr4vy.Models.Components;
@@ -19,12 +18,7 @@ namespace gr4vy.Models.Requests
     {
         public Func<Task<ListGiftCardsResponse?>>? Next {get;set;}
 
-        [JsonProperty("-")]
-        public HTTPMetadata HttpMeta { get; set; } = default!;
-
-        /// <summary>
-        /// Successful Response
-        /// </summary>
-        public CollectionGiftCard? CollectionGiftCard { get; set; }
+        [SpeakeasyMetadata("")]
+        public CollectionGiftCard Result { get; set; } = default!;
     }
 }

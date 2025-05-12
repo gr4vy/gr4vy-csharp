@@ -67,7 +67,7 @@ var res = await sdk.PaymentOptions.ListAsync(
 
 ### Response
 
-**[ListPaymentOptionsResponse](../../Models/Requests/ListPaymentOptionsResponse.md)**
+**[CollectionNoCursorPaymentOption](../../Models/Components/CollectionNoCursorPaymentOption.md)**
 
 ### Errors
 

@@ -43,7 +43,7 @@ var res = await sdk.PaymentMethods.PaymentServiceTokens.ListAsync(
 
 ### Response
 
-**[ListPaymentMethodPaymentServiceTokensResponse](../../Models/Requests/ListPaymentMethodPaymentServiceTokensResponse.md)**
+**[CollectionNoCursorPaymentServiceToken](../../Models/Components/CollectionNoCursorPaymentServiceToken.md)**
 
 ### Errors
 
@@ -105,7 +105,7 @@ var res = await sdk.PaymentMethods.PaymentServiceTokens.CreateAsync(
 
 ### Response
 
-**[CreatePaymentMethodPaymentServiceTokenResponse](../../Models/Requests/CreatePaymentMethodPaymentServiceTokenResponse.md)**
+**[PaymentServiceToken](../../Models/Components/PaymentServiceToken.md)**
 
 ### Errors
 
@@ -142,7 +142,7 @@ var sdk = new Gr4vy(
     merchantAccountId: "default"
 );
 
-var res = await sdk.PaymentMethods.PaymentServiceTokens.DeleteAsync(
+await sdk.PaymentMethods.PaymentServiceTokens.DeleteAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     paymentServiceTokenId: "703f2d99-3fd1-44bc-9cbd-a25a2d597886",
     timeoutInSeconds: 1D,
@@ -160,10 +160,6 @@ var res = await sdk.PaymentMethods.PaymentServiceTokens.DeleteAsync(
 | `PaymentServiceTokenId`                                 | *string*                                                | :heavy_check_mark:                                      | The ID of the payment service token                     | 703f2d99-3fd1-44bc-9cbd-a25a2d597886                    |
 | `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
-
-### Response
-
-**[DeletePaymentMethodPaymentServiceTokenResponse](../../Models/Requests/DeletePaymentMethodPaymentServiceTokenResponse.md)**
 
 ### Errors
 
