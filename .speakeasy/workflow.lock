@@ -7,7 +7,7 @@ sources:
         tags:
             - latest
 targets:
-    gr-4-vy:
+    csharp:
         source: -OAS
         sourceNamespace: openapi
         sourceRevisionDigest: sha256:89ee649481e09f914f6efa578106f54e6d79741ad6481ef70895189fd1c64412
@@ -22,9 +22,12 @@ workflow:
             registry:
                 location: registry.speakeasyapi.dev/gr4vy/gr4vy/-oas
     targets:
-        gr-4-vy:
+        csharp:
             target: csharp
             source: -OAS
+            publish:
+                nuget:
+                    apiKey: $nuget_api_key
             codeSamples:
                 registry:
                     location: registry.speakeasyapi.dev/gr4vy/gr4vy/-oas-csharp-code-samples

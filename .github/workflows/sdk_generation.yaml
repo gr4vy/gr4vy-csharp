@@ -6,6 +6,8 @@ permissions:
   statuses: write
   id-token: write
 "on":
+  repository_dispatch:
+        types: openapi_published
   workflow_dispatch:
     inputs:
       force:
