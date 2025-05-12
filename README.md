@@ -41,14 +41,14 @@ Gr4vy: The Gr4vy API.
 
 To add the [NuGet](https://www.nuget.org/) package to a .NET project:
 ```bash
-dotnet add package gr4vy
+dotnet add package Gr4vy
 ```
 
 ### Locally
 
 To add a reference to a local instance of the SDK in a .NET project:
 ```bash
-dotnet add reference src/gr4vy/gr4vy.csproj
+dotnet add reference src/Gr4vy/Gr4vy.csproj
 ```
 <!-- End SDK Installation [installation] -->
 
@@ -58,11 +58,11 @@ dotnet add reference src/gr4vy/gr4vy.csproj
 ### Example
 
 ```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
 using System.Collections.Generic;
-using gr4vy;
-using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -95,11 +95,11 @@ This SDK supports the following security scheme globally:
 
 To authenticate with the API the `BearerAuth` parameter must be set when initializing the SDK client instance. For example:
 ```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
 using System.Collections.Generic;
-using gr4vy;
-using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -306,10 +306,10 @@ The following global parameter is available.
 ### Example
 
 ```csharp
-using gr4vy;
-using gr4vy.Models.Components;
+using Gr4vy;
+using Gr4vy.Models.Components;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -329,11 +329,11 @@ return value of `Next` is `null`, then there are no more pages to be fetched.
 
 Here's an example of one such pagination call:
 ```csharp
-using gr4vy;
-using gr4vy.Models.Components;
-using gr4vy.Models.Requests;
+using Gr4vy;
+using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -362,11 +362,11 @@ Some of the endpoints in this SDK support retries. If you use the SDK without an
 
 To change the default retry strategy for a single API call, simply pass a `RetryConfig` to the call:
 ```csharp
-using gr4vy;
-using gr4vy.Models.Components;
-using gr4vy.Models.Requests;
+using Gr4vy;
+using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -401,11 +401,11 @@ while(res != null)
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
 ```csharp
-using gr4vy;
-using gr4vy.Models.Components;
-using gr4vy.Models.Requests;
+using Gr4vy;
+using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -442,7 +442,7 @@ while(res != null)
 
 Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
 
-By default, an API error will raise a `gr4vy.Models.Errors.APIException` exception, which has the following properties:
+By default, an API error will raise a `Gr4vy.Models.Errors.APIException` exception, which has the following properties:
 
 | Property      | Type                  | Description           |
 |---------------|-----------------------|-----------------------|
@@ -455,31 +455,31 @@ When custom error responses are specified for an operation, the SDK may also thr
 
 | Error Type                              | Status Code | Content Type     |
 | --------------------------------------- | ----------- | ---------------- |
-| gr4vy.Models.Errors.Error400            | 400         | application/json |
-| gr4vy.Models.Errors.Error401            | 401         | application/json |
-| gr4vy.Models.Errors.Error403            | 403         | application/json |
-| gr4vy.Models.Errors.Error403Forbidden   | 403         | application/json |
-| gr4vy.Models.Errors.Error403Active      | 403         | application/json |
-| gr4vy.Models.Errors.Error404            | 404         | application/json |
-| gr4vy.Models.Errors.Error405            | 405         | application/json |
-| gr4vy.Models.Errors.Error409            | 409         | application/json |
-| gr4vy.Models.Errors.HTTPValidationError | 422         | application/json |
-| gr4vy.Models.Errors.Error425            | 425         | application/json |
-| gr4vy.Models.Errors.Error429            | 429         | application/json |
-| gr4vy.Models.Errors.Error500            | 500         | application/json |
-| gr4vy.Models.Errors.Error502            | 502         | application/json |
-| gr4vy.Models.Errors.Error504            | 504         | application/json |
-| gr4vy.Models.Errors.APIException        | 4XX, 5XX    | \*/\*            |
+| Gr4vy.Models.Errors.Error400            | 400         | application/json |
+| Gr4vy.Models.Errors.Error401            | 401         | application/json |
+| Gr4vy.Models.Errors.Error403            | 403         | application/json |
+| Gr4vy.Models.Errors.Error403Forbidden   | 403         | application/json |
+| Gr4vy.Models.Errors.Error403Active      | 403         | application/json |
+| Gr4vy.Models.Errors.Error404            | 404         | application/json |
+| Gr4vy.Models.Errors.Error405            | 405         | application/json |
+| Gr4vy.Models.Errors.Error409            | 409         | application/json |
+| Gr4vy.Models.Errors.HTTPValidationError | 422         | application/json |
+| Gr4vy.Models.Errors.Error425            | 425         | application/json |
+| Gr4vy.Models.Errors.Error429            | 429         | application/json |
+| Gr4vy.Models.Errors.Error500            | 500         | application/json |
+| Gr4vy.Models.Errors.Error502            | 502         | application/json |
+| Gr4vy.Models.Errors.Error504            | 504         | application/json |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX    | \*/\*            |
 
 ### Example
 
 ```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
+using Gr4vy.Models.Errors;
 using System.Collections.Generic;
-using gr4vy;
-using gr4vy.Models.Components;
-using gr4vy.Models.Errors;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -571,7 +571,7 @@ catch (Exception ex)
         // Handle exception data
         throw;
     }
-    else if (ex is gr4vy.Models.Errors.APIException)
+    else if (ex is Gr4vy.Models.Errors.APIException)
     {
         // Handle default exception
         throw;
@@ -601,11 +601,11 @@ If the selected server has variables, you may override its default values throug
 #### Example
 
 ```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
 using System.Collections.Generic;
-using gr4vy;
-using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     server: "sandbox",
     id: "<id>",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
@@ -630,11 +630,11 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
 
 The default server can also be overridden globally by passing a URL to the `serverUrl: string` optional parameter when initializing the SDK client instance. For example:
 ```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
 using System.Collections.Generic;
-using gr4vy;
-using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     serverUrl: "https://api.example.gr4vy.app",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"

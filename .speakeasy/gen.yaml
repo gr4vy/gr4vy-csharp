@@ -16,7 +16,7 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 csharp:
-  version: 0.0.5
+  version: 0.0.8
   additionalDependencies: []
   author: Gr4vy
   clientServerStatusCodesAsErrors: true
@@ -39,7 +39,7 @@ csharp:
   maxMethodParams: 4
   methodArguments: infer-optional-args
   outputModelSuffix: output
-  packageName: gr4vy
+  packageName: Gr4vy
   packageTags: gr4vy payments orchestration sdk pci credit cards
   responseFormat: flat
   sourceDirectory: src

@@ -17,10 +17,10 @@ Fetch details about a gift card.
 ### Example Usage
 
 ```csharp
-using gr4vy;
-using gr4vy.Models.Components;
+using Gr4vy;
+using Gr4vy.Models.Components;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -48,21 +48,21 @@ var res = await sdk.GiftCards.GetAsync(
 
 | Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
-| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
-| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
-| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
-| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
-| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
-| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
-| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
-| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
-| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
-| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
-| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+| Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| Gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| Gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| Gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| Gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| Gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| Gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
 
 ## Delete
 
@@ -71,10 +71,10 @@ Removes a gift card from our system.
 ### Example Usage
 
 ```csharp
-using gr4vy;
-using gr4vy.Models.Components;
+using Gr4vy;
+using Gr4vy.Models.Components;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -104,21 +104,21 @@ var res = await sdk.GiftCards.DeleteAsync(
 
 | Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
-| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
-| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
-| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
-| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
-| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
-| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
-| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
-| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
-| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
-| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
-| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+| Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| Gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| Gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| Gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| Gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| Gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| Gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
 
 ## Create
 
@@ -127,10 +127,10 @@ Store a new gift card in the vault.
 ### Example Usage
 
 ```csharp
-using gr4vy;
-using gr4vy.Models.Components;
+using Gr4vy;
+using Gr4vy.Models.Components;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -165,21 +165,21 @@ var res = await sdk.GiftCards.CreateAsync(
 
 | Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
-| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
-| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
-| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
-| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
-| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
-| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
-| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
-| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
-| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
-| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
-| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+| Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| Gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| Gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| Gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| Gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| Gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| Gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
 
 ## List
 
@@ -188,11 +188,11 @@ Browser all gift cards.
 ### Example Usage
 
 ```csharp
-using gr4vy;
-using gr4vy.Models.Components;
-using gr4vy.Models.Requests;
+using Gr4vy;
+using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(
+var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
@@ -223,18 +223,18 @@ while(res != null)
 
 | Error Type                              | Status Code                             | Content Type                            |
 | --------------------------------------- | --------------------------------------- | --------------------------------------- |
-| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
-| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
-| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
-| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
-| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
-| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
-| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
-| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
-| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
-| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
-| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
-| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
-| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+| Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| Gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| Gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| Gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| Gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| Gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| Gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |

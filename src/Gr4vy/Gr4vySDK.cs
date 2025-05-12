@@ -7,24 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace gr4vy
+namespace Gr4vy
 {
+    using Gr4vy.Hooks;
+    using Gr4vy.Models.Components;
+    using Gr4vy.Models.Errors;
+    using Gr4vy.Utils;
+    using Gr4vy.Utils.Retries;
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-    using gr4vy.Hooks;
-    using gr4vy.Models.Components;
-    using gr4vy.Models.Errors;
-    using gr4vy.Utils;
-    using gr4vy.Utils.Retries;
 
 
     /// <summary>
     /// Gr4vy: The Gr4vy API.
     /// </summary>
-    public interface IGr4vy
+    public interface IGr4vySDK
     {
         public IAccountUpdater AccountUpdater { get; }
         public IBuyers Buyers { get; }
@@ -109,19 +109,19 @@ namespace gr4vy
     /// <summary>
     /// Gr4vy: The Gr4vy API.
     /// </summary>
-    public class Gr4vy: IGr4vy
+    public class Gr4vySDK: IGr4vySDK
     {
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.5";
+        private const string _sdkVersion = "0.0.8";
         private const string _sdkGenVersion = "2.598.22";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.5 2.598.22 1.0.0 gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.8 2.598.22 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private SDKConfig.Server? _server = null;
         private ISpeakeasyHttpClient _client;
-        private Func<gr4vy.Models.Components.Security>? _securitySource;
+        private Func<Gr4vy.Models.Components.Security>? _securitySource;
         public IAccountUpdater AccountUpdater { get; private set; }
         public IBuyers Buyers { get; private set; }
         public IPaymentMethods PaymentMethods { get; private set; }
@@ -138,7 +138,7 @@ namespace gr4vy
         public IMerchantAccounts MerchantAccounts { get; private set; }
         public IPayouts Payouts { get; private set; }
 
-        public Gr4vy(string? bearerAuth = null, Func<string>? bearerAuthSource = null, string? merchantAccountId = null, SDKConfig.Server? server = null, string?  id = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
+        public Gr4vySDK(string? bearerAuth = null, Func<string>? bearerAuthSource = null, string? merchantAccountId = null, SDKConfig.Server? server = null, string?  id = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
             if (server != null)
             {
@@ -170,11 +170,11 @@ namespace gr4vy
 
             if(bearerAuthSource != null)
             {
-                _securitySource = () => new gr4vy.Models.Components.Security() { BearerAuth = bearerAuthSource() };
+                _securitySource = () => new Gr4vy.Models.Components.Security() { BearerAuth = bearerAuthSource() };
             }
             else if(bearerAuth != null)
             {
-                _securitySource = () => new gr4vy.Models.Components.Security() { BearerAuth = bearerAuth };
+                _securitySource = () => new Gr4vy.Models.Components.Security() { BearerAuth = bearerAuth };
             }
             else
             {
