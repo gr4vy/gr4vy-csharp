@@ -18,7 +18,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 CreatePaymentMethodNetworkTokenCryptogramRequest req = new CreatePaymentMethodNetworkTokenCryptogramRequest() {
     PaymentMethodId = "ef9496d8-53a5-4aad-8ca2-00eb68334389",

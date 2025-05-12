@@ -18,7 +18,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
     accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
@@ -28,7 +31,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -36,11 +39,11 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `AccountUpdaterJobCreate`                                                     | [AccountUpdaterJobCreate](../../Models/Components/AccountUpdaterJobCreate.md) | :heavy_check_mark:                                                            | N/A                                                                           |
-| `TimeoutInSeconds`                                                            | *double*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |
-| `MerchantAccountId`                                                           | *string*                                                                      | :heavy_minus_sign:                                                            | The ID of the merchant account to use for this request.                       |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `AccountUpdaterJobCreate`                                                     | [AccountUpdaterJobCreate](../../Models/Components/AccountUpdaterJobCreate.md) | :heavy_check_mark:                                                            | N/A                                                                           |                                                                               |
+| `TimeoutInSeconds`                                                            | *double*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |                                                                               |
+| `MerchantAccountId`                                                           | *string*                                                                      | :heavy_minus_sign:                                                            | The ID of the merchant account to use for this request.                       | default                                                                       |
 
 ### Response
 

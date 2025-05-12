@@ -22,7 +22,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListBuyersRequest req = new ListBuyersRequest() {
     Cursor = "ZXhhbXBsZTE",
@@ -80,7 +83,10 @@ Create a new buyer record.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Buyers.CreateAsync(
     buyerCreate: new BuyerCreate() {
@@ -109,7 +115,7 @@ var res = await sdk.Buyers.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -117,11 +123,11 @@ var res = await sdk.Buyers.CreateAsync(
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `BuyerCreate`                                           | [BuyerCreate](../../Models/Components/BuyerCreate.md)   | :heavy_check_mark:                                      | N/A                                                     |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `BuyerCreate`                                           | [BuyerCreate](../../Models/Components/BuyerCreate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -157,11 +163,14 @@ Fetches a buyer by its ID.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Buyers.GetAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -172,7 +181,7 @@ var res = await sdk.Buyers.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to retrieve.                        | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -208,7 +217,10 @@ Updates a buyer record.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Buyers.UpdateAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
@@ -238,7 +250,7 @@ var res = await sdk.Buyers.UpdateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -251,7 +263,7 @@ var res = await sdk.Buyers.UpdateAsync(
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to edit.                            | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `BuyerUpdate`                                           | [BuyerUpdate](../../Models/Components/BuyerUpdate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
 | `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -287,12 +299,15 @@ Permanently removes a buyer record.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Buyers.DeleteAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -304,7 +319,7 @@ var res = await sdk.Buyers.DeleteAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to delete.                          | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 

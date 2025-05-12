@@ -17,18 +17,21 @@ Fetch a list of the definitions of each card scheme.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
-var res = await sdk.CardSchemeDefinitions.ListAsync(merchantAccountId: "<id>");
+var res = await sdk.CardSchemeDefinitions.ListAsync(merchantAccountId: "default");
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 

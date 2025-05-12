@@ -1,0 +1,9 @@
+overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535  # 👈 keep this
+info:
+    title: example overlay
+    version: 0.0.0
+actions: 
+  - target: $..*[?@.enum]
+    update:
+      x-speakeasy-unknown-values: allow

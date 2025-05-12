@@ -1,21 +1,29 @@
 workflowVersion: 1.0.0
 speakeasyVersion: latest
 sources:
-    -OAS:
+    openapi:
         inputs:
-            - location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi:main
+            - location: https://gr4vy.github.io/gr4vy-openapi/core/openapi.json
+        overlays:
+            - location: ./.speakeasy/overlays/servers.yaml
+            - location: ./.speakeasy/overlays/security.yaml
+            - location: ./.speakeasy/overlays/enums.yaml
+            - location: ./.speakeasy/overlays/retries.yaml
+            - location: ./.speakeasy/overlays/mid-global.yaml
+            - location: ./.speakeasy/overlays/fix-base-model.yaml
+            - location: ./.speakeasy/overlays/fix-checkout-session-body.yaml
         registry:
-            location: registry.speakeasyapi.dev/gr4vy/gr4vy/-oas
+            location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi
 targets:
     csharp:
         target: csharp
-        source: -OAS
+        source: openapi
         publish:
             nuget:
                 apiKey: $nuget_api_key
         codeSamples:
             registry:
-                location: registry.speakeasyapi.dev/gr4vy/gr4vy/-oas-csharp-code-samples
+                location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi-csharp-code-samples
             labelOverride:
-                fixedValue: Csharp (SDK)
+                fixedValue: CSharp
             blocking: false

@@ -40,7 +40,7 @@ namespace gr4vy.Models.Components
         public DateTime? IssuedAt { get; set; } = null;
 
         /// <summary>
-        /// For airline aggregators, two-character IATA code of the airline issuing the ticket.
+        /// For airline aggregators, three-character IATA code of the airline issuing the ticket.
         /// </summary>
         [JsonProperty("issuing_carrier_code")]
         public string? IssuingCarrierCode { get; set; } = null;

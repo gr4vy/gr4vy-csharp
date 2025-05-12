@@ -20,12 +20,15 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListPayoutsResponse? res = await sdk.Payouts.ListAsync(
     cursor: "ZXhhbXBsZTE",
     limit: 20,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 while(res != null)
@@ -42,7 +45,7 @@ while(res != null)
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `Cursor`                                                | *string*                                                | :heavy_minus_sign:                                      | A pointer to the page of results to return.             | ZXhhbXBsZTE                                             |
 | `Limit`                                                 | *long*                                                  | :heavy_minus_sign:                                      | The maximum number of items that are at returned.       | 20                                                      |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -78,7 +81,10 @@ Creates a new payout.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Payouts.CreateAsync(
     payoutCreate: new PayoutCreate() {
@@ -163,7 +169,7 @@ var res = await sdk.Payouts.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -171,11 +177,11 @@ var res = await sdk.Payouts.CreateAsync(
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `PayoutCreate`                                          | [PayoutCreate](../../Models/Components/PayoutCreate.md) | :heavy_check_mark:                                      | N/A                                                     |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `PayoutCreate`                                          | [PayoutCreate](../../Models/Components/PayoutCreate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -211,11 +217,14 @@ Retreives a payout.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Payouts.GetAsync(
     payoutId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -223,10 +232,10 @@ var res = await sdk.Payouts.GetAsync(
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `PayoutId`                                              | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `PayoutId`                                              | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 

@@ -21,7 +21,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListPaymentMethodsRequest req = new ListPaymentMethodsRequest() {
     Cursor = "ZXhhbXBsZTE",
@@ -80,10 +83,13 @@ Store a new payment method.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.PaymentMethods.CreateAsync(
-    requestBody: CreatePaymentMethodBody.CreateRedirectPaymentMethodCreate(
+    requestBody: Body.CreateRedirectPaymentMethodCreate(
         new RedirectPaymentMethodCreate() {
             Method = RedirectPaymentMethodCreateMethod.Zippay,
             BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
@@ -95,7 +101,7 @@ var res = await sdk.PaymentMethods.CreateAsync(
         }
     ),
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -103,11 +109,11 @@ var res = await sdk.PaymentMethods.CreateAsync(
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `RequestBody`                                                               | [CreatePaymentMethodBody](../../Models/Requests/CreatePaymentMethodBody.md) | :heavy_check_mark:                                                          | N/A                                                                         |
-| `TimeoutInSeconds`                                                          | *double*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
-| `MerchantAccountId`                                                         | *string*                                                                    | :heavy_minus_sign:                                                          | The ID of the merchant account to use for this request.                     |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `RequestBody`                                           | [Body](../../Models/Requests/Body.md)                   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -143,11 +149,14 @@ Retrieve a payment method.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.PaymentMethods.GetAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -158,7 +167,7 @@ var res = await sdk.PaymentMethods.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -194,11 +203,14 @@ Delete a payment method.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.PaymentMethods.DeleteAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -209,7 +221,7 @@ var res = await sdk.PaymentMethods.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 

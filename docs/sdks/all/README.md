@@ -17,12 +17,15 @@ Create a refund for all instruments on a transaction.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.Refunds.All.CreateAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>",
+    merchantAccountId: "default",
     transactionRefundAllCreate: new TransactionRefundAllCreate() {
         Reason = "Refund due to user request.",
         ExternalIdentifier = "refund-12345",
@@ -38,7 +41,7 @@ var res = await sdk.Transactions.Refunds.All.CreateAsync(
 | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | `TransactionId`                                                                     | *string*                                                                            | :heavy_check_mark:                                                                  | N/A                                                                                 | 7099948d-7286-47e4-aad8-b68f7eb44591                                                |
 | `TimeoutInSeconds`                                                                  | *double*                                                                            | :heavy_minus_sign:                                                                  | N/A                                                                                 |                                                                                     |
-| `MerchantAccountId`                                                                 | *string*                                                                            | :heavy_minus_sign:                                                                  | The ID of the merchant account to use for this request.                             |                                                                                     |
+| `MerchantAccountId`                                                                 | *string*                                                                            | :heavy_minus_sign:                                                                  | The ID of the merchant account to use for this request.                             | default                                                                             |
 | `TransactionRefundAllCreate`                                                        | [TransactionRefundAllCreate](../../Models/Components/TransactionRefundAllCreate.md) | :heavy_minus_sign:                                                                  | N/A                                                                                 |                                                                                     |
 
 ### Response

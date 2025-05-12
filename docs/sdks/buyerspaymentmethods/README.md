@@ -18,7 +18,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListBuyerPaymentMethodsRequest req = new ListBuyerPaymentMethodsRequest() {
     BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",

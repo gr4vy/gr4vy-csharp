@@ -28,15 +28,6 @@ namespace gr4vy
         public IDomains Domains { get; }
 
         /// <summary>
-        /// List digital wallets
-        /// 
-        /// <remarks>
-        /// List configured digital wallets.
-        /// </remarks>
-        /// </summary>
-        Task<ListDigitalWalletsResponse> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null);
-
-        /// <summary>
         /// Register digital wallet
         /// 
         /// <remarks>
@@ -44,6 +35,15 @@ namespace gr4vy
         /// </remarks>
         /// </summary>
         Task<ConfigureDigitalWalletResponse> CreateAsync(DigitalWalletCreate digitalWalletCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+
+        /// <summary>
+        /// List digital wallets
+        /// 
+        /// <remarks>
+        /// List configured digital wallets.
+        /// </remarks>
+        /// </summary>
+        Task<ListDigitalWalletsResponse> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get digital wallet
@@ -55,15 +55,6 @@ namespace gr4vy
         Task<GetDigitalWalletResponse> GetAsync(string digitalWalletId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update digital wallet
-        /// 
-        /// <remarks>
-        /// Update a digital wallet.
-        /// </remarks>
-        /// </summary>
-        Task<UpdateDigitalWalletResponse> UpdateAsync(string digitalWalletId, DigitalWalletUpdate digitalWalletUpdate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
-
-        /// <summary>
         /// Delete digital wallet
         /// 
         /// <remarks>
@@ -71,16 +62,25 @@ namespace gr4vy
         /// </remarks>
         /// </summary>
         Task<DeleteDigitalWalletResponse> DeleteAsync(string digitalWalletId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+
+        /// <summary>
+        /// Update digital wallet
+        /// 
+        /// <remarks>
+        /// Update a digital wallet.
+        /// </remarks>
+        /// </summary>
+        Task<UpdateDigitalWalletResponse> UpdateAsync(string digitalWalletId, DigitalWalletUpdate digitalWalletUpdate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
     }
 
     public class DigitalWallets: IDigitalWallets
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.3";
+        private const string _sdkVersion = "0.0.4";
         private const string _sdkGenVersion = "2.598.22";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.3 2.598.22 1.0.0 gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.4 2.598.22 1.0.0 gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<gr4vy.Models.Components.Security>? _securitySource;
@@ -95,6 +95,241 @@ namespace gr4vy
             SDKConfiguration = config;
             Sessions = new Sessions(_client, _securitySource, _serverUrl, SDKConfiguration);
             Domains = new Domains(_client, _securitySource, _serverUrl, SDKConfiguration);
+        }
+
+        public async Task<ConfigureDigitalWalletResponse> CreateAsync(DigitalWalletCreate digitalWalletCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        {
+            var request = new ConfigureDigitalWalletRequest()
+            {
+                DigitalWalletCreate = digitalWalletCreate,
+                TimeoutInSeconds = timeoutInSeconds,
+                MerchantAccountId = merchantAccountId,
+            };
+            request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
+            
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/digital-wallets", request);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("user-agent", _userAgent);
+            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "DigitalWalletCreate", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
+
+            if (_securitySource != null)
+            {
+                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(baseUrl, "configure_digital_wallet", new List<string> {  }, _securitySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await _client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 201)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<DigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new ConfigureDigitalWalletResponse()
+                    {
+                        HttpMeta = new Models.Components.HTTPMetadata()
+                        {
+                            Response = httpResponse,
+                            Request = httpRequest
+                        }
+                    };
+                    response.DigitalWallet = obj;
+                    return response;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error400>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Response403ConfigureDigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var httpMeta = new Models.Components.HTTPMetadata()
+                    {
+                        Response = httpResponse,
+                        Request = httpRequest
+                    };
+                    switch (obj!.Type.ToString()) {
+                        case "Error403":
+                              var error403 = obj!.Error403!;
+                              error403.HttpMeta = httpMeta;
+                              throw error403;
+                        case "Error403Forbidden":
+                              var error403Forbidden = obj!.Error403Forbidden!;
+                              error403Forbidden.HttpMeta = httpMeta;
+                              throw error403Forbidden;
+                        case "Error403Active":
+                              var error403Active = obj!.Error403Active!;
+                              error403Active.HttpMeta = httpMeta;
+                              throw error403Active;
+                        default:
+                            throw new InvalidOperationException("Unknown error type.");
+                    };
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 404)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error404>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 405)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error405>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 409)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error409>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 422)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<HTTPValidationError>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 425)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error425>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 429)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error429>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error500>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 502)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error502>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode == 504)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+                    var obj = ResponseBodyDeserializer.Deserialize<Error504>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
         public async Task<ListDigitalWalletsResponse> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null)
@@ -341,241 +576,6 @@ namespace gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error504>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpRequest, httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
-        }
-
-        public async Task<ConfigureDigitalWalletResponse> CreateAsync(DigitalWalletCreate digitalWalletCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
-        {
-            var request = new ConfigureDigitalWalletRequest()
-            {
-                DigitalWalletCreate = digitalWalletCreate,
-                TimeoutInSeconds = timeoutInSeconds,
-                MerchantAccountId = merchantAccountId,
-            };
-            request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/digital-wallets", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "DigitalWalletCreate", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
-
-            if (_securitySource != null)
-            {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(baseUrl, "configure_digital_wallet", new List<string> {  }, _securitySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await _client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 201)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<DigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new ConfigureDigitalWalletResponse()
-                    {
-                        HttpMeta = new Models.Components.HTTPMetadata()
-                        {
-                            Response = httpResponse,
-                            Request = httpRequest
-                        }
-                    };
-                    response.DigitalWallet = obj;
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error400>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error401>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 403)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403ConfigureDigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var httpMeta = new Models.Components.HTTPMetadata()
-                    {
-                        Response = httpResponse,
-                        Request = httpRequest
-                    };
-                    switch (obj!.Type.ToString()) {
-                        case "Error403":
-                              var error403 = obj!.Error403!;
-                              error403.HttpMeta = httpMeta;
-                              throw error403;
-                        case "Error403Forbidden":
-                              var error403Forbidden = obj!.Error403Forbidden!;
-                              error403Forbidden.HttpMeta = httpMeta;
-                              throw error403Forbidden;
-                        case "Error403Active":
-                              var error403Active = obj!.Error403Active!;
-                              error403Active.HttpMeta = httpMeta;
-                              throw error403Active;
-                        default:
-                            throw new InvalidOperationException("Unknown error type.");
-                    };
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 404)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error404>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 405)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error405>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 409)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error409>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<HTTPValidationError>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 425)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error425>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 429)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error429>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error500>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 502)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error502>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpRequest, httpResponse);
-            }
-            else if(responseStatusCode == 504)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var obj = ResponseBodyDeserializer.Deserialize<Error504>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     throw obj!;
                 }
 
@@ -854,12 +854,11 @@ namespace gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<UpdateDigitalWalletResponse> UpdateAsync(string digitalWalletId, DigitalWalletUpdate digitalWalletUpdate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<DeleteDigitalWalletResponse> DeleteAsync(string digitalWalletId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
         {
-            var request = new UpdateDigitalWalletRequest()
+            var request = new DeleteDigitalWalletRequest()
             {
                 DigitalWalletId = digitalWalletId,
-                DigitalWalletUpdate = digitalWalletUpdate,
                 TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
@@ -868,22 +867,16 @@ namespace gr4vy
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/digital-wallets/{digital_wallet_id}", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "DigitalWalletUpdate", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "update_digital_wallet", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "delete_digital_wallet", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -923,8 +916,8 @@ namespace gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<DigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new UpdateDigitalWalletResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<object>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new DeleteDigitalWalletResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -932,7 +925,7 @@ namespace gr4vy
                             Request = httpRequest
                         }
                     };
-                    response.DigitalWallet = obj;
+                    response.Any = obj;
                     return response;
                 }
 
@@ -962,7 +955,7 @@ namespace gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403UpdateDigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Response403DeleteDigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var httpMeta = new Models.Components.HTTPMetadata()
                     {
                         Response = httpResponse,
@@ -1090,11 +1083,12 @@ namespace gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpRequest, httpResponse);
         }
 
-        public async Task<DeleteDigitalWalletResponse> DeleteAsync(string digitalWalletId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<UpdateDigitalWalletResponse> UpdateAsync(string digitalWalletId, DigitalWalletUpdate digitalWalletUpdate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
         {
-            var request = new DeleteDigitalWalletRequest()
+            var request = new UpdateDigitalWalletRequest()
             {
                 DigitalWalletId = digitalWalletId,
+                DigitalWalletUpdate = digitalWalletUpdate,
                 TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
@@ -1103,16 +1097,22 @@ namespace gr4vy
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/digital-wallets/{digital_wallet_id}", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "DigitalWalletUpdate", "json", false, false);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
 
             if (_securitySource != null)
             {
                 httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "delete_digital_wallet", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(baseUrl, "update_digital_wallet", new List<string> {  }, _securitySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1152,8 +1152,8 @@ namespace gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<object>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    var response = new DeleteDigitalWalletResponse()
+                    var obj = ResponseBodyDeserializer.Deserialize<DigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var response = new UpdateDigitalWalletResponse()
                     {
                         HttpMeta = new Models.Components.HTTPMetadata()
                         {
@@ -1161,7 +1161,7 @@ namespace gr4vy
                             Request = httpRequest
                         }
                     };
-                    response.Any = obj;
+                    response.DigitalWallet = obj;
                     return response;
                 }
 
@@ -1191,7 +1191,7 @@ namespace gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403DeleteDigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Response403UpdateDigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     var httpMeta = new Models.Components.HTTPMetadata()
                     {
                         Response = httpResponse,

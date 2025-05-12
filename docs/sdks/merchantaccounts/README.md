@@ -21,7 +21,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListMerchantAccountsResponse? res = await sdk.MerchantAccounts.ListAsync(
     cursor: "ZXhhbXBsZTE",
@@ -80,7 +83,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.MerchantAccounts.CreateAsync(
     merchantAccountCreate: new MerchantAccountCreate() {
@@ -154,7 +160,10 @@ Get info about a merchant account in an instance.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345");
 
@@ -202,7 +211,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.MerchantAccounts.UpdateAsync(
     merchantAccountId: "merchant-12345",

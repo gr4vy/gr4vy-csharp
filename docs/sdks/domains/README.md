@@ -18,7 +18,10 @@ Register a digital wallet domain (Apple Pay only).
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.DigitalWallets.Domains.CreateAsync(
     digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
@@ -26,7 +29,7 @@ var res = await sdk.DigitalWallets.Domains.CreateAsync(
         DomainName = "example.com",
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -39,7 +42,7 @@ var res = await sdk.DigitalWallets.Domains.CreateAsync(
 | `DigitalWalletId`                                                     | *string*                                                              | :heavy_check_mark:                                                    | The ID of the digital wallet to remove a domain for.                  | 1808f5e6-b49c-4db9-94fa-22371ea352f5                                  |
 | `DigitalWalletDomain`                                                 | [DigitalWalletDomain](../../Models/Components/DigitalWalletDomain.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
 | `TimeoutInSeconds`                                                    | *double*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
-| `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               |                                                                       |
+| `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               | default                                                               |
 
 ### Response
 
@@ -75,7 +78,10 @@ Remove a digital wallet domain (Apple Pay only).
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.DigitalWallets.Domains.DeleteAsync(
     digitalWalletId: "",
@@ -83,7 +89,7 @@ var res = await sdk.DigitalWallets.Domains.DeleteAsync(
         DomainName = "example.com",
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -96,7 +102,7 @@ var res = await sdk.DigitalWallets.Domains.DeleteAsync(
 | `DigitalWalletId`                                                     | *string*                                                              | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
 | `DigitalWalletDomain`                                                 | [DigitalWalletDomain](../../Models/Components/DigitalWalletDomain.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
 | `TimeoutInSeconds`                                                    | *double*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
-| `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               |                                                                       |
+| `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               | default                                                               |
 
 ### Response
 

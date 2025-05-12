@@ -11,7 +11,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
     accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
@@ -21,7 +24,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -45,7 +48,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
     accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
@@ -55,12 +61,45 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
 ```
 <!-- End Authentication [security] -->
+
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `merchant_account_id` to `"default"` at SDK initialization and then you do not have to pass the same value on calls to operations like `Get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name              | Type   | Description                                             |
+| ----------------- | ------ | ------------------------------------------------------- |
+| merchantAccountId | string | The ID of the merchant account to use for this request. |
+
+### Example
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
+
+var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345");
+
+// handle response
+```
+<!-- End Global Parameters [global-parameters] -->
 
 <!-- Start Pagination [pagination] -->
 ## Pagination
@@ -75,7 +114,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListBuyersRequest req = new ListBuyersRequest() {
     Cursor = "ZXhhbXBsZTE",
@@ -105,7 +147,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListBuyersRequest req = new ListBuyersRequest() {
     Cursor = "ZXhhbXBsZTE",
@@ -152,7 +197,8 @@ var sdk = new Gr4vy(
         ),
         retryConnectionErrors: false
     ),
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
 );
 
 ListBuyersRequest req = new ListBuyersRequest() {
@@ -213,7 +259,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Errors;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 try
 {
@@ -225,7 +274,7 @@ try
             },
         },
         timeoutInSeconds: 1D,
-        merchantAccountId: "<id>"
+        merchantAccountId: "default"
     );
 
     // handle response
@@ -339,7 +388,8 @@ using gr4vy.Models.Components;
 var sdk = new Gr4vy(
     server: "sandbox",
     id: "<id>",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
 );
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
@@ -350,7 +400,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -366,7 +416,8 @@ using gr4vy.Models.Components;
 
 var sdk = new Gr4vy(
     serverUrl: "https://api.example.gr4vy.app",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
 );
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
@@ -377,7 +428,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response

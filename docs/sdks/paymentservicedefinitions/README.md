@@ -20,7 +20,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListPaymentServiceDefinitionsResponse? res = await sdk.PaymentServiceDefinitions.ListAsync(
     cursor: "ZXhhbXBsZTE",
@@ -76,7 +79,10 @@ Get the definition of a payment service that can be configured.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.PaymentServiceDefinitions.GetAsync(paymentServiceDefinitionId: "adyen-ideal");
 
@@ -124,7 +130,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.PaymentServiceDefinitions.SessionAsync(
     paymentServiceDefinitionId: "adyen-ideal",

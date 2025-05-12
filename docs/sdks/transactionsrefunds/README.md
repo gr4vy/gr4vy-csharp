@@ -19,11 +19,14 @@ List refunds for a transaction.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.Refunds.ListAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -34,7 +37,7 @@ var res = await sdk.Transactions.Refunds.ListAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -70,7 +73,10 @@ Create a refund for a transaction.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.Refunds.CreateAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
@@ -81,7 +87,7 @@ var res = await sdk.Transactions.Refunds.CreateAsync(
         ExternalIdentifier = "refund-12345",
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -94,7 +100,7 @@ var res = await sdk.Transactions.Refunds.CreateAsync(
 | `TransactionId`                                                               | *string*                                                                      | :heavy_check_mark:                                                            | N/A                                                                           | 7099948d-7286-47e4-aad8-b68f7eb44591                                          |
 | `TransactionRefundCreate`                                                     | [TransactionRefundCreate](../../Models/Components/TransactionRefundCreate.md) | :heavy_check_mark:                                                            | N/A                                                                           |                                                                               |
 | `TimeoutInSeconds`                                                            | *double*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |                                                                               |
-| `MerchantAccountId`                                                           | *string*                                                                      | :heavy_minus_sign:                                                            | The ID of the merchant account to use for this request.                       |                                                                               |
+| `MerchantAccountId`                                                           | *string*                                                                      | :heavy_minus_sign:                                                            | The ID of the merchant account to use for this request.                       | default                                                                       |
 
 ### Response
 
@@ -130,12 +136,15 @@ Fetch refund for a transaction.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.Refunds.GetAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
     refundId: "6a1d4e46-14ed-4fe1-a45f-eff4e025d211",
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -147,7 +156,7 @@ var res = await sdk.Transactions.Refunds.GetAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
 | `RefundId`                                              | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 6a1d4e46-14ed-4fe1-a45f-eff4e025d211                    |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 

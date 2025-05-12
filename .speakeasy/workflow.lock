@@ -6,31 +6,48 @@ sources:
         sourceBlobDigest: sha256:28a378100fa9fd70e2a53cd139ae0b1e30f52679dd2348f43acd2d7f50e18e8d
         tags:
             - latest
+    openapi:
+        sourceNamespace: openapi
+        sourceRevisionDigest: sha256:49654c86fdc67b7202c3e1de46ea79349417a16431ff747029044fcb40814636
+        sourceBlobDigest: sha256:401058100c062781b727963b34eca9058a912382df5931b40d824efb3a76e4f8
+        tags:
+            - latest
+            - 1.0.0
 targets:
     csharp:
-        source: -OAS
+        source: openapi
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:89ee649481e09f914f6efa578106f54e6d79741ad6481ef70895189fd1c64412
-        sourceBlobDigest: sha256:28a378100fa9fd70e2a53cd139ae0b1e30f52679dd2348f43acd2d7f50e18e8d
+        sourceRevisionDigest: sha256:49654c86fdc67b7202c3e1de46ea79349417a16431ff747029044fcb40814636
+        sourceBlobDigest: sha256:401058100c062781b727963b34eca9058a912382df5931b40d824efb3a76e4f8
+        codeSamplesNamespace: openapi-csharp-code-samples
+        codeSamplesRevisionDigest: sha256:3f14c31f0773a521b9c1e8b9a94096235bd5695c5d6a910ecf55ffdbdc5bcc00
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
-        -OAS:
+        openapi:
             inputs:
-                - location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi:main
+                - location: https://gr4vy.github.io/gr4vy-openapi/core/openapi.json
+            overlays:
+                - location: ./.speakeasy/overlays/servers.yaml
+                - location: ./.speakeasy/overlays/security.yaml
+                - location: ./.speakeasy/overlays/enums.yaml
+                - location: ./.speakeasy/overlays/retries.yaml
+                - location: ./.speakeasy/overlays/mid-global.yaml
+                - location: ./.speakeasy/overlays/fix-base-model.yaml
+                - location: ./.speakeasy/overlays/fix-checkout-session-body.yaml
             registry:
-                location: registry.speakeasyapi.dev/gr4vy/gr4vy/-oas
+                location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi
     targets:
         csharp:
             target: csharp
-            source: -OAS
+            source: openapi
             publish:
                 nuget:
                     apiKey: $nuget_api_key
             codeSamples:
                 registry:
-                    location: registry.speakeasyapi.dev/gr4vy/gr4vy/-oas-csharp-code-samples
+                    location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi-csharp-code-samples
                 labelOverride:
-                    fixedValue: Csharp (SDK)
+                    fixedValue: CSharp
                 blocking: false

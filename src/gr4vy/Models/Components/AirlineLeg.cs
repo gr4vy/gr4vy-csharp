@@ -42,7 +42,7 @@ namespace gr4vy.Models.Components
         public string? ArrivalCountry { get; set; } = null;
 
         /// <summary>
-        /// 2 character airline code as set by IATA.
+        /// 3 character airline code as set by IATA.
         /// </summary>
         [JsonProperty("carrier_code")]
         public string? CarrierCode { get; set; } = null;

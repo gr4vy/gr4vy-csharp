@@ -23,6 +23,7 @@ Gr4vy: The Gr4vy API.
   * [SDK Example Usage](#sdk-example-usage)
   * [Authentication](#authentication)
   * [Available Resources and Operations](#available-resources-and-operations)
+  * [Global Parameters](#global-parameters)
   * [Pagination](#pagination)
   * [Retries](#retries)
   * [Error Handling](#error-handling)
@@ -61,7 +62,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
     accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
@@ -71,7 +75,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -95,7 +99,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
     accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
@@ -105,7 +112,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -147,8 +154,8 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
 
 #### [Buyers.ShippingDetails](docs/sdks/shippingdetails/README.md)
 
-* [List](docs/sdks/shippingdetails/README.md#list) - List a buyer's shipping details
 * [Create](docs/sdks/shippingdetails/README.md#create) - Add buyer shipping details
+* [List](docs/sdks/shippingdetails/README.md#list) - List a buyer's shipping details
 * [Get](docs/sdks/shippingdetails/README.md#get) - Get buyer shipping details
 * [Update](docs/sdks/shippingdetails/README.md#update) - Update a buyer's shipping details
 * [Delete](docs/sdks/shippingdetails/README.md#delete) - Delete a buyer's shipping details
@@ -160,17 +167,17 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
 ### [CheckoutSessions](docs/sdks/checkoutsessions/README.md)
 
 * [Create](docs/sdks/checkoutsessions/README.md#create) - Create checkout session
-* [Get](docs/sdks/checkoutsessions/README.md#get) - Get checkout session
 * [Update](docs/sdks/checkoutsessions/README.md#update) - Update checkout session
+* [Get](docs/sdks/checkoutsessions/README.md#get) - Get checkout session
 * [Delete](docs/sdks/checkoutsessions/README.md#delete) - Delete checkout session
 
 ### [DigitalWallets](docs/sdks/digitalwallets/README.md)
 
-* [List](docs/sdks/digitalwallets/README.md#list) - List digital wallets
 * [Create](docs/sdks/digitalwallets/README.md#create) - Register digital wallet
+* [List](docs/sdks/digitalwallets/README.md#list) - List digital wallets
 * [Get](docs/sdks/digitalwallets/README.md#get) - Get digital wallet
-* [Update](docs/sdks/digitalwallets/README.md#update) - Update digital wallet
 * [Delete](docs/sdks/digitalwallets/README.md#delete) - Delete digital wallet
+* [Update](docs/sdks/digitalwallets/README.md#update) - Update digital wallet
 
 #### [DigitalWallets.Domains](docs/sdks/domains/README.md)
 
@@ -187,8 +194,8 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
 
 * [Get](docs/sdks/giftcards/README.md#get) - Get gift card
 * [Delete](docs/sdks/giftcards/README.md#delete) - Delete a gift card
-* [List](docs/sdks/giftcards/README.md#list) - List gift cards
 * [Create](docs/sdks/giftcards/README.md#create) - Create gift card
+* [List](docs/sdks/giftcards/README.md#list) - List gift cards
 
 #### [GiftCards.Balances](docs/sdks/balances/README.md)
 
@@ -280,6 +287,39 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
 </details>
 <!-- End Available Resources and Operations [operations] -->
 
+<!-- Start Global Parameters [global-parameters] -->
+## Global Parameters
+
+A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `merchant_account_id` to `"default"` at SDK initialization and then you do not have to pass the same value on calls to operations like `Get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+### Available Globals
+
+The following global parameter is available.
+
+| Name              | Type   | Description                                             |
+| ----------------- | ------ | ------------------------------------------------------- |
+| merchantAccountId | string | The ID of the merchant account to use for this request. |
+
+### Example
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
+
+var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345");
+
+// handle response
+```
+<!-- End Global Parameters [global-parameters] -->
+
 <!-- Start Pagination [pagination] -->
 ## Pagination
 
@@ -293,7 +333,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListBuyersRequest req = new ListBuyersRequest() {
     Cursor = "ZXhhbXBsZTE",
@@ -323,7 +366,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListBuyersRequest req = new ListBuyersRequest() {
     Cursor = "ZXhhbXBsZTE",
@@ -370,7 +416,8 @@ var sdk = new Gr4vy(
         ),
         retryConnectionErrors: false
     ),
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
 );
 
 ListBuyersRequest req = new ListBuyersRequest() {
@@ -431,7 +478,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Errors;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 try
 {
@@ -443,7 +493,7 @@ try
             },
         },
         timeoutInSeconds: 1D,
-        merchantAccountId: "<id>"
+        merchantAccountId: "default"
     );
 
     // handle response
@@ -557,7 +607,8 @@ using gr4vy.Models.Components;
 var sdk = new Gr4vy(
     server: "sandbox",
     id: "<id>",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
 );
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
@@ -568,7 +619,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -584,7 +635,8 @@ using gr4vy.Models.Components;
 
 var sdk = new Gr4vy(
     serverUrl: "https://api.example.gr4vy.app",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
 );
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
@@ -595,7 +647,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response

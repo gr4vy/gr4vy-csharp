@@ -26,7 +26,10 @@ using gr4vy;
 using gr4vy.Models.Components;
 using gr4vy.Models.Requests;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ListTransactionsRequest req = new ListTransactionsRequest() {
     Cursor = "ZXhhbXBsZTE",
@@ -134,7 +137,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.CreateAsync(
     transactionCreate: new TransactionCreate() {
@@ -232,14 +238,14 @@ var res = await sdk.Transactions.CreateAsync(
             BookingCode = "X36Q9C",
             IssuedAddress = "123 Broadway, New York",
             IssuedAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
-            IssuingCarrierCode = "A3",
+            IssuingCarrierCode = "649",
             Legs = new List<AirlineLeg>() {
                 new AirlineLeg() {
                     ArrivalAirport = "LAX",
                     ArrivalAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
                     ArrivalCity = "Los Angeles",
                     ArrivalCountry = "US",
-                    CarrierCode = "BA",
+                    CarrierCode = "649",
                     CouponNumber = "15885566",
                     DepartureAirport = "LHR",
                     DepartureAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
@@ -344,7 +350,7 @@ var res = await sdk.Transactions.CreateAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>",
+    merchantAccountId: "default",
     idempotencyKey: "request-12345"
 );
 
@@ -357,7 +363,7 @@ var res = await sdk.Transactions.CreateAsync(
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `TransactionCreate`                                                                                                                                                                                   | [TransactionCreate](../../Models/Components/TransactionCreate.md)                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                    | N/A                                                                                                                                                                                                   |                                                                                                                                                                                                       |
 | `TimeoutInSeconds`                                                                                                                                                                                    | *double*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | N/A                                                                                                                                                                                                   |                                                                                                                                                                                                       |
-| `MerchantAccountId`                                                                                                                                                                                   | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | The ID of the merchant account to use for this request.                                                                                                                                               |                                                                                                                                                                                                       |
+| `MerchantAccountId`                                                                                                                                                                                   | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | The ID of the merchant account to use for this request.                                                                                                                                               | default                                                                                                                                                                                               |
 | `IdempotencyKey`                                                                                                                                                                                      | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. | request-12345                                                                                                                                                                                         |
 
 ### Response
@@ -394,11 +400,14 @@ Fetch a single transaction by its ID.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.GetAsync(
     transactionId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -406,10 +415,10 @@ var res = await sdk.Transactions.GetAsync(
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -448,7 +457,10 @@ using System.Collections.Generic;
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.CaptureAsync(
     transactionId: "08cac402-e83f-4447-b82a-c4283b15a3b3",
@@ -458,14 +470,14 @@ var res = await sdk.Transactions.CaptureAsync(
             BookingCode = "X36Q9C",
             IssuedAddress = "123 Broadway, New York",
             IssuedAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
-            IssuingCarrierCode = "A3",
+            IssuingCarrierCode = "649",
             Legs = new List<AirlineLeg>() {
                 new AirlineLeg() {
                     ArrivalAirport = "LAX",
                     ArrivalAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
                     ArrivalCity = "Los Angeles",
                     ArrivalCountry = "US",
-                    CarrierCode = "BA",
+                    CarrierCode = "649",
                     CouponNumber = "15885566",
                     DepartureAirport = "LHR",
                     DepartureAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
@@ -509,7 +521,7 @@ var res = await sdk.Transactions.CaptureAsync(
         },
     },
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -517,12 +529,12 @@ var res = await sdk.Transactions.CaptureAsync(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `TransactionId`                                                     | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |
-| `TransactionCapture`                                                | [TransactionCapture](../../Models/Components/TransactionCapture.md) | :heavy_check_mark:                                                  | N/A                                                                 |
-| `TimeoutInSeconds`                                                  | *double*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |
-| `MerchantAccountId`                                                 | *string*                                                            | :heavy_minus_sign:                                                  | The ID of the merchant account to use for this request.             |
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `TransactionId`                                                     | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
+| `TransactionCapture`                                                | [TransactionCapture](../../Models/Components/TransactionCapture.md) | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
+| `TimeoutInSeconds`                                                  | *double*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
+| `MerchantAccountId`                                                 | *string*                                                            | :heavy_minus_sign:                                                  | The ID of the merchant account to use for this request.             | default                                                             |
 
 ### Response
 
@@ -558,12 +570,15 @@ Void a previously authorized transaction.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.VoidAsync(
     transactionId: "26740073-c9e5-4864-9ecf-5856a8e566d6",
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -571,11 +586,11 @@ var res = await sdk.Transactions.VoidAsync(
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -611,11 +626,14 @@ Fetch a summary for a transaction.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.SummaryAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -626,7 +644,7 @@ var res = await sdk.Transactions.SummaryAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 
@@ -662,12 +680,15 @@ Fetch the latest status for a transaction.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.Transactions.SyncAsync(
     transactionId: "f0897be3-0808-45c9-a63b-509c0142ddd3",
     timeoutInSeconds: 1D,
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -675,11 +696,11 @@ var res = await sdk.Transactions.SyncAsync(
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 

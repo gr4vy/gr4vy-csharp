@@ -14,7 +14,7 @@ namespace gr4vy.Models.Components
     using gr4vy.Models.Components;
     using gr4vy.Utils;
     
-    public class CheckoutSessionUpdate
+    public class CheckoutSessionCreate
     {
 
         /// <summary>

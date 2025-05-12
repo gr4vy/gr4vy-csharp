@@ -10,7 +10,6 @@
 namespace gr4vy.Models.Requests
 {
     using gr4vy.Models.Components;
-    using gr4vy.Models.Requests;
     using gr4vy.Utils;
     
     public class CreateCheckoutSessionRequest
@@ -23,9 +22,9 @@ namespace gr4vy.Models.Requests
         /// The ID of the merchant account to use for this request.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-gr4vy-merchant-account-id")]
-        public string? MerchantAccountId { get; set; } = null;
+        public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public CreateCheckoutSessionBody? RequestBody { get; set; } = null;
+        public CheckoutSessionCreate? CheckoutSessionCreate { get; set; }
     }
 }

@@ -19,13 +19,16 @@ Create a session for use with Google Pay.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.DigitalWallets.Sessions.GooglePayAsync(
     googlePaySessionRequest: new GooglePaySessionRequest() {
         OriginDomain = "example.com",
     },
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -33,10 +36,10 @@ var res = await sdk.DigitalWallets.Sessions.GooglePayAsync(
 
 ### Parameters
 
-| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   |
-| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
-| `GooglePaySessionRequest`                                                     | [GooglePaySessionRequest](../../Models/Components/GooglePaySessionRequest.md) | :heavy_check_mark:                                                            | N/A                                                                           |
-| `MerchantAccountId`                                                           | *string*                                                                      | :heavy_minus_sign:                                                            | The ID of the merchant account to use for this request.                       |
+| Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
+| ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| `GooglePaySessionRequest`                                                     | [GooglePaySessionRequest](../../Models/Components/GooglePaySessionRequest.md) | :heavy_check_mark:                                                            | N/A                                                                           |                                                                               |
+| `MerchantAccountId`                                                           | *string*                                                                      | :heavy_minus_sign:                                                            | The ID of the merchant account to use for this request.                       | default                                                                       |
 
 ### Response
 
@@ -72,14 +75,17 @@ Create a session for use with Apple Pay.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 var res = await sdk.DigitalWallets.Sessions.ApplePayAsync(
     applePaySessionRequest: new ApplePaySessionRequest() {
         ValidationUrl = "https://apple-pay-gateway-cert.apple.com",
         DomainName = "example.com",
     },
-    merchantAccountId: "<id>"
+    merchantAccountId: "default"
 );
 
 // handle response
@@ -87,10 +93,10 @@ var res = await sdk.DigitalWallets.Sessions.ApplePayAsync(
 
 ### Parameters
 
-| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
-| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
-| `ApplePaySessionRequest`                                                    | [ApplePaySessionRequest](../../Models/Components/ApplePaySessionRequest.md) | :heavy_check_mark:                                                          | N/A                                                                         |
-| `MerchantAccountId`                                                         | *string*                                                                    | :heavy_minus_sign:                                                          | The ID of the merchant account to use for this request.                     |
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `ApplePaySessionRequest`                                                    | [ApplePaySessionRequest](../../Models/Components/ApplePaySessionRequest.md) | :heavy_check_mark:                                                          | N/A                                                                         |                                                                             |
+| `MerchantAccountId`                                                         | *string*                                                                    | :heavy_minus_sign:                                                          | The ID of the merchant account to use for this request.                     | default                                                                     |
 
 ### Response
 
@@ -126,7 +132,10 @@ Create a session for use with Click to Pay.
 using gr4vy;
 using gr4vy.Models.Components;
 
-var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vy(
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    merchantAccountId: "default"
+);
 
 ClickToPaySessionRequest req = new ClickToPaySessionRequest() {
     CheckoutSessionId = "4137b1cf-39ac-42a8-bad6-1c680d5dab6b",
