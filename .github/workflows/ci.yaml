@@ -16,7 +16,7 @@ jobs:
     strategy:
       matrix:
         dotnet:
-          - 22.x
+          - 8
 
     permissions:
       contents: write
