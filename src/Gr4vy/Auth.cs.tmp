@@ -1,0 +1,109 @@
+// using System;
+// using System.Collections.Generic;
+// using System.IdentityModel.Tokens.Jwt;
+// using System.Security.Claims;
+// using System.Security.Cryptography;
+// using System.Text;
+// using Microsoft.IdentityModel.Tokens;
+// using Newtonsoft.Json;
+
+// public static class Auth
+// {
+//     private static readonly string Issuer = $"Gr4vy SDK {SDKMetadata.SdkVersion}";
+
+//     public static string GetEmbedToken(EmbedTokenOptions options)
+//     {
+//         return GetToken(new TokenOptions
+//         {
+//             PrivateKey = options.PrivateKey,
+//             EmbedParams = options.EmbedParams,
+//             CheckoutSessionId = options.CheckoutSessionId,
+//             Scopes = new List<string> { JWTScope.Embed },
+//             ExpiresIn = TimeSpan.FromHours(1)
+//         });
+//     }
+
+//     public static string GetToken(TokenOptions options)
+//     {
+//         var key = new ECDsaSecurityKey(ECDsa.Create());
+//         var signingCredentials = new SigningCredentials(key, SecurityAlgorithms.EcdsaSha512);
+
+//         var claims = new Dictionary<string, object>
+//         {
+//             { "scopes", options.Scopes ?? new List<string> { JWTScope.ReadAll, JWTScope.WriteAll } }
+//         };
+
+//         if (!string.IsNullOrEmpty(options.CheckoutSessionId))
+//         {
+//             claims["checkout_session_id"] = options.CheckoutSessionId;
+//         }
+
+//         if (options.Scopes?.Contains(JWTScope.Embed) == true && options.EmbedParams != null)
+//         {
+//             claims["embed"] = options.EmbedParams;
+//         }
+
+//         var tokenDescriptor = new SecurityTokenDescriptor
+//         {
+//             Issuer = Issuer,
+//             Claims = claims,
+//             Expires = DateTime.UtcNow.Add(options.ExpiresIn ?? TimeSpan.FromSeconds(30)),
+//             SigningCredentials = signingCredentials
+//         };
+
+//         var tokenHandler = new JwtSecurityTokenHandler();
+//         var token = tokenHandler.CreateToken(tokenDescriptor);
+
+//         return tokenHandler.WriteToken(token);
+//     }
+// }
+
+// public static class JWTScope
+// {
+//     public const string ReadAll = "*.read";
+//     public const string WriteAll = "*.write";
+//     public const string Embed = "embed";
+//     // Add other scopes as needed
+// }
+
+// public class EmbedTokenOptions
+// {
+//     public string PrivateKey { get; set; }
+//     public EmbedParams EmbedParams { get; set; }
+//     public string CheckoutSessionId { get; set; }
+// }
+
+// public class TokenOptions
+// {
+//     public string PrivateKey { get; set; }
+//     public List<string> Scopes { get; set; }
+//     public TimeSpan? ExpiresIn { get; set; }
+//     public EmbedParams EmbedParams { get; set; }
+//     public string CheckoutSessionId { get; set; }
+// }
+
+// public class EmbedParams
+// {
+//     public int Amount { get; set; }
+//     public string Currency { get; set; }
+//     public string BuyerId { get; set; }
+//     public string BuyerExternalIdentifier { get; set; }
+//     public Dictionary<string, string> Metadata { get; set; }
+//     public List<CartItem> CartItems { get; set; }
+//     public string MerchantAccountId { get; set; }
+//     public Dictionary<string, object> ConnectionOptions { get; set; }
+// }
+
+// public class CartItem
+// {
+//     public string Name { get; set; }
+//     public int Quantity { get; set; }
+//     public int UnitAmount { get; set; }
+//     public int TaxAmount { get; set; }
+//     public List<string> Categories { get; set; }
+// }
+
+// public static class SDKMetadata
+// {
+//     public static string SdkVersion => "1.0.0"; // Replace with actual SDK version
+// }
