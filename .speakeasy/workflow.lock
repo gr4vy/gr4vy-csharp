@@ -1,4 +1,4 @@
-speakeasyVersion: 1.543.6
+speakeasyVersion: 1.543.7
 sources:
     -OAS:
         sourceNamespace: openapi
@@ -8,7 +8,7 @@ sources:
             - latest
     openapi:
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:cc289780ee397df04c387360454cb2c9b5a6e25a6905c78a234000a6aa1ac69a
+        sourceRevisionDigest: sha256:6be5beed55cf028d58db5bac83c9cda16b81332ff0d114568209b5fdcf9aa12c
         sourceBlobDigest: sha256:401058100c062781b727963b34eca9058a912382df5931b40d824efb3a76e4f8
         tags:
             - latest
@@ -17,10 +17,10 @@ targets:
     csharp:
         source: openapi
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:cc289780ee397df04c387360454cb2c9b5a6e25a6905c78a234000a6aa1ac69a
+        sourceRevisionDigest: sha256:6be5beed55cf028d58db5bac83c9cda16b81332ff0d114568209b5fdcf9aa12c
         sourceBlobDigest: sha256:401058100c062781b727963b34eca9058a912382df5931b40d824efb3a76e4f8
         codeSamplesNamespace: openapi-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:13754c433488189d4749ceaaf0e4c0f942243daa29f5df06e56e0932c6787072
+        codeSamplesRevisionDigest: sha256:2ee4812afe50b9aae7aab94c257339d60c47605a20246c18bb29139a8515fa0f
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

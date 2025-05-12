@@ -16,8 +16,10 @@ generation:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
 csharp:
-  version: 0.0.13
-  additionalDependencies: []
+  version: 0.0.17
+  additionalDependencies:
+    - package: System.IdentityModel.Tokens.Jwt
+      version: 8.9.0
   author: Gr4vy
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIException
