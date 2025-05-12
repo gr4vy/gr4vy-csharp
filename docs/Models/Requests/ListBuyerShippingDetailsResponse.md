@@ -1,0 +1,9 @@
+# ListBuyerShippingDetailsResponse
+
+
+## Fields
+
+| Field                                                                                             | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                        | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                           | :heavy_check_mark:                                                                                | N/A                                                                                               |
+| `CollectionNoCursorShippingDetails`                                                               | [CollectionNoCursorShippingDetails](../../Models/Components/CollectionNoCursorShippingDetails.md) | :heavy_minus_sign:                                                                                | Successful Response                                                                               |

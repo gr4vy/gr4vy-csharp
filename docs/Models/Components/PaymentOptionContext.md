@@ -1,0 +1,11 @@
+# PaymentOptionContext
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `ApprovalUi`                                                                                | [PaymentOptionContextApprovalUI](../../Models/Components/PaymentOptionContextApprovalUI.md) | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `RequiredFields`                                                                            | Dictionary<String, [RequiredFields2](../../Models/Components/RequiredFields2.md)>           | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `RedirectRequiresPopup`                                                                     | *bool*                                                                                      | :heavy_check_mark:                                                                          | N/A                                                                                         |
+| `RequiresTokenizedRedirectPopup`                                                            | *bool*                                                                                      | :heavy_check_mark:                                                                          | N/A                                                                                         |

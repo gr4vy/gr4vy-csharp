@@ -1,0 +1,12 @@
+# Error429
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `Type`                                                            | *string*                                                          | :heavy_minus_sign:                                                | Always `error`.                                                   | error                                                             |
+| `Code`                                                            | *string*                                                          | :heavy_minus_sign:                                                | Always `too_many_requests`                                        | too_many_requests                                                 |
+| `Status`                                                          | *long*                                                            | :heavy_minus_sign:                                                | Always `429`.                                                     | 429                                                               |
+| `Message`                                                         | *string*                                                          | :heavy_check_mark:                                                | A human readable message that provides more context to the error. | Request failed validation                                         |
+| `Details`                                                         | List<[ErrorDetail](../../Models/Components/ErrorDetail.md)>       | :heavy_minus_sign:                                                | A list of details that further ellaborate on the error.           |                                                                   |

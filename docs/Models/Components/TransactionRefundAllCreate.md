@@ -1,0 +1,9 @@
+# TransactionRefundAllCreate
+
+
+## Fields
+
+| Field                                                                                  | Type                                                                                   | Required                                                                               | Description                                                                            | Example                                                                                |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `Reason`                                                                               | *string*                                                                               | :heavy_minus_sign:                                                                     | An optional reason to attach extra context to the refund requests.                     | Refund due to user request.                                                            |
+| `ExternalIdentifier`                                                                   | *string*                                                                               | :heavy_minus_sign:                                                                     | An external identifier that can be used to match the refunds against your own records. | refund-12345                                                                           |

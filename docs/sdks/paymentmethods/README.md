@@ -1,0 +1,236 @@
+# PaymentMethods
+(*PaymentMethods*)
+
+## Overview
+
+### Available Operations
+
+* [List](#list) - List all payment methods
+* [Create](#create) - Create payment method
+* [Get](#get) - Get payment method
+* [Delete](#delete) - Delete payment method
+
+## List
+
+List all stored payment method.
+
+### Example Usage
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+using gr4vy.Models.Requests;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+ListPaymentMethodsRequest req = new ListPaymentMethodsRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
+    BuyerExternalIdentifier = "buyer-12345",
+    ExternalIdentifier = "payment-method-12345",
+};
+
+ListPaymentMethodsResponse? res = await sdk.PaymentMethods.ListAsync(req);
+
+while(res != null)
+{
+    // handle items
+
+    res = await res.Next!();
+}
+```
+
+### Parameters
+
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [ListPaymentMethodsRequest](../../Models/Requests/ListPaymentMethodsRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+
+### Response
+
+**[ListPaymentMethodsResponse](../../Models/Requests/ListPaymentMethodsResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## Create
+
+Store a new payment method.
+
+### Example Usage
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.PaymentMethods.CreateAsync(
+    requestBody: CreatePaymentMethodBody.CreateRedirectPaymentMethodCreate(
+        new RedirectPaymentMethodCreate() {
+            Method = RedirectPaymentMethodCreateMethod.Zippay,
+            BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
+            BuyerExternalIdentifier = "buyer-12345",
+            Country = "GB",
+            Currency = "EUR",
+            RedirectUrl = "https://standard-utilization.com/",
+            ExternalIdentifier = "payment-method-12345",
+        }
+    ),
+    timeoutInSeconds: 1D,
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `RequestBody`                                                               | [CreatePaymentMethodBody](../../Models/Requests/CreatePaymentMethodBody.md) | :heavy_check_mark:                                                          | N/A                                                                         |
+| `TimeoutInSeconds`                                                          | *double*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `MerchantAccountId`                                                         | *string*                                                                    | :heavy_minus_sign:                                                          | The ID of the merchant account to use for this request.                     |
+
+### Response
+
+**[CreatePaymentMethodResponse](../../Models/Requests/CreatePaymentMethodResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## Get
+
+Retrieve a payment method.
+
+### Example Usage
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.PaymentMethods.GetAsync(
+    paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+
+### Response
+
+**[GetPaymentMethodResponse](../../Models/Requests/GetPaymentMethodResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## Delete
+
+Delete a payment method.
+
+### Example Usage
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.PaymentMethods.DeleteAsync(
+    paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+
+### Response
+
+**[DeletePaymentMethodResponse](../../Models/Requests/DeletePaymentMethodResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |

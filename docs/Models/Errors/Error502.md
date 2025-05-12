@@ -1,0 +1,12 @@
+# Error502
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `Type`                                                            | *string*                                                          | :heavy_minus_sign:                                                | Always `error`.                                                   | error                                                             |
+| `Code`                                                            | *string*                                                          | :heavy_minus_sign:                                                | Always `bad_gateway`                                              | bad_gateway                                                       |
+| `Status`                                                          | *long*                                                            | :heavy_minus_sign:                                                | Always `502`.                                                     | 502                                                               |
+| `Message`                                                         | *string*                                                          | :heavy_minus_sign:                                                | A human readable message that provides more context to the error. | Request could not be processed                                    |
+| `Details`                                                         | List<[ErrorDetail](../../Models/Components/ErrorDetail.md)>       | :heavy_minus_sign:                                                | A list of details that further ellaborate on the error.           |                                                                   |

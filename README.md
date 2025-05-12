@@ -1,0 +1,616 @@
+# gr4vy
+
+Developer-friendly & type-safe Csharp SDK specifically catered to leverage *gr4vy* API.
+
+<div align="left">
+    <a href="https://www.speakeasy.com/?utm_source=gr4vy&utm_campaign=csharp"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
+    <a href="https://opensource.org/licenses/MIT">
+        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
+    </a>
+</div>
+
+
+<br /><br />
+> [!IMPORTANT]
+> This SDK is not yet ready for production use. To complete setup please follow the steps outlined in your [workspace](https://app.speakeasy.com/org/gr4vy/gr4vy). Delete this section before > publishing to a package manager.
+
+<!-- Start Summary [summary] -->
+## Summary
+
+Gr4vy: The Gr4vy API.
+<!-- End Summary [summary] -->
+
+<!-- Start Table of Contents [toc] -->
+## Table of Contents
+<!-- $toc-max-depth=2 -->
+* [gr4vy](#gr4vy)
+  * [SDK Installation](#sdk-installation)
+  * [SDK Example Usage](#sdk-example-usage)
+  * [Authentication](#authentication)
+  * [Available Resources and Operations](#available-resources-and-operations)
+  * [Pagination](#pagination)
+  * [Retries](#retries)
+  * [Error Handling](#error-handling)
+  * [Server Selection](#server-selection)
+* [Development](#development)
+  * [Maturity](#maturity)
+  * [Contributions](#contributions)
+
+<!-- End Table of Contents [toc] -->
+
+<!-- Start SDK Installation [installation] -->
+## SDK Installation
+
+To add a reference to a local instance of the SDK in a .NET project:
+```bash
+dotnet add reference src/gr4vy/gr4vy.csproj
+```
+<!-- End SDK Installation [installation] -->
+
+<!-- Start SDK Example Usage [usage] -->
+## SDK Example Usage
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.AccountUpdater.Jobs.CreateAsync(
+    accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
+        PaymentMethodIds = new List<string>() {
+            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+            "f29e886e-93cc-4714-b4a3-12b7a718e595",
+        },
+    },
+    timeoutInSeconds: 1D,
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+<!-- End SDK Example Usage [usage] -->
+
+<!-- Start Authentication [security] -->
+## Authentication
+
+### Per-Client Security Schemes
+
+This SDK supports the following security scheme globally:
+
+| Name         | Type | Scheme      |
+| ------------ | ---- | ----------- |
+| `BearerAuth` | http | HTTP Bearer |
+
+To authenticate with the API the `BearerAuth` parameter must be set when initializing the SDK client instance. For example:
+```csharp
+using System.Collections.Generic;
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.AccountUpdater.Jobs.CreateAsync(
+    accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
+        PaymentMethodIds = new List<string>() {
+            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+            "f29e886e-93cc-4714-b4a3-12b7a718e595",
+        },
+    },
+    timeoutInSeconds: 1D,
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+<!-- End Authentication [security] -->
+
+<!-- Start Available Resources and Operations [operations] -->
+## Available Resources and Operations
+
+<details open>
+<summary>Available methods</summary>
+
+### [AccountUpdater](docs/sdks/accountupdater/README.md)
+
+
+#### [AccountUpdater.Jobs](docs/sdks/jobs/README.md)
+
+* [Create](docs/sdks/jobs/README.md#create) - Create account updater job
+
+### [AuditLogs](docs/sdks/auditlogs/README.md)
+
+* [List](docs/sdks/auditlogs/README.md#list) - List audit log entries
+
+### [Buyers](docs/sdks/buyers/README.md)
+
+* [List](docs/sdks/buyers/README.md#list) - List all buyers
+* [Create](docs/sdks/buyers/README.md#create) - Add a buyer
+* [Get](docs/sdks/buyers/README.md#get) - Get a buyer
+* [Update](docs/sdks/buyers/README.md#update) - Update a buyer
+* [Delete](docs/sdks/buyers/README.md#delete) - Delete a buyer
+
+#### [Buyers.GiftCards](docs/sdks/buyersgiftcards/README.md)
+
+* [List](docs/sdks/buyersgiftcards/README.md#list) - List gift cards for a buyer
+
+#### [Buyers.PaymentMethods](docs/sdks/buyerspaymentmethods/README.md)
+
+* [List](docs/sdks/buyerspaymentmethods/README.md#list) - List payment methods for a buyer
+
+#### [Buyers.ShippingDetails](docs/sdks/shippingdetails/README.md)
+
+* [List](docs/sdks/shippingdetails/README.md#list) - List a buyer's shipping details
+* [Create](docs/sdks/shippingdetails/README.md#create) - Add buyer shipping details
+* [Get](docs/sdks/shippingdetails/README.md#get) - Get buyer shipping details
+* [Update](docs/sdks/shippingdetails/README.md#update) - Update a buyer's shipping details
+* [Delete](docs/sdks/shippingdetails/README.md#delete) - Delete a buyer's shipping details
+
+### [CardSchemeDefinitions](docs/sdks/cardschemedefinitions/README.md)
+
+* [List](docs/sdks/cardschemedefinitions/README.md#list) - List card scheme definitions
+
+### [CheckoutSessions](docs/sdks/checkoutsessions/README.md)
+
+* [Create](docs/sdks/checkoutsessions/README.md#create) - Create checkout session
+* [Get](docs/sdks/checkoutsessions/README.md#get) - Get checkout session
+* [Update](docs/sdks/checkoutsessions/README.md#update) - Update checkout session
+* [Delete](docs/sdks/checkoutsessions/README.md#delete) - Delete checkout session
+
+### [DigitalWallets](docs/sdks/digitalwallets/README.md)
+
+* [List](docs/sdks/digitalwallets/README.md#list) - List digital wallets
+* [Create](docs/sdks/digitalwallets/README.md#create) - Register digital wallet
+* [Get](docs/sdks/digitalwallets/README.md#get) - Get digital wallet
+* [Update](docs/sdks/digitalwallets/README.md#update) - Update digital wallet
+* [Delete](docs/sdks/digitalwallets/README.md#delete) - Delete digital wallet
+
+#### [DigitalWallets.Domains](docs/sdks/domains/README.md)
+
+* [Create](docs/sdks/domains/README.md#create) - Register a digital wallet domain
+* [Delete](docs/sdks/domains/README.md#delete) - Remove a digital wallet domain
+
+#### [DigitalWallets.Sessions](docs/sdks/sessions/README.md)
+
+* [GooglePay](docs/sdks/sessions/README.md#googlepay) - Create a Google Pay session
+* [ApplePay](docs/sdks/sessions/README.md#applepay) - Create a Apple Pay session
+* [ClickToPay](docs/sdks/sessions/README.md#clicktopay) - Create a Click to Pay session
+
+### [GiftCards](docs/sdks/giftcards/README.md)
+
+* [Get](docs/sdks/giftcards/README.md#get) - Get gift card
+* [Delete](docs/sdks/giftcards/README.md#delete) - Delete a gift card
+* [List](docs/sdks/giftcards/README.md#list) - List gift cards
+* [Create](docs/sdks/giftcards/README.md#create) - Create gift card
+
+#### [GiftCards.Balances](docs/sdks/balances/README.md)
+
+* [List](docs/sdks/balances/README.md#list) - List gift card balances
+
+
+### [MerchantAccounts](docs/sdks/merchantaccounts/README.md)
+
+* [List](docs/sdks/merchantaccounts/README.md#list) - List all merchant accounts
+* [Create](docs/sdks/merchantaccounts/README.md#create) - Create a merchant account
+* [Get](docs/sdks/merchantaccounts/README.md#get) - Get a merchant account
+* [Update](docs/sdks/merchantaccounts/README.md#update) - Update a merchant account
+
+### [PaymentMethods](docs/sdks/paymentmethods/README.md)
+
+* [List](docs/sdks/paymentmethods/README.md#list) - List all payment methods
+* [Create](docs/sdks/paymentmethods/README.md#create) - Create payment method
+* [Get](docs/sdks/paymentmethods/README.md#get) - Get payment method
+* [Delete](docs/sdks/paymentmethods/README.md#delete) - Delete payment method
+
+#### [PaymentMethods.NetworkTokens](docs/sdks/networktokens/README.md)
+
+* [List](docs/sdks/networktokens/README.md#list) - List network tokens
+* [Create](docs/sdks/networktokens/README.md#create) - Provision network token
+* [Suspend](docs/sdks/networktokens/README.md#suspend) - Suspend network token
+* [Resume](docs/sdks/networktokens/README.md#resume) - Resume network token
+* [Delete](docs/sdks/networktokens/README.md#delete) - Delete network token
+
+#### [PaymentMethods.NetworkTokens.Cryptogram](docs/sdks/cryptogram/README.md)
+
+* [Create](docs/sdks/cryptogram/README.md#create) - Provision network token cryptogram
+
+#### [PaymentMethods.PaymentServiceTokens](docs/sdks/paymentservicetokens/README.md)
+
+* [List](docs/sdks/paymentservicetokens/README.md#list) - List payment service tokens
+* [Create](docs/sdks/paymentservicetokens/README.md#create) - Create payment service token
+* [Delete](docs/sdks/paymentservicetokens/README.md#delete) - Delete payment service token
+
+### [PaymentOptions](docs/sdks/paymentoptions/README.md)
+
+* [List](docs/sdks/paymentoptions/README.md#list) - List payment options
+
+### [PaymentServiceDefinitions](docs/sdks/paymentservicedefinitions/README.md)
+
+* [List](docs/sdks/paymentservicedefinitions/README.md#list) - List payment service definitions
+* [Get](docs/sdks/paymentservicedefinitions/README.md#get) - Get a payment service definition
+* [Session](docs/sdks/paymentservicedefinitions/README.md#session) - Create a session for apayment service definition
+
+### [PaymentServices](docs/sdks/paymentservices/README.md)
+
+* [List](docs/sdks/paymentservices/README.md#list) - List payment services
+* [Create](docs/sdks/paymentservices/README.md#create) - Update a configured payment service
+* [Get](docs/sdks/paymentservices/README.md#get) - Get payment service
+* [Update](docs/sdks/paymentservices/README.md#update) - Configure a payment service
+* [Delete](docs/sdks/paymentservices/README.md#delete) - Delete a configured payment service
+* [Verify](docs/sdks/paymentservices/README.md#verify) - Verify payment service credentials
+* [Session](docs/sdks/paymentservices/README.md#session) - Create a session for apayment service definition
+
+### [Payouts](docs/sdks/payouts/README.md)
+
+* [List](docs/sdks/payouts/README.md#list) - List payouts created.
+* [Create](docs/sdks/payouts/README.md#create) - Create a payout.
+* [Get](docs/sdks/payouts/README.md#get) - Get a payout.
+
+### [Refunds](docs/sdks/refunds/README.md)
+
+* [Get](docs/sdks/refunds/README.md#get) - Get refund
+
+### [Transactions](docs/sdks/transactions/README.md)
+
+* [List](docs/sdks/transactions/README.md#list) - List transactions
+* [Create](docs/sdks/transactions/README.md#create) - Create transaction
+* [Get](docs/sdks/transactions/README.md#get) - Get transaction
+* [Capture](docs/sdks/transactions/README.md#capture) - Capture transaction
+* [Void](docs/sdks/transactions/README.md#void) - Void transaction
+* [Summary](docs/sdks/transactions/README.md#summary) - Get transaction summary
+* [Sync](docs/sdks/transactions/README.md#sync) - Sync transaction
+
+#### [Transactions.Refunds](docs/sdks/transactionsrefunds/README.md)
+
+* [List](docs/sdks/transactionsrefunds/README.md#list) - List transaction refunds
+* [Create](docs/sdks/transactionsrefunds/README.md#create) - Create transaction refund
+* [Get](docs/sdks/transactionsrefunds/README.md#get) - Get transaction refund
+
+#### [Transactions.Refunds.All](docs/sdks/all/README.md)
+
+* [Create](docs/sdks/all/README.md#create) - Create batch transaction refund
+
+</details>
+<!-- End Available Resources and Operations [operations] -->
+
+<!-- Start Pagination [pagination] -->
+## Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `null`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+using gr4vy.Models.Requests;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+ListBuyersRequest req = new ListBuyersRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    Search = "John",
+    ExternalIdentifier = "buyer-12345",
+};
+
+ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
+
+while(res != null)
+{
+    // handle items
+
+    res = await res.Next!();
+}
+```
+<!-- End Pagination [pagination] -->
+
+<!-- Start Retries [retries] -->
+## Retries
+
+Some of the endpoints in this SDK support retries. If you use the SDK without any configuration, it will fall back to the default retry strategy provided by the API. However, the default retry strategy can be overridden on a per-operation basis, or across the entire SDK.
+
+To change the default retry strategy for a single API call, simply pass a `RetryConfig` to the call:
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+using gr4vy.Models.Requests;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+ListBuyersRequest req = new ListBuyersRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    Search = "John",
+    ExternalIdentifier = "buyer-12345",
+};
+
+ListBuyersResponse? res = await sdk.Buyers.ListAsync(
+    retryConfig: new RetryConfig(
+        strategy: RetryConfig.RetryStrategy.BACKOFF,
+        backoff: new BackoffStrategy(
+            initialIntervalMs: 1L,
+            maxIntervalMs: 50L,
+            maxElapsedTimeMs: 100L,
+            exponent: 1.1
+        ),
+        retryConnectionErrors: false
+    ),
+    request: req
+);
+
+while(res != null)
+{
+    // handle items
+
+    res = await res.Next!();
+}
+```
+
+If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+using gr4vy.Models.Requests;
+
+var sdk = new Gr4vy(
+    retryConfig: new RetryConfig(
+        strategy: RetryConfig.RetryStrategy.BACKOFF,
+        backoff: new BackoffStrategy(
+            initialIntervalMs: 1L,
+            maxIntervalMs: 50L,
+            maxElapsedTimeMs: 100L,
+            exponent: 1.1
+        ),
+        retryConnectionErrors: false
+    ),
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+ListBuyersRequest req = new ListBuyersRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    Search = "John",
+    ExternalIdentifier = "buyer-12345",
+};
+
+ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
+
+while(res != null)
+{
+    // handle items
+
+    res = await res.Next!();
+}
+```
+<!-- End Retries [retries] -->
+
+<!-- Start Error Handling [errors] -->
+## Error Handling
+
+Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
+
+By default, an API error will raise a `gr4vy.Models.Errors.APIException` exception, which has the following properties:
+
+| Property      | Type                  | Description           |
+|---------------|-----------------------|-----------------------|
+| `Message`     | *string*              | The error message     |
+| `Request`     | *HttpRequestMessage*  | The HTTP request      |
+| `Response`    | *HttpResponseMessage* | The HTTP response     |
+
+When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `CreateAsync` method throws the following exceptions:
+
+| Error Type                              | Status Code | Content Type     |
+| --------------------------------------- | ----------- | ---------------- |
+| gr4vy.Models.Errors.Error400            | 400         | application/json |
+| gr4vy.Models.Errors.Error401            | 401         | application/json |
+| gr4vy.Models.Errors.Error403            | 403         | application/json |
+| gr4vy.Models.Errors.Error403Forbidden   | 403         | application/json |
+| gr4vy.Models.Errors.Error403Active      | 403         | application/json |
+| gr4vy.Models.Errors.Error404            | 404         | application/json |
+| gr4vy.Models.Errors.Error405            | 405         | application/json |
+| gr4vy.Models.Errors.Error409            | 409         | application/json |
+| gr4vy.Models.Errors.HTTPValidationError | 422         | application/json |
+| gr4vy.Models.Errors.Error425            | 425         | application/json |
+| gr4vy.Models.Errors.Error429            | 429         | application/json |
+| gr4vy.Models.Errors.Error500            | 500         | application/json |
+| gr4vy.Models.Errors.Error502            | 502         | application/json |
+| gr4vy.Models.Errors.Error504            | 504         | application/json |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX    | \*/\*            |
+
+### Example
+
+```csharp
+using System.Collections.Generic;
+using gr4vy;
+using gr4vy.Models.Components;
+using gr4vy.Models.Errors;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+try
+{
+    var res = await sdk.AccountUpdater.Jobs.CreateAsync(
+        accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
+            PaymentMethodIds = new List<string>() {
+                "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+                "f29e886e-93cc-4714-b4a3-12b7a718e595",
+            },
+        },
+        timeoutInSeconds: 1D,
+        merchantAccountId: "<id>"
+    );
+
+    // handle response
+}
+catch (Exception ex)
+{
+    if (ex is Error400)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error401)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error403)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error403Forbidden)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error403Active)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error404)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error405)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error409)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is HTTPValidationError)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error425)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error429)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error500)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error502)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is Error504)
+    {
+        // Handle exception data
+        throw;
+    }
+    else if (ex is gr4vy.Models.Errors.APIException)
+    {
+        // Handle default exception
+        throw;
+    }
+}
+```
+<!-- End Error Handling [errors] -->
+
+<!-- Start Server Selection [server] -->
+## Server Selection
+
+### Select Server by Name
+
+You can override the default server globally by passing a server name to the `server: string` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the names associated with the available servers:
+
+| Name         | Server                               | Variables | Description |
+| ------------ | ------------------------------------ | --------- | ----------- |
+| `production` | `https://api.{id}.gr4vy.app`         | `id`      |             |
+| `sandbox`    | `https://api.sandbox.{id}.gr4vy.app` | `id`      |             |
+
+If the selected server has variables, you may override its default values through the additional parameters made available in the SDK constructor:
+
+| Variable | Parameter    | Default     | Description                            |
+| -------- | ------------ | ----------- | -------------------------------------- |
+| `id`     | `id: string` | `"example"` | The subdomain for your Gr4vy instance. |
+
+#### Example
+
+```csharp
+using System.Collections.Generic;
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(
+    server: "sandbox",
+    id: "<id>",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+var res = await sdk.AccountUpdater.Jobs.CreateAsync(
+    accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
+        PaymentMethodIds = new List<string>() {
+            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+            "f29e886e-93cc-4714-b4a3-12b7a718e595",
+        },
+    },
+    timeoutInSeconds: 1D,
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+
+### Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverUrl: string` optional parameter when initializing the SDK client instance. For example:
+```csharp
+using System.Collections.Generic;
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(
+    serverUrl: "https://api.example.gr4vy.app",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+var res = await sdk.AccountUpdater.Jobs.CreateAsync(
+    accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
+        PaymentMethodIds = new List<string>() {
+            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+            "f29e886e-93cc-4714-b4a3-12b7a718e595",
+        },
+    },
+    timeoutInSeconds: 1D,
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+<!-- End Server Selection [server] -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+# Development
+
+## Maturity
+
+This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage
+to a specific package version. This way, you can install the same version each time without breaking changes unless you are intentionally
+looking for the latest version.
+
+## Contributions
+
+While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
+We look forward to hearing your feedback. Feel free to open a PR or an issue with a proof of concept and we'll do our best to include it in a future release. 
+
+### SDK Created by [Speakeasy](https://www.speakeasy.com/?utm_source=gr4vy&utm_campaign=csharp)

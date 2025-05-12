@@ -1,0 +1,11 @@
+# ThreeDSecureError
+
+
+## Fields
+
+| Field                                                               | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `Code`                                                              | *string*                                                            | :heavy_minus_sign:                                                  | The error code.                                                     | 305                                                                 |
+| `Description`                                                       | *string*                                                            | :heavy_minus_sign:                                                  | The error description.                                              | Invalid ThreeDSCompInd                                              |
+| `Detail`                                                            | *string*                                                            | :heavy_minus_sign:                                                  | Detail about the 3DS error.                                         | The threeDSCompInd must be 'Y' when successful                      |
+| `Component`                                                         | *string*                                                            | :heavy_minus_sign:                                                  | Code indicating the 3-D Secure component that identified the error. | C                                                                   |

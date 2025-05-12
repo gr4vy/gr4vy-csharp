@@ -1,0 +1,9 @@
+# ListPaymentServiceDefinitionsResponse
+
+
+## Fields
+
+| Field                                                                                               | Type                                                                                                | Required                                                                                            | Description                                                                                         |
+| --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------- |
+| `HttpMeta`                                                                                          | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)                                             | :heavy_check_mark:                                                                                  | N/A                                                                                                 |
+| `CollectionPaymentServiceDefinition`                                                                | [CollectionPaymentServiceDefinition](../../Models/Components/CollectionPaymentServiceDefinition.md) | :heavy_minus_sign:                                                                                  | Successful Response                                                                                 |

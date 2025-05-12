@@ -1,0 +1,12 @@
+# Error405
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `Type`                                                            | *string*                                                          | :heavy_minus_sign:                                                | Always `error`.                                                   | error                                                             |
+| `Code`                                                            | *string*                                                          | :heavy_minus_sign:                                                | Always `method_not_allowed`                                       | method_not_allowed                                                |
+| `Status`                                                          | *long*                                                            | :heavy_minus_sign:                                                | Always `405`.                                                     | 405                                                               |
+| `Message`                                                         | *string*                                                          | :heavy_minus_sign:                                                | A human readable message that provides more context to the error. | Method Not Allowed                                                |
+| `Details`                                                         | List<[ErrorDetail](../../Models/Components/ErrorDetail.md)>       | :heavy_minus_sign:                                                | A list of details that further ellaborate on the error.           |                                                                   |

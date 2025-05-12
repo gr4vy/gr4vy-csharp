@@ -1,0 +1,278 @@
+# DigitalWallets
+(*DigitalWallets*)
+
+## Overview
+
+### Available Operations
+
+* [List](#list) - List digital wallets
+* [Create](#create) - Register digital wallet
+* [Get](#get) - Get digital wallet
+* [Update](#update) - Update digital wallet
+* [Delete](#delete) - Delete digital wallet
+
+## List
+
+List configured digital wallets.
+
+### Example Usage
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.DigitalWallets.ListAsync(merchantAccountId: "<id>");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |
+
+### Response
+
+**[ListDigitalWalletsResponse](../../Models/Requests/ListDigitalWalletsResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## Create
+
+Register a digital wallet like Apple Pay, Google Pay, or Click to Pay.
+
+### Example Usage
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.DigitalWallets.CreateAsync(
+    digitalWalletCreate: new DigitalWalletCreate() {
+        Provider = DigitalWalletProvider.Google,
+        MerchantName = "<value>",
+        MerchantCountryCode = "GB",
+        AcceptTermsAndConditions = false,
+    },
+    timeoutInSeconds: 1D,
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `DigitalWalletCreate`                                                 | [DigitalWalletCreate](../../Models/Components/DigitalWalletCreate.md) | :heavy_check_mark:                                                    | N/A                                                                   |
+| `TimeoutInSeconds`                                                    | *double*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |
+| `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               |
+
+### Response
+
+**[ConfigureDigitalWalletResponse](../../Models/Requests/ConfigureDigitalWalletResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## Get
+
+Fetch the details a digital wallet.
+
+### Example Usage
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.DigitalWallets.GetAsync(
+    digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `DigitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the digital wallet to read.                   | 1808f5e6-b49c-4db9-94fa-22371ea352f5                    |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+
+### Response
+
+**[GetDigitalWalletResponse](../../Models/Requests/GetDigitalWalletResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## Update
+
+Update a digital wallet.
+
+### Example Usage
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.DigitalWallets.UpdateAsync(
+    digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
+    digitalWalletUpdate: new DigitalWalletUpdate() {
+        MerchantCountryCode = "US",
+    },
+    timeoutInSeconds: 1D,
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `DigitalWalletId`                                                     | *string*                                                              | :heavy_check_mark:                                                    | The ID of the digital wallet to edit.                                 | 1808f5e6-b49c-4db9-94fa-22371ea352f5                                  |
+| `DigitalWalletUpdate`                                                 | [DigitalWalletUpdate](../../Models/Components/DigitalWalletUpdate.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
+| `TimeoutInSeconds`                                                    | *double*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
+| `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               |                                                                       |
+
+### Response
+
+**[UpdateDigitalWalletResponse](../../Models/Requests/UpdateDigitalWalletResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## Delete
+
+Delete a configured digital wallet.
+
+### Example Usage
+
+```csharp
+using gr4vy;
+using gr4vy.Models.Components;
+
+var sdk = new Gr4vy(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.DigitalWallets.DeleteAsync(
+    digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
+    timeoutInSeconds: 1D,
+    merchantAccountId: "<id>"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `DigitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the digital wallet to delete.                 | 1808f5e6-b49c-4db9-94fa-22371ea352f5                    |
+| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. |                                                         |
+
+### Response
+
+**[DeleteDigitalWalletResponse](../../Models/Requests/DeleteDigitalWalletResponse.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
+| gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |

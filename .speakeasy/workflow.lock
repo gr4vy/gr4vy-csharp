@@ -1,0 +1,33 @@
+speakeasyVersion: 1.543.6
+sources:
+    -OAS:
+        sourceNamespace: openapi
+        sourceRevisionDigest: sha256:89ee649481e09f914f6efa578106f54e6d79741ad6481ef70895189fd1c64412
+        sourceBlobDigest: sha256:28a378100fa9fd70e2a53cd139ae0b1e30f52679dd2348f43acd2d7f50e18e8d
+        tags:
+            - latest
+targets:
+    gr-4-vy:
+        source: -OAS
+        sourceNamespace: openapi
+        sourceRevisionDigest: sha256:89ee649481e09f914f6efa578106f54e6d79741ad6481ef70895189fd1c64412
+        sourceBlobDigest: sha256:28a378100fa9fd70e2a53cd139ae0b1e30f52679dd2348f43acd2d7f50e18e8d
+workflow:
+    workflowVersion: 1.0.0
+    speakeasyVersion: latest
+    sources:
+        -OAS:
+            inputs:
+                - location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi:main
+            registry:
+                location: registry.speakeasyapi.dev/gr4vy/gr4vy/-oas
+    targets:
+        gr-4-vy:
+            target: csharp
+            source: -OAS
+            codeSamples:
+                registry:
+                    location: registry.speakeasyapi.dev/gr4vy/gr4vy/-oas-csharp-code-samples
+                labelOverride:
+                    fixedValue: Csharp (SDK)
+                blocking: false

@@ -1,0 +1,13 @@
+# Error403Forbidden
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `Type`                                                            | *string*                                                          | :heavy_minus_sign:                                                | Always `error`.                                                   | error                                                             |
+| `Code`                                                            | *string*                                                          | :heavy_minus_sign:                                                | Always `forbidden`                                                | forbidden                                                         |
+| `Status`                                                          | *long*                                                            | :heavy_minus_sign:                                                | Always `403`.                                                     | 403                                                               |
+| `Message`                                                         | *string*                                                          | :heavy_check_mark:                                                | A human readable message that provides more context to the error. | Request failed validation                                         |
+| `Details`                                                         | List<[ErrorDetail](../../Models/Components/ErrorDetail.md)>       | :heavy_minus_sign:                                                | A list of details that further ellaborate on the error.           |                                                                   |
+| `HttpMeta`                                                        | [HTTPMetadata](../../Models/Components/HTTPMetadata.md)           | :heavy_check_mark:                                                | N/A                                                               |                                                                   |
