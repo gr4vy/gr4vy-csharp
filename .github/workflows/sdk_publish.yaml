@@ -21,18 +21,3 @@ jobs:
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
       nuget_api_key: ${{ secrets.NUGET_API_KEY }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
-
-  dispatch:
-    needs: publish
-    strategy:
-      matrix:
-        repo:
-          - gr4vy/gr4vy-docs-mintlify
-    runs-on: ubuntu-latest
-    steps:
-      - name: Notify SDKs
-        uses: peter-evans/repository-dispatch@v3
-        with:
-          token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
-          repository: ${{ matrix.repo }}
-          event-type: sdk_updated
