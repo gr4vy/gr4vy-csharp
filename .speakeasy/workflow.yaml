@@ -10,6 +10,9 @@ targets:
     gr-4-vy:
         target: csharp
         source: -OAS
+        publish:
+            nuget:
+                apiKey: $nuget_api_key
         codeSamples:
             registry:
                 location: registry.speakeasyapi.dev/gr4vy/gr4vy/-oas-csharp-code-samples
