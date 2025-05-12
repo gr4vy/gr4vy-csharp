@@ -31,10 +31,6 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet }}
 
-      - name: Install dependencies
-        run: |
-         npm i
-
       - name: Run tests
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
