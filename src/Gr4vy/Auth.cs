@@ -6,8 +6,49 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
+public enum JWTScope
+{
+    ReadAll,
+    WriteAll,
+    Embed,
+    // Add other scope enums similarly...
+}
 public class Auth
 {
+    private static string GenerateThumbprint(ECDsa privateKey)
+    {
+        var parameters = privateKey.ExportParameters(true);
+        var jwk = new Dictionary<string, string>(StringComparer.Ordinal)
+        {
+            { "kty", "EC" },
+            { "crv", "P-521" },
+            { "x", Base64UrlEncoder.Encode(parameters.Q.X) },
+            { "y", Base64UrlEncoder.Encode(parameters.Q.Y) }
+        };
+
+        var sortedKeys = new SortedDictionary<string, string>(jwk);
+        var sb = new StringBuilder();
+        sb.Append('{');
+        var index = 0;
+        foreach (var kvp in sortedKeys)
+        {
+            string key = kvp.Key;
+            string value = kvp.Value;
+            sb.Append($"\"{key}\":\"{value}\"");
+            if (index < sortedKeys.Count - 1)
+            {
+                sb.Append(',');
+            }
+            index++;
+        }
+        sb.Append('}');
+        
+        string json = sb.ToString();
+
+        using var sha256 = SHA256.Create();
+        var hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(json));
+        return Base64UrlEncoder.Encode(hash);
+    }
     public static string GetToken(
         string privateKey,
         List<string> scopes = null,
@@ -49,23 +90,27 @@ public class Auth
             CryptoProviderFactory = new CryptoProviderFactory { CacheSignatureProviders = false }
         };
 
-        var kid = GenerateThumbprint(privateKey); 
+        var securityKey = GetECDsaSecurityKey(privateKey);
+        var kid = GenerateThumbprint(securityKey.ECDsa); 
         Console.Write(kid);
 
-        var tokenDescriptor = new SecurityTokenDescriptor
-        {
-            Subject = new ClaimsIdentity(claims),
-            Expires = now.AddSeconds(expiresIn),
-            SigningCredentials = credentials,
-            // AdditionalHeaderClaims = new Dictionary<string, object>
-            // {
-            //     { "kid", GenerateThumbprint(privateKey) }
-            // }
-        };
+        var header = new JwtHeader(credentials);
+        header.Add("kid", kid);
+
+        var token = new JwtSecurityToken(
+            header: header, 
+            payload: new JwtPayload(claims)
+        );
 
         var tokenHandler = new JwtSecurityTokenHandler();
-        var token = tokenHandler.CreateToken(tokenDescriptor);
         return tokenHandler.WriteToken(token);
+    }
+
+    private static ECDsaSecurityKey GetECDsaSecurityKey(string pem)
+    {
+        var ecdsa = ECDsa.Create();
+        ecdsa.ImportFromPem(pem);
+        return new ECDsaSecurityKey(ecdsa);
     }
 
     // public static string UpdateToken(
