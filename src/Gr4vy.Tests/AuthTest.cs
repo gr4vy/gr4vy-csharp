@@ -18,32 +18,38 @@ rw==
 
     private const string Thumbprint = "va-SLs5AxJNfqKXD8LI5Y38BflpNvjZjY4RSWz66U1w";
 
-    // private readonly Dictionary<string, object> _embedParams = new Dictionary
-    // {
-    //     Amount = 9000,
-    //     Currency = "USD",
-    //     BuyerExternalIdentifier = "user-123",
-    //     ConnectionOptions = new Dictionary<string, object>
-    //     {
-    //         { "stripe-card", new { stripe_connect = new { key = "value" } } }
-    //     },
-    //     Metadata = new Dictionary<string, string>
-    //     {
-    //         { "camelCaseKey", "value1" },
-    //         { "snake_case_key", "value2" }
-    //     },
-    //     CartItems = new List<CartItem>
-    //     {
-    //         new CartItem
-    //         {
-    //             Name = "Joust Duffle Bag",
-    //             Quantity = 1,
-    //             UnitAmount = 9000,
-    //             TaxAmount = 0,
-    //             Categories = new List<string> { "Gear", "Bags", "Test" }
-    //         }
-    //     }
-    // };
+    private Dictionary<string, object> _embedParams = new Dictionary<string, object>
+    {
+        ["amount"] = 9000,
+        ["currency"] = "USD",
+        ["buyer_external_identifier"] = "user-123",
+        ["connection_options"] = new Dictionary<string, object>
+        {
+            ["stripe-card"] = new Dictionary<string, object>
+            {
+                ["stripe_connect"] = new Dictionary<string, object>
+                {
+                    ["key"] = "value"
+                }
+            }
+        },
+        ["metadata"] = new Dictionary<string, object>
+        {
+            ["camelCaseKey"] = "value1",
+            ["snake_case_key"] = "value2"
+        },
+        ["cart_items"] = new List<Dictionary<string, object>>
+        {
+            new Dictionary<string, object>
+            {
+                ["name"] = "Joust Duffle Bag",
+                ["quantity"] = 1,
+                ["unit_amount"] = 9000,
+                ["tax_amount"] = 0,
+                ["categories"] = new List<string> { "Gear", "Bags", "Test" }
+            }
+        }
+    };
 
     private const string CheckoutSessionId = "0ebde6a1-f66c-43ea-bb8b-73751864c604";
 
@@ -70,101 +76,97 @@ rw==
         Assert.That(jwtToken.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iss).Value, Is.EqualTo("Gr4vy C# SDK"));
     }
 
-    // [Test]
-    // public void GetToken_ShouldAcceptOptionalEmbedData()
-    // {
-    //     var token = Auth.GetToken(new TokenOptions
-    //     {
-    //         PrivateKey = PrivateKey,
-    //         Scopes = new List<string> { string.Embed },
-    //         EmbedParams = _embedParams
-    //     });
+    [Test]
+    public void GetToken_ShouldAcceptOptionalEmbedData()
+    {   
+        var token = Auth.GetToken(
+            privateKey: PrivateKey,
+            scopes: new List<string> { JWTScope.Embed },
+            embedParams: _embedParams
+        );
 
-    //     var handler = new JwtSecurityTokenHandler();
-    //     var jwtToken = handler.ReadJwtToken(token);
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(token);
 
-    //     var embedClaim = jwtToken.Claims.First(c => c.Type == "embed").Value;
-    //     var embedData = JsonSerializer.Deserialize<Dictionary<string, object>>(embedClaim);
+        var embedClaim = jwtToken.Claims.First(c => c.Type == JWTScope.Embed).Value;
+        var embedData = JsonSerializer.Deserialize<Dictionary<string, object>>(embedClaim);
 
-    //     Assert.Contains("embed", jwtToken.Claims.Select(c => c.Type).ToList());
-    //     Assert.NotNull(embedData);
-    //     Assert.AreEqual("USD", embedData["currency"]);
-    // }
+        Assert.Contains(JWTScope.Embed, jwtToken.Claims.Select(c => c.Type).ToList());
+        Assert.NotNull(embedData);
+        Assert.AreEqual("USD", embedData["currency"].ToString());
+    }
 
-    // [Test]
-    // public void GetToken_ShouldIgnoreEmbedDataIfEmbedScopeNotSet()
-    // {
-    //     var token = Auth.GetToken(new TokenOptions
-    //     {
-    //         PrivateKey = PrivateKey,
-    //         Scopes = new List<string> { string.ReadAll },
-    //         EmbedParams = _embedParams
-    //     });
+    [Test]
+    public void GetToken_ShouldIgnoreEmbedDataIfEmbedScopeNotSet()
+    {
+        var token = Auth.GetToken(
+            privateKey: PrivateKey,
+            scopes: new List<string> { JWTScope.ReadAll },
+            embedParams: _embedParams
+        );
 
-    //     var handler = new JwtSecurityTokenHandler();
-    //     var jwtToken = handler.ReadJwtToken(token);
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(token);
 
-    //     Assert.IsFalse(jwtToken.Claims.Any(c => c.Type == "embed"));
-    // }
+        Assert.IsFalse(jwtToken.Claims.Any(c => c.Type == JWTScope.Embed));
+    }
 
-    // [Test]
-    // public void GetEmbedToken_ShouldCreateJwtTokenForEmbed()
-    // {
-    //     var token = Auth.GetEmbedToken(new EmbedTokenOptions
-    //     {
-    //         PrivateKey = PrivateKey,
-    //         EmbedParams = _embedParams
-    //     });
+    [Test]
+    public void GetEmbedToken_ShouldCreateJwtTokenForEmbed()
+    {
+        var token = Auth.GetEmbedToken(
+            privateKey: PrivateKey,
+            embedParams: _embedParams
+        );
 
-    //     var handler = new JwtSecurityTokenHandler();
-    //     var jwtToken = handler.ReadJwtToken(token);
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(token);
 
-    //     var embedClaim = jwtToken.Claims.First(c => c.Type == "embed").Value;
-    //     var embedData = JsonSerializer.Deserialize<Dictionary<string, object>>(embedClaim);
+        var embedClaim = jwtToken.Claims.First(c => c.Type == JWTScope.Embed).Value;
+        var embedData = JsonSerializer.Deserialize<Dictionary<string, object>>(embedClaim);
 
-    //     Assert.Contains("embed", jwtToken.Claims.Select(c => c.Type).ToList());
-    //     Assert.NotNull(embedData);
-    //     Assert.AreEqual("USD", embedData["currency"]);
-    // }
+        Assert.Contains(JWTScope.Embed, jwtToken.Claims.Select(c => c.Type).ToList());
+        Assert.NotNull(embedData);
+        Assert.AreEqual("USD", embedData["currency"].ToString());
+    }
 
-    // [Test]
-    // public void GetEmbedToken_ShouldTakeOptionalCheckoutSessionId()
-    // {
-    //     var token = Auth.GetEmbedToken(new EmbedTokenOptions
-    //     {
-    //         PrivateKey = PrivateKey,
-    //         EmbedParams = _embedParams,
-    //         CheckoutSessionId = CheckoutSessionId
-    //     });
+    [Test]
+    public void GetEmbedToken_ShouldTakeOptionalCheckoutSessionId()
+    {
+        var token = Auth.GetEmbedToken(
+            privateKey: PrivateKey,
+            embedParams: _embedParams,
+            checkoutSessionId: CheckoutSessionId
+        );
 
-    //     var handler = new JwtSecurityTokenHandler();
-    //     var jwtToken = handler.ReadJwtToken(token);
+        var handler = new JwtSecurityTokenHandler();
+        var jwtToken = handler.ReadJwtToken(token);
 
-    //     Assert.AreEqual(CheckoutSessionId, jwtToken.Claims.First(c => c.Type == "checkout_session_id").Value);
-    // }
+        Assert.AreEqual(CheckoutSessionId, jwtToken.Claims.First(c => c.Type == "checkout_session_id").Value);
+    }
 
-    // [Test]
-    // public void UpdateToken_ShouldResignTokenWithNewSignatureAndExpiration()
-    // {
-    //     var originalToken = Auth.GetToken(new TokenOptions
-    //     {
-    //         PrivateKey = PrivateKey,
-    //         ExpiresIn = TimeSpan.FromMinutes(1)
-    //     });
+    [Test]
+    public void UpdateToken_ShouldResignTokenWithNewSignatureAndExpiration()
+    {
+        var originalToken = Auth.GetToken(
+            privateKey: PrivateKey,
+            expiresIn: 5
+        );
 
-    //     var newToken = Auth.UpdateToken(new TokenOptions
-    //     {
-    //         PrivateKey = PrivateKey,
-    //         Token = originalToken,
-    //         ExpiresIn = TimeSpan.FromMinutes(1)
-    //     });
+        System.Threading.Thread.Sleep(7000);
 
-    //     var handler = new JwtSecurityTokenHandler();
-    //     var originalJwt = handler.ReadJwtToken(originalToken);
-    //     var newJwt = handler.ReadJwtToken(newToken);
+        var newToken = Auth.UpdateToken(
+            token: originalToken,
+            privateKey: PrivateKey,
+            expiresIn: 60
+        );
 
-    //     Assert.AreEqual(originalJwt.Header, newJwt.Header);
-    //     Assert.AreEqual(originalJwt.Claims.First(c => c.Type == "scopes").Value, newJwt.Claims.First(c => c.Type == "scopes").Value);
-    //     Assert.AreNotEqual(originalJwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iat).Value, newJwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iat).Value);
-    // }
+        var handler = new JwtSecurityTokenHandler();
+        var originalJwt = handler.ReadJwtToken(originalToken);
+        var newJwt = handler.ReadJwtToken(newToken);
+
+        Assert.AreEqual(originalJwt.Header, newJwt.Header);
+        Assert.AreEqual(originalJwt.Claims.First(c => c.Type == "scopes").Value, newJwt.Claims.First(c => c.Type == "scopes").Value);
+        Assert.AreNotEqual(originalJwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iat).Value, newJwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iat).Value);
+    }
 }

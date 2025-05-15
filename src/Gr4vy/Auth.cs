@@ -6,12 +6,48 @@ using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
 
-public enum JWTScope
+public static class JWTScope
 {
-    ReadAll,
-    WriteAll,
-    Embed,
-    // Add other scope enums similarly...
+    public const string ReadAll = "*.read";
+    public const string WriteAll = "*.write";
+    public const string Embed = "embed";
+    public const string AntiFraudServiceDefinitionsRead = "anti-fraud-service-definitions.read";
+    public const string AntiFraudServiceDefinitionsWrite = "anti-fraud-service-definitions.write";
+    public const string AntiFraudServicesRead = "anti-fraud-services.read";
+    public const string AntiFraudServicesWrite = "anti-fraud-services.write";
+    public const string AuditLogsRead = "audit-logs.read";
+    public const string BuyersRead = "buyers.read";
+    public const string BuyersWrite = "buyers.write";
+    public const string BuyersBillingDetailsRead = "buyers.billing-details.read";
+    public const string BuyersBillingDetailsWrite = "buyers.billing-details.write";
+    public const string CardSchemeDefinitionsRead = "card-scheme-definitions.read";
+    public const string CheckoutSessionsRead = "checkout-sessions.read";
+    public const string CheckoutSessionsWrite = "checkout-sessions.write";
+    public const string ConnectionsRead = "connections.read";
+    public const string ConnectionsWrite = "connections.write";
+    public const string DigitalWalletsRead = "digital-wallets.read";
+    public const string DigitalWalletsWrite = "digital-wallets.write";
+    public const string FlowsRead = "flows.read";
+    public const string FlowsWrite = "flows.write";
+    public const string GiftCardServiceDefinitionsRead = "gift-card-service-definitions.read";
+    public const string GiftCardServicesRead = "gift-card-services.read";
+    public const string GiftCardServicesWrite = "gift-card-services.write";
+    public const string GiftCardsRead = "gift-cards.read";
+    public const string GiftCardsWrite = "gift-cards.write";
+    public const string MerchantAccountRead = "merchant-accounts.reads";
+    public const string MerchantAccountWrite = "merchant-accounts.write";
+    public const string PaymentMethodDefinitionsRead = "payment-method-definitions.read";
+    public const string PaymentMethodRead = "payment-methods.read";
+    public const string PaymentMethodWrite = "payment-methods.write";
+    public const string PaymentOptionsRead = "payment-options.read";
+    public const string PaymentServiceDefinitionsRead = "payment-service-definitions.read";
+    public const string PaymentServicesRead = "payment-services.read";
+    public const string PaymentServicesWrite = "payment-services.write";
+    public const string ReportsRead = "reports.read";
+    public const string ReportsWrite = "reports.write";
+    public const string TransactionsRead = "transactions.read";
+    public const string TransactionsWrite = "transactions.write";
+    public const string VaultForwardWrite = "vault-forward.write";
 }
 public class Auth
 {
@@ -58,7 +94,7 @@ public class Auth
     {
         if (scopes == null)
         {
-            scopes = new List<string> { "*.read", "*.write" };
+            scopes = new List<string> { JWTScope.ReadAll, JWTScope.WriteAll };
         }
 
         var now = DateTime.UtcNow;
@@ -77,9 +113,9 @@ public class Auth
             claims.Add(new Claim("checkout_session_id", checkoutSessionId));
         }
 
-        if (scopes.Contains("embed") && embedParams != null)
+        if (scopes.Contains(JWTScope.Embed) && embedParams != null)
         {
-            claims.Add(new Claim("embed", System.Text.Json.JsonSerializer.Serialize(embedParams)));
+            claims.Add(new Claim(JWTScope.Embed, System.Text.Json.JsonSerializer.Serialize(embedParams)));
         }
 
         var key = new ECDsaSecurityKey(ECDsa.Create());
@@ -113,39 +149,39 @@ public class Auth
         return new ECDsaSecurityKey(ecdsa);
     }
 
-    // public static string UpdateToken(
-    //     string token,
-    //     string privateKey,
-    //     List<string> scopes = null,
-    //     int expiresIn = 3600,
-    //     Dictionary<string, object> embedParams = null,
-    //     string checkoutSessionId = null)
-    // {
-    //     var tokenHandler = new JwtSecurityTokenHandler();
-    //     var jwtToken = tokenHandler.ReadJwtToken(token);
+    public static string UpdateToken(
+        string token,
+        string privateKey,
+        List<string> scopes = null,
+        int expiresIn = 3600,
+        Dictionary<string, object> embedParams = null,
+        string checkoutSessionId = null)
+    {
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var jwtToken = tokenHandler.ReadJwtToken(token);
 
-    //     var previousScopes = jwtToken.Claims.FirstOrDefault(c => c.Type == "scopes")?.Value?.Split(',') ?? Array.Empty<string>();
+        var previousScopes = jwtToken.Payload["scopes"]?.ToString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
 
-    //     return GetToken(
-    //         privateKey,
-    //         scopes ?? new List<string>(previousScopes.Select(s => Enum.Parse<string>(s))),
-    //         expiresIn,
-    //         embedParams ?? System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, object>>(jwtToken.Claims.FirstOrDefault(c => c.Type == "embed")?.Value ?? "{}"),
-    //         checkoutSessionId ?? jwtToken.Claims.FirstOrDefault(c => c.Type == "checkout_session_id")?.Value
-    //     );
-    // }
+        return GetToken(
+            privateKey,
+            scopes ?? new List<string>(previousScopes),
+            expiresIn,
+            embedParams,
+            checkoutSessionId
+        );
+    }
 
-    // public static string GetEmbedToken(
-    //     string privateKey,
-    //     Dictionary<string, object> embedParams = null,
-    //     string checkoutSessionId = null)
-    // {
-    //     return GetToken(
-    //         privateKey,
-    //         new List<string> { string.EMBED },
-    //         3600,
-    //         embedParams,
-    //         checkoutSessionId
-    //     );
-    // }
+    public static string GetEmbedToken(
+        string privateKey,
+        Dictionary<string, object> embedParams = null,
+        string checkoutSessionId = null)
+    {
+        return GetToken(
+            privateKey,
+            new List<string> { JWTScope.Embed },
+            3600,
+            embedParams,
+            checkoutSessionId
+        );
+    }
 }
