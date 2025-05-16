@@ -1,6 +1,6 @@
-# Gr4vy Typescript SDK (Beta)
+# Gr4vy C# SDK (Beta)
 
-Developer-friendly & type-safe Csharp SDK specifically catered to leverage *Gr4vy* API.
+Developer-friendly & type-safe C# SDK specifically catered to leverage *Gr4vy* API.
 
 <div align="left">  
     <a href="https://www.nuget.org/packages/Gr4vy"><img alt="NuGet Version" src="https://img.shields.io/nuget/v/gr4vy?style=for-the-badge"></a>
