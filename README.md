@@ -67,8 +67,8 @@ using System.Collections.Generic;
 var privateKey = "..."; 
 
 var sdk = new Gr4vySDK(
-    id="example",
-    server=SDKConfig.Server.Sandbox,
+    id: "example",
+    server: SDKConfig.Server.Sandbox,
     bearerAuthSource: Auth.WithToken(privateKey),
     merchantAccountId: "default"
 );
@@ -111,8 +111,8 @@ using Gr4vy;
 var privateKey = "..."; 
 
 var sdk = new Gr4vySDK(
-    id="example",
-    server=SDKConfig.Server.Sandbox,
+    id: "example",
+    server: SDKConfig.Server.Sandbox,
     bearerAuthSource: Auth.WithToken(privateKey),
     merchantAccountId: "default"
 );
@@ -142,8 +142,8 @@ when initializing the SDK.
 
 ```csharp
 var sdk = new Gr4vySDK(
-    id="example",
-    server=SDKConfig.Server.Sandbox,
+    id: "example",
+    server: SDKConfig.Server.Sandbox,
     bearerAuthSource: Auth.WithToken(privateKey),
     merchantAccountId: "my-merchant-id"
 );
