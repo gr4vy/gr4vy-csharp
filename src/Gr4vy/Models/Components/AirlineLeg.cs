@@ -48,6 +48,24 @@ namespace Gr4vy.Models.Components
         public string? CarrierCode { get; set; } = null;
 
         /// <summary>
+        /// Name of the airline.
+        /// </summary>
+        [JsonProperty("carrier_name")]
+        public string? CarrierName { get; set; } = null;
+
+        /// <summary>
+        /// Two-character IATA code of the airline.
+        /// </summary>
+        [JsonProperty("iata_designator")]
+        public string? IataDesignator { get; set; } = null;
+
+        /// <summary>
+        /// Three-character ICAO code of the airline.
+        /// </summary>
+        [JsonProperty("icao_code")]
+        public string? IcaoCode { get; set; } = null;
+
+        /// <summary>
         /// Coupon number associated with the leg.
         /// </summary>
         [JsonProperty("coupon_number")]
@@ -118,6 +136,12 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("route_type")]
         public RouteType? RouteType { get; set; } = null;
+
+        /// <summary>
+        /// Indicates seat class (first class, business class, etc.).
+        /// </summary>
+        [JsonProperty("seat_class")]
+        public string? SeatClass { get; set; } = null;
 
         /// <summary>
         /// Indicates whether a stopover is allowed on this ticket.

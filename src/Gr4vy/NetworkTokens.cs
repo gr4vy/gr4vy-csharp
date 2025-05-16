@@ -76,10 +76,10 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.0.13";
-        private const string _sdkGenVersion = "2.598.22";
+        private const string _sdkVersion = "0.0.14";
+        private const string _sdkGenVersion = "2.599.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.0.13 2.598.22 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.0.14 2.599.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
