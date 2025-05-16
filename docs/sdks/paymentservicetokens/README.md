@@ -85,7 +85,7 @@ var res = await sdk.PaymentMethods.PaymentServiceTokens.CreateAsync(
     paymentServiceTokenCreate: new PaymentServiceTokenCreate() {
         SecurityCode = "123",
         PaymentServiceId = "fffd152a-9532-4087-9a4f-de58754210f0",
-        RedirectUrl = "https://probable-heating.com/",
+        RedirectUrl = "https://dual-futon.biz",
     },
     timeoutInSeconds: 1D,
     merchantAccountId: "default"

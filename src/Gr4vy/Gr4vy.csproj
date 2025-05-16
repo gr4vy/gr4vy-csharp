@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>Gr4vy</PackageId>
-    <Version>0.0.13</Version>
+    <Version>0.0.18</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Gr4vy</Authors>
     <Copyright>Copyright (c) Gr4vy 2025</Copyright>
@@ -29,6 +29,7 @@
   <ItemGroup>
     <PackageReference Include="newtonsoft.json" Version="13.0.3" />
     <PackageReference Include="nodatime" Version="3.1.9" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.9.0" />
   </ItemGroup>
 
 </Project>

@@ -46,6 +46,24 @@ namespace Gr4vy.Models.Components
         public string? IssuingCarrierCode { get; set; } = null;
 
         /// <summary>
+        /// For airline aggregators, name of the airline issuing the ticket.
+        /// </summary>
+        [JsonProperty("issuing_carrier_name")]
+        public string? IssuingCarrierName { get; set; } = null;
+
+        /// <summary>
+        /// For airline aggregators, two-character IATA code of the airline issuing the ticket.
+        /// </summary>
+        [JsonProperty("issuing_iata_designator")]
+        public string? IssuingIataDesignator { get; set; } = null;
+
+        /// <summary>
+        /// For airline aggregators, three-character ICAO code of the airline issuing the ticket.
+        /// </summary>
+        [JsonProperty("issuing_icao_code")]
+        public string? IssuingIcaoCode { get; set; } = null;
+
+        /// <summary>
         /// An array of separate trip segments. Each leg contains detailed itinerary information.
         /// </summary>
         [JsonProperty("legs")]

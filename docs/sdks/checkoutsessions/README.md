@@ -49,7 +49,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
                     "gear",
                 },
                 ProductType = ProductType.Physical,
-                SellerCountry = "US",
+                SellerCountry = "GB",
             },
         },
         Metadata = new Dictionary<string, string>() {
@@ -77,7 +77,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
                 },
                 TaxId = new TaxId() {
                     Value = "12345678931",
-                    Kind = TaxIdKind.MyNric,
+                    Kind = TaxIdKind.MxRfc,
                 },
             },
             ShippingDetails = new ShippingDetailsCreate() {
@@ -103,6 +103,9 @@ var res = await sdk.CheckoutSessions.CreateAsync(
             IssuedAddress = "123 Broadway, New York",
             IssuedAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
             IssuingCarrierCode = "649",
+            IssuingCarrierName = "Air Transat A.T. Inc",
+            IssuingIataDesignator = "TS",
+            IssuingIcaoCode = "TSC",
             Legs = new List<AirlineLeg>() {
                 new AirlineLeg() {
                     ArrivalAirport = "LAX",
@@ -110,6 +113,9 @@ var res = await sdk.CheckoutSessions.CreateAsync(
                     ArrivalCity = "Los Angeles",
                     ArrivalCountry = "US",
                     CarrierCode = "649",
+                    CarrierName = "Air Transat A.T. Inc",
+                    IataDesignator = "TS",
+                    IcaoCode = "TSC",
                     CouponNumber = "15885566",
                     DepartureAirport = "LHR",
                     DepartureAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
@@ -122,6 +128,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
                     FlightClass = "E",
                     FlightNumber = "101",
                     RouteType = RouteType.RoundTrip,
+                    SeatClass = "F",
                     StopOver = false,
                     TaxAmount = 1200,
                 },
@@ -227,7 +234,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
                     "gear",
                 },
                 ProductType = ProductType.Physical,
-                SellerCountry = "GB",
+                SellerCountry = "US",
             },
         },
         Metadata = new Dictionary<string, string>() {
@@ -255,7 +262,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
                 },
                 TaxId = new TaxId() {
                     Value = "12345678931",
-                    Kind = TaxIdKind.MyFrp,
+                    Kind = TaxIdKind.TwVat,
                 },
             },
             ShippingDetails = new ShippingDetailsCreate() {
@@ -281,6 +288,9 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
             IssuedAddress = "123 Broadway, New York",
             IssuedAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
             IssuingCarrierCode = "649",
+            IssuingCarrierName = "Air Transat A.T. Inc",
+            IssuingIataDesignator = "TS",
+            IssuingIcaoCode = "TSC",
             Legs = new List<AirlineLeg>() {
                 new AirlineLeg() {
                     ArrivalAirport = "LAX",
@@ -288,6 +298,9 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
                     ArrivalCity = "Los Angeles",
                     ArrivalCountry = "US",
                     CarrierCode = "649",
+                    CarrierName = "Air Transat A.T. Inc",
+                    IataDesignator = "TS",
+                    IcaoCode = "TSC",
                     CouponNumber = "15885566",
                     DepartureAirport = "LHR",
                     DepartureAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
@@ -300,6 +313,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
                     FlightClass = "E",
                     FlightNumber = "101",
                     RouteType = RouteType.RoundTrip,
+                    SeatClass = "F",
                     StopOver = false,
                     TaxAmount = 1200,
                 },

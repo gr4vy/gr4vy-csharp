@@ -89,7 +89,7 @@ var sdk = new Gr4vySDK(
 var res = await sdk.Payouts.CreateAsync(
     payoutCreate: new PayoutCreate() {
         Amount = 1299,
-        Currency = "GBP",
+        Currency = "USD",
         PaymentServiceId = "ed8bd87d-85ad-40cf-8e8f-007e21e55aad",
         PaymentMethod = PayoutCreatePaymentMethod.CreatePaymentMethodStoredCard(
             new PaymentMethodStoredCard() {
@@ -120,7 +120,7 @@ var res = await sdk.Payouts.CreateAsync(
                 },
                 TaxId = new TaxId() {
                     Value = "12345678931",
-                    Kind = TaxIdKind.IdNik,
+                    Kind = TaxIdKind.NoVat,
                 },
             },
             ShippingDetails = new ShippingDetailsCreate() {
@@ -145,7 +145,7 @@ var res = await sdk.Payouts.CreateAsync(
         Merchant = new PayoutMerchant() {
             Name = "Acme Inc",
             IdentificationNumber = "12345",
-            PhoneNumber = "+14155552671",
+            PhoneNumber = "+442071838750",
             Url = "https://example.com",
             StatementDescriptor = "Winnings",
             MerchantCategoryCode = "123456",
@@ -223,7 +223,7 @@ var sdk = new Gr4vySDK(
 );
 
 var res = await sdk.Payouts.GetAsync(
-    payoutId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    payoutId: "4344fef2-bc2f-49a6-924f-343e62f67224",
     merchantAccountId: "default"
 );
 
