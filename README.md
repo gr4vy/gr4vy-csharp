@@ -2,11 +2,9 @@
 
 Developer-friendly & type-safe Csharp SDK specifically catered to leverage *Gr4vy* API.
 
-<div align="left">
+<div align="left">  
+    <a href="https://www.nuget.org/packages/Gr4vy"><img alt="NuGet Version" src="https://img.shields.io/nuget/v/gr4vy?style=for-the-badge"></a>
     <a href="https://www.speakeasy.com/?utm_source=gr4vy&utm_campaign=csharp"><img src="https://custom-icon-badges.demolab.com/badge/-Built%20By%20Speakeasy-212015?style=for-the-badge&logoColor=FBE331&logo=speakeasy&labelColor=545454" /></a>
-    <a href="https://opensource.org/licenses/MIT">
-        <img src="https://img.shields.io/badge/License-MIT-blue.svg" style="width: 100px; height: 28px;" />
-    </a>
 </div>
 
 <!-- Start Summary [summary] -->
