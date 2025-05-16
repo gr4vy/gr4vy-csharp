@@ -25,5 +25,5 @@ targets:
             registry:
                 location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi-csharp-code-samples
             labelOverride:
-                fixedValue: CSharp
+                fixedValue: C#
             blocking: false
