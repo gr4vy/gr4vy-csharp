@@ -50,7 +50,6 @@ dotnet add reference src/Gr4vy/Gr4vy.csproj
 ```
 <!-- End SDK Installation [installation] -->
 
-<!-- Start SDK Example Usage [usage] -->
 ## SDK Example Usage
 
 ### Example
@@ -60,62 +59,125 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
+// Loaded the key from a file, env variable, 
+// or anywhere else
+var privateKey = "..."; 
+
 var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    id="example",
+    server=SDKConfig.Server.Sandbox,
+    bearerAuthSource: Auth.WithToken(privateKey),
     merchantAccountId: "default"
 );
 
-var res = await sdk.AccountUpdater.Jobs.CreateAsync(
-    accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-        PaymentMethodIds = new List<string>() {
-            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-            "f29e886e-93cc-4714-b4a3-12b7a718e595",
-        },
-    },
-    timeoutInSeconds: 1D,
-    merchantAccountId: "default"
-);
+var res = await sdk.Transactions.ListAsync();
 
 // handle response
 ```
-<!-- End SDK Example Usage [usage] -->
 
-<!-- Start Authentication [security] -->
-## Authentication
+<br /><br />
+> [!IMPORTANT]
+> Please use `bearerAuthSource: Auth.WithToken()` where the documentation mentions `bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",`.
 
-### Per-Client Security Schemes
 
-This SDK supports the following security scheme globally:
+<!-- No SDK Example Usage [usage] -->
 
-| Name         | Type | Scheme      |
-| ------------ | ---- | ----------- |
-| `BearerAuth` | http | HTTP Bearer |
+## Bearer token generation
 
-To authenticate with the API the `BearerAuth` parameter must be set when initializing the SDK client instance. For example:
+Alternatively, you can create a token for use with the SDK or with your own client library.
+
 ```csharp
 using Gr4vy;
-using Gr4vy.Models.Components;
-using System.Collections.Generic;
+
+var token = Auth.GetToken(privateKey),
+```
+
+> **Note:** This will only create a token once. Use `Auth.WithToken` to dynamically generate a token
+> for every request.
+
+
+## Embed token generation
+
+Alternatively, you can create a token for use with Embed as follows.
+
+```csharp
+using Gr4vy;
+
+// Loaded the key from a file, env variable, 
+// or anywhere else
+var privateKey = "..."; 
 
 var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+    id="example",
+    server=SDKConfig.Server.Sandbox,
+    bearerAuthSource: Auth.WithToken(privateKey),
     merchantAccountId: "default"
 );
 
-var res = await sdk.AccountUpdater.Jobs.CreateAsync(
-    accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-        PaymentMethodIds = new List<string>() {
-            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-            "f29e886e-93cc-4714-b4a3-12b7a718e595",
-        },
+var checkoutSession = await sdk.CheckoutSessions.CreateAsync()
+
+auth.get_embed_token(
+    privatekey,
+    embedParams=new Dictionary<string, object>
+    {
+        ["amount"]: 1299,
+        ["currency"]: 'USD',
+        ["buyer_external_identifier"]: 'user-1234',
     },
-    timeoutInSeconds: 1D,
-    merchantAccountId: "default"
-);
-
-// handle response
+    checkoutSessionId=checkoutSession.ID
+)
 ```
-<!-- End Authentication [security] -->
+
+> **Note:** This will only create a token once. Use `Auth.WithToken()` to dynamically generate a token
+> for every request.
+
+## Merchant account ID selection
+
+Depending on the key used, you might need to explicitly define a merchant account ID to use. In our API, 
+this uses the `X-GR4VY-MERCHANT-ACCOUNT-ID` header. When using the SDK, you can set the `merchantAccountId`
+when initializing the SDK.
+
+```csharp
+var sdk = new Gr4vySDK(
+    id="example",
+    server=SDKConfig.Server.Sandbox,
+    bearerAuthSource: Auth.WithToken(privateKey),
+    merchantAccountId: "my-merchant-id"
+);
+```
+
+## Webhooks verification
+
+The SDK makes it easy to verify that incoming webhooks were actually sent by Gr4vy. Once you have configured the webhook subscription with its corresponding secret, that can be verified the following way:
+
+```csharp
+using Gr4vy;
+
+// Webhook payload and headers
+string payload = "your-webhook-payload";
+string secret = "your-webhook-secret";
+string signatureHeader = "signatures-from-header";
+string timestampHeader = "timestamp-from-header";
+int timestampTolerance = 300; // optional, in seconds (default: 0)
+
+try {
+    Webhooks.Verify(Payload, Secret, signatureHeader, timestampHeader, timestampTolerance);
+    
+}
+catch(ArgumentException ex) {
+    // handle the exception
+}
+```
+
+### Parameters
+
+- **`payload`**: The raw payload string received in the webhook request.
+- **`secret`**: The secret used to sign the webhook. This is provided in your Gr4vy dashboard.
+- **`signatureHeader`**: The `X-Gr4vy-Signature` header from the webhook request.
+- **`timestampHeader`**: The `X-Gr4vy-Timestamp` header from the webhook request.
+- **`timestampTolerance`**: _(Optional)_ The maximum allowed difference (in seconds) between the current time and the timestamp in the webhook. Defaults to `0` (no tolerance).
+
+<!-- No Authentication [security] -->
 
 <!-- Start Available Resources and Operations [operations] -->
 ## Available Resources and Operations
