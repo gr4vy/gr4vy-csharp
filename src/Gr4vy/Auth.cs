@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -52,7 +53,14 @@ public static class JWTScope
 
 public class Auth
 {
-    public static System.Func<string>? WithToken(
+    /// <summary>
+    /// Returns a function that generates a JWT token using the provided private key, scopes, and expiration.
+    /// </summary>
+    /// <param name="privateKeyPem">The PEM-encoded private key.</param>
+    /// <param name="scopes">Optional list of JWT scopes. Defaults to read and write all.</param>
+    /// <param name="expiresIn">Token expiration in seconds. Defaults to 3600.</param>
+    /// <returns>A function that returns a JWT token string when invoked.</returns>
+    public static Func<string>? WithToken(
         string privateKeyPem,
         List<string>? scopes = null,
         int expiresIn = 3600
@@ -61,7 +69,15 @@ public class Auth
         return () => GetToken(privateKeyPem, scopes, expiresIn);
     }
 
-
+    /// <summary>
+    /// Generates a JWT token using the provided private key and options.
+    /// </summary>
+    /// <param name="privateKey">The PEM-encoded private key.</param>
+    /// <param name="scopes">Optional list of JWT scopes. Defaults to read and write all.</param>
+    /// <param name="expiresIn">Token expiration in seconds. Defaults to 3600.</param>
+    /// <param name="embedParams">Optional embed parameters for the token.</param>
+    /// <param name="checkoutSessionId">Optional checkout session ID to include in the token.</param>
+    /// <returns>The generated JWT token as a string.</returns>
     public static string GetToken(
         string privateKey,
         List<string>? scopes = null,
@@ -70,7 +86,7 @@ public class Auth
         string? checkoutSessionId = null
     )
     {
-        if (scopes == null)
+        if (scopes == null || !scopes.Any())
         {
             scopes = new List<string> { JWTScope.ReadAll, JWTScope.WriteAll };
         }
@@ -122,8 +138,7 @@ public class Auth
         var securityKey = GetECDsaSecurityKey(privateKey);
         var kid = GenerateThumbprint(securityKey.ECDsa);
 
-        var header = new JwtHeader(credentials);
-        header.Add("kid", kid);
+        var header = new JwtHeader(credentials) { { "kid", kid } };
 
         var token = new JwtSecurityToken(header: header, payload: new JwtPayload(claims));
 
@@ -131,7 +146,6 @@ public class Auth
         var tokenString = tokenHandler.WriteToken(token);
         return tokenString;
     }
-
 
     private static string GenerateThumbprint(ECDsa privateKey)
     {
@@ -187,8 +201,10 @@ public class Auth
         var tokenHandler = new JwtSecurityTokenHandler();
         var jwtToken = tokenHandler.ReadJwtToken(token);
 
-        // this  needs actual convertign to a list of strings
-        var previousScopes = jwtToken.Payload["scopes"];
+        List<string> previousScopes = jwtToken
+            .Claims.Where(s => s.Type == "scopes")
+            .Select(s => s.Value)
+            .ToList();
 
         return GetToken(
             privateKey,
@@ -199,6 +215,13 @@ public class Auth
         );
     }
 
+    /// <summary>
+    /// Generates a JWT token with the "embed" scope and optional embed parameters or checkout session ID.
+    /// </summary>
+    /// <param name="privateKey">The PEM-encoded private key.</param>
+    /// <param name="embedParams">Optional embed parameters for the token.</param>
+    /// <param name="checkoutSessionId">Optional checkout session ID to include in the token.</param>
+    /// <returns>The generated embed JWT token as a string.</returns>
     public static string GetEmbedToken(
         string privateKey,
         Dictionary<string, object>? embedParams = null,

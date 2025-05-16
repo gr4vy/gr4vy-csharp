@@ -152,7 +152,11 @@ rw==
     [Test]
     public void UpdateToken_ShouldResignTokenWithNewSignatureAndExpiration()
     {
-        var originalToken = Auth.GetToken(privateKey: PrivateKey, expiresIn: 5, scopes: new List<string> { JWTScope.Embed });
+        var originalToken = Auth.GetToken(
+            privateKey: PrivateKey,
+            expiresIn: 5,
+            scopes: new List<string> { JWTScope.Embed, JWTScope.ReadAll }
+        );
 
         System.Threading.Thread.Sleep(1000);
 
