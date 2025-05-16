@@ -4,3 +4,4 @@ debug/
 .DS_Store
 **/.speakeasy/temp/
 **/.speakeasy/logs/
+*.pem

@@ -49,8 +49,90 @@ public static class JWTScope
     public const string TransactionsWrite = "transactions.write";
     public const string VaultForwardWrite = "vault-forward.write";
 }
+
 public class Auth
 {
+    public static System.Func<string>? WithToken(
+        string privateKeyPem,
+        List<string>? scopes = null,
+        int expiresIn = 3600
+    )
+    {
+        return () => GetToken(privateKeyPem, scopes, expiresIn);
+    }
+
+
+    public static string GetToken(
+        string privateKey,
+        List<string>? scopes = null,
+        int expiresIn = 3600,
+        Dictionary<string, object>? embedParams = null,
+        string? checkoutSessionId = null
+    )
+    {
+        if (scopes == null)
+        {
+            scopes = new List<string> { JWTScope.ReadAll, JWTScope.WriteAll };
+        }
+
+        var now = DateTime.UtcNow;
+        var claims = new List<Claim>
+        {
+            new Claim("iss", "Gr4vy C# SDK"),
+            new Claim(
+                JwtRegisteredClaimNames.Iat,
+                new DateTimeOffset(now).ToUnixTimeSeconds().ToString()
+            ),
+            new Claim(
+                JwtRegisteredClaimNames.Nbf,
+                new DateTimeOffset(now).ToUnixTimeSeconds().ToString()
+            ),
+            new Claim(
+                JwtRegisteredClaimNames.Exp,
+                new DateTimeOffset(now.AddSeconds(expiresIn)).ToUnixTimeSeconds().ToString()
+            ),
+            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
+        };
+
+        foreach (var scope in scopes)
+        {
+            claims.Add(new Claim("scopes", scope));
+        }
+
+        if (!string.IsNullOrEmpty(checkoutSessionId))
+        {
+            claims.Add(new Claim("checkout_session_id", checkoutSessionId));
+        }
+
+        if (scopes.Contains(JWTScope.Embed) && embedParams != null)
+        {
+            claims.Add(
+                new Claim(JWTScope.Embed, System.Text.Json.JsonSerializer.Serialize(embedParams))
+            );
+        }
+
+        var key = new ECDsaSecurityKey(ECDsa.Create());
+        key.ECDsa.ImportFromPem(privateKey);
+
+        var credentials = new SigningCredentials(key, SecurityAlgorithms.EcdsaSha512)
+        {
+            CryptoProviderFactory = new CryptoProviderFactory { CacheSignatureProviders = false },
+        };
+
+        var securityKey = GetECDsaSecurityKey(privateKey);
+        var kid = GenerateThumbprint(securityKey.ECDsa);
+
+        var header = new JwtHeader(credentials);
+        header.Add("kid", kid);
+
+        var token = new JwtSecurityToken(header: header, payload: new JwtPayload(claims));
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+        var tokenString = tokenHandler.WriteToken(token);
+        return tokenString;
+    }
+
+
     private static string GenerateThumbprint(ECDsa privateKey)
     {
         var parameters = privateKey.ExportParameters(true);
@@ -59,7 +141,7 @@ public class Auth
             { "kty", "EC" },
             { "crv", "P-521" },
             { "x", Base64UrlEncoder.Encode(parameters.Q.X) },
-            { "y", Base64UrlEncoder.Encode(parameters.Q.Y) }
+            { "y", Base64UrlEncoder.Encode(parameters.Q.Y) },
         };
 
         var sortedKeys = new SortedDictionary<string, string>(jwk);
@@ -85,61 +167,6 @@ public class Auth
         var hash = sha256.ComputeHash(Encoding.UTF8.GetBytes(json));
         return Base64UrlEncoder.Encode(hash);
     }
-    public static string GetToken(
-        string privateKey,
-        List<string>? scopes = null,
-        int expiresIn = 3600,
-        Dictionary<string, object>? embedParams = null,
-        string? checkoutSessionId = null)
-    {
-        if (scopes == null)
-        {
-            scopes = new List<string> { JWTScope.ReadAll, JWTScope.WriteAll };
-        }
-
-        var now = DateTime.UtcNow;
-        var claims = new List<Claim>
-        {
-            new Claim("scopes", string.Join(",", scopes)),
-            new Claim("iss", "Gr4vy C# SDK"),
-            new Claim(JwtRegisteredClaimNames.Iat, new DateTimeOffset(now).ToUnixTimeSeconds().ToString()),
-            new Claim(JwtRegisteredClaimNames.Nbf, new DateTimeOffset(now).ToUnixTimeSeconds().ToString()),
-            new Claim(JwtRegisteredClaimNames.Exp, new DateTimeOffset(now.AddSeconds(expiresIn)).ToUnixTimeSeconds().ToString()),
-            new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
-        };
-
-        if (!string.IsNullOrEmpty(checkoutSessionId))
-        {
-            claims.Add(new Claim("checkout_session_id", checkoutSessionId));
-        }
-
-        if (scopes.Contains(JWTScope.Embed) && embedParams != null)
-        {
-            claims.Add(new Claim(JWTScope.Embed, System.Text.Json.JsonSerializer.Serialize(embedParams)));
-        }
-
-        var key = new ECDsaSecurityKey(ECDsa.Create());
-        key.ECDsa.ImportFromPem(privateKey);
-
-        var credentials = new SigningCredentials(key, SecurityAlgorithms.EcdsaSha512)
-        {
-            CryptoProviderFactory = new CryptoProviderFactory { CacheSignatureProviders = false }
-        };
-
-        var securityKey = GetECDsaSecurityKey(privateKey);
-        var kid = GenerateThumbprint(securityKey.ECDsa);
-
-        var header = new JwtHeader(credentials);
-        header.Add("kid", kid);
-
-        var token = new JwtSecurityToken(
-            header: header,
-            payload: new JwtPayload(claims)
-        );
-
-        var tokenHandler = new JwtSecurityTokenHandler();
-        return tokenHandler.WriteToken(token);
-    }
 
     private static ECDsaSecurityKey GetECDsaSecurityKey(string pem)
     {
@@ -154,16 +181,18 @@ public class Auth
         List<string>? scopes = null,
         int expiresIn = 3600,
         Dictionary<string, object>? embedParams = null,
-        string? checkoutSessionId = null)
+        string? checkoutSessionId = null
+    )
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var jwtToken = tokenHandler.ReadJwtToken(token);
 
-        var previousScopes = jwtToken.Payload["scopes"]?.ToString().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+        // this  needs actual convertign to a list of strings
+        var previousScopes = jwtToken.Payload["scopes"];
 
         return GetToken(
             privateKey,
-            scopes ?? new List<string>(previousScopes),
+            scopes ?? previousScopes,
             expiresIn,
             embedParams,
             checkoutSessionId
@@ -173,7 +202,8 @@ public class Auth
     public static string GetEmbedToken(
         string privateKey,
         Dictionary<string, object>? embedParams = null,
-        string? checkoutSessionId = null)
+        string? checkoutSessionId = null
+    )
     {
         return GetToken(
             privateKey,
