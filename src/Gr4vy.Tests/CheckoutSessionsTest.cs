@@ -6,6 +6,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Gr4vy;
 using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 using NUnit.Framework;
 
 namespace Gr4vy.Tests
@@ -144,53 +145,59 @@ namespace Gr4vy.Tests
         public async Task HandleStoredPaymentMethod()
         {
             // Create a card payment method
-            // var request = CreateCardPaymentMethodCreate(
-            //     new CardPaymentMethodCreate
-            //     {
-            //         Number = "4111111111111111",
-            //         ExpirationDate = "11/25",
-            //         SecurityCode = "123",
-            //     }
-            // );
-            // var paymentMethod = await _client.PaymentMethods.CreateAsync(requestBody: request);
-            // Assert.IsNotNull(paymentMethod.Id);
+            var request = Body.CreateCardPaymentMethodCreate(
+                new CardPaymentMethodCreate
+                {
+                    Number = "4111111111111111",
+                    ExpirationDate = "11/25",
+                    SecurityCode = "123",
+                }
+            );
+            var paymentMethod = await _client.PaymentMethods.CreateAsync(requestBody: request);
+            Assert.IsNotNull(paymentMethod.Id);
 
-            // // Create a checkout session
-            // var checkoutSession = await _client.CheckoutSessions.CreateAsync();
-            // Assert.IsNotNull(checkoutSession.Id);
+            // Create a checkout session
+            var checkoutSession = await _client.CheckoutSessions.CreateAsync();
+            Assert.IsNotNull(checkoutSession.Id);
 
-            // // Direct API call to update checkout session fields
-            // using (var httpClient = new HttpClient())
-            // {
-            //     var response = await httpClient.PutAsJsonAsync(
-            //         $"https://api.sandbox.e2e.gr4vy.app/checkout/sessions/{checkoutSession.Id}/fields",
-            //         new
-            //         {
-            //             payment_method = new
-            //             {
-            //                 method = "id",
-            //                 id = paymentMethod.Id,
-            //                 security_code = "123",
-            //             },
-            //         }
-            //     );
-            //     Assert.AreEqual(System.Net.HttpStatusCode.NoContent, response.StatusCode);
-            // }
+            // Direct API call to update checkout session fields
+            using (var httpClient = new HttpClient())
+            {
+                var response = await httpClient.PutAsJsonAsync(
+                    $"https://api.sandbox.e2e.gr4vy.app/checkout/sessions/{checkoutSession.Id}/fields",
+                    new
+                    {
+                        payment_method = new
+                        {
+                            method = "id",
+                            id = paymentMethod.Id,
+                            security_code = "123",
+                        },
+                    }
+                );
+                Assert.That(response.StatusCode, Is.EqualTo(System.Net.HttpStatusCode.NoContent));
+            }
 
-            // // Create a transaction using the checkout session
-            // var transaction = await _client.Transactions.CreateAsync(
-            //     amount: 1299,
-            //     currency: "USD",
-            //     paymentMethod: new Dictionary<string, object>
-            //     {
-            //         { "method", "checkout-session" },
-            //         { "id", checkoutSession.Id },
-            //     }
-            // );
+            // Create a transaction using the checkout session
+            var transaction = await _client.Transactions.CreateAsync(
+                transactionCreate: new TransactionCreate()
+                {
+                    Amount = 1299,
+                    Currency = "USD",
+                    Country = "US",
+                    PaymentMethod =
+                        TransactionCreatePaymentMethod.CreateCheckoutSessionWithUrlPaymentMethodCreate(
+                            new CheckoutSessionWithUrlPaymentMethodCreate()
+                            {
+                                Id = checkoutSession.Id,
+                            }
+                        ),
+                }
+            );
 
-            // Assert.IsNotNull(transaction.Id);
-            // Assert.AreEqual("authorization_succeeded", transaction.Status);
-            // Assert.AreEqual(1299, transaction.Amount);
+            Assert.IsNotNull(transaction.Id);
+            Assert.That(transaction.Status, Is.EqualTo(TransactionStatus.AuthorizationSucceeded));
+            Assert.That(transaction.Amount, Is.EqualTo(1299));
         }
     }
 }
