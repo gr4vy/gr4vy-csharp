@@ -1,4 +1,4 @@
-speakeasyVersion: 1.546.0
+speakeasyVersion: 1.546.1
 sources:
     -OAS:
         sourceNamespace: openapi
@@ -8,19 +8,20 @@ sources:
             - latest
     openapi:
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:205cf85c3d1d69a8454d608a55287996238f551013908924fc63fa3511fc122a
+        sourceRevisionDigest: sha256:fd7681da12e602190de6059b46c8519fb7f46fed6c0ea197af82f4da31ce18fe
         sourceBlobDigest: sha256:e61cb351f757d275c72b7d8f17a42285f569b21f95831057dbc42f3caea1b0e2
         tags:
             - latest
+            - speakeasy-sdk-regen-1747409493
             - 1.0.0
 targets:
     csharp:
         source: openapi
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:205cf85c3d1d69a8454d608a55287996238f551013908924fc63fa3511fc122a
+        sourceRevisionDigest: sha256:fd7681da12e602190de6059b46c8519fb7f46fed6c0ea197af82f4da31ce18fe
         sourceBlobDigest: sha256:e61cb351f757d275c72b7d8f17a42285f569b21f95831057dbc42f3caea1b0e2
         codeSamplesNamespace: openapi-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:d45e4bc33abf00f85c48ef99d8d1c13acc0a3baa69a07870e4cc4d07cbe1487e
+        codeSamplesRevisionDigest: sha256:587ad1899bbd136a30982b65aa4a17a98e1a2c8e35a76860952dd211527d2c95
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -49,5 +50,5 @@ workflow:
                 registry:
                     location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi-csharp-code-samples
                 labelOverride:
-                    fixedValue: CSharp
+                    fixedValue: C#
                 blocking: false

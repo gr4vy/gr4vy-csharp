@@ -3,10 +3,12 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>Gr4vy</PackageId>
-    <Version>0.0.18</Version>
+    <Version>1.0.0-beta.1</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Gr4vy</Authors>
     <Copyright>Copyright (c) Gr4vy 2025</Copyright>
+    <RepositoryUrl>https://github.com/gr4vy/gr4vy-csharp.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
     <PackageTags>gr4vy payments orchestration sdk pci credit cards</PackageTags>
     <Description>Gr4vy: The Gr4vy API.</Description>
   </PropertyGroup>
