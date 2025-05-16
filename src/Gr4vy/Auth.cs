@@ -78,7 +78,7 @@ public class Auth
             index++;
         }
         sb.Append('}');
-        
+
         string json = sb.ToString();
 
         using var sha256 = SHA256.Create();
@@ -127,13 +127,13 @@ public class Auth
         };
 
         var securityKey = GetECDsaSecurityKey(privateKey);
-        var kid = GenerateThumbprint(securityKey.ECDsa); 
+        var kid = GenerateThumbprint(securityKey.ECDsa);
 
         var header = new JwtHeader(credentials);
         header.Add("kid", kid);
 
         var token = new JwtSecurityToken(
-            header: header, 
+            header: header,
             payload: new JwtPayload(claims)
         );
 

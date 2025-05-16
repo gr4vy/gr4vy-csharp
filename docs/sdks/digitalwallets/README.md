@@ -28,9 +28,9 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.DigitalWallets.CreateAsync(
     digitalWalletCreate: new DigitalWalletCreate() {
-        Provider = DigitalWalletProvider.Google,
+        Provider = DigitalWalletProvider.ClickToPay,
         MerchantName = "<value>",
-        MerchantCountryCode = "GB",
+        MerchantCountryCode = "US",
         AcceptTermsAndConditions = false,
     },
     timeoutInSeconds: 1D,
@@ -250,7 +250,7 @@ var sdk = new Gr4vySDK(
 var res = await sdk.DigitalWallets.UpdateAsync(
     digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
     digitalWalletUpdate: new DigitalWalletUpdate() {
-        MerchantCountryCode = "US",
+        MerchantCountryCode = "DE",
     },
     timeoutInSeconds: 1D,
     merchantAccountId: "default"

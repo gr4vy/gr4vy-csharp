@@ -48,7 +48,7 @@ var res = await sdk.PaymentOptions.ListAsync(
                     "gear",
                 },
                 ProductType = ProductType.Physical,
-                SellerCountry = "GB",
+                SellerCountry = "US",
             },
         },
     },

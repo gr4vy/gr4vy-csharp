@@ -117,7 +117,7 @@ var res = await sdk.PaymentServices.CreateAsync(
             "DE",
             "GB",
         },
-        Active = true,
+        Active = false,
         MerchantProfile = new Dictionary<string, MerchantProfileScheme>() {
             { "key", new MerchantProfileScheme() {
                 MerchantAcquirerBin = "516327",

@@ -145,23 +145,17 @@ var sdk = new Gr4vySDK(
 var res = await sdk.Transactions.CreateAsync(
     transactionCreate: new TransactionCreate() {
         Amount = 1299,
-        Currency = "GBP",
+        Currency = "EUR",
         Country = "US",
-        PaymentMethod = TransactionCreatePaymentMethod.CreateGooglePayPaymentMethodCreate(
-            new GooglePayPaymentMethodCreate() {
+        PaymentMethod = TransactionCreatePaymentMethod.CreateCardWithUrlPaymentMethodCreate(
+            new CardWithUrlPaymentMethodCreate() {
+                ExpirationDate = "12/30",
+                Number = "4111111111111111",
                 BuyerExternalIdentifier = "buyer-12345",
                 BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
-                CardholderName = "John Luhn",
-                CardSuffix = "1234",
-                CardScheme = "visa",
+                ExternalIdentifier = "payment-method-12345",
                 CardType = "credit",
-                Token = Token.CreateStr(
-                    "{\"signature\":\"MEUCIEg4a4A+pu+AUjgVjBpfz9msLqQOkT5kz7htz..."
-                ),
-                AssuranceDetails = new GooglePayAssuranceDetails() {
-                    AccountVerified = true,
-                    CardHolderAuthenticated = true,
-                },
+                SecurityCode = "123",
             }
         ),
         Buyer = new GuestBuyerInput() {
@@ -185,7 +179,7 @@ var res = await sdk.Transactions.CreateAsync(
                 },
                 TaxId = new TaxId() {
                     Value = "12345678931",
-                    Kind = TaxIdKind.IdNik,
+                    Kind = TaxIdKind.BrCnpj,
                 },
             },
             ShippingDetails = new ShippingDetailsCreate() {
@@ -209,25 +203,23 @@ var res = await sdk.Transactions.CreateAsync(
         BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
         BuyerExternalIdentifier = "buyer-12345",
         GiftCards = new List<GiftCardUnion>() {
-            GiftCardUnion.CreateGiftCardTransactionCreate(
-                new GiftCardTransactionCreate() {
-                    Number = "4123455541234561234",
-                    Pin = "1234",
+            GiftCardUnion.CreateGiftCardTokenTransactionCreate(
+                new GiftCardTokenTransactionCreate() {
+                    Id = "356d56e5-fe16-42ae-97ee-8d55d846ae2e",
                     Amount = 1299,
                 }
             ),
         },
         ExternalIdentifier = "transaction-12345",
-        ThreeDSecureData = ThreeDSecureData.CreateThreeDSecureDataV1(
-            new ThreeDSecureDataV1() {
+        ThreeDSecureData = ThreeDSecureData.CreateThreeDSecureDataV2(
+            new ThreeDSecureDataV2() {
                 Cavv = "3q2+78r+ur7erb7vyv66vv8=",
                 Eci = "05",
                 Version = "2.1.0",
                 DirectoryResponse = "C",
                 Scheme = CardScheme.Visa,
                 AuthenticationResponse = "Y",
-                CavvAlgorithm = "A",
-                Xid = "12345",
+                DirectoryTransactionId = "c4e59ceb-a382-4d6a-bc87-385d591fa09d",
             }
         ),
         Metadata = new Dictionary<string, string>() {
@@ -239,6 +231,9 @@ var res = await sdk.Transactions.CreateAsync(
             IssuedAddress = "123 Broadway, New York",
             IssuedAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
             IssuingCarrierCode = "649",
+            IssuingCarrierName = "Air Transat A.T. Inc",
+            IssuingIataDesignator = "TS",
+            IssuingIcaoCode = "TSC",
             Legs = new List<AirlineLeg>() {
                 new AirlineLeg() {
                     ArrivalAirport = "LAX",
@@ -246,6 +241,9 @@ var res = await sdk.Transactions.CreateAsync(
                     ArrivalCity = "Los Angeles",
                     ArrivalCountry = "US",
                     CarrierCode = "649",
+                    CarrierName = "Air Transat A.T. Inc",
+                    IataDesignator = "TS",
+                    IcaoCode = "TSC",
                     CouponNumber = "15885566",
                     DepartureAirport = "LHR",
                     DepartureAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
@@ -258,6 +256,7 @@ var res = await sdk.Transactions.CreateAsync(
                     FlightClass = "E",
                     FlightNumber = "101",
                     RouteType = RouteType.RoundTrip,
+                    SeatClass = "F",
                     StopOver = false,
                     TaxAmount = 1200,
                 },
@@ -320,10 +319,10 @@ var res = await sdk.Transactions.CreateAsync(
             JavascriptEnabled = false,
             JavaEnabled = false,
             Language = "<value>",
-            ColorDepth = 951062,
-            ScreenHeight = 86,
-            ScreenWidth = 169727,
-            TimeZoneOffset = 89964,
+            ColorDepth = 233026,
+            ScreenHeight = 285144,
+            ScreenWidth = 702825,
+            TimeZoneOffset = 891521,
             UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
             UserDevice = UserDevice.Desktop,
             AcceptHeader = "*/*",
@@ -406,7 +405,7 @@ var sdk = new Gr4vySDK(
 );
 
 var res = await sdk.Transactions.GetAsync(
-    transactionId: "b888f774-3e7c-4135-a18c-6b985523c4bc",
+    transactionId: "bde12786-dce8-4654-b031-196961d1ddcc",
     merchantAccountId: "default"
 );
 
@@ -463,7 +462,7 @@ var sdk = new Gr4vySDK(
 );
 
 var res = await sdk.Transactions.CaptureAsync(
-    transactionId: "08cac402-e83f-4447-b82a-c4283b15a3b3",
+    transactionId: "e69a0490-29b9-4585-8dd6-d7d7f9fc92c4",
     transactionCapture: new TransactionCapture() {
         Amount = 1299,
         Airline = new Airline() {
@@ -471,6 +470,9 @@ var res = await sdk.Transactions.CaptureAsync(
             IssuedAddress = "123 Broadway, New York",
             IssuedAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
             IssuingCarrierCode = "649",
+            IssuingCarrierName = "Air Transat A.T. Inc",
+            IssuingIataDesignator = "TS",
+            IssuingIcaoCode = "TSC",
             Legs = new List<AirlineLeg>() {
                 new AirlineLeg() {
                     ArrivalAirport = "LAX",
@@ -478,6 +480,9 @@ var res = await sdk.Transactions.CaptureAsync(
                     ArrivalCity = "Los Angeles",
                     ArrivalCountry = "US",
                     CarrierCode = "649",
+                    CarrierName = "Air Transat A.T. Inc",
+                    IataDesignator = "TS",
+                    IcaoCode = "TSC",
                     CouponNumber = "15885566",
                     DepartureAirport = "LHR",
                     DepartureAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
@@ -490,6 +495,7 @@ var res = await sdk.Transactions.CaptureAsync(
                     FlightClass = "E",
                     FlightNumber = "101",
                     RouteType = RouteType.RoundTrip,
+                    SeatClass = "F",
                     StopOver = false,
                     TaxAmount = 1200,
                 },
@@ -576,7 +582,7 @@ var sdk = new Gr4vySDK(
 );
 
 var res = await sdk.Transactions.VoidAsync(
-    transactionId: "26740073-c9e5-4864-9ecf-5856a8e566d6",
+    transactionId: "7dbc44c9-1ea3-4853-87be-9923dd281b0d",
     timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
@@ -686,7 +692,7 @@ var sdk = new Gr4vySDK(
 );
 
 var res = await sdk.Transactions.SyncAsync(
-    transactionId: "f0897be3-0808-45c9-a63b-509c0142ddd3",
+    transactionId: "2ee546e0-3b11-478e-afec-fdb362611e22",
     timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );

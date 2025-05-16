@@ -24,7 +24,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Buyers.GiftCards.ListAsync(
     buyerExternalIdentifier: "<value>",
-    buyerId: "c8a232aa-0b11-4b8a-b005-71e9e705d0e6",
+    buyerId: "43dacd6f-2cf2-4482-b522-f7a251f63637",
     timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
