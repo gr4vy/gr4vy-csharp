@@ -63,13 +63,19 @@ rw==
         var handler = new JwtSecurityTokenHandler();
         var jwtToken = handler.ReadJwtToken(token);
 
+        Assert.NotNull(jwtToken);
+
+
         Assert.That(jwtToken.Header["alg"], Is.EqualTo("ES512"));
         Assert.That(jwtToken.Header["typ"], Is.EqualTo("JWT"));
-        Console.Write(jwtToken);
 
-        Assert.That(jwtToken.Header["kid"], Is.EqualTo(Thumbprint));
-        Assert.Contains("*.read", jwtToken.Claims.FirstOrDefault(c => c.Type == "scopes").Value.Split(','));
-        Assert.Contains("*.write", jwtToken.Claims.FirstOrDefault(c => c.Type == "scopes").Value.Split(','));
+        #pragma warning disable CS8602 
+        var scopes = jwtToken.Claims.FirstOrDefault(c => c.Type == "scopes").Value.Split(',');
+        var headers = jwtToken.Header;
+
+        Assert.That(headers["kid"], Is.EqualTo(Thumbprint));
+        Assert.Contains("*.read", scopes);
+        Assert.Contains("*.write", scopes);
         Assert.NotNull(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Iat));
         Assert.NotNull(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Nbf));
         Assert.NotNull(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Exp));
@@ -93,7 +99,7 @@ rw==
 
         Assert.Contains(JWTScope.Embed, jwtToken.Claims.Select(c => c.Type).ToList());
         Assert.NotNull(embedData);
-        Assert.AreEqual("USD", embedData["currency"].ToString());
+        Assert.That(embedData["currency"].ToString(), Is.EqualTo("USD"));
     }
 
     [Test]
@@ -127,7 +133,7 @@ rw==
 
         Assert.Contains(JWTScope.Embed, jwtToken.Claims.Select(c => c.Type).ToList());
         Assert.NotNull(embedData);
-        Assert.AreEqual("USD", embedData["currency"].ToString());
+        Assert.That(embedData["currency"].ToString(), Is.EqualTo("USD"));
     }
 
     [Test]
@@ -142,7 +148,7 @@ rw==
         var handler = new JwtSecurityTokenHandler();
         var jwtToken = handler.ReadJwtToken(token);
 
-        Assert.AreEqual(CheckoutSessionId, jwtToken.Claims.First(c => c.Type == "checkout_session_id").Value);
+        Assert.That(jwtToken.Claims.First(c => c.Type == "checkout_session_id").Value, Is.EqualTo(CheckoutSessionId));
     }
 
     [Test]
@@ -165,8 +171,8 @@ rw==
         var originalJwt = handler.ReadJwtToken(originalToken);
         var newJwt = handler.ReadJwtToken(newToken);
 
-        Assert.AreEqual(originalJwt.Header, newJwt.Header);
-        Assert.AreEqual(originalJwt.Claims.First(c => c.Type == "scopes").Value, newJwt.Claims.First(c => c.Type == "scopes").Value);
-        Assert.AreNotEqual(originalJwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iat).Value, newJwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iat).Value);
+        Assert.That(originalJwt.Header, Is.EqualTo(newJwt.Header));
+        Assert.That(originalJwt.Claims.First(c => c.Type == "scopes").Value, Is.EqualTo(newJwt.Claims.First(c => c.Type == "scopes").Value));
+        Assert.That(originalJwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iat).Value, Is.Not.EqualTo(newJwt.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iat).Value));
     }
 }

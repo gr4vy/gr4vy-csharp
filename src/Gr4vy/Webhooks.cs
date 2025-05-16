@@ -8,9 +8,9 @@ public static class Webhooks
     public static void VerifyWebhook(
         string payload,
         string secret,
-        string signatureHeader,
-        string timestampHeader,
-        int timestampToleranceSeconds
+        string? signatureHeader,
+        string? timestampHeader,
+        int? timestampToleranceSeconds
     )
     {
         if (string.IsNullOrEmpty(signatureHeader) || string.IsNullOrEmpty(timestampHeader))

@@ -87,10 +87,10 @@ public class Auth
     }
     public static string GetToken(
         string privateKey,
-        List<string> scopes = null,
+        List<string>? scopes = null,
         int expiresIn = 3600,
-        Dictionary<string, object> embedParams = null,
-        string checkoutSessionId = null)
+        Dictionary<string, object>? embedParams = null,
+        string? checkoutSessionId = null)
     {
         if (scopes == null)
         {
@@ -128,7 +128,6 @@ public class Auth
 
         var securityKey = GetECDsaSecurityKey(privateKey);
         var kid = GenerateThumbprint(securityKey.ECDsa); 
-        Console.Write(kid);
 
         var header = new JwtHeader(credentials);
         header.Add("kid", kid);
@@ -152,10 +151,10 @@ public class Auth
     public static string UpdateToken(
         string token,
         string privateKey,
-        List<string> scopes = null,
+        List<string>? scopes = null,
         int expiresIn = 3600,
-        Dictionary<string, object> embedParams = null,
-        string checkoutSessionId = null)
+        Dictionary<string, object>? embedParams = null,
+        string? checkoutSessionId = null)
     {
         var tokenHandler = new JwtSecurityTokenHandler();
         var jwtToken = tokenHandler.ReadJwtToken(token);
@@ -173,8 +172,8 @@ public class Auth
 
     public static string GetEmbedToken(
         string privateKey,
-        Dictionary<string, object> embedParams = null,
-        string checkoutSessionId = null)
+        Dictionary<string, object>? embedParams = null,
+        string? checkoutSessionId = null)
     {
         return GetToken(
             privateKey,
