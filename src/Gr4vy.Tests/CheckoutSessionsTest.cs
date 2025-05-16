@@ -26,7 +26,7 @@ namespace Gr4vy.Tests
             }
             var gr4vy = new Gr4vySDK(
                 id: "e2e",
-                server: "sandbox",
+                server: SDKConfig.Server.Sandbox,
                 bearerAuthSource: Auth.WithToken(privateKey)
             );
 
