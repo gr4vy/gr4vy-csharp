@@ -16,7 +16,7 @@ Gr4vy: The Gr4vy API.
 <!-- Start Table of Contents [toc] -->
 ## Table of Contents
 <!-- $toc-max-depth=2 -->
-* [Gr4vy Typescript SDK (Beta)](#gr4vy-typescript-sdk-beta)
+* [Gr4vy C# SDK (Beta)](#gr4vy-c-sdk-beta)
   * [SDK Installation](#sdk-installation)
   * [SDK Example Usage](#sdk-example-usage)
   * [Bearer token generation](#bearer-token-generation)
@@ -521,8 +521,6 @@ When custom error responses are specified for an operation, the SDK may also thr
 | Gr4vy.Models.Errors.Error400            | 400         | application/json |
 | Gr4vy.Models.Errors.Error401            | 401         | application/json |
 | Gr4vy.Models.Errors.Error403            | 403         | application/json |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403         | application/json |
-| Gr4vy.Models.Errors.Error403Active      | 403         | application/json |
 | Gr4vy.Models.Errors.Error404            | 404         | application/json |
 | Gr4vy.Models.Errors.Error405            | 405         | application/json |
 | Gr4vy.Models.Errors.Error409            | 409         | application/json |
@@ -575,16 +573,6 @@ catch (Exception ex)
         throw;
     }
     else if (ex is Error403)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error403Forbidden)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error403Active)
     {
         // Handle exception data
         throw;

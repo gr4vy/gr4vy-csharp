@@ -56,8 +56,6 @@ while(res != null)
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -106,8 +104,6 @@ var res = await sdk.PaymentServiceDefinitions.GetAsync(paymentServiceDefinitionI
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -163,8 +159,6 @@ var res = await sdk.PaymentServiceDefinitions.SessionAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |

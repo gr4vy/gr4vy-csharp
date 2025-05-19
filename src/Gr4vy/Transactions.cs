@@ -96,10 +96,10 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.1";
-        private const string _sdkGenVersion = "2.604.2";
+        private const string _sdkVersion = "1.0.0-beta.2";
+        private const string _sdkGenVersion = "2.605.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.1 2.604.2 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.2 2.605.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -303,17 +303,8 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403ListTransactions>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    switch (obj!.Type.ToString()) {
-                        case "Error403":
-                              throw obj!.Error403!;
-                        case "Error403Forbidden":
-                              throw obj!.Error403Forbidden!;
-                        case "Error403Active":
-                              throw obj!.Error403Active!;
-                        default:
-                            throw new InvalidOperationException("Unknown error type.");
-                    };
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    throw obj!;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
@@ -519,17 +510,8 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403CreateTransaction>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    switch (obj!.Type.ToString()) {
-                        case "Error403":
-                              throw obj!.Error403!;
-                        case "Error403Forbidden":
-                              throw obj!.Error403Forbidden!;
-                        case "Error403Active":
-                              throw obj!.Error403Active!;
-                        default:
-                            throw new InvalidOperationException("Unknown error type.");
-                    };
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
@@ -760,17 +742,8 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403GetTransaction>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    switch (obj!.Type.ToString()) {
-                        case "Error403":
-                              throw obj!.Error403!;
-                        case "Error403Forbidden":
-                              throw obj!.Error403Forbidden!;
-                        case "Error403Active":
-                              throw obj!.Error403Active!;
-                        default:
-                            throw new InvalidOperationException("Unknown error type.");
-                    };
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
@@ -976,17 +949,8 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403CaptureTransaction>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    switch (obj!.Type.ToString()) {
-                        case "Error403":
-                              throw obj!.Error403!;
-                        case "Error403Forbidden":
-                              throw obj!.Error403Forbidden!;
-                        case "Error403Active":
-                              throw obj!.Error403Active!;
-                        default:
-                            throw new InvalidOperationException("Unknown error type.");
-                    };
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
@@ -1185,17 +1149,8 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403VoidTransaction>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    switch (obj!.Type.ToString()) {
-                        case "Error403":
-                              throw obj!.Error403!;
-                        case "Error403Forbidden":
-                              throw obj!.Error403Forbidden!;
-                        case "Error403Active":
-                              throw obj!.Error403Active!;
-                        default:
-                            throw new InvalidOperationException("Unknown error type.");
-                    };
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
@@ -1426,17 +1381,8 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403GetTransactionSummary>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    switch (obj!.Type.ToString()) {
-                        case "Error403":
-                              throw obj!.Error403!;
-                        case "Error403Forbidden":
-                              throw obj!.Error403Forbidden!;
-                        case "Error403Active":
-                              throw obj!.Error403Active!;
-                        default:
-                            throw new InvalidOperationException("Unknown error type.");
-                    };
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
@@ -1635,17 +1581,8 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Response403SyncTransaction>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
-                    switch (obj!.Type.ToString()) {
-                        case "Error403":
-                              throw obj!.Error403!;
-                        case "Error403Forbidden":
-                              throw obj!.Error403Forbidden!;
-                        case "Error403Active":
-                              throw obj!.Error403Active!;
-                        default:
-                            throw new InvalidOperationException("Unknown error type.");
-                    };
+                    var obj = ResponseBodyDeserializer.Deserialize<Error403>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    throw obj!;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);

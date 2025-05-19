@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 6ec465fc22e46f291699b4eb8d70f8e9
+  docChecksum: 2b16a722ff8556fa2cdc8063ec242ce1
   docVersion: 1.0.0
-  speakeasyVersion: 1.546.1
-  generationVersion: 2.604.2
-  releaseVersion: 1.0.0-beta.1
-  configChecksum: 25c7179510d36706f78aae258e19e053
+  speakeasyVersion: 1.547.1
+  generationVersion: 2.605.0
+  releaseVersion: 1.0.0-beta.2
+  configChecksum: ffb99f1b3496caa4f8552d97bbb3d5f0
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -14,7 +14,6 @@ features:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
     core: 3.10.17
-    errorUnions: 0.1.1
     flattening: 2.81.3
     globalSecurity: 2.83.7
     globalSecurityCallbacks: 0.1.0
@@ -232,8 +231,6 @@ generatedFiles:
   - docs/Models/Errors/Error400.md
   - docs/Models/Errors/Error401.md
   - docs/Models/Errors/Error403.md
-  - docs/Models/Errors/Error403Active.md
-  - docs/Models/Errors/Error403Forbidden.md
   - docs/Models/Errors/Error404.md
   - docs/Models/Errors/Error405.md
   - docs/Models/Errors/Error409.md
@@ -243,83 +240,6 @@ generatedFiles:
   - docs/Models/Errors/Error502.md
   - docs/Models/Errors/Error504.md
   - docs/Models/Errors/HTTPValidationError.md
-  - docs/Models/Errors/Response403AddBuyer.md
-  - docs/Models/Errors/Response403AddBuyerShippingDetails.md
-  - docs/Models/Errors/Response403CaptureTransaction.md
-  - docs/Models/Errors/Response403ConfigureDigitalWallet.md
-  - docs/Models/Errors/Response403CreateAccountUpdaterJob.md
-  - docs/Models/Errors/Response403CreateApplePayDigitalWalletSession.md
-  - docs/Models/Errors/Response403CreateCheckoutSession.md
-  - docs/Models/Errors/Response403CreateClickToPayDigitalWalletSession.md
-  - docs/Models/Errors/Response403CreateFullTransactionRefund.md
-  - docs/Models/Errors/Response403CreateGiftCard.md
-  - docs/Models/Errors/Response403CreateGooglePayDigitalWalletSession.md
-  - docs/Models/Errors/Response403CreateMerchantAccount.md
-  - docs/Models/Errors/Response403CreatePaymentMethod.md
-  - docs/Models/Errors/Response403CreatePaymentMethodNetworkToken.md
-  - docs/Models/Errors/Response403CreatePaymentMethodNetworkTokenCryptogram.md
-  - docs/Models/Errors/Response403CreatePaymentMethodPaymentServiceToken.md
-  - docs/Models/Errors/Response403CreatePaymentService.md
-  - docs/Models/Errors/Response403CreatePaymentServiceDefinitionSession.md
-  - docs/Models/Errors/Response403CreatePaymentServiceSession.md
-  - docs/Models/Errors/Response403CreatePayout.md
-  - docs/Models/Errors/Response403CreateTransaction.md
-  - docs/Models/Errors/Response403CreateTransactionRefund.md
-  - docs/Models/Errors/Response403DeleteBuyer.md
-  - docs/Models/Errors/Response403DeleteBuyerShippingDetails.md
-  - docs/Models/Errors/Response403DeleteCheckoutSession.md
-  - docs/Models/Errors/Response403DeleteDigitalWallet.md
-  - docs/Models/Errors/Response403DeleteGiftCard.md
-  - docs/Models/Errors/Response403DeletePaymentMethod.md
-  - docs/Models/Errors/Response403DeletePaymentMethodNetworkToken.md
-  - docs/Models/Errors/Response403DeletePaymentMethodPaymentServiceToken.md
-  - docs/Models/Errors/Response403DeletePaymentService.md
-  - docs/Models/Errors/Response403GetBuyer.md
-  - docs/Models/Errors/Response403GetBuyerShippingDetails.md
-  - docs/Models/Errors/Response403GetCheckoutSession.md
-  - docs/Models/Errors/Response403GetDigitalWallet.md
-  - docs/Models/Errors/Response403GetGiftCard.md
-  - docs/Models/Errors/Response403GetMerchantAccount.md
-  - docs/Models/Errors/Response403GetPaymentMethod.md
-  - docs/Models/Errors/Response403GetPaymentService.md
-  - docs/Models/Errors/Response403GetPaymentServiceDefinition.md
-  - docs/Models/Errors/Response403GetPayout.md
-  - docs/Models/Errors/Response403GetRefund.md
-  - docs/Models/Errors/Response403GetTransaction.md
-  - docs/Models/Errors/Response403GetTransactionRefund.md
-  - docs/Models/Errors/Response403GetTransactionSummary.md
-  - docs/Models/Errors/Response403ListAuditLogs.md
-  - docs/Models/Errors/Response403ListBuyerGiftCards.md
-  - docs/Models/Errors/Response403ListBuyerPaymentMethods.md
-  - docs/Models/Errors/Response403ListBuyerShippingDetails.md
-  - docs/Models/Errors/Response403ListBuyers.md
-  - docs/Models/Errors/Response403ListCardSchemeDefinitions.md
-  - docs/Models/Errors/Response403ListDigitalWallets.md
-  - docs/Models/Errors/Response403ListGiftCardBalances.md
-  - docs/Models/Errors/Response403ListGiftCards.md
-  - docs/Models/Errors/Response403ListMerchantAccounts.md
-  - docs/Models/Errors/Response403ListPaymentMethodNetworkTokens.md
-  - docs/Models/Errors/Response403ListPaymentMethodPaymentServiceTokens.md
-  - docs/Models/Errors/Response403ListPaymentMethods.md
-  - docs/Models/Errors/Response403ListPaymentOptions.md
-  - docs/Models/Errors/Response403ListPaymentServiceDefinitions.md
-  - docs/Models/Errors/Response403ListPaymentServices.md
-  - docs/Models/Errors/Response403ListPayouts.md
-  - docs/Models/Errors/Response403ListTransactionRefunds.md
-  - docs/Models/Errors/Response403ListTransactions.md
-  - docs/Models/Errors/Response403RegisterDigitalWalletDomain.md
-  - docs/Models/Errors/Response403ResumePaymentMethodNetworkToken.md
-  - docs/Models/Errors/Response403SuspendPaymentMethodNetworkToken.md
-  - docs/Models/Errors/Response403SyncTransaction.md
-  - docs/Models/Errors/Response403UnregisterDigitalWalletDomain.md
-  - docs/Models/Errors/Response403UpdateBuyer.md
-  - docs/Models/Errors/Response403UpdateBuyerShippingDetails.md
-  - docs/Models/Errors/Response403UpdateCheckoutSession.md
-  - docs/Models/Errors/Response403UpdateDigitalWallet.md
-  - docs/Models/Errors/Response403UpdateMerchantAccount.md
-  - docs/Models/Errors/Response403UpdatePaymentService.md
-  - docs/Models/Errors/Response403VerifyPaymentServiceCredentials.md
-  - docs/Models/Errors/Response403VoidTransaction.md
   - docs/Models/Requests/AddBuyerRequest.md
   - docs/Models/Requests/AddBuyerShippingDetailsRequest.md
   - docs/Models/Requests/Body.md
@@ -651,8 +571,6 @@ generatedFiles:
   - src/Gr4vy/Models/Errors/Error400.cs
   - src/Gr4vy/Models/Errors/Error401.cs
   - src/Gr4vy/Models/Errors/Error403.cs
-  - src/Gr4vy/Models/Errors/Error403Active.cs
-  - src/Gr4vy/Models/Errors/Error403Forbidden.cs
   - src/Gr4vy/Models/Errors/Error404.cs
   - src/Gr4vy/Models/Errors/Error405.cs
   - src/Gr4vy/Models/Errors/Error409.cs
@@ -662,83 +580,6 @@ generatedFiles:
   - src/Gr4vy/Models/Errors/Error502.cs
   - src/Gr4vy/Models/Errors/Error504.cs
   - src/Gr4vy/Models/Errors/HTTPValidationError.cs
-  - src/Gr4vy/Models/Errors/Response403AddBuyer.cs
-  - src/Gr4vy/Models/Errors/Response403AddBuyerShippingDetails.cs
-  - src/Gr4vy/Models/Errors/Response403CaptureTransaction.cs
-  - src/Gr4vy/Models/Errors/Response403ConfigureDigitalWallet.cs
-  - src/Gr4vy/Models/Errors/Response403CreateAccountUpdaterJob.cs
-  - src/Gr4vy/Models/Errors/Response403CreateApplePayDigitalWalletSession.cs
-  - src/Gr4vy/Models/Errors/Response403CreateCheckoutSession.cs
-  - src/Gr4vy/Models/Errors/Response403CreateClickToPayDigitalWalletSession.cs
-  - src/Gr4vy/Models/Errors/Response403CreateFullTransactionRefund.cs
-  - src/Gr4vy/Models/Errors/Response403CreateGiftCard.cs
-  - src/Gr4vy/Models/Errors/Response403CreateGooglePayDigitalWalletSession.cs
-  - src/Gr4vy/Models/Errors/Response403CreateMerchantAccount.cs
-  - src/Gr4vy/Models/Errors/Response403CreatePaymentMethod.cs
-  - src/Gr4vy/Models/Errors/Response403CreatePaymentMethodNetworkToken.cs
-  - src/Gr4vy/Models/Errors/Response403CreatePaymentMethodNetworkTokenCryptogram.cs
-  - src/Gr4vy/Models/Errors/Response403CreatePaymentMethodPaymentServiceToken.cs
-  - src/Gr4vy/Models/Errors/Response403CreatePaymentService.cs
-  - src/Gr4vy/Models/Errors/Response403CreatePaymentServiceDefinitionSession.cs
-  - src/Gr4vy/Models/Errors/Response403CreatePaymentServiceSession.cs
-  - src/Gr4vy/Models/Errors/Response403CreatePayout.cs
-  - src/Gr4vy/Models/Errors/Response403CreateTransaction.cs
-  - src/Gr4vy/Models/Errors/Response403CreateTransactionRefund.cs
-  - src/Gr4vy/Models/Errors/Response403DeleteBuyer.cs
-  - src/Gr4vy/Models/Errors/Response403DeleteBuyerShippingDetails.cs
-  - src/Gr4vy/Models/Errors/Response403DeleteCheckoutSession.cs
-  - src/Gr4vy/Models/Errors/Response403DeleteDigitalWallet.cs
-  - src/Gr4vy/Models/Errors/Response403DeleteGiftCard.cs
-  - src/Gr4vy/Models/Errors/Response403DeletePaymentMethod.cs
-  - src/Gr4vy/Models/Errors/Response403DeletePaymentMethodNetworkToken.cs
-  - src/Gr4vy/Models/Errors/Response403DeletePaymentMethodPaymentServiceToken.cs
-  - src/Gr4vy/Models/Errors/Response403DeletePaymentService.cs
-  - src/Gr4vy/Models/Errors/Response403GetBuyer.cs
-  - src/Gr4vy/Models/Errors/Response403GetBuyerShippingDetails.cs
-  - src/Gr4vy/Models/Errors/Response403GetCheckoutSession.cs
-  - src/Gr4vy/Models/Errors/Response403GetDigitalWallet.cs
-  - src/Gr4vy/Models/Errors/Response403GetGiftCard.cs
-  - src/Gr4vy/Models/Errors/Response403GetMerchantAccount.cs
-  - src/Gr4vy/Models/Errors/Response403GetPaymentMethod.cs
-  - src/Gr4vy/Models/Errors/Response403GetPaymentService.cs
-  - src/Gr4vy/Models/Errors/Response403GetPaymentServiceDefinition.cs
-  - src/Gr4vy/Models/Errors/Response403GetPayout.cs
-  - src/Gr4vy/Models/Errors/Response403GetRefund.cs
-  - src/Gr4vy/Models/Errors/Response403GetTransaction.cs
-  - src/Gr4vy/Models/Errors/Response403GetTransactionRefund.cs
-  - src/Gr4vy/Models/Errors/Response403GetTransactionSummary.cs
-  - src/Gr4vy/Models/Errors/Response403ListAuditLogs.cs
-  - src/Gr4vy/Models/Errors/Response403ListBuyerGiftCards.cs
-  - src/Gr4vy/Models/Errors/Response403ListBuyerPaymentMethods.cs
-  - src/Gr4vy/Models/Errors/Response403ListBuyerShippingDetails.cs
-  - src/Gr4vy/Models/Errors/Response403ListBuyers.cs
-  - src/Gr4vy/Models/Errors/Response403ListCardSchemeDefinitions.cs
-  - src/Gr4vy/Models/Errors/Response403ListDigitalWallets.cs
-  - src/Gr4vy/Models/Errors/Response403ListGiftCardBalances.cs
-  - src/Gr4vy/Models/Errors/Response403ListGiftCards.cs
-  - src/Gr4vy/Models/Errors/Response403ListMerchantAccounts.cs
-  - src/Gr4vy/Models/Errors/Response403ListPaymentMethodNetworkTokens.cs
-  - src/Gr4vy/Models/Errors/Response403ListPaymentMethodPaymentServiceTokens.cs
-  - src/Gr4vy/Models/Errors/Response403ListPaymentMethods.cs
-  - src/Gr4vy/Models/Errors/Response403ListPaymentOptions.cs
-  - src/Gr4vy/Models/Errors/Response403ListPaymentServiceDefinitions.cs
-  - src/Gr4vy/Models/Errors/Response403ListPaymentServices.cs
-  - src/Gr4vy/Models/Errors/Response403ListPayouts.cs
-  - src/Gr4vy/Models/Errors/Response403ListTransactionRefunds.cs
-  - src/Gr4vy/Models/Errors/Response403ListTransactions.cs
-  - src/Gr4vy/Models/Errors/Response403RegisterDigitalWalletDomain.cs
-  - src/Gr4vy/Models/Errors/Response403ResumePaymentMethodNetworkToken.cs
-  - src/Gr4vy/Models/Errors/Response403SuspendPaymentMethodNetworkToken.cs
-  - src/Gr4vy/Models/Errors/Response403SyncTransaction.cs
-  - src/Gr4vy/Models/Errors/Response403UnregisterDigitalWalletDomain.cs
-  - src/Gr4vy/Models/Errors/Response403UpdateBuyer.cs
-  - src/Gr4vy/Models/Errors/Response403UpdateBuyerShippingDetails.cs
-  - src/Gr4vy/Models/Errors/Response403UpdateCheckoutSession.cs
-  - src/Gr4vy/Models/Errors/Response403UpdateDigitalWallet.cs
-  - src/Gr4vy/Models/Errors/Response403UpdateMerchantAccount.cs
-  - src/Gr4vy/Models/Errors/Response403UpdatePaymentService.cs
-  - src/Gr4vy/Models/Errors/Response403VerifyPaymentServiceCredentials.cs
-  - src/Gr4vy/Models/Errors/Response403VoidTransaction.cs
   - src/Gr4vy/Models/Requests/AddBuyerRequest.cs
   - src/Gr4vy/Models/Requests/AddBuyerShippingDetailsRequest.cs
   - src/Gr4vy/Models/Requests/Body.cs

@@ -59,8 +59,6 @@ var res = await sdk.DigitalWallets.CreateAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -109,8 +107,6 @@ var res = await sdk.DigitalWallets.ListAsync(merchantAccountId: "default");
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -163,8 +159,6 @@ var res = await sdk.DigitalWallets.GetAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -219,8 +213,6 @@ var res = await sdk.DigitalWallets.DeleteAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -279,8 +271,6 @@ var res = await sdk.DigitalWallets.UpdateAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |

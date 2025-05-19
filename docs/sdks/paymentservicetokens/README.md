@@ -52,8 +52,6 @@ var res = await sdk.PaymentMethods.PaymentServiceTokens.ListAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -114,8 +112,6 @@ var res = await sdk.PaymentMethods.PaymentServiceTokens.CreateAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -168,8 +164,6 @@ await sdk.PaymentMethods.PaymentServiceTokens.DeleteAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
