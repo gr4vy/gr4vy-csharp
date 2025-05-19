@@ -7,6 +7,9 @@ on:
     branches:
       - main
   workflow_dispatch: {}
+  schedule:
+    # “At 08:30 on every day-of-week from Monday through Friday.”
+    - cron: 30 8 * * 1-5
 
 jobs:
   test:
