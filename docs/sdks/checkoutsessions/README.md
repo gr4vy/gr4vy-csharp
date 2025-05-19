@@ -183,8 +183,6 @@ var res = await sdk.CheckoutSessions.CreateAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -371,8 +369,6 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
@@ -422,22 +418,20 @@ var res = await sdk.CheckoutSessions.GetAsync(
 
 ### Errors
 
-| Error Type                            | Status Code                           | Content Type                          |
-| ------------------------------------- | ------------------------------------- | ------------------------------------- |
-| Gr4vy.Models.Errors.Error400          | 400                                   | application/json                      |
-| Gr4vy.Models.Errors.Error401          | 401                                   | application/json                      |
-| Gr4vy.Models.Errors.Error403          | 403                                   | application/json                      |
-| Gr4vy.Models.Errors.Error403Forbidden | 403                                   | application/json                      |
-| Gr4vy.Models.Errors.Error403Active    | 403                                   | application/json                      |
-| Gr4vy.Models.Errors.Error404          | 404                                   | application/json                      |
-| Gr4vy.Models.Errors.Error405          | 405                                   | application/json                      |
-| Gr4vy.Models.Errors.Error409          | 409                                   | application/json                      |
-| Gr4vy.Models.Errors.Error425          | 425                                   | application/json                      |
-| Gr4vy.Models.Errors.Error429          | 429                                   | application/json                      |
-| Gr4vy.Models.Errors.Error500          | 500                                   | application/json                      |
-| Gr4vy.Models.Errors.Error502          | 502                                   | application/json                      |
-| Gr4vy.Models.Errors.Error504          | 504                                   | application/json                      |
-| Gr4vy.Models.Errors.APIException      | 4XX, 5XX                              | \*/\*                                 |
+| Error Type                       | Status Code                      | Content Type                     |
+| -------------------------------- | -------------------------------- | -------------------------------- |
+| Gr4vy.Models.Errors.Error400     | 400                              | application/json                 |
+| Gr4vy.Models.Errors.Error401     | 401                              | application/json                 |
+| Gr4vy.Models.Errors.Error403     | 403                              | application/json                 |
+| Gr4vy.Models.Errors.Error404     | 404                              | application/json                 |
+| Gr4vy.Models.Errors.Error405     | 405                              | application/json                 |
+| Gr4vy.Models.Errors.Error409     | 409                              | application/json                 |
+| Gr4vy.Models.Errors.Error425     | 425                              | application/json                 |
+| Gr4vy.Models.Errors.Error429     | 429                              | application/json                 |
+| Gr4vy.Models.Errors.Error500     | 500                              | application/json                 |
+| Gr4vy.Models.Errors.Error502     | 502                              | application/json                 |
+| Gr4vy.Models.Errors.Error504     | 504                              | application/json                 |
+| Gr4vy.Models.Errors.APIException | 4XX, 5XX                         | \*/\*                            |
 
 ## Delete
 
@@ -478,8 +472,6 @@ await sdk.CheckoutSessions.DeleteAsync(
 | Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
 | Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
 | Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Forbidden   | 403                                     | application/json                        |
-| Gr4vy.Models.Errors.Error403Active      | 403                                     | application/json                        |
 | Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
 | Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
 | Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |

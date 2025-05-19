@@ -39,7 +39,7 @@ namespace Gr4vy.Models.Errors
         /// <summary>
         /// A human readable message that provides more context to the error.
         /// </summary>
-        [JsonProperty("message")]
+        [JsonProperty("message", NullValueHandling = NullValueHandling.Include)]
         private string? _message { get; set; }
         public override string Message { get {return _message ?? "";} }
 
