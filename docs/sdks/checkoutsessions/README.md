@@ -100,6 +100,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
         },
         Airline = new Airline() {
             BookingCode = "X36Q9C",
+            IsCardholderTraveling = true,
             IssuedAddress = "123 Broadway, New York",
             IssuedAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
             IssuingCarrierCode = "649",
@@ -283,6 +284,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
         },
         Airline = new Airline() {
             BookingCode = "X36Q9C",
+            IsCardholderTraveling = true,
             IssuedAddress = "123 Broadway, New York",
             IssuedAt = System.DateTime.Parse("2013-07-16T19:23:00.000+00:00"),
             IssuingCarrierCode = "649",
