@@ -28,6 +28,12 @@ namespace Gr4vy.Models.Components
         public string? BookingCode { get; set; } = null;
 
         /// <summary>
+        /// Indicates whether the cardholder is traveling.
+        /// </summary>
+        [JsonProperty("is_cardholder_traveling")]
+        public bool? IsCardholderTraveling { get; set; } = null;
+
+        /// <summary>
         /// The address of the place/agency that issued the ticket.
         /// </summary>
         [JsonProperty("issued_address")]
