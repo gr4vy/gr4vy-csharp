@@ -40,6 +40,7 @@ This SDK is designed to simplify development, reduce boilerplate code, and help 
   * [Error Handling](#error-handling)
   * [Server Selection](#server-selection)
 * [Development](#development)
+  * [Testing](#testing)
   * [Maturity](#maturity)
   * [Contributions](#contributions)
 
