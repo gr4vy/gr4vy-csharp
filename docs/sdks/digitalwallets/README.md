@@ -28,7 +28,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.DigitalWallets.CreateAsync(
     digitalWalletCreate: new DigitalWalletCreate() {
-        Provider = DigitalWalletProvider.ClickToPay,
+        Provider = "<value>",
         MerchantName = "<value>",
         MerchantCountryCode = "US",
         AcceptTermsAndConditions = false,

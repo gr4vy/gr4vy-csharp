@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
@@ -48,7 +47,7 @@ namespace Gr4vy.Models.Components
         public string PaymentServiceId { get; set; } = default!;
 
         [JsonProperty("status")]
-        public PaymentMethodStatus Status { get; set; } = default!;
+        public string Status { get; set; } = default!;
 
         /// <summary>
         /// The token value. Will be present if succeeded.

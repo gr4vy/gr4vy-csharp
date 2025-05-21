@@ -26,7 +26,7 @@ namespace Gr4vy.Models.Components
         public string? IconUrl { get; set; } = null;
 
         [JsonProperty("mode")]
-        public Mode Mode { get; set; } = default!;
+        public string Mode { get; set; } = default!;
 
         [JsonProperty("label")]
         public string? Label { get; set; } = null;

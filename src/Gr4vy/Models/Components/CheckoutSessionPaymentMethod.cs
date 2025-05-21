@@ -50,7 +50,7 @@ namespace Gr4vy.Models.Components
         /// The scheme of the card.
         /// </summary>
         [JsonProperty("scheme")]
-        public CardScheme? Scheme { get; set; } = null;
+        public string? Scheme { get; set; } = null;
 
         /// <summary>
         /// The unique hash derived from the card number.

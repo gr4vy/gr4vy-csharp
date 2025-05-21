@@ -720,6 +720,15 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
 
 # Development
 
+
+## Testing
+
+To run the tests, install .NET and run the following.
+
+```sh
+dotnet test src/Gr4vy.Tests
+```
+
 ## Maturity
 
 This SDK is in beta, and there may be breaking changes between versions without a major version update. Therefore, we recommend pinning usage

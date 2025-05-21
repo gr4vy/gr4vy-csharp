@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -38,7 +37,7 @@ namespace Gr4vy.Models.Components
         public bool Required { get; set; } = default!;
 
         [JsonProperty("format")]
-        public DefinitionFieldFormat Format { get; set; } = default!;
+        public string Format { get; set; } = default!;
 
         /// <summary>
         /// Defines if this field is secret. When `true` the field&apos;s value is not returned when querying the payment service information.

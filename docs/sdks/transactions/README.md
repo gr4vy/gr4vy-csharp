@@ -41,8 +41,8 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     BuyerExternalIdentifier = "buyer-12345",
     BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
     BuyerEmailAddress = "john@example.com",
-    Status = new List<TransactionStatus>() {
-        TransactionStatus.AuthorizationSucceeded,
+    Status = new List<string>() {
+        "authorization_succeeded",
     },
     Id = "7099948d-7286-47e4-aad8-b68f7eb44591",
     PaymentServiceTransactionId = "tx-12345",
@@ -62,8 +62,8 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     PaymentMethodId = "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     PaymentMethodLabel = "1234",
     PaymentMethodFingerprint = "a50b85c200ee0795d6fd33a5c66f37a4564f554355c5b46a756aac485dd168a4",
-    Method = new List<Method>() {
-        Method.Card,
+    Method = new List<string>() {
+        "card",
     },
     ErrorCode = new List<string>() {
         "insufficient_funds",
@@ -77,8 +77,8 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     GiftCardLast4 = "7890",
     HasSettlements = true,
     PaymentMethodBin = "411111",
-    PaymentSource = new List<TransactionPaymentSource>() {
-        TransactionPaymentSource.Recurring,
+    PaymentSource = new List<string>() {
+        "recurring",
     },
     IsSubsequentPayment = true,
     MerchantInitiated = true,
@@ -177,7 +177,7 @@ var res = await sdk.Transactions.CreateAsync(
                 },
                 TaxId = new TaxId() {
                     Value = "12345678931",
-                    Kind = TaxIdKind.BrCnpj,
+                    Kind = "<value>",
                 },
             },
             ShippingDetails = new ShippingDetailsCreate() {
@@ -201,9 +201,10 @@ var res = await sdk.Transactions.CreateAsync(
         BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
         BuyerExternalIdentifier = "buyer-12345",
         GiftCards = new List<GiftCardUnion>() {
-            GiftCardUnion.CreateGiftCardTokenTransactionCreate(
-                new GiftCardTokenTransactionCreate() {
-                    Id = "356d56e5-fe16-42ae-97ee-8d55d846ae2e",
+            GiftCardUnion.CreateGiftCardTransactionCreate(
+                new GiftCardTransactionCreate() {
+                    Number = "4123455541234561234",
+                    Pin = "1234",
                     Amount = 1299,
                 }
             ),
@@ -215,7 +216,7 @@ var res = await sdk.Transactions.CreateAsync(
                 Eci = "05",
                 Version = "2.1.0",
                 DirectoryResponse = "C",
-                Scheme = CardScheme.Visa,
+                Scheme = "visa",
                 AuthenticationResponse = "Y",
                 DirectoryTransactionId = "c4e59ceb-a382-4d6a-bc87-385d591fa09d",
             }
@@ -254,7 +255,7 @@ var res = await sdk.Transactions.CreateAsync(
                     FeeAmount = 1200,
                     FlightClass = "E",
                     FlightNumber = "101",
-                    RouteType = RouteType.RoundTrip,
+                    RouteType = "round_trip",
                     SeatClass = "F",
                     StopOver = false,
                     TaxAmount = 1200,
@@ -263,7 +264,7 @@ var res = await sdk.Transactions.CreateAsync(
             PassengerNameRecord = "JOHN L",
             Passengers = new List<AirlinePassenger>() {
                 new AirlinePassenger() {
-                    AgeGroup = AgeGroup.Adult,
+                    AgeGroup = "adult",
                     DateOfBirth = LocalDate.FromDateTime(System.DateTime.Parse("2013-07-16")),
                     EmailAddress = "john@example.com",
                     FirstName = "John",
@@ -278,7 +279,7 @@ var res = await sdk.Transactions.CreateAsync(
             },
             ReservationSystem = "Amadeus",
             RestrictedTicket = false,
-            TicketDeliveryMethod = TicketDeliveryMethod.Electronic,
+            TicketDeliveryMethod = "electronic",
             TicketNumber = "123-1234-151555",
             TravelAgencyCode = "12345",
             TravelAgencyInvoiceNumber = "EG15555155",
@@ -301,7 +302,7 @@ var res = await sdk.Transactions.CreateAsync(
                     "travel",
                     "gear",
                 },
-                ProductType = ProductType.Physical,
+                ProductType = "physical",
                 SellerCountry = "GB",
             },
         },
@@ -318,12 +319,12 @@ var res = await sdk.Transactions.CreateAsync(
             JavascriptEnabled = false,
             JavaEnabled = false,
             Language = "<value>",
-            ColorDepth = 233026,
-            ScreenHeight = 285144,
-            ScreenWidth = 702825,
-            TimeZoneOffset = 891521,
+            ColorDepth = 836800,
+            ScreenHeight = 233026,
+            ScreenWidth = 285144,
+            TimeZoneOffset = 702825,
             UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
-            UserDevice = UserDevice.Desktop,
+            UserDevice = "desktop",
             AcceptHeader = "*/*",
         },
         ShippingDetailsId = "bf8c36ad-02d9-4904-b0f9-a230b149e341",
@@ -490,7 +491,7 @@ var res = await sdk.Transactions.CaptureAsync(
                     FeeAmount = 1200,
                     FlightClass = "E",
                     FlightNumber = "101",
-                    RouteType = RouteType.RoundTrip,
+                    RouteType = "round_trip",
                     SeatClass = "F",
                     StopOver = false,
                     TaxAmount = 1200,
@@ -499,7 +500,7 @@ var res = await sdk.Transactions.CaptureAsync(
             PassengerNameRecord = "JOHN L",
             Passengers = new List<AirlinePassenger>() {
                 new AirlinePassenger() {
-                    AgeGroup = AgeGroup.Adult,
+                    AgeGroup = "adult",
                     DateOfBirth = LocalDate.FromDateTime(System.DateTime.Parse("2013-07-16")),
                     EmailAddress = "john@example.com",
                     FirstName = "John",
@@ -514,7 +515,7 @@ var res = await sdk.Transactions.CaptureAsync(
             },
             ReservationSystem = "Amadeus",
             RestrictedTicket = false,
-            TicketDeliveryMethod = TicketDeliveryMethod.Electronic,
+            TicketDeliveryMethod = "electronic",
             TicketNumber = "123-1234-151555",
             TravelAgencyCode = "12345",
             TravelAgencyInvoiceNumber = "EG15555155",

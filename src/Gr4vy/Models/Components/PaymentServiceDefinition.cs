@@ -36,7 +36,7 @@ namespace Gr4vy.Models.Components
         public string DisplayName { get; set; } = default!;
 
         [JsonProperty("method")]
-        public Method Method { get; set; } = default!;
+        public string Method { get; set; } = default!;
 
         /// <summary>
         /// A list of credentials and related fields which can be configured for this service.
@@ -63,7 +63,7 @@ namespace Gr4vy.Models.Components
         public List<string> SupportedCountries { get; set; } = default!;
 
         [JsonProperty("mode")]
-        public Mode Mode { get; set; } = default!;
+        public string Mode { get; set; } = default!;
 
         /// <summary>
         /// An icon to display for the payment service.

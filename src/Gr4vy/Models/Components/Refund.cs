@@ -42,7 +42,7 @@ namespace Gr4vy.Models.Components
         public string? PaymentServiceRefundId { get; set; } = null;
 
         [JsonProperty("status")]
-        public RefundStatus Status { get; set; } = default!;
+        public string Status { get; set; } = default!;
 
         /// <summary>
         /// The currency code for this refund.  Will always match that of the associated transaction.
@@ -63,7 +63,7 @@ namespace Gr4vy.Models.Components
         public string? Reason { get; set; } = null;
 
         [JsonProperty("target_type")]
-        public RefundTargetType TargetType { get; set; } = default!;
+        public string TargetType { get; set; } = default!;
 
         /// <summary>
         /// The optional ID of the instrument that was refunded. This may be `null` if the instrument was not stored.

@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -38,7 +37,7 @@ namespace Gr4vy.Models.Components
         /// The optional card&apos;s network scheme.
         /// </summary>
         [JsonProperty("card_scheme")]
-        public CardScheme? CardScheme { get; set; } = null;
+        public string? CardScheme { get; set; } = null;
 
         /// <summary>
         /// The merchant identifier for this card.

@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -29,6 +28,6 @@ namespace Gr4vy.Models.Components
         public string Id { get; set; } = default!;
 
         [JsonProperty("status")]
-        public TransactionStatus Status { get; set; } = default!;
+        public string Status { get; set; } = default!;
     }
 }

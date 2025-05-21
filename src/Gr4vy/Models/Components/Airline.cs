@@ -103,7 +103,7 @@ namespace Gr4vy.Models.Components
         /// The delivery method of the ticket.
         /// </summary>
         [JsonProperty("ticket_delivery_method")]
-        public TicketDeliveryMethod? TicketDeliveryMethod { get; set; } = null;
+        public string? TicketDeliveryMethod { get; set; } = null;
 
         /// <summary>
         /// The airline&apos;s unique ticket number.

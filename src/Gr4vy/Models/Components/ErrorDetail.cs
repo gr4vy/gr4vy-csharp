@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -17,7 +16,7 @@ namespace Gr4vy.Models.Components
     {
 
         [JsonProperty("location")]
-        public ErrorLocation Location { get; set; } = default!;
+        public string Location { get; set; } = default!;
 
         /// <summary>
         /// A JSON pointer for the particular property that caused the error.

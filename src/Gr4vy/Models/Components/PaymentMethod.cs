@@ -81,19 +81,19 @@ namespace Gr4vy.Models.Components
         public DateTime? LastReplacedAt { get; set; } = null;
 
         [JsonProperty("method")]
-        public Method Method { get; set; } = default!;
+        public string Method { get; set; } = default!;
 
         /// <summary>
         /// The mode to use with this payment method.
         /// </summary>
         [JsonProperty("mode")]
-        public Mode? Mode { get; set; } = null;
+        public string? Mode { get; set; } = null;
 
         /// <summary>
         /// The scheme of the card. Only applies to card payments.
         /// </summary>
         [JsonProperty("scheme")]
-        public CardScheme? Scheme { get; set; } = null;
+        public string? Scheme { get; set; } = null;
 
         /// <summary>
         /// The ID for the payment method.
@@ -111,7 +111,7 @@ namespace Gr4vy.Models.Components
         /// Additional schemes of the card besides the primary scheme. Only applies to card payment methods.
         /// </summary>
         [JsonProperty("additional_schemes")]
-        public List<CardScheme>? AdditionalSchemes { get; set; } = null;
+        public List<string>? AdditionalSchemes { get; set; } = null;
 
         /// <summary>
         /// The timestamp when this payment method was last used in a transaction for client initiated transactions.
@@ -156,7 +156,7 @@ namespace Gr4vy.Models.Components
         public string? ExternalIdentifier { get; set; } = null;
 
         [JsonProperty("status")]
-        public PaymentMethodStatus Status { get; set; } = default!;
+        public string Status { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this payment method was first created in our system.

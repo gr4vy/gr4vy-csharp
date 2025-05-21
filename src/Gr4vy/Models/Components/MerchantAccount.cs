@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
@@ -70,7 +69,7 @@ namespace Gr4vy.Models.Components
         /// Card schemes accepted when creating jobs using this set of Loon API keys. Loon is the Account Updater service we use and if the field is not set or if it&apos;s set to null, the Account Updater service doesn&apos;t get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
         [JsonProperty("loon_accepted_schemes")]
-        public List<CardScheme>? LoonAcceptedSchemes { get; set; } = null;
+        public List<string>? LoonAcceptedSchemes { get; set; } = null;
 
         /// <summary>
         /// The public key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it&apos;s set to `null`, the Account Updater service doesn&apos;t get called. If the field is set, the other `account_updater_*` fields must be set as well.

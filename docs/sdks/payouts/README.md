@@ -94,7 +94,7 @@ var res = await sdk.Payouts.CreateAsync(
                 Id = "852b951c-d7ea-4c98-b09e-4a1c9e97c077",
             }
         ),
-        Category = PayoutCategory.OnlineGambling,
+        Category = "online_gambling",
         ExternalIdentifier = "payout-12345",
         BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
         Buyer = new GuestBuyerInput() {
@@ -118,7 +118,7 @@ var res = await sdk.Payouts.CreateAsync(
                 },
                 TaxId = new TaxId() {
                     Value = "12345678931",
-                    Kind = TaxIdKind.NoVat,
+                    Kind = "<value>",
                 },
             },
             ShippingDetails = new ShippingDetailsCreate() {

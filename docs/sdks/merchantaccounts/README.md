@@ -96,8 +96,8 @@ var res = await sdk.MerchantAccounts.CreateAsync(
         OverCapturePercentage = 25,
         LoonClientKey = "client-key-1234",
         LoonSecretKey = "key-12345",
-        LoonAcceptedSchemes = new List<CardScheme>() {
-            CardScheme.Visa,
+        LoonAcceptedSchemes = new List<string>() {
+            "visa",
         },
         VisaNetworkTokensRequestorId = "id-12345",
         VisaNetworkTokensAppId = "id-12345",
@@ -221,8 +221,8 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
         OverCapturePercentage = 25,
         LoonClientKey = "client-key-1234",
         LoonSecretKey = "key-12345",
-        LoonAcceptedSchemes = new List<CardScheme>() {
-            CardScheme.Visa,
+        LoonAcceptedSchemes = new List<string>() {
+            "visa",
         },
         VisaNetworkTokensRequestorId = "id-12345",
         VisaNetworkTokensAppId = "id-12345",

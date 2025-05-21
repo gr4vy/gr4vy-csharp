@@ -109,7 +109,7 @@ namespace Gr4vy.Tests
             );
 
             Assert.IsNotNull(transaction.Id);
-            Assert.That(transaction.Status, Is.EqualTo(TransactionStatus.AuthorizationSucceeded));
+            Assert.That(transaction.Status, Is.EqualTo("authorization_succeeded"));
             Assert.That(transaction.Amount, Is.EqualTo(1299));
         }
 
@@ -196,7 +196,7 @@ namespace Gr4vy.Tests
             );
 
             Assert.IsNotNull(transaction.Id);
-            Assert.That(transaction.Status, Is.EqualTo(TransactionStatus.AuthorizationSucceeded));
+            Assert.That(transaction.Status, Is.EqualTo("authorization_succeeded"));
             Assert.That(transaction.Amount, Is.EqualTo(1299));
         }
     }

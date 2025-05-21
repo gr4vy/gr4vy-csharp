@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
@@ -37,7 +36,7 @@ namespace Gr4vy.Models.Components
         public string MerchantAccountId { get; set; } = default!;
 
         [JsonProperty("provider")]
-        public DigitalWalletProvider Provider { get; set; } = default!;
+        public string Provider { get; set; } = default!;
 
         /// <summary>
         /// The name of the merchant the digital wallet is registered to.

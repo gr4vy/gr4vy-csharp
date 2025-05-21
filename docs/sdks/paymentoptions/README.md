@@ -47,7 +47,7 @@ var res = await sdk.PaymentOptions.ListAsync(
                     "travel",
                     "gear",
                 },
-                ProductType = ProductType.Physical,
+                ProductType = "physical",
                 SellerCountry = "US",
             },
         },

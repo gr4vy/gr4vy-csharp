@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -17,7 +16,7 @@ namespace Gr4vy.Models.Components
     {
 
         [JsonProperty("approval_ui_target")]
-        public ApprovalTarget ApprovalUiTarget { get; set; } = default!;
+        public string ApprovalUiTarget { get; set; } = default!;
 
         /// <summary>
         /// Height of the approval interface in either pixels or view height (vh).

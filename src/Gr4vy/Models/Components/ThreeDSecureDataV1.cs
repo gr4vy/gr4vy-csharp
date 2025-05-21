@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -44,7 +43,7 @@ namespace Gr4vy.Models.Components
         /// The scheme/brand of the card that is used for 3-D Secure.
         /// </summary>
         [JsonProperty("scheme")]
-        public CardScheme? Scheme { get; set; } = null;
+        public string? Scheme { get; set; } = null;
 
         /// <summary>
         ///  The response for the 3DS authentication call.

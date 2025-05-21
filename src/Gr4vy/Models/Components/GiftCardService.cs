@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -29,7 +28,7 @@ namespace Gr4vy.Models.Components
         public string Id { get; set; } = default!;
 
         [JsonProperty("gift_card_service_definition_id")]
-        public GiftCardServiceProvider GiftCardServiceDefinitionId { get; set; } = default!;
+        public string GiftCardServiceDefinitionId { get; set; } = default!;
 
         /// <summary>
         /// The display name for the gift card service.

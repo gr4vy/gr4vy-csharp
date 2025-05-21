@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -23,7 +22,7 @@ namespace Gr4vy.Models.Components
         /// The method to use, this can be any of the methods that support redirect requests.
         /// </summary>
         [JsonProperty("method")]
-        public RedirectPaymentMethodCreateMethod Method { get; set; } = default!;
+        public string Method { get; set; } = default!;
 
         /// <summary>
         /// The `id` of a stored buyer to use Use this instead of the `buyer_external_identifier`.

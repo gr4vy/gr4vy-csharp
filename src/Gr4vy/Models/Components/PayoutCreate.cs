@@ -52,7 +52,7 @@ namespace Gr4vy.Models.Components
         /// The type of payout to process.
         /// </summary>
         [JsonProperty("category")]
-        public PayoutCategory? Category { get; set; } = null;
+        public string? Category { get; set; } = null;
 
         /// <summary>
         /// A value that can be used to match the payout against your own records.

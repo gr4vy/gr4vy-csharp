@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
@@ -75,7 +74,7 @@ namespace Gr4vy.Models.Components
         /// If the last balance update failed, this will contain the internal code for this error.
         /// </summary>
         [JsonProperty("balance_error_code")]
-        public GiftCardErrorCode? BalanceErrorCode { get; set; } = null;
+        public string? BalanceErrorCode { get; set; } = null;
 
         /// <summary>
         /// If the last balance update failed, this will contain the the raw error code received from the gift card provider.

@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     
     public class ListPaymentServicesRequest
@@ -19,7 +18,7 @@ namespace Gr4vy.Models.Requests
         /// Return any payment service for this method.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=method")]
-        public Method? Method { get; set; } = null;
+        public string? Method { get; set; } = null;
 
         /// <summary>
         /// A pointer to the page of results to return.

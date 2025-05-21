@@ -53,7 +53,7 @@ namespace Gr4vy.Models.Components
         /// The type of payout to process.
         /// </summary>
         [JsonProperty("category")]
-        public PayoutCategory? Category { get; set; } = null;
+        public string? Category { get; set; } = null;
 
         /// <summary>
         /// The date this payout was created at.
@@ -98,7 +98,7 @@ namespace Gr4vy.Models.Components
         public string? PaymentServicePayoutId { get; set; } = null;
 
         [JsonProperty("status")]
-        public PayoutStatus Status { get; set; } = default!;
+        public string Status { get; set; } = default!;
 
         /// <summary>
         /// The date this payout was last updated at.

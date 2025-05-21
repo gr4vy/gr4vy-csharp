@@ -108,7 +108,7 @@ var res = await sdk.Buyers.CreateAsync(
             },
             TaxId = new TaxId() {
                 Value = "12345678931",
-                Kind = TaxIdKind.CaPstMb,
+                Kind = "<value>",
             },
         },
     },
@@ -239,7 +239,7 @@ var res = await sdk.Buyers.UpdateAsync(
             },
             TaxId = new TaxId() {
                 Value = "12345678931",
-                Kind = TaxIdKind.AuAbn,
+                Kind = "<value>",
             },
         },
     },

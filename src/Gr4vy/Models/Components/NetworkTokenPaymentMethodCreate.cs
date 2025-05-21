@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -50,13 +49,13 @@ namespace Gr4vy.Models.Components
         /// The optional source of the decrypted device token.
         /// </summary>
         [JsonProperty("card_source")]
-        public CardSource? CardSource { get; set; } = null;
+        public string? CardSource { get; set; } = null;
 
         /// <summary>
         /// The original card scheme for which the token was generated.
         /// </summary>
         [JsonProperty("card_scheme")]
-        public CardScheme? CardScheme { get; set; } = null;
+        public string? CardScheme { get; set; } = null;
 
         /// <summary>
         /// The last 4 digits of the original card used to generate the token.

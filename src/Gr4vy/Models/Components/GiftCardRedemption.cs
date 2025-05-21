@@ -29,7 +29,7 @@ namespace Gr4vy.Models.Components
         public string Id { get; set; } = default!;
 
         [JsonProperty("status")]
-        public GiftCardRedemptionStatus Status { get; set; } = default!;
+        public string Status { get; set; } = default!;
 
         /// <summary>
         /// The amount redeemed for this gift card.
@@ -53,7 +53,7 @@ namespace Gr4vy.Models.Components
         /// If this gift card redemption resulted in an error, this will contain the internal code for the error.
         /// </summary>
         [JsonProperty("error_code")]
-        public GiftCardErrorCode? ErrorCode { get; set; } = null;
+        public string? ErrorCode { get; set; } = null;
 
         /// <summary>
         /// If this gift card redemption resulted in an error, this will contain the raw error code received from the gift card provider.

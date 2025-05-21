@@ -48,7 +48,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
                     "travel",
                     "gear",
                 },
-                ProductType = ProductType.Physical,
+                ProductType = "physical",
                 SellerCountry = "GB",
             },
         },
@@ -77,7 +77,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
                 },
                 TaxId = new TaxId() {
                     Value = "12345678931",
-                    Kind = TaxIdKind.MxRfc,
+                    Kind = "<value>",
                 },
             },
             ShippingDetails = new ShippingDetailsCreate() {
@@ -128,7 +128,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
                     FeeAmount = 1200,
                     FlightClass = "E",
                     FlightNumber = "101",
-                    RouteType = RouteType.RoundTrip,
+                    RouteType = "round_trip",
                     SeatClass = "F",
                     StopOver = false,
                     TaxAmount = 1200,
@@ -137,7 +137,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
             PassengerNameRecord = "JOHN L",
             Passengers = new List<AirlinePassenger>() {
                 new AirlinePassenger() {
-                    AgeGroup = AgeGroup.Adult,
+                    AgeGroup = "adult",
                     DateOfBirth = LocalDate.FromDateTime(System.DateTime.Parse("2013-07-16")),
                     EmailAddress = "john@example.com",
                     FirstName = "John",
@@ -152,7 +152,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
             },
             ReservationSystem = "Amadeus",
             RestrictedTicket = false,
-            TicketDeliveryMethod = TicketDeliveryMethod.Electronic,
+            TicketDeliveryMethod = "electronic",
             TicketNumber = "123-1234-151555",
             TravelAgencyCode = "12345",
             TravelAgencyInvoiceNumber = "EG15555155",
@@ -232,7 +232,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
                     "travel",
                     "gear",
                 },
-                ProductType = ProductType.Physical,
+                ProductType = "physical",
                 SellerCountry = "US",
             },
         },
@@ -261,7 +261,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
                 },
                 TaxId = new TaxId() {
                     Value = "12345678931",
-                    Kind = TaxIdKind.TwVat,
+                    Kind = "<value>",
                 },
             },
             ShippingDetails = new ShippingDetailsCreate() {
@@ -312,7 +312,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
                     FeeAmount = 1200,
                     FlightClass = "E",
                     FlightNumber = "101",
-                    RouteType = RouteType.RoundTrip,
+                    RouteType = "round_trip",
                     SeatClass = "F",
                     StopOver = false,
                     TaxAmount = 1200,
@@ -321,7 +321,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
             PassengerNameRecord = "JOHN L",
             Passengers = new List<AirlinePassenger>() {
                 new AirlinePassenger() {
-                    AgeGroup = AgeGroup.Adult,
+                    AgeGroup = "adult",
                     DateOfBirth = LocalDate.FromDateTime(System.DateTime.Parse("2013-07-16")),
                     EmailAddress = "john@example.com",
                     FirstName = "John",
@@ -336,7 +336,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
             },
             ReservationSystem = "Amadeus",
             RestrictedTicket = false,
-            TicketDeliveryMethod = TicketDeliveryMethod.Electronic,
+            TicketDeliveryMethod = "electronic",
             TicketNumber = "123-1234-151555",
             TravelAgencyCode = "12345",
             TravelAgencyInvoiceNumber = "EG15555155",

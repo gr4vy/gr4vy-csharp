@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -32,7 +31,7 @@ namespace Gr4vy.Models.Components
         /// The payment scheme of the card.
         /// </summary>
         [JsonProperty("card_type")]
-        public CardType? CardType { get; set; } = null;
+        public string? CardType { get; set; } = null;
 
         /// <summary>
         /// The card issuer.

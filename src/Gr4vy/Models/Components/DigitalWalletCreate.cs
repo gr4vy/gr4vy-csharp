@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
@@ -21,7 +20,7 @@ namespace Gr4vy.Models.Components
     {
 
         [JsonProperty("provider")]
-        public DigitalWalletProvider Provider { get; set; } = default!;
+        public string Provider { get; set; } = default!;
 
         [JsonProperty("merchant_name")]
         public string MerchantName { get; set; } = default!;

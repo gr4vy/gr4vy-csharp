@@ -25,7 +25,7 @@ var sdk = new Gr4vySDK(
 
 ListAuditLogsRequest req = new ListAuditLogsRequest() {
     Cursor = "ZXhhbXBsZTE",
-    Action = AuditLogAction.Created,
+    Action = "created",
     UserId = "14b7b8c5-a6ba-4fb6-bbab-52d43c7f37ef",
     ResourceType = "user",
 };

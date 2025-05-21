@@ -46,7 +46,7 @@ namespace Gr4vy.Models.Components
         public bool? Active { get; set; } = true;
 
         [JsonProperty("method")]
-        public Method Method { get; set; } = default!;
+        public string Method { get; set; } = default!;
 
         /// <summary>
         /// The display name for the payment service.
@@ -61,7 +61,7 @@ namespace Gr4vy.Models.Components
         public long Position { get; set; } = default!;
 
         [JsonProperty("status")]
-        public PaymentServiceStatus? Status { get; set; }
+        public string? Status { get; set; }
 
         /// <summary>
         /// A list of currencies for which this service is enabled, in ISO 4217 three-letter code format.

@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -35,7 +34,7 @@ namespace Gr4vy.Models.Components
         public string PaymentServiceDefinitionId { get; set; } = default!;
 
         [JsonProperty("method")]
-        public Method Method { get; set; } = default!;
+        public string Method { get; set; } = default!;
 
         /// <summary>
         /// The display name for the payment service.

@@ -26,13 +26,13 @@ namespace Gr4vy.Models.Components
         /// The status of the 3DS challenge for this transaction.
         /// </summary>
         [JsonProperty("status")]
-        public ThreeDSecureStatus? Status { get; set; } = null;
+        public string? Status { get; set; } = null;
 
         /// <summary>
         /// The method used for 3DS authentication for this transaction.
         /// </summary>
         [JsonProperty("method")]
-        public ThreeDSecureMethod? Method { get; set; } = null;
+        public string? Method { get; set; } = null;
 
         /// <summary>
         /// The 3DS data sent to the payment service for this transaction. This will only be populated if external 3DS data was passed in directly as part of the transaction API call, or if our 3DS server returned a status code of `Y` or `A`. In case of a failure to authenticate (status `N`, `R`, or `U`) this field will not be populated. To see full details about the 3DS calls please use our transaction events API.

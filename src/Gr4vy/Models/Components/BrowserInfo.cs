@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -50,7 +49,7 @@ namespace Gr4vy.Models.Components
         /// The platform that is being used to access the website.
         /// </summary>
         [JsonProperty("user_device")]
-        public UserDevice UserDevice { get; set; } = default!;
+        public string UserDevice { get; set; } = default!;
 
         /// <summary>
         /// The Accept header of the request from the buyer&apos;s browser.

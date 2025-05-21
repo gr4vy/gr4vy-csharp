@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -23,6 +22,6 @@ namespace Gr4vy.Models.Components
         public string Value { get; set; } = default!;
 
         [JsonProperty("kind")]
-        public TaxIdKind Kind { get; set; } = default!;
+        public string Kind { get; set; } = default!;
     }
 }

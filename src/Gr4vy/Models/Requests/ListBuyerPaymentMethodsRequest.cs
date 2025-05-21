@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
-    using Gr4vy.Models.Requests;
     using Gr4vy.Utils;
     
     public class ListBuyerPaymentMethodsRequest
@@ -37,7 +36,7 @@ namespace Gr4vy.Models.Requests
         /// The direction to sort the payment methods in.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=order_by")]
-        public OrderBy? OrderBy { get; set; } = Gr4vy.Models.Requests.OrderBy.Desc;
+        public string? OrderBy { get; set; } = "desc";
 
         /// <summary>
         /// The country code to filter payment methods by. This only applies to payment methods with a `country` value.

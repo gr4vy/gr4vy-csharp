@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
@@ -20,7 +19,7 @@ namespace Gr4vy.Models.Components
         public string? Bin { get; set; } = null;
 
         [JsonProperty("card_type")]
-        public CardType? CardType { get; set; } = null;
+        public string? CardType { get; set; } = null;
 
         [JsonProperty("card_issuer_name")]
         public string? CardIssuerName { get; set; } = null;

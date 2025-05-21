@@ -72,7 +72,7 @@ namespace Gr4vy.Models.Components
         public string? ExternalIdentifier { get; set; } = null;
 
         [JsonProperty("intent")]
-        public TransactionIntent? Intent { get; set; }
+        public string? Intent { get; set; }
 
         /// <summary>
         ///  Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature. There are also a few restrictions on how the flag may be set:<br/>
@@ -127,7 +127,7 @@ namespace Gr4vy.Models.Components
         /// The way payment method information made it to this transaction.
         /// </summary>
         [JsonProperty("payment_source")]
-        public TransactionPaymentSource? PaymentSource { get; set; }
+        public string? PaymentSource { get; set; }
 
         /// <summary>
         /// The airline addendum data which describes the airline booking associated with this transaction.

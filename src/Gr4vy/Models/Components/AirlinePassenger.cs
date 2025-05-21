@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using NodaTime;
@@ -21,7 +20,7 @@ namespace Gr4vy.Models.Components
         /// The age group for the passenger.
         /// </summary>
         [JsonProperty("age_group")]
-        public AgeGroup? AgeGroup { get; set; } = null;
+        public string? AgeGroup { get; set; } = null;
 
         /// <summary>
         /// The passenger&apos;s date of birth in YYYY-MM-YY format.
