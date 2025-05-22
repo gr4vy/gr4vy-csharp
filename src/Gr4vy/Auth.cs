@@ -6,6 +6,7 @@ using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
 using Microsoft.IdentityModel.Tokens;
+using Gr4vy;
 
 public static class JWTScope
 {
@@ -94,7 +95,8 @@ public class Auth
         var now = DateTime.UtcNow;
         var claims = new List<Claim>
         {
-            new Claim("iss", "Gr4vy C# SDK"),
+            // the user agent is now exposed anywhere
+            new Claim("iss", "speakeasy-sdk/csharp X.X.X X.X.X X.X.X Gr4vy"),
             new Claim(
                 JwtRegisteredClaimNames.Iat,
                 new DateTimeOffset(now).ToUnixTimeSeconds().ToString()
