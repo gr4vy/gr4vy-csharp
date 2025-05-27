@@ -41,6 +41,8 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     BuyerExternalIdentifier = "buyer-12345",
     BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
     BuyerEmailAddress = "john@example.com",
+    BuyerSearch = "John",
+    IpAddress = "8.214.133.47",
     Status = new List<string>() {
         "authorization_succeeded",
     },
@@ -56,11 +58,16 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     Currency = new List<string>() {
         "USD",
     },
+    Country = new List<string>() {
+        "US",
+    },
     PaymentServiceId = new List<string>() {
         "fffd152a-9532-4087-9a4f-de58754210f0",
     },
     PaymentMethodId = "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     PaymentMethodLabel = "1234",
+    PaymentMethodScheme = "[\"visa\"]",
+    PaymentMethodCountry = "[\"US\"]",
     PaymentMethodFingerprint = "a50b85c200ee0795d6fd33a5c66f37a4564f554355c5b46a756aac485dd168a4",
     Method = new List<string>() {
         "card",
@@ -82,6 +89,7 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     },
     IsSubsequentPayment = true,
     MerchantInitiated = true,
+    Used3ds = true,
 };
 
 ListTransactionsResponse? res = await sdk.Transactions.ListAsync(req);
