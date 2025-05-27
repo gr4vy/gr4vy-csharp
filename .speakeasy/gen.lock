@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 9dd119cd440eb45588ab66854b19cd4d
+  docChecksum: 40bdd56af4f4f759b2f6043a45181327
   docVersion: 1.0.0
-  speakeasyVersion: 1.548.4
-  generationVersion: 2.605.6
-  releaseVersion: 1.0.0-beta.4
-  configChecksum: 9202fb60c9a1d77a73b946304a4c1d04
+  speakeasyVersion: 1.552.0
+  generationVersion: 2.610.0
+  releaseVersion: 1.0.0-beta.5
+  configChecksum: fea77fda7bd009dcfa57614285c7ff98
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -2157,6 +2157,12 @@ examples:
           payment_source: ["recurring"]
           is_subsequent_payment: true
           merchant_initiated: true
+          buyer_search: "John"
+          ip_address: "8.214.133.47"
+          country: ["US"]
+          payment_method_scheme: "[\"visa\"]"
+          payment_method_country: "[\"US\"]"
+          used_3ds: true
         header:
           x-gr4vy-merchant-account-id: "default"
       responses:

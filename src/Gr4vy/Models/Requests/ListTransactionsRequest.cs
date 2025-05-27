@@ -64,6 +64,12 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_email_address")]
         public string? BuyerEmailAddress { get; set; } = null;
 
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_search")]
+        public string? BuyerSearch { get; set; } = null;
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=ip_address")]
+        public string? IpAddress { get; set; } = null;
+
         /// <summary>
         /// Filters the results to only the transactions that have a `status` that matches with any of the provided status values.
         /// </summary>
@@ -110,6 +116,12 @@ namespace Gr4vy.Models.Requests
         public List<string>? Currency { get; set; } = null;
 
         /// <summary>
+        /// Filters for transactions that have matching `country` values.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=country")]
+        public List<string>? Country { get; set; } = null;
+
+        /// <summary>
         /// Filters for transactions that were processed by the provided `payment_service_id` values.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_service_id")]
@@ -120,6 +132,18 @@ namespace Gr4vy.Models.Requests
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_method_label")]
         public string? PaymentMethodLabel { get; set; } = null;
+
+        /// <summary>
+        /// Filters for transactions that have a payment method with a scheme that matches with the provided value.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_method_scheme")]
+        public string? PaymentMethodScheme { get; set; } = null;
+
+        /// <summary>
+        /// Filters for transactions that have a payment method with a country that matches with the provided value.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_method_country")]
+        public string? PaymentMethodCountry { get; set; } = null;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_method_fingerprint")]
         public string? PaymentMethodFingerprint { get; set; } = null;
@@ -207,6 +231,12 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=merchant_initiated")]
         public bool? MerchantInitiated { get; set; } = null;
+
+        /// <summary>
+        /// Filters for transactions that attempted 3DS authentication or not.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=used_3ds")]
+        public bool? Used3ds { get; set; } = null;
 
         /// <summary>
         /// The ID of the merchant account to use for this request.

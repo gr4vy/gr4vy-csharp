@@ -96,10 +96,10 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.4";
-        private const string _sdkGenVersion = "2.605.6";
+        private const string _sdkVersion = "1.0.0-beta.5";
+        private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.4 2.605.6 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.5 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -225,6 +225,8 @@ namespace Gr4vy
                     BuyerExternalIdentifier = request?.BuyerExternalIdentifier,
                     BuyerId = request?.BuyerId,
                     BuyerEmailAddress = request?.BuyerEmailAddress,
+                    BuyerSearch = request?.BuyerSearch,
+                    IpAddress = request?.IpAddress,
                     Status = request?.Status,
                     Id = request?.Id,
                     PaymentServiceTransactionId = request?.PaymentServiceTransactionId,
@@ -234,9 +236,12 @@ namespace Gr4vy
                     AmountLte = request?.AmountLte,
                     AmountGte = request?.AmountGte,
                     Currency = request?.Currency,
+                    Country = request?.Country,
                     PaymentServiceId = request?.PaymentServiceId,
                     PaymentMethodId = request?.PaymentMethodId,
                     PaymentMethodLabel = request?.PaymentMethodLabel,
+                    PaymentMethodScheme = request?.PaymentMethodScheme,
+                    PaymentMethodCountry = request?.PaymentMethodCountry,
                     PaymentMethodFingerprint = request?.PaymentMethodFingerprint,
                     Method = request?.Method,
                     ErrorCode = request?.ErrorCode,
@@ -252,6 +257,7 @@ namespace Gr4vy
                     PaymentSource = request?.PaymentSource,
                     IsSubsequentPayment = request?.IsSubsequentPayment,
                     MerchantInitiated = request?.MerchantInitiated,
+                    Used3ds = request?.Used3ds,
                     MerchantAccountId = request?.MerchantAccountId
                 };
 
