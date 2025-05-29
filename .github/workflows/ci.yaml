@@ -69,3 +69,23 @@ jobs:
           MERGE_DELETE_BRANCH: true
           MERGE_FORKS: false
           UPDATE_METHOD: rebase
+
+  notify:
+    needs: test
+    runs-on: ubuntu-latest
+    if: always()
+    steps:
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@v2
+        if: github.ref == 'refs/heads/main' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'github-actions[bot]')
+        env:
+            SLACK_USERNAME: C# SDK 
+            SLACK_TITLE: C# SDK
+            SLACK_WEBHOOK: ${{ secrets.SLACK_SDK_WEBHOOK_URL }}
+            SLACK_CHANNEL: sdk-updates
+            SLACK_MSG_AUTHOR: gr4vy-code
+            SLACK_ICON_EMOJI: ":gr4vy:"
+            SLACK_COLOR: "${{ contains(needs.*.result, 'failure') && 'failure' || 'success' }}"
+            SLACK_MESSAGE_ON_SUCCESS: "CI passed - `${{ github.event.head_commit.message }}`"
+            SLACK_MESSAGE_ON_FAILURE: "CI failed - `${{ github.event.head_commit.message }}`"
+            SLACK_FOOTER: ""
