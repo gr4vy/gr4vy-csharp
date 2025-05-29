@@ -16,31 +16,32 @@ Provision a cryptogram for a network token.
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using Gr4vy.Models.Requests;
 
 var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
 
-CreatePaymentMethodNetworkTokenCryptogramRequest req = new CreatePaymentMethodNetworkTokenCryptogramRequest() {
-    PaymentMethodId = "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    NetworkTokenId = "f8dd5cfc-7834-4847-95dc-f75a360e2298",
-    CryptogramCreate = new CryptogramCreate() {
+var res = await sdk.PaymentMethods.NetworkTokens.Cryptogram.CreateAsync(
+    paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+    networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298",
+    cryptogramCreate: new CryptogramCreate() {
         MerchantInitiated = false,
     },
-};
-
-var res = await sdk.PaymentMethods.NetworkTokens.Cryptogram.CreateAsync(req);
+    merchantAccountId: "default"
+);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                                                                     | Type                                                                                                                          | Required                                                                                                                      | Description                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                     | [CreatePaymentMethodNetworkTokenCryptogramRequest](../../Models/Requests/CreatePaymentMethodNetworkTokenCryptogramRequest.md) | :heavy_check_mark:                                                                                                            | The request object to use for the request.                                                                                    |
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `PaymentMethodId`                                               | *string*                                                        | :heavy_check_mark:                                              | The ID of the payment method                                    | ef9496d8-53a5-4aad-8ca2-00eb68334389                            |
+| `NetworkTokenId`                                                | *string*                                                        | :heavy_check_mark:                                              | The ID of the network token                                     | f8dd5cfc-7834-4847-95dc-f75a360e2298                            |
+| `CryptogramCreate`                                              | [CryptogramCreate](../../Models/Components/CryptogramCreate.md) | :heavy_check_mark:                                              | N/A                                                             |                                                                 |
+| `MerchantAccountId`                                             | *string*                                                        | :heavy_minus_sign:                                              | The ID of the merchant account to use for this request.         | default                                                         |
 
 ### Response
 

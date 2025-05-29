@@ -46,7 +46,7 @@ namespace Gr4vy
         /// Create a new buyer record.
         /// </remarks>
         /// </summary>
-        Task<Buyer> CreateAsync(BuyerCreate buyerCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<Buyer> CreateAsync(BuyerCreate buyerCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// Get a buyer
@@ -64,7 +64,7 @@ namespace Gr4vy
         /// Updates a buyer record.
         /// </remarks>
         /// </summary>
-        Task<Buyer> UpdateAsync(string buyerId, BuyerUpdate buyerUpdate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<Buyer> UpdateAsync(string buyerId, BuyerUpdate buyerUpdate, string? merchantAccountId = null);
 
         /// <summary>
         /// Delete a buyer
@@ -73,17 +73,17 @@ namespace Gr4vy
         /// Permanently removes a buyer record.
         /// </remarks>
         /// </summary>
-        Task DeleteAsync(string buyerId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task DeleteAsync(string buyerId, string? merchantAccountId = null);
     }
 
     public class Buyers: IBuyers
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -366,18 +366,18 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Buyer> CreateAsync(BuyerCreate buyerCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<Buyer> CreateAsync(BuyerCreate buyerCreate, string? merchantAccountId = null)
         {
             var request = new AddBuyerRequest()
             {
                 BuyerCreate = buyerCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/buyers", request);
+
+            var urlString = baseUrl + "/buyers";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -804,13 +804,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Buyer> UpdateAsync(string buyerId, BuyerUpdate buyerUpdate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<Buyer> UpdateAsync(string buyerId, BuyerUpdate buyerUpdate, string? merchantAccountId = null)
         {
             var request = new UpdateBuyerRequest()
             {
                 BuyerId = buyerId,
                 BuyerUpdate = buyerUpdate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1011,12 +1010,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task DeleteAsync(string buyerId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task DeleteAsync(string buyerId, string? merchantAccountId = null)
         {
             var request = new DeleteBuyerRequest()
             {
                 BuyerId = buyerId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

@@ -36,7 +36,7 @@ namespace Gr4vy.Tests
                 .ToLower();
 
             var response = await gr4vy.MerchantAccounts.CreateAsync(
-                merchantAccountCreate: new MerchantAccountCreate()
+                new MerchantAccountCreate()
                 {
                     Id = merchantAccountId,
                     DisplayName = merchantAccountId,

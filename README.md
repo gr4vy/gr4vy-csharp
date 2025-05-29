@@ -565,7 +565,6 @@ try
                 "f29e886e-93cc-4714-b4a3-12b7a718e595",
             },
         },
-        timeoutInSeconds: 1D,
         merchantAccountId: "default"
     );
 
@@ -681,7 +680,6 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -709,7 +707,6 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 

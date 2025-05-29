@@ -42,7 +42,7 @@ namespace Gr4vy
         /// Create a refund for a transaction.
         /// </remarks>
         /// </summary>
-        Task<Refund> CreateAsync(string transactionId, TransactionRefundCreate transactionRefundCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<Refund> CreateAsync(string transactionId, TransactionRefundCreate transactionRefundCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// Get transaction refund
@@ -58,10 +58,10 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -308,13 +308,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Refund> CreateAsync(string transactionId, TransactionRefundCreate transactionRefundCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<Refund> CreateAsync(string transactionId, TransactionRefundCreate transactionRefundCreate, string? merchantAccountId = null)
         {
             var request = new CreateTransactionRefundRequest()
             {
                 TransactionId = transactionId,
                 TransactionRefundCreate = transactionRefundCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
