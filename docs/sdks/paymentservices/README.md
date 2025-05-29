@@ -318,7 +318,6 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.PaymentServices.DeleteAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -330,7 +329,6 @@ var res = await sdk.PaymentServices.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -382,7 +380,6 @@ var res = await sdk.PaymentServices.VerifyAsync(
             },
         },
     },
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -394,7 +391,6 @@ var res = await sdk.PaymentServices.VerifyAsync(
 | Parameter                                                         | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `VerifyCredentials`                                               | [VerifyCredentials](../../Models/Components/VerifyCredentials.md) | :heavy_check_mark:                                                | N/A                                                               |                                                                   |
-| `TimeoutInSeconds`                                                | *double*                                                          | :heavy_minus_sign:                                                | N/A                                                               |                                                                   |
 | `MerchantAccountId`                                               | *string*                                                          | :heavy_minus_sign:                                                | The ID of the merchant account to use for this request.           | default                                                           |
 
 ### Response

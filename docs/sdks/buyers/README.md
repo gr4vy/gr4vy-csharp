@@ -112,7 +112,6 @@ var res = await sdk.Buyers.CreateAsync(
             },
         },
     },
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -124,7 +123,6 @@ var res = await sdk.Buyers.CreateAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerCreate`                                           | [BuyerCreate](../../Models/Components/BuyerCreate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -243,7 +241,6 @@ var res = await sdk.Buyers.UpdateAsync(
             },
         },
     },
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -256,7 +253,6 @@ var res = await sdk.Buyers.UpdateAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to edit.                            | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `BuyerUpdate`                                           | [BuyerUpdate](../../Models/Components/BuyerUpdate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -298,7 +294,6 @@ var sdk = new Gr4vySDK(
 
 await sdk.Buyers.DeleteAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -310,7 +305,6 @@ await sdk.Buyers.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to delete.                          | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Errors

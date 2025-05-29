@@ -25,7 +25,6 @@ var sdk = new Gr4vySDK(
 var res = await sdk.Buyers.GiftCards.ListAsync(
     buyerExternalIdentifier: "<value>",
     buyerId: "43dacd6f-2cf2-4482-b522-f7a251f63637",
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -38,7 +37,6 @@ var res = await sdk.Buyers.GiftCards.ListAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerExternalIdentifier`                               | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `BuyerId`                                               | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

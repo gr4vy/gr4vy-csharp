@@ -21,9 +21,6 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=digital_wallet_id")]
         public string DigitalWalletId { get; set; } = default!;
 
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=timeout_in_seconds")]
-        public double? TimeoutInSeconds { get; set; } = 1D;
-
         /// <summary>
         /// The ID of the merchant account to use for this request.
         /// </summary>

@@ -44,7 +44,7 @@ namespace Gr4vy
         /// Create a transaction.
         /// </remarks>
         /// </summary>
-        Task<Transaction> CreateAsync(TransactionCreate transactionCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null, string? idempotencyKey = null);
+        Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null);
 
         /// <summary>
         /// Get transaction
@@ -62,7 +62,7 @@ namespace Gr4vy
         /// Capture a previously authorized transaction.
         /// </remarks>
         /// </summary>
-        Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, string? merchantAccountId = null);
 
         /// <summary>
         /// Void transaction
@@ -71,7 +71,7 @@ namespace Gr4vy
         /// Void a previously authorized transaction.
         /// </remarks>
         /// </summary>
-        Task<Transaction> VoidAsync(string transactionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<Transaction> VoidAsync(string transactionId, string? merchantAccountId = null);
 
         /// <summary>
         /// Get transaction summary
@@ -89,17 +89,17 @@ namespace Gr4vy
         /// Fetch the latest status for a transaction.
         /// </remarks>
         /// </summary>
-        Task<Transaction> SyncAsync(string transactionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<Transaction> SyncAsync(string transactionId, string? merchantAccountId = null);
     }
 
     public class Transactions: ITransactions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -417,19 +417,19 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> CreateAsync(TransactionCreate transactionCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null, string? idempotencyKey = null)
+        public async Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null)
         {
             var request = new CreateTransactionRequest()
             {
                 TransactionCreate = transactionCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
                 IdempotencyKey = idempotencyKey,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/transactions", request);
+
+            var urlString = baseUrl + "/transactions";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -856,13 +856,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, string? merchantAccountId = null)
         {
             var request = new CaptureTransactionRequest()
             {
                 TransactionId = transactionId,
                 TransactionCapture = transactionCapture,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1063,12 +1062,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> VoidAsync(string transactionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<Transaction> VoidAsync(string transactionId, string? merchantAccountId = null)
         {
             var request = new VoidTransactionRequest()
             {
                 TransactionId = transactionId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1495,12 +1493,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> SyncAsync(string transactionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<Transaction> SyncAsync(string transactionId, string? merchantAccountId = null)
         {
             var request = new SyncTransactionRequest()
             {
                 TransactionId = transactionId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

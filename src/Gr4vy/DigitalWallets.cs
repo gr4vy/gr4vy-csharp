@@ -34,7 +34,7 @@ namespace Gr4vy
         /// Register a digital wallet like Apple Pay, Google Pay, or Click to Pay.
         /// </remarks>
         /// </summary>
-        Task<DigitalWallet> CreateAsync(DigitalWalletCreate digitalWalletCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<DigitalWallet> CreateAsync(DigitalWalletCreate digitalWalletCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// List digital wallets
@@ -61,7 +61,7 @@ namespace Gr4vy
         /// Delete a configured digital wallet.
         /// </remarks>
         /// </summary>
-        Task<object> DeleteAsync(string digitalWalletId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<object> DeleteAsync(string digitalWalletId, string? merchantAccountId = null);
 
         /// <summary>
         /// Update digital wallet
@@ -70,17 +70,17 @@ namespace Gr4vy
         /// Update a digital wallet.
         /// </remarks>
         /// </summary>
-        Task<DigitalWallet> UpdateAsync(string digitalWalletId, DigitalWalletUpdate digitalWalletUpdate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<DigitalWallet> UpdateAsync(string digitalWalletId, DigitalWalletUpdate digitalWalletUpdate, string? merchantAccountId = null);
     }
 
     public class DigitalWallets: IDigitalWallets
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -97,18 +97,18 @@ namespace Gr4vy
             Domains = new Domains(_client, _securitySource, _serverUrl, SDKConfiguration);
         }
 
-        public async Task<DigitalWallet> CreateAsync(DigitalWalletCreate digitalWalletCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<DigitalWallet> CreateAsync(DigitalWalletCreate digitalWalletCreate, string? merchantAccountId = null)
         {
             var request = new ConfigureDigitalWalletRequest()
             {
                 DigitalWalletCreate = digitalWalletCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/digital-wallets", request);
+
+            var urlString = baseUrl + "/digital-wallets";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -767,12 +767,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<object> DeleteAsync(string digitalWalletId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<object> DeleteAsync(string digitalWalletId, string? merchantAccountId = null)
         {
             var request = new DeleteDigitalWalletRequest()
             {
                 DigitalWalletId = digitalWalletId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -967,13 +966,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<DigitalWallet> UpdateAsync(string digitalWalletId, DigitalWalletUpdate digitalWalletUpdate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<DigitalWallet> UpdateAsync(string digitalWalletId, DigitalWalletUpdate digitalWalletUpdate, string? merchantAccountId = null)
         {
             var request = new UpdateDigitalWalletRequest()
             {
                 DigitalWalletId = digitalWalletId,
                 DigitalWalletUpdate = digitalWalletUpdate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

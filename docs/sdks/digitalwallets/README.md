@@ -33,7 +33,6 @@ var res = await sdk.DigitalWallets.CreateAsync(
         MerchantCountryCode = "US",
         AcceptTermsAndConditions = false,
     },
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -45,7 +44,6 @@ var res = await sdk.DigitalWallets.CreateAsync(
 | Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `DigitalWalletCreate`                                                 | [DigitalWalletCreate](../../Models/Components/DigitalWalletCreate.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
-| `TimeoutInSeconds`                                                    | *double*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               | default                                                               |
 
 ### Response
@@ -187,7 +185,6 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.DigitalWallets.DeleteAsync(
     digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -199,7 +196,6 @@ var res = await sdk.DigitalWallets.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `DigitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the digital wallet to delete.                 | 1808f5e6-b49c-4db9-94fa-22371ea352f5                    |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -244,7 +240,6 @@ var res = await sdk.DigitalWallets.UpdateAsync(
     digitalWalletUpdate: new DigitalWalletUpdate() {
         MerchantCountryCode = "DE",
     },
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -257,7 +252,6 @@ var res = await sdk.DigitalWallets.UpdateAsync(
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `DigitalWalletId`                                                     | *string*                                                              | :heavy_check_mark:                                                    | The ID of the digital wallet to edit.                                 | 1808f5e6-b49c-4db9-94fa-22371ea352f5                                  |
 | `DigitalWalletUpdate`                                                 | [DigitalWalletUpdate](../../Models/Components/DigitalWalletUpdate.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
-| `TimeoutInSeconds`                                                    | *double*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               | default                                                               |
 
 ### Response

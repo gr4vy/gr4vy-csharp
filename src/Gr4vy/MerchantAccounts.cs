@@ -43,7 +43,7 @@ namespace Gr4vy
         /// Create a new merchant account in an instance.
         /// </remarks>
         /// </summary>
-        Task<MerchantAccount> CreateAsync(MerchantAccountCreate merchantAccountCreate, double? timeoutInSeconds = 1D);
+        Task<MerchantAccount> CreateAsync(MerchantAccountCreate request);
 
         /// <summary>
         /// Get a merchant account
@@ -61,17 +61,17 @@ namespace Gr4vy
         /// Update info for a merchant account in an instance.
         /// </remarks>
         /// </summary>
-        Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate, double? timeoutInSeconds = 1D);
+        Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate);
     }
 
     public class MerchantAccounts: IMerchantAccounts
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -344,20 +344,16 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<MerchantAccount> CreateAsync(MerchantAccountCreate merchantAccountCreate, double? timeoutInSeconds = 1D)
+        public async Task<MerchantAccount> CreateAsync(MerchantAccountCreate request)
         {
-            var request = new CreateMerchantAccountRequest()
-            {
-                MerchantAccountCreate = merchantAccountCreate,
-                TimeoutInSeconds = timeoutInSeconds,
-            };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts", request);
+
+            var urlString = baseUrl + "/merchant-accounts";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "MerchantAccountCreate", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -776,13 +772,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate, double? timeoutInSeconds = 1D)
+        public async Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate)
         {
             var request = new UpdateMerchantAccountRequest()
             {
                 MerchantAccountId = merchantAccountId,
                 MerchantAccountUpdate = merchantAccountUpdate,
-                TimeoutInSeconds = timeoutInSeconds,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             

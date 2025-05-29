@@ -41,7 +41,7 @@ namespace Gr4vy
         /// Create a gateway tokens for a payment method.
         /// </remarks>
         /// </summary>
-        Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// Delete payment service token
@@ -50,17 +50,17 @@ namespace Gr4vy
         /// Delete a gateway tokens for a payment method.
         /// </remarks>
         /// </summary>
-        Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, string? merchantAccountId = null);
     }
 
     public class PaymentServiceTokens: IPaymentServiceTokens
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -306,13 +306,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, string? merchantAccountId = null)
         {
             var request = new CreatePaymentMethodPaymentServiceTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 PaymentServiceTokenCreate = paymentServiceTokenCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -513,13 +512,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, string? merchantAccountId = null)
         {
             var request = new DeletePaymentMethodPaymentServiceTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 PaymentServiceTokenId = paymentServiceTokenId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

@@ -86,33 +86,32 @@ var sdk = new Gr4vySDK(
     merchantAccountId: "default"
 );
 
-var res = await sdk.MerchantAccounts.CreateAsync(
-    merchantAccountCreate: new MerchantAccountCreate() {
-        AccountUpdaterRequestEncryptionKey = "key-1234",
-        AccountUpdaterRequestEncryptionKeyId = "key-id-1234",
-        AccountUpdaterResponseDecryptionKey = "key-1234",
-        AccountUpdaterResponseDecryptionKeyId = "key-id-1234",
-        OverCaptureAmount = 1299,
-        OverCapturePercentage = 25,
-        LoonClientKey = "client-key-1234",
-        LoonSecretKey = "key-12345",
-        LoonAcceptedSchemes = new List<string>() {
-            "visa",
-        },
-        VisaNetworkTokensRequestorId = "id-12345",
-        VisaNetworkTokensAppId = "id-12345",
-        AmexNetworkTokensRequestorId = "id-12345",
-        AmexNetworkTokensAppId = "id-12345",
-        MastercardNetworkTokensRequestorId = "id-12345",
-        MastercardNetworkTokensAppId = "id-12345",
-        OutboundWebhookUrl = "https://example.com/callback",
-        OutboundWebhookUsername = "user-12345",
-        OutboundWebhookPassword = "password-12345",
-        Id = "merchant-12345",
-        DisplayName = "Example",
+MerchantAccountCreate req = new MerchantAccountCreate() {
+    AccountUpdaterRequestEncryptionKey = "key-1234",
+    AccountUpdaterRequestEncryptionKeyId = "key-id-1234",
+    AccountUpdaterResponseDecryptionKey = "key-1234",
+    AccountUpdaterResponseDecryptionKeyId = "key-id-1234",
+    OverCaptureAmount = 1299,
+    OverCapturePercentage = 25,
+    LoonClientKey = "client-key-1234",
+    LoonSecretKey = "key-12345",
+    LoonAcceptedSchemes = new List<string>() {
+        "visa",
     },
-    timeoutInSeconds: 1D
-);
+    VisaNetworkTokensRequestorId = "id-12345",
+    VisaNetworkTokensAppId = "id-12345",
+    AmexNetworkTokensRequestorId = "id-12345",
+    AmexNetworkTokensAppId = "id-12345",
+    MastercardNetworkTokensRequestorId = "id-12345",
+    MastercardNetworkTokensAppId = "id-12345",
+    OutboundWebhookUrl = "https://example.com/callback",
+    OutboundWebhookUsername = "user-12345",
+    OutboundWebhookPassword = "password-12345",
+    Id = "merchant-12345",
+    DisplayName = "Example",
+};
+
+var res = await sdk.MerchantAccounts.CreateAsync(req);
 
 // handle response
 ```
@@ -121,8 +120,7 @@ var res = await sdk.MerchantAccounts.CreateAsync(
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `MerchantAccountCreate`                                                   | [MerchantAccountCreate](../../Models/Components/MerchantAccountCreate.md) | :heavy_check_mark:                                                        | N/A                                                                       |
-| `TimeoutInSeconds`                                                        | *double*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `request`                                                                 | [MerchantAccountCreate](../../Models/Components/MerchantAccountCreate.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
@@ -234,8 +232,7 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
         OutboundWebhookUrl = "https://example.com/callback",
         OutboundWebhookUsername = "user-12345",
         OutboundWebhookPassword = "password-12345",
-    },
-    timeoutInSeconds: 1D
+    }
 );
 
 // handle response
@@ -247,7 +244,6 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `MerchantAccountId`                                                       | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the merchant account                                            | merchant-12345                                                            |
 | `MerchantAccountUpdate`                                                   | [MerchantAccountUpdate](../../Models/Components/MerchantAccountUpdate.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
-| `TimeoutInSeconds`                                                        | *double*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
 
 ### Response
 

@@ -32,17 +32,17 @@ namespace Gr4vy
         /// List all the stored gift cards for a specific buyer.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorGiftCardSummary> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, double? timeoutInSeconds = 1D, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<CollectionNoCursorGiftCardSummary> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
     public class BuyersGiftCards: IBuyersGiftCards
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -55,13 +55,12 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorGiftCardSummary> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, double? timeoutInSeconds = 1D, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<CollectionNoCursorGiftCardSummary> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListBuyerGiftCardsRequest()
             {
                 BuyerExternalIdentifier = buyerExternalIdentifier,
                 BuyerId = buyerId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

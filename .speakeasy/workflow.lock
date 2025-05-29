@@ -8,20 +8,20 @@ sources:
             - latest
     openapi:
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:0448f570e5c8cb0429587b85c02f43c0c55d8c6448e6888c398329b952f0e194
-        sourceBlobDigest: sha256:dd6bc90f5813dbabc3f703310f5aa7cbd9564c874ad427d94ef85a98d5b35a8b
+        sourceRevisionDigest: sha256:0e7f1b051a022a64e433e7400235d57dd7e6f500082316a7d2fddc70a5b09084
+        sourceBlobDigest: sha256:1455374dc812203ee5b0a2e6f3ca52418ffa2bded88db8339094ce5714f62d43
         tags:
             - latest
-            - speakeasy-sdk-regen-1748423721
+            - speakeasy-sdk-regen-1748503077
             - 1.0.0
 targets:
     csharp:
         source: openapi
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:0448f570e5c8cb0429587b85c02f43c0c55d8c6448e6888c398329b952f0e194
-        sourceBlobDigest: sha256:dd6bc90f5813dbabc3f703310f5aa7cbd9564c874ad427d94ef85a98d5b35a8b
+        sourceRevisionDigest: sha256:0e7f1b051a022a64e433e7400235d57dd7e6f500082316a7d2fddc70a5b09084
+        sourceBlobDigest: sha256:1455374dc812203ee5b0a2e6f3ca52418ffa2bded88db8339094ce5714f62d43
         codeSamplesNamespace: openapi-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:6bcdae2af214f190a57db941423ca842aefefe033b92aa75eef71d2629e8d893
+        codeSamplesRevisionDigest: sha256:e9ff77db5e82a5c22f6a1f5452f071cdd698e6c5cc88fc17b12a3da621adc96b
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
@@ -37,6 +37,7 @@ workflow:
                 - location: ./.speakeasy/overlays/mid-global.yaml
                 - location: ./.speakeasy/overlays/fix-base-model.yaml
                 - location: ./.speakeasy/overlays/fix-checkout-session-body.yaml
+                - location: ./.speakeasy/overlays/fix-remove-timeout-in-seconds.yaml
             registry:
                 location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi
     targets:

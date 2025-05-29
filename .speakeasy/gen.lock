@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 0f42060a2c6d6abfb348a2e8f2bc6d12
+  docChecksum: 7eb50ec02b4afd591b7b6a79b7b1e87f
   docVersion: 1.0.0
   speakeasyVersion: 1.552.0
   generationVersion: 2.610.0
-  releaseVersion: 1.0.0-beta.6
-  configChecksum: 407b7d1622fc5f34a7d78769fff26804
+  releaseVersion: 1.0.0-beta.7
+  configChecksum: bd974b5f2f2a46a69d6d90eff18a7294
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -212,7 +212,6 @@ generatedFiles:
   - docs/Models/Requests/CreateFullTransactionRefundRequest.md
   - docs/Models/Requests/CreateGiftCardRequest.md
   - docs/Models/Requests/CreateGooglePayDigitalWalletSessionRequest.md
-  - docs/Models/Requests/CreateMerchantAccountRequest.md
   - docs/Models/Requests/CreatePaymentMethodNetworkTokenCryptogramRequest.md
   - docs/Models/Requests/CreatePaymentMethodNetworkTokenRequest.md
   - docs/Models/Requests/CreatePaymentMethodPaymentServiceTokenRequest.md
@@ -512,7 +511,6 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/CreateFullTransactionRefundRequest.cs
   - src/Gr4vy/Models/Requests/CreateGiftCardRequest.cs
   - src/Gr4vy/Models/Requests/CreateGooglePayDigitalWalletSessionRequest.cs
-  - src/Gr4vy/Models/Requests/CreateMerchantAccountRequest.cs
   - src/Gr4vy/Models/Requests/CreatePaymentMethodNetworkTokenCryptogramRequest.cs
   - src/Gr4vy/Models/Requests/CreatePaymentMethodNetworkTokenRequest.cs
   - src/Gr4vy/Models/Requests/CreatePaymentMethodPaymentServiceTokenRequest.cs
