@@ -42,7 +42,7 @@ namespace Gr4vy
         /// Provision a network token for a payment method.
         /// </remarks>
         /// </summary>
-        Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// Suspend network token
@@ -51,7 +51,7 @@ namespace Gr4vy
         /// Suspend a network token for a payment method.
         /// </remarks>
         /// </summary>
-        Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
 
         /// <summary>
         /// Resume network token
@@ -60,7 +60,7 @@ namespace Gr4vy
         /// Resume a suspended network token for a payment method.
         /// </remarks>
         /// </summary>
-        Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
 
         /// <summary>
         /// Delete network token
@@ -69,17 +69,17 @@ namespace Gr4vy
         /// Delete a network token for a payment method.
         /// </remarks>
         /// </summary>
-        Task DeleteAsync(string paymentMethodId, string networkTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task DeleteAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
     }
 
     public class NetworkTokens: INetworkTokens
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -326,13 +326,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, string? merchantAccountId = null)
         {
             var request = new CreatePaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 NetworkTokenCreate = networkTokenCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -533,13 +532,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
         {
             var request = new SuspendPaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 NetworkTokenId = networkTokenId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -734,13 +732,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
         {
             var request = new ResumePaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 NetworkTokenId = networkTokenId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -935,13 +932,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task DeleteAsync(string paymentMethodId, string networkTokenId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task DeleteAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
         {
             var request = new DeletePaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 NetworkTokenId = networkTokenId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

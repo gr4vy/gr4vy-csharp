@@ -43,7 +43,7 @@ namespace Gr4vy
         /// Creates a new payout.
         /// </remarks>
         /// </summary>
-        Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// Get a payout.
@@ -59,10 +59,10 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -338,18 +338,18 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, string? merchantAccountId = null)
         {
             var request = new CreatePayoutRequest()
             {
                 PayoutCreate = payoutCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payouts", request);
+
+            var urlString = baseUrl + "/payouts";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);

@@ -356,7 +356,6 @@ var res = await sdk.Transactions.CreateAsync(
             DateOfBirth = LocalDate.FromDateTime(System.DateTime.Parse("1995-12-23")),
         },
     },
-    timeoutInSeconds: 1D,
     merchantAccountId: "default",
     idempotencyKey: "request-12345"
 );
@@ -369,7 +368,6 @@ var res = await sdk.Transactions.CreateAsync(
 | Parameter                                                                                                                                                                                             | Type                                                                                                                                                                                                  | Required                                                                                                                                                                                              | Description                                                                                                                                                                                           | Example                                                                                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `TransactionCreate`                                                                                                                                                                                   | [TransactionCreate](../../Models/Components/TransactionCreate.md)                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                    | N/A                                                                                                                                                                                                   |                                                                                                                                                                                                       |
-| `TimeoutInSeconds`                                                                                                                                                                                    | *double*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | N/A                                                                                                                                                                                                   |                                                                                                                                                                                                       |
 | `MerchantAccountId`                                                                                                                                                                                   | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | The ID of the merchant account to use for this request.                                                                                                                                               | default                                                                                                                                                                                               |
 | `IdempotencyKey`                                                                                                                                                                                      | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. | request-12345                                                                                                                                                                                         |
 
@@ -531,7 +529,6 @@ var res = await sdk.Transactions.CaptureAsync(
             TravelAgencyPlanName = "B733",
         },
     },
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -544,7 +541,6 @@ var res = await sdk.Transactions.CaptureAsync(
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `TransactionId`                                                     | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
 | `TransactionCapture`                                                | [TransactionCapture](../../Models/Components/TransactionCapture.md) | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `TimeoutInSeconds`                                                  | *double*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
 | `MerchantAccountId`                                                 | *string*                                                            | :heavy_minus_sign:                                                  | The ID of the merchant account to use for this request.             | default                                                             |
 
 ### Response
@@ -586,7 +582,6 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Transactions.VoidAsync(
     transactionId: "7dbc44c9-1ea3-4853-87be-9923dd281b0d",
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -598,7 +593,6 @@ var res = await sdk.Transactions.VoidAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -692,7 +686,6 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Transactions.SyncAsync(
     transactionId: "2ee546e0-3b11-478e-afec-fdb362611e22",
-    timeoutInSeconds: 1D,
     merchantAccountId: "default"
 );
 
@@ -704,7 +697,6 @@ var res = await sdk.Transactions.SyncAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `TimeoutInSeconds`                                      | *double*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

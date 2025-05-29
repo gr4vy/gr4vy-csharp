@@ -32,17 +32,17 @@ namespace Gr4vy
         /// Create a refund for all instruments on a transaction.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorRefund> CreateAsync(string transactionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null);
+        Task<CollectionNoCursorRefund> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null);
     }
 
     public class All: IAll
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -55,12 +55,11 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorRefund> CreateAsync(string transactionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null)
+        public async Task<CollectionNoCursorRefund> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null)
         {
             var request = new CreateFullTransactionRefundRequest()
             {
                 TransactionId = transactionId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
                 TransactionRefundAllCreate = transactionRefundAllCreate,
             };

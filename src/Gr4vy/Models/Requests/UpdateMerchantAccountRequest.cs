@@ -21,9 +21,6 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=merchant_account_id")]
         public string MerchantAccountId { get; set; } = default!;
 
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=timeout_in_seconds")]
-        public double? TimeoutInSeconds { get; set; } = 1D;
-
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public MerchantAccountUpdate MerchantAccountUpdate { get; set; } = default!;
     }

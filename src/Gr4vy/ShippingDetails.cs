@@ -32,7 +32,7 @@ namespace Gr4vy
         /// Associate shipping details to a buyer.
         /// </remarks>
         /// </summary>
-        Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// List a buyer&apos;s shipping details
@@ -59,7 +59,7 @@ namespace Gr4vy
         /// Update the shipping details associated to a specific buyer.
         /// </remarks>
         /// </summary>
-        Task<Models.Components.ShippingDetails> UpdateAsync(UpdateBuyerShippingDetailsRequest request);
+        Task<Models.Components.ShippingDetails> UpdateAsync(string buyerId, string shippingDetailsId, ShippingDetailsUpdate shippingDetailsUpdate, string? merchantAccountId = null);
 
         /// <summary>
         /// Delete a buyer&apos;s shipping details
@@ -68,17 +68,17 @@ namespace Gr4vy
         /// Delete the shipping details associated to a specific buyer.
         /// </remarks>
         /// </summary>
-        Task<object> DeleteAsync(string buyerId, string shippingDetailsId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<object> DeleteAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null);
     }
 
     public class ShippingDetails: IShippingDetails
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -91,13 +91,12 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, string? merchantAccountId = null)
         {
             var request = new AddBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
                 ShippingDetailsCreate = shippingDetailsCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -763,12 +762,15 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Models.Components.ShippingDetails> UpdateAsync(UpdateBuyerShippingDetailsRequest request)
+        public async Task<Models.Components.ShippingDetails> UpdateAsync(string buyerId, string shippingDetailsId, ShippingDetailsUpdate shippingDetailsUpdate, string? merchantAccountId = null)
         {
-            if (request == null)
+            var request = new UpdateBuyerShippingDetailsRequest()
             {
-                request = new UpdateBuyerShippingDetailsRequest();
-            }
+                BuyerId = buyerId,
+                ShippingDetailsId = shippingDetailsId,
+                ShippingDetailsUpdate = shippingDetailsUpdate,
+                MerchantAccountId = merchantAccountId,
+            };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -967,13 +969,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<object> DeleteAsync(string buyerId, string shippingDetailsId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<object> DeleteAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null)
         {
             var request = new DeleteBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
                 ShippingDetailsId = shippingDetailsId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

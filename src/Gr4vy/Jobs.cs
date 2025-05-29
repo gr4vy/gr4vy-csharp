@@ -32,17 +32,17 @@ namespace Gr4vy
         /// Schedule one or more stored cards for an account update.
         /// </remarks>
         /// </summary>
-        Task<AccountUpdaterJob> CreateAsync(AccountUpdaterJobCreate accountUpdaterJobCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<AccountUpdaterJob> CreateAsync(AccountUpdaterJobCreate accountUpdaterJobCreate, string? merchantAccountId = null);
     }
 
     public class Jobs: IJobs
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -55,18 +55,18 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<AccountUpdaterJob> CreateAsync(AccountUpdaterJobCreate accountUpdaterJobCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<AccountUpdaterJob> CreateAsync(AccountUpdaterJobCreate accountUpdaterJobCreate, string? merchantAccountId = null)
         {
             var request = new CreateAccountUpdaterJobRequest()
             {
                 AccountUpdaterJobCreate = accountUpdaterJobCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/account-updater/jobs", request);
+
+            var urlString = baseUrl + "/account-updater/jobs";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);

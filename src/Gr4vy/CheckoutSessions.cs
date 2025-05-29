@@ -32,7 +32,7 @@ namespace Gr4vy
         /// Create a new checkout session.
         /// </remarks>
         /// </summary>
-        Task<CheckoutSession> CreateAsync(double? timeoutInSeconds = 1D, string? merchantAccountId = null, CheckoutSessionCreate? checkoutSessionCreate = null);
+        Task<CheckoutSession> CreateAsync(string? merchantAccountId = null, CheckoutSessionCreate? checkoutSessionCreate = null);
 
         /// <summary>
         /// Update checkout session
@@ -41,7 +41,7 @@ namespace Gr4vy
         /// Update the information stored on a checkout session.
         /// </remarks>
         /// </summary>
-        Task<CheckoutSession> UpdateAsync(string sessionId, CheckoutSessionCreate checkoutSessionCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task<CheckoutSession> UpdateAsync(string sessionId, CheckoutSessionCreate checkoutSessionCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// Get checkout session
@@ -50,7 +50,7 @@ namespace Gr4vy
         /// Retrieve the information stored on a checkout session.
         /// </remarks>
         /// </summary>
-        Task<CheckoutSession> GetAsync(string sessionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<CheckoutSession> GetAsync(string sessionId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Delete checkout session
@@ -59,17 +59,17 @@ namespace Gr4vy
         /// Deleta a checkout session and all of its (PCI) data.
         /// </remarks>
         /// </summary>
-        Task DeleteAsync(string sessionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null);
+        Task DeleteAsync(string sessionId, string? merchantAccountId = null);
     }
 
     public class CheckoutSessions: ICheckoutSessions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.6";
+        private const string _sdkVersion = "1.0.0-beta.7";
         private const string _sdkGenVersion = "2.610.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.6 2.610.0 1.0.0 Gr4vy";
+        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _client;
         private Func<Gr4vy.Models.Components.Security>? _securitySource;
@@ -82,18 +82,18 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CheckoutSession> CreateAsync(double? timeoutInSeconds = 1D, string? merchantAccountId = null, CheckoutSessionCreate? checkoutSessionCreate = null)
+        public async Task<CheckoutSession> CreateAsync(string? merchantAccountId = null, CheckoutSessionCreate? checkoutSessionCreate = null)
         {
             var request = new CreateCheckoutSessionRequest()
             {
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
                 CheckoutSessionCreate = checkoutSessionCreate,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/checkout/sessions", request);
+
+            var urlString = baseUrl + "/checkout/sessions";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", _userAgent);
@@ -288,13 +288,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<CheckoutSession> UpdateAsync(string sessionId, CheckoutSessionCreate checkoutSessionCreate, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task<CheckoutSession> UpdateAsync(string sessionId, CheckoutSessionCreate checkoutSessionCreate, string? merchantAccountId = null)
         {
             var request = new UpdateCheckoutSessionRequest()
             {
                 SessionId = sessionId,
                 CheckoutSessionCreate = checkoutSessionCreate,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -495,12 +494,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<CheckoutSession> GetAsync(string sessionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<CheckoutSession> GetAsync(string sessionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetCheckoutSessionRequest()
             {
                 SessionId = sessionId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -718,12 +716,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task DeleteAsync(string sessionId, double? timeoutInSeconds = 1D, string? merchantAccountId = null)
+        public async Task DeleteAsync(string sessionId, string? merchantAccountId = null)
         {
             var request = new DeleteCheckoutSessionRequest()
             {
                 SessionId = sessionId,
-                TimeoutInSeconds = timeoutInSeconds,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
