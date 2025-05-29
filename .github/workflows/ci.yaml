@@ -19,7 +19,8 @@ jobs:
     strategy:
       matrix:
         dotnet:
-          - 8.0.x
+          - 8
+          - 9
 
     permissions:
       contents: write
