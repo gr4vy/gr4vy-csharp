@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 7eb50ec02b4afd591b7b6a79b7b1e87f
+  docChecksum: 252992f082df302962bc576adf364565
   docVersion: 1.0.0
-  speakeasyVersion: 1.552.0
-  generationVersion: 2.610.0
-  releaseVersion: 1.0.0-beta.7
-  configChecksum: bd974b5f2f2a46a69d6d90eff18a7294
+  speakeasyVersion: 1.553.2
+  generationVersion: 2.614.0
+  releaseVersion: 1.0.0-beta.8
+  configChecksum: 1070bd8172068772c563a426f09e342b
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -28,7 +28,7 @@ features:
     pagination: 0.2.6
     responseFormat: 0.0.4
     retries: 0.0.1
-    sdkHooks: 0.1.0
+    sdkHooks: 0.2.0
     serverIDs: 2.82.1
     unions: 0.2.2
 generatedFiles:
@@ -87,6 +87,7 @@ generatedFiles:
   - docs/Models/Components/CollectionPaymentServiceDefinition.md
   - docs/Models/Components/CollectionPayoutSummary.md
   - docs/Models/Components/CollectionRefund.md
+  - docs/Models/Components/CollectionTransactionEvent.md
   - docs/Models/Components/CollectionTransactionSummary.md
   - docs/Models/Components/ConnectionOptions.md
   - docs/Models/Components/Context.md
@@ -177,6 +178,7 @@ generatedFiles:
   - docs/Models/Components/TransactionCapture.md
   - docs/Models/Components/TransactionCreate.md
   - docs/Models/Components/TransactionCreatePaymentMethod.md
+  - docs/Models/Components/TransactionEvent.md
   - docs/Models/Components/TransactionGiftCard.md
   - docs/Models/Components/TransactionPaymentMethod.md
   - docs/Models/Components/TransactionPaymentService.md
@@ -270,6 +272,7 @@ generatedFiles:
   - docs/Models/Requests/ListPaymentServicesResponse.md
   - docs/Models/Requests/ListPayoutsRequest.md
   - docs/Models/Requests/ListPayoutsResponse.md
+  - docs/Models/Requests/ListTransactionEventsRequest.md
   - docs/Models/Requests/ListTransactionRefundsRequest.md
   - docs/Models/Requests/ListTransactionsRequest.md
   - docs/Models/Requests/ListTransactionsResponse.md
@@ -298,6 +301,7 @@ generatedFiles:
   - docs/sdks/cryptogram/README.md
   - docs/sdks/digitalwallets/README.md
   - docs/sdks/domains/README.md
+  - docs/sdks/events/README.md
   - docs/sdks/giftcards/README.md
   - docs/sdks/gr4vy/README.md
   - docs/sdks/jobs/README.md
@@ -327,6 +331,7 @@ generatedFiles:
   - src/Gr4vy/Cryptogram.cs
   - src/Gr4vy/DigitalWallets.cs
   - src/Gr4vy/Domains.cs
+  - src/Gr4vy/Events.cs
   - src/Gr4vy/GiftCards.cs
   - src/Gr4vy/Gr4vy.csproj
   - src/Gr4vy/Gr4vySDK.cs
@@ -385,6 +390,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/CollectionPaymentServiceDefinition.cs
   - src/Gr4vy/Models/Components/CollectionPayoutSummary.cs
   - src/Gr4vy/Models/Components/CollectionRefund.cs
+  - src/Gr4vy/Models/Components/CollectionTransactionEvent.cs
   - src/Gr4vy/Models/Components/CollectionTransactionSummary.cs
   - src/Gr4vy/Models/Components/ConnectionOptions.cs
   - src/Gr4vy/Models/Components/Context.cs
@@ -475,6 +481,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/TransactionCapture.cs
   - src/Gr4vy/Models/Components/TransactionCreate.cs
   - src/Gr4vy/Models/Components/TransactionCreatePaymentMethod.cs
+  - src/Gr4vy/Models/Components/TransactionEvent.cs
   - src/Gr4vy/Models/Components/TransactionGiftCard.cs
   - src/Gr4vy/Models/Components/TransactionPaymentMethod.cs
   - src/Gr4vy/Models/Components/TransactionPaymentService.cs
@@ -569,6 +576,7 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/ListPaymentServicesResponse.cs
   - src/Gr4vy/Models/Requests/ListPayoutsRequest.cs
   - src/Gr4vy/Models/Requests/ListPayoutsResponse.cs
+  - src/Gr4vy/Models/Requests/ListTransactionEventsRequest.cs
   - src/Gr4vy/Models/Requests/ListTransactionRefundsRequest.cs
   - src/Gr4vy/Models/Requests/ListTransactionsRequest.cs
   - src/Gr4vy/Models/Requests/ListTransactionsResponse.cs
@@ -593,6 +601,7 @@ generatedFiles:
   - src/Gr4vy/PaymentServices.cs
   - src/Gr4vy/Payouts.cs
   - src/Gr4vy/Refunds.cs
+  - src/Gr4vy/SDKConfig.cs
   - src/Gr4vy/Sessions.cs
   - src/Gr4vy/ShippingDetails.cs
   - src/Gr4vy/Transactions.cs
@@ -2231,7 +2240,7 @@ examples:
     speakeasy-default-get-transaction:
       parameters:
         path:
-          transaction_id: "bde12786-dce8-4654-b031-196961d1ddcc"
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
         header:
           x-gr4vy-merchant-account-id: "default"
       responses:
@@ -2265,7 +2274,7 @@ examples:
     speakeasy-default-capture-transaction:
       parameters:
         path:
-          transaction_id: "9a049029-b958-45dd-86d7-d7f9fc92c411"
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
         query:
           timeout_in_seconds: 1
         header:
@@ -2303,7 +2312,7 @@ examples:
     speakeasy-default-void-transaction:
       parameters:
         path:
-          transaction_id: "7dbc44c9-1ea3-4853-87be-9923dd281b0d"
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
         query:
           timeout_in_seconds: 1
         header:
@@ -3387,5 +3396,40 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed", "details": [{"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "path", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+  list_transaction_events:
+    speakeasy-default-list-transaction-events:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+        query:
+          cursor: "ZXhhbXBsZTE"
+          limit: 100
+      responses:
+        "200":
+          application/json: {"items": [{"type": "transaction-event", "id": "f133a3b7-e67e-4d83-bcd3-3e438fedf348", "name": "transaction-api-request", "created_at": "2013-07-16T19:23:00.000+00:00", "context": {}}], "limit": 20, "next_cursor": "ZXhhbXBsZTE", "previous_cursor": "Xkjss7asS"}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed", "details": [{"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}, {"location": "<value>", "pointer": "<value>", "message": "Unknown ISO 4217 currency code: USX", "type": "value_error"}]}
 examplesVersion: 1.0.2
 generatedTests: {}

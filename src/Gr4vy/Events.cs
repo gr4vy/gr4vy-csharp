@@ -22,20 +22,20 @@ namespace Gr4vy
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    public interface IAll
+    public interface IEvents
     {
 
         /// <summary>
-        /// Create batch transaction refund
+        /// List transaction events
         /// 
         /// <remarks>
-        /// Create a refund for all instruments on a transaction.
+        /// Fetch a list of events for a transaction.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorRefund> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null);
+        Task<CollectionTransactionEvent> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
-    public class All: IAll
+    public class Events: IEvents
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
@@ -43,47 +43,75 @@ namespace Gr4vy
         private const string _sdkGenVersion = "2.614.0";
         private const string _openapiDocVersion = "1.0.0";
 
-        public All(SDKConfig config)
+        public Events(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorRefund> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null)
+        public async Task<CollectionTransactionEvent> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
-            var request = new CreateFullTransactionRefundRequest()
+            var request = new ListTransactionEventsRequest()
             {
                 TransactionId = transactionId,
+                Cursor = cursor,
+                Limit = limit,
                 MerchantAccountId = merchantAccountId,
-                TransactionRefundAllCreate = transactionRefundAllCreate,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/refunds/all", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/events", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "TransactionRefundAllCreate", "json", true, true);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "create_full_transaction_refund", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_transaction_events", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 200L,
+                        maxIntervalMs: 200L,
+                        maxElapsedTimeMs: 1000L,
+                        exponent: 1
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "5XX",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
+            };
+            var retries = new Gr4vy.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
@@ -112,11 +140,11 @@ namespace Gr4vy
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 201)
+            if(responseStatusCode == 200)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorRefund>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<CollectionTransactionEvent>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 
