@@ -43,68 +43,6 @@ namespace Gr4vy
         public IPayouts Payouts { get; }
     }
 
-    public class SDKConfig
-    {
-        /// <summary>
-        /// Server identifiers available to the SDK.
-        /// </summary>
-        public enum Server {
-        Production,
-        Sandbox,
-        }
-
-        /// <summary>
-        /// Server URLs available to the SDK.
-        /// </summary>
-        public static readonly Dictionary<Server, string> ServerMap = new Dictionary<Server, string>()
-        {
-            { Server.Production, "https://api.{id}.gr4vy.app" },
-            { Server.Sandbox, "https://api.sandbox.{id}.gr4vy.app" },
-        };
-
-        public string ServerUrl = "";
-        public Server? ServerName = null;
-        public Dictionary<Server, Dictionary<string, string>> ServerDefaults = new Dictionary<Server, Dictionary<string, string>>();
-        public string? MerchantAccountId;
-        public SDKHooks Hooks = new SDKHooks();
-        public RetryConfig? RetryConfig = null;
-
-        public string GetTemplatedServerUrl()
-        {
-            if (!String.IsNullOrEmpty(this.ServerUrl))
-            {
-                return Utilities.TemplateUrl(Utilities.RemoveSuffix(this.ServerUrl, "/"), new Dictionary<string, string>());
-            }
-            if (this.ServerName is null)
-            {
-                this.ServerName = SDKConfig.Server.Production;
-            }
-            else if (!SDKConfig.ServerMap.ContainsKey(this.ServerName.Value))
-            {
-                throw new Exception($"Invalid server \"{this.ServerName.Value}\"");
-            }
-
-            Dictionary<string, string> serverDefault = new Dictionary<string, string>();
-
-            if (this.ServerDefaults.ContainsKey(this.ServerName.Value))
-            {
-                serverDefault = this.ServerDefaults[this.ServerName.Value];
-            }
-
-            return Utilities.TemplateUrl(SDKConfig.ServerMap[this.ServerName.Value], serverDefault);
-        }
-
-        public ISpeakeasyHttpClient InitHooks(ISpeakeasyHttpClient client)
-        {
-            string preHooksUrl = GetTemplatedServerUrl();
-            var (postHooksUrl, postHooksClient) = this.Hooks.SDKInit(preHooksUrl, client);
-            if (preHooksUrl != postHooksUrl)
-            {
-                this.ServerUrl = postHooksUrl;
-            }
-            return postHooksClient;
-        }
-    }
 
     /// <summary>
     /// Gr4vy: The Gr4vy API.
@@ -114,14 +52,9 @@ namespace Gr4vy
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.7";
-        private const string _sdkGenVersion = "2.610.0";
+        private const string _sdkVersion = "1.0.0-beta.8";
+        private const string _sdkGenVersion = "2.614.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
-        private string _serverUrl = "";
-        private SDKConfig.Server? _server = null;
-        private ISpeakeasyHttpClient _client;
-        private Func<Gr4vy.Models.Components.Security>? _securitySource;
         public IAccountUpdater AccountUpdater { get; private set; }
         public IBuyers Buyers { get; private set; }
         public IPaymentMethods PaymentMethods { get; private set; }
@@ -140,10 +73,6 @@ namespace Gr4vy
 
         public Gr4vySDK(string? bearerAuth = null, Func<string>? bearerAuthSource = null, string? merchantAccountId = null, SDKConfig.Server? server = null, string?  id = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
-            if (server != null)
-            {
-              _server = server;
-            }
 
             if (serverUrl != null)
             {
@@ -151,10 +80,9 @@ namespace Gr4vy
                 {
                     serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
                 }
-                _serverUrl = serverUrl;
             }
 
-            Dictionary<SDKConfig.Server, Dictionary<string, string>> serverDefaults = new Dictionary<SDKConfig.Server, Dictionary<string, string>>()
+            Dictionary<SDKConfig.Server, Dictionary<string, string>> serverVariables = new Dictionary<SDKConfig.Server, Dictionary<string, string>>()
             {
                 {SDKConfig.Server.Production, new Dictionary<string, string>()
                 {
@@ -165,8 +93,7 @@ namespace Gr4vy
                     {"id", id == null ? "example" : id},
                 }},
             };
-
-            _client = client ?? new SpeakeasyHttpClient();
+            Func<Gr4vy.Models.Components.Security>? _securitySource = null;
 
             if(bearerAuthSource != null)
             {
@@ -181,61 +108,60 @@ namespace Gr4vy
                 throw new Exception("bearerAuth and bearerAuthSource cannot both be null");
             }
 
-            SDKConfiguration = new SDKConfig()
+            SDKConfiguration = new SDKConfig(client)
             {
                 MerchantAccountId = merchantAccountId,
-                ServerDefaults = serverDefaults,
-                ServerName = _server,
-                ServerUrl = _serverUrl,
+                ServerVariables = serverVariables,
+                ServerName = server,
+                ServerUrl = serverUrl == null ? "" : serverUrl,
+                SecuritySource = _securitySource,
                 RetryConfig = retryConfig
             };
 
-            _client = SDKConfiguration.InitHooks(_client);
+            InitHooks();
 
+            AccountUpdater = new AccountUpdater(SDKConfiguration);
 
-            AccountUpdater = new AccountUpdater(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Buyers = new Buyers(SDKConfiguration);
 
+            PaymentMethods = new PaymentMethods(SDKConfiguration);
 
-            Buyers = new Buyers(_client, _securitySource, _serverUrl, SDKConfiguration);
+            GiftCards = new GiftCards(SDKConfiguration);
 
+            CardSchemeDefinitions = new CardSchemeDefinitions(SDKConfiguration);
 
-            PaymentMethods = new PaymentMethods(_client, _securitySource, _serverUrl, SDKConfiguration);
+            DigitalWallets = new DigitalWallets(SDKConfiguration);
 
+            Transactions = new Transactions(SDKConfiguration);
 
-            GiftCards = new GiftCards(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Refunds = new Refunds(SDKConfiguration);
 
+            PaymentOptions = new PaymentOptions(SDKConfiguration);
 
-            CardSchemeDefinitions = new CardSchemeDefinitions(_client, _securitySource, _serverUrl, SDKConfiguration);
+            PaymentServiceDefinitions = new PaymentServiceDefinitions(SDKConfiguration);
 
+            PaymentServices = new PaymentServices(SDKConfiguration);
 
-            DigitalWallets = new DigitalWallets(_client, _securitySource, _serverUrl, SDKConfiguration);
+            AuditLogs = new AuditLogs(SDKConfiguration);
 
+            CheckoutSessions = new CheckoutSessions(SDKConfiguration);
 
-            Transactions = new Transactions(_client, _securitySource, _serverUrl, SDKConfiguration);
+            MerchantAccounts = new MerchantAccounts(SDKConfiguration);
 
+            Payouts = new Payouts(SDKConfiguration);
+        }
 
-            Refunds = new Refunds(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            PaymentOptions = new PaymentOptions(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            PaymentServiceDefinitions = new PaymentServiceDefinitions(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            PaymentServices = new PaymentServices(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            AuditLogs = new AuditLogs(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            CheckoutSessions = new CheckoutSessions(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            MerchantAccounts = new MerchantAccounts(_client, _securitySource, _serverUrl, SDKConfiguration);
-
-
-            Payouts = new Payouts(_client, _securitySource, _serverUrl, SDKConfiguration);
+        private void InitHooks()
+        {
+            string preHooksUrl = SDKConfiguration.GetTemplatedServerUrl();
+            var (postHooksUrl, postHooksClient) = SDKConfiguration.Hooks.SDKInit(preHooksUrl, SDKConfiguration.Client);
+            var config = SDKConfiguration;
+            if (preHooksUrl != postHooksUrl)
+            {
+                config.ServerUrl = postHooksUrl;
+            }
+            config.Client = postHooksClient;
+            SDKConfiguration = config;
         }
     }
 }

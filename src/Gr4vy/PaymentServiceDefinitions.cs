@@ -59,19 +59,12 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.7";
-        private const string _sdkGenVersion = "2.610.0";
+        private const string _sdkVersion = "1.0.0-beta.8";
+        private const string _sdkGenVersion = "2.614.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<Gr4vy.Models.Components.Security>? _securitySource;
 
-        public PaymentServiceDefinitions(ISpeakeasyHttpClient client, Func<Gr4vy.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public PaymentServiceDefinitions(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
         }
 
@@ -86,14 +79,14 @@ namespace Gr4vy
             var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "list_payment_service_definitions", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_payment_service_definitions", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -125,8 +118,8 @@ namespace Gr4vy
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Gr4vy.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -343,14 +336,14 @@ namespace Gr4vy
             var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions/{payment_service_definition_id}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "get_payment_service_definition", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "get_payment_service_definition", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -382,8 +375,8 @@ namespace Gr4vy
 
             Func<Task<HttpResponseMessage>> retrySend = async () =>
             {
-                var _httpRequest = await _client.CloneAsync(httpRequest);
-                return await _client.SendAsync(_httpRequest);
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
             };
             var retries = new Gr4vy.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
@@ -572,7 +565,7 @@ namespace Gr4vy
             var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions/{payment_service_definition_id}/sessions", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
-            httpRequest.Headers.Add("user-agent", _userAgent);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
             var serializedBody = RequestBodySerializer.Serialize(request, "RequestBody", "json", false, false);
             if (serializedBody != null)
@@ -580,19 +573,19 @@ namespace Gr4vy
                 httpRequest.Content = serializedBody;
             }
 
-            if (_securitySource != null)
+            if (SDKConfiguration.SecuritySource != null)
             {
-                httpRequest = new SecurityMetadata(_securitySource).Apply(httpRequest);
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(baseUrl, "create_payment_service_definition_session", new List<string> {  }, _securitySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "create_payment_service_definition_session", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await _client.SendAsync(httpRequest);
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)

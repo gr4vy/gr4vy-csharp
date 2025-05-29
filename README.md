@@ -348,6 +348,10 @@ catch(ArgumentException ex) {
 * [Summary](docs/sdks/transactions/README.md#summary) - Get transaction summary
 * [Sync](docs/sdks/transactions/README.md#sync) - Sync transaction
 
+#### [Transactions.Events](docs/sdks/events/README.md)
+
+* [List](docs/sdks/events/README.md#list) - List transaction events
+
 #### [Transactions.Refunds](docs/sdks/transactionsrefunds/README.md)
 
 * [List](docs/sdks/transactionsrefunds/README.md#list) - List transaction refunds

@@ -23,22 +23,15 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.7";
-        private const string _sdkGenVersion = "2.610.0";
+        private const string _sdkVersion = "1.0.0-beta.8";
+        private const string _sdkGenVersion = "2.614.0";
         private const string _openapiDocVersion = "1.0.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 1.0.0-beta.7 2.610.0 1.0.0 Gr4vy";
-        private string _serverUrl = "";
-        private ISpeakeasyHttpClient _client;
-        private Func<Gr4vy.Models.Components.Security>? _securitySource;
         public IJobs Jobs { get; private set; }
 
-        public AccountUpdater(ISpeakeasyHttpClient client, Func<Gr4vy.Models.Components.Security>? securitySource, string serverUrl, SDKConfig config)
+        public AccountUpdater(SDKConfig config)
         {
-            _client = client;
-            _securitySource = securitySource;
-            _serverUrl = serverUrl;
             SDKConfiguration = config;
-            Jobs = new Jobs(_client, _securitySource, _serverUrl, SDKConfiguration);
+            Jobs = new Jobs(SDKConfiguration);
         }
     }
 }
