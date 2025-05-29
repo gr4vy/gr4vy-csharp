@@ -20,7 +20,6 @@ jobs:
       matrix:
         dotnet:
           - 8
-          - 9
 
     permissions:
       contents: write
