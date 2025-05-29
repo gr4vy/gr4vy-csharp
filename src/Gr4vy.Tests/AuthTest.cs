@@ -76,7 +76,7 @@ rw==
         Assert.NotNull(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Exp));
         Assert.That(
             jwtToken.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iss).Value,
-            Is.EqualTo("speakeasy-sdk/csharp X.X.X X.X.X X.X.X Gr4vy")
+            Does.StartWith("speakeasy-sdk/csharp")
         );
     }
 

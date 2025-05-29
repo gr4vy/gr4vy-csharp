@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Reflection;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
-using Microsoft.IdentityModel.Tokens;
 using Gr4vy;
+using Microsoft.IdentityModel.Tokens;
 
 public static class JWTScope
 {
@@ -93,10 +94,17 @@ public class Auth
         }
 
         var now = DateTime.UtcNow;
+        var field = typeof(Gr4vySDK).GetField(
+            "_userAgent",
+            BindingFlags.NonPublic | BindingFlags.Static
+        );
+        var issuer =
+            field?.GetValue(null) as string ?? "speakeasy-sdk/csharp X.X.X X.X.X X.X.X Gr4vy";
+
         var claims = new List<Claim>
         {
             // the user agent is now exposed anywhere
-            new Claim("iss", "speakeasy-sdk/csharp X.X.X X.X.X X.X.X Gr4vy"),
+            new Claim("iss", issuer),
             new Claim(
                 JwtRegisteredClaimNames.Iat,
                 new DateTimeOffset(now).ToUnixTimeSeconds().ToString()
