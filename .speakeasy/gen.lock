@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 252992f082df302962bc576adf364565
+  docChecksum: 7ff6bb7e7023e8f2182b027245182c00
   docVersion: 1.0.0
-  speakeasyVersion: 1.553.2
-  generationVersion: 2.614.0
-  releaseVersion: 1.0.0-beta.8
-  configChecksum: 1070bd8172068772c563a426f09e342b
+  speakeasyVersion: 1.554.1
+  generationVersion: 2.616.1
+  releaseVersion: 1.0.0-beta.9
+  configChecksum: 4a87ab5b86a9fefabaf124db05c19261
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.10.17
+    core: 3.11.0
     flattening: 2.81.3
     globalSecurity: 2.83.7
     globalSecurityCallbacks: 0.1.0
@@ -184,7 +184,6 @@ generatedFiles:
   - docs/Models/Components/TransactionPaymentService.md
   - docs/Models/Components/TransactionRefundAllCreate.md
   - docs/Models/Components/TransactionRefundCreate.md
-  - docs/Models/Components/TransactionStatusSummary.md
   - docs/Models/Components/TransactionSummary.md
   - docs/Models/Components/TransactionThreeDSecureSummary.md
   - docs/Models/Components/ValidationError.md
@@ -246,7 +245,6 @@ generatedFiles:
   - docs/Models/Requests/GetRefundRequest.md
   - docs/Models/Requests/GetTransactionRefundRequest.md
   - docs/Models/Requests/GetTransactionRequest.md
-  - docs/Models/Requests/GetTransactionSummaryRequest.md
   - docs/Models/Requests/ListAuditLogsRequest.md
   - docs/Models/Requests/ListAuditLogsResponse.md
   - docs/Models/Requests/ListBuyerGiftCardsRequest.md
@@ -487,7 +485,6 @@ generatedFiles:
   - src/Gr4vy/Models/Components/TransactionPaymentService.cs
   - src/Gr4vy/Models/Components/TransactionRefundAllCreate.cs
   - src/Gr4vy/Models/Components/TransactionRefundCreate.cs
-  - src/Gr4vy/Models/Components/TransactionStatusSummary.cs
   - src/Gr4vy/Models/Components/TransactionSummary.cs
   - src/Gr4vy/Models/Components/TransactionThreeDSecureSummary.cs
   - src/Gr4vy/Models/Components/ValidationError.cs
@@ -550,7 +547,6 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/GetRefundRequest.cs
   - src/Gr4vy/Models/Requests/GetTransactionRefundRequest.cs
   - src/Gr4vy/Models/Requests/GetTransactionRequest.cs
-  - src/Gr4vy/Models/Requests/GetTransactionSummaryRequest.cs
   - src/Gr4vy/Models/Requests/ListAuditLogsRequest.cs
   - src/Gr4vy/Models/Requests/ListAuditLogsResponse.cs
   - src/Gr4vy/Models/Requests/ListBuyerGiftCardsRequest.cs

@@ -15,6 +15,7 @@ namespace Gr4vy
     using Gr4vy.Utils.Retries;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
 
     public struct SDKConfig
     {
@@ -53,12 +54,30 @@ namespace Gr4vy
             Client = client ?? new SpeakeasyHttpClient();
             ServerUrl = "";
             ServerName = null;
-            ServerVariables = new Dictionary<Server, Dictionary<string, string>>();
+            ServerVariables = new Dictionary<SDKConfig.Server, Dictionary<string, string>>()
+            {
+                {SDKConfig.Server.Production, new Dictionary<string, string>()
+                {
+                    {"id", "example"},
+                }},
+                {SDKConfig.Server.Sandbox, new Dictionary<string, string>()
+                {
+                    {"id", "example"},
+                }},
+            };
             MerchantAccountId = null;
-            UserAgent = "speakeasy-sdk/csharp 1.0.0-beta.8 2.614.0 1.0.0 Gr4vy";
+            UserAgent = "speakeasy-sdk/csharp 1.0.0-beta.9 2.616.1 1.0.0 Gr4vy";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;
+        }
+
+        public void SetServerVariable(string key, string value)
+        {
+            foreach (var serverVariables in this.ServerVariables.Values.Where(dict => dict.ContainsKey(key)))
+            {
+                serverVariables[key] = value;
+            }
         }
 
         public string GetTemplatedServerUrl()
