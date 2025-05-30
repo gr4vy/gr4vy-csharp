@@ -52,8 +52,8 @@ namespace Gr4vy
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.8";
-        private const string _sdkGenVersion = "2.614.0";
+        private const string _sdkVersion = "1.0.0-beta.9";
+        private const string _sdkGenVersion = "2.616.1";
         private const string _openapiDocVersion = "1.0.0";
         public IAccountUpdater AccountUpdater { get; private set; }
         public IBuyers Buyers { get; private set; }
@@ -71,6 +71,42 @@ namespace Gr4vy
         public IMerchantAccounts MerchantAccounts { get; private set; }
         public IPayouts Payouts { get; private set; }
 
+        public Gr4vySDK(SDKConfig config)
+        {
+            SDKConfiguration = config;
+            InitHooks();
+
+            AccountUpdater = new AccountUpdater(SDKConfiguration);
+
+            Buyers = new Buyers(SDKConfiguration);
+
+            PaymentMethods = new PaymentMethods(SDKConfiguration);
+
+            GiftCards = new GiftCards(SDKConfiguration);
+
+            CardSchemeDefinitions = new CardSchemeDefinitions(SDKConfiguration);
+
+            DigitalWallets = new DigitalWallets(SDKConfiguration);
+
+            Transactions = new Transactions(SDKConfiguration);
+
+            Refunds = new Refunds(SDKConfiguration);
+
+            PaymentOptions = new PaymentOptions(SDKConfiguration);
+
+            PaymentServiceDefinitions = new PaymentServiceDefinitions(SDKConfiguration);
+
+            PaymentServices = new PaymentServices(SDKConfiguration);
+
+            AuditLogs = new AuditLogs(SDKConfiguration);
+
+            CheckoutSessions = new CheckoutSessions(SDKConfiguration);
+
+            MerchantAccounts = new MerchantAccounts(SDKConfiguration);
+
+            Payouts = new Payouts(SDKConfiguration);
+        }
+
         public Gr4vySDK(string? bearerAuth = null, Func<string>? bearerAuthSource = null, string? merchantAccountId = null, SDKConfig.Server? server = null, string?  id = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
         {
 
@@ -81,18 +117,6 @@ namespace Gr4vy
                     serverUrl = Utilities.TemplateUrl(serverUrl, urlParams);
                 }
             }
-
-            Dictionary<SDKConfig.Server, Dictionary<string, string>> serverVariables = new Dictionary<SDKConfig.Server, Dictionary<string, string>>()
-            {
-                {SDKConfig.Server.Production, new Dictionary<string, string>()
-                {
-                    {"id", id == null ? "example" : id},
-                }},
-                {SDKConfig.Server.Sandbox, new Dictionary<string, string>()
-                {
-                    {"id", id == null ? "example" : id},
-                }},
-            };
             Func<Gr4vy.Models.Components.Security>? _securitySource = null;
 
             if(bearerAuthSource != null)
@@ -111,12 +135,16 @@ namespace Gr4vy
             SDKConfiguration = new SDKConfig(client)
             {
                 MerchantAccountId = merchantAccountId,
-                ServerVariables = serverVariables,
                 ServerName = server,
                 ServerUrl = serverUrl == null ? "" : serverUrl,
                 SecuritySource = _securitySource,
                 RetryConfig = retryConfig
             };
+
+            if (id != null)
+            {
+                SDKConfiguration.SetServerVariable("id", id);
+            }
 
             InitHooks();
 
@@ -163,5 +191,75 @@ namespace Gr4vy
             config.Client = postHooksClient;
             SDKConfiguration = config;
         }
+
+        public class SDKBuilder
+        {
+            private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
+
+            public SDKBuilder() { }
+
+            public SDKBuilder WithServer(SDKConfig.Server server)
+            {
+                _sdkConfig.ServerName = server;
+                return this;
+            }
+
+            public SDKBuilder WithId(string id)
+            {
+                _sdkConfig.SetServerVariable("id", id);
+                return this;
+            }
+
+            public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
+            {
+                if (serverVariables != null)
+                {
+                    serverUrl = Utilities.TemplateUrl(serverUrl, serverVariables);
+                }
+                _sdkConfig.ServerUrl = serverUrl;
+                return this;
+            }
+
+            public SDKBuilder WithMerchantAccountId(string merchantAccountId)
+            {
+                _sdkConfig.MerchantAccountId = merchantAccountId;
+                return this;
+            }
+
+            public SDKBuilder WithBearerAuthSource(Func<string> bearerAuthSource)
+            {
+                _sdkConfig.SecuritySource = () => new Gr4vy.Models.Components.Security() { BearerAuth = bearerAuthSource() };
+                return this;
+            }
+
+            public SDKBuilder WithBearerAuth(string bearerAuth)
+            {
+                _sdkConfig.SecuritySource = () => new Gr4vy.Models.Components.Security() { BearerAuth = bearerAuth };
+                return this;
+            }
+
+            public SDKBuilder WithClient(ISpeakeasyHttpClient client)
+            {
+                _sdkConfig.Client = client;
+                return this;
+            }
+
+            public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
+            {
+                _sdkConfig.RetryConfig = retryConfig;
+                return this;
+            }
+
+            public Gr4vySDK Build()
+            {
+              if (_sdkConfig.SecuritySource == null) {
+                  throw new Exception("securitySource cannot be null. One of `BearerAuth` or `bearerAuthSource` needs to be defined.");
+              }
+              return new Gr4vySDK(_sdkConfig);
+            }
+
+        }
+
+        public static SDKBuilder Builder() => new SDKBuilder();
     }
 }
