@@ -338,6 +338,23 @@ catch(ArgumentException ex) {
 
 * [Get](docs/sdks/refunds/README.md#get) - Get refund
 
+### [Reports](docs/sdks/reports/README.md)
+
+* [List](docs/sdks/reports/README.md#list) - List configured reports
+* [Create](docs/sdks/reports/README.md#create) - Add a report
+* [Get](docs/sdks/reports/README.md#get) - Get a report
+* [Put](docs/sdks/reports/README.md#put) - Update a report
+
+#### [Reports.Executions](docs/sdks/executions/README.md)
+
+* [List](docs/sdks/executions/README.md#list) - List executions for report
+* [Url](docs/sdks/executions/README.md#url) - Create URL for executed report
+
+### [ReportsExecutions](docs/sdks/reportsexecutions/README.md)
+
+* [List](docs/sdks/reportsexecutions/README.md#list) - List executed reports
+* [Get](docs/sdks/reportsexecutions/README.md#get) - Get executed report
+
 ### [Transactions](docs/sdks/transactions/README.md)
 
 * [List](docs/sdks/transactions/README.md#list) - List transactions

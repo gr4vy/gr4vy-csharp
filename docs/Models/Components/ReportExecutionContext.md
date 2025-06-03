@@ -1,0 +1,9 @@
+# ReportExecutionContext
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           | Example                                                                               |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `ReferenceTimestamp`                                                                  | [DateTime](https://learn.microsoft.com/en-us/dotnet/api/system.datetime?view=net-5.0) | :heavy_check_mark:                                                                    | The reference timestamp for the report execution context.                             | 2024-05-30T12:34:56.000Z                                                              |
+| `ReferenceTimezone`                                                                   | *string*                                                                              | :heavy_check_mark:                                                                    | The reference timezone for the report execution context.                              | UTC                                                                                   |
