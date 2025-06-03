@@ -15,6 +15,9 @@ namespace Gr4vy.Models.Requests
     public class AddBuyerRequest
     {
 
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=application_name")]
+        public string? ApplicationName { get; set; } = "core-api";
+
         /// <summary>
         /// The ID of the merchant account to use for this request.
         /// </summary>

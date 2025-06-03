@@ -32,15 +32,15 @@ namespace Gr4vy
         /// List the payment options available at checkout. filtering by country, currency, and additional fields passed to Flow rules.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorPaymentOption> ListAsync(PaymentOptionRequest paymentOptionRequest, string? merchantAccountId = null);
+        Task<CollectionNoCursorPaymentOption> ListAsync(PaymentOptionRequest paymentOptionRequest, string? applicationName = "core-api", string? merchantAccountId = null);
     }
 
     public class PaymentOptions: IPaymentOptions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public PaymentOptions(SDKConfig config)
@@ -48,18 +48,18 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorPaymentOption> ListAsync(PaymentOptionRequest paymentOptionRequest, string? merchantAccountId = null)
+        public async Task<CollectionNoCursorPaymentOption> ListAsync(PaymentOptionRequest paymentOptionRequest, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new ListPaymentOptionsRequest()
             {
                 PaymentOptionRequest = paymentOptionRequest,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/payment-options";
+            var urlString = URLBuilder.Build(baseUrl, "/payment-options", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

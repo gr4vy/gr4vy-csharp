@@ -27,6 +27,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.GiftCards.GetAsync(
     giftCardId: "356d56e5-fe16-42ae-97ee-8d55d846ae2e",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -38,6 +39,7 @@ var res = await sdk.GiftCards.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `GiftCardId`                                            | *string*                                                | :heavy_check_mark:                                      | The ID of the gift card.                                | 356d56e5-fe16-42ae-97ee-8d55d846ae2e                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -79,6 +81,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.GiftCards.DeleteAsync(
     giftCardId: "356d56e5-fe16-42ae-97ee-8d55d846ae2e",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -90,6 +93,7 @@ var res = await sdk.GiftCards.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `GiftCardId`                                            | *string*                                                | :heavy_check_mark:                                      | The ID of the gift card.                                | 356d56e5-fe16-42ae-97ee-8d55d846ae2e                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -136,6 +140,7 @@ var res = await sdk.GiftCards.CreateAsync(
         BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
         BuyerExternalIdentifier = "buyer-12345",
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -147,6 +152,7 @@ var res = await sdk.GiftCards.CreateAsync(
 | Parameter                                                   | Type                                                        | Required                                                    | Description                                                 | Example                                                     |
 | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
 | `GiftCardCreate`                                            | [GiftCardCreate](../../Models/Components/GiftCardCreate.md) | :heavy_check_mark:                                          | N/A                                                         |                                                             |
+| `ApplicationName`                                           | *string*                                                    | :heavy_minus_sign:                                          | N/A                                                         |                                                             |
 | `MerchantAccountId`                                         | *string*                                                    | :heavy_minus_sign:                                          | The ID of the merchant account to use for this request.     | default                                                     |
 
 ### Response

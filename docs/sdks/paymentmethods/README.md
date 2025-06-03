@@ -95,6 +95,7 @@ var res = await sdk.PaymentMethods.CreateAsync(
             BuyerExternalIdentifier = "buyer-12345",
         }
     ),
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -106,6 +107,7 @@ var res = await sdk.PaymentMethods.CreateAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `RequestBody`                                           | [Body](../../Models/Requests/Body.md)                   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -147,6 +149,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.PaymentMethods.GetAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -158,6 +161,7 @@ var res = await sdk.PaymentMethods.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -199,6 +203,7 @@ var sdk = new Gr4vySDK(
 
 await sdk.PaymentMethods.DeleteAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -210,6 +215,7 @@ await sdk.PaymentMethods.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Errors

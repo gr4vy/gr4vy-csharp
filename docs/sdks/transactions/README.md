@@ -355,6 +355,7 @@ var res = await sdk.Transactions.CreateAsync(
             DateOfBirth = LocalDate.FromDateTime(System.DateTime.Parse("1995-12-23")),
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default",
     idempotencyKey: "request-12345"
 );
@@ -367,6 +368,7 @@ var res = await sdk.Transactions.CreateAsync(
 | Parameter                                                                                                                                                                                             | Type                                                                                                                                                                                                  | Required                                                                                                                                                                                              | Description                                                                                                                                                                                           | Example                                                                                                                                                                                               |
 | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `TransactionCreate`                                                                                                                                                                                   | [TransactionCreate](../../Models/Components/TransactionCreate.md)                                                                                                                                     | :heavy_check_mark:                                                                                                                                                                                    | N/A                                                                                                                                                                                                   |                                                                                                                                                                                                       |
+| `ApplicationName`                                                                                                                                                                                     | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | N/A                                                                                                                                                                                                   |                                                                                                                                                                                                       |
 | `MerchantAccountId`                                                                                                                                                                                   | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | The ID of the merchant account to use for this request.                                                                                                                                               | default                                                                                                                                                                                               |
 | `IdempotencyKey`                                                                                                                                                                                      | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. | request-12345                                                                                                                                                                                         |
 
@@ -409,6 +411,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Transactions.GetAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -420,6 +423,7 @@ var res = await sdk.Transactions.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -528,6 +532,7 @@ var res = await sdk.Transactions.CaptureAsync(
             TravelAgencyPlanName = "B733",
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -540,6 +545,7 @@ var res = await sdk.Transactions.CaptureAsync(
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `TransactionId`                                                     | *string*                                                            | :heavy_check_mark:                                                  | N/A                                                                 | 7099948d-7286-47e4-aad8-b68f7eb44591                                |
 | `TransactionCapture`                                                | [TransactionCapture](../../Models/Components/TransactionCapture.md) | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
+| `ApplicationName`                                                   | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
 | `MerchantAccountId`                                                 | *string*                                                            | :heavy_minus_sign:                                                  | The ID of the merchant account to use for this request.             | default                                                             |
 
 ### Response
@@ -581,6 +587,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Transactions.VoidAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -592,6 +599,7 @@ var res = await sdk.Transactions.VoidAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -633,6 +641,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Transactions.SyncAsync(
     transactionId: "2ee546e0-3b11-478e-afec-fdb362611e22",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -644,6 +653,7 @@ var res = await sdk.Transactions.SyncAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

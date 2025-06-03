@@ -32,15 +32,15 @@ namespace Gr4vy
         /// Fetch a refund.
         /// </remarks>
         /// </summary>
-        Task<Refund> GetAsync(string refundId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Refund> GetAsync(string refundId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
     public class Refunds: IRefunds
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public Refunds(SDKConfig config)
@@ -48,11 +48,12 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<Refund> GetAsync(string refundId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Refund> GetAsync(string refundId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetRefundRequest()
             {
                 RefundId = refundId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

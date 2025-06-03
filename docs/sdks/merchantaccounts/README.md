@@ -29,7 +29,8 @@ var sdk = new Gr4vySDK(
 ListMerchantAccountsResponse? res = await sdk.MerchantAccounts.ListAsync(
     cursor: "ZXhhbXBsZTE",
     limit: 20,
-    search: "merchant-12345"
+    search: "merchant-12345",
+    applicationName: "core-api"
 );
 
 while(res != null)
@@ -47,6 +48,7 @@ while(res != null)
 | `Cursor`                                          | *string*                                          | :heavy_minus_sign:                                | A pointer to the page of results to return.       | ZXhhbXBsZTE                                       |
 | `Limit`                                           | *long*                                            | :heavy_minus_sign:                                | The maximum number of items that are at returned. | 20                                                |
 | `Search`                                          | *string*                                          | :heavy_minus_sign:                                | The search term to filter merchant accounts by.   | merchant-12345                                    |
+| `ApplicationName`                                 | *string*                                          | :heavy_minus_sign:                                | N/A                                               |                                                   |
 
 ### Response
 
@@ -86,32 +88,33 @@ var sdk = new Gr4vySDK(
     merchantAccountId: "default"
 );
 
-MerchantAccountCreate req = new MerchantAccountCreate() {
-    AccountUpdaterRequestEncryptionKey = "key-1234",
-    AccountUpdaterRequestEncryptionKeyId = "key-id-1234",
-    AccountUpdaterResponseDecryptionKey = "key-1234",
-    AccountUpdaterResponseDecryptionKeyId = "key-id-1234",
-    OverCaptureAmount = 1299,
-    OverCapturePercentage = 25,
-    LoonClientKey = "client-key-1234",
-    LoonSecretKey = "key-12345",
-    LoonAcceptedSchemes = new List<string>() {
-        "visa",
+var res = await sdk.MerchantAccounts.CreateAsync(
+    merchantAccountCreate: new MerchantAccountCreate() {
+        AccountUpdaterRequestEncryptionKey = "key-1234",
+        AccountUpdaterRequestEncryptionKeyId = "key-id-1234",
+        AccountUpdaterResponseDecryptionKey = "key-1234",
+        AccountUpdaterResponseDecryptionKeyId = "key-id-1234",
+        OverCaptureAmount = 1299,
+        OverCapturePercentage = 25,
+        LoonClientKey = "client-key-1234",
+        LoonSecretKey = "key-12345",
+        LoonAcceptedSchemes = new List<string>() {
+            "visa",
+        },
+        VisaNetworkTokensRequestorId = "id-12345",
+        VisaNetworkTokensAppId = "id-12345",
+        AmexNetworkTokensRequestorId = "id-12345",
+        AmexNetworkTokensAppId = "id-12345",
+        MastercardNetworkTokensRequestorId = "id-12345",
+        MastercardNetworkTokensAppId = "id-12345",
+        OutboundWebhookUrl = "https://example.com/callback",
+        OutboundWebhookUsername = "user-12345",
+        OutboundWebhookPassword = "password-12345",
+        Id = "merchant-12345",
+        DisplayName = "Example",
     },
-    VisaNetworkTokensRequestorId = "id-12345",
-    VisaNetworkTokensAppId = "id-12345",
-    AmexNetworkTokensRequestorId = "id-12345",
-    AmexNetworkTokensAppId = "id-12345",
-    MastercardNetworkTokensRequestorId = "id-12345",
-    MastercardNetworkTokensAppId = "id-12345",
-    OutboundWebhookUrl = "https://example.com/callback",
-    OutboundWebhookUsername = "user-12345",
-    OutboundWebhookPassword = "password-12345",
-    Id = "merchant-12345",
-    DisplayName = "Example",
-};
-
-var res = await sdk.MerchantAccounts.CreateAsync(req);
+    applicationName: "core-api"
+);
 
 // handle response
 ```
@@ -120,7 +123,8 @@ var res = await sdk.MerchantAccounts.CreateAsync(req);
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [MerchantAccountCreate](../../Models/Components/MerchantAccountCreate.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| `MerchantAccountCreate`                                                   | [MerchantAccountCreate](../../Models/Components/MerchantAccountCreate.md) | :heavy_check_mark:                                                        | N/A                                                                       |
+| `ApplicationName`                                                         | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
 
 ### Response
 
@@ -159,7 +163,10 @@ var sdk = new Gr4vySDK(
     merchantAccountId: "default"
 );
 
-var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345");
+var res = await sdk.MerchantAccounts.GetAsync(
+    merchantAccountId: "merchant-12345",
+    applicationName: "core-api"
+);
 
 // handle response
 ```
@@ -169,6 +176,7 @@ var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345
 | Parameter                      | Type                           | Required                       | Description                    | Example                        |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `MerchantAccountId`            | *string*                       | :heavy_check_mark:             | The ID of the merchant account | merchant-12345                 |
+| `ApplicationName`              | *string*                       | :heavy_minus_sign:             | N/A                            |                                |
 
 ### Response
 
@@ -232,7 +240,8 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
         OutboundWebhookUrl = "https://example.com/callback",
         OutboundWebhookUsername = "user-12345",
         OutboundWebhookPassword = "password-12345",
-    }
+    },
+    applicationName: "core-api"
 );
 
 // handle response
@@ -244,6 +253,7 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `MerchantAccountId`                                                       | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the merchant account                                            | merchant-12345                                                            |
 | `MerchantAccountUpdate`                                                   | [MerchantAccountUpdate](../../Models/Components/MerchantAccountUpdate.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| `ApplicationName`                                                         | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
 
 ### Response
 

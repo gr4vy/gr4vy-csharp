@@ -32,15 +32,15 @@ namespace Gr4vy
         /// Fetch a list of events for a transaction.
         /// </remarks>
         /// </summary>
-        Task<CollectionTransactionEvent> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<CollectionTransactionEvent> ListAsync(ListTransactionEventsRequest request, RetryConfig? retryConfig = null);
     }
 
     public class Events: IEvents
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public Events(SDKConfig config)
@@ -48,15 +48,12 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionTransactionEvent> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<CollectionTransactionEvent> ListAsync(ListTransactionEventsRequest request, RetryConfig? retryConfig = null)
         {
-            var request = new ListTransactionEventsRequest()
+            if (request == null)
             {
-                TransactionId = transactionId,
-                Cursor = cursor,
-                Limit = limit,
-                MerchantAccountId = merchantAccountId,
-            };
+                request = new ListTransactionEventsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();

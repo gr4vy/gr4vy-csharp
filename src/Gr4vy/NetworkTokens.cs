@@ -33,7 +33,7 @@ namespace Gr4vy
         /// List all network tokens stored for a payment method.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorNetworkToken> ListAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<CollectionNoCursorNetworkToken> ListAsync(string paymentMethodId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Provision network token
@@ -42,7 +42,7 @@ namespace Gr4vy
         /// Provision a network token for a payment method.
         /// </remarks>
         /// </summary>
-        Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, string? merchantAccountId = null);
+        Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Suspend network token
@@ -51,7 +51,7 @@ namespace Gr4vy
         /// Suspend a network token for a payment method.
         /// </remarks>
         /// </summary>
-        Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
+        Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Resume network token
@@ -60,7 +60,7 @@ namespace Gr4vy
         /// Resume a suspended network token for a payment method.
         /// </remarks>
         /// </summary>
-        Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
+        Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Delete network token
@@ -69,15 +69,15 @@ namespace Gr4vy
         /// Delete a network token for a payment method.
         /// </remarks>
         /// </summary>
-        Task DeleteAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
+        Task DeleteAsync(string paymentMethodId, string networkTokenId, string? applicationName = "core-api", string? merchantAccountId = null);
     }
 
     public class NetworkTokens: INetworkTokens
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
         public ICryptogram Cryptogram { get; private set; }
 
@@ -87,11 +87,12 @@ namespace Gr4vy
             Cryptogram = new Cryptogram(SDKConfiguration);
         }
 
-        public async Task<CollectionNoCursorNetworkToken> ListAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<CollectionNoCursorNetworkToken> ListAsync(string paymentMethodId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListPaymentMethodNetworkTokensRequest()
             {
                 PaymentMethodId = paymentMethodId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -319,12 +320,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, string? merchantAccountId = null)
+        public async Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new CreatePaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 NetworkTokenCreate = networkTokenCreate,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -525,12 +527,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
+        public async Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new SuspendPaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 NetworkTokenId = networkTokenId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -725,12 +728,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
+        public async Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new ResumePaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 NetworkTokenId = networkTokenId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -925,12 +929,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task DeleteAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
+        public async Task DeleteAsync(string paymentMethodId, string networkTokenId, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new DeletePaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 NetworkTokenId = networkTokenId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

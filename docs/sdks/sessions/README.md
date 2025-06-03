@@ -28,6 +28,7 @@ var res = await sdk.DigitalWallets.Sessions.GooglePayAsync(
     googlePaySessionRequest: new GooglePaySessionRequest() {
         OriginDomain = "example.com",
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -39,6 +40,7 @@ var res = await sdk.DigitalWallets.Sessions.GooglePayAsync(
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `GooglePaySessionRequest`                                                     | [GooglePaySessionRequest](../../Models/Components/GooglePaySessionRequest.md) | :heavy_check_mark:                                                            | N/A                                                                           |                                                                               |
+| `ApplicationName`                                                             | *string*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |                                                                               |
 | `MerchantAccountId`                                                           | *string*                                                                      | :heavy_minus_sign:                                                            | The ID of the merchant account to use for this request.                       | default                                                                       |
 
 ### Response
@@ -83,6 +85,7 @@ var res = await sdk.DigitalWallets.Sessions.ApplePayAsync(
         ValidationUrl = "https://apple-pay-gateway-cert.apple.com",
         DomainName = "example.com",
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -94,6 +97,7 @@ var res = await sdk.DigitalWallets.Sessions.ApplePayAsync(
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `ApplePaySessionRequest`                                                    | [ApplePaySessionRequest](../../Models/Components/ApplePaySessionRequest.md) | :heavy_check_mark:                                                          | N/A                                                                         |                                                                             |
+| `ApplicationName`                                                           | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |                                                                             |
 | `MerchantAccountId`                                                         | *string*                                                                    | :heavy_minus_sign:                                                          | The ID of the merchant account to use for this request.                     | default                                                                     |
 
 ### Response
@@ -133,11 +137,12 @@ var sdk = new Gr4vySDK(
     merchantAccountId: "default"
 );
 
-ClickToPaySessionRequest req = new ClickToPaySessionRequest() {
-    CheckoutSessionId = "4137b1cf-39ac-42a8-bad6-1c680d5dab6b",
-};
-
-var res = await sdk.DigitalWallets.Sessions.ClickToPayAsync(req);
+var res = await sdk.DigitalWallets.Sessions.ClickToPayAsync(
+    clickToPaySessionRequest: new ClickToPaySessionRequest() {
+        CheckoutSessionId = "4137b1cf-39ac-42a8-bad6-1c680d5dab6b",
+    },
+    applicationName: "core-api"
+);
 
 // handle response
 ```
@@ -146,7 +151,8 @@ var res = await sdk.DigitalWallets.Sessions.ClickToPayAsync(req);
 
 | Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
 | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `request`                                                                       | [ClickToPaySessionRequest](../../Models/Components/ClickToPaySessionRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+| `ClickToPaySessionRequest`                                                      | [ClickToPaySessionRequest](../../Models/Components/ClickToPaySessionRequest.md) | :heavy_check_mark:                                                              | N/A                                                                             |
+| `ApplicationName`                                                               | *string*                                                                        | :heavy_minus_sign:                                                              | N/A                                                                             |
 
 ### Response
 

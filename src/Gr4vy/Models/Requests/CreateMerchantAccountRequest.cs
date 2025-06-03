@@ -7,20 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Gr4vy.Models.Components
+namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
     
-    public class CollectionNoCursorRefund
+    public class CreateMerchantAccountRequest
     {
 
-        /// <summary>
-        /// A list of items returned for this request.
-        /// </summary>
-        [JsonProperty("items")]
-        public List<Refund> Items { get; set; } = default!;
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=application_name")]
+        public string? ApplicationName { get; set; } = "core-api";
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public MerchantAccountCreate MerchantAccountCreate { get; set; } = default!;
     }
 }

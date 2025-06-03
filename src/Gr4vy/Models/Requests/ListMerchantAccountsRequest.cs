@@ -31,5 +31,8 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=search")]
         public string? Search { get; set; } = null;
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=application_name")]
+        public string? ApplicationName { get; set; } = "core-api";
     }
 }

@@ -34,7 +34,7 @@ namespace Gr4vy
         /// List all merchant accounts in an instance.
         /// </remarks>
         /// </summary>
-        Task<ListMerchantAccountsResponse> ListAsync(string? cursor = null, long? limit = 20, string? search = null, RetryConfig? retryConfig = null);
+        Task<ListMerchantAccountsResponse> ListAsync(string? cursor = null, long? limit = 20, string? search = null, string? applicationName = "core-api", RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Create a merchant account
@@ -43,7 +43,7 @@ namespace Gr4vy
         /// Create a new merchant account in an instance.
         /// </remarks>
         /// </summary>
-        Task<MerchantAccount> CreateAsync(MerchantAccountCreate request);
+        Task<MerchantAccount> CreateAsync(MerchantAccountCreate merchantAccountCreate, string? applicationName = "core-api");
 
         /// <summary>
         /// Get a merchant account
@@ -52,7 +52,7 @@ namespace Gr4vy
         /// Get info about a merchant account in an instance.
         /// </remarks>
         /// </summary>
-        Task<MerchantAccount> GetAsync(string merchantAccountId, RetryConfig? retryConfig = null);
+        Task<MerchantAccount> GetAsync(string merchantAccountId, string? applicationName = "core-api", RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Update a merchant account
@@ -61,15 +61,15 @@ namespace Gr4vy
         /// Update info for a merchant account in an instance.
         /// </remarks>
         /// </summary>
-        Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate);
+        Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate, string? applicationName = "core-api");
     }
 
     public class MerchantAccounts: IMerchantAccounts
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public MerchantAccounts(SDKConfig config)
@@ -77,13 +77,14 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<ListMerchantAccountsResponse> ListAsync(string? cursor = null, long? limit = 20, string? search = null, RetryConfig? retryConfig = null)
+        public async Task<ListMerchantAccountsResponse> ListAsync(string? cursor = null, long? limit = 20, string? search = null, string? applicationName = "core-api", RetryConfig? retryConfig = null)
         {
             var request = new ListMerchantAccountsRequest()
             {
                 Cursor = cursor,
                 Limit = limit,
                 Search = search,
+                ApplicationName = applicationName,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts", request);
@@ -183,6 +184,7 @@ namespace Gr4vy
                     cursor: nextCursor,
                     limit: limit,
                     search: search,
+                    applicationName: applicationName,
                     retryConfig: retryConfig
                 );
             };
@@ -337,16 +339,20 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<MerchantAccount> CreateAsync(MerchantAccountCreate request)
+        public async Task<MerchantAccount> CreateAsync(MerchantAccountCreate merchantAccountCreate, string? applicationName = "core-api")
         {
+            var request = new CreateMerchantAccountRequest()
+            {
+                MerchantAccountCreate = merchantAccountCreate,
+                ApplicationName = applicationName,
+            };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/merchant-accounts";
+            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "MerchantAccountCreate", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -535,11 +541,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<MerchantAccount> GetAsync(string merchantAccountId, RetryConfig? retryConfig = null)
+        public async Task<MerchantAccount> GetAsync(string merchantAccountId, string? applicationName = "core-api", RetryConfig? retryConfig = null)
         {
             var request = new GetMerchantAccountRequest()
             {
                 MerchantAccountId = merchantAccountId,
+                ApplicationName = applicationName,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
@@ -765,12 +772,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate)
+        public async Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate, string? applicationName = "core-api")
         {
             var request = new UpdateMerchantAccountRequest()
             {
                 MerchantAccountId = merchantAccountId,
                 MerchantAccountUpdate = merchantAccountUpdate,
+                ApplicationName = applicationName,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             

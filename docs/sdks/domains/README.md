@@ -28,6 +28,7 @@ var res = await sdk.DigitalWallets.Domains.CreateAsync(
     digitalWalletDomain: new DigitalWalletDomain() {
         DomainName = "example.com",
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -40,6 +41,7 @@ var res = await sdk.DigitalWallets.Domains.CreateAsync(
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `DigitalWalletId`                                                     | *string*                                                              | :heavy_check_mark:                                                    | The ID of the digital wallet to remove a domain for.                  | 1808f5e6-b49c-4db9-94fa-22371ea352f5                                  |
 | `DigitalWalletDomain`                                                 | [DigitalWalletDomain](../../Models/Components/DigitalWalletDomain.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
+| `ApplicationName`                                                     | *string*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               | default                                                               |
 
 ### Response
@@ -84,6 +86,7 @@ var res = await sdk.DigitalWallets.Domains.DeleteAsync(
     digitalWalletDomain: new DigitalWalletDomain() {
         DomainName = "example.com",
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -96,6 +99,7 @@ var res = await sdk.DigitalWallets.Domains.DeleteAsync(
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `DigitalWalletId`                                                     | *string*                                                              | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
 | `DigitalWalletDomain`                                                 | [DigitalWalletDomain](../../Models/Components/DigitalWalletDomain.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
+| `ApplicationName`                                                     | *string*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               | default                                                               |
 
 ### Response

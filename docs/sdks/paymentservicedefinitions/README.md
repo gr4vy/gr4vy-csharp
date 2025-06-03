@@ -27,7 +27,8 @@ var sdk = new Gr4vySDK(
 
 ListPaymentServiceDefinitionsResponse? res = await sdk.PaymentServiceDefinitions.ListAsync(
     cursor: "ZXhhbXBsZTE",
-    limit: 20
+    limit: 20,
+    applicationName: "core-api"
 );
 
 while(res != null)
@@ -44,6 +45,7 @@ while(res != null)
 | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
 | `Cursor`                                          | *string*                                          | :heavy_minus_sign:                                | A pointer to the page of results to return.       | ZXhhbXBsZTE                                       |
 | `Limit`                                           | *long*                                            | :heavy_minus_sign:                                | The maximum number of items that are at returned. | 20                                                |
+| `ApplicationName`                                 | *string*                                          | :heavy_minus_sign:                                | N/A                                               |                                                   |
 
 ### Response
 
@@ -82,7 +84,10 @@ var sdk = new Gr4vySDK(
     merchantAccountId: "default"
 );
 
-var res = await sdk.PaymentServiceDefinitions.GetAsync(paymentServiceDefinitionId: "adyen-ideal");
+var res = await sdk.PaymentServiceDefinitions.GetAsync(
+    paymentServiceDefinitionId: "adyen-ideal",
+    applicationName: "core-api"
+);
 
 // handle response
 ```
@@ -92,6 +97,7 @@ var res = await sdk.PaymentServiceDefinitions.GetAsync(paymentServiceDefinitionI
 | Parameter                    | Type                         | Required                     | Description                  | Example                      |
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
 | `PaymentServiceDefinitionId` | *string*                     | :heavy_check_mark:           | N/A                          | adyen-ideal                  |
+| `ApplicationName`            | *string*                     | :heavy_minus_sign:           | N/A                          |                              |
 
 ### Response
 
@@ -135,7 +141,8 @@ var res = await sdk.PaymentServiceDefinitions.SessionAsync(
     paymentServiceDefinitionId: "adyen-ideal",
     requestBody: new Dictionary<string, object>() {
         { "key", "<value>" },
-    }
+    },
+    applicationName: "core-api"
 );
 
 // handle response
@@ -147,6 +154,7 @@ var res = await sdk.PaymentServiceDefinitions.SessionAsync(
 | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- |
 | `PaymentServiceDefinitionId` | *string*                     | :heavy_check_mark:           | N/A                          | adyen-ideal                  |
 | `RequestBody`                | Dictionary<String, *object*> | :heavy_check_mark:           | N/A                          |                              |
+| `ApplicationName`            | *string*                     | :heavy_minus_sign:           | N/A                          |                              |
 
 ### Response
 

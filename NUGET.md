@@ -23,6 +23,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -59,6 +60,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -93,7 +95,10 @@ var sdk = new Gr4vySDK(
     merchantAccountId: "default"
 );
 
-var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345");
+var res = await sdk.MerchantAccounts.GetAsync(
+    merchantAccountId: "merchant-12345",
+    applicationName: "core-api"
+);
 
 // handle response
 ```
@@ -270,6 +275,7 @@ try
                 "f29e886e-93cc-4714-b4a3-12b7a718e595",
             },
         },
+        applicationName: "core-api",
         merchantAccountId: "default"
     );
 
@@ -385,6 +391,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -412,6 +419,7 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 

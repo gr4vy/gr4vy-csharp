@@ -43,7 +43,7 @@ namespace Gr4vy
         /// Updates the configuration of a payment service.
         /// </remarks>
         /// </summary>
-        Task<PaymentService> CreateAsync(PaymentServiceCreate paymentServiceCreate, string? merchantAccountId = null);
+        Task<PaymentService> CreateAsync(PaymentServiceCreate paymentServiceCreate, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Get payment service
@@ -52,7 +52,7 @@ namespace Gr4vy
         /// Get the details of a configured payment service.
         /// </remarks>
         /// </summary>
-        Task<PaymentService> GetAsync(string paymentServiceId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<PaymentService> GetAsync(string paymentServiceId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Configure a payment service
@@ -61,7 +61,7 @@ namespace Gr4vy
         /// Configures a new payment service for use by merchants.
         /// </remarks>
         /// </summary>
-        Task<PaymentService> UpdateAsync(string paymentServiceId, PaymentServiceUpdate paymentServiceUpdate, string? merchantAccountId = null);
+        Task<PaymentService> UpdateAsync(string paymentServiceId, PaymentServiceUpdate paymentServiceUpdate, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Delete a configured payment service
@@ -70,7 +70,7 @@ namespace Gr4vy
         /// Deletes all the configuration of a payment service.
         /// </remarks>
         /// </summary>
-        Task<object> DeleteAsync(string paymentServiceId, string? merchantAccountId = null);
+        Task<object> DeleteAsync(string paymentServiceId, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Verify payment service credentials
@@ -79,7 +79,7 @@ namespace Gr4vy
         /// Verify the credentials of a configured payment service
         /// </remarks>
         /// </summary>
-        Task<object> VerifyAsync(VerifyCredentials verifyCredentials, string? merchantAccountId = null);
+        Task<object> VerifyAsync(VerifyCredentials verifyCredentials, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Create a session for apayment service definition
@@ -88,15 +88,15 @@ namespace Gr4vy
         /// Creates a session for a payment service that supports sessions.
         /// </remarks>
         /// </summary>
-        Task<CreateSession> SessionAsync(string paymentServiceId, Dictionary<string, object> requestBody, string? merchantAccountId = null);
+        Task<CreateSession> SessionAsync(string paymentServiceId, Dictionary<string, object> requestBody, string? applicationName = "core-api", string? merchantAccountId = null);
     }
 
     public class PaymentServices: IPaymentServices
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public PaymentServices(SDKConfig config)
@@ -209,6 +209,7 @@ namespace Gr4vy
                     Cursor = nextCursor,
                     Limit = request?.Limit,
                     Deleted = request?.Deleted,
+                    ApplicationName = request?.ApplicationName,
                     MerchantAccountId = request?.MerchantAccountId
                 };
 
@@ -368,18 +369,18 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PaymentService> CreateAsync(PaymentServiceCreate paymentServiceCreate, string? merchantAccountId = null)
+        public async Task<PaymentService> CreateAsync(PaymentServiceCreate paymentServiceCreate, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new UpdatePaymentServiceRequest()
             {
                 PaymentServiceCreate = paymentServiceCreate,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/payment-services";
+            var urlString = URLBuilder.Build(baseUrl, "/payment-services", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -574,11 +575,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PaymentService> GetAsync(string paymentServiceId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<PaymentService> GetAsync(string paymentServiceId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetPaymentServiceRequest()
             {
                 PaymentServiceId = paymentServiceId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -806,12 +808,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PaymentService> UpdateAsync(string paymentServiceId, PaymentServiceUpdate paymentServiceUpdate, string? merchantAccountId = null)
+        public async Task<PaymentService> UpdateAsync(string paymentServiceId, PaymentServiceUpdate paymentServiceUpdate, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new CreatePaymentServiceRequest()
             {
                 PaymentServiceId = paymentServiceId,
                 PaymentServiceUpdate = paymentServiceUpdate,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1012,11 +1015,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<object> DeleteAsync(string paymentServiceId, string? merchantAccountId = null)
+        public async Task<object> DeleteAsync(string paymentServiceId, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new DeletePaymentServiceRequest()
             {
                 PaymentServiceId = paymentServiceId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1211,18 +1215,18 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<object> VerifyAsync(VerifyCredentials verifyCredentials, string? merchantAccountId = null)
+        public async Task<object> VerifyAsync(VerifyCredentials verifyCredentials, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new VerifyPaymentServiceCredentialsRequest()
             {
                 VerifyCredentials = verifyCredentials,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/payment-services/verify";
+            var urlString = URLBuilder.Build(baseUrl, "/payment-services/verify", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1417,12 +1421,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<CreateSession> SessionAsync(string paymentServiceId, Dictionary<string, object> requestBody, string? merchantAccountId = null)
+        public async Task<CreateSession> SessionAsync(string paymentServiceId, Dictionary<string, object> requestBody, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new CreatePaymentServiceSessionRequest()
             {
                 PaymentServiceId = paymentServiceId,
                 RequestBody = requestBody,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

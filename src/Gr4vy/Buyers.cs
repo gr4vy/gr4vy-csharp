@@ -46,7 +46,7 @@ namespace Gr4vy
         /// Create a new buyer record.
         /// </remarks>
         /// </summary>
-        Task<Buyer> CreateAsync(BuyerCreate buyerCreate, string? merchantAccountId = null);
+        Task<Buyer> CreateAsync(BuyerCreate buyerCreate, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Get a buyer
@@ -55,7 +55,7 @@ namespace Gr4vy
         /// Fetches a buyer by its ID.
         /// </remarks>
         /// </summary>
-        Task<Buyer> GetAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Buyer> GetAsync(string buyerId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Update a buyer
@@ -64,7 +64,7 @@ namespace Gr4vy
         /// Updates a buyer record.
         /// </remarks>
         /// </summary>
-        Task<Buyer> UpdateAsync(string buyerId, BuyerUpdate buyerUpdate, string? merchantAccountId = null);
+        Task<Buyer> UpdateAsync(string buyerId, BuyerUpdate buyerUpdate, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Delete a buyer
@@ -73,15 +73,15 @@ namespace Gr4vy
         /// Permanently removes a buyer record.
         /// </remarks>
         /// </summary>
-        Task DeleteAsync(string buyerId, string? merchantAccountId = null);
+        Task DeleteAsync(string buyerId, string? applicationName = "core-api", string? merchantAccountId = null);
     }
 
     public class Buyers: IBuyers
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
         public IBuyersPaymentMethods PaymentMethods { get; private set; }
         public IBuyersGiftCards GiftCards { get; private set; }
@@ -200,6 +200,7 @@ namespace Gr4vy
                     Limit = request?.Limit,
                     Search = request?.Search,
                     ExternalIdentifier = request?.ExternalIdentifier,
+                    ApplicationName = request?.ApplicationName,
                     MerchantAccountId = request?.MerchantAccountId
                 };
 
@@ -359,18 +360,18 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Buyer> CreateAsync(BuyerCreate buyerCreate, string? merchantAccountId = null)
+        public async Task<Buyer> CreateAsync(BuyerCreate buyerCreate, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new AddBuyerRequest()
             {
                 BuyerCreate = buyerCreate,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/buyers";
+            var urlString = URLBuilder.Build(baseUrl, "/buyers", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -565,11 +566,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Buyer> GetAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Buyer> GetAsync(string buyerId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetBuyerRequest()
             {
                 BuyerId = buyerId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -797,12 +799,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Buyer> UpdateAsync(string buyerId, BuyerUpdate buyerUpdate, string? merchantAccountId = null)
+        public async Task<Buyer> UpdateAsync(string buyerId, BuyerUpdate buyerUpdate, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new UpdateBuyerRequest()
             {
                 BuyerId = buyerId,
                 BuyerUpdate = buyerUpdate,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1003,11 +1006,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task DeleteAsync(string buyerId, string? merchantAccountId = null)
+        public async Task DeleteAsync(string buyerId, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new DeleteBuyerRequest()
             {
                 BuyerId = buyerId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
