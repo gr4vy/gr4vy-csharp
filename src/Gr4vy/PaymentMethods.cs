@@ -45,7 +45,7 @@ namespace Gr4vy
         /// Store a new payment method.
         /// </remarks>
         /// </summary>
-        Task<PaymentMethod> CreateAsync(Body requestBody, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<PaymentMethod> CreateAsync(Body requestBody, string? merchantAccountId = null);
 
         /// <summary>
         /// Get payment method
@@ -54,7 +54,7 @@ namespace Gr4vy
         /// Retrieve a payment method.
         /// </remarks>
         /// </summary>
-        Task<PaymentMethod> GetAsync(string paymentMethodId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<PaymentMethod> GetAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Delete payment method
@@ -63,14 +63,14 @@ namespace Gr4vy
         /// Delete a payment method.
         /// </remarks>
         /// </summary>
-        Task DeleteAsync(string paymentMethodId, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task DeleteAsync(string paymentMethodId, string? merchantAccountId = null);
     }
 
     public class PaymentMethods: IPaymentMethods
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
         public IPaymentServiceTokens PaymentServiceTokens { get; private set; }
@@ -190,7 +190,6 @@ namespace Gr4vy
                     BuyerExternalIdentifier = request?.BuyerExternalIdentifier,
                     Status = request?.Status,
                     ExternalIdentifier = request?.ExternalIdentifier,
-                    ApplicationName = request?.ApplicationName,
                     MerchantAccountId = request?.MerchantAccountId
                 };
 
@@ -350,18 +349,18 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PaymentMethod> CreateAsync(Body requestBody, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<PaymentMethod> CreateAsync(Body requestBody, string? merchantAccountId = null)
         {
             var request = new CreatePaymentMethodRequest()
             {
                 RequestBody = requestBody,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-methods", request);
+
+            var urlString = baseUrl + "/payment-methods";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -556,12 +555,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PaymentMethod> GetAsync(string paymentMethodId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<PaymentMethod> GetAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetPaymentMethodRequest()
             {
                 PaymentMethodId = paymentMethodId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -789,12 +787,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task DeleteAsync(string paymentMethodId, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task DeleteAsync(string paymentMethodId, string? merchantAccountId = null)
         {
             var request = new DeletePaymentMethodRequest()
             {
                 PaymentMethodId = paymentMethodId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

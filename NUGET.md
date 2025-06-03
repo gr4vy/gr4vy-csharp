@@ -11,10 +11,7 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
     accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
@@ -23,7 +20,6 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -48,10 +44,7 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
     accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
@@ -60,7 +53,6 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -90,15 +82,9 @@ The following global parameter is available.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.MerchantAccounts.GetAsync(
-    merchantAccountId: "merchant-12345",
-    applicationName: "core-api"
-);
+var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345");
 
 // handle response
 ```
@@ -117,16 +103,9 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
+ListBuyersRequest req = new ListBuyersRequest() {};
 
 ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
 
@@ -150,16 +129,9 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
+ListBuyersRequest req = new ListBuyersRequest() {};
 
 ListBuyersResponse? res = await sdk.Buyers.ListAsync(
     retryConfig: new RetryConfig(
@@ -200,15 +172,10 @@ var sdk = new Gr4vySDK(
         ),
         retryConnectionErrors: false
     ),
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
+ListBuyersRequest req = new ListBuyersRequest() {};
 
 ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
 
@@ -261,10 +228,7 @@ using Gr4vy.Models.Components;
 using Gr4vy.Models.Errors;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 try
 {
@@ -275,7 +239,6 @@ try
                 "f29e886e-93cc-4714-b4a3-12b7a718e595",
             },
         },
-        applicationName: "core-api",
         merchantAccountId: "default"
     );
 
@@ -380,8 +343,7 @@ using System.Collections.Generic;
 var sdk = new Gr4vySDK(
     server: SDKConfig.Server.Sandbox,
     id: "<id>",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
@@ -391,7 +353,6 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -408,8 +369,7 @@ using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
     serverUrl: "https://api.example.gr4vy.app",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
@@ -419,7 +379,6 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 

@@ -19,8 +19,5 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=merchant_account_id")]
         public string MerchantAccountId { get; set; } = default!;
-
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=application_name")]
-        public string? ApplicationName { get; set; } = "core-api";
     }
 }

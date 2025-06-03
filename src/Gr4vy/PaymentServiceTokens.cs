@@ -32,7 +32,7 @@ namespace Gr4vy
         /// List all gateway tokens stored for a payment method.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorPaymentServiceToken> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<CollectionNoCursorPaymentServiceToken> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Create payment service token
@@ -41,7 +41,7 @@ namespace Gr4vy
         /// Create a gateway tokens for a payment method.
         /// </remarks>
         /// </summary>
-        Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// Delete payment service token
@@ -50,14 +50,14 @@ namespace Gr4vy
         /// Delete a gateway tokens for a payment method.
         /// </remarks>
         /// </summary>
-        Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, string? merchantAccountId = null);
     }
 
     public class PaymentServiceTokens: IPaymentServiceTokens
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -66,13 +66,12 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorPaymentServiceToken> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<CollectionNoCursorPaymentServiceToken> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListPaymentMethodPaymentServiceTokensRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 PaymentServiceId = paymentServiceId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -300,13 +299,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, string? merchantAccountId = null)
         {
             var request = new CreatePaymentMethodPaymentServiceTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 PaymentServiceTokenCreate = paymentServiceTokenCreate,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -507,13 +505,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, string? merchantAccountId = null)
         {
             var request = new DeletePaymentMethodPaymentServiceTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
                 PaymentServiceTokenId = paymentServiceTokenId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

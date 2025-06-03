@@ -18,10 +18,7 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.GiftCards.Balances.ListAsync(
     giftCardBalanceRequest: new GiftCardBalanceRequest() {
@@ -33,7 +30,6 @@ var res = await sdk.GiftCards.Balances.ListAsync(
             ),
         },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -45,7 +41,6 @@ var res = await sdk.GiftCards.Balances.ListAsync(
 | Parameter                                                                   | Type                                                                        | Required                                                                    | Description                                                                 | Example                                                                     |
 | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
 | `GiftCardBalanceRequest`                                                    | [GiftCardBalanceRequest](../../Models/Components/GiftCardBalanceRequest.md) | :heavy_check_mark:                                                          | N/A                                                                         |                                                                             |
-| `ApplicationName`                                                           | *string*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |                                                                             |
 | `MerchantAccountId`                                                         | *string*                                                                    | :heavy_minus_sign:                                                          | The ID of the merchant account to use for this request.                     | default                                                                     |
 
 ### Response

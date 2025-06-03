@@ -33,7 +33,7 @@ namespace Gr4vy
         /// List refunds for a transaction.
         /// </remarks>
         /// </summary>
-        Task<CollectionRefund> ListAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<CollectionRefund> ListAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Create transaction refund
@@ -42,7 +42,7 @@ namespace Gr4vy
         /// Create a refund for a transaction.
         /// </remarks>
         /// </summary>
-        Task<Refund> CreateAsync(string transactionId, TransactionRefundCreate transactionRefundCreate, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<Refund> CreateAsync(string transactionId, TransactionRefundCreate transactionRefundCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// Get transaction refund
@@ -51,14 +51,14 @@ namespace Gr4vy
         /// Fetch refund for a transaction.
         /// </remarks>
         /// </summary>
-        Task<Refund> GetAsync(string transactionId, string refundId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Refund> GetAsync(string transactionId, string refundId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
     public class TransactionsRefunds: ITransactionsRefunds
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
         public IAll All { get; private set; }
@@ -69,12 +69,11 @@ namespace Gr4vy
             All = new All(SDKConfiguration);
         }
 
-        public async Task<CollectionRefund> ListAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<CollectionRefund> ListAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListTransactionRefundsRequest()
             {
                 TransactionId = transactionId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -302,13 +301,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Refund> CreateAsync(string transactionId, TransactionRefundCreate transactionRefundCreate, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<Refund> CreateAsync(string transactionId, TransactionRefundCreate transactionRefundCreate, string? merchantAccountId = null)
         {
             var request = new CreateTransactionRefundRequest()
             {
                 TransactionId = transactionId,
                 TransactionRefundCreate = transactionRefundCreate,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -509,13 +507,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Refund> GetAsync(string transactionId, string refundId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Refund> GetAsync(string transactionId, string refundId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetTransactionRefundRequest()
             {
                 TransactionId = transactionId,
                 RefundId = refundId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

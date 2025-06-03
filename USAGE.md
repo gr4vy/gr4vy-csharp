@@ -4,10 +4,7 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
     accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
@@ -16,7 +13,6 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 

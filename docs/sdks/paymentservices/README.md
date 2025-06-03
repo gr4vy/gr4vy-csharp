@@ -24,16 +24,9 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListPaymentServicesRequest req = new ListPaymentServicesRequest() {
-    Method = "card",
-    Cursor = "ZXhhbXBsZTE",
-    Deleted = true,
-};
+ListPaymentServicesRequest req = new ListPaymentServicesRequest() {};
 
 ListPaymentServicesResponse? res = await sdk.PaymentServices.ListAsync(req);
 
@@ -84,10 +77,7 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaymentServices.CreateAsync(
     paymentServiceCreate: new PaymentServiceCreate() {
@@ -99,13 +89,6 @@ var res = await sdk.PaymentServices.CreateAsync(
                 Value = "key-12345",
             },
         },
-        ReportingFields = new List<Field>() {
-            new Field() {
-                Key = "api_key",
-                Value = "key-12345",
-            },
-        },
-        Position = 1,
         AcceptedCurrencies = new List<string>() {
             "USD",
             "EUR",
@@ -116,22 +99,7 @@ var res = await sdk.PaymentServices.CreateAsync(
             "DE",
             "GB",
         },
-        Active = false,
-        MerchantProfile = new Dictionary<string, MerchantProfileScheme>() {
-            { "key", new MerchantProfileScheme() {
-                MerchantAcquirerBin = "516327",
-                MerchantUrl = "https://example.com",
-                MerchantAcquirerId = "123456789012345",
-                MerchantName = "Acme Inc.",
-                MerchantCountryCode = "USD",
-                MerchantCategoryCode = "1234",
-            } },
-        },
-        PaymentMethodTokenizationEnabled = true,
-        NetworkTokensEnabled = true,
-        OpenLoop = true,
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -143,7 +111,6 @@ var res = await sdk.PaymentServices.CreateAsync(
 | Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `PaymentServiceCreate`                                                  | [PaymentServiceCreate](../../Models/Components/PaymentServiceCreate.md) | :heavy_check_mark:                                                      | N/A                                                                     |                                                                         |
-| `ApplicationName`                                                       | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |                                                                         |
 | `MerchantAccountId`                                                     | *string*                                                                | :heavy_minus_sign:                                                      | The ID of the merchant account to use for this request.                 | default                                                                 |
 
 ### Response
@@ -178,14 +145,10 @@ Get the details of a configured payment service.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaymentServices.GetAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -197,7 +160,6 @@ var res = await sdk.PaymentServices.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -231,45 +193,12 @@ Configures a new payment service for use by merchants.
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaymentServices.UpdateAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
-    paymentServiceUpdate: new PaymentServiceUpdate() {
-        DisplayName = "Stripe",
-        Position = 1,
-        AcceptedCurrencies = new List<string>() {
-            "USD",
-            "EUR",
-            "GBP",
-        },
-        AcceptedCountries = new List<string>() {
-            "US",
-            "DE",
-            "GB",
-        },
-        Active = false,
-        ThreeDSecureEnabled = true,
-        MerchantProfile = new Dictionary<string, MerchantProfileScheme>() {
-            { "key", new MerchantProfileScheme() {
-                MerchantAcquirerBin = "516327",
-                MerchantUrl = "https://example.com",
-                MerchantAcquirerId = "123456789012345",
-                MerchantName = "Acme Inc.",
-                MerchantCountryCode = "USD",
-                MerchantCategoryCode = "1234",
-            } },
-        },
-        PaymentMethodTokenizationEnabled = true,
-        NetworkTokensEnabled = true,
-        OpenLoop = true,
-    },
-    applicationName: "core-api",
+    paymentServiceUpdate: new PaymentServiceUpdate() {},
     merchantAccountId: "default"
 );
 
@@ -282,7 +211,6 @@ var res = await sdk.PaymentServices.UpdateAsync(
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `PaymentServiceId`                                                      | *string*                                                                | :heavy_check_mark:                                                      | the ID of the payment service                                           | fffd152a-9532-4087-9a4f-de58754210f0                                    |
 | `PaymentServiceUpdate`                                                  | [PaymentServiceUpdate](../../Models/Components/PaymentServiceUpdate.md) | :heavy_check_mark:                                                      | N/A                                                                     |                                                                         |
-| `ApplicationName`                                                       | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |                                                                         |
 | `MerchantAccountId`                                                     | *string*                                                                | :heavy_minus_sign:                                                      | The ID of the merchant account to use for this request.                 | default                                                                 |
 
 ### Response
@@ -317,14 +245,10 @@ Deletes all the configuration of a payment service.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaymentServices.DeleteAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -336,7 +260,6 @@ var res = await sdk.PaymentServices.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -372,15 +295,11 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaymentServices.VerifyAsync(
     verifyCredentials: new VerifyCredentials() {
         PaymentServiceDefinitionId = "stripe-card",
-        PaymentServiceId = "fffd152a-9532-4087-9a4f-de58754210f0",
         Fields = new List<Field>() {
             new Field() {
                 Key = "api_key",
@@ -388,7 +307,6 @@ var res = await sdk.PaymentServices.VerifyAsync(
             },
         },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -400,7 +318,6 @@ var res = await sdk.PaymentServices.VerifyAsync(
 | Parameter                                                         | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `VerifyCredentials`                                               | [VerifyCredentials](../../Models/Components/VerifyCredentials.md) | :heavy_check_mark:                                                | N/A                                                               |                                                                   |
-| `ApplicationName`                                                 | *string*                                                          | :heavy_minus_sign:                                                | N/A                                                               |                                                                   |
 | `MerchantAccountId`                                               | *string*                                                          | :heavy_minus_sign:                                                | The ID of the merchant account to use for this request.           | default                                                           |
 
 ### Response
@@ -436,17 +353,13 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaymentServices.SessionAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
     requestBody: new Dictionary<string, object>() {
         { "key", "<value>" },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -459,7 +372,6 @@ var res = await sdk.PaymentServices.SessionAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
 | `RequestBody`                                           | Dictionary<String, *object*>                            | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

@@ -20,15 +20,11 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 ListPayoutsResponse? res = await sdk.Payouts.ListAsync(
     cursor: "ZXhhbXBsZTE",
     limit: 20,
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -46,7 +42,6 @@ while(res != null)
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `Cursor`                                                | *string*                                                | :heavy_minus_sign:                                      | A pointer to the page of results to return.             | ZXhhbXBsZTE                                             |
 | `Limit`                                                 | *long*                                                  | :heavy_minus_sign:                                      | The maximum number of items that are at returned.       | 20                                                      |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -81,10 +76,7 @@ Creates a new payout.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Payouts.CreateAsync(
     payoutCreate: new PayoutCreate() {
@@ -96,79 +88,7 @@ var res = await sdk.Payouts.CreateAsync(
                 Id = "852b951c-d7ea-4c98-b09e-4a1c9e97c077",
             }
         ),
-        Category = "online_gambling",
-        ExternalIdentifier = "payout-12345",
-        BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
-        Buyer = new GuestBuyerInput() {
-            DisplayName = "John Doe",
-            ExternalIdentifier = "buyer-12345",
-            BillingDetails = new BillingDetailsInput() {
-                FirstName = "John",
-                LastName = "Doe",
-                EmailAddress = "john@example.com",
-                PhoneNumber = "+1234567890",
-                Address = new Address() {
-                    City = "San Jose",
-                    Country = "US",
-                    PostalCode = "94560",
-                    State = "California",
-                    StateCode = "US-CA",
-                    HouseNumberOrName = "10",
-                    Line1 = "Stafford Appartments",
-                    Line2 = "29th Street",
-                    Organization = "Gr4vy",
-                },
-                TaxId = new TaxId() {
-                    Value = "12345678931",
-                    Kind = "<value>",
-                },
-            },
-            ShippingDetails = new ShippingDetailsCreate() {
-                FirstName = "John",
-                LastName = "Doe",
-                EmailAddress = "john@example.com",
-                PhoneNumber = "+1234567890",
-                Address = new Address() {
-                    City = "San Jose",
-                    Country = "US",
-                    PostalCode = "94560",
-                    State = "California",
-                    StateCode = "US-CA",
-                    HouseNumberOrName = "10",
-                    Line1 = "Stafford Appartments",
-                    Line2 = "29th Street",
-                    Organization = "Gr4vy",
-                },
-            },
-        },
-        BuyerExternalIdentifier = "buyer-12345",
-        Merchant = new PayoutMerchant() {
-            Name = "Acme Inc",
-            IdentificationNumber = "12345",
-            PhoneNumber = "+442071838750",
-            Url = "https://example.com",
-            StatementDescriptor = "Winnings",
-            MerchantCategoryCode = "123456",
-            Address = new Address() {
-                City = "San Jose",
-                Country = "US",
-                PostalCode = "94560",
-                State = "California",
-                StateCode = "US-CA",
-                HouseNumberOrName = "10",
-                Line1 = "Stafford Appartments",
-                Line2 = "29th Street",
-                Organization = "Gr4vy",
-            },
-        },
-        ConnectionOptions = new ConnectionOptions() {
-            CheckoutCard = new CheckoutCardConnectionOptions() {
-                ProcessingChannelId = "channel-1234",
-                SourceId = "acct-1234",
-            },
-        },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -180,7 +100,6 @@ var res = await sdk.Payouts.CreateAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PayoutCreate`                                          | [PayoutCreate](../../Models/Components/PayoutCreate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -215,14 +134,10 @@ Retreives a payout.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Payouts.GetAsync(
     payoutId: "4344fef2-bc2f-49a6-924f-343e62f67224",
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -234,7 +149,6 @@ var res = await sdk.Payouts.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PayoutId`                                              | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

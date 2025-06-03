@@ -21,19 +21,14 @@ Register a digital wallet like Apple Pay, Google Pay, or Click to Pay.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.DigitalWallets.CreateAsync(
     digitalWalletCreate: new DigitalWalletCreate() {
         Provider = "<value>",
         MerchantName = "<value>",
-        MerchantCountryCode = "US",
         AcceptTermsAndConditions = false,
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -45,7 +40,6 @@ var res = await sdk.DigitalWallets.CreateAsync(
 | Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           | Example                                                               |
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `DigitalWalletCreate`                                                 | [DigitalWalletCreate](../../Models/Components/DigitalWalletCreate.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
-| `ApplicationName`                                                     | *string*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               | default                                                               |
 
 ### Response
@@ -80,15 +74,9 @@ List configured digital wallets.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.DigitalWallets.ListAsync(
-    applicationName: "core-api",
-    merchantAccountId: "default"
-);
+var res = await sdk.DigitalWallets.ListAsync(merchantAccountId: "default");
 
 // handle response
 ```
@@ -97,7 +85,6 @@ var res = await sdk.DigitalWallets.ListAsync(
 
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -132,14 +119,10 @@ Fetch the details a digital wallet.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.DigitalWallets.GetAsync(
     digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -151,7 +134,6 @@ var res = await sdk.DigitalWallets.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `DigitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the digital wallet to read.                   | 1808f5e6-b49c-4db9-94fa-22371ea352f5                    |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -186,14 +168,10 @@ Delete a configured digital wallet.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.DigitalWallets.DeleteAsync(
     digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -205,7 +183,6 @@ var res = await sdk.DigitalWallets.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `DigitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the digital wallet to delete.                 | 1808f5e6-b49c-4db9-94fa-22371ea352f5                    |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -240,17 +217,11 @@ Update a digital wallet.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.DigitalWallets.UpdateAsync(
     digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
-    digitalWalletUpdate: new DigitalWalletUpdate() {
-        MerchantCountryCode = "DE",
-    },
-    applicationName: "core-api",
+    digitalWalletUpdate: new DigitalWalletUpdate() {},
     merchantAccountId: "default"
 );
 
@@ -263,7 +234,6 @@ var res = await sdk.DigitalWallets.UpdateAsync(
 | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
 | `DigitalWalletId`                                                     | *string*                                                              | :heavy_check_mark:                                                    | The ID of the digital wallet to edit.                                 | 1808f5e6-b49c-4db9-94fa-22371ea352f5                                  |
 | `DigitalWalletUpdate`                                                 | [DigitalWalletUpdate](../../Models/Components/DigitalWalletUpdate.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
-| `ApplicationName`                                                     | *string*                                                              | :heavy_minus_sign:                                                    | N/A                                                                   |                                                                       |
 | `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               | default                                                               |
 
 ### Response

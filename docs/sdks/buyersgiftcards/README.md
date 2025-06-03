@@ -17,15 +17,11 @@ List all the stored gift cards for a specific buyer.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Buyers.GiftCards.ListAsync(
     buyerExternalIdentifier: "<value>",
     buyerId: "43dacd6f-2cf2-4482-b522-f7a251f63637",
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -38,7 +34,6 @@ var res = await sdk.Buyers.GiftCards.ListAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerExternalIdentifier`                               | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `BuyerId`                                               | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

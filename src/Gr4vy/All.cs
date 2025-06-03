@@ -32,14 +32,14 @@ namespace Gr4vy
         /// Create a refund for all instruments on a transaction.
         /// </remarks>
         /// </summary>
-        Task<CollectionRefund> CreateAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null);
+        Task<CollectionRefund> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null);
     }
 
     public class All: IAll
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -48,12 +48,11 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionRefund> CreateAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null)
+        public async Task<CollectionRefund> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null)
         {
             var request = new CreateFullTransactionRefundRequest()
             {
                 TransactionId = transactionId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
                 TransactionRefundAllCreate = transactionRefundAllCreate,
             };

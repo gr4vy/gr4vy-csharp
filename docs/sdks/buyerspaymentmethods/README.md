@@ -18,17 +18,9 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListBuyerPaymentMethodsRequest req = new ListBuyerPaymentMethodsRequest() {
-    BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    BuyerExternalIdentifier = "buyer-12345",
-    Country = "US",
-    Currency = "USD",
-};
+ListBuyerPaymentMethodsRequest req = new ListBuyerPaymentMethodsRequest() {};
 
 var res = await sdk.Buyers.PaymentMethods.ListAsync(req);
 

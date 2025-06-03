@@ -32,7 +32,7 @@ namespace Gr4vy
         /// Associate shipping details to a buyer.
         /// </remarks>
         /// </summary>
-        Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// List a buyer&apos;s shipping details
@@ -41,7 +41,7 @@ namespace Gr4vy
         /// List all the shipping details associated to a specific buyer.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorShippingDetails> ListAsync(string buyerId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<CollectionNoCursorShippingDetails> ListAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get buyer shipping details
@@ -50,7 +50,7 @@ namespace Gr4vy
         /// Get a buyer&apos;s shipping details.
         /// </remarks>
         /// </summary>
-        Task<Models.Components.ShippingDetails> GetAsync(string buyerId, string shippingDetailsId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Models.Components.ShippingDetails> GetAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Update a buyer&apos;s shipping details
@@ -59,7 +59,7 @@ namespace Gr4vy
         /// Update the shipping details associated to a specific buyer.
         /// </remarks>
         /// </summary>
-        Task<Models.Components.ShippingDetails> UpdateAsync(UpdateBuyerShippingDetailsRequest request);
+        Task<Models.Components.ShippingDetails> UpdateAsync(string buyerId, string shippingDetailsId, ShippingDetailsUpdate shippingDetailsUpdate, string? merchantAccountId = null);
 
         /// <summary>
         /// Delete a buyer&apos;s shipping details
@@ -68,14 +68,14 @@ namespace Gr4vy
         /// Delete the shipping details associated to a specific buyer.
         /// </remarks>
         /// </summary>
-        Task<object> DeleteAsync(string buyerId, string shippingDetailsId, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<object> DeleteAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null);
     }
 
     public class ShippingDetails: IShippingDetails
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -84,13 +84,12 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, string? merchantAccountId = null)
         {
             var request = new AddBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
                 ShippingDetailsCreate = shippingDetailsCreate,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -291,12 +290,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<CollectionNoCursorShippingDetails> ListAsync(string buyerId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<CollectionNoCursorShippingDetails> ListAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -524,13 +522,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Models.Components.ShippingDetails> GetAsync(string buyerId, string shippingDetailsId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Models.Components.ShippingDetails> GetAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
                 ShippingDetailsId = shippingDetailsId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -758,12 +755,15 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Models.Components.ShippingDetails> UpdateAsync(UpdateBuyerShippingDetailsRequest request)
+        public async Task<Models.Components.ShippingDetails> UpdateAsync(string buyerId, string shippingDetailsId, ShippingDetailsUpdate shippingDetailsUpdate, string? merchantAccountId = null)
         {
-            if (request == null)
+            var request = new UpdateBuyerShippingDetailsRequest()
             {
-                request = new UpdateBuyerShippingDetailsRequest();
-            }
+                BuyerId = buyerId,
+                ShippingDetailsId = shippingDetailsId,
+                ShippingDetailsUpdate = shippingDetailsUpdate,
+                MerchantAccountId = merchantAccountId,
+            };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -962,13 +962,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<object> DeleteAsync(string buyerId, string shippingDetailsId, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<object> DeleteAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null)
         {
             var request = new DeleteBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
                 ShippingDetailsId = shippingDetailsId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

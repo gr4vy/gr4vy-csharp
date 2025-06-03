@@ -32,7 +32,7 @@ namespace Gr4vy
         /// Register a digital wallet domain (Apple Pay only).
         /// </remarks>
         /// </summary>
-        Task<object> CreateAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<object> CreateAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? merchantAccountId = null);
 
         /// <summary>
         /// Remove a digital wallet domain
@@ -41,14 +41,14 @@ namespace Gr4vy
         /// Remove a digital wallet domain (Apple Pay only).
         /// </remarks>
         /// </summary>
-        Task<object> DeleteAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<object> DeleteAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? merchantAccountId = null);
     }
 
     public class Domains: IDomains
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -57,13 +57,12 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<object> CreateAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<object> CreateAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? merchantAccountId = null)
         {
             var request = new RegisterDigitalWalletDomainRequest()
             {
                 DigitalWalletId = digitalWalletId,
                 DigitalWalletDomain = digitalWalletDomain,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -264,13 +263,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<object> DeleteAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<object> DeleteAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? merchantAccountId = null)
         {
             var request = new UnregisterDigitalWalletDomainRequest()
             {
                 DigitalWalletId = digitalWalletId,
                 DigitalWalletDomain = digitalWalletDomain,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
