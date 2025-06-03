@@ -19,6 +19,6 @@ namespace Gr4vy.Models.Requests
         public Func<Task<ListPayoutsResponse?>>? Next {get;set;}
 
         [SpeakeasyMetadata("")]
-        public CollectionPayoutSummary Result { get; set; } = default!;
+        public PayoutSummaries Result { get; set; } = default!;
     }
 }

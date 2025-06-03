@@ -32,7 +32,7 @@ namespace Gr4vy
         /// List all executed reports that have been generated.
         /// </remarks>
         /// </summary>
-        Task<CollectionReportExecution> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null);
+        Task<ReportExecutions> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get executed report
@@ -48,7 +48,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -57,7 +57,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionReportExecution> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null)
+        public async Task<ReportExecutions> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null)
         {
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
@@ -146,7 +146,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionReportExecution>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<ReportExecutions>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     return obj!;
                 }
 

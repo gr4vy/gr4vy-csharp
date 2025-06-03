@@ -5,4 +5,4 @@
 
 | Field                                                               | Type                                                                | Required                                                            | Description                                                         |
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `Result`                                                            | [CollectionGiftCard](../../Models/Components/CollectionGiftCard.md) | :heavy_check_mark:                                                  | N/A                                                                 |
+| `Result`                                                            | [Models.Components.GiftCards](../../Models/Components/GiftCards.md) | :heavy_check_mark:                                                  | N/A                                                                 |

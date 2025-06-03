@@ -89,7 +89,7 @@ var res = await sdk.DigitalWallets.ListAsync(merchantAccountId: "default");
 
 ### Response
 
-**[CollectionNoCursorDigitalWallet](../../Models/Components/CollectionNoCursorDigitalWallet.md)**
+**[Models.Components.DigitalWallets](../../Models/Components/DigitalWallets.md)**
 
 ### Errors
 

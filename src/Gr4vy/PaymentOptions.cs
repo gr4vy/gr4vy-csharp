@@ -32,14 +32,14 @@ namespace Gr4vy
         /// List the payment options available at checkout. filtering by country, currency, and additional fields passed to Flow rules.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorPaymentOption> ListAsync(PaymentOptionRequest paymentOptionRequest, string? merchantAccountId = null);
+        Task<Models.Components.PaymentOptions> ListAsync(PaymentOptionRequest paymentOptionRequest, string? merchantAccountId = null);
     }
 
     public class PaymentOptions: IPaymentOptions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -48,7 +48,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorPaymentOption> ListAsync(PaymentOptionRequest paymentOptionRequest, string? merchantAccountId = null)
+        public async Task<Models.Components.PaymentOptions> ListAsync(PaymentOptionRequest paymentOptionRequest, string? merchantAccountId = null)
         {
             var request = new ListPaymentOptionsRequest()
             {
@@ -116,7 +116,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorPaymentOption>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.PaymentOptions>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 

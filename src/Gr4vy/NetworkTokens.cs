@@ -33,7 +33,7 @@ namespace Gr4vy
         /// List all network tokens stored for a payment method.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorNetworkToken> ListAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Models.Components.NetworkTokens> ListAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Provision network token
@@ -76,7 +76,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
         public ICryptogram Cryptogram { get; private set; }
@@ -87,7 +87,7 @@ namespace Gr4vy
             Cryptogram = new Cryptogram(SDKConfiguration);
         }
 
-        public async Task<CollectionNoCursorNetworkToken> ListAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Models.Components.NetworkTokens> ListAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListPaymentMethodNetworkTokensRequest()
             {
@@ -181,7 +181,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorNetworkToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.NetworkTokens>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 

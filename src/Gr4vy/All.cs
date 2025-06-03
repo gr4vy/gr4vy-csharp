@@ -32,14 +32,14 @@ namespace Gr4vy
         /// Create a refund for all instruments on a transaction.
         /// </remarks>
         /// </summary>
-        Task<CollectionRefund> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null);
+        Task<Models.Components.Refunds> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null);
     }
 
     public class All: IAll
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -48,7 +48,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionRefund> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null)
+        public async Task<Models.Components.Refunds> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null)
         {
             var request = new CreateFullTransactionRefundRequest()
             {
@@ -116,7 +116,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionRefund>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.Refunds>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 

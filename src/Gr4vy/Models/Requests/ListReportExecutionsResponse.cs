@@ -19,6 +19,6 @@ namespace Gr4vy.Models.Requests
         public Func<Task<ListReportExecutionsResponse?>>? Next {get;set;}
 
         [SpeakeasyMetadata("")]
-        public CollectionReportExecution Result { get; set; } = default!;
+        public ReportExecutions Result { get; set; } = default!;
     }
 }

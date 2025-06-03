@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 7225bf2c3c4c51c67fa3bad3af3ec5ba
+  docChecksum: 78284ec74810ae1076fbf09c0b330dc9
   docVersion: 1.0.0
   speakeasyVersion: 1.555.0
   generationVersion: 2.618.0
-  releaseVersion: 1.0.0-beta.12
-  configChecksum: 00ffecd20fc8353bd144d959d3240299
+  releaseVersion: 1.0.0-beta.13
+  configChecksum: f2cfa1a5f59acde0fd0f30d09bb43dcb
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -45,6 +45,7 @@ generatedFiles:
   - docs/Models/Components/AirlinePassenger.md
   - docs/Models/Components/ApplePayPaymentMethodCreate.md
   - docs/Models/Components/ApplePaySessionRequest.md
+  - docs/Models/Components/AuditLogEntries.md
   - docs/Models/Components/AuditLogEntry.md
   - docs/Models/Components/AuditLogEntryResource.md
   - docs/Models/Components/AuditLogEntryUser.md
@@ -54,8 +55,10 @@ generatedFiles:
   - docs/Models/Components/Buyer.md
   - docs/Models/Components/BuyerCreate.md
   - docs/Models/Components/BuyerUpdate.md
+  - docs/Models/Components/Buyers.md
   - docs/Models/Components/CardPaymentMethodCreate.md
   - docs/Models/Components/CardSchemeDefinition.md
+  - docs/Models/Components/CardSchemeDefinitions.md
   - docs/Models/Components/CardWithUrlPaymentMethodCreate.md
   - docs/Models/Components/CartItem.md
   - docs/Models/Components/CheckoutCardConnectionOptions.md
@@ -69,27 +72,6 @@ generatedFiles:
   - docs/Models/Components/ClickToPayPaymentMethodCreate.md
   - docs/Models/Components/ClickToPaySession.md
   - docs/Models/Components/ClickToPaySessionRequest.md
-  - docs/Models/Components/CollectionAuditLogEntry.md
-  - docs/Models/Components/CollectionBuyer.md
-  - docs/Models/Components/CollectionGiftCard.md
-  - docs/Models/Components/CollectionMerchantAccount.md
-  - docs/Models/Components/CollectionNoCursorCardSchemeDefinition.md
-  - docs/Models/Components/CollectionNoCursorDigitalWallet.md
-  - docs/Models/Components/CollectionNoCursorGiftCardSummary.md
-  - docs/Models/Components/CollectionNoCursorNetworkToken.md
-  - docs/Models/Components/CollectionNoCursorPaymentMethodSummary.md
-  - docs/Models/Components/CollectionNoCursorPaymentOption.md
-  - docs/Models/Components/CollectionNoCursorPaymentServiceToken.md
-  - docs/Models/Components/CollectionNoCursorShippingDetails.md
-  - docs/Models/Components/CollectionPaymentMethod.md
-  - docs/Models/Components/CollectionPaymentService.md
-  - docs/Models/Components/CollectionPaymentServiceDefinition.md
-  - docs/Models/Components/CollectionPayoutSummary.md
-  - docs/Models/Components/CollectionRefund.md
-  - docs/Models/Components/CollectionReport.md
-  - docs/Models/Components/CollectionReportExecution.md
-  - docs/Models/Components/CollectionTransactionEvent.md
-  - docs/Models/Components/CollectionTransactionSummary.md
   - docs/Models/Components/ConnectionOptions.md
   - docs/Models/Components/Context.md
   - docs/Models/Components/CreateSession.md
@@ -102,6 +84,7 @@ generatedFiles:
   - docs/Models/Components/DigitalWalletCreate.md
   - docs/Models/Components/DigitalWalletDomain.md
   - docs/Models/Components/DigitalWalletUpdate.md
+  - docs/Models/Components/DigitalWallets.md
   - docs/Models/Components/ErrorDetail.md
   - docs/Models/Components/Field.md
   - docs/Models/Components/GiftCard.md
@@ -111,10 +94,12 @@ generatedFiles:
   - docs/Models/Components/GiftCardRequest.md
   - docs/Models/Components/GiftCardService.md
   - docs/Models/Components/GiftCardStoredRequest.md
+  - docs/Models/Components/GiftCardSummaries.md
   - docs/Models/Components/GiftCardSummary.md
   - docs/Models/Components/GiftCardTokenTransactionCreate.md
   - docs/Models/Components/GiftCardTransactionCreate.md
   - docs/Models/Components/GiftCardUnion.md
+  - docs/Models/Components/GiftCards.md
   - docs/Models/Components/GooglePayAssuranceDetails.md
   - docs/Models/Components/GooglePayFPANPaymentMethodCreate.md
   - docs/Models/Components/GooglePayPaymentMethodCreate.md
@@ -128,45 +113,57 @@ generatedFiles:
   - docs/Models/Components/MerchantAccount.md
   - docs/Models/Components/MerchantAccountCreate.md
   - docs/Models/Components/MerchantAccountUpdate.md
+  - docs/Models/Components/MerchantAccounts.md
   - docs/Models/Components/MerchantProfileScheme.md
   - docs/Models/Components/MerchantProfileSchemeSummary.md
   - docs/Models/Components/NetworkToken.md
   - docs/Models/Components/NetworkTokenCreate.md
   - docs/Models/Components/NetworkTokenPaymentMethodCreate.md
+  - docs/Models/Components/NetworkTokens.md
   - docs/Models/Components/PaymentMethod.md
   - docs/Models/Components/PaymentMethodCard.md
   - docs/Models/Components/PaymentMethodDetailsCard.md
   - docs/Models/Components/PaymentMethodStoredCard.md
+  - docs/Models/Components/PaymentMethodSummaries.md
   - docs/Models/Components/PaymentMethodSummary.md
+  - docs/Models/Components/PaymentMethods.md
   - docs/Models/Components/PaymentOption.md
   - docs/Models/Components/PaymentOptionContext.md
   - docs/Models/Components/PaymentOptionContextApprovalUI.md
   - docs/Models/Components/PaymentOptionRequest.md
+  - docs/Models/Components/PaymentOptions.md
   - docs/Models/Components/PaymentService.md
   - docs/Models/Components/PaymentServiceConfiguration.md
   - docs/Models/Components/PaymentServiceCreate.md
   - docs/Models/Components/PaymentServiceDefinition.md
+  - docs/Models/Components/PaymentServiceDefinitions.md
   - docs/Models/Components/PaymentServiceToken.md
   - docs/Models/Components/PaymentServiceTokenCreate.md
+  - docs/Models/Components/PaymentServiceTokens.md
   - docs/Models/Components/PaymentServiceUpdate.md
+  - docs/Models/Components/PaymentServices.md
   - docs/Models/Components/PayoutCreate.md
   - docs/Models/Components/PayoutCreatePaymentMethod.md
   - docs/Models/Components/PayoutMerchant.md
   - docs/Models/Components/PayoutMerchantSummary.md
   - docs/Models/Components/PayoutPaymentService.md
+  - docs/Models/Components/PayoutSummaries.md
   - docs/Models/Components/PayoutSummary.md
   - docs/Models/Components/Recipient.md
   - docs/Models/Components/RedirectPaymentMethodCreate.md
   - docs/Models/Components/Refund.md
+  - docs/Models/Components/Refunds.md
   - docs/Models/Components/Report.md
   - docs/Models/Components/ReportCreate.md
   - docs/Models/Components/ReportExecution.md
   - docs/Models/Components/ReportExecutionContext.md
   - docs/Models/Components/ReportExecutionSummary.md
   - docs/Models/Components/ReportExecutionUrl.md
+  - docs/Models/Components/ReportExecutions.md
   - docs/Models/Components/ReportSpec.md
   - docs/Models/Components/ReportSummary.md
   - docs/Models/Components/ReportUpdate.md
+  - docs/Models/Components/Reports.md
   - docs/Models/Components/RequiredCheckoutFields.md
   - docs/Models/Components/RequiredFields1.md
   - docs/Models/Components/RequiredFields2.md
@@ -174,6 +171,7 @@ generatedFiles:
   - docs/Models/Components/Security.md
   - docs/Models/Components/ShippingDetails.md
   - docs/Models/Components/ShippingDetailsCreate.md
+  - docs/Models/Components/ShippingDetailsList.md
   - docs/Models/Components/ShippingDetailsUpdate.md
   - docs/Models/Components/Spec.md
   - docs/Models/Components/StatementDescriptor.md
@@ -191,12 +189,14 @@ generatedFiles:
   - docs/Models/Components/TransactionCreate.md
   - docs/Models/Components/TransactionCreatePaymentMethod.md
   - docs/Models/Components/TransactionEvent.md
+  - docs/Models/Components/TransactionEvents.md
   - docs/Models/Components/TransactionGiftCard.md
   - docs/Models/Components/TransactionPaymentMethod.md
   - docs/Models/Components/TransactionPaymentService.md
   - docs/Models/Components/TransactionRefundAllCreate.md
   - docs/Models/Components/TransactionRefundCreate.md
   - docs/Models/Components/TransactionRetriesReportSpec.md
+  - docs/Models/Components/TransactionSummaries.md
   - docs/Models/Components/TransactionSummary.md
   - docs/Models/Components/TransactionThreeDSecureSummary.md
   - docs/Models/Components/TransactionsReportSpec.md
@@ -374,6 +374,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/AirlinePassenger.cs
   - src/Gr4vy/Models/Components/ApplePayPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/ApplePaySessionRequest.cs
+  - src/Gr4vy/Models/Components/AuditLogEntries.cs
   - src/Gr4vy/Models/Components/AuditLogEntry.cs
   - src/Gr4vy/Models/Components/AuditLogEntryResource.cs
   - src/Gr4vy/Models/Components/AuditLogEntryUser.cs
@@ -383,8 +384,10 @@ generatedFiles:
   - src/Gr4vy/Models/Components/Buyer.cs
   - src/Gr4vy/Models/Components/BuyerCreate.cs
   - src/Gr4vy/Models/Components/BuyerUpdate.cs
+  - src/Gr4vy/Models/Components/Buyers.cs
   - src/Gr4vy/Models/Components/CardPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/CardSchemeDefinition.cs
+  - src/Gr4vy/Models/Components/CardSchemeDefinitions.cs
   - src/Gr4vy/Models/Components/CardWithUrlPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/CartItem.cs
   - src/Gr4vy/Models/Components/CheckoutCardConnectionOptions.cs
@@ -398,27 +401,6 @@ generatedFiles:
   - src/Gr4vy/Models/Components/ClickToPayPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/ClickToPaySession.cs
   - src/Gr4vy/Models/Components/ClickToPaySessionRequest.cs
-  - src/Gr4vy/Models/Components/CollectionAuditLogEntry.cs
-  - src/Gr4vy/Models/Components/CollectionBuyer.cs
-  - src/Gr4vy/Models/Components/CollectionGiftCard.cs
-  - src/Gr4vy/Models/Components/CollectionMerchantAccount.cs
-  - src/Gr4vy/Models/Components/CollectionNoCursorCardSchemeDefinition.cs
-  - src/Gr4vy/Models/Components/CollectionNoCursorDigitalWallet.cs
-  - src/Gr4vy/Models/Components/CollectionNoCursorGiftCardSummary.cs
-  - src/Gr4vy/Models/Components/CollectionNoCursorNetworkToken.cs
-  - src/Gr4vy/Models/Components/CollectionNoCursorPaymentMethodSummary.cs
-  - src/Gr4vy/Models/Components/CollectionNoCursorPaymentOption.cs
-  - src/Gr4vy/Models/Components/CollectionNoCursorPaymentServiceToken.cs
-  - src/Gr4vy/Models/Components/CollectionNoCursorShippingDetails.cs
-  - src/Gr4vy/Models/Components/CollectionPaymentMethod.cs
-  - src/Gr4vy/Models/Components/CollectionPaymentService.cs
-  - src/Gr4vy/Models/Components/CollectionPaymentServiceDefinition.cs
-  - src/Gr4vy/Models/Components/CollectionPayoutSummary.cs
-  - src/Gr4vy/Models/Components/CollectionRefund.cs
-  - src/Gr4vy/Models/Components/CollectionReport.cs
-  - src/Gr4vy/Models/Components/CollectionReportExecution.cs
-  - src/Gr4vy/Models/Components/CollectionTransactionEvent.cs
-  - src/Gr4vy/Models/Components/CollectionTransactionSummary.cs
   - src/Gr4vy/Models/Components/ConnectionOptions.cs
   - src/Gr4vy/Models/Components/Context.cs
   - src/Gr4vy/Models/Components/CreateSession.cs
@@ -431,6 +413,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/DigitalWalletCreate.cs
   - src/Gr4vy/Models/Components/DigitalWalletDomain.cs
   - src/Gr4vy/Models/Components/DigitalWalletUpdate.cs
+  - src/Gr4vy/Models/Components/DigitalWallets.cs
   - src/Gr4vy/Models/Components/ErrorDetail.cs
   - src/Gr4vy/Models/Components/Field.cs
   - src/Gr4vy/Models/Components/GiftCard.cs
@@ -440,10 +423,12 @@ generatedFiles:
   - src/Gr4vy/Models/Components/GiftCardRequest.cs
   - src/Gr4vy/Models/Components/GiftCardService.cs
   - src/Gr4vy/Models/Components/GiftCardStoredRequest.cs
+  - src/Gr4vy/Models/Components/GiftCardSummaries.cs
   - src/Gr4vy/Models/Components/GiftCardSummary.cs
   - src/Gr4vy/Models/Components/GiftCardTokenTransactionCreate.cs
   - src/Gr4vy/Models/Components/GiftCardTransactionCreate.cs
   - src/Gr4vy/Models/Components/GiftCardUnion.cs
+  - src/Gr4vy/Models/Components/GiftCards.cs
   - src/Gr4vy/Models/Components/GooglePayAssuranceDetails.cs
   - src/Gr4vy/Models/Components/GooglePayFPANPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/GooglePayPaymentMethodCreate.cs
@@ -457,45 +442,57 @@ generatedFiles:
   - src/Gr4vy/Models/Components/MerchantAccount.cs
   - src/Gr4vy/Models/Components/MerchantAccountCreate.cs
   - src/Gr4vy/Models/Components/MerchantAccountUpdate.cs
+  - src/Gr4vy/Models/Components/MerchantAccounts.cs
   - src/Gr4vy/Models/Components/MerchantProfileScheme.cs
   - src/Gr4vy/Models/Components/MerchantProfileSchemeSummary.cs
   - src/Gr4vy/Models/Components/NetworkToken.cs
   - src/Gr4vy/Models/Components/NetworkTokenCreate.cs
   - src/Gr4vy/Models/Components/NetworkTokenPaymentMethodCreate.cs
+  - src/Gr4vy/Models/Components/NetworkTokens.cs
   - src/Gr4vy/Models/Components/PaymentMethod.cs
   - src/Gr4vy/Models/Components/PaymentMethodCard.cs
   - src/Gr4vy/Models/Components/PaymentMethodDetailsCard.cs
   - src/Gr4vy/Models/Components/PaymentMethodStoredCard.cs
+  - src/Gr4vy/Models/Components/PaymentMethodSummaries.cs
   - src/Gr4vy/Models/Components/PaymentMethodSummary.cs
+  - src/Gr4vy/Models/Components/PaymentMethods.cs
   - src/Gr4vy/Models/Components/PaymentOption.cs
   - src/Gr4vy/Models/Components/PaymentOptionContext.cs
   - src/Gr4vy/Models/Components/PaymentOptionContextApprovalUI.cs
   - src/Gr4vy/Models/Components/PaymentOptionRequest.cs
+  - src/Gr4vy/Models/Components/PaymentOptions.cs
   - src/Gr4vy/Models/Components/PaymentService.cs
   - src/Gr4vy/Models/Components/PaymentServiceConfiguration.cs
   - src/Gr4vy/Models/Components/PaymentServiceCreate.cs
   - src/Gr4vy/Models/Components/PaymentServiceDefinition.cs
+  - src/Gr4vy/Models/Components/PaymentServiceDefinitions.cs
   - src/Gr4vy/Models/Components/PaymentServiceToken.cs
   - src/Gr4vy/Models/Components/PaymentServiceTokenCreate.cs
+  - src/Gr4vy/Models/Components/PaymentServiceTokens.cs
   - src/Gr4vy/Models/Components/PaymentServiceUpdate.cs
+  - src/Gr4vy/Models/Components/PaymentServices.cs
   - src/Gr4vy/Models/Components/PayoutCreate.cs
   - src/Gr4vy/Models/Components/PayoutCreatePaymentMethod.cs
   - src/Gr4vy/Models/Components/PayoutMerchant.cs
   - src/Gr4vy/Models/Components/PayoutMerchantSummary.cs
   - src/Gr4vy/Models/Components/PayoutPaymentService.cs
+  - src/Gr4vy/Models/Components/PayoutSummaries.cs
   - src/Gr4vy/Models/Components/PayoutSummary.cs
   - src/Gr4vy/Models/Components/Recipient.cs
   - src/Gr4vy/Models/Components/RedirectPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/Refund.cs
+  - src/Gr4vy/Models/Components/Refunds.cs
   - src/Gr4vy/Models/Components/Report.cs
   - src/Gr4vy/Models/Components/ReportCreate.cs
   - src/Gr4vy/Models/Components/ReportExecution.cs
   - src/Gr4vy/Models/Components/ReportExecutionContext.cs
   - src/Gr4vy/Models/Components/ReportExecutionSummary.cs
   - src/Gr4vy/Models/Components/ReportExecutionUrl.cs
+  - src/Gr4vy/Models/Components/ReportExecutions.cs
   - src/Gr4vy/Models/Components/ReportSpec.cs
   - src/Gr4vy/Models/Components/ReportSummary.cs
   - src/Gr4vy/Models/Components/ReportUpdate.cs
+  - src/Gr4vy/Models/Components/Reports.cs
   - src/Gr4vy/Models/Components/RequiredCheckoutFields.cs
   - src/Gr4vy/Models/Components/RequiredFields1.cs
   - src/Gr4vy/Models/Components/RequiredFields2.cs
@@ -503,6 +500,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/Security.cs
   - src/Gr4vy/Models/Components/ShippingDetails.cs
   - src/Gr4vy/Models/Components/ShippingDetailsCreate.cs
+  - src/Gr4vy/Models/Components/ShippingDetailsList.cs
   - src/Gr4vy/Models/Components/ShippingDetailsUpdate.cs
   - src/Gr4vy/Models/Components/Spec.cs
   - src/Gr4vy/Models/Components/StatementDescriptor.cs
@@ -520,12 +518,14 @@ generatedFiles:
   - src/Gr4vy/Models/Components/TransactionCreate.cs
   - src/Gr4vy/Models/Components/TransactionCreatePaymentMethod.cs
   - src/Gr4vy/Models/Components/TransactionEvent.cs
+  - src/Gr4vy/Models/Components/TransactionEvents.cs
   - src/Gr4vy/Models/Components/TransactionGiftCard.cs
   - src/Gr4vy/Models/Components/TransactionPaymentMethod.cs
   - src/Gr4vy/Models/Components/TransactionPaymentService.cs
   - src/Gr4vy/Models/Components/TransactionRefundAllCreate.cs
   - src/Gr4vy/Models/Components/TransactionRefundCreate.cs
   - src/Gr4vy/Models/Components/TransactionRetriesReportSpec.cs
+  - src/Gr4vy/Models/Components/TransactionSummaries.cs
   - src/Gr4vy/Models/Components/TransactionSummary.cs
   - src/Gr4vy/Models/Components/TransactionThreeDSecureSummary.cs
   - src/Gr4vy/Models/Components/TransactionsReportSpec.cs

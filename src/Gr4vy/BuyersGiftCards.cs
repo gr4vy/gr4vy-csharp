@@ -32,14 +32,14 @@ namespace Gr4vy
         /// List all the stored gift cards for a specific buyer.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorGiftCardSummary> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<GiftCardSummaries> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
     public class BuyersGiftCards: IBuyersGiftCards
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -48,7 +48,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorGiftCardSummary> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<GiftCardSummaries> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListBuyerGiftCardsRequest()
             {
@@ -143,7 +143,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorGiftCardSummary>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<GiftCardSummaries>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     return obj!;
                 }
 

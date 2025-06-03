@@ -40,7 +40,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.ListAsync(
 
 ### Response
 
-**[CollectionNoCursorNetworkToken](../../Models/Components/CollectionNoCursorNetworkToken.md)**
+**[Models.Components.NetworkTokens](../../Models/Components/NetworkTokens.md)**
 
 ### Errors
 
