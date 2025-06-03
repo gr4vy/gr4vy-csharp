@@ -52,7 +52,7 @@ namespace Gr4vy
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
         public IAccountUpdater AccountUpdater { get; private set; }

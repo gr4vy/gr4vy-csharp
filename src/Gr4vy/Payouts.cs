@@ -34,7 +34,7 @@ namespace Gr4vy
         /// Returns a list of payouts made.
         /// </remarks>
         /// </summary>
-        Task<ListPayoutsResponse> ListAsync(string? cursor = null, long? limit = 20, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<ListPayoutsResponse> ListAsync(string? cursor = null, long? limit = 20, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Create a payout.
@@ -43,7 +43,7 @@ namespace Gr4vy
         /// Creates a new payout.
         /// </remarks>
         /// </summary>
-        Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// Get a payout.
@@ -52,14 +52,14 @@ namespace Gr4vy
         /// Retreives a payout.
         /// </remarks>
         /// </summary>
-        Task<PayoutSummary> GetAsync(string payoutId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<PayoutSummary> GetAsync(string payoutId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
     public class Payouts: IPayouts
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -68,13 +68,12 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<ListPayoutsResponse> ListAsync(string? cursor = null, long? limit = 20, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<ListPayoutsResponse> ListAsync(string? cursor = null, long? limit = 20, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListPayoutsRequest()
             {
                 Cursor = cursor,
                 Limit = limit,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -177,7 +176,6 @@ namespace Gr4vy
                 return await ListAsync (
                     cursor: nextCursor,
                     limit: limit,
-                    applicationName: applicationName,
                     merchantAccountId: merchantAccountId,
                     retryConfig: retryConfig
                 );
@@ -333,18 +331,18 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, string? merchantAccountId = null)
         {
             var request = new CreatePayoutRequest()
             {
                 PayoutCreate = payoutCreate,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payouts", request);
+
+            var urlString = baseUrl + "/payouts";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -539,12 +537,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PayoutSummary> GetAsync(string payoutId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<PayoutSummary> GetAsync(string payoutId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetPayoutRequest()
             {
                 PayoutId = payoutId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

@@ -16,28 +16,27 @@ Fetch a list of events for a transaction.
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+var res = await sdk.Transactions.Events.ListAsync(
+    transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
+    cursor: "ZXhhbXBsZTE",
+    limit: 100,
     merchantAccountId: "default"
 );
-
-ListTransactionEventsRequest req = new ListTransactionEventsRequest() {
-    TransactionId = "7099948d-7286-47e4-aad8-b68f7eb44591",
-    Cursor = "ZXhhbXBsZTE",
-};
-
-var res = await sdk.Transactions.Events.ListAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
-| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
-| `request`                                                                             | [ListTransactionEventsRequest](../../Models/Requests/ListTransactionEventsRequest.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | N/A                                                     | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
+| `Cursor`                                                | *string*                                                | :heavy_minus_sign:                                      | A pointer to the page of results to return.             | ZXhhbXBsZTE                                             |
+| `Limit`                                                 | *long*                                                  | :heavy_minus_sign:                                      | The maximum number of items that are at returned.       | 100                                                     |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
 

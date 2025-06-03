@@ -38,9 +38,6 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=user_id")]
         public string? UserId { get; set; } = null;
 
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=application_name")]
-        public string? ApplicationName { get; set; } = "core-api";
-
         /// <summary>
         /// Filters the results to only the items for which the `audit-log` has a `resource` that matches this type value.
         /// </summary>

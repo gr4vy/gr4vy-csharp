@@ -16,8 +16,5 @@ namespace Gr4vy.Models.Requests
 
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=payment_service_definition_id")]
         public string PaymentServiceDefinitionId { get; set; } = default!;
-
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=application_name")]
-        public string? ApplicationName { get; set; } = "core-api";
     }
 }

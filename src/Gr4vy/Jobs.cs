@@ -32,14 +32,14 @@ namespace Gr4vy
         /// Schedule one or more stored cards for an account update.
         /// </remarks>
         /// </summary>
-        Task<AccountUpdaterJob> CreateAsync(AccountUpdaterJobCreate accountUpdaterJobCreate, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<AccountUpdaterJob> CreateAsync(AccountUpdaterJobCreate accountUpdaterJobCreate, string? merchantAccountId = null);
     }
 
     public class Jobs: IJobs
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -48,18 +48,18 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<AccountUpdaterJob> CreateAsync(AccountUpdaterJobCreate accountUpdaterJobCreate, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<AccountUpdaterJob> CreateAsync(AccountUpdaterJobCreate accountUpdaterJobCreate, string? merchantAccountId = null)
         {
             var request = new CreateAccountUpdaterJobRequest()
             {
                 AccountUpdaterJobCreate = accountUpdaterJobCreate,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/account-updater/jobs", request);
+
+            var urlString = baseUrl + "/account-updater/jobs";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

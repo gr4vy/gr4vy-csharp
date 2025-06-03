@@ -32,14 +32,14 @@ namespace Gr4vy
         /// Fetch the balances for one or more gift cards.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorGiftCardSummary> ListAsync(GiftCardBalanceRequest giftCardBalanceRequest, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<CollectionNoCursorGiftCardSummary> ListAsync(GiftCardBalanceRequest giftCardBalanceRequest, string? merchantAccountId = null);
     }
 
     public class Balances: IBalances
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -48,18 +48,18 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorGiftCardSummary> ListAsync(GiftCardBalanceRequest giftCardBalanceRequest, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<CollectionNoCursorGiftCardSummary> ListAsync(GiftCardBalanceRequest giftCardBalanceRequest, string? merchantAccountId = null)
         {
             var request = new ListGiftCardBalancesRequest()
             {
                 GiftCardBalanceRequest = giftCardBalanceRequest,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/gift-cards/balances", request);
+
+            var urlString = baseUrl + "/gift-cards/balances";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

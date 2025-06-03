@@ -21,16 +21,12 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 ListMerchantAccountsResponse? res = await sdk.MerchantAccounts.ListAsync(
     cursor: "ZXhhbXBsZTE",
     limit: 20,
-    search: "merchant-12345",
-    applicationName: "core-api"
+    search: "merchant-12345"
 );
 
 while(res != null)
@@ -48,7 +44,6 @@ while(res != null)
 | `Cursor`                                          | *string*                                          | :heavy_minus_sign:                                | A pointer to the page of results to return.       | ZXhhbXBsZTE                                       |
 | `Limit`                                           | *long*                                            | :heavy_minus_sign:                                | The maximum number of items that are at returned. | 20                                                |
 | `Search`                                          | *string*                                          | :heavy_minus_sign:                                | The search term to filter merchant accounts by.   | merchant-12345                                    |
-| `ApplicationName`                                 | *string*                                          | :heavy_minus_sign:                                | N/A                                               |                                                   |
 
 ### Response
 
@@ -81,40 +76,15 @@ Create a new merchant account in an instance.
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.MerchantAccounts.CreateAsync(
-    merchantAccountCreate: new MerchantAccountCreate() {
-        AccountUpdaterRequestEncryptionKey = "key-1234",
-        AccountUpdaterRequestEncryptionKeyId = "key-id-1234",
-        AccountUpdaterResponseDecryptionKey = "key-1234",
-        AccountUpdaterResponseDecryptionKeyId = "key-id-1234",
-        OverCaptureAmount = 1299,
-        OverCapturePercentage = 25,
-        LoonClientKey = "client-key-1234",
-        LoonSecretKey = "key-12345",
-        LoonAcceptedSchemes = new List<string>() {
-            "visa",
-        },
-        VisaNetworkTokensRequestorId = "id-12345",
-        VisaNetworkTokensAppId = "id-12345",
-        AmexNetworkTokensRequestorId = "id-12345",
-        AmexNetworkTokensAppId = "id-12345",
-        MastercardNetworkTokensRequestorId = "id-12345",
-        MastercardNetworkTokensAppId = "id-12345",
-        OutboundWebhookUrl = "https://example.com/callback",
-        OutboundWebhookUsername = "user-12345",
-        OutboundWebhookPassword = "password-12345",
-        Id = "merchant-12345",
-        DisplayName = "Example",
-    },
-    applicationName: "core-api"
-);
+MerchantAccountCreate req = new MerchantAccountCreate() {
+    Id = "merchant-12345",
+    DisplayName = "Example",
+};
+
+var res = await sdk.MerchantAccounts.CreateAsync(req);
 
 // handle response
 ```
@@ -123,8 +93,7 @@ var res = await sdk.MerchantAccounts.CreateAsync(
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `MerchantAccountCreate`                                                   | [MerchantAccountCreate](../../Models/Components/MerchantAccountCreate.md) | :heavy_check_mark:                                                        | N/A                                                                       |
-| `ApplicationName`                                                         | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |
+| `request`                                                                 | [MerchantAccountCreate](../../Models/Components/MerchantAccountCreate.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
 
 ### Response
 
@@ -158,15 +127,9 @@ Get info about a merchant account in an instance.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.MerchantAccounts.GetAsync(
-    merchantAccountId: "merchant-12345",
-    applicationName: "core-api"
-);
+var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345");
 
 // handle response
 ```
@@ -176,7 +139,6 @@ var res = await sdk.MerchantAccounts.GetAsync(
 | Parameter                      | Type                           | Required                       | Description                    | Example                        |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `MerchantAccountId`            | *string*                       | :heavy_check_mark:             | The ID of the merchant account | merchant-12345                 |
-| `ApplicationName`              | *string*                       | :heavy_minus_sign:             | N/A                            |                                |
 
 ### Response
 
@@ -209,39 +171,12 @@ Update info for a merchant account in an instance.
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.MerchantAccounts.UpdateAsync(
     merchantAccountId: "merchant-12345",
-    merchantAccountUpdate: new MerchantAccountUpdate() {
-        AccountUpdaterRequestEncryptionKey = "key-1234",
-        AccountUpdaterRequestEncryptionKeyId = "key-id-1234",
-        AccountUpdaterResponseDecryptionKey = "key-1234",
-        AccountUpdaterResponseDecryptionKeyId = "key-id-1234",
-        OverCaptureAmount = 1299,
-        OverCapturePercentage = 25,
-        LoonClientKey = "client-key-1234",
-        LoonSecretKey = "key-12345",
-        LoonAcceptedSchemes = new List<string>() {
-            "visa",
-        },
-        VisaNetworkTokensRequestorId = "id-12345",
-        VisaNetworkTokensAppId = "id-12345",
-        AmexNetworkTokensRequestorId = "id-12345",
-        AmexNetworkTokensAppId = "id-12345",
-        MastercardNetworkTokensRequestorId = "id-12345",
-        MastercardNetworkTokensAppId = "id-12345",
-        DisplayName = "Example",
-        OutboundWebhookUrl = "https://example.com/callback",
-        OutboundWebhookUsername = "user-12345",
-        OutboundWebhookPassword = "password-12345",
-    },
-    applicationName: "core-api"
+    merchantAccountUpdate: new MerchantAccountUpdate() {}
 );
 
 // handle response
@@ -253,7 +188,6 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `MerchantAccountId`                                                       | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the merchant account                                            | merchant-12345                                                            |
 | `MerchantAccountUpdate`                                                   | [MerchantAccountUpdate](../../Models/Components/MerchantAccountUpdate.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
-| `ApplicationName`                                                         | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
 
 ### Response
 

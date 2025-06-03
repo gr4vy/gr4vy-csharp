@@ -35,7 +35,7 @@ namespace Gr4vy
         /// Fetch details about a gift card.
         /// </remarks>
         /// </summary>
-        Task<GiftCard> GetAsync(string giftCardId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<GiftCard> GetAsync(string giftCardId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Delete a gift card
@@ -44,7 +44,7 @@ namespace Gr4vy
         /// Removes a gift card from our system.
         /// </remarks>
         /// </summary>
-        Task<object> DeleteAsync(string giftCardId, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<object> DeleteAsync(string giftCardId, string? merchantAccountId = null);
 
         /// <summary>
         /// Create gift card
@@ -53,7 +53,7 @@ namespace Gr4vy
         /// Store a new gift card in the vault.
         /// </remarks>
         /// </summary>
-        Task<GiftCard> CreateAsync(GiftCardCreate giftCardCreate, string? applicationName = "core-api", string? merchantAccountId = null);
+        Task<GiftCard> CreateAsync(GiftCardCreate giftCardCreate, string? merchantAccountId = null);
 
         /// <summary>
         /// List gift cards
@@ -69,7 +69,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkVersion = "1.0.0-beta.11";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
         public IBalances Balances { get; private set; }
@@ -80,12 +80,11 @@ namespace Gr4vy
             Balances = new Balances(SDKConfiguration);
         }
 
-        public async Task<GiftCard> GetAsync(string giftCardId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<GiftCard> GetAsync(string giftCardId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetGiftCardRequest()
             {
                 GiftCardId = giftCardId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -313,12 +312,11 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<object> DeleteAsync(string giftCardId, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<object> DeleteAsync(string giftCardId, string? merchantAccountId = null)
         {
             var request = new DeleteGiftCardRequest()
             {
                 GiftCardId = giftCardId,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -513,18 +511,18 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<GiftCard> CreateAsync(GiftCardCreate giftCardCreate, string? applicationName = "core-api", string? merchantAccountId = null)
+        public async Task<GiftCard> CreateAsync(GiftCardCreate giftCardCreate, string? merchantAccountId = null)
         {
             var request = new CreateGiftCardRequest()
             {
                 GiftCardCreate = giftCardCreate,
-                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/gift-cards", request);
+
+            var urlString = baseUrl + "/gift-cards";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -824,7 +822,6 @@ namespace Gr4vy
                     BuyerId = request?.BuyerId,
                     Cursor = nextCursor,
                     Limit = request?.Limit,
-                    ApplicationName = request?.ApplicationName,
                     MerchantAccountId = request?.MerchantAccountId
                 };
 

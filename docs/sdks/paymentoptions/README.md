@@ -16,43 +16,11 @@ List the payment options available at checkout. filtering by country, currency, 
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.PaymentOptions.ListAsync(
-    paymentOptionRequest: new PaymentOptionRequest() {
-        Metadata = new Dictionary<string, string>() {
-            { "cohort", "a" },
-        },
-        Country = "US",
-        Currency = "USD",
-        Amount = 1299,
-        CartItems = new List<CartItem>() {
-            new CartItem() {
-                Name = "GoPro HD",
-                Quantity = 2,
-                UnitAmount = 1299,
-                DiscountAmount = 0,
-                TaxAmount = 0,
-                ExternalIdentifier = "goprohd",
-                Sku = "GPHD1078",
-                ProductUrl = "https://example.com/catalog/go-pro-hd",
-                ImageUrl = "https://example.com/images/go-pro-hd.jpg",
-                Categories = new List<string>() {
-                    "camera",
-                    "travel",
-                    "gear",
-                },
-                ProductType = "physical",
-                SellerCountry = "US",
-            },
-        },
-    },
-    applicationName: "core-api",
+    paymentOptionRequest: new PaymentOptionRequest() {},
     merchantAccountId: "default"
 );
 
@@ -64,7 +32,6 @@ var res = await sdk.PaymentOptions.ListAsync(
 | Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `PaymentOptionRequest`                                                  | [PaymentOptionRequest](../../Models/Components/PaymentOptionRequest.md) | :heavy_check_mark:                                                      | N/A                                                                     |                                                                         |
-| `ApplicationName`                                                       | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |                                                                         |
 | `MerchantAccountId`                                                     | *string*                                                                | :heavy_minus_sign:                                                      | The ID of the merchant account to use for this request.                 | default                                                                 |
 
 ### Response

@@ -22,16 +22,9 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
+ListBuyersRequest req = new ListBuyersRequest() {};
 
 ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
 
@@ -81,38 +74,10 @@ Create a new buyer record.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Buyers.CreateAsync(
-    buyerCreate: new BuyerCreate() {
-        DisplayName = "John Doe",
-        ExternalIdentifier = "buyer-12345",
-        BillingDetails = new BillingDetailsInput() {
-            FirstName = "John",
-            LastName = "Doe",
-            EmailAddress = "john@example.com",
-            PhoneNumber = "+1234567890",
-            Address = new Address() {
-                City = "San Jose",
-                Country = "US",
-                PostalCode = "94560",
-                State = "California",
-                StateCode = "US-CA",
-                HouseNumberOrName = "10",
-                Line1 = "Stafford Appartments",
-                Line2 = "29th Street",
-                Organization = "Gr4vy",
-            },
-            TaxId = new TaxId() {
-                Value = "12345678931",
-                Kind = "<value>",
-            },
-        },
-    },
-    applicationName: "core-api",
+    buyerCreate: new BuyerCreate() {},
     merchantAccountId: "default"
 );
 
@@ -124,7 +89,6 @@ var res = await sdk.Buyers.CreateAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerCreate`                                           | [BuyerCreate](../../Models/Components/BuyerCreate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -159,14 +123,10 @@ Fetches a buyer by its ID.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Buyers.GetAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -178,7 +138,6 @@ var res = await sdk.Buyers.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to retrieve.                        | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -213,39 +172,11 @@ Updates a buyer record.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.Buyers.UpdateAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    buyerUpdate: new BuyerUpdate() {
-        DisplayName = "John Doe",
-        ExternalIdentifier = "buyer-12345",
-        BillingDetails = new BillingDetailsInput() {
-            FirstName = "John",
-            LastName = "Doe",
-            EmailAddress = "john@example.com",
-            PhoneNumber = "+1234567890",
-            Address = new Address() {
-                City = "San Jose",
-                Country = "US",
-                PostalCode = "94560",
-                State = "California",
-                StateCode = "US-CA",
-                HouseNumberOrName = "10",
-                Line1 = "Stafford Appartments",
-                Line2 = "29th Street",
-                Organization = "Gr4vy",
-            },
-            TaxId = new TaxId() {
-                Value = "12345678931",
-                Kind = "<value>",
-            },
-        },
-    },
-    applicationName: "core-api",
+    buyerUpdate: new BuyerUpdate() {},
     merchantAccountId: "default"
 );
 
@@ -258,7 +189,6 @@ var res = await sdk.Buyers.UpdateAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to edit.                            | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `BuyerUpdate`                                           | [BuyerUpdate](../../Models/Components/BuyerUpdate.md)   | :heavy_check_mark:                                      | N/A                                                     |                                                         |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -293,14 +223,10 @@ Permanently removes a buyer record.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 await sdk.Buyers.DeleteAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -312,7 +238,6 @@ await sdk.Buyers.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to delete.                          | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
-| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Errors

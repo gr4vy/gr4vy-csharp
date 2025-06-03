@@ -18,10 +18,7 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
-    merchantAccountId: "default"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.AccountUpdater.Jobs.CreateAsync(
     accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
@@ -30,7 +27,6 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
             "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
     },
-    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -42,7 +38,6 @@ var res = await sdk.AccountUpdater.Jobs.CreateAsync(
 | Parameter                                                                     | Type                                                                          | Required                                                                      | Description                                                                   | Example                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | `AccountUpdaterJobCreate`                                                     | [AccountUpdaterJobCreate](../../Models/Components/AccountUpdaterJobCreate.md) | :heavy_check_mark:                                                            | N/A                                                                           |                                                                               |
-| `ApplicationName`                                                             | *string*                                                                      | :heavy_minus_sign:                                                            | N/A                                                                           |                                                                               |
 | `MerchantAccountId`                                                           | *string*                                                                      | :heavy_minus_sign:                                                            | The ID of the merchant account to use for this request.                       | default                                                                       |
 
 ### Response
