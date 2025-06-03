@@ -45,6 +45,7 @@ var res = await sdk.Buyers.ShippingDetails.CreateAsync(
             Organization = "Gr4vy",
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -57,6 +58,7 @@ var res = await sdk.Buyers.ShippingDetails.CreateAsync(
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `BuyerId`                                                                 | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the buyer to add shipping details to.                           | fe26475d-ec3e-4884-9553-f7356683f7f9                                      |
 | `ShippingDetailsCreate`                                                   | [ShippingDetailsCreate](../../Models/Components/ShippingDetailsCreate.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| `ApplicationName`                                                         | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
 | `MerchantAccountId`                                                       | *string*                                                                  | :heavy_minus_sign:                                                        | The ID of the merchant account to use for this request.                   | default                                                                   |
 
 ### Response
@@ -98,6 +100,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Buyers.ShippingDetails.ListAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -109,6 +112,7 @@ var res = await sdk.Buyers.ShippingDetails.ListAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to retrieve shipping details for.   | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -151,6 +155,7 @@ var sdk = new Gr4vySDK(
 var res = await sdk.Buyers.ShippingDetails.GetAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
     shippingDetailsId: "bf8c36ad-02d9-4904-b0f9-a230b149e341",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -163,6 +168,7 @@ var res = await sdk.Buyers.ShippingDetails.GetAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to retrieve shipping details for.   | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `ShippingDetailsId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the shipping details to retrieve.             | bf8c36ad-02d9-4904-b0f9-a230b149e341                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -196,16 +202,17 @@ Update the shipping details associated to a specific buyer.
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 
 var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
 
-var res = await sdk.Buyers.ShippingDetails.UpdateAsync(
-    buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    shippingDetailsId: "bf8c36ad-02d9-4904-b0f9-a230b149e341",
-    shippingDetailsUpdate: new ShippingDetailsUpdate() {
+UpdateBuyerShippingDetailsRequest req = new UpdateBuyerShippingDetailsRequest() {
+    BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
+    ShippingDetailsId = "bf8c36ad-02d9-4904-b0f9-a230b149e341",
+    ShippingDetailsUpdate = new ShippingDetailsUpdate() {
         FirstName = "John",
         LastName = "Doe",
         EmailAddress = "john@example.com",
@@ -222,20 +229,18 @@ var res = await sdk.Buyers.ShippingDetails.UpdateAsync(
             Organization = "Gr4vy",
         },
     },
-    merchantAccountId: "default"
-);
+};
+
+var res = await sdk.Buyers.ShippingDetails.UpdateAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `BuyerId`                                                                 | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the buyer to update shipping details for.                       | fe26475d-ec3e-4884-9553-f7356683f7f9                                      |
-| `ShippingDetailsId`                                                       | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the shipping details to update.                                 | bf8c36ad-02d9-4904-b0f9-a230b149e341                                      |
-| `ShippingDetailsUpdate`                                                   | [ShippingDetailsUpdate](../../Models/Components/ShippingDetailsUpdate.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
-| `MerchantAccountId`                                                       | *string*                                                                  | :heavy_minus_sign:                                                        | The ID of the merchant account to use for this request.                   | default                                                                   |
+| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
+| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| `request`                                                                                       | [UpdateBuyerShippingDetailsRequest](../../Models/Requests/UpdateBuyerShippingDetailsRequest.md) | :heavy_check_mark:                                                                              | The request object to use for the request.                                                      |
 
 ### Response
 
@@ -277,6 +282,7 @@ var sdk = new Gr4vySDK(
 var res = await sdk.Buyers.ShippingDetails.DeleteAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
     shippingDetailsId: "bf8c36ad-02d9-4904-b0f9-a230b149e341",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -289,6 +295,7 @@ var res = await sdk.Buyers.ShippingDetails.DeleteAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to delete shipping details for.     | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `ShippingDetailsId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the shipping details to delete.               | bf8c36ad-02d9-4904-b0f9-a230b149e341                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

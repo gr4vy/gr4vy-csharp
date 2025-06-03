@@ -45,7 +45,7 @@ namespace Gr4vy
         /// Create a transaction.
         /// </remarks>
         /// </summary>
-        Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null);
+        Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? applicationName = "core-api", string? merchantAccountId = null, string? idempotencyKey = null);
 
         /// <summary>
         /// Get transaction
@@ -54,7 +54,7 @@ namespace Gr4vy
         /// Fetch a single transaction by its ID.
         /// </remarks>
         /// </summary>
-        Task<Transaction> GetAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Transaction> GetAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Capture transaction
@@ -63,7 +63,7 @@ namespace Gr4vy
         /// Capture a previously authorized transaction.
         /// </remarks>
         /// </summary>
-        Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, string? merchantAccountId = null);
+        Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Void transaction
@@ -72,7 +72,7 @@ namespace Gr4vy
         /// Void a previously authorized transaction.
         /// </remarks>
         /// </summary>
-        Task<Transaction> VoidAsync(string transactionId, string? merchantAccountId = null);
+        Task<Transaction> VoidAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Sync transaction
@@ -81,15 +81,15 @@ namespace Gr4vy
         /// Fetch the latest status for a transaction.
         /// </remarks>
         /// </summary>
-        Task<Transaction> SyncAsync(string transactionId, string? merchantAccountId = null);
+        Task<Transaction> SyncAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null);
     }
 
     public class Transactions: ITransactions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
         public ITransactionsRefunds Refunds { get; private set; }
         public IEvents Events { get; private set; }
@@ -245,6 +245,7 @@ namespace Gr4vy
                     IsSubsequentPayment = request?.IsSubsequentPayment,
                     MerchantInitiated = request?.MerchantInitiated,
                     Used3ds = request?.Used3ds,
+                    ApplicationName = request?.ApplicationName,
                     MerchantAccountId = request?.MerchantAccountId
                 };
 
@@ -404,19 +405,19 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null)
+        public async Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? applicationName = "core-api", string? merchantAccountId = null, string? idempotencyKey = null)
         {
             var request = new CreateTransactionRequest()
             {
                 TransactionCreate = transactionCreate,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
                 IdempotencyKey = idempotencyKey,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/transactions";
+            var urlString = URLBuilder.Build(baseUrl, "/transactions", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -611,11 +612,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> GetAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Transaction> GetAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetTransactionRequest()
             {
                 TransactionId = transactionId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -843,12 +845,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, string? merchantAccountId = null)
+        public async Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new CaptureTransactionRequest()
             {
                 TransactionId = transactionId,
                 TransactionCapture = transactionCapture,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1049,11 +1052,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> VoidAsync(string transactionId, string? merchantAccountId = null)
+        public async Task<Transaction> VoidAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new VoidTransactionRequest()
             {
                 TransactionId = transactionId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1248,11 +1252,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> SyncAsync(string transactionId, string? merchantAccountId = null)
+        public async Task<Transaction> SyncAsync(string transactionId, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new SyncTransactionRequest()
             {
                 TransactionId = transactionId,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

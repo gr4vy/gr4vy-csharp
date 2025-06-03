@@ -32,15 +32,15 @@ namespace Gr4vy
         /// Provision a cryptogram for a network token.
         /// </remarks>
         /// </summary>
-        Task<Models.Components.Cryptogram> CreateAsync(string paymentMethodId, string networkTokenId, CryptogramCreate cryptogramCreate, string? merchantAccountId = null);
+        Task<Models.Components.Cryptogram> CreateAsync(CreatePaymentMethodNetworkTokenCryptogramRequest request);
     }
 
     public class Cryptogram: ICryptogram
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public Cryptogram(SDKConfig config)
@@ -48,15 +48,12 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<Models.Components.Cryptogram> CreateAsync(string paymentMethodId, string networkTokenId, CryptogramCreate cryptogramCreate, string? merchantAccountId = null)
+        public async Task<Models.Components.Cryptogram> CreateAsync(CreatePaymentMethodNetworkTokenCryptogramRequest request)
         {
-            var request = new CreatePaymentMethodNetworkTokenCryptogramRequest()
+            if (request == null)
             {
-                PaymentMethodId = paymentMethodId,
-                NetworkTokenId = networkTokenId,
-                CryptogramCreate = cryptogramCreate,
-                MerchantAccountId = merchantAccountId,
-            };
+                request = new CreatePaymentMethodNetworkTokenCryptogramRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();

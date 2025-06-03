@@ -28,6 +28,7 @@ var sdk = new Gr4vySDK(
 ListPayoutsResponse? res = await sdk.Payouts.ListAsync(
     cursor: "ZXhhbXBsZTE",
     limit: 20,
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -45,6 +46,7 @@ while(res != null)
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `Cursor`                                                | *string*                                                | :heavy_minus_sign:                                      | A pointer to the page of results to return.             | ZXhhbXBsZTE                                             |
 | `Limit`                                                 | *long*                                                  | :heavy_minus_sign:                                      | The maximum number of items that are at returned.       | 20                                                      |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -166,6 +168,7 @@ var res = await sdk.Payouts.CreateAsync(
             },
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -177,6 +180,7 @@ var res = await sdk.Payouts.CreateAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PayoutCreate`                                          | [PayoutCreate](../../Models/Components/PayoutCreate.md) | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -218,6 +222,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Payouts.GetAsync(
     payoutId: "4344fef2-bc2f-49a6-924f-343e62f67224",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -229,6 +234,7 @@ var res = await sdk.Payouts.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PayoutId`                                              | *string*                                                | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

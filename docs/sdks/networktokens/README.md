@@ -28,6 +28,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.PaymentMethods.NetworkTokens.ListAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -39,6 +40,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.ListAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -85,6 +87,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.CreateAsync(
         MerchantInitiated = false,
         IsSubsequentPayment = false,
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -97,6 +100,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.CreateAsync(
 | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
 | `PaymentMethodId`                                                   | *string*                                                            | :heavy_check_mark:                                                  | The ID of the payment method                                        | ef9496d8-53a5-4aad-8ca2-00eb68334389                                |
 | `NetworkTokenCreate`                                                | [NetworkTokenCreate](../../Models/Components/NetworkTokenCreate.md) | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
+| `ApplicationName`                                                   | *string*                                                            | :heavy_minus_sign:                                                  | N/A                                                                 |                                                                     |
 | `MerchantAccountId`                                                 | *string*                                                            | :heavy_minus_sign:                                                  | The ID of the merchant account to use for this request.             | default                                                             |
 
 ### Response
@@ -139,6 +143,7 @@ var sdk = new Gr4vySDK(
 var res = await sdk.PaymentMethods.NetworkTokens.SuspendAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -151,6 +156,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.SuspendAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `NetworkTokenId`                                        | *string*                                                | :heavy_check_mark:                                      | The ID of the network token                             | f8dd5cfc-7834-4847-95dc-f75a360e2298                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -193,6 +199,7 @@ var sdk = new Gr4vySDK(
 var res = await sdk.PaymentMethods.NetworkTokens.ResumeAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -205,6 +212,7 @@ var res = await sdk.PaymentMethods.NetworkTokens.ResumeAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `NetworkTokenId`                                        | *string*                                                | :heavy_check_mark:                                      | The ID of the network token                             | f8dd5cfc-7834-4847-95dc-f75a360e2298                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -247,6 +255,7 @@ var sdk = new Gr4vySDK(
 await sdk.PaymentMethods.NetworkTokens.DeleteAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -259,6 +268,7 @@ await sdk.PaymentMethods.NetworkTokens.DeleteAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentMethodId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the payment method                            | ef9496d8-53a5-4aad-8ca2-00eb68334389                    |
 | `NetworkTokenId`                                        | *string*                                                | :heavy_check_mark:                                      | The ID of the network token                             | f8dd5cfc-7834-4847-95dc-f75a360e2298                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Errors

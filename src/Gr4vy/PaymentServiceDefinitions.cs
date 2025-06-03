@@ -34,7 +34,7 @@ namespace Gr4vy
         /// List the definitions of each payment service that can be configured.
         /// </remarks>
         /// </summary>
-        Task<ListPaymentServiceDefinitionsResponse> ListAsync(string? cursor = null, long? limit = 20, RetryConfig? retryConfig = null);
+        Task<ListPaymentServiceDefinitionsResponse> ListAsync(string? cursor = null, long? limit = 20, string? applicationName = "core-api", RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get a payment service definition
@@ -43,7 +43,7 @@ namespace Gr4vy
         /// Get the definition of a payment service that can be configured.
         /// </remarks>
         /// </summary>
-        Task<PaymentServiceDefinition> GetAsync(string paymentServiceDefinitionId, RetryConfig? retryConfig = null);
+        Task<PaymentServiceDefinition> GetAsync(string paymentServiceDefinitionId, string? applicationName = "core-api", RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Create a session for apayment service definition
@@ -52,15 +52,15 @@ namespace Gr4vy
         /// Creates a session for a payment service that supports sessions.
         /// </remarks>
         /// </summary>
-        Task<CreateSession> SessionAsync(string paymentServiceDefinitionId, Dictionary<string, object> requestBody);
+        Task<CreateSession> SessionAsync(string paymentServiceDefinitionId, Dictionary<string, object> requestBody, string? applicationName = "core-api");
     }
 
     public class PaymentServiceDefinitions: IPaymentServiceDefinitions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public PaymentServiceDefinitions(SDKConfig config)
@@ -68,12 +68,13 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<ListPaymentServiceDefinitionsResponse> ListAsync(string? cursor = null, long? limit = 20, RetryConfig? retryConfig = null)
+        public async Task<ListPaymentServiceDefinitionsResponse> ListAsync(string? cursor = null, long? limit = 20, string? applicationName = "core-api", RetryConfig? retryConfig = null)
         {
             var request = new ListPaymentServiceDefinitionsRequest()
             {
                 Cursor = cursor,
                 Limit = limit,
+                ApplicationName = applicationName,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions", request);
@@ -172,6 +173,7 @@ namespace Gr4vy
                 return await ListAsync (
                     cursor: nextCursor,
                     limit: limit,
+                    applicationName: applicationName,
                     retryConfig: retryConfig
                 );
             };
@@ -326,11 +328,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PaymentServiceDefinition> GetAsync(string paymentServiceDefinitionId, RetryConfig? retryConfig = null)
+        public async Task<PaymentServiceDefinition> GetAsync(string paymentServiceDefinitionId, string? applicationName = "core-api", RetryConfig? retryConfig = null)
         {
             var request = new GetPaymentServiceDefinitionRequest()
             {
                 PaymentServiceDefinitionId = paymentServiceDefinitionId,
+                ApplicationName = applicationName,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions/{payment_service_definition_id}", request);
@@ -554,12 +557,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<CreateSession> SessionAsync(string paymentServiceDefinitionId, Dictionary<string, object> requestBody)
+        public async Task<CreateSession> SessionAsync(string paymentServiceDefinitionId, Dictionary<string, object> requestBody, string? applicationName = "core-api")
         {
             var request = new CreatePaymentServiceDefinitionSessionRequest()
             {
                 PaymentServiceDefinitionId = paymentServiceDefinitionId,
                 RequestBody = requestBody,
+                ApplicationName = applicationName,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions/{payment_service_definition_id}/sessions", request);

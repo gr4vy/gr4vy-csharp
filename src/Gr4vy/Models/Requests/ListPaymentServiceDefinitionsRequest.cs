@@ -25,5 +25,8 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
+
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=application_name")]
+        public string? ApplicationName { get; set; } = "core-api";
     }
 }

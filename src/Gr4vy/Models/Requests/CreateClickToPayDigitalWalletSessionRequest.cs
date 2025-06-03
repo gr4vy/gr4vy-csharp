@@ -12,22 +12,13 @@ namespace Gr4vy.Models.Requests
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     
-    public class CreateTransactionRefundRequest
+    public class CreateClickToPayDigitalWalletSessionRequest
     {
-
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=transaction_id")]
-        public string TransactionId { get; set; } = default!;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=application_name")]
         public string? ApplicationName { get; set; } = "core-api";
 
-        /// <summary>
-        /// The ID of the merchant account to use for this request.
-        /// </summary>
-        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-gr4vy-merchant-account-id")]
-        public string? MerchantAccountId { get; set; }
-
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public TransactionRefundCreate TransactionRefundCreate { get; set; } = default!;
+        public ClickToPaySessionRequest ClickToPaySessionRequest { get; set; } = default!;
     }
 }

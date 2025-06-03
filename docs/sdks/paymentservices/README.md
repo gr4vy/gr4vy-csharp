@@ -131,6 +131,7 @@ var res = await sdk.PaymentServices.CreateAsync(
         NetworkTokensEnabled = true,
         OpenLoop = true,
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -142,6 +143,7 @@ var res = await sdk.PaymentServices.CreateAsync(
 | Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             | Example                                                                 |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `PaymentServiceCreate`                                                  | [PaymentServiceCreate](../../Models/Components/PaymentServiceCreate.md) | :heavy_check_mark:                                                      | N/A                                                                     |                                                                         |
+| `ApplicationName`                                                       | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |                                                                         |
 | `MerchantAccountId`                                                     | *string*                                                                | :heavy_minus_sign:                                                      | The ID of the merchant account to use for this request.                 | default                                                                 |
 
 ### Response
@@ -183,6 +185,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.PaymentServices.GetAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -194,6 +197,7 @@ var res = await sdk.PaymentServices.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -265,6 +269,7 @@ var res = await sdk.PaymentServices.UpdateAsync(
         NetworkTokensEnabled = true,
         OpenLoop = true,
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -277,6 +282,7 @@ var res = await sdk.PaymentServices.UpdateAsync(
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | `PaymentServiceId`                                                      | *string*                                                                | :heavy_check_mark:                                                      | the ID of the payment service                                           | fffd152a-9532-4087-9a4f-de58754210f0                                    |
 | `PaymentServiceUpdate`                                                  | [PaymentServiceUpdate](../../Models/Components/PaymentServiceUpdate.md) | :heavy_check_mark:                                                      | N/A                                                                     |                                                                         |
+| `ApplicationName`                                                       | *string*                                                                | :heavy_minus_sign:                                                      | N/A                                                                     |                                                                         |
 | `MerchantAccountId`                                                     | *string*                                                                | :heavy_minus_sign:                                                      | The ID of the merchant account to use for this request.                 | default                                                                 |
 
 ### Response
@@ -318,6 +324,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.PaymentServices.DeleteAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -329,6 +336,7 @@ var res = await sdk.PaymentServices.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -380,6 +388,7 @@ var res = await sdk.PaymentServices.VerifyAsync(
             },
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -391,6 +400,7 @@ var res = await sdk.PaymentServices.VerifyAsync(
 | Parameter                                                         | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
 | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
 | `VerifyCredentials`                                               | [VerifyCredentials](../../Models/Components/VerifyCredentials.md) | :heavy_check_mark:                                                | N/A                                                               |                                                                   |
+| `ApplicationName`                                                 | *string*                                                          | :heavy_minus_sign:                                                | N/A                                                               |                                                                   |
 | `MerchantAccountId`                                               | *string*                                                          | :heavy_minus_sign:                                                | The ID of the merchant account to use for this request.           | default                                                           |
 
 ### Response
@@ -436,6 +446,7 @@ var res = await sdk.PaymentServices.SessionAsync(
     requestBody: new Dictionary<string, object>() {
         { "key", "<value>" },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -448,6 +459,7 @@ var res = await sdk.PaymentServices.SessionAsync(
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `PaymentServiceId`                                      | *string*                                                | :heavy_check_mark:                                      | the ID of the payment service                           | fffd152a-9532-4087-9a4f-de58754210f0                    |
 | `RequestBody`                                           | Dictionary<String, *object*>                            | :heavy_check_mark:                                      | N/A                                                     |                                                         |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response

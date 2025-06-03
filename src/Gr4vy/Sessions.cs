@@ -32,7 +32,7 @@ namespace Gr4vy
         /// Create a session for use with Google Pay.
         /// </remarks>
         /// </summary>
-        Task<GooglePaySession> GooglePayAsync(GooglePaySessionRequest googlePaySessionRequest, string? merchantAccountId = null);
+        Task<GooglePaySession> GooglePayAsync(GooglePaySessionRequest googlePaySessionRequest, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Create a Apple Pay session
@@ -41,7 +41,7 @@ namespace Gr4vy
         /// Create a session for use with Apple Pay.
         /// </remarks>
         /// </summary>
-        Task<Dictionary<string, object>> ApplePayAsync(ApplePaySessionRequest applePaySessionRequest, string? merchantAccountId = null);
+        Task<Dictionary<string, object>> ApplePayAsync(ApplePaySessionRequest applePaySessionRequest, string? applicationName = "core-api", string? merchantAccountId = null);
 
         /// <summary>
         /// Create a Click to Pay session
@@ -50,15 +50,15 @@ namespace Gr4vy
         /// Create a session for use with Click to Pay.
         /// </remarks>
         /// </summary>
-        Task<ClickToPaySession> ClickToPayAsync(ClickToPaySessionRequest request);
+        Task<ClickToPaySession> ClickToPayAsync(ClickToPaySessionRequest clickToPaySessionRequest, string? applicationName = "core-api");
     }
 
     public class Sessions: ISessions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public Sessions(SDKConfig config)
@@ -66,18 +66,18 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<GooglePaySession> GooglePayAsync(GooglePaySessionRequest googlePaySessionRequest, string? merchantAccountId = null)
+        public async Task<GooglePaySession> GooglePayAsync(GooglePaySessionRequest googlePaySessionRequest, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new CreateGooglePayDigitalWalletSessionRequest()
             {
                 GooglePaySessionRequest = googlePaySessionRequest,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/digital-wallets/google/session";
+            var urlString = URLBuilder.Build(baseUrl, "/digital-wallets/google/session", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -272,18 +272,18 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Dictionary<string, object>> ApplePayAsync(ApplePaySessionRequest applePaySessionRequest, string? merchantAccountId = null)
+        public async Task<Dictionary<string, object>> ApplePayAsync(ApplePaySessionRequest applePaySessionRequest, string? applicationName = "core-api", string? merchantAccountId = null)
         {
             var request = new CreateApplePayDigitalWalletSessionRequest()
             {
                 ApplePaySessionRequest = applePaySessionRequest,
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/digital-wallets/apple/session";
+            var urlString = URLBuilder.Build(baseUrl, "/digital-wallets/apple/session", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -478,16 +478,20 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<ClickToPaySession> ClickToPayAsync(ClickToPaySessionRequest request)
+        public async Task<ClickToPaySession> ClickToPayAsync(ClickToPaySessionRequest clickToPaySessionRequest, string? applicationName = "core-api")
         {
+            var request = new CreateClickToPayDigitalWalletSessionRequest()
+            {
+                ClickToPaySessionRequest = clickToPaySessionRequest,
+                ApplicationName = applicationName,
+            };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/digital-wallets/click-to-pay/session";
+            var urlString = URLBuilder.Build(baseUrl, "/digital-wallets/click-to-pay/session", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "ClickToPaySessionRequest", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;

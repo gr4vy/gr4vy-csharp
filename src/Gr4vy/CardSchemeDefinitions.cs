@@ -32,15 +32,15 @@ namespace Gr4vy
         /// Fetch a list of the definitions of each card scheme.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorCardSchemeDefinition> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<CollectionNoCursorCardSchemeDefinition> ListAsync(string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
     public class CardSchemeDefinitions: ICardSchemeDefinitions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.9";
-        private const string _sdkGenVersion = "2.616.1";
+        private const string _sdkVersion = "1.0.0-beta.10";
+        private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public CardSchemeDefinitions(SDKConfig config)
@@ -48,17 +48,17 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorCardSchemeDefinition> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<CollectionNoCursorCardSchemeDefinition> ListAsync(string? applicationName = "core-api", string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListCardSchemeDefinitionsRequest()
             {
+                ApplicationName = applicationName,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-
-            var urlString = baseUrl + "/card-scheme-definitions";
+            var urlString = URLBuilder.Build(baseUrl, "/card-scheme-definitions", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

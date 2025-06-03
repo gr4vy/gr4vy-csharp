@@ -29,6 +29,7 @@ var sdk = new Gr4vySDK(
 );
 
 var res = await sdk.CheckoutSessions.CreateAsync(
+    applicationName: "core-api",
     merchantAccountId: "default",
     checkoutSessionCreate: new CheckoutSessionCreate() {
         CartItems = new List<CartItem>() {
@@ -168,6 +169,7 @@ var res = await sdk.CheckoutSessions.CreateAsync(
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| `ApplicationName`                                                         | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
 | `MerchantAccountId`                                                       | *string*                                                                  | :heavy_minus_sign:                                                        | The ID of the merchant account to use for this request.                   | default                                                                   |
 | `CheckoutSessionCreate`                                                   | [CheckoutSessionCreate](../../Models/Components/CheckoutSessionCreate.md) | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
 
@@ -342,6 +344,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
             TravelAgencyPlanName = "B733",
         },
     },
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -354,6 +357,7 @@ var res = await sdk.CheckoutSessions.UpdateAsync(
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
 | `SessionId`                                                               | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the checkout session.                                           | 4137b1cf-39ac-42a8-bad6-1c680d5dab6b                                      |
 | `CheckoutSessionCreate`                                                   | [CheckoutSessionCreate](../../Models/Components/CheckoutSessionCreate.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| `ApplicationName`                                                         | *string*                                                                  | :heavy_minus_sign:                                                        | N/A                                                                       |                                                                           |
 | `MerchantAccountId`                                                       | *string*                                                                  | :heavy_minus_sign:                                                        | The ID of the merchant account to use for this request.                   | default                                                                   |
 
 ### Response
@@ -395,6 +399,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.CheckoutSessions.GetAsync(
     sessionId: "4137b1cf-39ac-42a8-bad6-1c680d5dab6b",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -406,6 +411,7 @@ var res = await sdk.CheckoutSessions.GetAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `SessionId`                                             | *string*                                                | :heavy_check_mark:                                      | The ID of the checkout session.                         | 4137b1cf-39ac-42a8-bad6-1c680d5dab6b                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Response
@@ -446,6 +452,7 @@ var sdk = new Gr4vySDK(
 
 await sdk.CheckoutSessions.DeleteAsync(
     sessionId: "4137b1cf-39ac-42a8-bad6-1c680d5dab6b",
+    applicationName: "core-api",
     merchantAccountId: "default"
 );
 
@@ -457,6 +464,7 @@ await sdk.CheckoutSessions.DeleteAsync(
 | Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `SessionId`                                             | *string*                                                | :heavy_check_mark:                                      | The ID of the checkout session.                         | 4137b1cf-39ac-42a8-bad6-1c680d5dab6b                    |
+| `ApplicationName`                                       | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
 
 ### Errors
