@@ -32,7 +32,7 @@ var res = await sdk.CardSchemeDefinitions.ListAsync(merchantAccountId: "default"
 
 ### Response
 
-**[CollectionNoCursorCardSchemeDefinition](../../Models/Components/CollectionNoCursorCardSchemeDefinition.md)**
+**[Models.Components.CardSchemeDefinitions](../../Models/Components/CardSchemeDefinitions.md)**
 
 ### Errors
 

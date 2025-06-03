@@ -32,7 +32,7 @@ namespace Gr4vy
         /// List all gateway tokens stored for a payment method.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorPaymentServiceToken> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Models.Components.PaymentServiceTokens> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Create payment service token
@@ -57,7 +57,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -66,7 +66,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorPaymentServiceToken> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Models.Components.PaymentServiceTokens> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListPaymentMethodPaymentServiceTokensRequest()
             {
@@ -161,7 +161,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorPaymentServiceToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.PaymentServiceTokens>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 

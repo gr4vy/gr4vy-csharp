@@ -40,7 +40,7 @@ var res = await sdk.PaymentMethods.PaymentServiceTokens.ListAsync(
 
 ### Response
 
-**[CollectionNoCursorPaymentServiceToken](../../Models/Components/CollectionNoCursorPaymentServiceToken.md)**
+**[Models.Components.PaymentServiceTokens](../../Models/Components/PaymentServiceTokens.md)**
 
 ### Errors
 

@@ -38,7 +38,7 @@ var res = await sdk.Transactions.Refunds.All.CreateAsync(
 
 ### Response
 
-**[CollectionRefund](../../Models/Components/CollectionRefund.md)**
+**[Models.Components.Refunds](../../Models/Components/Refunds.md)**
 
 ### Errors
 

@@ -41,7 +41,7 @@ namespace Gr4vy
         /// List all the shipping details associated to a specific buyer.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorShippingDetails> ListAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<ShippingDetailsList> ListAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get buyer shipping details
@@ -75,7 +75,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -290,7 +290,7 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<CollectionNoCursorShippingDetails> ListAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<ShippingDetailsList> ListAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListBuyerShippingDetailsRequest()
             {
@@ -384,7 +384,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorShippingDetails>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<ShippingDetailsList>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 

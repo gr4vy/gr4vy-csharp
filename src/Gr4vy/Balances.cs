@@ -32,14 +32,14 @@ namespace Gr4vy
         /// Fetch the balances for one or more gift cards.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorGiftCardSummary> ListAsync(GiftCardBalanceRequest giftCardBalanceRequest, string? merchantAccountId = null);
+        Task<GiftCardSummaries> ListAsync(GiftCardBalanceRequest giftCardBalanceRequest, string? merchantAccountId = null);
     }
 
     public class Balances: IBalances
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -48,7 +48,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorGiftCardSummary> ListAsync(GiftCardBalanceRequest giftCardBalanceRequest, string? merchantAccountId = null)
+        public async Task<GiftCardSummaries> ListAsync(GiftCardBalanceRequest giftCardBalanceRequest, string? merchantAccountId = null)
         {
             var request = new ListGiftCardBalancesRequest()
             {
@@ -116,7 +116,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorGiftCardSummary>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<GiftCardSummaries>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 

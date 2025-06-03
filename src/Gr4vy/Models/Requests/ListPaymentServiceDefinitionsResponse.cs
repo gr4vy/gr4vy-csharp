@@ -19,6 +19,6 @@ namespace Gr4vy.Models.Requests
         public Func<Task<ListPaymentServiceDefinitionsResponse?>>? Next {get;set;}
 
         [SpeakeasyMetadata("")]
-        public CollectionPaymentServiceDefinition Result { get; set; } = default!;
+        public Models.Components.PaymentServiceDefinitions Result { get; set; } = default!;
     }
 }

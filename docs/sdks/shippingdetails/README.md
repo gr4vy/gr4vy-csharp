@@ -91,7 +91,7 @@ var res = await sdk.Buyers.ShippingDetails.ListAsync(
 
 ### Response
 
-**[CollectionNoCursorShippingDetails](../../Models/Components/CollectionNoCursorShippingDetails.md)**
+**[ShippingDetailsList](../../Models/Components/ShippingDetailsList.md)**
 
 ### Errors
 

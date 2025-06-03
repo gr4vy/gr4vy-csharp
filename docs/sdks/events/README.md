@@ -40,7 +40,7 @@ var res = await sdk.Transactions.Events.ListAsync(
 
 ### Response
 
-**[CollectionTransactionEvent](../../Models/Components/CollectionTransactionEvent.md)**
+**[TransactionEvents](../../Models/Components/TransactionEvents.md)**
 
 ### Errors
 

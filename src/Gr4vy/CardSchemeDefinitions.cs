@@ -32,14 +32,14 @@ namespace Gr4vy
         /// Fetch a list of the definitions of each card scheme.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorCardSchemeDefinition> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Models.Components.CardSchemeDefinitions> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
     public class CardSchemeDefinitions: ICardSchemeDefinitions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -48,7 +48,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionNoCursorCardSchemeDefinition> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Models.Components.CardSchemeDefinitions> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListCardSchemeDefinitionsRequest()
             {
@@ -142,7 +142,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorCardSchemeDefinition>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.CardSchemeDefinitions>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     return obj!;
                 }
 

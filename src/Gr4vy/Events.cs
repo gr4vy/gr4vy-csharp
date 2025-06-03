@@ -32,14 +32,14 @@ namespace Gr4vy
         /// Fetch a list of events for a transaction.
         /// </remarks>
         /// </summary>
-        Task<CollectionTransactionEvent> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<TransactionEvents> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
     public class Events: IEvents
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -48,7 +48,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<CollectionTransactionEvent> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<TransactionEvents> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListTransactionEventsRequest()
             {
@@ -144,7 +144,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionTransactionEvent>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<TransactionEvents>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 

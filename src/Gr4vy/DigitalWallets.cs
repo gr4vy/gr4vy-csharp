@@ -43,7 +43,7 @@ namespace Gr4vy
         /// List configured digital wallets.
         /// </remarks>
         /// </summary>
-        Task<CollectionNoCursorDigitalWallet> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Models.Components.DigitalWallets> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get digital wallet
@@ -77,7 +77,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.12";
+        private const string _sdkVersion = "1.0.0-beta.13";
         private const string _sdkGenVersion = "2.618.0";
         private const string _openapiDocVersion = "1.0.0";
         public ISessions Sessions { get; private set; }
@@ -296,7 +296,7 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<CollectionNoCursorDigitalWallet> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Models.Components.DigitalWallets> ListAsync(string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListDigitalWalletsRequest()
             {
@@ -390,7 +390,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionNoCursorDigitalWallet>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.DigitalWallets>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     return obj!;
                 }
 

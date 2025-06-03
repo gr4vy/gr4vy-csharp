@@ -36,7 +36,7 @@ var res = await sdk.ReportsExecutions.ListAsync(req);
 
 ### Response
 
-**[CollectionReportExecution](../../Models/Components/CollectionReportExecution.md)**
+**[ReportExecutions](../../Models/Components/ReportExecutions.md)**
 
 ### Errors
 

@@ -19,6 +19,6 @@ namespace Gr4vy.Models.Requests
         public Func<Task<ListGiftCardsResponse?>>? Next {get;set;}
 
         [SpeakeasyMetadata("")]
-        public CollectionGiftCard Result { get; set; } = default!;
+        public Models.Components.GiftCards Result { get; set; } = default!;
     }
 }
