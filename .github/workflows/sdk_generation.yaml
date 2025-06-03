@@ -34,7 +34,7 @@ jobs:
   notify:
     needs: generate
     runs-on: ubuntu-latest
-    if: always()
+    if: ${{ contains(needs.*.result, 'failure') }}
     steps:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@v2
