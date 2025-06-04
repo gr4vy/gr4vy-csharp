@@ -39,7 +39,6 @@ namespace Gr4vy
         public IPaymentServices PaymentServices { get; }
         public IAuditLogs AuditLogs { get; }
         public IReports Reports { get; }
-        public IReportsExecutions ReportsExecutions { get; }
         public ICheckoutSessions CheckoutSessions { get; }
         public IMerchantAccounts MerchantAccounts { get; }
         public IPayouts Payouts { get; }
@@ -55,7 +54,7 @@ namespace Gr4vy
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.15";
+        private const string _sdkVersion = "1.0.0-beta.16";
         private const string _sdkGenVersion = "2.620.2";
         private const string _openapiDocVersion = "1.0.0";
         public IAccountUpdater AccountUpdater { get; private set; }
@@ -71,7 +70,6 @@ namespace Gr4vy
         public IPaymentServices PaymentServices { get; private set; }
         public IAuditLogs AuditLogs { get; private set; }
         public IReports Reports { get; private set; }
-        public IReportsExecutions ReportsExecutions { get; private set; }
         public ICheckoutSessions CheckoutSessions { get; private set; }
         public IMerchantAccounts MerchantAccounts { get; private set; }
         public IPayouts Payouts { get; private set; }
@@ -107,8 +105,6 @@ namespace Gr4vy
             AuditLogs = new AuditLogs(SDKConfiguration);
 
             Reports = new Reports(SDKConfiguration);
-
-            ReportsExecutions = new ReportsExecutions(SDKConfiguration);
 
             CheckoutSessions = new CheckoutSessions(SDKConfiguration);
 
@@ -185,8 +181,6 @@ namespace Gr4vy
             AuditLogs = new AuditLogs(SDKConfiguration);
 
             Reports = new Reports(SDKConfiguration);
-
-            ReportsExecutions = new ReportsExecutions(SDKConfiguration);
 
             CheckoutSessions = new CheckoutSessions(SDKConfiguration);
 
