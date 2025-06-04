@@ -16,8 +16,10 @@ namespace Gr4vy
     using Gr4vy.Utils;
     using Gr4vy.Utils.Retries;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
@@ -32,7 +34,7 @@ namespace Gr4vy
         /// List all executed reports that have been generated.
         /// </remarks>
         /// </summary>
-        Task<ReportExecutions> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null);
+        Task<ListAllReportExecutionsResponse> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Get executed report
@@ -48,7 +50,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.14";
+        private const string _sdkVersion = "1.0.0-beta.15";
         private const string _sdkGenVersion = "2.620.2";
         private const string _openapiDocVersion = "1.0.0";
 
@@ -57,7 +59,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<ReportExecutions> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null)
+        public async Task<ListAllReportExecutionsResponse> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null)
         {
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
@@ -140,6 +142,40 @@ namespace Gr4vy
 
             httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
 
+            
+            Func<Task<ListAllReportExecutionsResponse?>> nextFunc = async delegate()
+            {
+                var body = JObject.Parse(await httpResponse.Content.ReadAsStringAsync());
+                var nextCursorToken = body.SelectToken("$.next_cursor");
+
+                if(nextCursorToken == null)
+                {
+                    return null;
+                }
+                var nextCursor = nextCursorToken.Value<string>();
+                if (nextCursor == null)
+                {
+                    return null;
+                }
+
+                var newRequest = new ListAllReportExecutionsRequest
+                {
+                    Cursor = nextCursor,
+                    Limit = request?.Limit,
+                    ReportName = request?.ReportName,
+                    CreatedAtLte = request?.CreatedAtLte,
+                    CreatedAtGte = request?.CreatedAtGte,
+                    Status = request?.Status,
+                    CreatorId = request?.CreatorId,
+                    MerchantAccountId = request?.MerchantAccountId
+                };
+
+                return await ListAsync (
+                    request: newRequest,
+                    retryConfig: retryConfig
+                );
+            };
+
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
@@ -147,7 +183,13 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<ReportExecutions>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    return obj!;
+                    var result = obj!;
+                    var response = new ListAllReportExecutionsResponse()
+                    {
+                        Result = result,
+                        Next = nextFunc
+                    };
+                    return response;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);

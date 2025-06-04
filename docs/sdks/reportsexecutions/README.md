@@ -26,9 +26,14 @@ var sdk = new Gr4vySDK(
 
 ListAllReportExecutionsRequest req = new ListAllReportExecutionsRequest() {};
 
-var res = await sdk.ReportsExecutions.ListAsync(req);
+ListAllReportExecutionsResponse? res = await sdk.ReportsExecutions.ListAsync(req);
 
-// handle response
+while(res != null)
+{
+    // handle items
+
+    res = await res.Next!();
+}
 ```
 
 ### Parameters
@@ -39,7 +44,7 @@ var res = await sdk.ReportsExecutions.ListAsync(req);
 
 ### Response
 
-**[ReportExecutions](../../Models/Components/ReportExecutions.md)**
+**[ListAllReportExecutionsResponse](../../Models/Requests/ListAllReportExecutionsResponse.md)**
 
 ### Errors
 
