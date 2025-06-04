@@ -17,9 +17,12 @@ Fetch a list of the definitions of each card scheme.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
-var res = await sdk.CardSchemeDefinitions.ListAsync(merchantAccountId: "default");
+var res = await sdk.CardSchemeDefinitions.ListAsync();
 
 // handle response
 ```

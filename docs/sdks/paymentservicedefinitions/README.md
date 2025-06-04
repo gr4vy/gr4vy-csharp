@@ -125,7 +125,7 @@ var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 var res = await sdk.PaymentServiceDefinitions.SessionAsync(
     paymentServiceDefinitionId: "adyen-ideal",
     requestBody: new Dictionary<string, object>() {
-        { "key", "<value>" },
+
     }
 );
 

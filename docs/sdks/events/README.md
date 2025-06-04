@@ -17,13 +17,15 @@ Fetch a list of events for a transaction.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Transactions.Events.ListAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
     cursor: "ZXhhbXBsZTE",
-    limit: 100,
-    merchantAccountId: "default"
+    limit: 100
 );
 
 // handle response

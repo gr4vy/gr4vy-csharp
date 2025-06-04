@@ -19,7 +19,10 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 ListAllReportExecutionsRequest req = new ListAllReportExecutionsRequest() {};
 
@@ -66,12 +69,12 @@ Fetch a specific executed report.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.ReportsExecutions.GetAsync(
-    reportExecutionId: "003bc416-f32a-420c-8eb2-062a386e1fb0",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.ReportsExecutions.GetAsync(reportExecutionId: "003bc416-f32a-420c-8eb2-062a386e1fb0");
 
 // handle response
 ```

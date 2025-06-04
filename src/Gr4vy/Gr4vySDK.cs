@@ -43,6 +43,7 @@ namespace Gr4vy
         public ICheckoutSessions CheckoutSessions { get; }
         public IMerchantAccounts MerchantAccounts { get; }
         public IPayouts Payouts { get; }
+        public IPaymentLinks PaymentLinks { get; }
     }
 
 
@@ -54,8 +55,8 @@ namespace Gr4vy
         public SDKConfig SDKConfiguration { get; private set; }
 
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.13";
-        private const string _sdkGenVersion = "2.618.0";
+        private const string _sdkVersion = "1.0.0-beta.14";
+        private const string _sdkGenVersion = "2.620.2";
         private const string _openapiDocVersion = "1.0.0";
         public IAccountUpdater AccountUpdater { get; private set; }
         public IBuyers Buyers { get; private set; }
@@ -74,6 +75,7 @@ namespace Gr4vy
         public ICheckoutSessions CheckoutSessions { get; private set; }
         public IMerchantAccounts MerchantAccounts { get; private set; }
         public IPayouts Payouts { get; private set; }
+        public IPaymentLinks PaymentLinks { get; private set; }
 
         public Gr4vySDK(SDKConfig config)
         {
@@ -113,6 +115,8 @@ namespace Gr4vy
             MerchantAccounts = new MerchantAccounts(SDKConfiguration);
 
             Payouts = new Payouts(SDKConfiguration);
+
+            PaymentLinks = new PaymentLinks(SDKConfiguration);
         }
 
         public Gr4vySDK(string? bearerAuth = null, Func<string>? bearerAuthSource = null, string? merchantAccountId = null, SDKConfig.Server? server = null, string?  id = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
@@ -189,6 +193,8 @@ namespace Gr4vy
             MerchantAccounts = new MerchantAccounts(SDKConfiguration);
 
             Payouts = new Payouts(SDKConfiguration);
+
+            PaymentLinks = new PaymentLinks(SDKConfiguration);
         }
 
         private void InitHooks()

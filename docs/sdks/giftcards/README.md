@@ -20,12 +20,12 @@ Fetch details about a gift card.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.GiftCards.GetAsync(
-    giftCardId: "356d56e5-fe16-42ae-97ee-8d55d846ae2e",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.GiftCards.GetAsync(giftCardId: "356d56e5-fe16-42ae-97ee-8d55d846ae2e");
 
 // handle response
 ```
@@ -69,12 +69,12 @@ Removes a gift card from our system.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.GiftCards.DeleteAsync(
-    giftCardId: "356d56e5-fe16-42ae-97ee-8d55d846ae2e",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.GiftCards.DeleteAsync(giftCardId: "356d56e5-fe16-42ae-97ee-8d55d846ae2e");
 
 // handle response
 ```
@@ -118,15 +118,15 @@ Store a new gift card in the vault.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.GiftCards.CreateAsync(
-    giftCardCreate: new GiftCardCreate() {
-        Number = "4123455541234561234",
-        Pin = "1234",
-    },
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.GiftCards.CreateAsync(giftCardCreate: new GiftCardCreate() {
+    Number = "4123455541234561234",
+    Pin = "1234",
+});
 
 // handle response
 ```
@@ -171,7 +171,10 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 ListGiftCardsRequest req = new ListGiftCardsRequest() {};
 

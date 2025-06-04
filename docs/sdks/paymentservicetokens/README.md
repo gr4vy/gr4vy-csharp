@@ -19,12 +19,14 @@ List all gateway tokens stored for a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.PaymentMethods.PaymentServiceTokens.ListAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
-    merchantAccountId: "default"
+    paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0"
 );
 
 // handle response
@@ -70,15 +72,17 @@ Create a gateway tokens for a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.PaymentMethods.PaymentServiceTokens.CreateAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     paymentServiceTokenCreate: new PaymentServiceTokenCreate() {
         PaymentServiceId = "fffd152a-9532-4087-9a4f-de58754210f0",
         RedirectUrl = "https://dual-futon.biz",
-    },
-    merchantAccountId: "default"
+    }
 );
 
 // handle response
@@ -124,12 +128,14 @@ Delete a gateway tokens for a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 await sdk.PaymentMethods.PaymentServiceTokens.DeleteAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    paymentServiceTokenId: "703f2d99-3fd1-44bc-9cbd-a25a2d597886",
-    merchantAccountId: "default"
+    paymentServiceTokenId: "703f2d99-3fd1-44bc-9cbd-a25a2d597886"
 );
 
 // handle response

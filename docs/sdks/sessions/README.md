@@ -19,14 +19,14 @@ Create a session for use with Google Pay.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.DigitalWallets.Sessions.GooglePayAsync(
-    googlePaySessionRequest: new GooglePaySessionRequest() {
-        OriginDomain = "example.com",
-    },
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.DigitalWallets.Sessions.GooglePayAsync(googlePaySessionRequest: new GooglePaySessionRequest() {
+    OriginDomain = "example.com",
+});
 
 // handle response
 ```
@@ -70,15 +70,15 @@ Create a session for use with Apple Pay.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.DigitalWallets.Sessions.ApplePayAsync(
-    applePaySessionRequest: new ApplePaySessionRequest() {
-        ValidationUrl = "https://apple-pay-gateway-cert.apple.com",
-        DomainName = "example.com",
-    },
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.DigitalWallets.Sessions.ApplePayAsync(applePaySessionRequest: new ApplePaySessionRequest() {
+    ValidationUrl = "https://apple-pay-gateway-cert.apple.com",
+    DomainName = "example.com",
+});
 
 // handle response
 ```

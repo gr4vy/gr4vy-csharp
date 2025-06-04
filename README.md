@@ -283,6 +283,13 @@ catch(ArgumentException ex) {
 * [Get](docs/sdks/merchantaccounts/README.md#get) - Get a merchant account
 * [Update](docs/sdks/merchantaccounts/README.md#update) - Update a merchant account
 
+### [PaymentLinks](docs/sdks/paymentlinks/README.md)
+
+* [Create](docs/sdks/paymentlinks/README.md#create) - Add a payment link
+* [List](docs/sdks/paymentlinks/README.md#list) - List all payment links
+* [Expire](docs/sdks/paymentlinks/README.md#expire) - Expire a payment link
+* [Get](docs/sdks/paymentlinks/README.md#get) - Get payment link
+
 ### [PaymentMethods](docs/sdks/paymentmethods/README.md)
 
 * [List](docs/sdks/paymentmethods/README.md#list) - List all payment methods
@@ -386,7 +393,7 @@ catch(ArgumentException ex) {
 
 A parameter is configured globally. This parameter may be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, This global value will be used as the default on the operations that use it. When such operations are called, there is a place in each to override the global value, if needed.
 
-For example, you can set `merchant_account_id` to `"default"` at SDK initialization and then you do not have to pass the same value on calls to operations like `Get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+For example, you can set `merchant_account_id` to `` at SDK initialization and then you do not have to pass the same value on calls to operations like `Get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
 
 
 ### Available Globals
@@ -403,7 +410,10 @@ The following global parameter is available.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345");
 
@@ -424,9 +434,16 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
-ListBuyersRequest req = new ListBuyersRequest() {};
+ListBuyersRequest req = new ListBuyersRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    Search = "John",
+    ExternalIdentifier = "buyer-12345",
+};
 
 ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
 
@@ -450,9 +467,16 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
-ListBuyersRequest req = new ListBuyersRequest() {};
+ListBuyersRequest req = new ListBuyersRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    Search = "John",
+    ExternalIdentifier = "buyer-12345",
+};
 
 ListBuyersResponse? res = await sdk.Buyers.ListAsync(
     retryConfig: new RetryConfig(
@@ -493,10 +517,15 @@ var sdk = new Gr4vySDK(
         ),
         retryConnectionErrors: false
     ),
+    merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-ListBuyersRequest req = new ListBuyersRequest() {};
+ListBuyersRequest req = new ListBuyersRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    Search = "John",
+    ExternalIdentifier = "buyer-12345",
+};
 
 ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
 
@@ -549,19 +578,19 @@ using Gr4vy.Models.Components;
 using Gr4vy.Models.Errors;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 try
 {
-    var res = await sdk.AccountUpdater.Jobs.CreateAsync(
-        accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-            PaymentMethodIds = new List<string>() {
-                "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-                "f29e886e-93cc-4714-b4a3-12b7a718e595",
-            },
+    var res = await sdk.AccountUpdater.Jobs.CreateAsync(accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
+        PaymentMethodIds = new List<string>() {
+            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+            "f29e886e-93cc-4714-b4a3-12b7a718e595",
         },
-        merchantAccountId: "default"
-    );
+    });
 
     // handle response
 }
@@ -664,18 +693,16 @@ using System.Collections.Generic;
 var sdk = new Gr4vySDK(
     server: SDKConfig.Server.Sandbox,
     id: "<id>",
+    merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.AccountUpdater.Jobs.CreateAsync(
-    accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-        PaymentMethodIds = new List<string>() {
-            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-            "f29e886e-93cc-4714-b4a3-12b7a718e595",
-        },
+var res = await sdk.AccountUpdater.Jobs.CreateAsync(accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
+    PaymentMethodIds = new List<string>() {
+        "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+        "f29e886e-93cc-4714-b4a3-12b7a718e595",
     },
-    merchantAccountId: "default"
-);
+});
 
 // handle response
 ```
@@ -690,18 +717,16 @@ using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
     serverUrl: "https://api.example.gr4vy.app",
+    merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.AccountUpdater.Jobs.CreateAsync(
-    accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-        PaymentMethodIds = new List<string>() {
-            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-            "f29e886e-93cc-4714-b4a3-12b7a718e595",
-        },
+var res = await sdk.AccountUpdater.Jobs.CreateAsync(accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
+    PaymentMethodIds = new List<string>() {
+        "ef9496d8-53a5-4aad-8ca2-00eb68334389",
+        "f29e886e-93cc-4714-b4a3-12b7a718e595",
     },
-    merchantAccountId: "default"
-);
+});
 
 // handle response
 ```

@@ -21,9 +21,17 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
-ListPaymentMethodsRequest req = new ListPaymentMethodsRequest() {};
+ListPaymentMethodsRequest req = new ListPaymentMethodsRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
+    BuyerExternalIdentifier = "buyer-12345",
+    ExternalIdentifier = "payment-method-12345",
+};
 
 ListPaymentMethodsResponse? res = await sdk.PaymentMethods.ListAsync(req);
 
@@ -73,16 +81,16 @@ Store a new payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.PaymentMethods.CreateAsync(
-    requestBody: Body.CreateCheckoutSessionPaymentMethodCreate(
-        new CheckoutSessionPaymentMethodCreate() {
-            Id = "4137b1cf-39ac-42a8-bad6-1c680d5dab6b",
-        }
-    ),
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.PaymentMethods.CreateAsync(requestBody: Body.CreateCheckoutSessionPaymentMethodCreate(
+    new CheckoutSessionPaymentMethodCreate() {
+        Id = "4137b1cf-39ac-42a8-bad6-1c680d5dab6b",
+    }
+));
 
 // handle response
 ```
@@ -126,12 +134,12 @@ Retrieve a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.PaymentMethods.GetAsync(
-    paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.PaymentMethods.GetAsync(paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389");
 
 // handle response
 ```
@@ -175,12 +183,12 @@ Delete a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-await sdk.PaymentMethods.DeleteAsync(
-    paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+await sdk.PaymentMethods.DeleteAsync(paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389");
 
 // handle response
 ```

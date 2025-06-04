@@ -17,13 +17,12 @@ List all the stored gift cards for a specific buyer.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Buyers.GiftCards.ListAsync(
-    buyerExternalIdentifier: "<value>",
-    buyerId: "43dacd6f-2cf2-4482-b522-f7a251f63637",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Buyers.GiftCards.ListAsync();
 
 // handle response
 ```

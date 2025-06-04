@@ -21,7 +21,10 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 ListReportsRequest req = new ListReportsRequest() {};
 
@@ -74,28 +77,29 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Reports.CreateAsync(
-    reportCreate: new ReportCreate() {
-        Name = "Monthly Transaction Report",
-        Schedule = "<value>",
-        ScheduleEnabled = true,
-        Spec = Spec.CreateDetailedSettlement(
-            new DetailedSettlementReportSpec() {
-                Params = new Dictionary<string, object>() {
-                    { "filters", new Dictionary<string, object>() {
-                        { "ingested_at", new Dictionary<string, object>() {
-                            { "end", "day_end" },
-                            { "start", "day_start" },
-                        } },
-                    } },
-                },
-            }
-        ),
-    },
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Reports.CreateAsync(reportCreate: new ReportCreate() {
+    Name = "Monthly Transaction Report",
+    Schedule = "<value>",
+    ScheduleEnabled = true,
+    ScheduleTimezone = "UTC",
+    Spec = Spec.CreateDetailedSettlement(
+        new DetailedSettlementReportSpec() {
+            Params = new Dictionary<string, object>() {
+                { "filters", new Dictionary<string, object>() {
+                    { "ingested_at", new Dictionary<string, object>() {
+                        { "end", "day_end" },
+                        { "start", "day_start" },
+                    } },
+                } },
+            },
+        }
+    ),
+});
 
 // handle response
 ```
@@ -139,12 +143,12 @@ Fetches a report by its ID.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Reports.GetAsync(
-    reportId: "4d4c7123-b794-4fad-b1b9-5ab2606e6bbe",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Reports.GetAsync(reportId: "4d4c7123-b794-4fad-b1b9-5ab2606e6bbe");
 
 // handle response
 ```
@@ -188,12 +192,14 @@ Updates the configuration of a report.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Reports.PutAsync(
     reportId: "4d4c7123-b794-4fad-b1b9-5ab2606e6bbe",
-    reportUpdate: new ReportUpdate() {},
-    merchantAccountId: "default"
+    reportUpdate: new ReportUpdate() {}
 );
 
 // handle response

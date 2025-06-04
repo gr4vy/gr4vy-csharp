@@ -80,6 +80,7 @@ using Gr4vy.Models.Components;
 var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 MerchantAccountCreate req = new MerchantAccountCreate() {
+    AccountUpdaterEnabled = true,
     Id = "merchant-12345",
     DisplayName = "Example",
 };
@@ -176,7 +177,9 @@ var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 var res = await sdk.MerchantAccounts.UpdateAsync(
     merchantAccountId: "merchant-12345",
-    merchantAccountUpdate: new MerchantAccountUpdate() {}
+    merchantAccountUpdate: new MerchantAccountUpdate() {
+        AccountUpdaterEnabled = true,
+    }
 );
 
 // handle response

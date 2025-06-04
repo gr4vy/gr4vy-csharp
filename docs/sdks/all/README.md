@@ -17,12 +17,17 @@ Create a refund for all instruments on a transaction.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Transactions.Refunds.All.CreateAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
-    merchantAccountId: "default",
-    transactionRefundAllCreate: new TransactionRefundAllCreate() {}
+    transactionRefundAllCreate: new TransactionRefundAllCreate() {
+        Reason = "Refund due to user request.",
+        ExternalIdentifier = "refund-12345",
+    }
 );
 
 // handle response

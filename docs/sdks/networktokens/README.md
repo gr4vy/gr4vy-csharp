@@ -21,12 +21,12 @@ List all network tokens stored for a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.PaymentMethods.NetworkTokens.ListAsync(
-    paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.PaymentMethods.NetworkTokens.ListAsync(paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389");
 
 // handle response
 ```
@@ -70,15 +70,17 @@ Provision a network token for a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.PaymentMethods.NetworkTokens.CreateAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     networkTokenCreate: new NetworkTokenCreate() {
         MerchantInitiated = false,
         IsSubsequentPayment = false,
-    },
-    merchantAccountId: "default"
+    }
 );
 
 // handle response
@@ -124,12 +126,14 @@ Suspend a network token for a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.PaymentMethods.NetworkTokens.SuspendAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298",
-    merchantAccountId: "default"
+    networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298"
 );
 
 // handle response
@@ -175,12 +179,14 @@ Resume a suspended network token for a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.PaymentMethods.NetworkTokens.ResumeAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298",
-    merchantAccountId: "default"
+    networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298"
 );
 
 // handle response
@@ -226,12 +232,14 @@ Delete a network token for a payment method.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 await sdk.PaymentMethods.NetworkTokens.DeleteAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-    networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298",
-    merchantAccountId: "default"
+    networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298"
 );
 
 // handle response
