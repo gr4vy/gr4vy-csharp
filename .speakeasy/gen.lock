@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 118b2ea82d4469acf68936b2716bd368
+  docChecksum: 74d25726f866a24fd6cc1cf60df38b28
   docVersion: 1.0.0
   speakeasyVersion: 1.555.2
   generationVersion: 2.620.2
-  releaseVersion: 1.0.0-beta.14
-  configChecksum: 4053c16530a688fbffaf44274c05cdf8
+  releaseVersion: 1.0.0-beta.15
+  configChecksum: 8e058c351aeca98bf4072da8631881bf
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -270,6 +270,7 @@ generatedFiles:
   - docs/Models/Requests/GetTransactionRefundRequest.md
   - docs/Models/Requests/GetTransactionRequest.md
   - docs/Models/Requests/ListAllReportExecutionsRequest.md
+  - docs/Models/Requests/ListAllReportExecutionsResponse.md
   - docs/Models/Requests/ListAuditLogsRequest.md
   - docs/Models/Requests/ListAuditLogsResponse.md
   - docs/Models/Requests/ListBuyerGiftCardsRequest.md
@@ -609,6 +610,7 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/GetTransactionRefundRequest.cs
   - src/Gr4vy/Models/Requests/GetTransactionRequest.cs
   - src/Gr4vy/Models/Requests/ListAllReportExecutionsRequest.cs
+  - src/Gr4vy/Models/Requests/ListAllReportExecutionsResponse.cs
   - src/Gr4vy/Models/Requests/ListAuditLogsRequest.cs
   - src/Gr4vy/Models/Requests/ListAuditLogsResponse.cs
   - src/Gr4vy/Models/Requests/ListBuyerGiftCardsRequest.cs
