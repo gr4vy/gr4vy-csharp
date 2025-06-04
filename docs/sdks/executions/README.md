@@ -19,13 +19,14 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 ListReportExecutionsResponse? res = await sdk.Reports.Executions.ListAsync(
     reportId: "4d4c7123-b794-4fad-b1b9-5ab2606e6bbe",
-    cursor: "ZXhhbXBsZTE",
-    limit: 20,
-    merchantAccountId: "default"
+    limit: 20
 );
 
 while(res != null)
@@ -77,12 +78,14 @@ Creates a download URL for a specific execution of a report.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Reports.Executions.UrlAsync(
     reportId: "4d4c7123-b794-4fad-b1b9-5ab2606e6bbe",
-    reportExecutionId: "003bc416-f32a-420c-8eb2-062a386e1fb0",
-    merchantAccountId: "default"
+    reportExecutionId: "003bc416-f32a-420c-8eb2-062a386e1fb0"
 );
 
 // handle response

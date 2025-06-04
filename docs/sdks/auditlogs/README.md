@@ -18,9 +18,17 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
-ListAuditLogsRequest req = new ListAuditLogsRequest() {};
+ListAuditLogsRequest req = new ListAuditLogsRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    Action = "created",
+    UserId = "14b7b8c5-a6ba-4fb6-bbab-52d43c7f37ef",
+    ResourceType = "user",
+};
 
 ListAuditLogsResponse? res = await sdk.AuditLogs.ListAsync(req);
 

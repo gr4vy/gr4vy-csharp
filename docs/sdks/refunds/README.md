@@ -17,12 +17,12 @@ Fetch a refund.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Refunds.GetAsync(
-    refundId: "6a1d4e46-14ed-4fe1-a45f-eff4e025d211",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Refunds.GetAsync(refundId: "6a1d4e46-14ed-4fe1-a45f-eff4e025d211");
 
 // handle response
 ```

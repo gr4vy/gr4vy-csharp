@@ -18,20 +18,31 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.GiftCards.Balances.ListAsync(
-    giftCardBalanceRequest: new GiftCardBalanceRequest() {
-        Items = new List<Item>() {
-            Item.CreateGiftCardStoredRequest(
-                new GiftCardStoredRequest() {
-                    Id = "356d56e5-fe16-42ae-97ee-8d55d846ae2e",
-                }
-            ),
-        },
-    },
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.GiftCards.Balances.ListAsync(giftCardBalanceRequest: new GiftCardBalanceRequest() {
+    Items = new List<Item>() {
+        Item.CreateGiftCardStoredRequest(
+            new GiftCardStoredRequest() {
+                Id = "356d56e5-fe16-42ae-97ee-8d55d846ae2e",
+            }
+        ),
+        Item.CreateGiftCardStoredRequest(
+            new GiftCardStoredRequest() {
+                Id = "356d56e5-fe16-42ae-97ee-8d55d846ae2e",
+            }
+        ),
+        Item.CreateGiftCardRequest(
+            new GiftCardRequest() {
+                Number = "4123455541234561234",
+                Pin = "1234",
+            }
+        ),
+    },
+});
 
 // handle response
 ```

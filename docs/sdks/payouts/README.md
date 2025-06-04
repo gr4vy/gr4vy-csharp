@@ -20,12 +20,14 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 ListPayoutsResponse? res = await sdk.Payouts.ListAsync(
     cursor: "ZXhhbXBsZTE",
-    limit: 20,
-    merchantAccountId: "default"
+    limit: 20
 );
 
 while(res != null)
@@ -76,21 +78,21 @@ Creates a new payout.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Payouts.CreateAsync(
-    payoutCreate: new PayoutCreate() {
-        Amount = 1299,
-        Currency = "USD",
-        PaymentServiceId = "ed8bd87d-85ad-40cf-8e8f-007e21e55aad",
-        PaymentMethod = PayoutCreatePaymentMethod.CreatePaymentMethodStoredCard(
-            new PaymentMethodStoredCard() {
-                Id = "852b951c-d7ea-4c98-b09e-4a1c9e97c077",
-            }
-        ),
-    },
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Payouts.CreateAsync(payoutCreate: new PayoutCreate() {
+    Amount = 1299,
+    Currency = "EUR",
+    PaymentServiceId = "ed8bd87d-85ad-40cf-8e8f-007e21e55aad",
+    PaymentMethod = PayoutCreatePaymentMethod.CreatePaymentMethodStoredCard(
+        new PaymentMethodStoredCard() {
+            Id = "852b951c-d7ea-4c98-b09e-4a1c9e97c077",
+        }
+    ),
+});
 
 // handle response
 ```
@@ -134,12 +136,12 @@ Retreives a payout.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Payouts.GetAsync(
-    payoutId: "4344fef2-bc2f-49a6-924f-343e62f67224",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Payouts.GetAsync(payoutId: "4344fef2-bc2f-49a6-924f-343e62f67224");
 
 // handle response
 ```

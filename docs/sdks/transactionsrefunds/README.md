@@ -19,12 +19,12 @@ List refunds for a transaction.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Transactions.Refunds.ListAsync(
-    transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Transactions.Refunds.ListAsync(transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591");
 
 // handle response
 ```
@@ -68,12 +68,14 @@ Create a refund for a transaction.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Transactions.Refunds.CreateAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
-    transactionRefundCreate: new TransactionRefundCreate() {},
-    merchantAccountId: "default"
+    transactionRefundCreate: new TransactionRefundCreate() {}
 );
 
 // handle response
@@ -119,12 +121,14 @@ Fetch refund for a transaction.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Transactions.Refunds.GetAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
-    refundId: "6a1d4e46-14ed-4fe1-a45f-eff4e025d211",
-    merchantAccountId: "default"
+    refundId: "6a1d4e46-14ed-4fe1-a45f-eff4e025d211"
 );
 
 // handle response

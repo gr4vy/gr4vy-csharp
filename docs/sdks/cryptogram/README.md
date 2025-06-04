@@ -17,15 +17,17 @@ Provision a cryptogram for a network token.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.PaymentMethods.NetworkTokens.Cryptogram.CreateAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     networkTokenId: "f8dd5cfc-7834-4847-95dc-f75a360e2298",
     cryptogramCreate: new CryptogramCreate() {
         MerchantInitiated = false,
-    },
-    merchantAccountId: "default"
+    }
 );
 
 // handle response

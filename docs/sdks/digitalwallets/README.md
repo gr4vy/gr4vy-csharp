@@ -21,16 +21,16 @@ Register a digital wallet like Apple Pay, Google Pay, or Click to Pay.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.DigitalWallets.CreateAsync(
-    digitalWalletCreate: new DigitalWalletCreate() {
-        Provider = "<value>",
-        MerchantName = "<value>",
-        AcceptTermsAndConditions = false,
-    },
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.DigitalWallets.CreateAsync(digitalWalletCreate: new DigitalWalletCreate() {
+    Provider = "click-to-pay",
+    MerchantName = "<value>",
+    AcceptTermsAndConditions = false,
+});
 
 // handle response
 ```
@@ -74,9 +74,12 @@ List configured digital wallets.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
-var res = await sdk.DigitalWallets.ListAsync(merchantAccountId: "default");
+var res = await sdk.DigitalWallets.ListAsync();
 
 // handle response
 ```
@@ -119,12 +122,12 @@ Fetch the details a digital wallet.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.DigitalWallets.GetAsync(
-    digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.DigitalWallets.GetAsync(digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5");
 
 // handle response
 ```
@@ -168,12 +171,12 @@ Delete a configured digital wallet.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.DigitalWallets.DeleteAsync(
-    digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.DigitalWallets.DeleteAsync(digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5");
 
 // handle response
 ```
@@ -217,12 +220,14 @@ Update a digital wallet.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.DigitalWallets.UpdateAsync(
     digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5",
-    digitalWalletUpdate: new DigitalWalletUpdate() {},
-    merchantAccountId: "default"
+    digitalWalletUpdate: new DigitalWalletUpdate() {}
 );
 
 // handle response

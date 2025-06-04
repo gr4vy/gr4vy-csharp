@@ -21,12 +21,14 @@ Associate shipping details to a buyer.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Buyers.ShippingDetails.CreateAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    shippingDetailsCreate: new ShippingDetailsCreate() {},
-    merchantAccountId: "default"
+    shippingDetailsCreate: new ShippingDetailsCreate() {}
 );
 
 // handle response
@@ -72,12 +74,12 @@ List all the shipping details associated to a specific buyer.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Buyers.ShippingDetails.ListAsync(
-    buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Buyers.ShippingDetails.ListAsync(buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9");
 
 // handle response
 ```
@@ -121,12 +123,14 @@ Get a buyer's shipping details.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Buyers.ShippingDetails.GetAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    shippingDetailsId: "bf8c36ad-02d9-4904-b0f9-a230b149e341",
-    merchantAccountId: "default"
+    shippingDetailsId: "bf8c36ad-02d9-4904-b0f9-a230b149e341"
 );
 
 // handle response
@@ -172,13 +176,15 @@ Update the shipping details associated to a specific buyer.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Buyers.ShippingDetails.UpdateAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
     shippingDetailsId: "bf8c36ad-02d9-4904-b0f9-a230b149e341",
-    shippingDetailsUpdate: new ShippingDetailsUpdate() {},
-    merchantAccountId: "default"
+    shippingDetailsUpdate: new ShippingDetailsUpdate() {}
 );
 
 // handle response
@@ -225,12 +231,14 @@ Delete the shipping details associated to a specific buyer.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Buyers.ShippingDetails.DeleteAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    shippingDetailsId: "bf8c36ad-02d9-4904-b0f9-a230b149e341",
-    merchantAccountId: "default"
+    shippingDetailsId: "bf8c36ad-02d9-4904-b0f9-a230b149e341"
 );
 
 // handle response

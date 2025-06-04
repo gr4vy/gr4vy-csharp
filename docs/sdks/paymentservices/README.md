@@ -24,9 +24,16 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
-ListPaymentServicesRequest req = new ListPaymentServicesRequest() {};
+ListPaymentServicesRequest req = new ListPaymentServicesRequest() {
+    Method = "card",
+    Cursor = "ZXhhbXBsZTE",
+    Deleted = true,
+};
 
 ListPaymentServicesResponse? res = await sdk.PaymentServices.ListAsync(req);
 
@@ -77,31 +84,37 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
-var res = await sdk.PaymentServices.CreateAsync(
-    paymentServiceCreate: new PaymentServiceCreate() {
-        DisplayName = "Stripe",
-        PaymentServiceDefinitionId = "stripe-card",
-        Fields = new List<Field>() {
-            new Field() {
-                Key = "api_key",
-                Value = "key-12345",
-            },
+var res = await sdk.PaymentServices.CreateAsync(paymentServiceCreate: new PaymentServiceCreate() {
+    DisplayName = "Stripe",
+    PaymentServiceDefinitionId = "stripe-card",
+    Fields = new List<Field>() {
+        new Field() {
+            Key = "api_key",
+            Value = "key-12345",
         },
-        AcceptedCurrencies = new List<string>() {
-            "USD",
-            "EUR",
-            "GBP",
-        },
-        AcceptedCountries = new List<string>() {
-            "US",
-            "DE",
-            "GB",
+        new Field() {
+            Key = "api_key",
+            Value = "key-12345",
         },
     },
-    merchantAccountId: "default"
-);
+    AcceptedCurrencies = new List<string>() {
+        "USD",
+        "EUR",
+        "GBP",
+    },
+    AcceptedCountries = new List<string>() {
+        "US",
+        "DE",
+        "GB",
+    },
+    ThreeDSecureEnabled = true,
+    SettlementReportingEnabled = true,
+});
 
 // handle response
 ```
@@ -145,12 +158,12 @@ Get the details of a configured payment service.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.PaymentServices.GetAsync(
-    paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.PaymentServices.GetAsync(paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0");
 
 // handle response
 ```
@@ -194,12 +207,16 @@ Configures a new payment service for use by merchants.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.PaymentServices.UpdateAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
-    paymentServiceUpdate: new PaymentServiceUpdate() {},
-    merchantAccountId: "default"
+    paymentServiceUpdate: new PaymentServiceUpdate() {
+        SettlementReportingEnabled = true,
+    }
 );
 
 // handle response
@@ -245,12 +262,12 @@ Deletes all the configuration of a payment service.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.PaymentServices.DeleteAsync(
-    paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.PaymentServices.DeleteAsync(paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0");
 
 // handle response
 ```
@@ -295,20 +312,15 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.PaymentServices.VerifyAsync(
-    verifyCredentials: new VerifyCredentials() {
-        PaymentServiceDefinitionId = "stripe-card",
-        Fields = new List<Field>() {
-            new Field() {
-                Key = "api_key",
-                Value = "key-12345",
-            },
-        },
-    },
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.PaymentServices.VerifyAsync(verifyCredentials: new VerifyCredentials() {
+    PaymentServiceDefinitionId = "stripe-card",
+    Fields = new List<Field>() {},
+});
 
 // handle response
 ```
@@ -353,14 +365,16 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.PaymentServices.SessionAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
     requestBody: new Dictionary<string, object>() {
-        { "key", "<value>" },
-    },
-    merchantAccountId: "default"
+
+    }
 );
 
 // handle response

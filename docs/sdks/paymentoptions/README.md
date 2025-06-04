@@ -17,12 +17,12 @@ List the payment options available at checkout. filtering by country, currency, 
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.PaymentOptions.ListAsync(
-    paymentOptionRequest: new PaymentOptionRequest() {},
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.PaymentOptions.ListAsync(paymentOptionRequest: new PaymentOptionRequest() {});
 
 // handle response
 ```

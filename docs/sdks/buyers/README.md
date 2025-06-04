@@ -22,9 +22,16 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
-ListBuyersRequest req = new ListBuyersRequest() {};
+ListBuyersRequest req = new ListBuyersRequest() {
+    Cursor = "ZXhhbXBsZTE",
+    Search = "John",
+    ExternalIdentifier = "buyer-12345",
+};
 
 ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
 
@@ -74,12 +81,12 @@ Create a new buyer record.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Buyers.CreateAsync(
-    buyerCreate: new BuyerCreate() {},
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Buyers.CreateAsync(buyerCreate: new BuyerCreate() {});
 
 // handle response
 ```
@@ -123,12 +130,12 @@ Fetches a buyer by its ID.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-var res = await sdk.Buyers.GetAsync(
-    buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+var res = await sdk.Buyers.GetAsync(buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9");
 
 // handle response
 ```
@@ -172,12 +179,14 @@ Updates a buyer record.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
 
 var res = await sdk.Buyers.UpdateAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    buyerUpdate: new BuyerUpdate() {},
-    merchantAccountId: "default"
+    buyerUpdate: new BuyerUpdate() {}
 );
 
 // handle response
@@ -223,12 +232,12 @@ Permanently removes a buyer record.
 using Gr4vy;
 using Gr4vy.Models.Components;
 
-var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
-
-await sdk.Buyers.DeleteAsync(
-    buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
-    merchantAccountId: "default"
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
+
+await sdk.Buyers.DeleteAsync(buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9");
 
 // handle response
 ```
