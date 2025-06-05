@@ -16,26 +16,28 @@ namespace Gr4vy
     using Gr4vy.Utils;
     using Gr4vy.Utils.Retries;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    public interface IBuyersGiftCards
+    public interface IReportExecutions
     {
 
         /// <summary>
-        /// List gift cards for a buyer
+        /// List executed reports
         /// 
         /// <remarks>
-        /// List all the stored gift cards for a specific buyer.
+        /// List all executed reports that have been generated.
         /// </remarks>
         /// </summary>
-        Task<GiftCardSummaries> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<ListAllReportExecutionsResponse> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null);
     }
 
-    public class BuyersGiftCards: IBuyersGiftCards
+    public class ReportExecutions: IReportExecutions
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
@@ -43,23 +45,17 @@ namespace Gr4vy
         private const string _sdkGenVersion = "2.621.3";
         private const string _openapiDocVersion = "1.0.0";
 
-        public BuyersGiftCards(SDKConfig config)
+        public ReportExecutions(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<GiftCardSummaries> ListAsync(string? buyerExternalIdentifier = null, string? buyerId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<ListAllReportExecutionsResponse> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null)
         {
-            var request = new ListBuyerGiftCardsRequest()
-            {
-                BuyerExternalIdentifier = buyerExternalIdentifier,
-                BuyerId = buyerId,
-                MerchantAccountId = merchantAccountId,
-            };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/buyers/gift-cards", request);
+            var urlString = URLBuilder.Build(baseUrl, "/report-executions", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -70,7 +66,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_buyer_gift_cards", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_all_report_executions", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -137,14 +133,54 @@ namespace Gr4vy
 
             httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
 
+            
+            Func<Task<ListAllReportExecutionsResponse?>> nextFunc = async delegate()
+            {
+                var body = JObject.Parse(await httpResponse.Content.ReadAsStringAsync());
+                var nextCursorToken = body.SelectToken("$.next_cursor");
+
+                if(nextCursorToken == null)
+                {
+                    return null;
+                }
+                var nextCursor = nextCursorToken.Value<string>();
+                if (nextCursor == null)
+                {
+                    return null;
+                }
+
+                var newRequest = new ListAllReportExecutionsRequest
+                {
+                    Cursor = nextCursor,
+                    Limit = request?.Limit,
+                    ReportName = request?.ReportName,
+                    CreatedAtLte = request?.CreatedAtLte,
+                    CreatedAtGte = request?.CreatedAtGte,
+                    Status = request?.Status,
+                    CreatorId = request?.CreatorId,
+                    MerchantAccountId = request?.MerchantAccountId
+                };
+
+                return await ListAsync (
+                    request: newRequest,
+                    retryConfig: retryConfig
+                );
+            };
+
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<GiftCardSummaries>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
-                    return obj!;
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.ReportExecutions>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var result = obj!;
+                    var response = new ListAllReportExecutionsResponse()
+                    {
+                        Result = result,
+                        Next = nextFunc
+                    };
+                    return response;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);

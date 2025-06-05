@@ -24,7 +24,7 @@ namespace Gr4vy.Models.Components
         public long Amount { get; set; } = default!;
 
         /// <summary>
-        /// A supported ISO-4217 currency code. For redirect requests, this value must match the one specified for `currency` in `payment_method`.
+        /// A supported ISO 4217 currency code. For redirect requests, this value must match the one specified for `currency` in `payment_method`.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; } = default!;

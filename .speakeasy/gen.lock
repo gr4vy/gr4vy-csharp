@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 23b71b6873e3cd10fe3efd3d45af41e1
+  docChecksum: c3800b8a888fa4e6c6e677c573c8de90
   docVersion: 1.0.0
   speakeasyVersion: 1.556.2
   generationVersion: 2.621.3
-  releaseVersion: 1.0.0-beta.18
-  configChecksum: feca478965784e3a78a821e606e5fe22
+  releaseVersion: 1.0.0-beta.19
+  configChecksum: 40ce241e85c49557c7116ca6db10efde
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -351,6 +351,7 @@ generatedFiles:
   - docs/sdks/paymentservicetokens/README.md
   - docs/sdks/payouts/README.md
   - docs/sdks/refunds/README.md
+  - docs/sdks/reportexecutions/README.md
   - docs/sdks/reports/README.md
   - docs/sdks/sessions/README.md
   - docs/sdks/settlements/README.md
@@ -677,6 +678,7 @@ generatedFiles:
   - src/Gr4vy/PaymentServices.cs
   - src/Gr4vy/Payouts.cs
   - src/Gr4vy/Refunds.cs
+  - src/Gr4vy/ReportExecutions.cs
   - src/Gr4vy/Reports.cs
   - src/Gr4vy/SDKConfig.cs
   - src/Gr4vy/Sessions.cs

@@ -39,25 +39,25 @@ namespace Gr4vy.Models.Components
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
-        /// Date and time the settlement was created.
+        /// The date and time the settlement was created, in ISO 8601 format.
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Date and time the settlement was last updated.
+        /// The date and time the settlement was last updated, in ISO 8601 format.
         /// </summary>
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
-        /// Date and time the settlement was posted.
+        /// The date and time the settlement was posted, in ISO 8601 format.
         /// </summary>
         [JsonProperty("posted_at")]
         public DateTime PostedAt { get; set; } = default!;
 
         /// <summary>
-        /// Date and time the settlement was ingested.
+        /// The date and time the settlement was ingested, in ISO 8601 format.
         /// </summary>
         [JsonProperty("ingested_at")]
         public DateTime IngestedAt { get; set; } = default!;

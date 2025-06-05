@@ -29,7 +29,7 @@ namespace Gr4vy
         /// List transaction events
         /// 
         /// <remarks>
-        /// Fetch a list of events for a transaction.
+        /// Retrieve a paginated list of events related to processing a transaction, including status changes, API requests, and webhook delivery attempts. Events are listed in chronological order, with the most recent events first.
         /// </remarks>
         /// </summary>
         Task<TransactionEvents> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null);
@@ -39,7 +39,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.18";
+        private const string _sdkVersion = "1.0.0-beta.19";
         private const string _sdkGenVersion = "2.621.3";
         private const string _openapiDocVersion = "1.0.0";
 

@@ -24,7 +24,7 @@ namespace Gr4vy.Models.Components
         public string Type { get; } = "refund";
 
         /// <summary>
-        /// The ID for the refund.
+        /// The unique identifier for the refund.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
@@ -45,13 +45,13 @@ namespace Gr4vy.Models.Components
         public string Status { get; set; } = default!;
 
         /// <summary>
-        /// The currency code for this refund.  Will always match that of the associated transaction.
+        /// The ISO 4217 currency code for this refund. Will always match that of the associated transaction.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; } = default!;
 
         /// <summary>
-        /// The amount requested for this refund.
+        /// The amount of this refund, in the smallest currency unit (for example, cents or pence).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; } = default!;
