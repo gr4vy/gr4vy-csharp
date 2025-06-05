@@ -40,7 +40,12 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     BuyerExternalIdentifier = "buyer-12345",
     BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
     BuyerEmailAddress = "john@example.com",
-    BuyerSearch = "John",
+    BuyerSearch = new List<string>() {
+        "J",
+        "o",
+        "h",
+        "n",
+    },
     IpAddress = "8.214.133.47",
     Status = new List<string>() {
         "authorization_succeeded",
