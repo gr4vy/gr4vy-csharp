@@ -28,6 +28,7 @@ namespace Gr4vy
     {
         public ITransactionsRefunds Refunds { get; }
         public IEvents Events { get; }
+        public ISettlements Settlements { get; }
 
         /// <summary>
         /// List transactions
@@ -88,17 +89,19 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.0-beta.16";
-        private const string _sdkGenVersion = "2.620.2";
+        private const string _sdkVersion = "1.0.0-beta.17";
+        private const string _sdkGenVersion = "2.621.3";
         private const string _openapiDocVersion = "1.0.0";
         public ITransactionsRefunds Refunds { get; private set; }
         public IEvents Events { get; private set; }
+        public ISettlements Settlements { get; private set; }
 
         public Transactions(SDKConfig config)
         {
             SDKConfiguration = config;
             Refunds = new TransactionsRefunds(SDKConfiguration);
             Events = new Events(SDKConfiguration);
+            Settlements = new Settlements(SDKConfiguration);
         }
 
         public async Task<ListTransactionsResponse> ListAsync(ListTransactionsRequest? request = null, RetryConfig? retryConfig = null)

@@ -11,14 +11,20 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
     
-    public class VoidTransactionRequest
+    public class GetTransactionSettlementRequest
     {
 
         /// <summary>
-        /// The ID of the transaction
+        /// The unique identifier of the transaction.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=transaction_id")]
         public string TransactionId { get; set; } = default!;
+
+        /// <summary>
+        /// The unique identifier of the settlement.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=settlement_id")]
+        public string SettlementId { get; set; } = default!;
 
         /// <summary>
         /// The ID of the merchant account to use for this request.

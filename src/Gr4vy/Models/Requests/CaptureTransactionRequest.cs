@@ -15,6 +15,9 @@ namespace Gr4vy.Models.Requests
     public class CaptureTransactionRequest
     {
 
+        /// <summary>
+        /// The ID of the transaction
+        /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=transaction_id")]
         public string TransactionId { get; set; } = default!;
 
