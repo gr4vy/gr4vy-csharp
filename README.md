@@ -382,6 +382,11 @@ catch(ArgumentException ex) {
 
 * [Create](docs/sdks/all/README.md#create) - Create batch transaction refund
 
+#### [Transactions.Settlements](docs/sdks/settlements/README.md)
+
+* [Get](docs/sdks/settlements/README.md#get) - Get transaction settlement
+* [List](docs/sdks/settlements/README.md#list) - List transaction settlements
+
 </details>
 <!-- End Available Resources and Operations [operations] -->
 

@@ -22,38 +22,29 @@ namespace Gr4vy
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    public interface IPaymentServiceTokens
+    public interface ISettlements
     {
 
         /// <summary>
-        /// List payment service tokens
+        /// Get transaction settlement
         /// 
         /// <remarks>
-        /// List all gateway tokens stored for a payment method.
+        /// Retrieve a specific settlement for a transaction by its unique identifier.
         /// </remarks>
         /// </summary>
-        Task<Models.Components.PaymentServiceTokens> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Settlement> GetAsync(string transactionId, string settlementId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Create payment service token
+        /// List transaction settlements
         /// 
         /// <remarks>
-        /// Create a gateway tokens for a payment method.
+        /// List all settlements for a specific transaction.
         /// </remarks>
         /// </summary>
-        Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, string? merchantAccountId = null);
-
-        /// <summary>
-        /// Delete payment service token
-        /// 
-        /// <remarks>
-        /// Delete a gateway tokens for a payment method.
-        /// </remarks>
-        /// </summary>
-        Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, string? merchantAccountId = null);
+        Task<Models.Components.Settlements> ListAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
-    public class PaymentServiceTokens: IPaymentServiceTokens
+    public class Settlements: ISettlements
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
@@ -61,23 +52,23 @@ namespace Gr4vy
         private const string _sdkGenVersion = "2.621.3";
         private const string _openapiDocVersion = "1.0.0";
 
-        public PaymentServiceTokens(SDKConfig config)
+        public Settlements(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<Models.Components.PaymentServiceTokens> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Settlement> GetAsync(string transactionId, string settlementId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
-            var request = new ListPaymentMethodPaymentServiceTokensRequest()
+            var request = new GetTransactionSettlementRequest()
             {
-                PaymentMethodId = paymentMethodId,
-                PaymentServiceId = paymentServiceId,
+                TransactionId = transactionId,
+                SettlementId = settlementId,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/payment-service-tokens", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/settlements/{settlement_id}", request);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -88,7 +79,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_payment_method_payment_service_tokens", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "get_transaction_settlement", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -161,7 +152,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.PaymentServiceTokens>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Settlement>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 
@@ -299,42 +290,68 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, string? merchantAccountId = null)
+        public async Task<Models.Components.Settlements> ListAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
-            var request = new CreatePaymentMethodPaymentServiceTokenRequest()
+            var request = new ListTransactionSettlementsRequest()
             {
-                PaymentMethodId = paymentMethodId,
-                PaymentServiceTokenCreate = paymentServiceTokenCreate,
+                TransactionId = transactionId,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/payment-service-tokens", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/settlements", request);
 
-            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            var serializedBody = RequestBodySerializer.Serialize(request, "PaymentServiceTokenCreate", "json", false, false);
-            if (serializedBody != null)
-            {
-                httpRequest.Content = serializedBody;
-            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "create_payment_method_payment_service_token", new List<string> {  }, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_transaction_settlements", new List<string> {  }, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+            if (retryConfig == null)
+            {
+                if (this.SDKConfiguration.RetryConfig != null)
+                {
+                    retryConfig = this.SDKConfiguration.RetryConfig;
+                }
+                else
+                {
+                    var backoff = new BackoffStrategy(
+                        initialIntervalMs: 200L,
+                        maxIntervalMs: 200L,
+                        maxElapsedTimeMs: 1000L,
+                        exponent: 1
+                    );
+                    retryConfig = new RetryConfig(
+                        strategy: RetryConfig.RetryStrategy.BACKOFF,
+                        backoff: backoff,
+                        retryConnectionErrors: true
+                    );
+                }
+            }
+
+            List<string> statusCodes = new List<string>
+            {
+                "5XX",
+            };
+
+            Func<Task<HttpResponseMessage>> retrySend = async () =>
+            {
+                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
+                return await SDKConfiguration.Client.SendAsync(_httpRequest);
+            };
+            var retries = new Gr4vy.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
 
             HttpResponseMessage httpResponse;
             try
             {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
                 if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
@@ -363,11 +380,11 @@ namespace Gr4vy
 
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 201)
+            if(responseStatusCode == 200)
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<PaymentServiceToken>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.Settlements>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 
@@ -489,200 +506,6 @@ namespace Gr4vy
                 {
                     var obj = ResponseBodyDeserializer.Deserialize<Error504>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     throw obj!;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-        }
-
-        public async Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, string? merchantAccountId = null)
-        {
-            var request = new DeletePaymentMethodPaymentServiceTokenRequest()
-            {
-                PaymentMethodId = paymentMethodId,
-                PaymentServiceTokenId = paymentServiceTokenId,
-                MerchantAccountId = merchantAccountId,
-            };
-            request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/payment-service-tokens/{payment_service_token_id}", request);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-            HeaderSerializer.PopulateHeaders(ref httpRequest, request);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "delete_payment_method_payment_service_token", new List<string> {  }, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 204)
-            {                
-                return;
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 403)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 404)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 405)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 409)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 425)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 429)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 502)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
-            }
-            else if(responseStatusCode == 504)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    
-                    return;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
