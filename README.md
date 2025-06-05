@@ -345,6 +345,10 @@ catch(ArgumentException ex) {
 
 * [Get](docs/sdks/refunds/README.md#get) - Get refund
 
+### [ReportExecutions](docs/sdks/reportexecutions/README.md)
+
+* [List](docs/sdks/reportexecutions/README.md#list) - List executed reports
+
 ### [Reports](docs/sdks/reports/README.md)
 
 * [List](docs/sdks/reports/README.md#list) - List configured reports
@@ -356,7 +360,6 @@ catch(ArgumentException ex) {
 
 * [List](docs/sdks/executions/README.md#list) - List executions for report
 * [Url](docs/sdks/executions/README.md#url) - Create URL for executed report
-* [All](docs/sdks/executions/README.md#all) - List executed reports
 * [Get](docs/sdks/executions/README.md#get) - Get executed report
 
 ### [Transactions](docs/sdks/transactions/README.md)

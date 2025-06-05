@@ -14,13 +14,13 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     
     /// <summary>
-    /// Request body for capturing an authorized transaction
+    /// Request body for capturing an authorized transaction.
     /// </summary>
     public class TransactionCapture
     {
 
         /// <summary>
-        /// The amount to capture. This normally needs to be equal or less than the authorized amount, unless over-capture is available.
+        /// The amount to capture, in the smallest currency unit (e.g., cents). This must be less than or equal to the authorized amount, unless over-capture is available.
         /// </summary>
         [JsonProperty("amount")]
         public long? Amount { get; set; } = null;
