@@ -369,6 +369,7 @@ catch(ArgumentException ex) {
 * [Get](docs/sdks/transactions/README.md#get) - Get transaction
 * [Capture](docs/sdks/transactions/README.md#capture) - Capture transaction
 * [Void](docs/sdks/transactions/README.md#void) - Void transaction
+* [Summary](docs/sdks/transactions/README.md#summary) - Get transaction summary
 * [Sync](docs/sdks/transactions/README.md#sync) - Sync transaction
 
 #### [Transactions.Events](docs/sdks/events/README.md)
