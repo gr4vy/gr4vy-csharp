@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 77ea48250cfe06123a22a2658b92d0b0
+  docChecksum: c3800b8a888fa4e6c6e677c573c8de90
   docVersion: 1.0.0
   speakeasyVersion: 1.563.1
   generationVersion: 2.629.1
-  releaseVersion: 1.0.0-beta.20
-  configChecksum: 4cb7dc528467c49d852aa2858050d4d8
+  releaseVersion: 1.0.0-beta.21
+  configChecksum: 6b3727bae85e8777df40652bd04d91ab
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -201,7 +201,6 @@ generatedFiles:
   - docs/Models/Components/TransactionRefundAllCreate.md
   - docs/Models/Components/TransactionRefundCreate.md
   - docs/Models/Components/TransactionRetriesReportSpec.md
-  - docs/Models/Components/TransactionStatusSummary.md
   - docs/Models/Components/TransactionSummaries.md
   - docs/Models/Components/TransactionSummary.md
   - docs/Models/Components/TransactionThreeDSecureSummary.md
@@ -273,7 +272,6 @@ generatedFiles:
   - docs/Models/Requests/GetTransactionRefundRequest.md
   - docs/Models/Requests/GetTransactionRequest.md
   - docs/Models/Requests/GetTransactionSettlementRequest.md
-  - docs/Models/Requests/GetTransactionSummaryRequest.md
   - docs/Models/Requests/ListAllReportExecutionsRequest.md
   - docs/Models/Requests/ListAllReportExecutionsResponse.md
   - docs/Models/Requests/ListAuditLogsRequest.md
@@ -547,7 +545,6 @@ generatedFiles:
   - src/Gr4vy/Models/Components/TransactionRefundAllCreate.cs
   - src/Gr4vy/Models/Components/TransactionRefundCreate.cs
   - src/Gr4vy/Models/Components/TransactionRetriesReportSpec.cs
-  - src/Gr4vy/Models/Components/TransactionStatusSummary.cs
   - src/Gr4vy/Models/Components/TransactionSummaries.cs
   - src/Gr4vy/Models/Components/TransactionSummary.cs
   - src/Gr4vy/Models/Components/TransactionThreeDSecureSummary.cs
@@ -620,7 +617,6 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/GetTransactionRefundRequest.cs
   - src/Gr4vy/Models/Requests/GetTransactionRequest.cs
   - src/Gr4vy/Models/Requests/GetTransactionSettlementRequest.cs
-  - src/Gr4vy/Models/Requests/GetTransactionSummaryRequest.cs
   - src/Gr4vy/Models/Requests/ListAllReportExecutionsRequest.cs
   - src/Gr4vy/Models/Requests/ListAllReportExecutionsResponse.cs
   - src/Gr4vy/Models/Requests/ListAuditLogsRequest.cs
