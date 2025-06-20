@@ -1,4 +1,4 @@
-# Gr4vy C# SDK (Beta)
+# Gr4vy C# SDK
 
 Developer-friendly & type-safe C# SDK specifically catered to leverage *Gr4vy* API.
 
