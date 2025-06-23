@@ -120,10 +120,8 @@ public class Auth
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
         };
 
-        foreach (var scope in scopes)
-        {
-            claims.Add(new Claim("scopes", scope));
-        }
+        var scopesJson = System.Text.Json.JsonSerializer.Serialize(scopes);
+        claims.Add(new Claim("scopes", scopesJson, JsonClaimValueTypes.JsonArray));
 
         if (!string.IsNullOrEmpty(checkoutSessionId))
         {
@@ -133,7 +131,7 @@ public class Auth
         if (scopes.Contains(JWTScope.Embed) && embedParams != null)
         {
             claims.Add(
-                new Claim(JWTScope.Embed, System.Text.Json.JsonSerializer.Serialize(embedParams))
+                new Claim(JWTScope.Embed, System.Text.Json.JsonSerializer.Serialize(embedParams), JsonClaimValueTypes.Json)
             );
         }
 
