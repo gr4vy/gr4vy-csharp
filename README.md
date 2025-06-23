@@ -41,7 +41,6 @@ This SDK is designed to simplify development, reduce boilerplate code, and help 
   * [Server Selection](#server-selection)
 * [Development](#development)
   * [Testing](#testing)
-  * [Maturity](#maturity)
   * [Contributions](#contributions)
 
 <!-- End Table of Contents [toc] -->

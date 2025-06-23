@@ -3,10 +3,10 @@ id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
   docChecksum: c3800b8a888fa4e6c6e677c573c8de90
   docVersion: 1.0.0
-  speakeasyVersion: 1.567.3
+  speakeasyVersion: 1.568.0
   generationVersion: 2.632.2
-  releaseVersion: 1.0.0
-  configChecksum: fefcb0ddd4eb39a71836ad6b53f96536
+  releaseVersion: 1.0.1
+  configChecksum: 42a7cfd2d990daced0bafafc500d4bde
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
