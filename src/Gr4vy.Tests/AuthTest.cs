@@ -94,9 +94,15 @@ rw==
 
         var embedClaim = jwtToken.Claims.First(c => c.Type == JWTScope.Embed).Value;
         var embedData = JsonSerializer.Deserialize<Dictionary<string, object>>(embedClaim);
+        List<string> scopesData = jwtToken.Claims
+            .Where(c => c.Type == "scopes")
+            .Select(c => c.Value)
+            .ToList();
 
         Assert.Contains(JWTScope.Embed, jwtToken.Claims.Select(c => c.Type).ToList());
+        Assert.That(scopesData, Is.EqualTo(new[] { JWTScope.Embed }));
         Assert.NotNull(embedData);
+        Assert.That(embedClaim, Is.EqualTo(System.Text.Json.JsonSerializer.Serialize(_embedParams)));
         Assert.That(embedData["currency"].ToString(), Is.EqualTo("USD"));
     }
 
