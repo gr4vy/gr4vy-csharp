@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: c3800b8a888fa4e6c6e677c573c8de90
+  docChecksum: e6641c27d89ff515386b6bc68326d1b3
   docVersion: 1.0.0
-  speakeasyVersion: 1.568.0
-  generationVersion: 2.632.2
-  releaseVersion: 1.0.1
-  configChecksum: 42a7cfd2d990daced0bafafc500d4bde
+  speakeasyVersion: 1.568.2
+  generationVersion: 2.634.2
+  releaseVersion: 1.0.2
+  configChecksum: e0c6c24045a52d4abe1172f1b2d6e007
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -693,6 +693,7 @@ generatedFiles:
   - src/Gr4vy/Utils/FlexibleObjectDeserializer.cs
   - src/Gr4vy/Utils/HeaderSerializer.cs
   - src/Gr4vy/Utils/IsoDateTimeSerializer.cs
+  - src/Gr4vy/Utils/OpenEnumConverter.cs
   - src/Gr4vy/Utils/RequestBodySerializer.cs
   - src/Gr4vy/Utils/ResponseBodyDeserializer.cs
   - src/Gr4vy/Utils/Retries/BackoffStrategy.cs

@@ -347,5 +347,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("merchant_advice_code")]
         public string? MerchantAdviceCode { get; set; } = null;
+
+        /// <summary>
+        /// The number of installments for this transaction, if applicable.
+        /// </summary>
+        [JsonProperty("installment_count")]
+        public long? InstallmentCount { get; set; } = null;
     }
 }
