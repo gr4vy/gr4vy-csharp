@@ -46,7 +46,7 @@ namespace Gr4vy
         /// Create a new transaction using a supported payment method. If additional buyer authorization is required, an approval URL will be returned. Duplicated gift card numbers are not supported.
         /// </remarks>
         /// </summary>
-        Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null);
+        Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null, string? xForwardedFor = null);
 
         /// <summary>
         /// Get transaction
@@ -89,7 +89,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.0.2";
+        private const string _sdkVersion = "1.0.3";
         private const string _sdkGenVersion = "2.634.2";
         private const string _openapiDocVersion = "1.0.0";
         public ITransactionsRefunds Refunds { get; private set; }
@@ -407,13 +407,14 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null)
+        public async Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null, string? xForwardedFor = null)
         {
             var request = new CreateTransactionRequest()
             {
                 TransactionCreate = transactionCreate,
                 MerchantAccountId = merchantAccountId,
                 IdempotencyKey = idempotencyKey,
+                XForwardedFor = xForwardedFor,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             

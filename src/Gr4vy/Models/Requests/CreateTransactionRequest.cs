@@ -27,6 +27,17 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
         public string? IdempotencyKey { get; set; } = null;
 
+        /// <summary>
+        /// The IP address to forward from the customer. Use this when calling<br/>
+        /// 
+        /// <remarks>
+        /// our API from the server side to ensure the customer&apos;s address is<br/>
+        /// passed to downstream services, rather than your server IP.
+        /// </remarks>
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=X-Forwarded-For")]
+        public string? XForwardedFor { get; set; }
+
         [SpeakeasyMetadata("request:mediaType=application/json")]
         public TransactionCreate TransactionCreate { get; set; } = default!;
     }
