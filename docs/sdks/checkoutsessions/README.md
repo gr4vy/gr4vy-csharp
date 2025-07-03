@@ -392,7 +392,7 @@ var res = await sdk.CheckoutSessions.GetAsync(sessionId: "4137b1cf-39ac-42a8-bad
 
 ## Delete
 
-Deleta a checkout session and all of its (PCI) data.
+Delete a checkout session and all of its (PCI) data.
 
 ### Example Usage
 

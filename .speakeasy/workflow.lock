@@ -1,4 +1,4 @@
-speakeasyVersion: 1.570.1
+speakeasyVersion: 1.575.3
 sources:
     -OAS:
         sourceNamespace: openapi
@@ -8,27 +8,27 @@ sources:
             - latest
     openapi:
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:9bc6f0ed8e3c406cd61fc1448a1d786adfd5d252da5cc99e33f60ac087843f66
-        sourceBlobDigest: sha256:6ee39e97b05d6a2983959c4b4f645ccc271fa5261c5882b49462d25f0412728c
+        sourceRevisionDigest: sha256:5492c6e99df7f7eef85eae797ef59733519880ab8dd5075a107cc4f8f87a2b28
+        sourceBlobDigest: sha256:d46343e994371c35ac726ad7775c7acf6a9feb7652e286771b406aa2609519cb
         tags:
             - latest
-            - speakeasy-sdk-regen-1750947258
+            - speakeasy-sdk-regen-1751549987
             - 1.0.0
 targets:
     csharp:
         source: openapi
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:9bc6f0ed8e3c406cd61fc1448a1d786adfd5d252da5cc99e33f60ac087843f66
-        sourceBlobDigest: sha256:6ee39e97b05d6a2983959c4b4f645ccc271fa5261c5882b49462d25f0412728c
+        sourceRevisionDigest: sha256:5492c6e99df7f7eef85eae797ef59733519880ab8dd5075a107cc4f8f87a2b28
+        sourceBlobDigest: sha256:d46343e994371c35ac726ad7775c7acf6a9feb7652e286771b406aa2609519cb
         codeSamplesNamespace: openapi-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:355a8a7915e23cd0b11df23ef358fc1aee7249f68191c90148f971de424dae20
+        codeSamplesRevisionDigest: sha256:65583421b2d319c87b2cd6c73e6657dca81331d3e17f1cd6ce43f7bf4bcbe4ed
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
     sources:
         openapi:
             inputs:
-                - location: https://gr4vy.github.io/openapi/openapi.json
+                - location: https://gr4vy.github.io/openapi/core/openapi.json
             overlays:
                 - location: ./.speakeasy/overlays/servers.yaml
                 - location: ./.speakeasy/overlays/security.yaml
