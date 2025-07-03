@@ -678,8 +678,8 @@ You can override the default server globally by passing a server name to the `se
 
 | Name         | Server                               | Variables | Description |
 | ------------ | ------------------------------------ | --------- | ----------- |
-| `production` | `https://api.{id}.gr4vy.app`         | `id`      |             |
 | `sandbox`    | `https://api.sandbox.{id}.gr4vy.app` | `id`      |             |
+| `production` | `https://api.{id}.gr4vy.app`         | `id`      |             |
 
 If the selected server has variables, you may override its default values through the additional parameters made available in the SDK constructor:
 
@@ -695,7 +695,7 @@ using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
-    server: SDKConfig.Server.Sandbox,
+    server: SDKConfig.Server.Production,
     id: "<id>",
     merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
@@ -720,7 +720,7 @@ using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
-    serverUrl: "https://api.example.gr4vy.app",
+    serverUrl: "https://api.sandbox.example.gr4vy.app",
     merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );

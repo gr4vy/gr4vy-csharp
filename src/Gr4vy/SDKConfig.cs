@@ -23,8 +23,8 @@ namespace Gr4vy
         /// Server identifiers available to the SDK.
         /// </summary>
         public enum Server {
-            Production,
             Sandbox,
+            Production,
         }
 
         /// <summary>
@@ -32,8 +32,8 @@ namespace Gr4vy
         /// </summary>
         public static readonly Dictionary<Server, string> ServerMap = new Dictionary<Server, string>()
         {
-            { Server.Production, "https://api.{id}.gr4vy.app" },
             { Server.Sandbox, "https://api.sandbox.{id}.gr4vy.app" },
+            { Server.Production, "https://api.{id}.gr4vy.app" },
         };
 
         public ISpeakeasyHttpClient Client;
@@ -56,17 +56,17 @@ namespace Gr4vy
             ServerName = null;
             ServerVariables = new Dictionary<SDKConfig.Server, Dictionary<string, string>>()
             {
-                {SDKConfig.Server.Production, new Dictionary<string, string>()
+                {SDKConfig.Server.Sandbox, new Dictionary<string, string>()
                 {
                     {"id", "example"},
                 }},
-                {SDKConfig.Server.Sandbox, new Dictionary<string, string>()
+                {SDKConfig.Server.Production, new Dictionary<string, string>()
                 {
                     {"id", "example"},
                 }},
             };
             MerchantAccountId = null;
-            UserAgent = "speakeasy-sdk/csharp 1.0.4 2.638.1 1.0.0 Gr4vy";
+            UserAgent = "speakeasy-sdk/csharp 1.1.0 2.648.5 1.0.0 Gr4vy";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;
@@ -88,7 +88,7 @@ namespace Gr4vy
             }
             if (this.ServerName is null)
             {
-                this.ServerName = SDKConfig.Server.Production;
+                this.ServerName = SDKConfig.Server.Sandbox;
             }
             else if (!SDKConfig.ServerMap.ContainsKey(this.ServerName.Value))
             {
