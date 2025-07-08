@@ -113,24 +113,6 @@ namespace Gr4vy.Models.Components
         public string? MastercardNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
-        /// An optional endpoint URL to deliver webhook notifications to.
-        /// </summary>
-        [JsonProperty("outbound_webhook_url")]
-        public string? OutboundWebhookUrl { get; set; } = null;
-
-        /// <summary>
-        /// The optional username to use when `outbound_webhook_url` is configured and requires basic authentication.
-        /// </summary>
-        [JsonProperty("outbound_webhook_username")]
-        public string? OutboundWebhookUsername { get; set; } = null;
-
-        /// <summary>
-        /// The optional password to use when `outbound_webhook_url` is configured and requires basic authentication
-        /// </summary>
-        [JsonProperty("outbound_webhook_password")]
-        public string? OutboundWebhookPassword { get; set; } = null;
-
-        /// <summary>
         /// The ID for the merchant account.
         /// </summary>
         [JsonProperty("id")]

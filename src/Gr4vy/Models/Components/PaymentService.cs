@@ -109,7 +109,7 @@ namespace Gr4vy.Models.Components
         /// An object containing a key for each supported card schemes, and for each key an object with the 3DS profile for this service for that scheme.
         /// </summary>
         [JsonProperty("merchant_profile")]
-        public Dictionary<string, MerchantProfileSchemeSummary>? MerchantProfile { get; set; } = null;
+        public Dictionary<string, MerchantProfileSchemeSummary?>? MerchantProfile { get; set; } = null;
 
         /// <summary>
         /// The URL that needs to be configured with this payment service as the receiving endpoint for webhooks from the service to our system. Currently, we dp not yet automatically register webhooks on setup, and therefore webhooks need to be registered manually by the merchant.
