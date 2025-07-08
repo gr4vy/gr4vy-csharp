@@ -36,24 +36,6 @@ namespace Gr4vy.Models.Components
         public string DisplayName { get; set; } = default!;
 
         /// <summary>
-        /// An optional endpoint URL to deliver webhook notifications to.
-        /// </summary>
-        [JsonProperty("outbound_webhook_url")]
-        public string? OutboundWebhookUrl { get; set; } = null;
-
-        /// <summary>
-        /// The optional username to use when `outbound_webhook_url` is configured and requires basic authentication.
-        /// </summary>
-        [JsonProperty("outbound_webhook_username")]
-        public string? OutboundWebhookUsername { get; set; } = null;
-
-        /// <summary>
-        /// The optional password to use when `outbound_webhook_url` is configured and requires basic authentication
-        /// </summary>
-        [JsonProperty("outbound_webhook_password")]
-        public string? OutboundWebhookPassword { get; set; } = null;
-
-        /// <summary>
         /// Client key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it&apos;s set to null, the Account Updater service doesn&apos;t get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
         [JsonProperty("loon_client_key")]

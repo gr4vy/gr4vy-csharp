@@ -3,7 +3,7 @@
   <PropertyGroup>
     <IsPackable>true</IsPackable>
     <PackageId>Gr4vy</PackageId>
-    <Version>1.1.1</Version>
+    <Version>1.1.2</Version>
     <TargetFramework>net8.0</TargetFramework>
     <Authors>Gr4vy</Authors>
     <Copyright>Copyright (c) Gr4vy 2025</Copyright>

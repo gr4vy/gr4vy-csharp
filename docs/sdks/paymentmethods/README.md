@@ -80,6 +80,7 @@ Store a new payment method.
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 
 var sdk = new Gr4vySDK(
     merchantAccountId: "default",

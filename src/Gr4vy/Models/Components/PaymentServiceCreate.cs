@@ -78,7 +78,7 @@ namespace Gr4vy.Models.Components
         /// An object containing a key for each supported card schemes, and for each key an object with the 3DS profile for this service for that scheme.
         /// </summary>
         [JsonProperty("merchant_profile")]
-        public Dictionary<string, MerchantProfileScheme>? MerchantProfile { get; set; } = null;
+        public Dictionary<string, MerchantProfileScheme?>? MerchantProfile { get; set; } = null;
 
         /// <summary>
         /// Defines if this payment service support payment method tokenization.

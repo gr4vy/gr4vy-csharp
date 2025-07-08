@@ -283,7 +283,7 @@ namespace Gr4vy.Models.Components
         /// A list of additional identifiers that we may keep track of to manage this transaction. This may include the authorization ID, capture ID, and processor ID, as well as an undefined list of additional identifiers.
         /// </summary>
         [JsonProperty("additional_identifiers")]
-        public Dictionary<string, string>? AdditionalIdentifiers { get; set; }
+        public Dictionary<string, string?>? AdditionalIdentifiers { get; set; }
 
         /// <summary>
         /// Additional information about the transaction stored as key-value pairs.
