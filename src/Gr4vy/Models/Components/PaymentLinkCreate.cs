@@ -136,9 +136,9 @@ namespace Gr4vy.Models.Components
         public Dictionary<string, object>? Metadata { get; set; } = null;
 
         /// <summary>
-        /// The payment source for the payment link.
+        /// The way payment method information made it to this transaction.
         /// </summary>
         [JsonProperty("payment_source")]
-        public string? PaymentSource { get; set; } = "ecommerce";
+        public string? PaymentSource { get; set; }
     }
 }
