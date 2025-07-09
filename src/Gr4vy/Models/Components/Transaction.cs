@@ -232,7 +232,7 @@ namespace Gr4vy.Models.Components
         public string? AntiFraudDecision { get; set; } = null;
 
         /// <summary>
-        /// The source of the transaction.
+        /// The way payment method information made it to this transaction.
         /// </summary>
         [JsonProperty("payment_source")]
         public string PaymentSource { get; set; } = default!;

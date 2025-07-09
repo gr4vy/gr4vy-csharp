@@ -124,10 +124,10 @@ namespace Gr4vy.Models.Components
         public bool? MerchantInitiated { get; set; } = false;
 
         /// <summary>
-        /// The use-case for the the transaction.
+        /// The way payment method information made it to this transaction.
         /// </summary>
         [JsonProperty("payment_source")]
-        public string? PaymentSource { get; set; } = "ecommerce";
+        public string? PaymentSource { get; set; }
 
         /// <summary>
         /// The airline addendum data which describes the airline booking associated with this transaction.
