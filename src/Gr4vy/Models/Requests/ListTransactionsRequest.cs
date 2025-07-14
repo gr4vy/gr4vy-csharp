@@ -137,10 +137,10 @@ namespace Gr4vy.Models.Requests
         public string? PaymentMethodLabel { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have a payment method with a scheme that matches with the provided value.
+        /// Filters for transactions where the `payment_method_scheme` matches one of the provided values.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_method_scheme")]
-        public string? PaymentMethodScheme { get; set; } = null;
+        public List<string>? PaymentMethodScheme { get; set; } = null;
 
         /// <summary>
         /// Filters for transactions that have a payment method with a country that matches with the provided value.
