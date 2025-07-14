@@ -70,7 +70,16 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     },
     PaymentMethodId = "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     PaymentMethodLabel = "1234",
-    PaymentMethodScheme = "[\"visa\"]",
+    PaymentMethodScheme = new List<string>() {
+        "[",
+        "\"",
+        "v",
+        "i",
+        "s",
+        "a",
+        "\"",
+        "]",
+    },
     PaymentMethodCountry = "[\"US\"]",
     PaymentMethodFingerprint = "a50b85c200ee0795d6fd33a5c66f37a4564f554355c5b46a756aac485dd168a4",
     Method = new List<string>() {
