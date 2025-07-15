@@ -366,6 +366,7 @@ catch(ArgumentException ex) {
 * [List](docs/sdks/transactions/README.md#list) - List transactions
 * [Create](docs/sdks/transactions/README.md#create) - Create transaction
 * [Get](docs/sdks/transactions/README.md#get) - Get transaction
+* [Update](docs/sdks/transactions/README.md#update) - Manually update a transaction
 * [Capture](docs/sdks/transactions/README.md#capture) - Capture transaction
 * [Void](docs/sdks/transactions/README.md#void) - Void transaction
 * [Sync](docs/sdks/transactions/README.md#sync) - Sync transaction
