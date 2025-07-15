@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 31511edcd1708efd7a15726cf9f3a016
+  docChecksum: 73bb344f94f988e2257dc2526d462385
   docVersion: 1.0.0
-  speakeasyVersion: 1.581.0
-  generationVersion: 2.656.5
-  releaseVersion: 1.1.5
-  configChecksum: b0eb01a025934a82a4bc9412fd1509b9
+  speakeasyVersion: 1.581.2
+  generationVersion: 2.656.9
+  releaseVersion: 1.1.6
+  configChecksum: 8a5e7cb9a927e812e3decf9bc666a420
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -205,6 +205,7 @@ generatedFiles:
   - docs/Models/Components/TransactionSummaries.md
   - docs/Models/Components/TransactionSummary.md
   - docs/Models/Components/TransactionThreeDSecureSummary.md
+  - docs/Models/Components/TransactionUpdate.md
   - docs/Models/Components/TransactionsReportSpec.md
   - docs/Models/Components/ValidationError.md
   - docs/Models/Components/VerifyCredentials.md
@@ -323,6 +324,7 @@ generatedFiles:
   - docs/Models/Requests/UpdateMerchantAccountRequest.md
   - docs/Models/Requests/UpdatePaymentServiceRequest.md
   - docs/Models/Requests/UpdateReportRequest.md
+  - docs/Models/Requests/UpdateTransactionRequest.md
   - docs/Models/Requests/VerifyPaymentServiceCredentialsRequest.md
   - docs/Models/Requests/VoidTransactionRequest.md
   - docs/sdks/accountupdater/README.md
@@ -549,6 +551,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/TransactionSummaries.cs
   - src/Gr4vy/Models/Components/TransactionSummary.cs
   - src/Gr4vy/Models/Components/TransactionThreeDSecureSummary.cs
+  - src/Gr4vy/Models/Components/TransactionUpdate.cs
   - src/Gr4vy/Models/Components/TransactionsReportSpec.cs
   - src/Gr4vy/Models/Components/ValidationError.cs
   - src/Gr4vy/Models/Components/VerifyCredentials.cs
@@ -668,6 +671,7 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/UpdateMerchantAccountRequest.cs
   - src/Gr4vy/Models/Requests/UpdatePaymentServiceRequest.cs
   - src/Gr4vy/Models/Requests/UpdateReportRequest.cs
+  - src/Gr4vy/Models/Requests/UpdateTransactionRequest.cs
   - src/Gr4vy/Models/Requests/VerifyPaymentServiceCredentialsRequest.cs
   - src/Gr4vy/Models/Requests/VoidTransactionRequest.cs
   - src/Gr4vy/NetworkTokens.cs
@@ -4043,6 +4047,40 @@ examples:
       responses:
         "200":
           application/json: {"items": []}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  update_transaction:
+    speakeasy-default-update-transaction:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"type": "transaction", "id": "7099948d-7286-47e4-aad8-b68f7eb44591", "reconciliation_id": "default", "merchant_account_id": "default", "currency": "EUR", "amount": 1299, "status": "<value>", "authorized_amount": 1299, "captured_amount": 1299, "refunded_amount": 1299, "settled_amount": 1100, "settled": true, "intent": "<value>", "pending_review": false, "gift_card_redemptions": [], "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "payment_source": "<value>", "merchant_initiated": true, "is_subsequent_payment": false, "intent_outcome": "<value>", "multi_tender": true, "account_funding_transaction": true}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
