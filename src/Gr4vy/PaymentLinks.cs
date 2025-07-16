@@ -68,8 +68,8 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.1.6";
-        private const string _sdkGenVersion = "2.656.9";
+        private const string _sdkVersion = "1.1.7";
+        private const string _sdkGenVersion = "2.657.1";
         private const string _openapiDocVersion = "1.0.0";
 
         public PaymentLinks(SDKConfig config)
@@ -402,7 +402,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<CollectionPaymentLink>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
+                    var obj = ResponseBodyDeserializer.Deserialize<Models.Components.PaymentLinks>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Include);
                     var result = obj!;
                     var response = new ListPaymentLinksResponse()
                     {

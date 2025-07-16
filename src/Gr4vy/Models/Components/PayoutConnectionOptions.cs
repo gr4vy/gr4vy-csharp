@@ -13,13 +13,13 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
-    public class ConnectionOptions
+    public class PayoutConnectionOptions
     {
 
         /// <summary>
         /// Custom options for `checkout-card` payment service.
         /// </summary>
         [JsonProperty("checkout-card")]
-        public CheckoutCardConnectionOptions? CheckoutCard { get; set; } = null;
+        public CheckoutPayoutOptions? CheckoutCard { get; set; } = null;
     }
 }

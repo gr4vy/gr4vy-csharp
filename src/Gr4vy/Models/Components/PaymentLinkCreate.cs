@@ -34,7 +34,7 @@ namespace Gr4vy.Models.Components
         /// Connection options for the payment link.
         /// </summary>
         [JsonProperty("connection_options")]
-        public Dictionary<string, Dictionary<string, object>>? ConnectionOptions { get; set; } = null;
+        public TransactionConnectionOptions? ConnectionOptions { get; set; } = null;
 
         /// <summary>
         /// The merchant reference for the payment link.

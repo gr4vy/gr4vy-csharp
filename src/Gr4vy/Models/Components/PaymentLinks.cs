@@ -14,7 +14,7 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System.Collections.Generic;
     
-    public class CollectionPaymentLink
+    public class PaymentLinks
     {
 
         /// <summary>

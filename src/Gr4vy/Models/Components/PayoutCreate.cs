@@ -88,6 +88,6 @@ namespace Gr4vy.Models.Components
         /// Optional fields for processing payouts on specific payment services.
         /// </summary>
         [JsonProperty("connection_options")]
-        public ConnectionOptions? ConnectionOptions { get; set; } = null;
+        public PayoutConnectionOptions? ConnectionOptions { get; set; } = null;
     }
 }
