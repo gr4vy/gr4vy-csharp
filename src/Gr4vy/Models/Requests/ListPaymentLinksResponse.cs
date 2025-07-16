@@ -19,6 +19,6 @@ namespace Gr4vy.Models.Requests
         public Func<Task<ListPaymentLinksResponse?>>? Next {get;set;}
 
         [SpeakeasyMetadata("")]
-        public CollectionPaymentLink Result { get; set; } = default!;
+        public Models.Components.PaymentLinks Result { get; set; } = default!;
     }
 }

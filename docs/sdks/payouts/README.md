@@ -5,9 +5,9 @@
 
 ### Available Operations
 
-* [List](#list) - List payouts created.
-* [Create](#create) - Create a payout.
-* [Get](#get) - Get a payout.
+* [List](#list) - List payouts created
+* [Create](#create) - Create a payout
+* [Get](#get) - Get a payout
 
 ## List
 
@@ -128,7 +128,7 @@ var res = await sdk.Payouts.CreateAsync(payoutCreate: new PayoutCreate() {
 
 ## Get
 
-Retreives a payout.
+Retrieves a payout.
 
 ### Example Usage
 

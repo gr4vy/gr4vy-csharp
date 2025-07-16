@@ -336,9 +336,9 @@ catch(ArgumentException ex) {
 
 ### [Payouts](docs/sdks/payouts/README.md)
 
-* [List](docs/sdks/payouts/README.md#list) - List payouts created.
-* [Create](docs/sdks/payouts/README.md#create) - Create a payout.
-* [Get](docs/sdks/payouts/README.md#get) - Get a payout.
+* [List](docs/sdks/payouts/README.md#list) - List payouts created
+* [Create](docs/sdks/payouts/README.md#create) - Create a payout
+* [Get](docs/sdks/payouts/README.md#get) - Get a payout
 
 ### [Refunds](docs/sdks/refunds/README.md)
 

@@ -28,7 +28,7 @@ namespace Gr4vy
     {
 
         /// <summary>
-        /// List payouts created.
+        /// List payouts created
         /// 
         /// <remarks>
         /// Returns a list of payouts made.
@@ -37,7 +37,7 @@ namespace Gr4vy
         Task<ListPayoutsResponse> ListAsync(string? cursor = null, long? limit = 20, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Create a payout.
+        /// Create a payout
         /// 
         /// <remarks>
         /// Creates a new payout.
@@ -46,10 +46,10 @@ namespace Gr4vy
         Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, string? merchantAccountId = null);
 
         /// <summary>
-        /// Get a payout.
+        /// Get a payout
         /// 
         /// <remarks>
-        /// Retreives a payout.
+        /// Retrieves a payout.
         /// </remarks>
         /// </summary>
         Task<PayoutSummary> GetAsync(string payoutId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
@@ -59,8 +59,8 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.1.6";
-        private const string _sdkGenVersion = "2.656.9";
+        private const string _sdkVersion = "1.1.7";
+        private const string _sdkGenVersion = "2.657.1";
         private const string _openapiDocVersion = "1.0.0";
 
         public Payouts(SDKConfig config)

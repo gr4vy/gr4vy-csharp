@@ -12,19 +12,19 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
-    public class CheckoutCardConnectionOptions
+    public class MockCardMerchantAdviceCodeOptions
     {
 
         /// <summary>
-        /// The processing channel to be used for the payment.
+        /// The MAC to return for this request.
         /// </summary>
-        [JsonProperty("processing_channel_id")]
-        public string ProcessingChannelId { get; set; } = default!;
+        [JsonProperty("result")]
+        public string? Result { get; set; } = null;
 
         /// <summary>
-        /// The ID of the currency account that will fund the payout.
+        /// When set, the MAC is only returned if the card number matches this account number.
         /// </summary>
-        [JsonProperty("source_id")]
-        public string SourceId { get; set; } = default!;
+        [JsonProperty("account_number", NullValueHandling = NullValueHandling.Include)]
+        public string? AccountNumber { get; set; }
     }
 }
