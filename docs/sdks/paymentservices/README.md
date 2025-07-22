@@ -11,7 +11,7 @@
 * [Update](#update) - Configure a payment service
 * [Delete](#delete) - Delete a configured payment service
 * [Verify](#verify) - Verify payment service credentials
-* [Session](#session) - Create a session for apayment service definition
+* [Session](#session) - Create a session for a payment service definition
 
 ## List
 
