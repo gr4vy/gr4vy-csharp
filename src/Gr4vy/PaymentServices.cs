@@ -82,7 +82,7 @@ namespace Gr4vy
         Task<object> VerifyAsync(VerifyCredentials verifyCredentials, string? merchantAccountId = null);
 
         /// <summary>
-        /// Create a session for apayment service definition
+        /// Create a session for a payment service definition
         /// 
         /// <remarks>
         /// Creates a session for a payment service that supports sessions.
@@ -95,8 +95,8 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.1.8";
-        private const string _sdkGenVersion = "2.658.3";
+        private const string _sdkVersion = "1.1.9";
+        private const string _sdkGenVersion = "2.660.0";
         private const string _openapiDocVersion = "1.0.0";
 
         public PaymentServices(SDKConfig config)

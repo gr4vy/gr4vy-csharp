@@ -322,7 +322,7 @@ catch(ArgumentException ex) {
 
 * [List](docs/sdks/paymentservicedefinitions/README.md#list) - List payment service definitions
 * [Get](docs/sdks/paymentservicedefinitions/README.md#get) - Get a payment service definition
-* [Session](docs/sdks/paymentservicedefinitions/README.md#session) - Create a session for apayment service definition
+* [Session](docs/sdks/paymentservicedefinitions/README.md#session) - Create a session for a payment service definition
 
 ### [PaymentServices](docs/sdks/paymentservices/README.md)
 
@@ -332,7 +332,7 @@ catch(ArgumentException ex) {
 * [Update](docs/sdks/paymentservices/README.md#update) - Configure a payment service
 * [Delete](docs/sdks/paymentservices/README.md#delete) - Delete a configured payment service
 * [Verify](docs/sdks/paymentservices/README.md#verify) - Verify payment service credentials
-* [Session](docs/sdks/paymentservices/README.md#session) - Create a session for apayment service definition
+* [Session](docs/sdks/paymentservices/README.md#session) - Create a session for a payment service definition
 
 ### [Payouts](docs/sdks/payouts/README.md)
 

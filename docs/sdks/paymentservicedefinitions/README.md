@@ -7,7 +7,7 @@
 
 * [List](#list) - List payment service definitions
 * [Get](#get) - Get a payment service definition
-* [Session](#session) - Create a session for apayment service definition
+* [Session](#session) - Create a session for a payment service definition
 
 ## List
 
