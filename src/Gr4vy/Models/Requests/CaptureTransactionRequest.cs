@@ -22,12 +22,18 @@ namespace Gr4vy.Models.Requests
         public string TransactionId { get; set; } = default!;
 
         /// <summary>
+        /// The preferred resource type in the response.
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=prefer")]
+        public string? Prefer { get; set; } = null;
+
+        /// <summary>
         /// The ID of the merchant account to use for this request.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-gr4vy-merchant-account-id")]
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public TransactionCapture TransactionCapture { get; set; } = default!;
+        public TransactionCaptureCreate TransactionCaptureCreate { get; set; } = default!;
     }
 }

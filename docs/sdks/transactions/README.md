@@ -325,7 +325,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Transactions.CaptureAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
-    transactionCapture: new TransactionCapture() {}
+    transactionCaptureCreate: new TransactionCaptureCreate() {}
 );
 
 // handle response
@@ -333,15 +333,16 @@ var res = await sdk.Transactions.CaptureAsync(
 
 ### Parameters
 
-| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         | Example                                                             |
-| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
-| `TransactionId`                                                     | *string*                                                            | :heavy_check_mark:                                                  | The ID of the transaction                                           | 7099948d-7286-47e4-aad8-b68f7eb44591                                |
-| `TransactionCapture`                                                | [TransactionCapture](../../Models/Components/TransactionCapture.md) | :heavy_check_mark:                                                  | N/A                                                                 |                                                                     |
-| `MerchantAccountId`                                                 | *string*                                                            | :heavy_minus_sign:                                                  | The ID of the merchant account to use for this request.             | default                                                             |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `TransactionId`                                                                 | *string*                                                                        | :heavy_check_mark:                                                              | The ID of the transaction                                                       | 7099948d-7286-47e4-aad8-b68f7eb44591                                            |
+| `TransactionCaptureCreate`                                                      | [TransactionCaptureCreate](../../Models/Components/TransactionCaptureCreate.md) | :heavy_check_mark:                                                              | N/A                                                                             |                                                                                 |
+| `Prefer`                                                                        | *string*                                                                        | :heavy_minus_sign:                                                              | The preferred resource type in the response.                                    | resource=transaction                                                            |
+| `MerchantAccountId`                                                             | *string*                                                                        | :heavy_minus_sign:                                                              | The ID of the merchant account to use for this request.                         | default                                                                         |
 
 ### Response
 
-**[Transaction](../../Models/Components/Transaction.md)**
+**[ResponseCaptureTransaction](../../Models/Requests/ResponseCaptureTransaction.md)**
 
 ### Errors
 
