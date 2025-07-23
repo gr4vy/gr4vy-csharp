@@ -13,22 +13,40 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
-    /// <summary>
-    /// Request body for capturing an authorized transaction.
-    /// </summary>
     public class TransactionCapture
     {
 
         /// <summary>
-        /// The amount to capture, in the smallest currency unit (e.g., cents). This must be less than or equal to the authorized amount, unless over-capture is available.
+        /// Always `transaction-capture`.
         /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; } = null;
+        [JsonProperty("type")]
+        public string Type { get; } = "transaction-capture";
+
+        [JsonProperty("status")]
+        public string Status { get; set; } = default!;
 
         /// <summary>
-        /// The airline data to submit to the payment service during the capture call.
+        /// The standardized error code set by Gr4vy.
         /// </summary>
-        [JsonProperty("airline")]
-        public Airline? Airline { get; set; } = null;
+        [JsonProperty("code", NullValueHandling = NullValueHandling.Include)]
+        public string? Code { get; set; }
+
+        /// <summary>
+        /// This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
+        /// </summary>
+        [JsonProperty("raw_response_code", NullValueHandling = NullValueHandling.Include)]
+        public string? RawResponseCode { get; set; }
+
+        /// <summary>
+        /// This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
+        /// </summary>
+        [JsonProperty("raw_response_description", NullValueHandling = NullValueHandling.Include)]
+        public string? RawResponseDescription { get; set; }
+
+        /// <summary>
+        /// A full transaction resource.
+        /// </summary>
+        [JsonProperty("transaction")]
+        public Transaction Transaction { get; set; } = default!;
     }
 }

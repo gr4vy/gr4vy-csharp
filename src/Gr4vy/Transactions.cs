@@ -73,7 +73,7 @@ namespace Gr4vy
         /// Captures a previously authorized transaction. You can capture the full or a partial amount, as long as it does not exceed the authorized amount (unless over-capture is enabled).
         /// </remarks>
         /// </summary>
-        Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, string? merchantAccountId = null);
+        Task<ResponseCaptureTransaction> CaptureAsync(string transactionId, TransactionCaptureCreate transactionCaptureCreate, string? prefer = null, string? merchantAccountId = null);
 
         /// <summary>
         /// Void transaction
@@ -98,8 +98,8 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.1.9";
-        private const string _sdkGenVersion = "2.660.0";
+        private const string _sdkVersion = "1.1.10";
+        private const string _sdkGenVersion = "2.661.4";
         private const string _openapiDocVersion = "1.0.0";
         public ITransactionsRefunds Refunds { get; private set; }
         public IEvents Events { get; private set; }
@@ -1062,12 +1062,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> CaptureAsync(string transactionId, TransactionCapture transactionCapture, string? merchantAccountId = null)
+        public async Task<ResponseCaptureTransaction> CaptureAsync(string transactionId, TransactionCaptureCreate transactionCaptureCreate, string? prefer = null, string? merchantAccountId = null)
         {
             var request = new CaptureTransactionRequest()
             {
                 TransactionId = transactionId,
-                TransactionCapture = transactionCapture,
+                TransactionCaptureCreate = transactionCaptureCreate,
+                Prefer = prefer,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1079,7 +1080,7 @@ namespace Gr4vy
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "TransactionCapture", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "TransactionCaptureCreate", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -1130,7 +1131,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Transaction>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<ResponseCaptureTransaction>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 
