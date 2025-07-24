@@ -73,7 +73,7 @@ namespace Gr4vy
         /// Captures a previously authorized transaction. You can capture the full or a partial amount, as long as it does not exceed the authorized amount (unless over-capture is enabled).
         /// </remarks>
         /// </summary>
-        Task<ResponseCaptureTransaction> CaptureAsync(string transactionId, TransactionCaptureCreate transactionCaptureCreate, string? prefer = null, string? merchantAccountId = null);
+        Task<ResponseCaptureTransaction> CaptureAsync(string transactionId, TransactionCaptureCreate transactionCaptureCreate, List<string>? prefer = null, string? merchantAccountId = null);
 
         /// <summary>
         /// Void transaction
@@ -82,7 +82,7 @@ namespace Gr4vy
         /// Voids a previously authorized transaction. If the transaction was not yet successfully authorized, or was already captured, the void will not be processed. This operation releases the hold on the buyer&apos;s funds. Captured transactions can be refunded instead.
         /// </remarks>
         /// </summary>
-        Task<Transaction> VoidAsync(string transactionId, string? merchantAccountId = null);
+        Task<ResponseVoidTransaction> VoidAsync(string transactionId, List<string>? prefer = null, string? merchantAccountId = null);
 
         /// <summary>
         /// Sync transaction
@@ -98,8 +98,8 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.1.11";
-        private const string _sdkGenVersion = "2.662.0";
+        private const string _sdkVersion = "1.1.12";
+        private const string _sdkGenVersion = "2.663.0";
         private const string _openapiDocVersion = "1.0.0";
         public ITransactionsRefunds Refunds { get; private set; }
         public IEvents Events { get; private set; }
@@ -1062,7 +1062,7 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<ResponseCaptureTransaction> CaptureAsync(string transactionId, TransactionCaptureCreate transactionCaptureCreate, string? prefer = null, string? merchantAccountId = null)
+        public async Task<ResponseCaptureTransaction> CaptureAsync(string transactionId, TransactionCaptureCreate transactionCaptureCreate, List<string>? prefer = null, string? merchantAccountId = null)
         {
             var request = new CaptureTransactionRequest()
             {
@@ -1269,11 +1269,12 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<Transaction> VoidAsync(string transactionId, string? merchantAccountId = null)
+        public async Task<ResponseVoidTransaction> VoidAsync(string transactionId, List<string>? prefer = null, string? merchantAccountId = null)
         {
             var request = new VoidTransactionRequest()
             {
                 TransactionId = transactionId,
+                Prefer = prefer,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -1330,7 +1331,7 @@ namespace Gr4vy
             {
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
-                    var obj = ResponseBodyDeserializer.Deserialize<Transaction>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
+                    var obj = ResponseBodyDeserializer.Deserialize<ResponseVoidTransaction>(await httpResponse.Content.ReadAsStringAsync(), NullValueHandling.Ignore);
                     return obj!;
                 }
 

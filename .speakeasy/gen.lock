@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 69077e3bdca368be127655b468a6a327
+  docChecksum: 1328610d4ee1083201f9299b45bbd6b0
   docVersion: 1.0.0
-  speakeasyVersion: 1.587.2
-  generationVersion: 2.662.0
-  releaseVersion: 1.1.11
-  configChecksum: 4aea4e5ac4d32cf2cba1bb4cd38e8b0b
+  speakeasyVersion: 1.588.0
+  generationVersion: 2.663.0
+  releaseVersion: 1.1.12
+  configChecksum: edac0a7af9a6cb44007b12105048a5c0
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -245,6 +245,7 @@ generatedFiles:
   - docs/Models/Components/TransactionSummary.md
   - docs/Models/Components/TransactionThreeDSecureSummary.md
   - docs/Models/Components/TransactionUpdate.md
+  - docs/Models/Components/TransactionVoid.md
   - docs/Models/Components/TransactionsReportSpec.md
   - docs/Models/Components/TravelHubCustomData.md
   - docs/Models/Components/TravelhubOptions.md
@@ -360,6 +361,7 @@ generatedFiles:
   - docs/Models/Requests/ListTransactionsResponse.md
   - docs/Models/Requests/RegisterDigitalWalletDomainRequest.md
   - docs/Models/Requests/ResponseCaptureTransaction.md
+  - docs/Models/Requests/ResponseVoidTransaction.md
   - docs/Models/Requests/ResumePaymentMethodNetworkTokenRequest.md
   - docs/Models/Requests/SuspendPaymentMethodNetworkTokenRequest.md
   - docs/Models/Requests/SyncTransactionRequest.md
@@ -638,6 +640,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/TransactionSummary.cs
   - src/Gr4vy/Models/Components/TransactionThreeDSecureSummary.cs
   - src/Gr4vy/Models/Components/TransactionUpdate.cs
+  - src/Gr4vy/Models/Components/TransactionVoid.cs
   - src/Gr4vy/Models/Components/TransactionsReportSpec.cs
   - src/Gr4vy/Models/Components/TravelHubCustomData.cs
   - src/Gr4vy/Models/Components/TravelhubOptions.cs
@@ -754,6 +757,7 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/ListTransactionsResponse.cs
   - src/Gr4vy/Models/Requests/RegisterDigitalWalletDomainRequest.cs
   - src/Gr4vy/Models/Requests/ResponseCaptureTransaction.cs
+  - src/Gr4vy/Models/Requests/ResponseVoidTransaction.cs
   - src/Gr4vy/Models/Requests/ResumePaymentMethodNetworkTokenRequest.cs
   - src/Gr4vy/Models/Requests/SuspendPaymentMethodNetworkTokenRequest.cs
   - src/Gr4vy/Models/Requests/SyncTransactionRequest.cs
