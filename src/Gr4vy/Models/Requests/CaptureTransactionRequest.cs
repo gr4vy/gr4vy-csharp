@@ -11,6 +11,7 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
+    using System.Collections.Generic;
     
     public class CaptureTransactionRequest
     {
@@ -25,7 +26,7 @@ namespace Gr4vy.Models.Requests
         /// The preferred resource type in the response.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=prefer")]
-        public string? Prefer { get; set; } = null;
+        public List<string>? Prefer { get; set; } = null;
 
         /// <summary>
         /// The ID of the merchant account to use for this request.

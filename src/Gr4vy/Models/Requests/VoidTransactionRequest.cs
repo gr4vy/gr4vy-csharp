@@ -10,6 +10,7 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
+    using System.Collections.Generic;
     
     public class VoidTransactionRequest
     {
@@ -19,6 +20,12 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=transaction_id")]
         public string TransactionId { get; set; } = default!;
+
+        /// <summary>
+        /// The preferred resource type in the response.
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=prefer")]
+        public List<string>? Prefer { get; set; } = null;
 
         /// <summary>
         /// The ID of the merchant account to use for this request.
