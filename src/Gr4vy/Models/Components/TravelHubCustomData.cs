@@ -31,6 +31,6 @@ namespace Gr4vy.Models.Components
         /// The type of the custom data field.
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; set; } = default!;
+        public string? Type { get; set; } = null;
     }
 }
