@@ -19,6 +19,7 @@ Returns a paginated list of transactions for the merchant account, sorted by mos
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_transactions" method="get" path="/transactions" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -150,6 +151,7 @@ Create a new transaction using a supported payment method. If additional buyer a
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_transaction" method="post" path="/transactions" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -212,6 +214,7 @@ Retrieve the details of a transaction by its unique identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_transaction" method="get" path="/transactions/{transaction_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -261,6 +264,7 @@ Manually updates a transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="update_transaction" method="put" path="/transactions/{transaction_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -314,6 +318,7 @@ Captures a previously authorized transaction. You can capture the full or a part
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="capture_transaction" method="post" path="/transactions/{transaction_id}/capture" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -368,6 +373,7 @@ Voids a previously authorized transaction. If the transaction was not yet succes
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="void_transaction" method="post" path="/transactions/{transaction_id}/void" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -418,6 +424,7 @@ Synchronizes the status of a transaction with the underlying payment service pro
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="sync_transaction" method="post" path="/transactions/{transaction_id}/sync" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

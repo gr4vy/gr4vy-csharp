@@ -14,6 +14,7 @@ Register a digital wallet domain (Apple Pay only).
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="register_digital_wallet_domain" method="post" path="/digital-wallets/{digital_wallet_id}/domains" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -69,6 +70,7 @@ Remove a digital wallet domain (Apple Pay only).
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="unregister_digital_wallet_domain" method="delete" path="/digital-wallets/{digital_wallet_id}/domains" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

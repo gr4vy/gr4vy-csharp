@@ -15,6 +15,7 @@ List refunds for a transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_transaction_refunds" method="get" path="/transactions/{transaction_id}/refunds" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -64,6 +65,7 @@ Create a refund for a transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_transaction_refund" method="post" path="/transactions/{transaction_id}/refunds" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -117,6 +119,7 @@ Fetch refund for a transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_transaction_refund" method="get" path="/transactions/{transaction_id}/refunds/{refund_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

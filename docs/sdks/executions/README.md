@@ -15,6 +15,7 @@ List all executions of a specific report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_report_executions" method="get" path="/reports/{report_id}/executions" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -75,6 +76,7 @@ Creates a download URL for a specific execution of a report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_report_execution_url" method="post" path="/reports/{report_id}/executions/{report_execution_id}/url" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -128,6 +130,7 @@ Fetch a specific executed report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_report_execution" method="get" path="/report-executions/{report_execution_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

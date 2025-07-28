@@ -13,6 +13,7 @@ Create a refund for all instruments on a transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_full_transaction_refund" method="post" path="/transactions/{transaction_id}/refunds/all" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

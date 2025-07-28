@@ -16,6 +16,7 @@ List all stored payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_payment_methods" method="get" path="/payment-methods" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -77,6 +78,7 @@ Store a new payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_payment_method" method="post" path="/payment-methods" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -131,6 +133,7 @@ Retrieve a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_payment_method" method="get" path="/payment-methods/{payment_method_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -180,6 +183,7 @@ Delete a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="delete_payment_method" method="delete" path="/payment-methods/{payment_method_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

@@ -13,6 +13,7 @@ Fetch a list of the definitions of each card scheme.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_card_scheme_definitions" method="get" path="/card-scheme-definitions" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

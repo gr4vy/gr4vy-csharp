@@ -14,6 +14,7 @@ Retrieve a specific settlement for a transaction by its unique identifier.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_transaction_settlement" method="get" path="/transactions/{transaction_id}/settlements/{settlement_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -67,6 +68,7 @@ List all settlements for a specific transaction.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_transaction_settlements" method="get" path="/transactions/{transaction_id}/settlements" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

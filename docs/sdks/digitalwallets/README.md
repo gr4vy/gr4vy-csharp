@@ -17,6 +17,7 @@ Register a digital wallet like Apple Pay, Google Pay, or Click to Pay.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="configure_digital_wallet" method="post" path="/digital-wallets" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -70,6 +71,7 @@ List configured digital wallets.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_digital_wallets" method="get" path="/digital-wallets" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -118,6 +120,7 @@ Fetch the details a digital wallet.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_digital_wallet" method="get" path="/digital-wallets/{digital_wallet_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -167,6 +170,7 @@ Delete a configured digital wallet.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="delete_digital_wallet" method="delete" path="/digital-wallets/{digital_wallet_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -216,6 +220,7 @@ Update a digital wallet.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="update_digital_wallet" method="put" path="/digital-wallets/{digital_wallet_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

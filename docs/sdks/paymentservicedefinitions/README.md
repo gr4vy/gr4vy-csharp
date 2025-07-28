@@ -15,6 +15,7 @@ List the definitions of each payment service that can be configured.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_payment_service_definitions" method="get" path="/payment-service-definitions" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -70,6 +71,7 @@ Get the definition of a payment service that can be configured.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_payment_service_definition" method="get" path="/payment-service-definitions/{payment_service_definition_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -115,6 +117,7 @@ Creates a session for a payment service that supports sessions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_payment_service_definition_session" method="post" path="/payment-service-definitions/{payment_service_definition_id}/sessions" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

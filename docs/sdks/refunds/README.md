@@ -13,6 +13,7 @@ Fetch a refund.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_refund" method="get" path="/refunds/{refund_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

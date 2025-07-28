@@ -13,6 +13,7 @@ List all the stored gift cards for a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_buyer_gift_cards" method="get" path="/buyers/gift-cards" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

@@ -13,6 +13,7 @@ Provision a cryptogram for a network token.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_payment_method_network_token_cryptogram" method="post" path="/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/cryptogram" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

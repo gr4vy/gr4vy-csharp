@@ -15,6 +15,7 @@ List all gateway tokens stored for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_payment_method_payment_service_tokens" method="get" path="/payment-methods/{payment_method_id}/payment-service-tokens" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -68,6 +69,7 @@ Create a gateway tokens for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_payment_method_payment_service_token" method="post" path="/payment-methods/{payment_method_id}/payment-service-tokens" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -124,6 +126,7 @@ Delete a gateway tokens for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="delete_payment_method_payment_service_token" method="delete" path="/payment-methods/{payment_method_id}/payment-service-tokens/{payment_service_token_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

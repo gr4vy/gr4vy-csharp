@@ -16,6 +16,7 @@ Create a new payment link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="add_payment_link" method="post" path="/payment-links" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -69,6 +70,7 @@ List all created payment links.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_payment_links" method="get" path="/payment-links" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -125,6 +127,7 @@ Expire an existing payment link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="expire_payment_link" method="post" path="/payment-links/{payment_link_id}/expire" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -170,6 +173,7 @@ Fetch the details for a payment link.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_payment_link" method="get" path="/payment-links/{payment_link_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

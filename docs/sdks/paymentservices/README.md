@@ -19,6 +19,7 @@ List the configured payment services.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_payment_services" method="get" path="/payment-services" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -79,6 +80,7 @@ Updates the configuration of a payment service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="update_payment_service" method="post" path="/payment-services" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -154,6 +156,7 @@ Get the details of a configured payment service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_payment_service" method="get" path="/payment-services/{payment_service_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -203,6 +206,7 @@ Configures a new payment service for use by merchants.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_payment_service" method="put" path="/payment-services/{payment_service_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -258,6 +262,7 @@ Deletes all the configuration of a payment service.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="delete_payment_service" method="delete" path="/payment-services/{payment_service_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -307,6 +312,7 @@ Verify the credentials of a configured payment service
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="verify_payment_service_credentials" method="post" path="/payment-services/verify" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -360,6 +366,7 @@ Creates a session for a payment service that supports sessions.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_payment_service_session" method="post" path="/payment-services/{payment_service_id}/sessions" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

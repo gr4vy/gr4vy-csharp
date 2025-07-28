@@ -16,6 +16,7 @@ List all merchant accounts in an instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_merchant_accounts" method="get" path="/merchant-accounts" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -73,6 +74,7 @@ Create a new merchant account in an instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_merchant_account" method="post" path="/merchant-accounts" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -124,6 +126,7 @@ Get info about a merchant account in an instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_merchant_account" method="get" path="/merchant-accounts/{merchant_account_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -169,6 +172,7 @@ Update info for a merchant account in an instance.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="update_merchant_account" method="put" path="/merchant-accounts/{merchant_account_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
