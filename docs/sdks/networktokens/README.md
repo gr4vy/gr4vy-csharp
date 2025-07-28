@@ -17,6 +17,7 @@ List all network tokens stored for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_payment_method_network_tokens" method="get" path="/payment-methods/{payment_method_id}/network-tokens" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -66,6 +67,7 @@ Provision a network token for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_payment_method_network_token" method="post" path="/payment-methods/{payment_method_id}/network-tokens" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -122,6 +124,7 @@ Suspend a network token for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="suspend_payment_method_network_token" method="post" path="/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/suspend" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -175,6 +178,7 @@ Resume a suspended network token for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="resume_payment_method_network_token" method="post" path="/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/resume" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -228,6 +232,7 @@ Delete a network token for a payment method.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="delete_payment_method_network_token" method="delete" path="/payment-methods/{payment_method_id}/network-tokens/{network_token_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

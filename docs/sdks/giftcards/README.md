@@ -16,6 +16,7 @@ Fetch details about a gift card.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_gift_card" method="get" path="/gift-cards/{gift_card_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -65,6 +66,7 @@ Removes a gift card from our system.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="delete_gift_card" method="delete" path="/gift-cards/{gift_card_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -114,6 +116,7 @@ Store a new gift card in the vault.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_gift_card" method="post" path="/gift-cards" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -166,6 +169,7 @@ Browser all gift cards.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_gift_cards" method="get" path="/gift-cards" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

@@ -17,6 +17,7 @@ Associate shipping details to a buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="add_buyer_shipping_details" method="post" path="/buyers/{buyer_id}/shipping-details" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -70,6 +71,7 @@ List all the shipping details associated to a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_buyer_shipping_details" method="get" path="/buyers/{buyer_id}/shipping-details" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -119,6 +121,7 @@ Get a buyer's shipping details.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_buyer_shipping_details" method="get" path="/buyers/{buyer_id}/shipping-details/{shipping_details_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -172,6 +175,7 @@ Update the shipping details associated to a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="update_buyer_shipping_details" method="put" path="/buyers/{buyer_id}/shipping-details/{shipping_details_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -227,6 +231,7 @@ Delete the shipping details associated to a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="delete_buyer_shipping_details" method="delete" path="/buyers/{buyer_id}/shipping-details/{shipping_details_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

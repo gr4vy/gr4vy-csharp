@@ -13,6 +13,7 @@ Schedule one or more stored cards for an account update.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_account_updater_job" method="post" path="/account-updater/jobs" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

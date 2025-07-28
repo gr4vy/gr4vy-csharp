@@ -16,6 +16,7 @@ List all configured reports that can be generated.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_reports" method="get" path="/reports" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -72,6 +73,7 @@ Create a new report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="add_report" method="post" path="/reports" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -139,6 +141,7 @@ Fetches a report by its ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_report" method="get" path="/reports/{report_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -188,6 +191,7 @@ Updates the configuration of a report.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="update_report" method="put" path="/reports/{report_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

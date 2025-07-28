@@ -16,6 +16,7 @@ Create a new checkout session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_checkout_session" method="post" path="/checkout/sessions" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -295,6 +296,7 @@ Update the information stored on a checkout session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="update_checkout_session" method="put" path="/checkout/sessions/{session_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -348,6 +350,7 @@ Retrieve the information stored on a checkout session.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_checkout_session" method="get" path="/checkout/sessions/{session_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -396,6 +399,7 @@ Delete a checkout session and all of its (PCI) data.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="delete_checkout_session" method="delete" path="/checkout/sessions/{session_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

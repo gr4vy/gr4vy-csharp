@@ -15,6 +15,7 @@ Returns a list of payouts made.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_payouts" method="get" path="/payouts" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -74,6 +75,7 @@ Creates a new payout.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="create_payout" method="post" path="/payouts" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -132,6 +134,7 @@ Retrieves a payout.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_payout" method="get" path="/payouts/{payout_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

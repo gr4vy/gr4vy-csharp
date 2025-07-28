@@ -13,6 +13,7 @@ Retrieve a paginated list of events related to processing a transaction, includi
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_transaction_events" method="get" path="/transactions/{transaction_id}/events" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

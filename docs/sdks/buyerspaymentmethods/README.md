@@ -13,6 +13,7 @@ List all the stored payment methods for a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_buyer_payment_methods" method="get" path="/buyers/payment-methods" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

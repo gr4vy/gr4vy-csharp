@@ -17,6 +17,7 @@ List all buyers or search for a specific buyer.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_buyers" method="get" path="/buyers" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -77,6 +78,7 @@ Create a new buyer record.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="add_buyer" method="post" path="/buyers" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -126,6 +128,7 @@ Fetches a buyer by its ID.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="get_buyer" method="get" path="/buyers/{buyer_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -175,6 +178,7 @@ Updates a buyer record.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="update_buyer" method="put" path="/buyers/{buyer_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -228,6 +232,7 @@ Permanently removes a buyer record.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="delete_buyer" method="delete" path="/buyers/{buyer_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

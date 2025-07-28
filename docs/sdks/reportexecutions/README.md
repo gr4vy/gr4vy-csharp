@@ -13,6 +13,7 @@ List all executed reports that have been generated.
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_all_report_executions" method="get" path="/report-executions" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;

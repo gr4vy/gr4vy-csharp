@@ -13,6 +13,7 @@ List the payment options available at checkout. filtering by country, currency, 
 
 ### Example Usage
 
+<!-- UsageSnippet language="csharp" operationID="list_payment_options" method="post" path="/payment-options" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
