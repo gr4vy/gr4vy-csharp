@@ -112,5 +112,23 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("creator")]
         public Creator? Creator { get; set; } = null;
+
+        /// <summary>
+        /// The standardized error code set by Gr4vy.
+        /// </summary>
+        [JsonProperty("error_code")]
+        public string? ErrorCode { get; set; } = null;
+
+        /// <summary>
+        /// This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
+        /// </summary>
+        [JsonProperty("raw_response_code")]
+        public string? RawResponseCode { get; set; } = null;
+
+        /// <summary>
+        ///  This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
+        /// </summary>
+        [JsonProperty("raw_response_description")]
+        public string? RawResponseDescription { get; set; } = null;
     }
 }
