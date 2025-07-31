@@ -98,8 +98,8 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.1.17";
-        private const string _sdkGenVersion = "2.667.0";
+        private const string _sdkVersion = "1.1.18";
+        private const string _sdkGenVersion = "2.668.4";
         private const string _openapiDocVersion = "1.0.0";
         public ITransactionsRefunds Refunds { get; private set; }
         public IEvents Events { get; private set; }
@@ -224,7 +224,6 @@ namespace Gr4vy
                     BuyerExternalIdentifier = request?.BuyerExternalIdentifier,
                     BuyerId = request?.BuyerId,
                     BuyerEmailAddress = request?.BuyerEmailAddress,
-                    BuyerSearch = request?.BuyerSearch,
                     IpAddress = request?.IpAddress,
                     Status = request?.Status,
                     Id = request?.Id,
@@ -257,6 +256,7 @@ namespace Gr4vy
                     IsSubsequentPayment = request?.IsSubsequentPayment,
                     MerchantInitiated = request?.MerchantInitiated,
                     Used3ds = request?.Used3ds,
+                    BuyerSearch = request?.BuyerSearch,
                     MerchantAccountId = request?.MerchantAccountId
                 };
 
