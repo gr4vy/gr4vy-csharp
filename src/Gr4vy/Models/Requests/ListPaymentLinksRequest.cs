@@ -10,6 +10,7 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
+    using System.Collections.Generic;
     
     public class ListPaymentLinksRequest
     {
@@ -25,6 +26,12 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
+
+        /// <summary>
+        /// Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_search")]
+        public List<string>? BuyerSearch { get; set; } = null;
 
         /// <summary>
         /// The ID of the merchant account to use for this request.

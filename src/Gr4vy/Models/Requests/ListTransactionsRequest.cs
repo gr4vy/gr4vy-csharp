@@ -64,12 +64,6 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_email_address")]
         public string? BuyerEmailAddress { get; set; } = null;
 
-        /// <summary>
-        /// Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
-        /// </summary>
-        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_search")]
-        public List<string>? BuyerSearch { get; set; } = null;
-
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=ip_address")]
         public string? IpAddress { get; set; } = null;
 
@@ -240,6 +234,12 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=used_3ds")]
         public bool? Used3ds { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_search")]
+        public List<string>? BuyerSearch { get; set; } = null;
 
         /// <summary>
         /// The ID of the merchant account to use for this request.

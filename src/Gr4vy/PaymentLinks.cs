@@ -43,7 +43,7 @@ namespace Gr4vy
         /// List all created payment links.
         /// </remarks>
         /// </summary>
-        Task<ListPaymentLinksResponse> ListAsync(string? cursor = null, long? limit = 20, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<ListPaymentLinksResponse> ListAsync(string? cursor = null, long? limit = 20, List<string>? buyerSearch = null, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Expire a payment link
@@ -68,8 +68,8 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.1.17";
-        private const string _sdkGenVersion = "2.667.0";
+        private const string _sdkVersion = "1.1.18";
+        private const string _sdkGenVersion = "2.668.4";
         private const string _openapiDocVersion = "1.0.0";
 
         public PaymentLinks(SDKConfig config)
@@ -283,12 +283,13 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", responseStatusCode, await httpResponse.Content.ReadAsStringAsync(), httpResponse);
         }
 
-        public async Task<ListPaymentLinksResponse> ListAsync(string? cursor = null, long? limit = 20, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<ListPaymentLinksResponse> ListAsync(string? cursor = null, long? limit = 20, List<string>? buyerSearch = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListPaymentLinksRequest()
             {
                 Cursor = cursor,
                 Limit = limit,
+                BuyerSearch = buyerSearch,
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
@@ -391,6 +392,7 @@ namespace Gr4vy
                 return await ListAsync (
                     cursor: nextCursor,
                     limit: limit,
+                    buyerSearch: buyerSearch,
                     merchantAccountId: merchantAccountId,
                     retryConfig: retryConfig
                 );
