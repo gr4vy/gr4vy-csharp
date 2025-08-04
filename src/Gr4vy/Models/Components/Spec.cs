@@ -25,6 +25,7 @@ namespace Gr4vy.Models.Components
 
         public string Value { get; private set; }
         
+        public static SpecType AccountsReceivables { get { return new SpecType("accounts_receivables"); } }
         public static SpecType DetailedSettlement { get { return new SpecType("detailed_settlement"); } }
         public static SpecType TransactionRetries { get { return new SpecType("transaction_retries"); } }
         public static SpecType Transactions { get { return new SpecType("transactions"); } }
@@ -34,6 +35,7 @@ namespace Gr4vy.Models.Components
         public static implicit operator String(SpecType v) { return v.Value; }
         public static SpecType FromString(string v) {
             switch(v) {
+                case "accounts_receivables": return AccountsReceivables;
                 case "detailed_settlement": return DetailedSettlement;
                 case "transaction_retries": return TransactionRetries;
                 case "transactions": return Transactions;
@@ -75,9 +77,19 @@ namespace Gr4vy.Models.Components
         [SpeakeasyMetadata("form:explode=true")]
         public DetailedSettlementReportSpec? DetailedSettlementReportSpec { get; set; }
 
+        [SpeakeasyMetadata("form:explode=true")]
+        public AccountsReceivablesReportSpec? AccountsReceivablesReportSpec { get; set; }
+
         public SpecType Type { get; set; }
 
 
+        public static Spec CreateAccountsReceivables(AccountsReceivablesReportSpec accountsReceivables) {
+            SpecType typ = SpecType.AccountsReceivables;
+        
+            Spec res = new Spec(typ);
+            res.AccountsReceivablesReportSpec = accountsReceivables;
+            return res;
+        }
         public static Spec CreateDetailedSettlement(DetailedSettlementReportSpec detailedSettlement) {
             SpecType typ = SpecType.DetailedSettlement;
         
@@ -115,6 +127,11 @@ namespace Gr4vy.Models.Components
             {
                 JObject jo = JObject.Load(reader);
                 string discriminator = jo.GetValue("model")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
+                if (discriminator == SpecType.AccountsReceivables.ToString())
+                {
+                    AccountsReceivablesReportSpec? accountsReceivablesReportSpec = ResponseBodyDeserializer.Deserialize<AccountsReceivablesReportSpec>(jo.ToString());
+                    return CreateAccountsReceivables(accountsReceivablesReportSpec!);
+                }
                 if (discriminator == SpecType.DetailedSettlement.ToString())
                 {
                     DetailedSettlementReportSpec? detailedSettlementReportSpec = ResponseBodyDeserializer.Deserialize<DetailedSettlementReportSpec>(jo.ToString());
@@ -159,6 +176,11 @@ namespace Gr4vy.Models.Components
                 if (res.DetailedSettlementReportSpec != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DetailedSettlementReportSpec));
+                    return;
+                }
+                if (res.AccountsReceivablesReportSpec != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.AccountsReceivablesReportSpec));
                     return;
                 }
 

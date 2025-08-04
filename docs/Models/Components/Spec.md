@@ -5,6 +5,12 @@ The report specification.
 
 ## Supported Types
 
+### AccountsReceivables
+
+```csharp
+Spec.CreateAccountsReceivables(/* values here */);
+```
+
 ### DetailedSettlement
 
 ```csharp

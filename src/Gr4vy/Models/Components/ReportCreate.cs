@@ -49,6 +49,11 @@ namespace Gr4vy.Models.Components
         [JsonProperty("spec")]
         public Spec Spec { get; set; } = default!;
 
+        public AccountsReceivablesReportSpec? GetSpecAccountsReceivables()
+        {
+            return Spec.AccountsReceivablesReportSpec;
+        }
+
         public DetailedSettlementReportSpec? GetSpecDetailedSettlement()
         {
             return Spec.DetailedSettlementReportSpec;
