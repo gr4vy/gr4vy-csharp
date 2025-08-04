@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: ea56f027522cd7b9f6eb65895ec1138f
+  docChecksum: 0151f67b38ab731264de85807d63f89c
   docVersion: 1.0.0
   speakeasyVersion: 1.596.0
   generationVersion: 2.672.0
-  releaseVersion: 1.1.19
-  configChecksum: 354f03655018eedd82d23d7d2ea3a60b
+  releaseVersion: 1.1.20
+  configChecksum: 728d8ed73bf37424e5e7d27f16ced1e8
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -41,6 +41,7 @@ generatedFiles:
   - docs/Models/Components/AccountUpdaterJob.md
   - docs/Models/Components/AccountUpdaterJobCreate.md
   - docs/Models/Components/AccountUpdaterOptions.md
+  - docs/Models/Components/AccountsReceivablesReportSpec.md
   - docs/Models/Components/Address.md
   - docs/Models/Components/AdyenCardOptions.md
   - docs/Models/Components/AdyenOptions.md
@@ -436,6 +437,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/AccountUpdaterJob.cs
   - src/Gr4vy/Models/Components/AccountUpdaterJobCreate.cs
   - src/Gr4vy/Models/Components/AccountUpdaterOptions.cs
+  - src/Gr4vy/Models/Components/AccountsReceivablesReportSpec.cs
   - src/Gr4vy/Models/Components/Address.cs
   - src/Gr4vy/Models/Components/AdyenCardOptions.cs
   - src/Gr4vy/Models/Components/AdyenOptions.cs
