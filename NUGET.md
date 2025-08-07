@@ -9,19 +9,13 @@
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
     merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.AccountUpdater.Jobs.CreateAsync(accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-    PaymentMethodIds = new List<string>() {
-        "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-        "f29e886e-93cc-4714-b4a3-12b7a718e595",
-    },
-});
+var res = await sdk.BrowsePaymentMethodDefinitionsGetAsync();
 
 // handle response
 ```
@@ -42,19 +36,13 @@ To authenticate with the API the `BearerAuth` parameter must be set when initial
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>",
     merchantAccountId: "default"
 );
 
-var res = await sdk.AccountUpdater.Jobs.CreateAsync(accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-    PaymentMethodIds = new List<string>() {
-        "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-        "f29e886e-93cc-4714-b4a3-12b7a718e595",
-    },
-});
+var res = await sdk.BrowsePaymentMethodDefinitionsGetAsync();
 
 // handle response
 ```
@@ -137,46 +125,30 @@ To change the default retry strategy for a single API call, simply pass a `Retry
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using Gr4vy.Models.Requests;
 
 var sdk = new Gr4vySDK(
     merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
-
-ListBuyersResponse? res = await sdk.Buyers.ListAsync(
-    retryConfig: new RetryConfig(
-        strategy: RetryConfig.RetryStrategy.BACKOFF,
-        backoff: new BackoffStrategy(
-            initialIntervalMs: 1L,
-            maxIntervalMs: 50L,
-            maxElapsedTimeMs: 100L,
-            exponent: 1.1
-        ),
-        retryConnectionErrors: false
+var res = await sdk.BrowsePaymentMethodDefinitionsGetAsync(retryConfig: new RetryConfig(
+    strategy: RetryConfig.RetryStrategy.BACKOFF,
+    backoff: new BackoffStrategy(
+        initialIntervalMs: 1L,
+        maxIntervalMs: 50L,
+        maxElapsedTimeMs: 100L,
+        exponent: 1.1
     ),
-    request: req
-);
+    retryConnectionErrors: false
+));
 
-while(res != null)
-{
-    // handle items
-
-    res = await res.Next!();
-}
+// handle response
 ```
 
 If you'd like to override the default retry strategy for all operations that support retries, you can use the `RetryConfig` optional parameter when intitializing the SDK:
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using Gr4vy.Models.Requests;
 
 var sdk = new Gr4vySDK(
     retryConfig: new RetryConfig(
@@ -193,20 +165,9 @@ var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
+var res = await sdk.BrowsePaymentMethodDefinitionsGetAsync();
 
-ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
-
-while(res != null)
-{
-    // handle items
-
-    res = await res.Next!();
-}
+// handle response
 ```
 <!-- End Retries [retries] -->
 
@@ -224,22 +185,11 @@ By default, an API error will raise a `Gr4vy.Models.Errors.APIException` excepti
 | `RawResponse` | *HttpResponseMessage* | The raw HTTP response |
 | `Body`        | *string*              | The response content  |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `CreateAsync` method throws the following exceptions:
+When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `BrowsePaymentMethodDefinitionsGetAsync` method throws the following exceptions:
 
 | Error Type                              | Status Code | Content Type     |
 | --------------------------------------- | ----------- | ---------------- |
-| Gr4vy.Models.Errors.Error400            | 400         | application/json |
-| Gr4vy.Models.Errors.Error401            | 401         | application/json |
-| Gr4vy.Models.Errors.Error403            | 403         | application/json |
-| Gr4vy.Models.Errors.Error404            | 404         | application/json |
-| Gr4vy.Models.Errors.Error405            | 405         | application/json |
-| Gr4vy.Models.Errors.Error409            | 409         | application/json |
 | Gr4vy.Models.Errors.HTTPValidationError | 422         | application/json |
-| Gr4vy.Models.Errors.Error425            | 425         | application/json |
-| Gr4vy.Models.Errors.Error429            | 429         | application/json |
-| Gr4vy.Models.Errors.Error500            | 500         | application/json |
-| Gr4vy.Models.Errors.Error502            | 502         | application/json |
-| Gr4vy.Models.Errors.Error504            | 504         | application/json |
 | Gr4vy.Models.Errors.APIException        | 4XX, 5XX    | \*/\*            |
 
 ### Example
@@ -248,7 +198,6 @@ When custom error responses are specified for an operation, the SDK may also thr
 using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Errors;
-using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
     merchantAccountId: "default",
@@ -257,73 +206,13 @@ var sdk = new Gr4vySDK(
 
 try
 {
-    var res = await sdk.AccountUpdater.Jobs.CreateAsync(accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-        PaymentMethodIds = new List<string>() {
-            "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-            "f29e886e-93cc-4714-b4a3-12b7a718e595",
-        },
-    });
+    var res = await sdk.BrowsePaymentMethodDefinitionsGetAsync();
 
     // handle response
 }
 catch (Exception ex)
 {
-    if (ex is Error400)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error401)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error403)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error404)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error405)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error409)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is HTTPValidationError)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error425)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error429)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error500)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error502)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error504)
+    if (ex is HTTPValidationError)
     {
         // Handle exception data
         throw;
@@ -360,7 +249,6 @@ If the selected server has variables, you may override its default values throug
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
     server: SDKConfig.Server.Production,
@@ -369,12 +257,7 @@ var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.AccountUpdater.Jobs.CreateAsync(accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-    PaymentMethodIds = new List<string>() {
-        "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-        "f29e886e-93cc-4714-b4a3-12b7a718e595",
-    },
-});
+var res = await sdk.BrowsePaymentMethodDefinitionsGetAsync();
 
 // handle response
 ```
@@ -385,7 +268,6 @@ The default server can also be overridden globally by passing a URL to the `serv
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
-using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
     serverUrl: "https://api.sandbox.example.gr4vy.app",
@@ -393,12 +275,7 @@ var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.AccountUpdater.Jobs.CreateAsync(accountUpdaterJobCreate: new AccountUpdaterJobCreate() {
-    PaymentMethodIds = new List<string>() {
-        "ef9496d8-53a5-4aad-8ca2-00eb68334389",
-        "f29e886e-93cc-4714-b4a3-12b7a718e595",
-    },
-});
+var res = await sdk.BrowsePaymentMethodDefinitionsGetAsync();
 
 // handle response
 ```
