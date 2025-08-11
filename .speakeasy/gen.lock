@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 512abf1b27eb13217b476cb89d7a06a0
+  docChecksum: 4a6244cef441481dc39561591242cd3a
   docVersion: 1.0.0
-  speakeasyVersion: 1.598.3
-  generationVersion: 2.674.3
-  releaseVersion: 1.1.24
-  configChecksum: 16ef6dbbe694ca35051da7bfafdb123e
+  speakeasyVersion: 1.600.2
+  generationVersion: 2.677.3
+  releaseVersion: 1.1.25
+  configChecksum: e71955ddf739f59a1ead3bb0ebccd0b1
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -276,7 +276,6 @@ generatedFiles:
   - docs/Models/Requests/AddPaymentLinkRequest.md
   - docs/Models/Requests/AddReportRequest.md
   - docs/Models/Requests/Body.md
-  - docs/Models/Requests/BrowsePaymentMethodDefinitionsGetRequest.md
   - docs/Models/Requests/CaptureTransactionRequest.md
   - docs/Models/Requests/ConfigureDigitalWalletRequest.md
   - docs/Models/Requests/CreateAccountUpdaterJobRequest.md
@@ -674,7 +673,6 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/AddPaymentLinkRequest.cs
   - src/Gr4vy/Models/Requests/AddReportRequest.cs
   - src/Gr4vy/Models/Requests/Body.cs
-  - src/Gr4vy/Models/Requests/BrowsePaymentMethodDefinitionsGetRequest.cs
   - src/Gr4vy/Models/Requests/CaptureTransactionRequest.cs
   - src/Gr4vy/Models/Requests/ConfigureDigitalWalletRequest.cs
   - src/Gr4vy/Models/Requests/CreateAccountUpdaterJobRequest.cs
