@@ -39,8 +39,8 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.1.24";
-        private const string _sdkGenVersion = "2.674.3";
+        private const string _sdkVersion = "1.1.25";
+        private const string _sdkGenVersion = "2.677.3";
         private const string _openapiDocVersion = "1.0.0";
 
         public All(SDKConfig config)
