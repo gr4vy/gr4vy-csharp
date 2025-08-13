@@ -22,5 +22,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("customData")]
         public List<TravelHubCustomData>? CustomData { get; set; } = null;
+
+        /// <summary>
+        /// Customer company name to pass to the TravelHub API.
+        /// </summary>
+        [JsonProperty("companyName")]
+        public string? CompanyName { get; set; } = null;
     }
 }
