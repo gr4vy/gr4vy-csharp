@@ -20,5 +20,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("refreshSplitToken")]
         public bool? RefreshSplitToken { get; set; } = null;
+
+        /// <summary>
+        /// URL scheme for an app.
+        /// </summary>
+        [JsonProperty("urlScheme")]
+        public string? UrlScheme { get; set; } = null;
     }
 }
