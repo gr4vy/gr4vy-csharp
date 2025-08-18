@@ -38,5 +38,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("transfer_data_destination")]
         public string? TransferDataDestination { get; set; } = null;
+
+        /// <summary>
+        /// A string that identifies the payment as part of a group.
+        /// </summary>
+        [JsonProperty("transfer_group")]
+        public string? TransferGroup { get; set; } = null;
     }
 }
