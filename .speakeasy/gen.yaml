@@ -26,7 +26,7 @@ csharp:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.9.0
   author: Gr4vy
-  baseErrorName: Gr4vyError
+  baseErrorName: BaseException
   clientServerStatusCodesAsErrors: true
   defaultErrorName: APIException
   disableNamespacePascalCasingApr2024: true
