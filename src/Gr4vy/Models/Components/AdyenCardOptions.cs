@@ -9,6 +9,7 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
@@ -45,5 +46,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("window_origin")]
         public string? WindowOrigin { get; set; } = null;
+
+        /// <summary>
+        /// Passes information of splitting payment amounts to the Adyen API.
+        /// </summary>
+        [JsonProperty("splits")]
+        public AdyenSplitsOptions? Splits { get; set; } = null;
     }
 }
