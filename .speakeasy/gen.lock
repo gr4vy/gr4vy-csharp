@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: c05d1ce5a5ea72d66261c31e152ab74f
+  docChecksum: f15e816525bf36430951ddd302b2455d
   docVersion: 1.0.0
   speakeasyVersion: 1.606.0
   generationVersion: 2.686.7
-  releaseVersion: 1.1.29
-  configChecksum: b21a8f382d6d6ac2a6ed6f108b318798
+  releaseVersion: 1.1.30
+  configChecksum: ce009065c70959794cd64101030e8f4b
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -46,6 +46,7 @@ generatedFiles:
   - docs/Models/Components/AdyenCardOptions.md
   - docs/Models/Components/AdyenOptions.md
   - docs/Models/Components/AdyenSepaOptions.md
+  - docs/Models/Components/AdyenSplitsOptions.md
   - docs/Models/Components/AffirmItineraryOptions.md
   - docs/Models/Components/AffirmOptions.md
   - docs/Models/Components/Airline.md
@@ -442,6 +443,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/AdyenCardOptions.cs
   - src/Gr4vy/Models/Components/AdyenOptions.cs
   - src/Gr4vy/Models/Components/AdyenSepaOptions.cs
+  - src/Gr4vy/Models/Components/AdyenSplitsOptions.cs
   - src/Gr4vy/Models/Components/AffirmItineraryOptions.cs
   - src/Gr4vy/Models/Components/AffirmOptions.cs
   - src/Gr4vy/Models/Components/Airline.cs
@@ -4214,11 +4216,4 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## SDK Changes Detected:
-  * `Gr4vy.Transactions.Create()`:  `response.canceledAt` **Added**
-  * `Gr4vy.Transactions.Get()`:  `response.canceledAt` **Added**
-  * `Gr4vy.Transactions.Update()`:  `response.canceledAt` **Added**
-  * `Gr4vy.Transactions.Capture()`:  `response.[transaction].CanceledAt` **Added**
-  * `Gr4vy.Transactions.Void()`:  `response.[transactionVoid].Transaction.CanceledAt` **Added**
-  * `Gr4vy.Transactions.Sync()`:  `response.canceledAt` **Added**
+releaseNotes: "## SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Adyen-Card.Splits` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Adyen-Card.Splits` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Adyen-Card.Splits` **Added**\n"
