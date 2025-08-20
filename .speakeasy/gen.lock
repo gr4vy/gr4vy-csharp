@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 48c333ee506aead119e6938aa495b0e7
+  docChecksum: c05d1ce5a5ea72d66261c31e152ab74f
   docVersion: 1.0.0
-  speakeasyVersion: 1.605.1
-  generationVersion: 2.684.0
-  releaseVersion: 1.1.28
-  configChecksum: 44be46d8737eee8d76e3a129fd303456
+  speakeasyVersion: 1.606.0
+  generationVersion: 2.686.7
+  releaseVersion: 1.1.29
+  configChecksum: b21a8f382d6d6ac2a6ed6f108b318798
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -4214,4 +4214,11 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Stripe-Card.StripeConnect.TransferGroup` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Stripe-Card.StripeConnect.TransferGroup` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Stripe-Card.StripeConnect.TransferGroup` **Added**\n"
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `Gr4vy.Transactions.Create()`:  `response.canceledAt` **Added**
+  * `Gr4vy.Transactions.Get()`:  `response.canceledAt` **Added**
+  * `Gr4vy.Transactions.Update()`:  `response.canceledAt` **Added**
+  * `Gr4vy.Transactions.Capture()`:  `response.[transaction].CanceledAt` **Added**
+  * `Gr4vy.Transactions.Void()`:  `response.[transactionVoid].Transaction.CanceledAt` **Added**
+  * `Gr4vy.Transactions.Sync()`:  `response.canceledAt` **Added**

@@ -310,6 +310,12 @@ namespace Gr4vy.Models.Components
         public DateTime? VoidedAt { get; set; } = null;
 
         /// <summary>
+        /// The date this transaction was canceled at.
+        /// </summary>
+        [JsonProperty("canceled_at")]
+        public DateTime? CanceledAt { get; set; } = null;
+
+        /// <summary>
         /// The date this transaction&apos;s approval URL will expire at.
         /// </summary>
         [JsonProperty("approval_expires_at")]
