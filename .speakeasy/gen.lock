@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: f15e816525bf36430951ddd302b2455d
+  docChecksum: c9a92d3f01f998fe4a16abd9eae40d07
   docVersion: 1.0.0
   speakeasyVersion: 1.606.0
   generationVersion: 2.686.7
-  releaseVersion: 1.1.30
-  configChecksum: ce009065c70959794cd64101030e8f4b
+  releaseVersion: 1.1.31
+  configChecksum: 2c2cfc9505d5e5f3e913fd269c9ad9a6
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -4216,4 +4216,4 @@ examples:
           application/json: {}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Adyen-Card.Splits` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Adyen-Card.Splits` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Adyen-Card.Splits` **Added**\n"
+releaseNotes: "## SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Braintree-Card.DynamicDataFields.VaultPaymentMethodCriteria` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Braintree-Card.DynamicDataFields.VaultPaymentMethodCriteria` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Braintree-Card.DynamicDataFields.VaultPaymentMethodCriteria` **Added**\n"
