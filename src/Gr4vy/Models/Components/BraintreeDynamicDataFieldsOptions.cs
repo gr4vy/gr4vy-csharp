@@ -26,5 +26,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("purchase_order_number")]
         public string? PurchaseOrderNumber { get; set; } = null;
+
+        /// <summary>
+        /// Passes the `vaultPaymentMethodCriteria` field when creating a new transaction.
+        /// </summary>
+        [JsonProperty("vault_payment_method_criteria")]
+        public string? VaultPaymentMethodCriteria { get; set; } = null;
     }
 }
