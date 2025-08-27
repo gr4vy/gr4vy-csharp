@@ -21,7 +21,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 1.1.31
+  version: 1.2.0
   additionalDependencies:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.9.0
@@ -34,6 +34,7 @@ csharp:
   enableSourceLink: false
   flattenGlobalSecurity: true
   flatteningOrder: parameters-first
+  httpClientPrefix: Speakeasy
   imports:
     option: openapi
     paths:
