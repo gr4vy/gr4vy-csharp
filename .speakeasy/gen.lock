@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 01c3af4e4b872f7ea767448607276f75
+  docChecksum: 51eb3b4d42ce3b2282915e5b2c85db6d
   docVersion: 1.0.0
   speakeasyVersion: 1.606.8
   generationVersion: 2.687.13
-  releaseVersion: 1.2.0
-  configChecksum: e1113016be18e019f39fffd748d065a3
+  releaseVersion: 1.2.1
+  configChecksum: 691e09f8d29248880e78b6ee6279df32
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -230,6 +230,7 @@ generatedFiles:
   - docs/Models/Components/TokenPaymentMethodCreate.md
   - docs/Models/Components/Transaction.md
   - docs/Models/Components/TransactionBuyer.md
+  - docs/Models/Components/TransactionCancel.md
   - docs/Models/Components/TransactionCapture.md
   - docs/Models/Components/TransactionCaptureCreate.md
   - docs/Models/Components/TransactionConnectionOptions.md
@@ -277,6 +278,7 @@ generatedFiles:
   - docs/Models/Requests/AddPaymentLinkRequest.md
   - docs/Models/Requests/AddReportRequest.md
   - docs/Models/Requests/Body.md
+  - docs/Models/Requests/CancelTransactionRequest.md
   - docs/Models/Requests/CaptureTransactionRequest.md
   - docs/Models/Requests/ConfigureDigitalWalletRequest.md
   - docs/Models/Requests/CreateAccountUpdaterJobRequest.md
@@ -627,6 +629,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/TokenPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/Transaction.cs
   - src/Gr4vy/Models/Components/TransactionBuyer.cs
+  - src/Gr4vy/Models/Components/TransactionCancel.cs
   - src/Gr4vy/Models/Components/TransactionCapture.cs
   - src/Gr4vy/Models/Components/TransactionCaptureCreate.cs
   - src/Gr4vy/Models/Components/TransactionConnectionOptions.cs
@@ -675,6 +678,7 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/AddPaymentLinkRequest.cs
   - src/Gr4vy/Models/Requests/AddReportRequest.cs
   - src/Gr4vy/Models/Requests/Body.cs
+  - src/Gr4vy/Models/Requests/CancelTransactionRequest.cs
   - src/Gr4vy/Models/Requests/CaptureTransactionRequest.cs
   - src/Gr4vy/Models/Requests/ConfigureDigitalWalletRequest.cs
   - src/Gr4vy/Models/Requests/CreateAccountUpdaterJobRequest.cs
@@ -4214,5 +4218,40 @@ examples:
           application/json: "<value>"
         "422":
           application/json: {}
+  cancel_transaction:
+    speakeasy-default-cancel-transaction:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+      responses:
+        "200":
+          application/json: {"type": "transaction-cancel", "status": "<value>", "code": "service_error", "raw_response_code": "E104", "raw_response_description": "Internal error", "transaction": {"type": "transaction", "id": "7099948d-7286-47e4-aad8-b68f7eb44591", "reconciliation_id": "default", "merchant_account_id": "default", "currency": "EUR", "amount": 1299, "status": "<value>", "authorized_amount": 1299, "captured_amount": 1299, "refunded_amount": 1299, "settled_amount": 1100, "settled": true, "intent": "<value>", "pending_review": false, "gift_card_redemptions": [], "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "payment_source": "<value>", "merchant_initiated": true, "is_subsequent_payment": false, "intent_outcome": "<value>", "multi_tender": true, "account_funding_transaction": true}}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## SDK Changes Detected:
+  * `Gr4vy.Transactions.Cancel()`: **Added**
