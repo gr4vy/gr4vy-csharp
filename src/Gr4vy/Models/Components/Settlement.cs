@@ -21,61 +21,55 @@ namespace Gr4vy.Models.Components
     {
 
         /// <summary>
-        /// Always &apos;settlement&apos;.
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; } = "settlement";
-
-        /// <summary>
-        /// The unique identifier for the settlement.
+        /// The unique identifier for the record.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The merchant account this settlement belongs to.
+        /// The merchant account this record belongs to.
         /// </summary>
         [JsonProperty("merchant_account_id")]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
-        /// The date and time the settlement was created, in ISO 8601 format.
+        /// The date and time the record was created, in ISO 8601 format.
         /// </summary>
         [JsonProperty("created_at")]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
-        /// The date and time the settlement was last updated, in ISO 8601 format.
+        /// The date and time the record was last updated, in ISO 8601 format.
         /// </summary>
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
-        /// The date and time the settlement was posted, in ISO 8601 format.
+        /// The date and time the record was posted, in ISO 8601 format.
         /// </summary>
         [JsonProperty("posted_at")]
         public DateTime PostedAt { get; set; } = default!;
 
         /// <summary>
-        /// The date and time the settlement was ingested, in ISO 8601 format.
+        /// The date and time the record was ingested, in ISO 8601 format.
         /// </summary>
         [JsonProperty("ingested_at")]
         public DateTime IngestedAt { get; set; } = default!;
 
         /// <summary>
-        /// ISO 4217 currency code for the settlement.
+        /// ISO 4217 currency code.
         /// </summary>
         [JsonProperty("currency")]
         public string Currency { get; set; } = default!;
 
         /// <summary>
-        /// The total settled amount in the smallest currency unit (e.g. cents).
+        /// The total amount in the smallest currency unit (e.g. cents).
         /// </summary>
         [JsonProperty("amount")]
         public long Amount { get; set; } = default!;
 
         /// <summary>
-        /// The exchange rate used for settlement, if applicable.
+        /// The exchange rate, if applicable.
         /// </summary>
         [JsonProperty("exchange_rate")]
         public double? ExchangeRate { get; set; } = null;
@@ -117,9 +111,15 @@ namespace Gr4vy.Models.Components
         public List<string> PaymentServiceReportFileIds { get; set; } = default!;
 
         /// <summary>
-        /// The transaction this settlement is associated with.
+        /// The transaction this record is associated with.
         /// </summary>
         [JsonProperty("transaction_id")]
         public string TransactionId { get; set; } = default!;
+
+        /// <summary>
+        /// Always `settlement`.
+        /// </summary>
+        [JsonProperty("type")]
+        public string Type { get; } = "settlement";
     }
 }
