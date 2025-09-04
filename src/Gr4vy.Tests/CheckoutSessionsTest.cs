@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Security.Cryptography;
+using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
-using NUnit.Framework;
+using Gr4vy.Utils;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace Gr4vy.Tests
 {
@@ -15,6 +19,51 @@ namespace Gr4vy.Tests
     public class CheckoutSessionsTest
     {
         private Gr4vySDK _client;
+
+        /**
+          * Adds a custom HTTP client that inserts random fields in the response,
+          * ensuring we test for forward compatibility.
+          */
+        public class JsonInterceptorHttpClient : SpeakeasyHttpClient
+        {
+            public JsonInterceptorHttpClient()
+                : base() { }
+
+            public override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request)
+            {
+                HttpResponseMessage originalResponse = await base.SendAsync(request);
+
+                if (originalResponse.Content?.Headers?.ContentType?.MediaType != "application/json")
+                {
+                    return originalResponse;
+                }
+
+                string originalContent = await originalResponse.Content.ReadAsStringAsync();
+
+                try
+                {
+                    JObject data = JObject.Parse(originalContent);
+                    string randomKey = $"unexpected_field_{new Random().Next(0, 999)}";
+                    data[randomKey] = "this is an injected test value";
+                    // Console.WriteLine($"Intercepted response and added key: {randomKey}");
+
+                    string modifiedContent = data.ToString(Formatting.None);
+
+                    var newContent = new StringContent(
+                        modifiedContent,
+                        Encoding.UTF8,
+                        "application/json"
+                    );
+                    originalResponse.Content = newContent;
+
+                    return originalResponse;
+                }
+                catch (JsonReaderException)
+                {
+                    return originalResponse;
+                }
+            }
+        }
 
         [SetUp]
         public async Task Setup()
@@ -43,7 +92,14 @@ namespace Gr4vy.Tests
                 }
             );
 
+            /**
+            * Adds a custom HTTP client that inserts random fields in the response,
+            * ensuring we test for forward compatibility. 
+            */
+            var interceptingClient = new JsonInterceptorHttpClient();
+
             _client = new Gr4vySDK(
+                client: interceptingClient,
                 id: "e2e",
                 server: SDKConfig.Server.Sandbox,
                 bearerAuthSource: Auth.WithToken(privateKey),
