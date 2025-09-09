@@ -17,19 +17,19 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ContextType
     {
         private ContextType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ContextType WalletPaymentOptionContext { get { return new ContextType("WalletPaymentOptionContext"); } }
-        
+
         public static ContextType GooglePayPaymentOptionContext { get { return new ContextType("GooglePayPaymentOptionContext"); } }
-        
+
         public static ContextType PaymentOptionContext { get { return new ContextType("PaymentOptionContext"); } }
-        
+
         public static ContextType Null { get { return new ContextType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace Gr4vy.Models.Components
 
 
     [JsonConverter(typeof(Context.ContextConverter))]
-    public class Context {
-        public Context(ContextType type) {
+    public class Context
+    {
+        public Context(ContextType type)
+        {
             Type = type;
         }
 
@@ -75,25 +77,24 @@ namespace Gr4vy.Models.Components
         public PaymentOptionContext? PaymentOptionContext { get; set; }
 
         public ContextType Type { get; set; }
-
-
-        public static Context CreateWalletPaymentOptionContext(WalletPaymentOptionContext walletPaymentOptionContext) {
+        public static Context CreateWalletPaymentOptionContext(WalletPaymentOptionContext walletPaymentOptionContext)
+        {
             ContextType typ = ContextType.WalletPaymentOptionContext;
 
             Context res = new Context(typ);
             res.WalletPaymentOptionContext = walletPaymentOptionContext;
             return res;
         }
-
-        public static Context CreateGooglePayPaymentOptionContext(GooglePayPaymentOptionContext googlePayPaymentOptionContext) {
+        public static Context CreateGooglePayPaymentOptionContext(GooglePayPaymentOptionContext googlePayPaymentOptionContext)
+        {
             ContextType typ = ContextType.GooglePayPaymentOptionContext;
 
             Context res = new Context(typ);
             res.GooglePayPaymentOptionContext = googlePayPaymentOptionContext;
             return res;
         }
-
-        public static Context CreatePaymentOptionContext(PaymentOptionContext paymentOptionContext) {
+        public static Context CreatePaymentOptionContext(PaymentOptionContext paymentOptionContext)
+        {
             ContextType typ = ContextType.PaymentOptionContext;
 
             Context res = new Context(typ);
@@ -101,7 +102,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static Context CreateNull() {
+        public static Context CreateNull()
+        {
             ContextType typ = ContextType.Null;
             return new Context(typ);
         }
@@ -212,28 +214,31 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Context res = (Context)value;
                 if (ContextType.FromString(res.Type).Equals(ContextType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.WalletPaymentOptionContext != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.WalletPaymentOptionContext));
                     return;
                 }
+
                 if (res.GooglePayPaymentOptionContext != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GooglePayPaymentOptionContext));
                     return;
                 }
+
                 if (res.PaymentOptionContext != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PaymentOptionContext));
                     return;
                 }
-
             }
 
         }

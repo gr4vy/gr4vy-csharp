@@ -16,17 +16,17 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class LocType
     {
         private LocType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static LocType Str { get { return new LocType("str"); } }
-        
+
         public static LocType Integer { get { return new LocType("integer"); } }
-        
+
         public static LocType Null { get { return new LocType("null"); } }
 
         public override string ToString() { return Value; }
@@ -56,8 +56,10 @@ namespace Gr4vy.Models.Components
 
 
     [JsonConverter(typeof(Loc.LocConverter))]
-    public class Loc {
-        public Loc(LocType type) {
+    public class Loc
+    {
+        public Loc(LocType type)
+        {
             Type = type;
         }
 
@@ -68,17 +70,16 @@ namespace Gr4vy.Models.Components
         public long? Integer { get; set; }
 
         public LocType Type { get; set; }
-
-
-        public static Loc CreateStr(string str) {
+        public static Loc CreateStr(string str)
+        {
             LocType typ = LocType.Str;
 
             Loc res = new Loc(typ);
             res.Str = str;
             return res;
         }
-
-        public static Loc CreateInteger(long integer) {
+        public static Loc CreateInteger(long integer)
+        {
             LocType typ = LocType.Integer;
 
             Loc res = new Loc(typ);
@@ -86,7 +87,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static Loc CreateNull() {
+        public static Loc CreateNull()
+        {
             LocType typ = LocType.Null;
             return new Loc(typ);
         }
@@ -157,23 +159,25 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Loc res = (Loc)value;
                 if (LocType.FromString(res.Type).Equals(LocType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.Integer != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Integer));
                     return;
                 }
-
             }
 
         }

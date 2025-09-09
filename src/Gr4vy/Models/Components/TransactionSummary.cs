@@ -200,5 +200,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("updated_at")]
         public DateTime UpdatedAt { get; set; } = default!;
+
+        /// <summary>
+        /// Indicates whether this transaction has been disputed.
+        /// </summary>
+        [JsonProperty("disputed")]
+        public bool Disputed { get; set; } = default!;
     }
 }

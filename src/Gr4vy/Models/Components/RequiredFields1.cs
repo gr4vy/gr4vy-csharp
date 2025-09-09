@@ -16,17 +16,17 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class RequiredFields1Type
     {
         private RequiredFields1Type(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static RequiredFields1Type Boolean { get { return new RequiredFields1Type("boolean"); } }
-        
+
         public static RequiredFields1Type Any { get { return new RequiredFields1Type("any"); } }
-        
+
         public static RequiredFields1Type Null { get { return new RequiredFields1Type("null"); } }
 
         public override string ToString() { return Value; }
@@ -56,8 +56,10 @@ namespace Gr4vy.Models.Components
 
 
     [JsonConverter(typeof(RequiredFields1.RequiredFields1Converter))]
-    public class RequiredFields1 {
-        public RequiredFields1(RequiredFields1Type type) {
+    public class RequiredFields1
+    {
+        public RequiredFields1(RequiredFields1Type type)
+        {
             Type = type;
         }
 
@@ -68,17 +70,16 @@ namespace Gr4vy.Models.Components
         public object? Any { get; set; }
 
         public RequiredFields1Type Type { get; set; }
-
-
-        public static RequiredFields1 CreateBoolean(bool boolean) {
+        public static RequiredFields1 CreateBoolean(bool boolean)
+        {
             RequiredFields1Type typ = RequiredFields1Type.Boolean;
 
             RequiredFields1 res = new RequiredFields1(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static RequiredFields1 CreateAny(object any) {
+        public static RequiredFields1 CreateAny(object any)
+        {
             RequiredFields1Type typ = RequiredFields1Type.Any;
 
             RequiredFields1 res = new RequiredFields1(typ);
@@ -86,7 +87,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static RequiredFields1 CreateNull() {
+        public static RequiredFields1 CreateNull()
+        {
             RequiredFields1Type typ = RequiredFields1Type.Null;
             return new RequiredFields1(typ);
         }
@@ -170,23 +172,25 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 RequiredFields1 res = (RequiredFields1)value;
                 if (RequiredFields1Type.FromString(res.Type).Equals(RequiredFields1Type.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.Any != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Any));
                     return;
                 }
-
             }
 
         }

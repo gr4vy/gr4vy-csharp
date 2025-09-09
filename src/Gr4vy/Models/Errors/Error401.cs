@@ -14,10 +14,10 @@ namespace Gr4vy.Models.Errors
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
-    public class Error401 : Exception
-    {
+    using System.Net.Http;
 
+    public class Error401Payload
+    {
         /// <summary>
         /// Always `error`.
         /// </summary>
@@ -40,8 +40,7 @@ namespace Gr4vy.Models.Errors
         /// A human readable message that provides more context to the error.
         /// </summary>
         [JsonProperty("message")]
-        private string? _message { get; set; }
-        public override string Message { get {return _message ?? "";} }
+        public string? Message { get; set; }
 
         /// <summary>
         /// A list of details that further ellaborate on the error.
@@ -49,4 +48,56 @@ namespace Gr4vy.Models.Errors
         [JsonProperty("details")]
         public List<ErrorDetail>? Details { get; set; }
     }
+
+    public class Error401 : Gr4vyError
+    {
+        /// <summary>
+        ///  The original data that was passed to this exception.
+        /// </summary>
+        public Error401Payload Payload { get; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error401.Payload.Type instead.")]
+        public string? Type { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error401.Payload.Code instead.")]
+        public string? Code { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error401.Payload.Status instead.")]
+        public long? Status { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error401.Payload.Message instead.")]
+        private string? _message { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error401.Payload.Details instead.")]
+        public List<ErrorDetail>? Details { get; set; }
+
+        private static string ErrorMessage(Error401Payload payload, string body)
+        {
+            string? message = payload.Message;
+            if (!string.IsNullOrEmpty(message))
+            {
+                return message;
+            }
+
+            return "API error occurred";
+        }
+
+        public Error401(
+            Error401Payload payload,
+            HttpResponseMessage rawResponse,
+            string body
+        ): base(ErrorMessage(payload, body), rawResponse, body)
+        {
+           Payload = payload;
+
+           #pragma warning disable CS0618
+           Type = payload.Type;
+           Code = payload.Code;
+           Status = payload.Status;
+           _message = payload.Message;
+           Details = payload.Details;
+           #pragma warning restore CS0618
+        }
+    }
+
 }

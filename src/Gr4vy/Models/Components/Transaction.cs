@@ -202,6 +202,12 @@ namespace Gr4vy.Models.Components
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
+        /// Indicates whether this transaction has been disputed.
+        /// </summary>
+        [JsonProperty("disputed")]
+        public bool Disputed { get; set; } = default!;
+
+        /// <summary>
         /// Contains information about an airline travel, if applicable.
         /// </summary>
         [JsonProperty("airline")]

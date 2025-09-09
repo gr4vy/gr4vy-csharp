@@ -17,17 +17,17 @@ namespace Gr4vy.Models.Requests
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ResponseVoidTransactionType
     {
         private ResponseVoidTransactionType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ResponseVoidTransactionType Transaction { get { return new ResponseVoidTransactionType("Transaction"); } }
-        
+
         public static ResponseVoidTransactionType TransactionVoid { get { return new ResponseVoidTransactionType("TransactionVoid"); } }
-        
+
         public static ResponseVoidTransactionType Null { get { return new ResponseVoidTransactionType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace Gr4vy.Models.Requests
     /// Successful Response
     /// </summary>
     [JsonConverter(typeof(ResponseVoidTransaction.ResponseVoidTransactionConverter))]
-    public class ResponseVoidTransaction {
-        public ResponseVoidTransaction(ResponseVoidTransactionType type) {
+    public class ResponseVoidTransaction
+    {
+        public ResponseVoidTransaction(ResponseVoidTransactionType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace Gr4vy.Models.Requests
         public TransactionVoid? TransactionVoid { get; set; }
 
         public ResponseVoidTransactionType Type { get; set; }
-
-
-        public static ResponseVoidTransaction CreateTransaction(Transaction transaction) {
+        public static ResponseVoidTransaction CreateTransaction(Transaction transaction)
+        {
             ResponseVoidTransactionType typ = ResponseVoidTransactionType.Transaction;
 
             ResponseVoidTransaction res = new ResponseVoidTransaction(typ);
             res.Transaction = transaction;
             return res;
         }
-
-        public static ResponseVoidTransaction CreateTransactionVoid(TransactionVoid transactionVoid) {
+        public static ResponseVoidTransaction CreateTransactionVoid(TransactionVoid transactionVoid)
+        {
             ResponseVoidTransactionType typ = ResponseVoidTransactionType.TransactionVoid;
 
             ResponseVoidTransaction res = new ResponseVoidTransaction(typ);
@@ -90,7 +91,8 @@ namespace Gr4vy.Models.Requests
             return res;
         }
 
-        public static ResponseVoidTransaction CreateNull() {
+        public static ResponseVoidTransaction CreateNull()
+        {
             ResponseVoidTransactionType typ = ResponseVoidTransactionType.Null;
             return new ResponseVoidTransaction(typ);
         }
@@ -181,23 +183,25 @@ namespace Gr4vy.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 ResponseVoidTransaction res = (ResponseVoidTransaction)value;
                 if (ResponseVoidTransactionType.FromString(res.Type).Equals(ResponseVoidTransactionType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Transaction != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Transaction));
                     return;
                 }
+
                 if (res.TransactionVoid != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionVoid));
                     return;
                 }
-
             }
 
         }

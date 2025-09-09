@@ -17,17 +17,17 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ResponseDataType
     {
         private ResponseDataType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ResponseDataType ThreeDSecureDataV1 { get { return new ResponseDataType("ThreeDSecureDataV1"); } }
-        
+
         public static ResponseDataType ThreeDSecureV2 { get { return new ResponseDataType("ThreeDSecureV2"); } }
-        
+
         public static ResponseDataType Null { get { return new ResponseDataType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace Gr4vy.Models.Components
     /// The 3DS data sent to the payment service for this transaction. This will only be populated if external 3DS data was passed in directly as part of the transaction API call, or if our 3DS server returned a status code of `Y` or `A`. In case of a failure to authenticate (status `N`, `R`, or `U`) this field will not be populated. To see full details about the 3DS calls please use our transaction events API.
     /// </summary>
     [JsonConverter(typeof(ResponseData.ResponseDataConverter))]
-    public class ResponseData {
-        public ResponseData(ResponseDataType type) {
+    public class ResponseData
+    {
+        public ResponseData(ResponseDataType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace Gr4vy.Models.Components
         public ThreeDSecureV2? ThreeDSecureV2 { get; set; }
 
         public ResponseDataType Type { get; set; }
-
-
-        public static ResponseData CreateThreeDSecureDataV1(ThreeDSecureDataV1 threeDSecureDataV1) {
+        public static ResponseData CreateThreeDSecureDataV1(ThreeDSecureDataV1 threeDSecureDataV1)
+        {
             ResponseDataType typ = ResponseDataType.ThreeDSecureDataV1;
 
             ResponseData res = new ResponseData(typ);
             res.ThreeDSecureDataV1 = threeDSecureDataV1;
             return res;
         }
-
-        public static ResponseData CreateThreeDSecureV2(ThreeDSecureV2 threeDSecureV2) {
+        public static ResponseData CreateThreeDSecureV2(ThreeDSecureV2 threeDSecureV2)
+        {
             ResponseDataType typ = ResponseDataType.ThreeDSecureV2;
 
             ResponseData res = new ResponseData(typ);
@@ -90,7 +91,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static ResponseData CreateNull() {
+        public static ResponseData CreateNull()
+        {
             ResponseDataType typ = ResponseDataType.Null;
             return new ResponseData(typ);
         }
@@ -181,23 +183,25 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 ResponseData res = (ResponseData)value;
                 if (ResponseDataType.FromString(res.Type).Equals(ResponseDataType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.ThreeDSecureDataV1 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ThreeDSecureDataV1));
                     return;
                 }
+
                 if (res.ThreeDSecureV2 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ThreeDSecureV2));
                     return;
                 }
-
             }
 
         }
