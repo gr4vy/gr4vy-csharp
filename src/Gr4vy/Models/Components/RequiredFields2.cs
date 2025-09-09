@@ -17,17 +17,17 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class RequiredFields2Type
     {
         private RequiredFields2Type(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static RequiredFields2Type Boolean { get { return new RequiredFields2Type("boolean"); } }
-        
+
         public static RequiredFields2Type MapOfRequiredFields1 { get { return new RequiredFields2Type("mapOfRequiredFields1"); } }
-        
+
         public static RequiredFields2Type Null { get { return new RequiredFields2Type("null"); } }
 
         public override string ToString() { return Value; }
@@ -57,8 +57,10 @@ namespace Gr4vy.Models.Components
 
 
     [JsonConverter(typeof(RequiredFields2.RequiredFields2Converter))]
-    public class RequiredFields2 {
-        public RequiredFields2(RequiredFields2Type type) {
+    public class RequiredFields2
+    {
+        public RequiredFields2(RequiredFields2Type type)
+        {
             Type = type;
         }
 
@@ -69,17 +71,16 @@ namespace Gr4vy.Models.Components
         public Dictionary<string, RequiredFields1>? MapOfRequiredFields1 { get; set; }
 
         public RequiredFields2Type Type { get; set; }
-
-
-        public static RequiredFields2 CreateBoolean(bool boolean) {
+        public static RequiredFields2 CreateBoolean(bool boolean)
+        {
             RequiredFields2Type typ = RequiredFields2Type.Boolean;
 
             RequiredFields2 res = new RequiredFields2(typ);
             res.Boolean = boolean;
             return res;
         }
-
-        public static RequiredFields2 CreateMapOfRequiredFields1(Dictionary<string, RequiredFields1> mapOfRequiredFields1) {
+        public static RequiredFields2 CreateMapOfRequiredFields1(Dictionary<string, RequiredFields1> mapOfRequiredFields1)
+        {
             RequiredFields2Type typ = RequiredFields2Type.MapOfRequiredFields1;
 
             RequiredFields2 res = new RequiredFields2(typ);
@@ -87,7 +88,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static RequiredFields2 CreateNull() {
+        public static RequiredFields2 CreateNull()
+        {
             RequiredFields2Type typ = RequiredFields2Type.Null;
             return new RequiredFields2(typ);
         }
@@ -171,23 +173,25 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 RequiredFields2 res = (RequiredFields2)value;
                 if (RequiredFields2Type.FromString(res.Type).Equals(RequiredFields2Type.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Boolean != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Boolean));
                     return;
                 }
+
                 if (res.MapOfRequiredFields1 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfRequiredFields1));
                     return;
                 }
-
             }
 
         }

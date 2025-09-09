@@ -17,17 +17,17 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class GiftCardUnionType
     {
         private GiftCardUnionType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static GiftCardUnionType GiftCardTransactionCreate { get { return new GiftCardUnionType("GiftCardTransactionCreate"); } }
-        
+
         public static GiftCardUnionType GiftCardTokenTransactionCreate { get { return new GiftCardUnionType("GiftCardTokenTransactionCreate"); } }
-        
+
         public static GiftCardUnionType Null { get { return new GiftCardUnionType("null"); } }
 
         public override string ToString() { return Value; }
@@ -57,8 +57,10 @@ namespace Gr4vy.Models.Components
 
 
     [JsonConverter(typeof(GiftCardUnion.GiftCardUnionConverter))]
-    public class GiftCardUnion {
-        public GiftCardUnion(GiftCardUnionType type) {
+    public class GiftCardUnion
+    {
+        public GiftCardUnion(GiftCardUnionType type)
+        {
             Type = type;
         }
 
@@ -69,17 +71,16 @@ namespace Gr4vy.Models.Components
         public GiftCardTokenTransactionCreate? GiftCardTokenTransactionCreate { get; set; }
 
         public GiftCardUnionType Type { get; set; }
-
-
-        public static GiftCardUnion CreateGiftCardTransactionCreate(GiftCardTransactionCreate giftCardTransactionCreate) {
+        public static GiftCardUnion CreateGiftCardTransactionCreate(GiftCardTransactionCreate giftCardTransactionCreate)
+        {
             GiftCardUnionType typ = GiftCardUnionType.GiftCardTransactionCreate;
 
             GiftCardUnion res = new GiftCardUnion(typ);
             res.GiftCardTransactionCreate = giftCardTransactionCreate;
             return res;
         }
-
-        public static GiftCardUnion CreateGiftCardTokenTransactionCreate(GiftCardTokenTransactionCreate giftCardTokenTransactionCreate) {
+        public static GiftCardUnion CreateGiftCardTokenTransactionCreate(GiftCardTokenTransactionCreate giftCardTokenTransactionCreate)
+        {
             GiftCardUnionType typ = GiftCardUnionType.GiftCardTokenTransactionCreate;
 
             GiftCardUnion res = new GiftCardUnion(typ);
@@ -87,7 +88,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static GiftCardUnion CreateNull() {
+        public static GiftCardUnion CreateNull()
+        {
             GiftCardUnionType typ = GiftCardUnionType.Null;
             return new GiftCardUnion(typ);
         }
@@ -178,23 +180,25 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 GiftCardUnion res = (GiftCardUnion)value;
                 if (GiftCardUnionType.FromString(res.Type).Equals(GiftCardUnionType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.GiftCardTransactionCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GiftCardTransactionCreate));
                     return;
                 }
+
                 if (res.GiftCardTokenTransactionCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GiftCardTokenTransactionCreate));
                     return;
                 }
-
             }
 
         }

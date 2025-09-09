@@ -17,17 +17,17 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ItemType
     {
         private ItemType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ItemType GiftCardRequest { get { return new ItemType("GiftCardRequest"); } }
-        
+
         public static ItemType GiftCardStoredRequest { get { return new ItemType("GiftCardStoredRequest"); } }
-        
+
         public static ItemType Null { get { return new ItemType("null"); } }
 
         public override string ToString() { return Value; }
@@ -57,8 +57,10 @@ namespace Gr4vy.Models.Components
 
 
     [JsonConverter(typeof(Item.ItemConverter))]
-    public class Item {
-        public Item(ItemType type) {
+    public class Item
+    {
+        public Item(ItemType type)
+        {
             Type = type;
         }
 
@@ -69,17 +71,16 @@ namespace Gr4vy.Models.Components
         public GiftCardStoredRequest? GiftCardStoredRequest { get; set; }
 
         public ItemType Type { get; set; }
-
-
-        public static Item CreateGiftCardRequest(GiftCardRequest giftCardRequest) {
+        public static Item CreateGiftCardRequest(GiftCardRequest giftCardRequest)
+        {
             ItemType typ = ItemType.GiftCardRequest;
 
             Item res = new Item(typ);
             res.GiftCardRequest = giftCardRequest;
             return res;
         }
-
-        public static Item CreateGiftCardStoredRequest(GiftCardStoredRequest giftCardStoredRequest) {
+        public static Item CreateGiftCardStoredRequest(GiftCardStoredRequest giftCardStoredRequest)
+        {
             ItemType typ = ItemType.GiftCardStoredRequest;
 
             Item res = new Item(typ);
@@ -87,7 +88,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static Item CreateNull() {
+        public static Item CreateNull()
+        {
             ItemType typ = ItemType.Null;
             return new Item(typ);
         }
@@ -178,23 +180,25 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Item res = (Item)value;
                 if (ItemType.FromString(res.Type).Equals(ItemType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.GiftCardRequest != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GiftCardRequest));
                     return;
                 }
+
                 if (res.GiftCardStoredRequest != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GiftCardStoredRequest));
                     return;
                 }
-
             }
 
         }

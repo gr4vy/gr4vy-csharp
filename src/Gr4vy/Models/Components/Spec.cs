@@ -17,18 +17,21 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class SpecType
     {
         private SpecType(string value) { Value = value; }
 
         public string Value { get; private set; }
-        
+
         public static SpecType AccountsReceivables { get { return new SpecType("accounts_receivables"); } }
+
         public static SpecType DetailedSettlement { get { return new SpecType("detailed_settlement"); } }
+
         public static SpecType TransactionRetries { get { return new SpecType("transaction_retries"); } }
+
         public static SpecType Transactions { get { return new SpecType("transactions"); } }
+
         public static SpecType Null { get { return new SpecType("null"); } }
 
         public override string ToString() { return Value; }
@@ -63,8 +66,10 @@ namespace Gr4vy.Models.Components
     /// The report specification.
     /// </summary>
     [JsonConverter(typeof(Spec.SpecConverter))]
-    public class Spec {
-        public Spec(SpecType type) {
+    public class Spec
+    {
+        public Spec(SpecType type)
+        {
             Type = type;
         }
 
@@ -82,36 +87,40 @@ namespace Gr4vy.Models.Components
 
         public SpecType Type { get; set; }
 
-
-        public static Spec CreateAccountsReceivables(AccountsReceivablesReportSpec accountsReceivables) {
+        public static Spec CreateAccountsReceivables(AccountsReceivablesReportSpec accountsReceivables)
+        {
             SpecType typ = SpecType.AccountsReceivables;
-        
             Spec res = new Spec(typ);
             res.AccountsReceivablesReportSpec = accountsReceivables;
             return res;
         }
-        public static Spec CreateDetailedSettlement(DetailedSettlementReportSpec detailedSettlement) {
+
+        public static Spec CreateDetailedSettlement(DetailedSettlementReportSpec detailedSettlement)
+        {
             SpecType typ = SpecType.DetailedSettlement;
-        
             Spec res = new Spec(typ);
             res.DetailedSettlementReportSpec = detailedSettlement;
             return res;
         }
-        public static Spec CreateTransactionRetries(TransactionRetriesReportSpec transactionRetries) {
+
+        public static Spec CreateTransactionRetries(TransactionRetriesReportSpec transactionRetries)
+        {
             SpecType typ = SpecType.TransactionRetries;
-        
             Spec res = new Spec(typ);
             res.TransactionRetriesReportSpec = transactionRetries;
             return res;
         }
-        public static Spec CreateTransactions(TransactionsReportSpec transactions) {
+
+        public static Spec CreateTransactions(TransactionsReportSpec transactions)
+        {
             SpecType typ = SpecType.Transactions;
-        
             Spec res = new Spec(typ);
             res.TransactionsReportSpec = transactions;
             return res;
         }
-        public static Spec CreateNull() {
+
+        public static Spec CreateNull()
+        {
             SpecType typ = SpecType.Null;
             return new Spec(typ);
         }
@@ -129,23 +138,23 @@ namespace Gr4vy.Models.Components
                 string discriminator = jo.GetValue("model")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
                 if (discriminator == SpecType.AccountsReceivables.ToString())
                 {
-                    AccountsReceivablesReportSpec? accountsReceivablesReportSpec = ResponseBodyDeserializer.Deserialize<AccountsReceivablesReportSpec>(jo.ToString());
-                    return CreateAccountsReceivables(accountsReceivablesReportSpec!);
+                    AccountsReceivablesReportSpec accountsReceivablesReportSpec = ResponseBodyDeserializer.DeserializeNotNull<AccountsReceivablesReportSpec>(jo.ToString());
+                    return CreateAccountsReceivables(accountsReceivablesReportSpec);
                 }
                 if (discriminator == SpecType.DetailedSettlement.ToString())
                 {
-                    DetailedSettlementReportSpec? detailedSettlementReportSpec = ResponseBodyDeserializer.Deserialize<DetailedSettlementReportSpec>(jo.ToString());
-                    return CreateDetailedSettlement(detailedSettlementReportSpec!);
+                    DetailedSettlementReportSpec detailedSettlementReportSpec = ResponseBodyDeserializer.DeserializeNotNull<DetailedSettlementReportSpec>(jo.ToString());
+                    return CreateDetailedSettlement(detailedSettlementReportSpec);
                 }
                 if (discriminator == SpecType.TransactionRetries.ToString())
                 {
-                    TransactionRetriesReportSpec? transactionRetriesReportSpec = ResponseBodyDeserializer.Deserialize<TransactionRetriesReportSpec>(jo.ToString());
-                    return CreateTransactionRetries(transactionRetriesReportSpec!);
+                    TransactionRetriesReportSpec transactionRetriesReportSpec = ResponseBodyDeserializer.DeserializeNotNull<TransactionRetriesReportSpec>(jo.ToString());
+                    return CreateTransactionRetries(transactionRetriesReportSpec);
                 }
                 if (discriminator == SpecType.Transactions.ToString())
                 {
-                    TransactionsReportSpec? transactionsReportSpec = ResponseBodyDeserializer.Deserialize<TransactionsReportSpec>(jo.ToString());
-                    return CreateTransactions(transactionsReportSpec!);
+                    TransactionsReportSpec transactionsReportSpec = ResponseBodyDeserializer.DeserializeNotNull<TransactionsReportSpec>(jo.ToString());
+                    return CreateTransactions(transactionsReportSpec);
                 }
 
                 throw new InvalidOperationException("Could not deserialize into any supported types.");
@@ -157,33 +166,37 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Spec res = (Spec)value;
                 if (SpecType.FromString(res.Type).Equals(SpecType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.TransactionsReportSpec != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionsReportSpec));
                     return;
                 }
+
                 if (res.TransactionRetriesReportSpec != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionRetriesReportSpec));
                     return;
                 }
+
                 if (res.DetailedSettlementReportSpec != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.DetailedSettlementReportSpec));
                     return;
                 }
+
                 if (res.AccountsReceivablesReportSpec != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.AccountsReceivablesReportSpec));
                     return;
                 }
-
             }
 
         }

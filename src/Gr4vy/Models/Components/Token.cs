@@ -16,17 +16,17 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class TokenType
     {
         private TokenType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static TokenType Str { get { return new TokenType("str"); } }
-        
+
         public static TokenType MapOfAny { get { return new TokenType("mapOfAny"); } }
-        
+
         public static TokenType Null { get { return new TokenType("null"); } }
 
         public override string ToString() { return Value; }
@@ -59,8 +59,10 @@ namespace Gr4vy.Models.Components
     /// The opaque token as received from the Google Pay JS library. This format may change between JS library versions.
     /// </summary>
     [JsonConverter(typeof(Token.TokenConverter))]
-    public class Token {
-        public Token(TokenType type) {
+    public class Token
+    {
+        public Token(TokenType type)
+        {
             Type = type;
         }
 
@@ -71,17 +73,16 @@ namespace Gr4vy.Models.Components
         public Dictionary<string, object>? MapOfAny { get; set; }
 
         public TokenType Type { get; set; }
-
-
-        public static Token CreateStr(string str) {
+        public static Token CreateStr(string str)
+        {
             TokenType typ = TokenType.Str;
 
             Token res = new Token(typ);
             res.Str = str;
             return res;
         }
-
-        public static Token CreateMapOfAny(Dictionary<string, object> mapOfAny) {
+        public static Token CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        {
             TokenType typ = TokenType.MapOfAny;
 
             Token res = new Token(typ);
@@ -89,7 +90,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static Token CreateNull() {
+        public static Token CreateNull()
+        {
             TokenType typ = TokenType.Null;
             return new Token(typ);
         }
@@ -167,23 +169,25 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Token res = (Token)value;
                 if (TokenType.FromString(res.Type).Equals(TokenType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Str != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Str));
                     return;
                 }
+
                 if (res.MapOfAny != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.MapOfAny));
                     return;
                 }
-
             }
 
         }

@@ -17,19 +17,19 @@ namespace Gr4vy.Models.Requests
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class BodyType
     {
         private BodyType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static BodyType CardPaymentMethodCreate { get { return new BodyType("CardPaymentMethodCreate"); } }
-        
+
         public static BodyType RedirectPaymentMethodCreate { get { return new BodyType("RedirectPaymentMethodCreate"); } }
-        
+
         public static BodyType CheckoutSessionPaymentMethodCreate { get { return new BodyType("CheckoutSessionPaymentMethodCreate"); } }
-        
+
         public static BodyType Null { get { return new BodyType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace Gr4vy.Models.Requests
 
 
     [JsonConverter(typeof(Body.BodyConverter))]
-    public class Body {
-        public Body(BodyType type) {
+    public class Body
+    {
+        public Body(BodyType type)
+        {
             Type = type;
         }
 
@@ -75,25 +77,24 @@ namespace Gr4vy.Models.Requests
         public CheckoutSessionPaymentMethodCreate? CheckoutSessionPaymentMethodCreate { get; set; }
 
         public BodyType Type { get; set; }
-
-
-        public static Body CreateCardPaymentMethodCreate(CardPaymentMethodCreate cardPaymentMethodCreate) {
+        public static Body CreateCardPaymentMethodCreate(CardPaymentMethodCreate cardPaymentMethodCreate)
+        {
             BodyType typ = BodyType.CardPaymentMethodCreate;
 
             Body res = new Body(typ);
             res.CardPaymentMethodCreate = cardPaymentMethodCreate;
             return res;
         }
-
-        public static Body CreateRedirectPaymentMethodCreate(RedirectPaymentMethodCreate redirectPaymentMethodCreate) {
+        public static Body CreateRedirectPaymentMethodCreate(RedirectPaymentMethodCreate redirectPaymentMethodCreate)
+        {
             BodyType typ = BodyType.RedirectPaymentMethodCreate;
 
             Body res = new Body(typ);
             res.RedirectPaymentMethodCreate = redirectPaymentMethodCreate;
             return res;
         }
-
-        public static Body CreateCheckoutSessionPaymentMethodCreate(CheckoutSessionPaymentMethodCreate checkoutSessionPaymentMethodCreate) {
+        public static Body CreateCheckoutSessionPaymentMethodCreate(CheckoutSessionPaymentMethodCreate checkoutSessionPaymentMethodCreate)
+        {
             BodyType typ = BodyType.CheckoutSessionPaymentMethodCreate;
 
             Body res = new Body(typ);
@@ -101,7 +102,8 @@ namespace Gr4vy.Models.Requests
             return res;
         }
 
-        public static Body CreateNull() {
+        public static Body CreateNull()
+        {
             BodyType typ = BodyType.Null;
             return new Body(typ);
         }
@@ -212,28 +214,31 @@ namespace Gr4vy.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 Body res = (Body)value;
                 if (BodyType.FromString(res.Type).Equals(BodyType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.CardPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CardPaymentMethodCreate));
                     return;
                 }
+
                 if (res.RedirectPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.RedirectPaymentMethodCreate));
                     return;
                 }
+
                 if (res.CheckoutSessionPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CheckoutSessionPaymentMethodCreate));
                     return;
                 }
-
             }
 
         }

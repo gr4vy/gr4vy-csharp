@@ -547,34 +547,18 @@ while(res != null)
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-Handling errors in this SDK should largely match your expectations. All operations return a response object or throw an exception.
-
-By default, an API error will raise a `Gr4vy.Models.Errors.APIException` exception, which has the following properties:
+[`Gr4vyError`](./src/Gr4vy/Models/Errors/Gr4vyError.cs) is the base exception class for all HTTP error responses. It has the following properties:
 
 | Property      | Type                  | Description           |
 |---------------|-----------------------|-----------------------|
-| `Message`     | *string*              | The error message     |
-| `StatusCode`  | *int*                 | The HTTP status code  |
-| `RawResponse` | *HttpResponseMessage* | The raw HTTP response |
-| `Body`        | *string*              | The response content  |
+| `Message`     | *string*              | Error message         |
+| `StatusCode`  | *int*                 | HTTP status code      |
+| `Headers`     | *HttpResponseHeaders* | HTTP headers          |
+| `ContentType` | *string?*             | HTTP content type     |
+| `RawResponse` | *HttpResponseMessage* | HTTP response object  |
+| `Body`        | *string*              | HTTP response body    |
 
-When custom error responses are specified for an operation, the SDK may also throw their associated exceptions. You can refer to respective *Errors* tables in SDK docs for more details on possible exception types for each operation. For example, the `CreateAsync` method throws the following exceptions:
-
-| Error Type                              | Status Code | Content Type     |
-| --------------------------------------- | ----------- | ---------------- |
-| Gr4vy.Models.Errors.Error400            | 400         | application/json |
-| Gr4vy.Models.Errors.Error401            | 401         | application/json |
-| Gr4vy.Models.Errors.Error403            | 403         | application/json |
-| Gr4vy.Models.Errors.Error404            | 404         | application/json |
-| Gr4vy.Models.Errors.Error405            | 405         | application/json |
-| Gr4vy.Models.Errors.Error409            | 409         | application/json |
-| Gr4vy.Models.Errors.HTTPValidationError | 422         | application/json |
-| Gr4vy.Models.Errors.Error425            | 425         | application/json |
-| Gr4vy.Models.Errors.Error429            | 429         | application/json |
-| Gr4vy.Models.Errors.Error500            | 500         | application/json |
-| Gr4vy.Models.Errors.Error502            | 502         | application/json |
-| Gr4vy.Models.Errors.Error504            | 504         | application/json |
-| Gr4vy.Models.Errors.APIException        | 4XX, 5XX    | \*/\*            |
+Some exceptions in this SDK include an additional `Payload` field, which will contain deserialized custom error data when present. Possible exceptions are listed in the [Error Classes](#error-classes) section.
 
 ### Example
 
@@ -600,75 +584,65 @@ try
 
     // handle response
 }
-catch (Exception ex)
+catch (Gr4vyError ex)  // all SDK exceptions inherit from Gr4vyError
 {
-    if (ex is Error400)
+    // ex.ToString() provides a detailed error message
+    System.Console.WriteLine(ex);
+
+    // Base exception fields
+    HttpResponseMessage rawResponse = ex.RawResponse;
+    HttpResponseHeaders headers = ex.Headers;
+    int statusCode = ex.StatusCode;
+    string? contentType = ex.ContentType;
+    var responseBody = ex.Body;
+
+    if (ex is Error400) // different exceptions may be thrown depending on the method
     {
-        // Handle exception data
-        throw;
+        // Check error data fields
+        Error400Payload payload = ex.Payload;
+        string Type = payload.Type;
+        string Code = payload.Code;
+        // ...
     }
-    else if (ex is Error401)
+
+    // An underlying cause may be provided
+    if (ex.InnerException != null)
     {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error403)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error404)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error405)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error409)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is HTTPValidationError)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error425)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error429)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error500)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error502)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Error504)
-    {
-        // Handle exception data
-        throw;
-    }
-    else if (ex is Gr4vy.Models.Errors.APIException)
-    {
-        // Handle default exception
-        throw;
+        Exception cause = ex.InnerException;
     }
 }
+catch (System.Net.Http.HttpRequestException ex)
+{
+    // Check ex.InnerException for Network connectivity errors
+}
 ```
+
+### Error Classes
+
+**Primary exceptions:**
+* [`Gr4vyError`](./src/Gr4vy/Models/Errors/Gr4vyError.cs): The base class for HTTP error responses.
+  * [`Error400`](./src/Gr4vy/Models/Errors/Error400.cs): The request was invalid. Status code `400`.
+  * [`Error401`](./src/Gr4vy/Models/Errors/Error401.cs): The request was unauthorized. Status code `401`.
+  * [`Error403`](./src/Gr4vy/Models/Errors/Error403.cs): The credentials were invalid or the caller did not have permission to act on the resource. Status code `403`.
+  * [`Error404`](./src/Gr4vy/Models/Errors/Error404.cs): The resource was not found. Status code `404`.
+  * [`Error405`](./src/Gr4vy/Models/Errors/Error405.cs): The request method was not allowed. Status code `405`.
+  * [`Error409`](./src/Gr4vy/Models/Errors/Error409.cs): A duplicate record was found. Status code `409`.
+  * [`Error425`](./src/Gr4vy/Models/Errors/Error425.cs): The request was too early. Status code `425`.
+  * [`Error429`](./src/Gr4vy/Models/Errors/Error429.cs): Too many requests were made. Status code `429`.
+  * [`Error500`](./src/Gr4vy/Models/Errors/Error500.cs): The server encountered an error. Status code `500`.
+  * [`Error502`](./src/Gr4vy/Models/Errors/Error502.cs): The server encountered an error. Status code `502`.
+  * [`Error504`](./src/Gr4vy/Models/Errors/Error504.cs): The server encountered an error. Status code `504`.
+  * [`HTTPValidationError`](./src/Gr4vy/Models/Errors/HTTPValidationError.cs): Validation Error. Status code `422`. *
+
+<details><summary>Less common exceptions (2)</summary>
+
+* [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
+
+* Inheriting from [`Gr4vyError`](./src/Gr4vy/Models/Errors/Gr4vyError.cs):
+  * [`ResponseValidationError`](./src/Gr4vy/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
+</details>
+
+\* Refer to the [relevant documentation](#available-resources-and-operations) to determine whether an exception applies to a specific operation.
 <!-- End Error Handling [errors] -->
 
 <!-- Start Server Selection [server] -->

@@ -17,33 +17,33 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class TransactionCreatePaymentMethodType
     {
         private TransactionCreatePaymentMethodType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static TransactionCreatePaymentMethodType CardWithUrlPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("CardWithUrlPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType RedirectPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("RedirectPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType TokenPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("TokenPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType ApplePayPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("ApplePayPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType ClickToPayPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("ClickToPayPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType ClickToPayFPANPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("ClickToPayFPANPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType GooglePayPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("GooglePayPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType GooglePayFPANPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("GooglePayFPANPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType NetworkTokenPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("NetworkTokenPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType CheckoutSessionWithUrlPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("CheckoutSessionWithUrlPaymentMethodCreate"); } }
-        
+
         public static TransactionCreatePaymentMethodType Null { get { return new TransactionCreatePaymentMethodType("null"); } }
 
         public override string ToString() { return Value; }
@@ -84,8 +84,10 @@ namespace Gr4vy.Models.Components
     /// The optional payment method to use for this transaction. This field is required if no `gift_cards` have been added.
     /// </summary>
     [JsonConverter(typeof(TransactionCreatePaymentMethod.TransactionCreatePaymentMethodConverter))]
-    public class TransactionCreatePaymentMethod {
-        public TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType type) {
+    public class TransactionCreatePaymentMethod
+    {
+        public TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType type)
+        {
             Type = type;
         }
 
@@ -120,81 +122,80 @@ namespace Gr4vy.Models.Components
         public CheckoutSessionWithUrlPaymentMethodCreate? CheckoutSessionWithUrlPaymentMethodCreate { get; set; }
 
         public TransactionCreatePaymentMethodType Type { get; set; }
-
-
-        public static TransactionCreatePaymentMethod CreateCardWithUrlPaymentMethodCreate(CardWithUrlPaymentMethodCreate cardWithURLPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateCardWithUrlPaymentMethodCreate(CardWithUrlPaymentMethodCreate cardWithURLPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.CardWithUrlPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.CardWithUrlPaymentMethodCreate = cardWithURLPaymentMethodCreate;
             return res;
         }
-
-        public static TransactionCreatePaymentMethod CreateRedirectPaymentMethodCreate(RedirectPaymentMethodCreate redirectPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateRedirectPaymentMethodCreate(RedirectPaymentMethodCreate redirectPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.RedirectPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.RedirectPaymentMethodCreate = redirectPaymentMethodCreate;
             return res;
         }
-
-        public static TransactionCreatePaymentMethod CreateTokenPaymentMethodCreate(TokenPaymentMethodCreate tokenPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateTokenPaymentMethodCreate(TokenPaymentMethodCreate tokenPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.TokenPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.TokenPaymentMethodCreate = tokenPaymentMethodCreate;
             return res;
         }
-
-        public static TransactionCreatePaymentMethod CreateApplePayPaymentMethodCreate(ApplePayPaymentMethodCreate applePayPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateApplePayPaymentMethodCreate(ApplePayPaymentMethodCreate applePayPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.ApplePayPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.ApplePayPaymentMethodCreate = applePayPaymentMethodCreate;
             return res;
         }
-
-        public static TransactionCreatePaymentMethod CreateClickToPayPaymentMethodCreate(ClickToPayPaymentMethodCreate clickToPayPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateClickToPayPaymentMethodCreate(ClickToPayPaymentMethodCreate clickToPayPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.ClickToPayPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.ClickToPayPaymentMethodCreate = clickToPayPaymentMethodCreate;
             return res;
         }
-
-        public static TransactionCreatePaymentMethod CreateClickToPayFPANPaymentMethodCreate(ClickToPayFPANPaymentMethodCreate clickToPayFPANPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateClickToPayFPANPaymentMethodCreate(ClickToPayFPANPaymentMethodCreate clickToPayFPANPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.ClickToPayFPANPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.ClickToPayFPANPaymentMethodCreate = clickToPayFPANPaymentMethodCreate;
             return res;
         }
-
-        public static TransactionCreatePaymentMethod CreateGooglePayPaymentMethodCreate(GooglePayPaymentMethodCreate googlePayPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateGooglePayPaymentMethodCreate(GooglePayPaymentMethodCreate googlePayPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.GooglePayPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.GooglePayPaymentMethodCreate = googlePayPaymentMethodCreate;
             return res;
         }
-
-        public static TransactionCreatePaymentMethod CreateGooglePayFPANPaymentMethodCreate(GooglePayFPANPaymentMethodCreate googlePayFPANPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateGooglePayFPANPaymentMethodCreate(GooglePayFPANPaymentMethodCreate googlePayFPANPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.GooglePayFPANPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.GooglePayFPANPaymentMethodCreate = googlePayFPANPaymentMethodCreate;
             return res;
         }
-
-        public static TransactionCreatePaymentMethod CreateNetworkTokenPaymentMethodCreate(NetworkTokenPaymentMethodCreate networkTokenPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateNetworkTokenPaymentMethodCreate(NetworkTokenPaymentMethodCreate networkTokenPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.NetworkTokenPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.NetworkTokenPaymentMethodCreate = networkTokenPaymentMethodCreate;
             return res;
         }
-
-        public static TransactionCreatePaymentMethod CreateCheckoutSessionWithUrlPaymentMethodCreate(CheckoutSessionWithUrlPaymentMethodCreate checkoutSessionWithURLPaymentMethodCreate) {
+        public static TransactionCreatePaymentMethod CreateCheckoutSessionWithUrlPaymentMethodCreate(CheckoutSessionWithUrlPaymentMethodCreate checkoutSessionWithURLPaymentMethodCreate)
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.CheckoutSessionWithUrlPaymentMethodCreate;
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
@@ -202,7 +203,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static TransactionCreatePaymentMethod CreateNull() {
+        public static TransactionCreatePaymentMethod CreateNull()
+        {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.Null;
             return new TransactionCreatePaymentMethod(typ);
         }
@@ -453,63 +455,73 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 TransactionCreatePaymentMethod res = (TransactionCreatePaymentMethod)value;
                 if (TransactionCreatePaymentMethodType.FromString(res.Type).Equals(TransactionCreatePaymentMethodType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.CardWithUrlPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CardWithUrlPaymentMethodCreate));
                     return;
                 }
+
                 if (res.RedirectPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.RedirectPaymentMethodCreate));
                     return;
                 }
+
                 if (res.TokenPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TokenPaymentMethodCreate));
                     return;
                 }
+
                 if (res.ApplePayPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ApplePayPaymentMethodCreate));
                     return;
                 }
+
                 if (res.ClickToPayPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ClickToPayPaymentMethodCreate));
                     return;
                 }
+
                 if (res.ClickToPayFPANPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ClickToPayFPANPaymentMethodCreate));
                     return;
                 }
+
                 if (res.GooglePayPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GooglePayPaymentMethodCreate));
                     return;
                 }
+
                 if (res.GooglePayFPANPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GooglePayFPANPaymentMethodCreate));
                     return;
                 }
+
                 if (res.NetworkTokenPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.NetworkTokenPaymentMethodCreate));
                     return;
                 }
+
                 if (res.CheckoutSessionWithUrlPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CheckoutSessionWithUrlPaymentMethodCreate));
                     return;
                 }
-
             }
 
         }

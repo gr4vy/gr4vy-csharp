@@ -17,17 +17,17 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class PayoutCreatePaymentMethodType
     {
         private PayoutCreatePaymentMethodType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static PayoutCreatePaymentMethodType PaymentMethodCard { get { return new PayoutCreatePaymentMethodType("PaymentMethodCard"); } }
-        
+
         public static PayoutCreatePaymentMethodType PaymentMethodStoredCard { get { return new PayoutCreatePaymentMethodType("PaymentMethodStoredCard"); } }
-        
+
         public static PayoutCreatePaymentMethodType Null { get { return new PayoutCreatePaymentMethodType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace Gr4vy.Models.Components
     /// The type of payment method to send funds too.
     /// </summary>
     [JsonConverter(typeof(PayoutCreatePaymentMethod.PayoutCreatePaymentMethodConverter))]
-    public class PayoutCreatePaymentMethod {
-        public PayoutCreatePaymentMethod(PayoutCreatePaymentMethodType type) {
+    public class PayoutCreatePaymentMethod
+    {
+        public PayoutCreatePaymentMethod(PayoutCreatePaymentMethodType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace Gr4vy.Models.Components
         public PaymentMethodStoredCard? PaymentMethodStoredCard { get; set; }
 
         public PayoutCreatePaymentMethodType Type { get; set; }
-
-
-        public static PayoutCreatePaymentMethod CreatePaymentMethodCard(PaymentMethodCard paymentMethodCard) {
+        public static PayoutCreatePaymentMethod CreatePaymentMethodCard(PaymentMethodCard paymentMethodCard)
+        {
             PayoutCreatePaymentMethodType typ = PayoutCreatePaymentMethodType.PaymentMethodCard;
 
             PayoutCreatePaymentMethod res = new PayoutCreatePaymentMethod(typ);
             res.PaymentMethodCard = paymentMethodCard;
             return res;
         }
-
-        public static PayoutCreatePaymentMethod CreatePaymentMethodStoredCard(PaymentMethodStoredCard paymentMethodStoredCard) {
+        public static PayoutCreatePaymentMethod CreatePaymentMethodStoredCard(PaymentMethodStoredCard paymentMethodStoredCard)
+        {
             PayoutCreatePaymentMethodType typ = PayoutCreatePaymentMethodType.PaymentMethodStoredCard;
 
             PayoutCreatePaymentMethod res = new PayoutCreatePaymentMethod(typ);
@@ -90,7 +91,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static PayoutCreatePaymentMethod CreateNull() {
+        public static PayoutCreatePaymentMethod CreateNull()
+        {
             PayoutCreatePaymentMethodType typ = PayoutCreatePaymentMethodType.Null;
             return new PayoutCreatePaymentMethod(typ);
         }
@@ -181,23 +183,25 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 PayoutCreatePaymentMethod res = (PayoutCreatePaymentMethod)value;
                 if (PayoutCreatePaymentMethodType.FromString(res.Type).Equals(PayoutCreatePaymentMethodType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.PaymentMethodCard != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PaymentMethodCard));
                     return;
                 }
+
                 if (res.PaymentMethodStoredCard != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PaymentMethodStoredCard));
                     return;
                 }
-
             }
 
         }

@@ -17,17 +17,17 @@ namespace Gr4vy.Models.Requests
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ResponseCaptureTransactionType
     {
         private ResponseCaptureTransactionType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ResponseCaptureTransactionType Transaction { get { return new ResponseCaptureTransactionType("Transaction"); } }
-        
+
         public static ResponseCaptureTransactionType TransactionCapture { get { return new ResponseCaptureTransactionType("TransactionCapture"); } }
-        
+
         public static ResponseCaptureTransactionType Null { get { return new ResponseCaptureTransactionType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace Gr4vy.Models.Requests
     /// Successful Response
     /// </summary>
     [JsonConverter(typeof(ResponseCaptureTransaction.ResponseCaptureTransactionConverter))]
-    public class ResponseCaptureTransaction {
-        public ResponseCaptureTransaction(ResponseCaptureTransactionType type) {
+    public class ResponseCaptureTransaction
+    {
+        public ResponseCaptureTransaction(ResponseCaptureTransactionType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace Gr4vy.Models.Requests
         public TransactionCapture? TransactionCapture { get; set; }
 
         public ResponseCaptureTransactionType Type { get; set; }
-
-
-        public static ResponseCaptureTransaction CreateTransaction(Transaction transaction) {
+        public static ResponseCaptureTransaction CreateTransaction(Transaction transaction)
+        {
             ResponseCaptureTransactionType typ = ResponseCaptureTransactionType.Transaction;
 
             ResponseCaptureTransaction res = new ResponseCaptureTransaction(typ);
             res.Transaction = transaction;
             return res;
         }
-
-        public static ResponseCaptureTransaction CreateTransactionCapture(TransactionCapture transactionCapture) {
+        public static ResponseCaptureTransaction CreateTransactionCapture(TransactionCapture transactionCapture)
+        {
             ResponseCaptureTransactionType typ = ResponseCaptureTransactionType.TransactionCapture;
 
             ResponseCaptureTransaction res = new ResponseCaptureTransaction(typ);
@@ -90,7 +91,8 @@ namespace Gr4vy.Models.Requests
             return res;
         }
 
-        public static ResponseCaptureTransaction CreateNull() {
+        public static ResponseCaptureTransaction CreateNull()
+        {
             ResponseCaptureTransactionType typ = ResponseCaptureTransactionType.Null;
             return new ResponseCaptureTransaction(typ);
         }
@@ -181,23 +183,25 @@ namespace Gr4vy.Models.Requests
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 ResponseCaptureTransaction res = (ResponseCaptureTransaction)value;
                 if (ResponseCaptureTransactionType.FromString(res.Type).Equals(ResponseCaptureTransactionType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.Transaction != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.Transaction));
                     return;
                 }
+
                 if (res.TransactionCapture != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionCapture));
                     return;
                 }
-
             }
 
         }

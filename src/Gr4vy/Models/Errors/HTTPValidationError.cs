@@ -14,11 +14,36 @@ namespace Gr4vy.Models.Errors
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
-    public class HTTPValidationError : Exception
-    {
+    using System.Net.Http;
 
+    public class HTTPValidationErrorPayload
+    {
         [JsonProperty("detail")]
         public List<ValidationError>? Detail { get; set; }
     }
+
+    public class HTTPValidationError : Gr4vyError
+    {
+        /// <summary>
+        ///  The original data that was passed to this exception.
+        /// </summary>
+        public HTTPValidationErrorPayload Payload { get; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use HTTPValidationError.Payload.Detail instead.")]
+        public List<ValidationError>? Detail { get; set; }
+
+        public HTTPValidationError(
+            HTTPValidationErrorPayload payload,
+            HttpResponseMessage rawResponse,
+            string body
+        ): base("API error occurred", rawResponse, body)
+        {
+           Payload = payload;
+
+           #pragma warning disable CS0618
+           Detail = payload.Detail;
+           #pragma warning restore CS0618
+        }
+    }
+
 }

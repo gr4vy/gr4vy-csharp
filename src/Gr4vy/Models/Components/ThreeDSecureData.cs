@@ -17,17 +17,17 @@ namespace Gr4vy.Models.Components
     using System.Collections.Generic;
     using System.Numerics;
     using System.Reflection;
-    
 
     public class ThreeDSecureDataType
     {
         private ThreeDSecureDataType(string value) { Value = value; }
 
         public string Value { get; private set; }
+
         public static ThreeDSecureDataType ThreeDSecureDataV1 { get { return new ThreeDSecureDataType("ThreeDSecureDataV1"); } }
-        
+
         public static ThreeDSecureDataType ThreeDSecureDataV2 { get { return new ThreeDSecureDataType("ThreeDSecureDataV2"); } }
-        
+
         public static ThreeDSecureDataType Null { get { return new ThreeDSecureDataType("null"); } }
 
         public override string ToString() { return Value; }
@@ -60,8 +60,10 @@ namespace Gr4vy.Models.Components
     /// Pass through 3-D Secure data to support external 3-D Secure authorisation. If using an external 3-D Secure provider, you should not pass a `redirect_url` in the `payment_method` object for a transaction.
     /// </summary>
     [JsonConverter(typeof(ThreeDSecureData.ThreeDSecureDataConverter))]
-    public class ThreeDSecureData {
-        public ThreeDSecureData(ThreeDSecureDataType type) {
+    public class ThreeDSecureData
+    {
+        public ThreeDSecureData(ThreeDSecureDataType type)
+        {
             Type = type;
         }
 
@@ -72,17 +74,16 @@ namespace Gr4vy.Models.Components
         public ThreeDSecureDataV2? ThreeDSecureDataV2 { get; set; }
 
         public ThreeDSecureDataType Type { get; set; }
-
-
-        public static ThreeDSecureData CreateThreeDSecureDataV1(ThreeDSecureDataV1 threeDSecureDataV1) {
+        public static ThreeDSecureData CreateThreeDSecureDataV1(ThreeDSecureDataV1 threeDSecureDataV1)
+        {
             ThreeDSecureDataType typ = ThreeDSecureDataType.ThreeDSecureDataV1;
 
             ThreeDSecureData res = new ThreeDSecureData(typ);
             res.ThreeDSecureDataV1 = threeDSecureDataV1;
             return res;
         }
-
-        public static ThreeDSecureData CreateThreeDSecureDataV2(ThreeDSecureDataV2 threeDSecureDataV2) {
+        public static ThreeDSecureData CreateThreeDSecureDataV2(ThreeDSecureDataV2 threeDSecureDataV2)
+        {
             ThreeDSecureDataType typ = ThreeDSecureDataType.ThreeDSecureDataV2;
 
             ThreeDSecureData res = new ThreeDSecureData(typ);
@@ -90,7 +91,8 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static ThreeDSecureData CreateNull() {
+        public static ThreeDSecureData CreateNull()
+        {
             ThreeDSecureDataType typ = ThreeDSecureDataType.Null;
             return new ThreeDSecureData(typ);
         }
@@ -181,23 +183,25 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 ThreeDSecureData res = (ThreeDSecureData)value;
                 if (ThreeDSecureDataType.FromString(res.Type).Equals(ThreeDSecureDataType.Null))
                 {
                     writer.WriteRawValue("null");
                     return;
                 }
+
                 if (res.ThreeDSecureDataV1 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ThreeDSecureDataV1));
                     return;
                 }
+
                 if (res.ThreeDSecureDataV2 != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.ThreeDSecureDataV2));
                     return;
                 }
-
             }
 
         }
