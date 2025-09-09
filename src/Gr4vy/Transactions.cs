@@ -107,7 +107,7 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "1.2.3";
+        private const string _sdkVersion = "1.2.4";
         private const string _sdkGenVersion = "2.696.0";
         private const string _openapiDocVersion = "1.0.0";
         public ITransactionsRefunds Refunds { get; private set; }
@@ -264,6 +264,7 @@ namespace Gr4vy
                     IsSubsequentPayment = request?.IsSubsequentPayment,
                     MerchantInitiated = request?.MerchantInitiated,
                     Used3ds = request?.Used3ds,
+                    Disputed = request?.Disputed,
                     BuyerSearch = request?.BuyerSearch,
                     MerchantAccountId = request?.MerchantAccountId
                 };

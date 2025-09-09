@@ -236,6 +236,12 @@ namespace Gr4vy.Models.Requests
         public bool? Used3ds { get; set; } = null;
 
         /// <summary>
+        /// Filters for transactions that have been disputed.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=disputed")]
+        public bool? Disputed { get; set; } = null;
+
+        /// <summary>
         /// Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_search")]
