@@ -53,7 +53,7 @@ namespace Gr4vy.Models.Components
         public string? ExternalIdentifier { get; set; } = null;
 
         /// <summary>
-        /// The SKU for the item.
+        /// The SKU or product code for the item.
         /// </summary>
         [JsonProperty("sku")]
         public string? Sku { get; set; } = null;
@@ -87,5 +87,41 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("seller_country")]
         public string? SellerCountry { get; set; } = null;
+
+        /// <summary>
+        /// Whether the item is exempt of tax.
+        /// </summary>
+        [JsonProperty("tax_exempt")]
+        public bool? TaxExempt { get; set; } = null;
+
+        /// <summary>
+        /// The unit of measure or the unit of measure code.
+        /// </summary>
+        [JsonProperty("unit_of_measure")]
+        public string? UnitOfMeasure { get; set; } = null;
+
+        /// <summary>
+        /// Item commodity code. Generally a UNSPSC code.
+        /// </summary>
+        [JsonProperty("commodity_code")]
+        public string? CommodityCode { get; set; } = null;
+
+        /// <summary>
+        /// Brief item description.
+        /// </summary>
+        [JsonProperty("description")]
+        public string? Description { get; set; } = null;
+
+        /// <summary>
+        /// Item import or export duties represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
+        /// </summary>
+        [JsonProperty("duty_amount")]
+        public long? DutyAmount { get; set; } = null;
+
+        /// <summary>
+        /// Freight/shipping amount represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
+        /// </summary>
+        [JsonProperty("shipping_amount")]
+        public long? ShippingAmount { get; set; } = null;
     }
 }
