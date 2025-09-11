@@ -547,7 +547,7 @@ while(res != null)
 <!-- Start Error Handling [errors] -->
 ## Error Handling
 
-[`Gr4vyError`](./src/Gr4vy/Models/Errors/Gr4vyError.cs) is the base exception class for all HTTP error responses. It has the following properties:
+[`BaseException`](./src/Gr4vy/Models/Errors/BaseException.cs) is the base exception class for all HTTP error responses. It has the following properties:
 
 | Property      | Type                  | Description           |
 |---------------|-----------------------|-----------------------|
@@ -584,7 +584,7 @@ try
 
     // handle response
 }
-catch (Gr4vyError ex)  // all SDK exceptions inherit from Gr4vyError
+catch (BaseException ex)  // all SDK exceptions inherit from BaseException
 {
     // ex.ToString() provides a detailed error message
     System.Console.WriteLine(ex);
@@ -620,7 +620,7 @@ catch (System.Net.Http.HttpRequestException ex)
 ### Error Classes
 
 **Primary exceptions:**
-* [`Gr4vyError`](./src/Gr4vy/Models/Errors/Gr4vyError.cs): The base class for HTTP error responses.
+* [`BaseException`](./src/Gr4vy/Models/Errors/BaseException.cs): The base class for HTTP error responses.
   * [`Error400`](./src/Gr4vy/Models/Errors/Error400.cs): The request was invalid. Status code `400`.
   * [`Error401`](./src/Gr4vy/Models/Errors/Error401.cs): The request was unauthorized. Status code `401`.
   * [`Error403`](./src/Gr4vy/Models/Errors/Error403.cs): The credentials were invalid or the caller did not have permission to act on the resource. Status code `403`.
@@ -638,7 +638,7 @@ catch (System.Net.Http.HttpRequestException ex)
 
 * [`System.Net.Http.HttpRequestException`](https://learn.microsoft.com/en-us/dotnet/api/system.net.http.httprequestexception): Network connectivity error. For more details about the underlying cause, inspect the `ex.InnerException`.
 
-* Inheriting from [`Gr4vyError`](./src/Gr4vy/Models/Errors/Gr4vyError.cs):
+* Inheriting from [`BaseException`](./src/Gr4vy/Models/Errors/BaseException.cs):
   * [`ResponseValidationError`](./src/Gr4vy/Models/Errors/ResponseValidationError.cs): Thrown when the response data could not be deserialized into the expected type.
 </details>
 

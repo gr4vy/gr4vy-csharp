@@ -46,7 +46,7 @@ namespace Gr4vy.Models.Errors
         public List<ErrorDetail>? Details { get; set; }
     }
 
-    public class Error504 : Gr4vyError
+    public class Error504 : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

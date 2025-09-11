@@ -220,5 +220,47 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("installment_count")]
         public long? InstallmentCount { get; set; } = null;
+
+        /// <summary>
+        /// The sales tax amount for this transaction, represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
+        /// </summary>
+        [JsonProperty("tax_amount")]
+        public long? TaxAmount { get; set; } = null;
+
+        /// <summary>
+        /// Merchant tax ID (for example, EIN or VAT number).
+        /// </summary>
+        [JsonProperty("merchant_tax_id")]
+        public string? MerchantTaxId { get; set; } = null;
+
+        /// <summary>
+        /// Customer code or reference.
+        /// </summary>
+        [JsonProperty("customer_reference_number")]
+        public string? CustomerReferenceNumber { get; set; } = null;
+
+        /// <summary>
+        /// Whether the tax is included in the amount.
+        /// </summary>
+        [JsonProperty("amount_includes_tax")]
+        public bool? AmountIncludesTax { get; set; } = null;
+
+        /// <summary>
+        /// The merchant&apos;s unique identifier for the sales order or invoice.
+        /// </summary>
+        [JsonProperty("supplier_order_number")]
+        public string? SupplierOrderNumber { get; set; } = null;
+
+        /// <summary>
+        /// Total charges for import/export duties.
+        /// </summary>
+        [JsonProperty("duty_amount")]
+        public long? DutyAmount { get; set; } = null;
+
+        /// <summary>
+        /// Total shipping amount.
+        /// </summary>
+        [JsonProperty("shipping_amount")]
+        public long? ShippingAmount { get; set; } = null;
     }
 }

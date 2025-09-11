@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 695441aaaa55a446fa552d21e5825a43
+  docChecksum: 779ddfe84a67d985a1fff62d9fa183eb
   docVersion: 1.0.0
-  speakeasyVersion: 1.613.0
-  generationVersion: 2.696.0
-  releaseVersion: 1.2.4
-  configChecksum: daaa2d89691dd7be4e517da3880c571e
+  speakeasyVersion: 1.615.2
+  generationVersion: 2.698.4
+  releaseVersion: 1.2.5
+  configChecksum: fd2baa280c68b01a18c3a7603fda6b78
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -15,7 +15,7 @@ features:
     constsAndDefaults: 0.0.1
     core: 3.12.2
     flattening: 2.81.3
-    globalSecurity: 2.83.7
+    globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
     globalServerURLs: 2.82.4
@@ -661,6 +661,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/WpayPaytoResourceOptions.cs
   - src/Gr4vy/Models/Components/WpayPaytoSimulationOptions.cs
   - src/Gr4vy/Models/Errors/APIException.cs
+  - src/Gr4vy/Models/Errors/BaseException.cs
   - src/Gr4vy/Models/Errors/Error400.cs
   - src/Gr4vy/Models/Errors/Error401.cs
   - src/Gr4vy/Models/Errors/Error403.cs
@@ -672,7 +673,6 @@ generatedFiles:
   - src/Gr4vy/Models/Errors/Error500.cs
   - src/Gr4vy/Models/Errors/Error502.cs
   - src/Gr4vy/Models/Errors/Error504.cs
-  - src/Gr4vy/Models/Errors/Gr4vyError.cs
   - src/Gr4vy/Models/Errors/HTTPValidationError.cs
   - src/Gr4vy/Models/Errors/ResponseValidationException.cs
   - src/Gr4vy/Models/Requests/AddBuyerRequest.cs
@@ -4254,4 +4254,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.List()`: \n  *  `request.Disputed` **Added**\n"
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate` **Changed**\n  *  `response.statementDescriptor.PostalCode` **Added**\n* `Gr4vy.Transactions.Get()`:  `response.statementDescriptor.PostalCode` **Added**\n* `Gr4vy.Transactions.Update()`:  `response.statementDescriptor.PostalCode` **Added**\n* `Gr4vy.Transactions.Capture()`:  `response.[transaction].StatementDescriptor.PostalCode` **Added**\n* `Gr4vy.Transactions.Void()`:  `response.[transaction].StatementDescriptor.PostalCode` **Added**\n* `Gr4vy.Transactions.Cancel()`:  `response.transaction.StatementDescriptor.PostalCode` **Added**\n* `Gr4vy.Transactions.Sync()`:  `response.statementDescriptor.PostalCode` **Added**\n* `Gr4vy.Payment-Links.List()`:  `response.items.[].StatementDescriptor.PostalCode` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.StatementDescriptor.PostalCode` **Added**\n  *  `response.statementDescriptor.PostalCode` **Added**\n* `Gr4vy.Payment-Links.Get()`:  `response.statementDescriptor.PostalCode` **Added**\n"

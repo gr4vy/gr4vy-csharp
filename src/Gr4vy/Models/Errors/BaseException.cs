@@ -14,7 +14,7 @@ namespace Gr4vy.Models.Errors
     using System.Net.Http;
     using System.Net.Http.Headers;
 
-    public class Gr4vyError : Exception
+    public class BaseException : Exception
     {
         /// <summary>
         /// Error Message
@@ -46,13 +46,13 @@ namespace Gr4vy.Models.Errors
         /// </summary>
         public string Body { get; }
 
-        public Gr4vyError(
+        public BaseException(
             string message,
             HttpResponseMessage rawResponse,
             string body
         ) : this(message, rawResponse, body, null) {}
 
-        public Gr4vyError(
+        public BaseException(
             string message,
             HttpResponseMessage rawResponse,
             string body,

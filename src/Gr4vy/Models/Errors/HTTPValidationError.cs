@@ -22,7 +22,7 @@ namespace Gr4vy.Models.Errors
         public List<ValidationError>? Detail { get; set; }
     }
 
-    public class HTTPValidationError : Gr4vyError
+    public class HTTPValidationError : BaseException
     {
         /// <summary>
         ///  The original data that was passed to this exception.

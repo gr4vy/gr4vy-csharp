@@ -16,12 +16,13 @@ generation:
   auth:
     oAuth2ClientCredentialsEnabled: false
     oAuth2PasswordEnabled: false
+    hoistGlobalSecurity: true
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 1.2.4
+  version: 1.2.5
   additionalDependencies:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.9.0

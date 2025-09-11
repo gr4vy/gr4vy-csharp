@@ -13,7 +13,7 @@ namespace Gr4vy.Models.Errors
     using System;
     using System.Net.Http;
 
-    public class APIException : Gr4vyError
+    public class APIException : BaseException
     {
         /// <summary>
         /// Default API exception.
