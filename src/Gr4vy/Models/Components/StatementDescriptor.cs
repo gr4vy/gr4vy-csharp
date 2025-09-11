@@ -53,5 +53,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("url")]
         public string? Url { get; set; } = null;
+
+        /// <summary>
+        /// The merchant&apos;s postal code or zip code.
+        /// </summary>
+        [JsonProperty("postal_code")]
+        public string? PostalCode { get; set; } = null;
     }
 }
