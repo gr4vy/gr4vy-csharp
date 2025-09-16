@@ -83,6 +83,7 @@ var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
 MerchantAccountCreate req = new MerchantAccountCreate() {
     AccountUpdaterEnabled = true,
+    AsyncNetworkTokensEnabled = true,
     Id = "merchant-12345",
     DisplayName = "Example",
 };
@@ -183,6 +184,7 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
     merchantAccountId: "merchant-12345",
     merchantAccountUpdate: new MerchantAccountUpdate() {
         AccountUpdaterEnabled = true,
+        AsyncNetworkTokensEnabled = true,
     }
 );
 

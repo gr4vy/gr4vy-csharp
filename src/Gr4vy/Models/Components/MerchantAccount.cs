@@ -132,6 +132,12 @@ namespace Gr4vy.Models.Components
         public string? MastercardNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
+        /// When enabled network tokens will be generated asynchronously and only used on subsequent transactions to speed up transaction processing.
+        /// </summary>
+        [JsonProperty("async_network_tokens_enabled")]
+        public bool? AsyncNetworkTokensEnabled { get; set; } = false;
+
+        /// <summary>
         /// The date this merchant account was created at.
         /// </summary>
         [JsonProperty("created_at")]
