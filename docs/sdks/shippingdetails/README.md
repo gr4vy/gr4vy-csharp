@@ -241,7 +241,7 @@ var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Buyers.ShippingDetails.DeleteAsync(
+await sdk.Buyers.ShippingDetails.DeleteAsync(
     buyerId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
     shippingDetailsId: "bf8c36ad-02d9-4904-b0f9-a230b149e341"
 );
@@ -256,10 +256,6 @@ var res = await sdk.Buyers.ShippingDetails.DeleteAsync(
 | `BuyerId`                                               | *string*                                                | :heavy_check_mark:                                      | The ID of the buyer to delete shipping details for.     | fe26475d-ec3e-4884-9553-f7356683f7f9                    |
 | `ShippingDetailsId`                                     | *string*                                                | :heavy_check_mark:                                      | The ID of the shipping details to delete.               | bf8c36ad-02d9-4904-b0f9-a230b149e341                    |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
-
-### Response
-
-**[object](../../Models/.md)**
 
 ### Errors
 

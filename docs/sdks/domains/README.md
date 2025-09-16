@@ -80,7 +80,7 @@ var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.DigitalWallets.Domains.DeleteAsync(
+await sdk.DigitalWallets.Domains.DeleteAsync(
     digitalWalletId: "",
     digitalWalletDomain: new DigitalWalletDomain() {
         DomainName = "example.com",
@@ -97,10 +97,6 @@ var res = await sdk.DigitalWallets.Domains.DeleteAsync(
 | `DigitalWalletId`                                                     | *string*                                                              | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
 | `DigitalWalletDomain`                                                 | [DigitalWalletDomain](../../Models/Components/DigitalWalletDomain.md) | :heavy_check_mark:                                                    | N/A                                                                   |                                                                       |
 | `MerchantAccountId`                                                   | *string*                                                              | :heavy_minus_sign:                                                    | The ID of the merchant account to use for this request.               | default                                                               |
-
-### Response
-
-**[object](../../Models/.md)**
 
 ### Errors
 

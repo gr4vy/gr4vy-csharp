@@ -76,7 +76,7 @@ var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.GiftCards.DeleteAsync(giftCardId: "356d56e5-fe16-42ae-97ee-8d55d846ae2e");
+await sdk.GiftCards.DeleteAsync(giftCardId: "356d56e5-fe16-42ae-97ee-8d55d846ae2e");
 
 // handle response
 ```
@@ -87,10 +87,6 @@ var res = await sdk.GiftCards.DeleteAsync(giftCardId: "356d56e5-fe16-42ae-97ee-8
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `GiftCardId`                                            | *string*                                                | :heavy_check_mark:                                      | The ID of the gift card.                                | 356d56e5-fe16-42ae-97ee-8d55d846ae2e                    |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
-
-### Response
-
-**[object](../../Models/.md)**
 
 ### Errors
 

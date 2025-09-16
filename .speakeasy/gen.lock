@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 22545b5992c1bc9e4df09bce03791f45
+  docChecksum: fc44ae5677ea9cd1e51813ffef591a60
   docVersion: 1.0.0
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 1.2.6
-  configChecksum: c9bf3f3ceceafad77071ca86697aeb7c
+  releaseVersion: 1.2.7
+  configChecksum: 06e9be7a9753f9d8761595e00a41911e
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -4254,4 +4254,10 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.CartItems.[]` **Changed**\n  *  `response.cartItems.[]` **Changed**\n* `Gr4vy.Transactions.Get()`:  `response.cartItems.[]` **Changed**\n* `Gr4vy.Transactions.Update()`:  `response.cartItems.[]` **Changed**\n* `Gr4vy.Transactions.Capture()`:  `response.[transaction].CartItems.[]` **Changed**\n* `Gr4vy.Transactions.Void()`:  `response.[transactionVoid].Transaction.CartItems.[]` **Changed**\n* `Gr4vy.Transactions.Cancel()`:  `response.transaction.CartItems.[]` **Changed**\n* `Gr4vy.Transactions.Sync()`:  `response.cartItems.[]` **Changed**\n* `Gr4vy.Payment-Options.List()`: \n  *  `request.paymentOptionRequest.CartItems.[]` **Changed**\n* `Gr4vy.Checkout-Sessions.Create()`: \n  *  `request.checkoutSessionCreate.CartItems.[]` **Changed**\n  *  `response.cartItems.[]` **Changed**\n* `Gr4vy.Checkout-Sessions.Get()`:  `response.cartItems.[]` **Changed**\n* `Gr4vy.Checkout-Sessions.Update()`: \n  *  `request.checkoutSessionCreate.CartItems.[]` **Changed**\n  *  `response.cartItems.[]` **Changed**\n* `Gr4vy.Payment-Links.List()`:  `response.items.[].CartItems.[]` **Changed**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.CartItems.[]` **Changed**\n  *  `response.cartItems.[]` **Changed**\n* `Gr4vy.Payment-Links.Get()`:  `response.cartItems.[]` **Changed**\n"
+releaseNotes: |
+  ## Csharp SDK Changes Detected:
+  * `Gr4vy.Buyers.Shipping-Details.Delete()`:  `response` **Changed** **Breaking** :warning:
+  * `Gr4vy.Gift-Cards.Delete()`:  `response` **Changed** **Breaking** :warning:
+  * `Gr4vy.Digital-Wallets.Delete()`:  `response` **Changed** **Breaking** :warning:
+  * `Gr4vy.Digital-Wallets.Domains.Delete()`:  `response` **Changed** **Breaking** :warning:
+  * `Gr4vy.Payment-Services.Delete()`:  `response` **Changed** **Breaking** :warning:

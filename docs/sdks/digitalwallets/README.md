@@ -180,7 +180,7 @@ var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.DigitalWallets.DeleteAsync(digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5");
+await sdk.DigitalWallets.DeleteAsync(digitalWalletId: "1808f5e6-b49c-4db9-94fa-22371ea352f5");
 
 // handle response
 ```
@@ -191,10 +191,6 @@ var res = await sdk.DigitalWallets.DeleteAsync(digitalWalletId: "1808f5e6-b49c-4
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
 | `DigitalWalletId`                                       | *string*                                                | :heavy_check_mark:                                      | The ID of the digital wallet to delete.                 | 1808f5e6-b49c-4db9-94fa-22371ea352f5                    |
 | `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
-
-### Response
-
-**[object](../../Models/.md)**
 
 ### Errors
 
