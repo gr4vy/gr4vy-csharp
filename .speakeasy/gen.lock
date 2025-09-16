@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: fc44ae5677ea9cd1e51813ffef591a60
+  docChecksum: 84be2b1b3b18b60517210a56ded1da52
   docVersion: 1.0.0
   speakeasyVersion: 1.615.2
   generationVersion: 2.698.4
-  releaseVersion: 1.2.7
-  configChecksum: 06e9be7a9753f9d8761595e00a41911e
+  releaseVersion: 1.2.8
+  configChecksum: af7f991bd05f47dee37510a842a727e3
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -3485,10 +3485,10 @@ examples:
           timeout_in_seconds: 1
           application_name: "core-api"
       requestBody:
-        application/json: {"account_updater_enabled": true, "id": "merchant-12345", "display_name": "Example"}
+        application/json: {"account_updater_enabled": true, "async_network_tokens_enabled": true, "id": "merchant-12345", "display_name": "Example"}
       responses:
         "201":
-          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "async_network_tokens_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -3522,7 +3522,7 @@ examples:
           application_name: "core-api"
       responses:
         "200":
-          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "async_network_tokens_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -3556,10 +3556,10 @@ examples:
           timeout_in_seconds: 1
           application_name: "core-api"
       requestBody:
-        application/json: {"account_updater_enabled": true}
+        application/json: {"account_updater_enabled": true, "async_network_tokens_enabled": true}
       responses:
         "200":
-          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "merchant-account", "id": "merchant-12345", "display_name": "John Doe", "account_updater_enabled": true, "async_network_tokens_enabled": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4254,10 +4254,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes Detected:
-  * `Gr4vy.Buyers.Shipping-Details.Delete()`:  `response` **Changed** **Breaking** :warning:
-  * `Gr4vy.Gift-Cards.Delete()`:  `response` **Changed** **Breaking** :warning:
-  * `Gr4vy.Digital-Wallets.Delete()`:  `response` **Changed** **Breaking** :warning:
-  * `Gr4vy.Digital-Wallets.Domains.Delete()`:  `response` **Changed** **Breaking** :warning:
-  * `Gr4vy.Payment-Services.Delete()`:  `response` **Changed** **Breaking** :warning:
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Merchant-Accounts.List()`:  `response.items.[].AsyncNetworkTokensEnabled` **Added**\n* `Gr4vy.Merchant-Accounts.Create()`: \n  *  `request.AsyncNetworkTokensEnabled` **Added**\n  *  `response.asyncNetworkTokensEnabled` **Added**\n* `Gr4vy.Merchant-Accounts.Get()`:  `response.asyncNetworkTokensEnabled` **Added**\n* `Gr4vy.Merchant-Accounts.Update()`: \n  *  `request.merchantAccountUpdate.AsyncNetworkTokensEnabled` **Added**\n  *  `response.asyncNetworkTokensEnabled` **Added**\n"
