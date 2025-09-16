@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 84be2b1b3b18b60517210a56ded1da52
+  docChecksum: 511127adeb8a98759d84f7f03a2b18ba
   docVersion: 1.0.0
-  speakeasyVersion: 1.615.2
-  generationVersion: 2.698.4
-  releaseVersion: 1.2.8
-  configChecksum: af7f991bd05f47dee37510a842a727e3
+  speakeasyVersion: 1.617.1
+  generationVersion: 2.701.8
+  releaseVersion: 1.2.9
+  configChecksum: 57e5bb1a6e6ef6530d9bca2939878bec
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -23,7 +23,7 @@ features:
     groups: 2.81.2
     ignores: 2.81.1
     intellisenseMarkdownSupport: 0.1.0
-    methodArguments: 0.2.0
+    methodArguments: 0.2.1
     nameOverrides: 2.81.2
     nullables: 0.1.1
     pagination: 0.2.6
@@ -154,6 +154,7 @@ generatedFiles:
   - docs/Models/Components/NetworkTokens.md
   - docs/Models/Components/NuveiAirlineDataOptions.md
   - docs/Models/Components/NuveiOptions.md
+  - docs/Models/Components/NuveiPSEOptions.md
   - docs/Models/Components/OxxoOptions.md
   - docs/Models/Components/PaymentLink.md
   - docs/Models/Components/PaymentLinkCreate.md
@@ -553,6 +554,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/NetworkTokens.cs
   - src/Gr4vy/Models/Components/NuveiAirlineDataOptions.cs
   - src/Gr4vy/Models/Components/NuveiOptions.cs
+  - src/Gr4vy/Models/Components/NuveiPSEOptions.cs
   - src/Gr4vy/Models/Components/OxxoOptions.cs
   - src/Gr4vy/Models/Components/PaymentLink.cs
   - src/Gr4vy/Models/Components/PaymentLinkCreate.cs
@@ -4254,4 +4256,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Merchant-Accounts.List()`:  `response.items.[].AsyncNetworkTokensEnabled` **Added**\n* `Gr4vy.Merchant-Accounts.Create()`: \n  *  `request.AsyncNetworkTokensEnabled` **Added**\n  *  `response.asyncNetworkTokensEnabled` **Added**\n* `Gr4vy.Merchant-Accounts.Get()`:  `response.asyncNetworkTokensEnabled` **Added**\n* `Gr4vy.Merchant-Accounts.Update()`: \n  *  `request.merchantAccountUpdate.AsyncNetworkTokensEnabled` **Added**\n  *  `response.asyncNetworkTokensEnabled` **Added**\n"
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Nuvei-Pse` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Nuvei-Pse` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Nuvei-Pse` **Added**\n"

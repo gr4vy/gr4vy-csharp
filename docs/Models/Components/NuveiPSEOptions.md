@@ -1,0 +1,11 @@
+# NuveiPSEOptions
+
+
+## Fields
+
+| Field                                                             | Type                                                              | Required                                                          | Description                                                       | Example                                                           |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `UserType`                                                        | *string*                                                          | :heavy_minus_sign:                                                | Customer type ("N" for persona natural, "J" for persona jurídica) | N                                                                 |
+| `UserFisNumber`                                                   | *string*                                                          | :heavy_minus_sign:                                                | Customer’s document type                                          | CC                                                                |
+| `FiscalNumber`                                                    | *string*                                                          | :heavy_minus_sign:                                                | Customer’s document number                                        | CC                                                                |
+| `BankCode`                                                        | *string*                                                          | :heavy_minus_sign:                                                | The bank code of the selected bank                                | 5432                                                              |
