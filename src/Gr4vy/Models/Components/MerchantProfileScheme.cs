@@ -22,12 +22,6 @@ namespace Gr4vy.Models.Components
         public string MerchantAcquirerBin { get; set; } = default!;
 
         /// <summary>
-        /// URL to send when calling 3DS through this scheme.
-        /// </summary>
-        [JsonProperty("merchant_url")]
-        public string MerchantUrl { get; set; } = default!;
-
-        /// <summary>
         /// Merchant ID to use when calling 3DS through this scheme.
         /// </summary>
         [JsonProperty("merchant_acquirer_id")]
@@ -37,7 +31,7 @@ namespace Gr4vy.Models.Components
         public string MerchantName { get; set; } = default!;
 
         /// <summary>
-        /// Merchant country code to use when calling 3DS through this scheme.
+        /// The merchant&apos;s ISO 3166-1 numeric country code.
         /// </summary>
         [JsonProperty("merchant_country_code")]
         public string MerchantCountryCode { get; set; } = default!;
@@ -47,5 +41,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("merchant_category_code")]
         public string MerchantCategoryCode { get; set; } = default!;
+
+        /// <summary>
+        /// URL to send when calling 3DS through this scheme.
+        /// </summary>
+        [JsonProperty("merchant_url")]
+        public string MerchantUrl { get; set; } = default!;
     }
 }
