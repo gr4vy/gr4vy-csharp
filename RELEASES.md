@@ -689,3 +689,13 @@ Based on:
 - [csharp v1.2.12] .
 ### Releases
 - [NuGet v1.2.12] https://www.nuget.org/packages/Gr4vy/1.2.12 - .
+
+## 2025-09-25 16:16:34
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.628.6 (2.716.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v1.2.13] .
+### Releases
+- [NuGet v1.2.13] https://www.nuget.org/packages/Gr4vy/1.2.13 - .

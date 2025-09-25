@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 2f40f47fe3dd6dca84c569e6861cfd86
+  docChecksum: 8983eed9b551c9470e39f8d185b0f1a9
   docVersion: 1.0.0
-  speakeasyVersion: 1.622.2
-  generationVersion: 2.711.4
-  releaseVersion: 1.2.12
-  configChecksum: 2f450e1fc293b3f25b57b555ccc5ce3a
+  speakeasyVersion: 1.628.6
+  generationVersion: 2.716.7
+  releaseVersion: 1.2.13
+  configChecksum: a73313dfad96a76e92fe06175a188495
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.12.3
+    core: 3.12.4
     flattening: 2.81.3
     globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
