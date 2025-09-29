@@ -28,15 +28,12 @@ namespace Gr4vy.Models.Requests
 
         public static ResponseCaptureTransactionType TransactionCapture { get { return new ResponseCaptureTransactionType("TransactionCapture"); } }
 
-        public static ResponseCaptureTransactionType Null { get { return new ResponseCaptureTransactionType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(ResponseCaptureTransactionType v) { return v.Value; }
         public static ResponseCaptureTransactionType FromString(string v) {
             switch(v) {
                 case "Transaction": return Transaction;
                 case "TransactionCapture": return TransactionCapture;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for ResponseCaptureTransactionType");
             }
         }
@@ -91,27 +88,20 @@ namespace Gr4vy.Models.Requests
             return res;
         }
 
-        public static ResponseCaptureTransaction CreateNull()
-        {
-            ResponseCaptureTransactionType typ = ResponseCaptureTransactionType.Null;
-            return new ResponseCaptureTransaction(typ);
-        }
-
         public class ResponseCaptureTransactionConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(ResponseCaptureTransaction);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -179,17 +169,13 @@ namespace Gr4vy.Models.Requests
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 ResponseCaptureTransaction res = (ResponseCaptureTransaction)value;
-                if (ResponseCaptureTransactionType.FromString(res.Type).Equals(ResponseCaptureTransactionType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Transaction != null)
                 {

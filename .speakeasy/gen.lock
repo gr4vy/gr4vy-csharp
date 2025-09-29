@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 8983eed9b551c9470e39f8d185b0f1a9
+  docChecksum: ed05b1666537c16941215ab03f6ef917
   docVersion: 1.0.0
-  speakeasyVersion: 1.628.6
-  generationVersion: 2.716.7
-  releaseVersion: 1.2.13
-  configChecksum: a73313dfad96a76e92fe06175a188495
+  speakeasyVersion: 1.631.4
+  generationVersion: 2.716.16
+  releaseVersion: 2.0.0
+  configChecksum: 205fa2120496027c07fa16b0b32a10b0
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -31,7 +31,7 @@ features:
     retries: 0.0.1
     sdkHooks: 0.2.0
     serverIDs: 2.82.1
-    unions: 0.2.2
+    unions: 1.0.0
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
@@ -4256,3 +4256,8 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Csharp SDK Changes Detected:
+  * `Gr4vy.Payment-Links.List()`:  `response.items.[].ConnectionOptions` **Added**
+  * `Gr4vy.Payment-Links.Create()`:  `response.connectionOptions` **Added**
+  * `Gr4vy.Payment-Links.Get()`:  `response.connectionOptions` **Added**
