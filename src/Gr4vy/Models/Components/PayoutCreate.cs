@@ -45,7 +45,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The type of payment method to send funds too.
         /// </summary>
-        [JsonProperty("payment_method")]
+        [JsonProperty("payment_method", NullValueHandling = NullValueHandling.Include)]
         public PayoutCreatePaymentMethod PaymentMethod { get; set; } = default!;
 
         /// <summary>

@@ -38,7 +38,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The optional payment method to use for this transaction. This field is required if no `gift_cards` have been added.
         /// </summary>
-        [JsonProperty("payment_method")]
+        [JsonProperty("payment_method", NullValueHandling = NullValueHandling.Include)]
         public TransactionCreatePaymentMethod? PaymentMethod { get; set; } = null;
 
         /// <summary>
@@ -89,7 +89,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Pass through 3-D Secure data to support external 3-D Secure authorisation. If using an external 3-D Secure provider, you should not pass a `redirect_url` in the `payment_method` object for a transaction.
         /// </summary>
-        [JsonProperty("three_d_secure_data")]
+        [JsonProperty("three_d_secure_data", NullValueHandling = NullValueHandling.Include)]
         public ThreeDSecureData? ThreeDSecureData { get; set; } = null;
 
         /// <summary>

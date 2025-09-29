@@ -173,5 +173,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("shipping_details")]
         public Models.Components.ShippingDetails? ShippingDetails { get; set; } = null;
+
+        /// <summary>
+        /// The connection options for the payment link.
+        /// </summary>
+        [JsonProperty("connection_options")]
+        public Dictionary<string, Dictionary<string, object>>? ConnectionOptions { get; set; } = null;
     }
 }

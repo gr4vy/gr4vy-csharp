@@ -28,15 +28,12 @@ namespace Gr4vy.Models.Components
 
         public static PayoutCreatePaymentMethodType PaymentMethodStoredCard { get { return new PayoutCreatePaymentMethodType("PaymentMethodStoredCard"); } }
 
-        public static PayoutCreatePaymentMethodType Null { get { return new PayoutCreatePaymentMethodType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(PayoutCreatePaymentMethodType v) { return v.Value; }
         public static PayoutCreatePaymentMethodType FromString(string v) {
             switch(v) {
                 case "PaymentMethodCard": return PaymentMethodCard;
                 case "PaymentMethodStoredCard": return PaymentMethodStoredCard;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for PayoutCreatePaymentMethodType");
             }
         }
@@ -91,27 +88,20 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static PayoutCreatePaymentMethod CreateNull()
-        {
-            PayoutCreatePaymentMethodType typ = PayoutCreatePaymentMethodType.Null;
-            return new PayoutCreatePaymentMethod(typ);
-        }
-
         public class PayoutCreatePaymentMethodConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(PayoutCreatePaymentMethod);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -179,17 +169,13 @@ namespace Gr4vy.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 PayoutCreatePaymentMethod res = (PayoutCreatePaymentMethod)value;
-                if (PayoutCreatePaymentMethodType.FromString(res.Type).Equals(PayoutCreatePaymentMethodType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.PaymentMethodCard != null)
                 {

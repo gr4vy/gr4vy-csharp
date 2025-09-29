@@ -28,15 +28,12 @@ namespace Gr4vy.Models.Components
 
         public static RequiredFields2Type MapOfRequiredFields1 { get { return new RequiredFields2Type("mapOfRequiredFields1"); } }
 
-        public static RequiredFields2Type Null { get { return new RequiredFields2Type("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(RequiredFields2Type v) { return v.Value; }
         public static RequiredFields2Type FromString(string v) {
             switch(v) {
                 case "boolean": return Boolean;
                 case "mapOfRequiredFields1": return MapOfRequiredFields1;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for RequiredFields2Type");
             }
         }
@@ -88,27 +85,20 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static RequiredFields2 CreateNull()
-        {
-            RequiredFields2Type typ = RequiredFields2Type.Null;
-            return new RequiredFields2(typ);
-        }
-
         public class RequiredFields2Converter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(RequiredFields2);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -169,17 +159,13 @@ namespace Gr4vy.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 RequiredFields2 res = (RequiredFields2)value;
-                if (RequiredFields2Type.FromString(res.Type).Equals(RequiredFields2Type.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Boolean != null)
                 {

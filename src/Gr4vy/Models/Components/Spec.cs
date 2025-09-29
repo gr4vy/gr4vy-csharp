@@ -32,8 +32,6 @@ namespace Gr4vy.Models.Components
 
         public static SpecType Transactions { get { return new SpecType("transactions"); } }
 
-        public static SpecType Null { get { return new SpecType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(SpecType v) { return v.Value; }
         public static SpecType FromString(string v) {
@@ -42,7 +40,6 @@ namespace Gr4vy.Models.Components
                 case "detailed_settlement": return DetailedSettlement;
                 case "transaction_retries": return TransactionRetries;
                 case "transactions": return Transactions;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for SpecType");
             }
         }
@@ -119,21 +116,19 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static Spec CreateNull()
-        {
-            SpecType typ = SpecType.Null;
-            return new Spec(typ);
-        }
-
         public class SpecConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(Spec);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
+                if (reader.TokenType == JsonToken.Null)
+                {
+                    throw new InvalidOperationException("Received unexpected null JSON value");
+                }
+
                 JObject jo = JObject.Load(reader);
                 string discriminator = jo.GetValue("model")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
                 if (discriminator == SpecType.AccountsReceivables.ToString())
@@ -162,17 +157,13 @@ namespace Gr4vy.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 Spec res = (Spec)value;
-                if (SpecType.FromString(res.Type).Equals(SpecType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.TransactionsReportSpec != null)
                 {

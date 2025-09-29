@@ -27,15 +27,12 @@ namespace Gr4vy.Models.Components
 
         public static TokenType MapOfAny { get { return new TokenType("mapOfAny"); } }
 
-        public static TokenType Null { get { return new TokenType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(TokenType v) { return v.Value; }
         public static TokenType FromString(string v) {
             switch(v) {
                 case "str": return Str;
                 case "mapOfAny": return MapOfAny;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for TokenType");
             }
         }
@@ -90,27 +87,20 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static Token CreateNull()
-        {
-            TokenType typ = TokenType.Null;
-            return new Token(typ);
-        }
-
         public class TokenConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(Token);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
@@ -165,17 +155,13 @@ namespace Gr4vy.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 Token res = (Token)value;
-                if (TokenType.FromString(res.Type).Equals(TokenType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.Str != null)
                 {

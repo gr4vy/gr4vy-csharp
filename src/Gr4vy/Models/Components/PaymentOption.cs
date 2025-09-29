@@ -37,7 +37,7 @@ namespace Gr4vy.Models.Components
         [JsonProperty("can_delay_capture")]
         public bool CanDelayCapture { get; set; } = default!;
 
-        [JsonProperty("context")]
+        [JsonProperty("context", NullValueHandling = NullValueHandling.Include)]
         public Context? Context { get; set; } = null;
     }
 }

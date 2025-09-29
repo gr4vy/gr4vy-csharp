@@ -28,15 +28,12 @@ namespace Gr4vy.Models.Components
 
         public static ItemType GiftCardStoredRequest { get { return new ItemType("GiftCardStoredRequest"); } }
 
-        public static ItemType Null { get { return new ItemType("null"); } }
-
         public override string ToString() { return Value; }
         public static implicit operator String(ItemType v) { return v.Value; }
         public static ItemType FromString(string v) {
             switch(v) {
                 case "GiftCardRequest": return GiftCardRequest;
                 case "GiftCardStoredRequest": return GiftCardStoredRequest;
-                case "null": return Null;
                 default: throw new ArgumentException("Invalid value for ItemType");
             }
         }
@@ -88,27 +85,20 @@ namespace Gr4vy.Models.Components
             return res;
         }
 
-        public static Item CreateNull()
-        {
-            ItemType typ = ItemType.Null;
-            return new Item(typ);
-        }
-
         public class ItemConverter : JsonConverter
         {
-
             public override bool CanConvert(System.Type objectType) => objectType == typeof(Item);
 
             public override bool CanRead => true;
 
             public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
             {
-                var json = JRaw.Create(reader).ToString();
-                if (json == "null")
+                if (reader.TokenType == JsonToken.Null)
                 {
-                    return null;
+                    throw new InvalidOperationException("Received unexpected null JSON value");
                 }
 
+                var json = JRaw.Create(reader).ToString();
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 try
@@ -176,17 +166,13 @@ namespace Gr4vy.Models.Components
 
             public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
             {
-                if (value == null) {
-                    writer.WriteRawValue("null");
+                if (value == null)
+                {
+                    throw new InvalidOperationException("Unexpected null JSON value.");
                     return;
                 }
 
                 Item res = (Item)value;
-                if (ItemType.FromString(res.Type).Equals(ItemType.Null))
-                {
-                    writer.WriteRawValue("null");
-                    return;
-                }
 
                 if (res.GiftCardRequest != null)
                 {
