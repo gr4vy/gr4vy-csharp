@@ -119,6 +119,12 @@ namespace Gr4vy.Models.Components
         public DlocalOptions? DlocalNequi { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `dlocal-upi` connector.
+        /// </summary>
+        [JsonProperty("dlocal-upi")]
+        public DlocalUPIOptions? DlocalUpi { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `fiserv-card` connector.
         /// </summary>
         [JsonProperty("fiserv-card")]

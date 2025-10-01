@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: e0273b34307fa1f45644b599adc3368e
+  docChecksum: af76904973a1cf34a70cb67945417500
   docVersion: 1.0.0
   speakeasyVersion: 1.631.5
   generationVersion: 2.716.16
-  releaseVersion: 2.0.1
-  configChecksum: 3bb45be1441895e70acd8baea0f2e6b2
+  releaseVersion: 2.0.2
+  configChecksum: 69a7b585c0d42d797786d4e8f59a777e
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -98,6 +98,9 @@ generatedFiles:
   - docs/Models/Components/DigitalWalletUpdate.md
   - docs/Models/Components/DigitalWallets.md
   - docs/Models/Components/DlocalOptions.md
+  - docs/Models/Components/DlocalUPIOptions.md
+  - docs/Models/Components/DlocalUPIRecurringInfoOptions.md
+  - docs/Models/Components/DlocalUPIWalletOptions.md
   - docs/Models/Components/DlocalWalletOptions.md
   - docs/Models/Components/ErrorDetail.md
   - docs/Models/Components/Field.md
@@ -498,6 +501,9 @@ generatedFiles:
   - src/Gr4vy/Models/Components/DigitalWalletUpdate.cs
   - src/Gr4vy/Models/Components/DigitalWallets.cs
   - src/Gr4vy/Models/Components/DlocalOptions.cs
+  - src/Gr4vy/Models/Components/DlocalUPIOptions.cs
+  - src/Gr4vy/Models/Components/DlocalUPIRecurringInfoOptions.cs
+  - src/Gr4vy/Models/Components/DlocalUPIWalletOptions.cs
   - src/Gr4vy/Models/Components/DlocalWalletOptions.cs
   - src/Gr4vy/Models/Components/ErrorDetail.cs
   - src/Gr4vy/Models/Components/Field.cs
@@ -4256,3 +4262,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Dlocal-Upi` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Dlocal-Upi` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Dlocal-Upi` **Added**\n"
