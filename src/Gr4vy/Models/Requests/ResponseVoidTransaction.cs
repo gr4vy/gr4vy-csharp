@@ -172,7 +172,6 @@ namespace Gr4vy.Models.Requests
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 ResponseVoidTransaction res = (ResponseVoidTransaction)value;

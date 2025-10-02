@@ -203,7 +203,6 @@ namespace Gr4vy.Models.Requests
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 Body res = (Body)value;

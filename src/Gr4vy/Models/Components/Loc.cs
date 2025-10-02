@@ -148,7 +148,6 @@ namespace Gr4vy.Models.Components
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 Loc res = (Loc)value;
