@@ -161,7 +161,6 @@ namespace Gr4vy.Models.Components
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 RequiredFields1 res = (RequiredFields1)value;

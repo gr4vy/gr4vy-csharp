@@ -172,7 +172,6 @@ namespace Gr4vy.Models.Components
                 if (value == null)
                 {
                     throw new InvalidOperationException("Unexpected null JSON value.");
-                    return;
                 }
 
                 PayoutCreatePaymentMethod res = (PayoutCreatePaymentMethod)value;

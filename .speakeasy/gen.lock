@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: af76904973a1cf34a70cb67945417500
+  docChecksum: c42cf852daa8dacbe2c6e775e9b24398
   docVersion: 1.0.0
-  speakeasyVersion: 1.631.5
-  generationVersion: 2.716.16
-  releaseVersion: 2.0.2
-  configChecksum: 69a7b585c0d42d797786d4e8f59a777e
+  speakeasyVersion: 1.633.1
+  generationVersion: 2.720.1
+  releaseVersion: 2.1.0
+  configChecksum: a7ef557254fb04ca1bda0c274646c305
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.12.4
+    core: 3.13.0
     flattening: 2.81.3
     globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
@@ -4262,4 +4262,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Dlocal-Upi` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Dlocal-Upi` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Dlocal-Upi` **Added**\n"
