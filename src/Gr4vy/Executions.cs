@@ -43,7 +43,7 @@ namespace Gr4vy
         /// Creates a download URL for a specific execution of a report.
         /// </remarks>
         /// </summary>
-        Task<ReportExecutionUrl> UrlAsync(string reportId, string reportExecutionId, string? merchantAccountId = null);
+        Task<ReportExecutionUrl> UrlAsync(string reportId, string reportExecutionId, string? merchantAccountId = null, ReportExecutionUrlGenerate? reportExecutionUrlGenerate = null);
 
         /// <summary>
         /// Get executed report
@@ -59,8 +59,8 @@ namespace Gr4vy
     {
         public SDKConfig SDKConfiguration { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "2.1.0";
-        private const string _sdkGenVersion = "2.720.1";
+        private const string _sdkVersion = "2.2.0";
+        private const string _sdkGenVersion = "2.721.3";
         private const string _openapiDocVersion = "1.0.0";
 
         public Executions(SDKConfig config)
@@ -462,13 +462,14 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ReportExecutionUrl> UrlAsync(string reportId, string reportExecutionId, string? merchantAccountId = null)
+        public async Task<ReportExecutionUrl> UrlAsync(string reportId, string reportExecutionId, string? merchantAccountId = null, ReportExecutionUrlGenerate? reportExecutionUrlGenerate = null)
         {
             var request = new CreateReportExecutionUrlRequest()
             {
                 ReportId = reportId,
                 ReportExecutionId = reportExecutionId,
                 MerchantAccountId = merchantAccountId,
+                ReportExecutionUrlGenerate = reportExecutionUrlGenerate,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
@@ -478,6 +479,12 @@ namespace Gr4vy
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
             HeaderSerializer.PopulateHeaders(ref httpRequest, request);
+
+            var serializedBody = RequestBodySerializer.Serialize(request, "ReportExecutionUrlGenerate", "json", false, true);
+            if (serializedBody != null)
+            {
+                httpRequest.Content = serializedBody;
+            }
 
             if (SDKConfiguration.SecuritySource != null)
             {
