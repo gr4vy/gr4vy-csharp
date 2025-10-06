@@ -9,6 +9,7 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     
     public class CreateReportExecutionUrlRequest
@@ -31,5 +32,8 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-gr4vy-merchant-account-id")]
         public string? MerchantAccountId { get; set; }
+
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public ReportExecutionUrlGenerate? ReportExecutionUrlGenerate { get; set; }
     }
 }

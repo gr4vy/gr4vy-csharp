@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: c42cf852daa8dacbe2c6e775e9b24398
+  docChecksum: 1e2f9d47db39278756eaa06f985b6b1d
   docVersion: 1.0.0
-  speakeasyVersion: 1.633.1
-  generationVersion: 2.720.1
-  releaseVersion: 2.1.0
-  configChecksum: a7ef557254fb04ca1bda0c274646c305
+  speakeasyVersion: 1.634.2
+  generationVersion: 2.721.3
+  releaseVersion: 2.2.0
+  configChecksum: ee34be3e6cb543700f2079e9fe3c9427
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -31,7 +31,7 @@ features:
     retries: 0.0.1
     sdkHooks: 0.2.0
     serverIDs: 2.82.1
-    unions: 1.0.0
+    unions: 1.1.0
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
@@ -204,6 +204,7 @@ generatedFiles:
   - docs/Models/Components/ReportExecutionContext.md
   - docs/Models/Components/ReportExecutionSummary.md
   - docs/Models/Components/ReportExecutionUrl.md
+  - docs/Models/Components/ReportExecutionUrlGenerate.md
   - docs/Models/Components/ReportExecutions.md
   - docs/Models/Components/ReportSpec.md
   - docs/Models/Components/ReportSummary.md
@@ -607,6 +608,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/ReportExecutionContext.cs
   - src/Gr4vy/Models/Components/ReportExecutionSummary.cs
   - src/Gr4vy/Models/Components/ReportExecutionUrl.cs
+  - src/Gr4vy/Models/Components/ReportExecutionUrlGenerate.cs
   - src/Gr4vy/Models/Components/ReportExecutions.cs
   - src/Gr4vy/Models/Components/ReportSpec.cs
   - src/Gr4vy/Models/Components/ReportSummary.cs
@@ -4262,3 +4264,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Csharp SDK Changes Detected:
+  * `Gr4vy.Reports.Executions.Url()`:  `request.reportExecutionUrlGenerate` **Added**
