@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 1e2f9d47db39278756eaa06f985b6b1d
+  docChecksum: e24efeff583b8ea702c02041e86453e6
   docVersion: 1.0.0
   speakeasyVersion: 1.634.2
   generationVersion: 2.721.3
-  releaseVersion: 2.2.0
-  configChecksum: ee34be3e6cb543700f2079e9fe3c9427
+  releaseVersion: 2.2.1
+  configChecksum: 6366984872b9e68fc1b0355fa041744f
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -4264,6 +4264,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes Detected:
-  * `Gr4vy.Reports.Executions.Url()`:  `request.reportExecutionUrlGenerate` **Added**
