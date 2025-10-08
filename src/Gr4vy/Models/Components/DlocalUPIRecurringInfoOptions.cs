@@ -16,7 +16,7 @@ namespace Gr4vy.Models.Components
     {
 
         /// <summary>
-        /// Indicates the frequency unit for the subscription. Allowed values are: `DAILY`, `WEEKLY`, `MONTHLY`, `QUARTERLY`, `SEMI_ANNUAL`, and `ANNUAL`.
+        /// Indicates the frequency unit for the subscription. Allowed values are: `DAY`, `WEEK`, `MONTH`, `BI_MONTHLY`, `QUARTER`, `SEMI_ANNUALLY`, `YEAR`, `ONDEMAND`.
         /// </summary>
         [JsonProperty("subscription_frequency_unit")]
         public string SubscriptionFrequencyUnit { get; set; } = default!;

@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: acf30004955a1e1fe268cc425bbc43ea
+  docChecksum: 0b24fbbe783f1df588e49276463832e6
   docVersion: 1.0.0
   speakeasyVersion: 1.636.1
   generationVersion: 2.723.4
-  releaseVersion: 2.2.2
-  configChecksum: 64b5216a7af2d2a12fdf41cbe629d3a7
+  releaseVersion: 2.2.3
+  configChecksum: 2e8b24231bbfefc5b8462458db67b20d
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -4262,12 +4262,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes Detected:
-  * `Gr4vy.Transactions.Create()`:  `response` **Changed**
-  * `Gr4vy.Transactions.Get()`:  `response` **Changed**
-  * `Gr4vy.Transactions.Update()`:  `response` **Changed**
-  * `Gr4vy.Transactions.Capture()`:  `response.[transaction]` **Changed**
-  * `Gr4vy.Transactions.Void()`:  `response.[transactionVoid].Transaction` **Changed**
-  * `Gr4vy.Transactions.Cancel()`:  `response.transaction` **Changed**
-  * `Gr4vy.Transactions.Sync()`:  `response` **Changed**
