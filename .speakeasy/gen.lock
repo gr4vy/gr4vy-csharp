@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 513edc8b44ab669c59b1cfdd8709585b
+  docChecksum: 3caab25d2a058e3150dee3f3cd6a5fc5
   docVersion: 1.0.0
-  speakeasyVersion: 1.640.0
-  generationVersion: 2.730.5
-  releaseVersion: 2.3.2
-  configChecksum: 6d55b841b17b5b28bd5a31bd893b6fba
+  speakeasyVersion: 1.642.0
+  generationVersion: 2.731.4
+  releaseVersion: 2.3.3
+  configChecksum: 4404842c6e6e71199b43fe17527bdf67
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -193,6 +193,9 @@ generatedFiles:
   - docs/Models/Components/PayoutSummaries.md
   - docs/Models/Components/PayoutSummary.md
   - docs/Models/Components/PaypalOptions.md
+  - docs/Models/Components/PaypalShippingOptions.md
+  - docs/Models/Components/PaypalShippingOptionsItem.md
+  - docs/Models/Components/PaypalShippingOptionsItemAmount.md
   - docs/Models/Components/PowertranzOptions.md
   - docs/Models/Components/Recipient.md
   - docs/Models/Components/RedirectPaymentMethodCreate.md
@@ -595,6 +598,9 @@ generatedFiles:
   - src/Gr4vy/Models/Components/PayoutSummaries.cs
   - src/Gr4vy/Models/Components/PayoutSummary.cs
   - src/Gr4vy/Models/Components/PaypalOptions.cs
+  - src/Gr4vy/Models/Components/PaypalShippingOptions.cs
+  - src/Gr4vy/Models/Components/PaypalShippingOptionsItem.cs
+  - src/Gr4vy/Models/Components/PaypalShippingOptionsItemAmount.cs
   - src/Gr4vy/Models/Components/PowertranzOptions.cs
   - src/Gr4vy/Models/Components/Recipient.cs
   - src/Gr4vy/Models/Components/RedirectPaymentMethodCreate.cs
@@ -4262,4 +4268,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.IntegrationClient` **Added**\n  *  `response.sessionToken` **Added**\n* `Gr4vy.Transactions.Get()`:  `response.sessionToken` **Added**\n* `Gr4vy.Transactions.Update()`:  `response.sessionToken` **Added**\n* `Gr4vy.Transactions.Capture()`:  `response.[transaction].SessionToken` **Added**\n* `Gr4vy.Transactions.Void()`:  `response.[transaction].SessionToken` **Added**\n* `Gr4vy.Transactions.Cancel()`:  `response.transaction.SessionToken` **Added**\n* `Gr4vy.Transactions.Sync()`:  `response.sessionToken` **Added**\n* `Gr4vy.Payment-Service-Definitions.List()`:  `response.items.[].SupportedIntegrationClients` **Added**\n* `Gr4vy.Payment-Service-Definitions.Get()`:  `response.supportedIntegrationClients` **Added**\n"
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Paypal-Paypal.Shipping` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Paypal-Paypal.Shipping` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Paypal-Paypal.Shipping` **Added**\n"
