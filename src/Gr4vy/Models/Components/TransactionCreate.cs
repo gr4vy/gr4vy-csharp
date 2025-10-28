@@ -262,5 +262,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("shipping_amount")]
         public long? ShippingAmount { get; set; } = null;
+
+        /// <summary>
+        /// Defines the client where the session for this transaction is going to be used. Please refer to the connections documentation for more guidance.
+        /// </summary>
+        [JsonProperty("integration_client")]
+        public string? IntegrationClient { get; set; } = null;
     }
 }

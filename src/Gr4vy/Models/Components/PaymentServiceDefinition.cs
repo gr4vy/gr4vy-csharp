@@ -85,5 +85,11 @@ namespace Gr4vy.Models.Components
 
         [JsonProperty("configuration")]
         public PaymentServiceConfiguration Configuration { get; set; } = default!;
+
+        /// <summary>
+        /// List of supported integration clients. Defaults to redirect for most redirect connectors.
+        /// </summary>
+        [JsonProperty("supported_integration_clients", NullValueHandling = NullValueHandling.Include)]
+        public List<string>? SupportedIntegrationClients { get; set; }
     }
 }

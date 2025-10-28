@@ -367,6 +367,12 @@ namespace Gr4vy.Models.Components
         public long? InstallmentCount { get; set; } = null;
 
         /// <summary>
+        /// A session token that can be used to fetch session data for direct client integrations.
+        /// </summary>
+        [JsonProperty("session_token")]
+        public string? SessionToken { get; set; } = null;
+
+        /// <summary>
         /// The sales tax amount for this transaction, represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
         /// </summary>
         [JsonProperty("tax_amount")]
