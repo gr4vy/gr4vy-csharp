@@ -9,24 +9,22 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    using System.Collections.Generic;
     
-    public class PaypalOptions
+    public class PaypalShippingOptionsItemAmount
     {
 
         /// <summary>
-        /// Additional Set Transaction Context Values (STC) to be sent to PayPal as part of the transaction.
+        /// The three-character ISO currency code.
         /// </summary>
-        [JsonProperty("additional_data")]
-        public List<Dictionary<string, string>>? AdditionalData { get; set; } = null;
+        [JsonProperty("currency_code")]
+        public string CurrencyCode { get; set; } = default!;
 
         /// <summary>
-        /// Shipping information to be passed to the PayPal API.
+        /// The amount value, which might include a decimal portion.
         /// </summary>
-        [JsonProperty("shipping")]
-        public PaypalShippingOptions? Shipping { get; set; } = null;
+        [JsonProperty("value")]
+        public string Value { get; set; } = default!;
     }
 }

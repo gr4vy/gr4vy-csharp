@@ -14,19 +14,13 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System.Collections.Generic;
     
-    public class PaypalOptions
+    public class PaypalShippingOptions
     {
 
         /// <summary>
-        /// Additional Set Transaction Context Values (STC) to be sent to PayPal as part of the transaction.
+        /// Shipping options that the payee or merchant offers to the payer to ship or pick up their items.
         /// </summary>
-        [JsonProperty("additional_data")]
-        public List<Dictionary<string, string>>? AdditionalData { get; set; } = null;
-
-        /// <summary>
-        /// Shipping information to be passed to the PayPal API.
-        /// </summary>
-        [JsonProperty("shipping")]
-        public PaypalShippingOptions? Shipping { get; set; } = null;
+        [JsonProperty("options")]
+        public List<PaypalShippingOptionsItem>? Options { get; set; } = null;
     }
 }
