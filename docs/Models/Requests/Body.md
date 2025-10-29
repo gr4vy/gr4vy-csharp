@@ -20,3 +20,9 @@ Body.CreateRedirectPaymentMethodCreate(/* values here */);
 ```csharp
 Body.CreateCheckoutSessionPaymentMethodCreate(/* values here */);
 ```
+
+### PlaidPaymentMethodCreate
+
+```csharp
+Body.CreatePlaidPaymentMethodCreate(/* values here */);
+```

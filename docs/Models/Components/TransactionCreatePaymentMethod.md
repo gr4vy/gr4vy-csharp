@@ -59,6 +59,12 @@ TransactionCreatePaymentMethod.CreateGooglePayFPANPaymentMethodCreate(/* values 
 TransactionCreatePaymentMethod.CreateNetworkTokenPaymentMethodCreate(/* values here */);
 ```
 
+### PlaidPaymentMethodCreate
+
+```csharp
+TransactionCreatePaymentMethod.CreatePlaidPaymentMethodCreate(/* values here */);
+```
+
 ### CheckoutSessionWithUrlPaymentMethodCreate
 
 ```csharp

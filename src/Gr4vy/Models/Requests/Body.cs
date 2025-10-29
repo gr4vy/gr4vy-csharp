@@ -30,6 +30,8 @@ namespace Gr4vy.Models.Requests
 
         public static BodyType CheckoutSessionPaymentMethodCreate { get { return new BodyType("CheckoutSessionPaymentMethodCreate"); } }
 
+        public static BodyType PlaidPaymentMethodCreate { get { return new BodyType("PlaidPaymentMethodCreate"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(BodyType v) { return v.Value; }
         public static BodyType FromString(string v) {
@@ -37,6 +39,7 @@ namespace Gr4vy.Models.Requests
                 case "CardPaymentMethodCreate": return CardPaymentMethodCreate;
                 case "RedirectPaymentMethodCreate": return RedirectPaymentMethodCreate;
                 case "CheckoutSessionPaymentMethodCreate": return CheckoutSessionPaymentMethodCreate;
+                case "PlaidPaymentMethodCreate": return PlaidPaymentMethodCreate;
                 default: throw new ArgumentException("Invalid value for BodyType");
             }
         }
@@ -73,6 +76,9 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("form:explode=true")]
         public CheckoutSessionPaymentMethodCreate? CheckoutSessionPaymentMethodCreate { get; set; }
 
+        [SpeakeasyMetadata("form:explode=true")]
+        public PlaidPaymentMethodCreate? PlaidPaymentMethodCreate { get; set; }
+
         public BodyType Type { get; set; }
         public static Body CreateCardPaymentMethodCreate(CardPaymentMethodCreate cardPaymentMethodCreate)
         {
@@ -96,6 +102,14 @@ namespace Gr4vy.Models.Requests
 
             Body res = new Body(typ);
             res.CheckoutSessionPaymentMethodCreate = checkoutSessionPaymentMethodCreate;
+            return res;
+        }
+        public static Body CreatePlaidPaymentMethodCreate(PlaidPaymentMethodCreate plaidPaymentMethodCreate)
+        {
+            BodyType typ = BodyType.PlaidPaymentMethodCreate;
+
+            Body res = new Body(typ);
+            res.PlaidPaymentMethodCreate = plaidPaymentMethodCreate;
             return res;
         }
 
@@ -125,6 +139,26 @@ namespace Gr4vy.Models.Requests
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(CheckoutSessionPaymentMethodCreate), new Body(BodyType.CheckoutSessionPaymentMethodCreate), "CheckoutSessionPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Body(BodyType.PlaidPaymentMethodCreate)
+                    {
+                        PlaidPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<PlaidPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(PlaidPaymentMethodCreate), new Body(BodyType.PlaidPaymentMethodCreate), "PlaidPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -222,6 +256,12 @@ namespace Gr4vy.Models.Requests
                 if (res.CheckoutSessionPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.CheckoutSessionPaymentMethodCreate));
+                    return;
+                }
+
+                if (res.PlaidPaymentMethodCreate != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.PlaidPaymentMethodCreate));
                     return;
                 }
             }
