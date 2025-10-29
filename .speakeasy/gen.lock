@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 4f5ccf614a61a549fd983a5f41503a38
+  docChecksum: f8c98248e33c686a3a0c81e613d7e716
   docVersion: 1.0.0
   speakeasyVersion: 1.642.2
   generationVersion: 2.731.6
-  releaseVersion: 2.3.5
-  configChecksum: 43bb496e8c90ca16411e42ef129e6ac7
+  releaseVersion: 2.3.6
+  configChecksum: 4b7aa69f4b92047be48bbc04f8fd5f7d
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -4270,4 +4270,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Payment-Methods.Create()`: \n  *  `requestBody.[plaidPaymentMethodCreate]` **Added**\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod.[plaidPaymentMethodCreate]` **Added**\n"
