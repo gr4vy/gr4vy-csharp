@@ -13,7 +13,7 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
-    public class CheckoutSessionPaymentMethod
+    public class CheckoutSessionPaymentMethodOutput
     {
 
         /// <summary>

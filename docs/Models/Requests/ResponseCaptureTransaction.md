@@ -5,14 +5,14 @@ Successful Response
 
 ## Supported Types
 
-### Transaction
+### TransactionOutput
 
 ```csharp
-ResponseCaptureTransaction.CreateTransaction(/* values here */);
+ResponseCaptureTransaction.CreateTransactionOutput(/* values here */);
 ```
 
-### TransactionCapture
+### TransactionCaptureOutput
 
 ```csharp
-ResponseCaptureTransaction.CreateTransactionCapture(/* values here */);
+ResponseCaptureTransaction.CreateTransactionCaptureOutput(/* values here */);
 ```

@@ -47,7 +47,7 @@ namespace Gr4vy.Models.Components
         /// The buyer used for this payout.
         /// </summary>
         [JsonProperty("buyer")]
-        public TransactionBuyer? Buyer { get; set; } = null;
+        public TransactionBuyerOutput? Buyer { get; set; } = null;
 
         /// <summary>
         /// The type of payout to process.
@@ -86,7 +86,7 @@ namespace Gr4vy.Models.Components
         public string? MerchantAccountId { get; set; } = null;
 
         [JsonProperty("payment_method")]
-        public TransactionPaymentMethod PaymentMethod { get; set; } = default!;
+        public TransactionPaymentMethodOutput PaymentMethod { get; set; } = default!;
 
         [JsonProperty("payment_service")]
         public PayoutPaymentService PaymentService { get; set; } = default!;

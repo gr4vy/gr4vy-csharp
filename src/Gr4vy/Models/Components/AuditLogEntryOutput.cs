@@ -14,7 +14,7 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
     
-    public class AuditLogEntry
+    public class AuditLogEntryOutput
     {
 
         /// <summary>

@@ -1,4 +1,4 @@
-# TransactionBuyer
+# TransactionBuyerOutput
 
 
 ## Fields

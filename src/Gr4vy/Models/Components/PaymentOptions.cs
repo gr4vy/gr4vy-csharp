@@ -21,6 +21,6 @@ namespace Gr4vy.Models.Components
         /// A list of items returned for this request.
         /// </summary>
         [JsonProperty("items")]
-        public List<PaymentOption> Items { get; set; } = default!;
+        public List<PaymentOptionOutput> Items { get; set; } = default!;
     }
 }

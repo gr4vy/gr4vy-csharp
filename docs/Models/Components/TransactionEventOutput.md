@@ -1,4 +1,4 @@
-# TransactionEvent
+# TransactionEventOutput
 
 
 ## Fields

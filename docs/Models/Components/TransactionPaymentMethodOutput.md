@@ -1,4 +1,4 @@
-# TransactionPaymentMethod
+# TransactionPaymentMethodOutput
 
 
 ## Fields

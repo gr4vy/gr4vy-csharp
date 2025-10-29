@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 3caab25d2a058e3150dee3f3cd6a5fc5
+  docChecksum: dfa663514e34c0e32b578a160657b080
   docVersion: 1.0.0
-  speakeasyVersion: 1.642.0
-  generationVersion: 2.731.4
-  releaseVersion: 2.3.3
-  configChecksum: 4404842c6e6e71199b43fe17527bdf67
+  speakeasyVersion: 1.642.2
+  generationVersion: 2.731.6
+  releaseVersion: 2.3.4
+  configChecksum: 336ed039bb730ff4a31232d2de3edb68
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -55,7 +55,7 @@ generatedFiles:
   - docs/Models/Components/ApplePayPaymentMethodCreate.md
   - docs/Models/Components/ApplePaySessionRequest.md
   - docs/Models/Components/AuditLogEntries.md
-  - docs/Models/Components/AuditLogEntry.md
+  - docs/Models/Components/AuditLogEntryOutput.md
   - docs/Models/Components/AuditLogEntryResource.md
   - docs/Models/Components/AuditLogEntryUser.md
   - docs/Models/Components/BillingDetailsInput.md
@@ -75,9 +75,9 @@ generatedFiles:
   - docs/Models/Components/CheckoutPayoutOptions.md
   - docs/Models/Components/CheckoutSession.md
   - docs/Models/Components/CheckoutSessionCreate.md
-  - docs/Models/Components/CheckoutSessionPaymentMethod.md
   - docs/Models/Components/CheckoutSessionPaymentMethodCreate.md
   - docs/Models/Components/CheckoutSessionPaymentMethodDetails.md
+  - docs/Models/Components/CheckoutSessionPaymentMethodOutput.md
   - docs/Models/Components/CheckoutSessionWithUrlPaymentMethodCreate.md
   - docs/Models/Components/ClickToPayFPANPaymentMethodCreate.md
   - docs/Models/Components/ClickToPayPaymentMethodCreate.md
@@ -167,11 +167,11 @@ generatedFiles:
   - docs/Models/Components/PaymentMethodDetailsCard.md
   - docs/Models/Components/PaymentMethodStoredCard.md
   - docs/Models/Components/PaymentMethodSummaries.md
-  - docs/Models/Components/PaymentMethodSummary.md
+  - docs/Models/Components/PaymentMethodSummaryOutput.md
   - docs/Models/Components/PaymentMethods.md
-  - docs/Models/Components/PaymentOption.md
   - docs/Models/Components/PaymentOptionContext.md
   - docs/Models/Components/PaymentOptionContextApprovalUI.md
+  - docs/Models/Components/PaymentOptionOutput.md
   - docs/Models/Components/PaymentOptionRequest.md
   - docs/Models/Components/PaymentOptions.md
   - docs/Models/Components/PaymentService.md
@@ -236,27 +236,27 @@ generatedFiles:
   - docs/Models/Components/ThreeDSecureV2.md
   - docs/Models/Components/Token.md
   - docs/Models/Components/TokenPaymentMethodCreate.md
-  - docs/Models/Components/Transaction.md
-  - docs/Models/Components/TransactionBuyer.md
+  - docs/Models/Components/TransactionBuyerOutput.md
   - docs/Models/Components/TransactionCancel.md
-  - docs/Models/Components/TransactionCapture.md
   - docs/Models/Components/TransactionCaptureCreate.md
+  - docs/Models/Components/TransactionCaptureOutput.md
   - docs/Models/Components/TransactionConnectionOptions.md
   - docs/Models/Components/TransactionCreate.md
   - docs/Models/Components/TransactionCreatePaymentMethod.md
-  - docs/Models/Components/TransactionEvent.md
+  - docs/Models/Components/TransactionEventOutput.md
   - docs/Models/Components/TransactionEvents.md
   - docs/Models/Components/TransactionGiftCard.md
-  - docs/Models/Components/TransactionPaymentMethod.md
+  - docs/Models/Components/TransactionOutput.md
+  - docs/Models/Components/TransactionPaymentMethodOutput.md
   - docs/Models/Components/TransactionPaymentService.md
   - docs/Models/Components/TransactionRefundAllCreate.md
   - docs/Models/Components/TransactionRefundCreate.md
   - docs/Models/Components/TransactionRetriesReportSpec.md
   - docs/Models/Components/TransactionSummaries.md
-  - docs/Models/Components/TransactionSummary.md
-  - docs/Models/Components/TransactionThreeDSecureSummary.md
+  - docs/Models/Components/TransactionSummaryOutput.md
+  - docs/Models/Components/TransactionThreeDSecureSummaryOutput.md
   - docs/Models/Components/TransactionUpdate.md
-  - docs/Models/Components/TransactionVoid.md
+  - docs/Models/Components/TransactionVoidOutput.md
   - docs/Models/Components/TransactionsReportSpec.md
   - docs/Models/Components/TravelHubCustomData.md
   - docs/Models/Components/TravelhubOptions.md
@@ -460,7 +460,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/ApplePayPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/ApplePaySessionRequest.cs
   - src/Gr4vy/Models/Components/AuditLogEntries.cs
-  - src/Gr4vy/Models/Components/AuditLogEntry.cs
+  - src/Gr4vy/Models/Components/AuditLogEntryOutput.cs
   - src/Gr4vy/Models/Components/AuditLogEntryResource.cs
   - src/Gr4vy/Models/Components/AuditLogEntryUser.cs
   - src/Gr4vy/Models/Components/BillingDetailsInput.cs
@@ -480,9 +480,9 @@ generatedFiles:
   - src/Gr4vy/Models/Components/CheckoutPayoutOptions.cs
   - src/Gr4vy/Models/Components/CheckoutSession.cs
   - src/Gr4vy/Models/Components/CheckoutSessionCreate.cs
-  - src/Gr4vy/Models/Components/CheckoutSessionPaymentMethod.cs
   - src/Gr4vy/Models/Components/CheckoutSessionPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/CheckoutSessionPaymentMethodDetails.cs
+  - src/Gr4vy/Models/Components/CheckoutSessionPaymentMethodOutput.cs
   - src/Gr4vy/Models/Components/CheckoutSessionWithUrlPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/ClickToPayFPANPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/ClickToPayPaymentMethodCreate.cs
@@ -572,11 +572,11 @@ generatedFiles:
   - src/Gr4vy/Models/Components/PaymentMethodDetailsCard.cs
   - src/Gr4vy/Models/Components/PaymentMethodStoredCard.cs
   - src/Gr4vy/Models/Components/PaymentMethodSummaries.cs
-  - src/Gr4vy/Models/Components/PaymentMethodSummary.cs
+  - src/Gr4vy/Models/Components/PaymentMethodSummaryOutput.cs
   - src/Gr4vy/Models/Components/PaymentMethods.cs
-  - src/Gr4vy/Models/Components/PaymentOption.cs
   - src/Gr4vy/Models/Components/PaymentOptionContext.cs
   - src/Gr4vy/Models/Components/PaymentOptionContextApprovalUI.cs
+  - src/Gr4vy/Models/Components/PaymentOptionOutput.cs
   - src/Gr4vy/Models/Components/PaymentOptionRequest.cs
   - src/Gr4vy/Models/Components/PaymentOptions.cs
   - src/Gr4vy/Models/Components/PaymentService.cs
@@ -641,27 +641,27 @@ generatedFiles:
   - src/Gr4vy/Models/Components/ThreeDSecureV2.cs
   - src/Gr4vy/Models/Components/Token.cs
   - src/Gr4vy/Models/Components/TokenPaymentMethodCreate.cs
-  - src/Gr4vy/Models/Components/Transaction.cs
-  - src/Gr4vy/Models/Components/TransactionBuyer.cs
+  - src/Gr4vy/Models/Components/TransactionBuyerOutput.cs
   - src/Gr4vy/Models/Components/TransactionCancel.cs
-  - src/Gr4vy/Models/Components/TransactionCapture.cs
   - src/Gr4vy/Models/Components/TransactionCaptureCreate.cs
+  - src/Gr4vy/Models/Components/TransactionCaptureOutput.cs
   - src/Gr4vy/Models/Components/TransactionConnectionOptions.cs
   - src/Gr4vy/Models/Components/TransactionCreate.cs
   - src/Gr4vy/Models/Components/TransactionCreatePaymentMethod.cs
-  - src/Gr4vy/Models/Components/TransactionEvent.cs
+  - src/Gr4vy/Models/Components/TransactionEventOutput.cs
   - src/Gr4vy/Models/Components/TransactionEvents.cs
   - src/Gr4vy/Models/Components/TransactionGiftCard.cs
-  - src/Gr4vy/Models/Components/TransactionPaymentMethod.cs
+  - src/Gr4vy/Models/Components/TransactionOutput.cs
+  - src/Gr4vy/Models/Components/TransactionPaymentMethodOutput.cs
   - src/Gr4vy/Models/Components/TransactionPaymentService.cs
   - src/Gr4vy/Models/Components/TransactionRefundAllCreate.cs
   - src/Gr4vy/Models/Components/TransactionRefundCreate.cs
   - src/Gr4vy/Models/Components/TransactionRetriesReportSpec.cs
   - src/Gr4vy/Models/Components/TransactionSummaries.cs
-  - src/Gr4vy/Models/Components/TransactionSummary.cs
-  - src/Gr4vy/Models/Components/TransactionThreeDSecureSummary.cs
+  - src/Gr4vy/Models/Components/TransactionSummaryOutput.cs
+  - src/Gr4vy/Models/Components/TransactionThreeDSecureSummaryOutput.cs
   - src/Gr4vy/Models/Components/TransactionUpdate.cs
-  - src/Gr4vy/Models/Components/TransactionVoid.cs
+  - src/Gr4vy/Models/Components/TransactionVoidOutput.cs
   - src/Gr4vy/Models/Components/TransactionsReportSpec.cs
   - src/Gr4vy/Models/Components/TravelHubCustomData.cs
   - src/Gr4vy/Models/Components/TravelhubOptions.cs
@@ -4268,4 +4268,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Paypal-Paypal.Shipping` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Paypal-Paypal.Shipping` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Paypal-Paypal.Shipping` **Added**\n"
+releaseNotes: |
+  ## Csharp SDK Changes Detected:
+  * `Gr4vy.Transactions.Capture()`:  `response` **Changed**
+  * `Gr4vy.Transactions.Void()`:  `response` **Changed**
