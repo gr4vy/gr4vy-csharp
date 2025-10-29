@@ -14,7 +14,7 @@ namespace Gr4vy.Models.Components
     using System;
     using System.Collections.Generic;
     
-    public class TransactionEvent
+    public class TransactionEventOutput
     {
 
         /// <summary>

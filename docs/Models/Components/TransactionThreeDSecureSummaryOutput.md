@@ -1,4 +1,4 @@
-# TransactionThreeDSecureSummary
+# TransactionThreeDSecureSummaryOutput
 
 
 ## Fields

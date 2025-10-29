@@ -24,16 +24,16 @@ namespace Gr4vy.Models.Requests
 
         public string Value { get; private set; }
 
-        public static ResponseCaptureTransactionType Transaction { get { return new ResponseCaptureTransactionType("Transaction"); } }
+        public static ResponseCaptureTransactionType TransactionOutput { get { return new ResponseCaptureTransactionType("Transaction-Output"); } }
 
-        public static ResponseCaptureTransactionType TransactionCapture { get { return new ResponseCaptureTransactionType("TransactionCapture"); } }
+        public static ResponseCaptureTransactionType TransactionCaptureOutput { get { return new ResponseCaptureTransactionType("TransactionCapture-Output"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(ResponseCaptureTransactionType v) { return v.Value; }
         public static ResponseCaptureTransactionType FromString(string v) {
             switch(v) {
-                case "Transaction": return Transaction;
-                case "TransactionCapture": return TransactionCapture;
+                case "Transaction-Output": return TransactionOutput;
+                case "TransactionCapture-Output": return TransactionCaptureOutput;
                 default: throw new ArgumentException("Invalid value for ResponseCaptureTransactionType");
             }
         }
@@ -65,26 +65,26 @@ namespace Gr4vy.Models.Requests
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public Transaction? Transaction { get; set; }
+        public TransactionOutput? TransactionOutput { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public TransactionCapture? TransactionCapture { get; set; }
+        public TransactionCaptureOutput? TransactionCaptureOutput { get; set; }
 
         public ResponseCaptureTransactionType Type { get; set; }
-        public static ResponseCaptureTransaction CreateTransaction(Transaction transaction)
+        public static ResponseCaptureTransaction CreateTransactionOutput(TransactionOutput transactionOutput)
         {
-            ResponseCaptureTransactionType typ = ResponseCaptureTransactionType.Transaction;
+            ResponseCaptureTransactionType typ = ResponseCaptureTransactionType.TransactionOutput;
 
             ResponseCaptureTransaction res = new ResponseCaptureTransaction(typ);
-            res.Transaction = transaction;
+            res.TransactionOutput = transactionOutput;
             return res;
         }
-        public static ResponseCaptureTransaction CreateTransactionCapture(TransactionCapture transactionCapture)
+        public static ResponseCaptureTransaction CreateTransactionCaptureOutput(TransactionCaptureOutput transactionCaptureOutput)
         {
-            ResponseCaptureTransactionType typ = ResponseCaptureTransactionType.TransactionCapture;
+            ResponseCaptureTransactionType typ = ResponseCaptureTransactionType.TransactionCaptureOutput;
 
             ResponseCaptureTransaction res = new ResponseCaptureTransaction(typ);
-            res.TransactionCapture = transactionCapture;
+            res.TransactionCaptureOutput = transactionCaptureOutput;
             return res;
         }
 
@@ -106,14 +106,14 @@ namespace Gr4vy.Models.Requests
 
                 try
                 {
-                    return new ResponseCaptureTransaction(ResponseCaptureTransactionType.TransactionCapture)
+                    return new ResponseCaptureTransaction(ResponseCaptureTransactionType.TransactionCaptureOutput)
                     {
-                        TransactionCapture = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TransactionCapture>(json)
+                        TransactionCaptureOutput = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TransactionCaptureOutput>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(TransactionCapture), new ResponseCaptureTransaction(ResponseCaptureTransactionType.TransactionCapture), "TransactionCapture"));
+                    fallbackCandidates.Add((typeof(TransactionCaptureOutput), new ResponseCaptureTransaction(ResponseCaptureTransactionType.TransactionCaptureOutput), "TransactionCaptureOutput"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -126,14 +126,14 @@ namespace Gr4vy.Models.Requests
 
                 try
                 {
-                    return new ResponseCaptureTransaction(ResponseCaptureTransactionType.Transaction)
+                    return new ResponseCaptureTransaction(ResponseCaptureTransactionType.TransactionOutput)
                     {
-                        Transaction = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Transaction>(json)
+                        TransactionOutput = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TransactionOutput>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Transaction), new ResponseCaptureTransaction(ResponseCaptureTransactionType.Transaction), "Transaction"));
+                    fallbackCandidates.Add((typeof(TransactionOutput), new ResponseCaptureTransaction(ResponseCaptureTransactionType.TransactionOutput), "TransactionOutput"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -176,15 +176,15 @@ namespace Gr4vy.Models.Requests
 
                 ResponseCaptureTransaction res = (ResponseCaptureTransaction)value;
 
-                if (res.Transaction != null)
+                if (res.TransactionOutput != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.Transaction));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionOutput));
                     return;
                 }
 
-                if (res.TransactionCapture != null)
+                if (res.TransactionCaptureOutput != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionCapture));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionCaptureOutput));
                     return;
                 }
             }

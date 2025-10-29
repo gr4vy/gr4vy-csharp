@@ -64,6 +64,6 @@ namespace Gr4vy.Models.Components
         /// Information about the payment method stored on the checkout session.
         /// </summary>
         [JsonProperty("payment_method")]
-        public CheckoutSessionPaymentMethod? PaymentMethod { get; set; } = null;
+        public CheckoutSessionPaymentMethodOutput? PaymentMethod { get; set; } = null;
     }
 }

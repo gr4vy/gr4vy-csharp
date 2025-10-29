@@ -166,7 +166,7 @@ namespace Gr4vy.Models.Components
         /// The buyer associated with the payment link.
         /// </summary>
         [JsonProperty("buyer")]
-        public TransactionBuyer? Buyer { get; set; } = null;
+        public TransactionBuyerOutput? Buyer { get; set; } = null;
 
         /// <summary>
         /// The shipping details for the payment link.

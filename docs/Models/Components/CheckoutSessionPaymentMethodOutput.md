@@ -1,4 +1,4 @@
-# CheckoutSessionPaymentMethod
+# CheckoutSessionPaymentMethodOutput
 
 
 ## Fields
