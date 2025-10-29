@@ -41,6 +41,9 @@ namespace Gr4vy.Models.Components
         [JsonProperty("airline")]
         public Airline? Airline { get; set; } = null;
 
+        /// <summary>
+        /// The time in seconds when this checkout session expires.
+        /// </summary>
         [JsonProperty("expires_in")]
         public double? ExpiresIn { get; set; } = 3600D;
     }
