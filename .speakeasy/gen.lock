@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: dfa663514e34c0e32b578a160657b080
+  docChecksum: 4f5ccf614a61a549fd983a5f41503a38
   docVersion: 1.0.0
   speakeasyVersion: 1.642.2
   generationVersion: 2.731.6
-  releaseVersion: 2.3.4
-  configChecksum: 336ed039bb730ff4a31232d2de3edb68
+  releaseVersion: 2.3.5
+  configChecksum: 43bb496e8c90ca16411e42ef129e6ac7
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -196,6 +196,7 @@ generatedFiles:
   - docs/Models/Components/PaypalShippingOptions.md
   - docs/Models/Components/PaypalShippingOptionsItem.md
   - docs/Models/Components/PaypalShippingOptionsItemAmount.md
+  - docs/Models/Components/PlaidPaymentMethodCreate.md
   - docs/Models/Components/PowertranzOptions.md
   - docs/Models/Components/Recipient.md
   - docs/Models/Components/RedirectPaymentMethodCreate.md
@@ -601,6 +602,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/PaypalShippingOptions.cs
   - src/Gr4vy/Models/Components/PaypalShippingOptionsItem.cs
   - src/Gr4vy/Models/Components/PaypalShippingOptionsItemAmount.cs
+  - src/Gr4vy/Models/Components/PlaidPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/PowertranzOptions.cs
   - src/Gr4vy/Models/Components/Recipient.cs
   - src/Gr4vy/Models/Components/RedirectPaymentMethodCreate.cs
@@ -4268,7 +4270,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes Detected:
-  * `Gr4vy.Transactions.Capture()`:  `response` **Changed**
-  * `Gr4vy.Transactions.Void()`:  `response` **Changed**
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Payment-Methods.Create()`: \n  *  `requestBody.[plaidPaymentMethodCreate]` **Added**\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod.[plaidPaymentMethodCreate]` **Added**\n"
