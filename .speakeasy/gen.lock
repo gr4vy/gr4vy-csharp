@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 19d7a2bf27c30fbfdc02e28a6dd18803
+  docChecksum: 4ec2b80742316a994dd4a4523f61a0bf
   docVersion: 1.0.0
-  speakeasyVersion: 1.642.2
+  speakeasyVersion: 1.643.2
   generationVersion: 2.731.6
-  releaseVersion: 2.3.7
-  configChecksum: aebcfd5e91ee8c7d9352ee803b8d7ade
+  releaseVersion: 2.3.8
+  configChecksum: 4c311dadb54e602ec41de1a282fd40fa
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -151,6 +151,7 @@ generatedFiles:
   - docs/Models/Components/MerchantProfileSchemeSummary.md
   - docs/Models/Components/MockCardMerchantAdviceCodeOptions.md
   - docs/Models/Components/MockCardOptions.md
+  - docs/Models/Components/MonatoSpeiOptions.md
   - docs/Models/Components/NetworkToken.md
   - docs/Models/Components/NetworkTokenCreate.md
   - docs/Models/Components/NetworkTokenPaymentMethodCreate.md
@@ -557,6 +558,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/MerchantProfileSchemeSummary.cs
   - src/Gr4vy/Models/Components/MockCardMerchantAdviceCodeOptions.cs
   - src/Gr4vy/Models/Components/MockCardOptions.cs
+  - src/Gr4vy/Models/Components/MonatoSpeiOptions.cs
   - src/Gr4vy/Models/Components/NetworkToken.cs
   - src/Gr4vy/Models/Components/NetworkTokenCreate.cs
   - src/Gr4vy/Models/Components/NetworkTokenPaymentMethodCreate.cs
@@ -4270,3 +4272,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Monato-Spei` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Monato-Spei` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Monato-Spei` **Added**\n"
