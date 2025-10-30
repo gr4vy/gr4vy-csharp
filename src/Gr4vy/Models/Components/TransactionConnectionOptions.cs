@@ -179,6 +179,12 @@ namespace Gr4vy.Models.Components
         public MattildaTapiOptions? MattildaTapifintechs { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `monato-spei` connector.
+        /// </summary>
+        [JsonProperty("monato-spei")]
+        public MonatoSpeiOptions? MonatoSpei { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `mock-card` connector.
         /// </summary>
         [JsonProperty("mock-card")]
