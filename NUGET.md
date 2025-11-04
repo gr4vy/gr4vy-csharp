@@ -337,8 +337,8 @@ using Gr4vy.Models.Components;
 using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(
-    server: SDKConfig.Server.Production,
-    id: "<id>",
+    server: SDKConfig.Server.Sandbox,
+    id: "example",
     merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );

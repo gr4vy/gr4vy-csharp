@@ -1,24 +1,24 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 4ec2b80742316a994dd4a4523f61a0bf
+  docChecksum: e5e2f2e77424ce3fedb1254cf6583f21
   docVersion: 1.0.0
-  speakeasyVersion: 1.643.2
-  generationVersion: 2.731.6
-  releaseVersion: 2.3.8
-  configChecksum: 4c311dadb54e602ec41de1a282fd40fa
+  speakeasyVersion: 1.648.0
+  generationVersion: 2.737.0
+  releaseVersion: 2.4.0
+  configChecksum: 0de75d39deb060e7fe4d84be2deedac0
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.15.1
+    core: 3.15.2
     flattening: 2.81.3
     globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
     globalSecurityFlattening: 0.1.0
-    globalServerURLs: 2.82.4
+    globalServerURLs: 2.83.0
     globals: 2.82.1
     groups: 2.81.3
     ignores: 2.81.1
@@ -4272,4 +4272,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Monato-Spei` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Monato-Spei` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Monato-Spei` **Added**\n"
