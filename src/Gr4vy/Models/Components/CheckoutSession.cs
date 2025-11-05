@@ -43,6 +43,24 @@ namespace Gr4vy.Models.Components
         public Airline? Airline { get; set; } = null;
 
         /// <summary>
+        /// The total amount for this transaction.
+        /// </summary>
+        [JsonProperty("amount")]
+        public long? Amount { get; set; } = null;
+
+        /// <summary>
+        /// The currency code for this transaction.
+        /// </summary>
+        [JsonProperty("currency")]
+        public string? Currency { get; set; } = null;
+
+        /// <summary>
+        /// The unique identifier of an existing payment service. When provided, the created transaction will be processed by the given payment service and any routing rules will be skipped.
+        /// </summary>
+        [JsonProperty("payment_service_id")]
+        public string? PaymentServiceId { get; set; } = null;
+
+        /// <summary>
         /// Always `checkout-session`
         /// </summary>
         [JsonProperty("type")]
