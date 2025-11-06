@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: d3e9266e6d08dbb80860bcacbb4480cb
+  docChecksum: 9a13cef691c1d2ffaeab942eb9d79bd9
   docVersion: 1.0.0
   speakeasyVersion: 1.649.0
   generationVersion: 2.739.1
-  releaseVersion: 2.4.1
-  configChecksum: c0f8d774aa16dd1ba89391a4795da33f
+  releaseVersion: 2.4.2
+  configChecksum: be636899b72b2d5647369050a3dd956b
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -4272,4 +4272,3 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Checkout-Sessions.Create()`: \n  *  `request.checkoutSessionCreate` **Changed**\n  *  `response` **Changed**\n* `Gr4vy.Checkout-Sessions.Get()`:  `response` **Changed**\n* `Gr4vy.Checkout-Sessions.Update()`: \n  *  `request.checkoutSessionCreate` **Changed**\n  *  `response` **Changed**\n"
