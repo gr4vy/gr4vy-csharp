@@ -19,12 +19,13 @@ generation:
     hoistGlobalSecurity: true
   schemas:
     allOfMergeStrategy: shallowMerge
+  requestBodyFieldName: ""
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 2.4.2
+  version: 2.4.3
   additionalDependencies:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.9.0
