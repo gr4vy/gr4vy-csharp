@@ -59,6 +59,12 @@ namespace Gr4vy.Models.Components
         public string? Sku { get; set; } = null;
 
         /// <summary>
+        /// The UPC for the item.
+        /// </summary>
+        [JsonProperty("upc")]
+        public string? Upc { get; set; } = null;
+
+        /// <summary>
         /// The product URL for the item.
         /// </summary>
         [JsonProperty("product_url")]
