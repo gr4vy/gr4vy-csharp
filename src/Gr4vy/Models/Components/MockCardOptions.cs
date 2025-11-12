@@ -21,5 +21,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("merchant_advice_code")]
         public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
+
+        /// <summary>
+        /// When set to true, prevents retries on failed transactions.
+        /// </summary>
+        [JsonProperty("skip_retry")]
+        public bool? SkipRetry { get; set; } = null;
     }
 }
