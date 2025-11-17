@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 760e50f6acfbb673d69907fc8b3d33f5
+  docChecksum: 9157b854f6943a1e973f323f4ce97ab4
   docVersion: 1.0.0
-  speakeasyVersion: 1.655.0
-  generationVersion: 2.751.0
-  releaseVersion: 2.4.5
-  configChecksum: 7e7320135e2551d5ff4f17e26f0c7920
+  speakeasyVersion: 1.658.1
+  generationVersion: 2.755.6
+  releaseVersion: 2.4.6
+  configChecksum: 29ad5f9006d99a65c2171ef724f36883
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.15.3
+    core: 3.15.4
     flattening: 2.81.3
     globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
@@ -26,7 +26,7 @@ features:
     methodArguments: 0.2.1
     nameOverrides: 2.81.2
     nullables: 0.1.1
-    pagination: 0.2.8
+    pagination: 0.2.9
     responseFormat: 0.0.4
     retries: 0.0.1
     sdkHooks: 0.2.0
@@ -4272,4 +4272,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Mock-Card.SkipRetry` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Mock-Card.SkipRetry` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Mock-Card.SkipRetry` **Added**\n"
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Payment-Methods.Create()`: \n  *  `requestBody.[plaidPaymentMethodCreate].ExternalIdentifier` **Added**\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod.[plaidPaymentMethodCreate].ExternalIdentifier` **Added**\n"

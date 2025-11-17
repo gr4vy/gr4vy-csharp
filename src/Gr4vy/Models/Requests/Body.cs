@@ -151,14 +151,14 @@ namespace Gr4vy.Models.Requests
 
                 try
                 {
-                    return new Body(BodyType.PlaidPaymentMethodCreate)
+                    return new Body(BodyType.RedirectPaymentMethodCreate)
                     {
-                        PlaidPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<PlaidPaymentMethodCreate>(json)
+                        RedirectPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<RedirectPaymentMethodCreate>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(PlaidPaymentMethodCreate), new Body(BodyType.PlaidPaymentMethodCreate), "PlaidPaymentMethodCreate"));
+                    fallbackCandidates.Add((typeof(RedirectPaymentMethodCreate), new Body(BodyType.RedirectPaymentMethodCreate), "RedirectPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -171,14 +171,14 @@ namespace Gr4vy.Models.Requests
 
                 try
                 {
-                    return new Body(BodyType.RedirectPaymentMethodCreate)
+                    return new Body(BodyType.PlaidPaymentMethodCreate)
                     {
-                        RedirectPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<RedirectPaymentMethodCreate>(json)
+                        PlaidPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<PlaidPaymentMethodCreate>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(RedirectPaymentMethodCreate), new Body(BodyType.RedirectPaymentMethodCreate), "RedirectPaymentMethodCreate"));
+                    fallbackCandidates.Add((typeof(PlaidPaymentMethodCreate), new Body(BodyType.PlaidPaymentMethodCreate), "PlaidPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
