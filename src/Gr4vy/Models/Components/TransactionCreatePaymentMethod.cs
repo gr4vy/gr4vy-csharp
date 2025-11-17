@@ -261,26 +261,6 @@ namespace Gr4vy.Models.Components
 
                 try
                 {
-                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.PlaidPaymentMethodCreate)
-                    {
-                        PlaidPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<PlaidPaymentMethodCreate>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(PlaidPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.PlaidPaymentMethodCreate), "PlaidPaymentMethodCreate"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                try
-                {
                     return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CheckoutSessionWithUrlPaymentMethodCreate)
                     {
                         CheckoutSessionWithUrlPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CheckoutSessionWithUrlPaymentMethodCreate>(json)
@@ -309,6 +289,26 @@ namespace Gr4vy.Models.Components
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(RedirectPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.RedirectPaymentMethodCreate), "RedirectPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.PlaidPaymentMethodCreate)
+                    {
+                        PlaidPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<PlaidPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(PlaidPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.PlaidPaymentMethodCreate), "PlaidPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {

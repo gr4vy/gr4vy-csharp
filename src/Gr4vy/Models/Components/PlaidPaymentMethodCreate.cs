@@ -58,5 +58,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("buyer_external_identifier")]
         public string? BuyerExternalIdentifier { get; set; } = null;
+
+        /// <summary>
+        /// The merchant identifier for this payment method.
+        /// </summary>
+        [JsonProperty("external_identifier")]
+        public string? ExternalIdentifier { get; set; } = null;
     }
 }
