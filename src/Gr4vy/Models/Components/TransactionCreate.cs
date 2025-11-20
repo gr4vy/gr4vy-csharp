@@ -234,6 +234,12 @@ namespace Gr4vy.Models.Components
         public string? MerchantTaxId { get; set; } = null;
 
         /// <summary>
+        /// Invoice number or Purchase Order number.
+        /// </summary>
+        [JsonProperty("purchase_order_number")]
+        public string? PurchaseOrderNumber { get; set; } = null;
+
+        /// <summary>
         /// Customer code or reference.
         /// </summary>
         [JsonProperty("customer_reference_number")]

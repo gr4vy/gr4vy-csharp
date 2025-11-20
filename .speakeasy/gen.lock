@@ -1,12 +1,12 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 9157b854f6943a1e973f323f4ce97ab4
+  docChecksum: d516fb71ac2f2ae0dd9663e6dd157c1a
   docVersion: 1.0.0
-  speakeasyVersion: 1.658.1
-  generationVersion: 2.755.6
-  releaseVersion: 2.4.6
-  configChecksum: 29ad5f9006d99a65c2171ef724f36883
+  speakeasyVersion: 1.658.2
+  generationVersion: 2.755.9
+  releaseVersion: 2.4.7
+  configChecksum: 3ca0640db64b574f72d90e3a0f5f9153
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
@@ -4272,4 +4272,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Payment-Methods.Create()`: \n  *  `requestBody.[plaidPaymentMethodCreate].ExternalIdentifier` **Added**\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod.[plaidPaymentMethodCreate].ExternalIdentifier` **Added**\n"
+releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PurchaseOrderNumber` **Added**\n  *  `response.purchaseOrderNumber` **Added**\n* `Gr4vy.Transactions.Get()`:  `response.purchaseOrderNumber` **Added**\n* `Gr4vy.Transactions.Update()`:  `response.purchaseOrderNumber` **Added**\n* `Gr4vy.Transactions.Capture()`:  `response.[transaction-output].PurchaseOrderNumber` **Added**\n* `Gr4vy.Transactions.Void()`:  `response.[transaction-output].PurchaseOrderNumber` **Added**\n* `Gr4vy.Transactions.Cancel()`:  `response.transaction.PurchaseOrderNumber` **Added**\n* `Gr4vy.Transactions.Sync()`:  `response.purchaseOrderNumber` **Added**\n"
