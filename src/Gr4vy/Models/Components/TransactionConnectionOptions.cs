@@ -197,6 +197,12 @@ namespace Gr4vy.Models.Components
         public NuveiOptions? NuveiCard { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `nuvei-ideal` connector.
+        /// </summary>
+        [JsonProperty("nuvei-ideal")]
+        public NuveiIDealOptions? NuveiIdeal { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `nuvei-pse` connector.
         /// </summary>
         [JsonProperty("nuvei-pse")]
