@@ -25,7 +25,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 2.4.8
+  version: 2.4.9
   additionalDependencies:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.9.0
@@ -49,6 +49,7 @@ csharp:
       shared: Models/Components
       webhooks: Models/Webhooks
   includeDebugSymbols: false
+  inferUnionDiscriminators: false
   inputModelSuffix: input
   maxMethodParams: 4
   methodArguments: infer-optional-args
