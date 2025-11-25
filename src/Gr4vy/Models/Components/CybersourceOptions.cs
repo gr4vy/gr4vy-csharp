@@ -33,5 +33,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("ship_to_method")]
         public string? ShipToMethod { get; set; } = null;
+
+        /// <summary>
+        /// Brief description of the order or any comment you wish to add to the order.
+        /// </summary>
+        [JsonProperty("comments")]
+        public string? Comments { get; set; } = null;
     }
 }
