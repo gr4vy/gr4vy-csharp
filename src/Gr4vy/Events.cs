@@ -16,8 +16,10 @@ namespace Gr4vy
     using Gr4vy.Utils;
     using Gr4vy.Utils.Retries;
     using Newtonsoft.Json;
+    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
@@ -32,7 +34,7 @@ namespace Gr4vy
         /// Retrieve a paginated list of events related to processing a transaction, including status changes, API requests, and webhook delivery attempts. Events are listed in chronological order, with the most recent events first.
         /// </remarks>
         /// </summary>
-        Task<TransactionEvents> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<ListTransactionEventsResponse> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null);
     }
 
     public class Events: IEvents
@@ -49,7 +51,7 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
-        public async Task<TransactionEvents> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<ListTransactionEventsResponse> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new ListTransactionEventsRequest()
             {
@@ -139,6 +141,30 @@ namespace Gr4vy
 
             httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
 
+            Func<Task<ListTransactionEventsResponse?>> nextFunc = async delegate()
+            {
+                var body = JObject.Parse(await httpResponse.Content.ReadAsStringAsync());
+                var nextCursorToken = body.SelectToken("$.next_cursor");
+
+                if(nextCursorToken == null)
+                {
+                    return null;
+                }
+                var nextCursor = nextCursorToken.Value<string>();
+                if (string.IsNullOrWhiteSpace(nextCursor))
+                {
+                    return null;
+                }
+
+                return await ListAsync (
+                    transactionId: transactionId,
+                    cursor: nextCursor,
+                    limit: limit,
+                    merchantAccountId: merchantAccountId,
+                    retryConfig: retryConfig
+                );
+            };
+
             var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
             int responseStatusCode = (int)httpResponse.StatusCode;
             if(responseStatusCode == 200)
@@ -156,7 +182,13 @@ namespace Gr4vy
                         throw new ResponseValidationException("Failed to deserialize response body into TransactionEvents.", httpResponse, httpResponseBody, ex);
                     }
 
-                    return obj!;
+                    var result = obj!;
+                    var response = new ListTransactionEventsResponse()
+                    {
+                        Result = result,
+                        Next = nextFunc
+                    };
+                    return response;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());

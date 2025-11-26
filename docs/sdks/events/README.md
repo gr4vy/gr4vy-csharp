@@ -17,19 +17,25 @@ Retrieve a paginated list of events related to processing a transaction, includi
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 
 var sdk = new Gr4vySDK(
     merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Transactions.Events.ListAsync(
+ListTransactionEventsResponse? res = await sdk.Transactions.Events.ListAsync(
     transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
     cursor: "ZXhhbXBsZTE",
     limit: 100
 );
 
-// handle response
+while(res != null)
+{
+    // handle items
+
+    res = await res.Next!();
+}
 ```
 
 ### Parameters
@@ -43,7 +49,7 @@ var res = await sdk.Transactions.Events.ListAsync(
 
 ### Response
 
-**[TransactionEvents](../../Models/Components/TransactionEvents.md)**
+**[ListTransactionEventsResponse](../../Models/Requests/ListTransactionEventsResponse.md)**
 
 ### Errors
 

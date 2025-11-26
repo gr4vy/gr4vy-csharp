@@ -9,10 +9,10 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Generic;
     
     public class TransactionEvent
     {
@@ -42,6 +42,6 @@ namespace Gr4vy.Models.Components
         public DateTime CreatedAt { get; set; } = default!;
 
         [JsonProperty("context")]
-        public TransactionEventContext Context { get; set; } = default!;
+        public Dictionary<string, object> Context { get; set; } = default!;
     }
 }
