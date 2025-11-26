@@ -1,18 +1,17 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: f83c7dc2ed6c679ec3d14685ec58576f
+  docChecksum: 95edc2594618bce65f5df9316266857e
   docVersion: 1.0.0
-  speakeasyVersion: 1.661.4
+  speakeasyVersion: 1.662.0
   generationVersion: 2.763.3
-  releaseVersion: 2.5.0
-  configChecksum: 12170871527ed1ef8a90dc712f548303
+  releaseVersion: 2.6.0
+  configChecksum: b20adfcffcf19123dd7272554f9f7032
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
-    additionalProperties: 0.0.1
     constsAndDefaults: 0.0.1
     core: 3.15.5
     flattening: 2.81.3
@@ -247,7 +246,6 @@ generatedFiles:
   - docs/Models/Components/TransactionCreate.md
   - docs/Models/Components/TransactionCreatePaymentMethod.md
   - docs/Models/Components/TransactionEvent.md
-  - docs/Models/Components/TransactionEventContext.md
   - docs/Models/Components/TransactionEvents.md
   - docs/Models/Components/TransactionGiftCard.md
   - docs/Models/Components/TransactionPaymentMethod.md
@@ -370,6 +368,7 @@ generatedFiles:
   - docs/Models/Requests/ListReportsRequest.md
   - docs/Models/Requests/ListReportsResponse.md
   - docs/Models/Requests/ListTransactionEventsRequest.md
+  - docs/Models/Requests/ListTransactionEventsResponse.md
   - docs/Models/Requests/ListTransactionRefundsRequest.md
   - docs/Models/Requests/ListTransactionSettlementsRequest.md
   - docs/Models/Requests/ListTransactionsRequest.md
@@ -654,7 +653,6 @@ generatedFiles:
   - src/Gr4vy/Models/Components/TransactionCreate.cs
   - src/Gr4vy/Models/Components/TransactionCreatePaymentMethod.cs
   - src/Gr4vy/Models/Components/TransactionEvent.cs
-  - src/Gr4vy/Models/Components/TransactionEventContext.cs
   - src/Gr4vy/Models/Components/TransactionEvents.cs
   - src/Gr4vy/Models/Components/TransactionGiftCard.cs
   - src/Gr4vy/Models/Components/TransactionPaymentMethod.cs
@@ -780,6 +778,7 @@ generatedFiles:
   - src/Gr4vy/Models/Requests/ListReportsRequest.cs
   - src/Gr4vy/Models/Requests/ListReportsResponse.cs
   - src/Gr4vy/Models/Requests/ListTransactionEventsRequest.cs
+  - src/Gr4vy/Models/Requests/ListTransactionEventsResponse.cs
   - src/Gr4vy/Models/Requests/ListTransactionRefundsRequest.cs
   - src/Gr4vy/Models/Requests/ListTransactionSettlementsRequest.cs
   - src/Gr4vy/Models/Requests/ListTransactionsRequest.cs
@@ -4277,5 +4276,3 @@ generatedTests: {}
 releaseNotes: |
   ## Csharp SDK Changes Detected:
   * `Gr4vy.Transactions.Events.List()`:  `response.items.[].Context` **Changed** **Breaking** :warning:
-  * `Gr4vy.Transactions.Capture()`:  `response` **Changed**
-  * `Gr4vy.Transactions.Void()`:  `response` **Changed**
