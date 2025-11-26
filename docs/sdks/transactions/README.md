@@ -189,7 +189,7 @@ var res = await sdk.Transactions.CreateAsync(
 
 ### Response
 
-**[TransactionOutput](../../Models/Components/TransactionOutput.md)**
+**[Transaction](../../Models/Components/Transaction.md)**
 
 ### Errors
 
@@ -239,7 +239,7 @@ var res = await sdk.Transactions.GetAsync(transactionId: "7099948d-7286-47e4-aad
 
 ### Response
 
-**[TransactionOutput](../../Models/Components/TransactionOutput.md)**
+**[Transaction](../../Models/Components/Transaction.md)**
 
 ### Errors
 
@@ -293,7 +293,7 @@ var res = await sdk.Transactions.UpdateAsync(
 
 ### Response
 
-**[TransactionOutput](../../Models/Components/TransactionOutput.md)**
+**[Transaction](../../Models/Components/Transaction.md)**
 
 ### Errors
 
@@ -499,7 +499,7 @@ var res = await sdk.Transactions.SyncAsync(transactionId: "2ee546e0-3b11-478e-af
 
 ### Response
 
-**[TransactionOutput](../../Models/Components/TransactionOutput.md)**
+**[Transaction](../../Models/Components/Transaction.md)**
 
 ### Errors
 

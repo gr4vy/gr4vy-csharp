@@ -45,7 +45,7 @@ namespace Gr4vy.Models.Components
         /// Guest buyer details provided inline rather than creating a buyer resource beforehand and using the `buyer_id` or `buyer_external_identifier` keys. No buyer resource will be created on Gr4vy when used.
         /// </summary>
         [JsonProperty("buyer")]
-        public GuestBuyerInput? Buyer { get; set; } = null;
+        public GuestBuyer? Buyer { get; set; } = null;
 
         /// <summary>
         /// The ID of the buyer to associate this payment method to. If this field is provided then the `buyer_external_identifier` field needs to be unset. If a stored payment method or gift card is provided, then the buyer for that payment method needs to match the buyer for this field.

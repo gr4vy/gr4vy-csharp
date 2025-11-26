@@ -24,16 +24,16 @@ namespace Gr4vy.Models.Requests
 
         public string Value { get; private set; }
 
-        public static ResponseVoidTransactionType TransactionOutput { get { return new ResponseVoidTransactionType("Transaction-Output"); } }
+        public static ResponseVoidTransactionType Transaction { get { return new ResponseVoidTransactionType("Transaction"); } }
 
-        public static ResponseVoidTransactionType TransactionVoidOutput { get { return new ResponseVoidTransactionType("TransactionVoid-Output"); } }
+        public static ResponseVoidTransactionType TransactionVoid { get { return new ResponseVoidTransactionType("TransactionVoid"); } }
 
         public override string ToString() { return Value; }
         public static implicit operator String(ResponseVoidTransactionType v) { return v.Value; }
         public static ResponseVoidTransactionType FromString(string v) {
             switch(v) {
-                case "Transaction-Output": return TransactionOutput;
-                case "TransactionVoid-Output": return TransactionVoidOutput;
+                case "Transaction": return Transaction;
+                case "TransactionVoid": return TransactionVoid;
                 default: throw new ArgumentException("Invalid value for ResponseVoidTransactionType");
             }
         }
@@ -65,26 +65,26 @@ namespace Gr4vy.Models.Requests
         }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public TransactionOutput? TransactionOutput { get; set; }
+        public Transaction? Transaction { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
-        public TransactionVoidOutput? TransactionVoidOutput { get; set; }
+        public TransactionVoid? TransactionVoid { get; set; }
 
         public ResponseVoidTransactionType Type { get; set; }
-        public static ResponseVoidTransaction CreateTransactionOutput(TransactionOutput transactionOutput)
+        public static ResponseVoidTransaction CreateTransaction(Transaction transaction)
         {
-            ResponseVoidTransactionType typ = ResponseVoidTransactionType.TransactionOutput;
+            ResponseVoidTransactionType typ = ResponseVoidTransactionType.Transaction;
 
             ResponseVoidTransaction res = new ResponseVoidTransaction(typ);
-            res.TransactionOutput = transactionOutput;
+            res.Transaction = transaction;
             return res;
         }
-        public static ResponseVoidTransaction CreateTransactionVoidOutput(TransactionVoidOutput transactionVoidOutput)
+        public static ResponseVoidTransaction CreateTransactionVoid(TransactionVoid transactionVoid)
         {
-            ResponseVoidTransactionType typ = ResponseVoidTransactionType.TransactionVoidOutput;
+            ResponseVoidTransactionType typ = ResponseVoidTransactionType.TransactionVoid;
 
             ResponseVoidTransaction res = new ResponseVoidTransaction(typ);
-            res.TransactionVoidOutput = transactionVoidOutput;
+            res.TransactionVoid = transactionVoid;
             return res;
         }
 
@@ -106,14 +106,14 @@ namespace Gr4vy.Models.Requests
 
                 try
                 {
-                    return new ResponseVoidTransaction(ResponseVoidTransactionType.TransactionVoidOutput)
+                    return new ResponseVoidTransaction(ResponseVoidTransactionType.TransactionVoid)
                     {
-                        TransactionVoidOutput = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TransactionVoidOutput>(json)
+                        TransactionVoid = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TransactionVoid>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(TransactionVoidOutput), new ResponseVoidTransaction(ResponseVoidTransactionType.TransactionVoidOutput), "TransactionVoidOutput"));
+                    fallbackCandidates.Add((typeof(TransactionVoid), new ResponseVoidTransaction(ResponseVoidTransactionType.TransactionVoid), "TransactionVoid"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -126,14 +126,14 @@ namespace Gr4vy.Models.Requests
 
                 try
                 {
-                    return new ResponseVoidTransaction(ResponseVoidTransactionType.TransactionOutput)
+                    return new ResponseVoidTransaction(ResponseVoidTransactionType.Transaction)
                     {
-                        TransactionOutput = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TransactionOutput>(json)
+                        Transaction = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Transaction>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(TransactionOutput), new ResponseVoidTransaction(ResponseVoidTransactionType.TransactionOutput), "TransactionOutput"));
+                    fallbackCandidates.Add((typeof(Transaction), new ResponseVoidTransaction(ResponseVoidTransactionType.Transaction), "Transaction"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -176,15 +176,15 @@ namespace Gr4vy.Models.Requests
 
                 ResponseVoidTransaction res = (ResponseVoidTransaction)value;
 
-                if (res.TransactionOutput != null)
+                if (res.Transaction != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionOutput));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.Transaction));
                     return;
                 }
 
-                if (res.TransactionVoidOutput != null)
+                if (res.TransactionVoid != null)
                 {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionVoidOutput));
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionVoid));
                     return;
                 }
             }

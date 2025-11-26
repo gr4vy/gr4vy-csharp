@@ -1,4 +1,4 @@
-# PaymentOptionOutput
+# PaymentOption
 
 
 ## Fields

@@ -47,6 +47,6 @@ namespace Gr4vy.Models.Components
         /// A full transaction resource.
         /// </summary>
         [JsonProperty("transaction")]
-        public TransactionOutput Transaction { get; set; } = default!;
+        public Transaction Transaction { get; set; } = default!;
     }
 }

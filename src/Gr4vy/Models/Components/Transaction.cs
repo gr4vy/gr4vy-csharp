@@ -18,7 +18,7 @@ namespace Gr4vy.Models.Components
     /// <summary>
     /// A full transaction resource.
     /// </summary>
-    public class TransactionOutput
+    public class Transaction
     {
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Gr4vy.Models.Components
         /// The payment method used for this transaction.
         /// </summary>
         [JsonProperty("payment_method")]
-        public TransactionPaymentMethodOutput? PaymentMethod { get; set; } = null;
+        public TransactionPaymentMethod? PaymentMethod { get; set; } = null;
 
         /// <summary>
         /// The method used for the transaction.
@@ -151,7 +151,7 @@ namespace Gr4vy.Models.Components
         /// The buyer used for this transaction.
         /// </summary>
         [JsonProperty("buyer")]
-        public TransactionBuyerOutput? Buyer { get; set; } = null;
+        public TransactionBuyer? Buyer { get; set; } = null;
 
         /// <summary>
         /// This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
@@ -277,7 +277,7 @@ namespace Gr4vy.Models.Components
         /// The 3-D Secure data that was sent to the payment service for the transaction.
         /// </summary>
         [JsonProperty("three_d_secure")]
-        public TransactionThreeDSecureSummaryOutput? ThreeDSecure { get; set; } = null;
+        public TransactionThreeDSecureSummary? ThreeDSecure { get; set; } = null;
 
         /// <summary>
         /// The payment service&apos;s unique ID for the transaction.

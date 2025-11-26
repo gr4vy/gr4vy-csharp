@@ -1,17 +1,18 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: a1e6e500816ed6d07074f7b1687e8820
+  docChecksum: f83c7dc2ed6c679ec3d14685ec58576f
   docVersion: 1.0.0
-  speakeasyVersion: 1.661.1
-  generationVersion: 2.763.2
-  releaseVersion: 2.4.9
-  configChecksum: 4c7e8893848c2b5d8c28c003a8ddd90c
+  speakeasyVersion: 1.661.4
+  generationVersion: 2.763.3
+  releaseVersion: 2.5.0
+  configChecksum: 12170871527ed1ef8a90dc712f548303
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
+    additionalProperties: 0.0.1
     constsAndDefaults: 0.0.1
     core: 3.15.5
     flattening: 2.81.3
@@ -55,11 +56,10 @@ generatedFiles:
   - docs/Models/Components/ApplePayPaymentMethodCreate.md
   - docs/Models/Components/ApplePaySessionRequest.md
   - docs/Models/Components/AuditLogEntries.md
-  - docs/Models/Components/AuditLogEntryOutput.md
+  - docs/Models/Components/AuditLogEntry.md
   - docs/Models/Components/AuditLogEntryResource.md
   - docs/Models/Components/AuditLogEntryUser.md
-  - docs/Models/Components/BillingDetailsInput.md
-  - docs/Models/Components/BillingDetailsOutput.md
+  - docs/Models/Components/BillingDetails.md
   - docs/Models/Components/BraintreeDynamicDataFieldsOptions.md
   - docs/Models/Components/BraintreeOptions.md
   - docs/Models/Components/BrowserInfo.md
@@ -75,9 +75,9 @@ generatedFiles:
   - docs/Models/Components/CheckoutPayoutOptions.md
   - docs/Models/Components/CheckoutSession.md
   - docs/Models/Components/CheckoutSessionCreate.md
+  - docs/Models/Components/CheckoutSessionPaymentMethod.md
   - docs/Models/Components/CheckoutSessionPaymentMethodCreate.md
   - docs/Models/Components/CheckoutSessionPaymentMethodDetails.md
-  - docs/Models/Components/CheckoutSessionPaymentMethodOutput.md
   - docs/Models/Components/CheckoutSessionWithUrlPaymentMethodCreate.md
   - docs/Models/Components/ClickToPayFPANPaymentMethodCreate.md
   - docs/Models/Components/ClickToPayPaymentMethodCreate.md
@@ -137,8 +137,7 @@ generatedFiles:
   - docs/Models/Components/GooglePayPaymentOptionContext.md
   - docs/Models/Components/GooglePaySession.md
   - docs/Models/Components/GooglePaySessionRequest.md
-  - docs/Models/Components/GuestBuyerInput.md
-  - docs/Models/Components/GuestBuyerOutput.md
+  - docs/Models/Components/GuestBuyer.md
   - docs/Models/Components/Item.md
   - docs/Models/Components/LatitudeOptions.md
   - docs/Models/Components/Loc.md
@@ -169,11 +168,11 @@ generatedFiles:
   - docs/Models/Components/PaymentMethodDetailsCard.md
   - docs/Models/Components/PaymentMethodStoredCard.md
   - docs/Models/Components/PaymentMethodSummaries.md
-  - docs/Models/Components/PaymentMethodSummaryOutput.md
+  - docs/Models/Components/PaymentMethodSummary.md
   - docs/Models/Components/PaymentMethods.md
+  - docs/Models/Components/PaymentOption.md
   - docs/Models/Components/PaymentOptionContext.md
   - docs/Models/Components/PaymentOptionContextApprovalUI.md
-  - docs/Models/Components/PaymentOptionOutput.md
   - docs/Models/Components/PaymentOptionRequest.md
   - docs/Models/Components/PaymentOptions.md
   - docs/Models/Components/PaymentService.md
@@ -239,27 +238,28 @@ generatedFiles:
   - docs/Models/Components/ThreeDSecureV2.md
   - docs/Models/Components/Token.md
   - docs/Models/Components/TokenPaymentMethodCreate.md
-  - docs/Models/Components/TransactionBuyerOutput.md
+  - docs/Models/Components/Transaction.md
+  - docs/Models/Components/TransactionBuyer.md
   - docs/Models/Components/TransactionCancel.md
+  - docs/Models/Components/TransactionCapture.md
   - docs/Models/Components/TransactionCaptureCreate.md
-  - docs/Models/Components/TransactionCaptureOutput.md
   - docs/Models/Components/TransactionConnectionOptions.md
   - docs/Models/Components/TransactionCreate.md
   - docs/Models/Components/TransactionCreatePaymentMethod.md
-  - docs/Models/Components/TransactionEventOutput.md
+  - docs/Models/Components/TransactionEvent.md
+  - docs/Models/Components/TransactionEventContext.md
   - docs/Models/Components/TransactionEvents.md
   - docs/Models/Components/TransactionGiftCard.md
-  - docs/Models/Components/TransactionOutput.md
-  - docs/Models/Components/TransactionPaymentMethodOutput.md
+  - docs/Models/Components/TransactionPaymentMethod.md
   - docs/Models/Components/TransactionPaymentService.md
   - docs/Models/Components/TransactionRefundAllCreate.md
   - docs/Models/Components/TransactionRefundCreate.md
   - docs/Models/Components/TransactionRetriesReportSpec.md
   - docs/Models/Components/TransactionSummaries.md
-  - docs/Models/Components/TransactionSummaryOutput.md
-  - docs/Models/Components/TransactionThreeDSecureSummaryOutput.md
+  - docs/Models/Components/TransactionSummary.md
+  - docs/Models/Components/TransactionThreeDSecureSummary.md
   - docs/Models/Components/TransactionUpdate.md
-  - docs/Models/Components/TransactionVoidOutput.md
+  - docs/Models/Components/TransactionVoid.md
   - docs/Models/Components/TransactionsReportSpec.md
   - docs/Models/Components/TravelHubCustomData.md
   - docs/Models/Components/TravelhubOptions.md
@@ -463,11 +463,10 @@ generatedFiles:
   - src/Gr4vy/Models/Components/ApplePayPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/ApplePaySessionRequest.cs
   - src/Gr4vy/Models/Components/AuditLogEntries.cs
-  - src/Gr4vy/Models/Components/AuditLogEntryOutput.cs
+  - src/Gr4vy/Models/Components/AuditLogEntry.cs
   - src/Gr4vy/Models/Components/AuditLogEntryResource.cs
   - src/Gr4vy/Models/Components/AuditLogEntryUser.cs
-  - src/Gr4vy/Models/Components/BillingDetailsInput.cs
-  - src/Gr4vy/Models/Components/BillingDetailsOutput.cs
+  - src/Gr4vy/Models/Components/BillingDetails.cs
   - src/Gr4vy/Models/Components/BraintreeDynamicDataFieldsOptions.cs
   - src/Gr4vy/Models/Components/BraintreeOptions.cs
   - src/Gr4vy/Models/Components/BrowserInfo.cs
@@ -483,9 +482,9 @@ generatedFiles:
   - src/Gr4vy/Models/Components/CheckoutPayoutOptions.cs
   - src/Gr4vy/Models/Components/CheckoutSession.cs
   - src/Gr4vy/Models/Components/CheckoutSessionCreate.cs
+  - src/Gr4vy/Models/Components/CheckoutSessionPaymentMethod.cs
   - src/Gr4vy/Models/Components/CheckoutSessionPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/CheckoutSessionPaymentMethodDetails.cs
-  - src/Gr4vy/Models/Components/CheckoutSessionPaymentMethodOutput.cs
   - src/Gr4vy/Models/Components/CheckoutSessionWithUrlPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/ClickToPayFPANPaymentMethodCreate.cs
   - src/Gr4vy/Models/Components/ClickToPayPaymentMethodCreate.cs
@@ -545,8 +544,7 @@ generatedFiles:
   - src/Gr4vy/Models/Components/GooglePayPaymentOptionContext.cs
   - src/Gr4vy/Models/Components/GooglePaySession.cs
   - src/Gr4vy/Models/Components/GooglePaySessionRequest.cs
-  - src/Gr4vy/Models/Components/GuestBuyerInput.cs
-  - src/Gr4vy/Models/Components/GuestBuyerOutput.cs
+  - src/Gr4vy/Models/Components/GuestBuyer.cs
   - src/Gr4vy/Models/Components/Item.cs
   - src/Gr4vy/Models/Components/LatitudeOptions.cs
   - src/Gr4vy/Models/Components/Loc.cs
@@ -577,11 +575,11 @@ generatedFiles:
   - src/Gr4vy/Models/Components/PaymentMethodDetailsCard.cs
   - src/Gr4vy/Models/Components/PaymentMethodStoredCard.cs
   - src/Gr4vy/Models/Components/PaymentMethodSummaries.cs
-  - src/Gr4vy/Models/Components/PaymentMethodSummaryOutput.cs
+  - src/Gr4vy/Models/Components/PaymentMethodSummary.cs
   - src/Gr4vy/Models/Components/PaymentMethods.cs
+  - src/Gr4vy/Models/Components/PaymentOption.cs
   - src/Gr4vy/Models/Components/PaymentOptionContext.cs
   - src/Gr4vy/Models/Components/PaymentOptionContextApprovalUI.cs
-  - src/Gr4vy/Models/Components/PaymentOptionOutput.cs
   - src/Gr4vy/Models/Components/PaymentOptionRequest.cs
   - src/Gr4vy/Models/Components/PaymentOptions.cs
   - src/Gr4vy/Models/Components/PaymentService.cs
@@ -647,27 +645,28 @@ generatedFiles:
   - src/Gr4vy/Models/Components/ThreeDSecureV2.cs
   - src/Gr4vy/Models/Components/Token.cs
   - src/Gr4vy/Models/Components/TokenPaymentMethodCreate.cs
-  - src/Gr4vy/Models/Components/TransactionBuyerOutput.cs
+  - src/Gr4vy/Models/Components/Transaction.cs
+  - src/Gr4vy/Models/Components/TransactionBuyer.cs
   - src/Gr4vy/Models/Components/TransactionCancel.cs
+  - src/Gr4vy/Models/Components/TransactionCapture.cs
   - src/Gr4vy/Models/Components/TransactionCaptureCreate.cs
-  - src/Gr4vy/Models/Components/TransactionCaptureOutput.cs
   - src/Gr4vy/Models/Components/TransactionConnectionOptions.cs
   - src/Gr4vy/Models/Components/TransactionCreate.cs
   - src/Gr4vy/Models/Components/TransactionCreatePaymentMethod.cs
-  - src/Gr4vy/Models/Components/TransactionEventOutput.cs
+  - src/Gr4vy/Models/Components/TransactionEvent.cs
+  - src/Gr4vy/Models/Components/TransactionEventContext.cs
   - src/Gr4vy/Models/Components/TransactionEvents.cs
   - src/Gr4vy/Models/Components/TransactionGiftCard.cs
-  - src/Gr4vy/Models/Components/TransactionOutput.cs
-  - src/Gr4vy/Models/Components/TransactionPaymentMethodOutput.cs
+  - src/Gr4vy/Models/Components/TransactionPaymentMethod.cs
   - src/Gr4vy/Models/Components/TransactionPaymentService.cs
   - src/Gr4vy/Models/Components/TransactionRefundAllCreate.cs
   - src/Gr4vy/Models/Components/TransactionRefundCreate.cs
   - src/Gr4vy/Models/Components/TransactionRetriesReportSpec.cs
   - src/Gr4vy/Models/Components/TransactionSummaries.cs
-  - src/Gr4vy/Models/Components/TransactionSummaryOutput.cs
-  - src/Gr4vy/Models/Components/TransactionThreeDSecureSummaryOutput.cs
+  - src/Gr4vy/Models/Components/TransactionSummary.cs
+  - src/Gr4vy/Models/Components/TransactionThreeDSecureSummary.cs
   - src/Gr4vy/Models/Components/TransactionUpdate.cs
-  - src/Gr4vy/Models/Components/TransactionVoidOutput.cs
+  - src/Gr4vy/Models/Components/TransactionVoid.cs
   - src/Gr4vy/Models/Components/TransactionsReportSpec.cs
   - src/Gr4vy/Models/Components/TravelHubCustomData.cs
   - src/Gr4vy/Models/Components/TravelhubOptions.cs
@@ -3725,7 +3724,7 @@ examples:
           application_name: "core-api"
       responses:
         "200":
-          application/json: {"items": [{"type": "transaction-event", "id": "f133a3b7-e67e-4d83-bcd3-3e438fedf348", "name": "transaction-api-request", "created_at": "2013-07-16T19:23:00.000+00:00", "context": {}}], "limit": 20}
+          application/json: {"items": [{"type": "transaction-event", "id": "f133a3b7-e67e-4d83-bcd3-3e438fedf348", "name": "transaction-api-request", "created_at": "2013-07-16T19:23:00.000+00:00", "context": {"transaction_id": "<id>", "created_at": "1713124938909"}}], "limit": 20}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4275,4 +4274,8 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes Detected:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.Cybersource-Card.Comments` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.Cybersource-Card.Comments` **Added**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.Cybersource-Card.Comments` **Added**\n"
+releaseNotes: |
+  ## Csharp SDK Changes Detected:
+  * `Gr4vy.Transactions.Events.List()`:  `response.items.[].Context` **Changed** **Breaking** :warning:
+  * `Gr4vy.Transactions.Capture()`:  `response` **Changed**
+  * `Gr4vy.Transactions.Void()`:  `response` **Changed**

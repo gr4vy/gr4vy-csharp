@@ -1,4 +1,4 @@
-# AuditLogEntryOutput
+# AuditLogEntry
 
 
 ## Fields
