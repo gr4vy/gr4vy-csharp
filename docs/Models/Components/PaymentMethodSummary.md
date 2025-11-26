@@ -1,4 +1,4 @@
-# PaymentMethodSummaryOutput
+# PaymentMethodSummary
 
 Payment Method
 

@@ -9,18 +9,20 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
     
-    public class PaymentOptions
+    public class TransactionEventContext
     {
 
-        /// <summary>
-        /// A list of items returned for this request.
-        /// </summary>
-        [JsonProperty("items")]
-        public List<PaymentOption> Items { get; set; } = default!;
+        [JsonProperty("transaction_id")]
+        public object TransactionId { get; set; } = default!;
+
+        [JsonProperty("created_at")]
+        public object CreatedAt { get; set; } = default!;
+
+        [JsonProperty("additionalProperties")]
+        public Dictionary<string, object>? AdditionalProperties { get; set; }
     }
 }

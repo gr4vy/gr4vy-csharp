@@ -13,49 +13,43 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
-    public class CheckoutSessionPaymentMethodOutput
+    public class TransactionBuyer
     {
 
         /// <summary>
-        /// Always `payment-method`
+        /// Always `buyer`.
         /// </summary>
         [JsonProperty("type")]
-        public string Type { get; } = "payment-method";
+        public string Type { get; } = "buyer";
 
         /// <summary>
-        /// The ID of the payment method.
+        /// The ID for the buyer.
         /// </summary>
         [JsonProperty("id")]
         public string? Id { get; set; } = null;
 
         /// <summary>
-        /// Details for credit or debit card payment method.
+        /// The display name for the buyer.
         /// </summary>
-        [JsonProperty("details")]
-        public CheckoutSessionPaymentMethodDetails? Details { get; set; } = null;
+        [JsonProperty("display_name")]
+        public string? DisplayName { get; set; } = null;
 
         /// <summary>
-        /// The last 4 digits of the the card.
+        /// The merchant identifier for this buyer.
         /// </summary>
-        [JsonProperty("label")]
-        public string? Label { get; set; } = null;
+        [JsonProperty("external_identifier")]
+        public string? ExternalIdentifier { get; set; } = null;
 
         /// <summary>
-        /// Always `card`
+        /// The billing name, address, email, and other fields for this buyer.
         /// </summary>
-        [JsonProperty("method")]
-        public string Method { get; } = "card";
+        [JsonProperty("billing_details")]
+        public BillingDetails? BillingDetails { get; set; } = null;
 
         /// <summary>
-        /// The scheme of the card.
+        /// The buyer account number.
         /// </summary>
-        [JsonProperty("scheme")]
-        public string? Scheme { get; set; } = null;
-
-        /// <summary>
-        /// The unique hash derived from the card number.
-        /// </summary>
-        [JsonProperty("fingerprint")]
-        public string? Fingerprint { get; set; } = null;
+        [JsonProperty("account_number")]
+        public string? AccountNumber { get; set; } = null;
     }
 }

@@ -46,7 +46,7 @@ namespace Gr4vy
         /// Create a new transaction using a supported payment method. If additional buyer authorization is required, an approval URL will be returned. Duplicated gift card numbers are not supported.
         /// </remarks>
         /// </summary>
-        Task<TransactionOutput> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null, string? xForwardedFor = null);
+        Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null, string? xForwardedFor = null);
 
         /// <summary>
         /// Get transaction
@@ -55,7 +55,7 @@ namespace Gr4vy
         /// Retrieve the details of a transaction by its unique identifier.
         /// </remarks>
         /// </summary>
-        Task<TransactionOutput> GetAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        Task<Transaction> GetAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Manually update a transaction
@@ -64,7 +64,7 @@ namespace Gr4vy
         /// Manually updates a transaction.
         /// </remarks>
         /// </summary>
-        Task<TransactionOutput> UpdateAsync(string transactionId, TransactionUpdate transactionUpdate, string? merchantAccountId = null);
+        Task<Transaction> UpdateAsync(string transactionId, TransactionUpdate transactionUpdate, string? merchantAccountId = null);
 
         /// <summary>
         /// Capture transaction
@@ -100,7 +100,7 @@ namespace Gr4vy
         /// Synchronizes the status of a transaction with the underlying payment service provider. This is useful for transactions in a pending state to check if they&apos;ve been completed or failed. Only available for some payment service providers.
         /// </remarks>
         /// </summary>
-        Task<TransactionOutput> SyncAsync(string transactionId, string? merchantAccountId = null);
+        Task<Transaction> SyncAsync(string transactionId, string? merchantAccountId = null);
     }
 
     public class Transactions: ITransactions
@@ -556,7 +556,7 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TransactionOutput> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null, string? xForwardedFor = null)
+        public async Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null, string? xForwardedFor = null)
         {
             var request = new CreateTransactionRequest()
             {
@@ -627,14 +627,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    TransactionOutput obj;
+                    Transaction obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<TransactionOutput>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Transaction>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into TransactionOutput.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into Transaction.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -894,7 +894,7 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TransactionOutput> GetAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        public async Task<Transaction> GetAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
             var request = new GetTransactionRequest()
             {
@@ -989,14 +989,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    TransactionOutput obj;
+                    Transaction obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<TransactionOutput>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Transaction>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into TransactionOutput.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into Transaction.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -1256,7 +1256,7 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TransactionOutput> UpdateAsync(string transactionId, TransactionUpdate transactionUpdate, string? merchantAccountId = null)
+        public async Task<Transaction> UpdateAsync(string transactionId, TransactionUpdate transactionUpdate, string? merchantAccountId = null)
         {
             var request = new UpdateTransactionRequest()
             {
@@ -1325,14 +1325,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    TransactionOutput obj;
+                    Transaction obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<TransactionOutput>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Transaction>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into TransactionOutput.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into Transaction.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -2588,7 +2588,7 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<TransactionOutput> SyncAsync(string transactionId, string? merchantAccountId = null)
+        public async Task<Transaction> SyncAsync(string transactionId, string? merchantAccountId = null)
         {
             var request = new SyncTransactionRequest()
             {
@@ -2650,14 +2650,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    TransactionOutput obj;
+                    Transaction obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<TransactionOutput>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Transaction>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into TransactionOutput.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into Transaction.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;

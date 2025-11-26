@@ -5,14 +5,14 @@ Successful Response
 
 ## Supported Types
 
-### TransactionOutput
+### Transaction
 
 ```csharp
-ResponseVoidTransaction.CreateTransactionOutput(/* values here */);
+ResponseVoidTransaction.CreateTransaction(/* values here */);
 ```
 
-### TransactionVoidOutput
+### TransactionVoid
 
 ```csharp
-ResponseVoidTransaction.CreateTransactionVoidOutput(/* values here */);
+ResponseVoidTransaction.CreateTransactionVoid(/* values here */);
 ```

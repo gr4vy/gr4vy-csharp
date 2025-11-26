@@ -22,7 +22,7 @@ namespace Gr4vy.Models.Components
         /// The guest buyer for the payment link.
         /// </summary>
         [JsonProperty("buyer")]
-        public GuestBuyerInput? Buyer { get; set; } = null;
+        public GuestBuyer? Buyer { get; set; } = null;
 
         /// <summary>
         /// The expiration date and time for the payment link.

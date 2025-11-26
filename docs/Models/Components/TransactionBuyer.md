@@ -1,13 +1,13 @@
-# BuyerCreate
-
-Request body for creating a new buyer
+# TransactionBuyer
 
 
 ## Fields
 
 | Field                                                              | Type                                                               | Required                                                           | Description                                                        | Example                                                            |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `Type`                                                             | *string*                                                           | :heavy_minus_sign:                                                 | Always `buyer`.                                                    | buyer                                                              |
+| `Id`                                                               | *string*                                                           | :heavy_minus_sign:                                                 | The ID for the buyer.                                              | fe26475d-ec3e-4884-9553-f7356683f7f9                               |
 | `DisplayName`                                                      | *string*                                                           | :heavy_minus_sign:                                                 | The display name for the buyer.                                    | John Doe                                                           |
 | `ExternalIdentifier`                                               | *string*                                                           | :heavy_minus_sign:                                                 | The merchant identifier for this buyer.                            | buyer-12345                                                        |
 | `BillingDetails`                                                   | [BillingDetails](../../Models/Components/BillingDetails.md)        | :heavy_minus_sign:                                                 | The billing name, address, email, and other fields for this buyer. |                                                                    |
-| `AccountNumber`                                                    | *string*                                                           | :heavy_minus_sign:                                                 | The buyer account number                                           |                                                                    |
+| `AccountNumber`                                                    | *string*                                                           | :heavy_minus_sign:                                                 | The buyer account number.                                          |                                                                    |

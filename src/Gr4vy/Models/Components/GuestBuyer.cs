@@ -13,20 +13,8 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
-    public class TransactionBuyerOutput
+    public class GuestBuyer
     {
-
-        /// <summary>
-        /// Always `buyer`.
-        /// </summary>
-        [JsonProperty("type")]
-        public string Type { get; } = "buyer";
-
-        /// <summary>
-        /// The ID for the buyer.
-        /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; } = null;
 
         /// <summary>
         /// The display name for the buyer.
@@ -44,12 +32,18 @@ namespace Gr4vy.Models.Components
         /// The billing name, address, email, and other fields for this buyer.
         /// </summary>
         [JsonProperty("billing_details")]
-        public BillingDetailsOutput? BillingDetails { get; set; } = null;
+        public BillingDetails? BillingDetails { get; set; } = null;
 
         /// <summary>
-        /// The buyer account number.
+        /// The buyer account number
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;
+
+        /// <summary>
+        /// The optional shipping details for this buyer.
+        /// </summary>
+        [JsonProperty("shipping_details")]
+        public ShippingDetailsCreate? ShippingDetails { get; set; } = null;
     }
 }

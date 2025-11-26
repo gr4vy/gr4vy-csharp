@@ -70,7 +70,7 @@ namespace Gr4vy.Models.Components
         /// Inline buyer details for the payout. Use this instead of the `buyer_id` or `buyer_external_identifier`.
         /// </summary>
         [JsonProperty("buyer")]
-        public GuestBuyerInput? Buyer { get; set; } = null;
+        public GuestBuyer? Buyer { get; set; } = null;
 
         /// <summary>
         /// The `external_identifier` of a stored buyer to use for this payout. Use this instead of the `buyer_id` or `buyer`.

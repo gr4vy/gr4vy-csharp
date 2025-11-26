@@ -33,7 +33,7 @@ namespace Gr4vy.Models.Components
         /// Provide buyer details for the transaction. No buyer resource will be created on Gr4vy when used.
         /// </summary>
         [JsonProperty("buyer")]
-        public GuestBuyerInput? Buyer { get; set; } = null;
+        public GuestBuyer? Buyer { get; set; } = null;
 
         /// <summary>
         /// The airline addendum data which describes the airline booking associated with this transaction.

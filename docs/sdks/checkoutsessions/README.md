@@ -90,10 +90,10 @@ var res = await sdk.CheckoutSessions.CreateAsync(checkoutSessionCreate: new Chec
         { "cohort", "cohort-a" },
         { "order_id", "order-12345" },
     },
-    Buyer = new GuestBuyerInput() {
+    Buyer = new GuestBuyer() {
         DisplayName = "John Doe",
         ExternalIdentifier = "buyer-12345",
-        BillingDetails = new BillingDetailsInput() {
+        BillingDetails = new BillingDetails() {
             FirstName = "John",
             LastName = "Doe",
             EmailAddress = "john@example.com",

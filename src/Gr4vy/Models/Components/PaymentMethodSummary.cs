@@ -23,7 +23,7 @@ namespace Gr4vy.Models.Components
     /// A summary of a payment method.
     /// </remarks>
     /// </summary>
-    public class PaymentMethodSummaryOutput
+    public class PaymentMethodSummary
     {
 
         /// <summary>

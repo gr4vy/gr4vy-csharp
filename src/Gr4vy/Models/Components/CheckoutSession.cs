@@ -34,7 +34,7 @@ namespace Gr4vy.Models.Components
         /// Provide buyer details for the transaction. No buyer resource will be created on Gr4vy when used.
         /// </summary>
         [JsonProperty("buyer")]
-        public GuestBuyerOutput? Buyer { get; set; } = null;
+        public GuestBuyer? Buyer { get; set; } = null;
 
         /// <summary>
         /// The airline addendum data which describes the airline booking associated with this transaction.
@@ -82,6 +82,6 @@ namespace Gr4vy.Models.Components
         /// Information about the payment method stored on the checkout session.
         /// </summary>
         [JsonProperty("payment_method")]
-        public CheckoutSessionPaymentMethodOutput? PaymentMethod { get; set; } = null;
+        public CheckoutSessionPaymentMethod? PaymentMethod { get; set; } = null;
     }
 }

@@ -41,6 +41,6 @@ namespace Gr4vy.Models.Components
         /// The billing name, address, email, and other fields for this buyer.
         /// </summary>
         [JsonProperty("billing_details")]
-        public BillingDetailsInput? BillingDetails { get; set; } = null;
+        public BillingDetails? BillingDetails { get; set; } = null;
     }
 }
