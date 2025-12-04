@@ -78,7 +78,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/payment-service-tokens", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/payment-service-tokens", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -441,7 +441,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/payment-service-tokens", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/payment-service-tokens", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -777,7 +777,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/payment-service-tokens/{payment_service_token_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/payment-service-tokens/{payment_service_token_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

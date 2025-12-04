@@ -1009,3 +1009,13 @@ Based on:
 - [csharp v2.6.0] .
 ### Releases
 - [NuGet v2.6.0] https://www.nuget.org/packages/Gr4vy/2.6.0 - .
+
+## 2025-12-04 09:37:20
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.668.0 (2.770.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v2.7.0] .
+### Releases
+- [NuGet v2.7.0] https://www.nuget.org/packages/Gr4vy/2.7.0 - .

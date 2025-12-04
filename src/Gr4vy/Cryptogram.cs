@@ -61,7 +61,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/cryptogram", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/cryptogram", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
