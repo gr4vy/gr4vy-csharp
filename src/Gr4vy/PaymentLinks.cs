@@ -426,7 +426,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-links", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-links", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -818,7 +818,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-links/{payment_link_id}/expire", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-links/{payment_link_id}/expire", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1011,7 +1011,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-links/{payment_link_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-links/{payment_link_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

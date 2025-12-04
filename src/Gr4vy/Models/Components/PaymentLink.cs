@@ -179,5 +179,17 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("connection_options")]
         public Dictionary<string, Dictionary<string, object>>? ConnectionOptions { get; set; } = null;
+
+        /// <summary>
+        /// Whether the payment method was stored.
+        /// </summary>
+        [JsonProperty("store")]
+        public bool? Store { get; set; } = false;
+
+        /// <summary>
+        /// The ID of the buyer to associate with the stored payment method.
+        /// </summary>
+        [JsonProperty("buyer_id")]
+        public string? BuyerId { get; set; } = null;
     }
 }

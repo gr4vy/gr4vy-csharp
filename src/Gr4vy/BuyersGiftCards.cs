@@ -60,7 +60,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/buyers/gift-cards", request);
+            var urlString = URLBuilder.Build(baseUrl, "/buyers/gift-cards", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

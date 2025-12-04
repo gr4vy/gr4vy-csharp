@@ -77,7 +77,7 @@ namespace Gr4vy
                 Limit = limit,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -463,7 +463,7 @@ namespace Gr4vy
                 PaymentServiceDefinitionId = paymentServiceDefinitionId,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions/{payment_service_definition_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions/{payment_service_definition_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -822,7 +822,7 @@ namespace Gr4vy
                 RequestBody = requestBody,
             };
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions/{payment_service_definition_id}/sessions", request);
+            var urlString = URLBuilder.Build(baseUrl, "/payment-service-definitions/{payment_service_definition_id}/sessions", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

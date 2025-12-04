@@ -30,6 +30,7 @@ var res = await sdk.PaymentLinks.CreateAsync(paymentLinkCreate: new PaymentLinkC
     Amount = 1299,
     Country = "DE",
     Currency = "EUR",
+    Store = true,
 });
 
 // handle response

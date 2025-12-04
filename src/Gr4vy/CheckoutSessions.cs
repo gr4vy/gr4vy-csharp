@@ -423,7 +423,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/checkout/sessions/{session_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/checkout/sessions/{session_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -758,7 +758,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/checkout/sessions/{session_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/checkout/sessions/{session_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1100,7 +1100,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/checkout/sessions/{session_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/checkout/sessions/{session_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

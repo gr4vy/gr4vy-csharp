@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 95edc2594618bce65f5df9316266857e
+  docChecksum: 0498326a850bac610ea77e9001944b68
   docVersion: 1.0.0
-  speakeasyVersion: 1.662.0
-  generationVersion: 2.763.3
-  releaseVersion: 2.6.0
-  configChecksum: b20adfcffcf19123dd7272554f9f7032
+  speakeasyVersion: 1.668.0
+  generationVersion: 2.770.0
+  releaseVersion: 2.7.0
+  configChecksum: f6ffa8488eaffcf98618d1e432c7e494
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.15.5
+    core: 3.15.7
     flattening: 2.81.3
     globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
@@ -29,7 +29,7 @@ features:
     pagination: 0.2.9
     responseFormat: 0.0.4
     retries: 0.0.1
-    sdkHooks: 0.2.0
+    sdkHooks: 0.3.0
     serverIDs: 2.82.1
     unions: 1.1.0
 generatedFiles:
@@ -4011,10 +4011,10 @@ examples:
   add_payment_link:
     speakeasy-default-add-payment-link:
       requestBody:
-        application/json: {"amount": 1299, "country": "DE", "currency": "EUR"}
+        application/json: {"amount": 1299, "country": "DE", "currency": "EUR", "store": true}
       responses:
         "201":
-          application/json: {"id": "a1b2c3d4-5678-90ab-cdef-1234567890ab", "type": "payment-link", "url": "https://example.com/link/a1b2c3d4-5678-90ab-cdef-1234567890ab", "amount": 1299, "country": "DE", "currency": "EUR", "intent": "<value>", "cart_items": [{"name": "Widget", "quantity": 2, "unit_amount": 1299}], "payment_source": "ecommerce", "created_at": "2024-05-30T12:34:56.000Z", "updated_at": "2024-05-30T13:00:00.000Z", "status": "<value>"}
+          application/json: {"id": "a1b2c3d4-5678-90ab-cdef-1234567890ab", "type": "payment-link", "url": "https://example.com/link/a1b2c3d4-5678-90ab-cdef-1234567890ab", "amount": 1299, "country": "DE", "currency": "EUR", "intent": "<value>", "cart_items": [{"name": "Widget", "quantity": 2, "unit_amount": 1299}], "payment_source": "ecommerce", "created_at": "2024-05-30T12:34:56.000Z", "updated_at": "2024-05-30T13:00:00.000Z", "status": "<value>", "store": false}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4108,7 +4108,7 @@ examples:
           payment_link_id: "a1b2c3d4-5678-90ab-cdef-1234567890ab"
       responses:
         "200":
-          application/json: {"id": "a1b2c3d4-5678-90ab-cdef-1234567890ab", "type": "payment-link", "url": "https://example.com/link/a1b2c3d4-5678-90ab-cdef-1234567890ab", "amount": 1299, "country": "DE", "currency": "EUR", "intent": "<value>", "cart_items": [{"name": "Widget", "quantity": 2, "unit_amount": 1299}], "payment_source": "ecommerce", "created_at": "2024-05-30T12:34:56.000Z", "updated_at": "2024-05-30T13:00:00.000Z", "status": "<value>"}
+          application/json: {"id": "a1b2c3d4-5678-90ab-cdef-1234567890ab", "type": "payment-link", "url": "https://example.com/link/a1b2c3d4-5678-90ab-cdef-1234567890ab", "amount": 1299, "country": "DE", "currency": "EUR", "intent": "<value>", "cart_items": [{"name": "Widget", "quantity": 2, "unit_amount": 1299}], "payment_source": "ecommerce", "created_at": "2024-05-30T12:34:56.000Z", "updated_at": "2024-05-30T13:00:00.000Z", "status": "<value>", "store": false}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4273,6 +4273,4 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes Detected:
-  * `Gr4vy.Transactions.Events.List()`:  `response.items.[].Context` **Changed** **Breaking** :warning:
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Payment-Links.List()`:  `response.items.[]` **Changed**\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate` **Changed**\n  *  `response` **Changed**\n* `Gr4vy.Payment-Links.Get()`:  `response` **Changed**\n"

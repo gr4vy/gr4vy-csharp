@@ -128,7 +128,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/transactions", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -904,7 +904,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1267,7 +1267,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1604,7 +1604,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/capture", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/capture", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1940,7 +1940,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/void", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/void", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -2269,7 +2269,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/cancel", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/cancel", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -2598,7 +2598,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/sync", request);
+            var urlString = URLBuilder.Build(baseUrl, "/transactions/{transaction_id}/sync", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

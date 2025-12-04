@@ -81,7 +81,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/reports/{report_id}/executions", request);
+            var urlString = URLBuilder.Build(baseUrl, "/reports/{report_id}/executions", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -475,7 +475,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/reports/{report_id}/executions/{report_execution_id}/url", request);
+            var urlString = URLBuilder.Build(baseUrl, "/reports/{report_id}/executions/{report_execution_id}/url", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -810,7 +810,7 @@ namespace Gr4vy
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/report-executions/{report_execution_id}", request);
+            var urlString = URLBuilder.Build(baseUrl, "/report-executions/{report_execution_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);

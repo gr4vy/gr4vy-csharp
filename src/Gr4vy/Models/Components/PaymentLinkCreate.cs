@@ -140,5 +140,17 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("payment_source")]
         public string? PaymentSource { get; set; }
+
+        /// <summary>
+        /// Whether to store the payment method for future use.
+        /// </summary>
+        [JsonProperty("store")]
+        public bool? Store { get; set; } = false;
+
+        /// <summary>
+        /// The ID of the buyer to associate the payment method with. Note: When `buyer_id` is provided, the payment link should be treated as a secret as it will allow the user to manage payment methods for the associated buyer.
+        /// </summary>
+        [JsonProperty("buyer_id")]
+        public string? BuyerId { get; set; } = null;
     }
 }
