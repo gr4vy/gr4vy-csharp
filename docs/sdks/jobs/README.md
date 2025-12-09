@@ -1,5 +1,4 @@
-# Jobs
-(*AccountUpdater.Jobs*)
+# AccountUpdater.Jobs
 
 ## Overview
 

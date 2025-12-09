@@ -1,5 +1,4 @@
-# ShippingDetails
-(*Buyers.ShippingDetails*)
+# Buyers.ShippingDetails
 
 ## Overview
 

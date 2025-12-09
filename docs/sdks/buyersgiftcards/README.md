@@ -1,5 +1,4 @@
-# BuyersGiftCards
-(*Buyers.GiftCards*)
+# Buyers.GiftCards
 
 ## Overview
 

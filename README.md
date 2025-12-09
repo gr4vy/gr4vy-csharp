@@ -199,7 +199,7 @@ catch(ArgumentException ex) {
 <details open>
 <summary>Available methods</summary>
 
-#### [AccountUpdater.Jobs](docs/sdks/jobs/README.md)
+### [AccountUpdater.Jobs](docs/sdks/jobs/README.md)
 
 * [Create](docs/sdks/jobs/README.md#create) - Create account updater job
 
@@ -301,7 +301,7 @@ catch(ArgumentException ex) {
 * [Resume](docs/sdks/networktokens/README.md#resume) - Resume network token
 * [Delete](docs/sdks/networktokens/README.md#delete) - Delete network token
 
-#### [PaymentMethods.NetworkTokens.Cryptogram](docs/sdks/cryptogram/README.md)
+##### [PaymentMethods.NetworkTokens.Cryptogram](docs/sdks/cryptogram/README.md)
 
 * [Create](docs/sdks/cryptogram/README.md#create) - Provision network token cryptogram
 
@@ -379,7 +379,7 @@ catch(ArgumentException ex) {
 * [Create](docs/sdks/transactionsrefunds/README.md#create) - Create transaction refund
 * [Get](docs/sdks/transactionsrefunds/README.md#get) - Get transaction refund
 
-#### [Transactions.Refunds.All](docs/sdks/all/README.md)
+##### [Transactions.Refunds.All](docs/sdks/all/README.md)
 
 * [Create](docs/sdks/all/README.md#create) - Create batch transaction refund
 

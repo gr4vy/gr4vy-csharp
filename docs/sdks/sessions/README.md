@@ -1,5 +1,4 @@
-# Sessions
-(*DigitalWallets.Sessions*)
+# DigitalWallets.Sessions
 
 ## Overview
 
