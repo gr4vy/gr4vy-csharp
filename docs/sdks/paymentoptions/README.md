@@ -1,5 +1,4 @@
 # PaymentOptions
-(*PaymentOptions*)
 
 ## Overview
 

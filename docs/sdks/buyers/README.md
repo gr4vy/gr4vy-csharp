@@ -1,5 +1,4 @@
 # Buyers
-(*Buyers*)
 
 ## Overview
 

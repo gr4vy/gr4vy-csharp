@@ -1,5 +1,4 @@
 # Reports
-(*Reports*)
 
 ## Overview
 

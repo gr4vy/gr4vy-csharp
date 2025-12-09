@@ -1,5 +1,4 @@
 # AuditLogs
-(*AuditLogs*)
 
 ## Overview
 

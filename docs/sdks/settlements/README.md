@@ -1,5 +1,4 @@
-# Settlements
-(*Transactions.Settlements*)
+# Transactions.Settlements
 
 ## Overview
 

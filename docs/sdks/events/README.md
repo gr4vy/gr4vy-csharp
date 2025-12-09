@@ -1,5 +1,4 @@
-# Events
-(*Transactions.Events*)
+# Transactions.Events
 
 ## Overview
 

@@ -1,5 +1,4 @@
 # CardSchemeDefinitions
-(*CardSchemeDefinitions*)
 
 ## Overview
 

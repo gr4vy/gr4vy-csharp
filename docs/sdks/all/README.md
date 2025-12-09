@@ -1,5 +1,4 @@
-# All
-(*Transactions.Refunds.All*)
+# Transactions.Refunds.All
 
 ## Overview
 
