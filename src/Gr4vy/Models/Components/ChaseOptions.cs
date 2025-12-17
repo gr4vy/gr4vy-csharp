@@ -12,13 +12,13 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     
-    public class TrustlyOptions
+    public class ChaseOptions
     {
 
         /// <summary>
-        /// Indicates to Gr4vy whether or not the stored Trustly agreement needs refreshing.
+        /// Custom order comment
         /// </summary>
-        [JsonProperty("refreshSplitToken")]
-        public bool? RefreshSplitToken { get; set; } = null;
+        [JsonProperty("comments")]
+        public string? Comments { get; set; } = null;
     }
 }
