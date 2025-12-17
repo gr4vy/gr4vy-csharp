@@ -89,6 +89,12 @@ namespace Gr4vy.Models.Components
         public BraintreeOptions? BraintreeCard { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `chaseorbital-card` connector.
+        /// </summary>
+        [JsonProperty("chaseorbital-card")]
+        public ChaseOptions? ChaseorbitalCard { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `cybersource-anti-fraud` connector.
         /// </summary>
         [JsonProperty("cybersource-anti-fraud")]
