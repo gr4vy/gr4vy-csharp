@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 483c782e8e4fd6a71167931285a31345
+  docChecksum: f165b9f63706338c45a9a3789dfb5d6a
   docVersion: 1.0.0
-  speakeasyVersion: 1.678.1
-  generationVersion: 2.787.5
-  releaseVersion: 2.7.3
-  configChecksum: 14277d89732a08a5f4e5bf4d355f6cb7
+  speakeasyVersion: 1.682.0
+  generationVersion: 2.791.1
+  releaseVersion: 2.7.4
+  configChecksum: 973266e5d19dc5fabc75af1a489b5744
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 persistentEdits:
-  generation_id: 00216b16-aefb-4232-a2bf-f8930459227e
-  pristine_commit_hash: 279b588d48c12491ff5b27ff7dbc989625ccede4
-  pristine_tree_hash: 7940fe06ab956a287eb658a1dd6e5fa673eee89e
+  generation_id: 6ec5e457-0408-4b83-ac27-7413652a1c3f
+  pristine_commit_hash: c2ad91e99de395841150e8b3382aa58107af16dc
+  pristine_tree_hash: 29e87c7f006b20cec0be813b4ececb228fb21980
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.15.7
+    core: 3.15.8
     flattening: 2.81.3
     globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
@@ -1663,8 +1663,8 @@ trackedFiles:
     pristine_git_object: e3cc83014422675782faf044cf3bd7bc05d051d0
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:c1ecd0b4b37fc92923eeefbdae8a1434eef119de
-    pristine_git_object: b273ff4f4df0a41369d890e25bd35e6fdb772f32
+    last_write_checksum: sha1:8ac68eef383bb398db5fdf64a08ec5586d28f7a3
+    pristine_git_object: 51fbdab138c6df185b0015bb0929a59e1b1a4435
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:1e5bdfc08212e724e465162b7d4e1b9cd7d3532c
@@ -3159,8 +3159,8 @@ trackedFiles:
     pristine_git_object: 8663178710c99a2125db8fa240c7f232f07ccba0
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:a48116e13642794e1fb9e418cd01b5eaa9150f86
-    pristine_git_object: 58ab91213ef9125b40a7462c5d60fc6a828ab688
+    last_write_checksum: sha1:82ac3e99d616c523c8b128e1bcc9dc0f9f7b5e33
+    pristine_git_object: bfa472467cbb6c68c008b013679892e6035ede8f
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:45cb6d7dacc735e1ddc452b84e2bbf122657b4ef
@@ -3191,8 +3191,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:f730da1bf190094cb9ba2e19e215f7a84287b071
-    pristine_git_object: 8a198540fb456b0b68439c0b861bdec4a7b5be8b
+    last_write_checksum: sha1:43a11a9f8773474965a3ddace94269e475756d6e
+    pristine_git_object: 4fef7c6fd9e818f2039defee41cf1b9d8ceca63a
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -6694,7 +6694,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions` **Changed** **Breaking** :warning:\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions` **Changed** **Breaking** :warning:\n* `Gr4vy.Payment-Links.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions` **Changed** **Breaking** :warning:\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
