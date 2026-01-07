@@ -27,6 +27,7 @@ namespace Gr4vy
     public interface ITransactions
     {
         public ITransactionsRefunds Refunds { get; }
+        public IActions Actions { get; }
         public IEvents Events { get; }
         public ISettlements Settlements { get; }
 
@@ -112,6 +113,7 @@ namespace Gr4vy
         private const string _sdkGenVersion = Constants.SdkGenVersion;
         private const string _openapiDocVersion = Constants.OpenApiDocVersion;
         public ITransactionsRefunds Refunds { get; private set; }
+        public IActions Actions { get; private set; }
         public IEvents Events { get; private set; }
         public ISettlements Settlements { get; private set; }
 
@@ -119,6 +121,7 @@ namespace Gr4vy
         {
             SDKConfiguration = config;
             Refunds = new TransactionsRefunds(SDKConfiguration);
+            Actions = new Actions(SDKConfiguration);
             Events = new Events(SDKConfiguration);
             Settlements = new Settlements(SDKConfiguration);
         }
