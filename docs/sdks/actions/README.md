@@ -4,11 +4,11 @@
 
 ### Available Operations
 
-* [List](#list) - Get Flow actions for transaction
+* [List](#list) - List transaction Flow rules
 
 ## List
 
-Retrieve the list of Flow actions that have been triggered for a transaction.
+Retrieve the list of Flow rule actions that have been triggered for a transaction.
 
 ### Example Usage
 
