@@ -371,7 +371,7 @@ catch(ArgumentException ex) {
 
 #### [Transactions.Actions](docs/sdks/actions/README.md)
 
-* [List](docs/sdks/actions/README.md#list) - Get Flow actions for transaction
+* [List](docs/sdks/actions/README.md#list) - List transaction Flow rules
 
 #### [Transactions.Events](docs/sdks/events/README.md)
 

@@ -26,10 +26,10 @@ namespace Gr4vy
     {
 
         /// <summary>
-        /// Get Flow actions for transaction
+        /// List transaction Flow rules
         /// 
         /// <remarks>
-        /// Retrieve the list of Flow actions that have been triggered for a transaction.
+        /// Retrieve the list of Flow rule actions that have been triggered for a transaction.
         /// </remarks>
         /// </summary>
         Task<TransactionActions> ListAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
