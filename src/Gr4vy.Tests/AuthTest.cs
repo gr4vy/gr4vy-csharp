@@ -56,6 +56,7 @@ rw==
     public void GetToken_ShouldCreateValidSignedJwtToken()
     {
         var token = Auth.GetToken(privateKey: PrivateKey);
+        Console.WriteLine($"Token: {token}");
 
         var handler = new JwtSecurityTokenHandler();
         var jwtToken = handler.ReadJwtToken(token);
