@@ -134,15 +134,18 @@ public class Auth
             new Claim("iss", issuer),
             new Claim(
                 JwtRegisteredClaimNames.Iat,
-                new DateTimeOffset(now).ToUnixTimeSeconds().ToString()
+                new DateTimeOffset(now).ToUnixTimeSeconds().ToString(),
+                ClaimValueTypes.Integer64
             ),
             new Claim(
                 JwtRegisteredClaimNames.Nbf,
-                new DateTimeOffset(now).ToUnixTimeSeconds().ToString()
+                new DateTimeOffset(now).ToUnixTimeSeconds().ToString(),
+                ClaimValueTypes.Integer64
             ),
             new Claim(
                 JwtRegisteredClaimNames.Exp,
-                new DateTimeOffset(now.AddSeconds(expiresIn)).ToUnixTimeSeconds().ToString()
+                new DateTimeOffset(now.AddSeconds(expiresIn)).ToUnixTimeSeconds().ToString(),
+                ClaimValueTypes.Integer64
             ),
             new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
         };

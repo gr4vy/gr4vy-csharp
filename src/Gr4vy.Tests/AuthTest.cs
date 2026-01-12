@@ -69,11 +69,15 @@ rw==
         var headers = jwtToken.Header;
 
         Assert.That(headers["kid"], Is.EqualTo(Thumbprint));
+        
         Assert.That(scopes.Count(s => s.Value == "*.read"), Is.EqualTo(1));
         Assert.That(scopes.Count(s => s.Value == "*.write"), Is.EqualTo(1));
         Assert.NotNull(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Iat));
+        Assert.That(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Iat)?.ValueType, Is.EqualTo(ClaimValueTypes.Integer64));
         Assert.NotNull(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Nbf));
+        Assert.That(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Nbf)?.ValueType, Is.EqualTo(ClaimValueTypes.Integer64));
         Assert.NotNull(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Exp));
+        Assert.That(jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Exp)?.ValueType, Is.EqualTo(ClaimValueTypes.Integer64));
         Assert.That(
             jwtToken.Claims.First(c => c.Type == JwtRegisteredClaimNames.Iss).Value,
             Does.StartWith("speakeasy-sdk/csharp")
