@@ -45,5 +45,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("error_data")]
         public ThreeDSecureError? ErrorData { get; set; } = null;
+
+        /// <summary>
+        /// The amount used for 3DS authentication.
+        /// </summary>
+        [JsonProperty("amount")]
+        public long? Amount { get; set; } = null;
     }
 }

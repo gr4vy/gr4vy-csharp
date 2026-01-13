@@ -93,6 +93,12 @@ namespace Gr4vy.Models.Components
         public ThreeDSecureData? ThreeDSecureData { get; set; } = null;
 
         /// <summary>
+        /// Optional 3-D Secure values to use during the authentication flow.
+        /// </summary>
+        [JsonProperty("three_d_secure")]
+        public ThreeDSecure? ThreeDSecure { get; set; } = null;
+
+        /// <summary>
         /// Any additional information about the transaction that you would like to store as key-value pairs. This data is passed to payment service providers that support it.
         /// </summary>
         [JsonProperty("metadata")]
