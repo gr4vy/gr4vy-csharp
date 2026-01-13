@@ -152,5 +152,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("buyer_id")]
         public string? BuyerId { get; set; } = null;
+
+        /// <summary>
+        /// The number of installments a buyer is required to make.
+        /// </summary>
+        [JsonProperty("installment_count")]
+        public long? InstallmentCount { get; set; } = null;
     }
 }
