@@ -419,5 +419,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("shipping_amount")]
         public long? ShippingAmount { get; set; } = null;
+
+        /// <summary>
+        /// This is the ISO8583 response code code received from the payment service.
+        /// </summary>
+        [JsonProperty("iso_response_code")]
+        public string? IsoResponseCode { get; set; } = null;
     }
 }
