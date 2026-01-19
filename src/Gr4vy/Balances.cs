@@ -51,6 +51,8 @@ namespace Gr4vy
 
         public async Task<GiftCardSummaries> ListAsync(GiftCardBalanceRequest giftCardBalanceRequest, string? merchantAccountId = null)
         {
+            if (giftCardBalanceRequest == null) throw new ArgumentNullException(nameof(giftCardBalanceRequest));
+
             var request = new ListGiftCardBalancesRequest()
             {
                 GiftCardBalanceRequest = giftCardBalanceRequest,

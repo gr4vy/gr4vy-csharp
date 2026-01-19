@@ -98,6 +98,10 @@ namespace Gr4vy
 
         public async Task<ListBuyersResponse> ListAsync(ListBuyersRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new ListBuyersRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -491,6 +495,8 @@ namespace Gr4vy
 
         public async Task<Buyer> CreateAsync(BuyerCreate buyerCreate, string? merchantAccountId = null)
         {
+            if (buyerCreate == null) throw new ArgumentNullException(nameof(buyerCreate));
+
             var request = new AddBuyerRequest()
             {
                 BuyerCreate = buyerCreate,
@@ -827,6 +833,8 @@ namespace Gr4vy
 
         public async Task<Buyer> GetAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
+
             var request = new GetBuyerRequest()
             {
                 BuyerId = buyerId,
@@ -1189,6 +1197,9 @@ namespace Gr4vy
 
         public async Task<Buyer> UpdateAsync(string buyerId, BuyerUpdate buyerUpdate, string? merchantAccountId = null)
         {
+            if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
+            if (buyerUpdate == null) throw new ArgumentNullException(nameof(buyerUpdate));
+
             var request = new UpdateBuyerRequest()
             {
                 BuyerId = buyerId,
@@ -1525,6 +1536,8 @@ namespace Gr4vy
 
         public async Task DeleteAsync(string buyerId, string? merchantAccountId = null)
         {
+            if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
+
             var request = new DeleteBuyerRequest()
             {
                 BuyerId = buyerId,

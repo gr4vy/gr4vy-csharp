@@ -358,6 +358,13 @@ catch(ArgumentException ex) {
 * [Url](docs/sdks/executions/README.md#url) - Create URL for executed report
 * [Get](docs/sdks/executions/README.md#get) - Get executed report
 
+### [ThreeDsScenarios](docs/sdks/threedsscenarios/README.md)
+
+* [Create](docs/sdks/threedsscenarios/README.md#create) - Create a 3DS scenario
+* [List](docs/sdks/threedsscenarios/README.md#list) - List 3DS scenario
+* [Update](docs/sdks/threedsscenarios/README.md#update) - Update a 3DS scenario
+* [Delete](docs/sdks/threedsscenarios/README.md#delete) - Delete a 3DS scenario
+
 ### [Transactions](docs/sdks/transactions/README.md)
 
 * [List](docs/sdks/transactions/README.md#list) - List transactions

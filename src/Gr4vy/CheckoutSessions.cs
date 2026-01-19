@@ -414,6 +414,9 @@ namespace Gr4vy
 
         public async Task<CheckoutSession> UpdateAsync(string sessionId, CheckoutSessionCreate checkoutSessionCreate, string? merchantAccountId = null)
         {
+            if (sessionId == null) throw new ArgumentNullException(nameof(sessionId));
+            if (checkoutSessionCreate == null) throw new ArgumentNullException(nameof(checkoutSessionCreate));
+
             var request = new UpdateCheckoutSessionRequest()
             {
                 SessionId = sessionId,
@@ -750,6 +753,8 @@ namespace Gr4vy
 
         public async Task<CheckoutSession> GetAsync(string sessionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (sessionId == null) throw new ArgumentNullException(nameof(sessionId));
+
             var request = new GetCheckoutSessionRequest()
             {
                 SessionId = sessionId,
@@ -1092,6 +1097,8 @@ namespace Gr4vy
 
         public async Task DeleteAsync(string sessionId, string? merchantAccountId = null)
         {
+            if (sessionId == null) throw new ArgumentNullException(nameof(sessionId));
+
             var request = new DeleteCheckoutSessionRequest()
             {
                 SessionId = sessionId,

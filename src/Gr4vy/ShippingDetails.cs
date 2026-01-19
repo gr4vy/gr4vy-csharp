@@ -87,6 +87,9 @@ namespace Gr4vy
 
         public async Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, string? merchantAccountId = null)
         {
+            if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
+            if (shippingDetailsCreate == null) throw new ArgumentNullException(nameof(shippingDetailsCreate));
+
             var request = new AddBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
@@ -423,6 +426,8 @@ namespace Gr4vy
 
         public async Task<ShippingDetailsList> ListAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
+
             var request = new ListBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
@@ -785,6 +790,9 @@ namespace Gr4vy
 
         public async Task<Models.Components.ShippingDetails> GetAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
+            if (shippingDetailsId == null) throw new ArgumentNullException(nameof(shippingDetailsId));
+
             var request = new GetBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
@@ -1148,6 +1156,10 @@ namespace Gr4vy
 
         public async Task<Models.Components.ShippingDetails> UpdateAsync(string buyerId, string shippingDetailsId, ShippingDetailsUpdate shippingDetailsUpdate, string? merchantAccountId = null)
         {
+            if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
+            if (shippingDetailsId == null) throw new ArgumentNullException(nameof(shippingDetailsId));
+            if (shippingDetailsUpdate == null) throw new ArgumentNullException(nameof(shippingDetailsUpdate));
+
             var request = new UpdateBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,
@@ -1485,6 +1497,9 @@ namespace Gr4vy
 
         public async Task DeleteAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null)
         {
+            if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
+            if (shippingDetailsId == null) throw new ArgumentNullException(nameof(shippingDetailsId));
+
             var request = new DeleteBuyerShippingDetailsRequest()
             {
                 BuyerId = buyerId,

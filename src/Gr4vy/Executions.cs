@@ -71,6 +71,8 @@ namespace Gr4vy
 
         public async Task<ListReportExecutionsResponse> ListAsync(string reportId, string? cursor = null, long? limit = 20, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (reportId == null) throw new ArgumentNullException(nameof(reportId));
+
             var request = new ListReportExecutionsRequest()
             {
                 ReportId = reportId,
@@ -465,6 +467,9 @@ namespace Gr4vy
 
         public async Task<ReportExecutionUrl> UrlAsync(string reportId, string reportExecutionId, string? merchantAccountId = null, ReportExecutionUrlGenerate? reportExecutionUrlGenerate = null)
         {
+            if (reportId == null) throw new ArgumentNullException(nameof(reportId));
+            if (reportExecutionId == null) throw new ArgumentNullException(nameof(reportExecutionId));
+
             var request = new CreateReportExecutionUrlRequest()
             {
                 ReportId = reportId,
@@ -802,6 +807,8 @@ namespace Gr4vy
 
         public async Task<ReportExecution> GetAsync(string reportExecutionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (reportExecutionId == null) throw new ArgumentNullException(nameof(reportExecutionId));
+
             var request = new GetReportExecutionRequest()
             {
                 ReportExecutionId = reportExecutionId,

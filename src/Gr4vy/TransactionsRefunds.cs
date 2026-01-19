@@ -72,6 +72,8 @@ namespace Gr4vy
 
         public async Task<Models.Components.Refunds> ListAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new ListTransactionRefundsRequest()
             {
                 TransactionId = transactionId,
@@ -434,6 +436,9 @@ namespace Gr4vy
 
         public async Task<Refund> CreateAsync(string transactionId, TransactionRefundCreate transactionRefundCreate, string? merchantAccountId = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+            if (transactionRefundCreate == null) throw new ArgumentNullException(nameof(transactionRefundCreate));
+
             var request = new CreateTransactionRefundRequest()
             {
                 TransactionId = transactionId,
@@ -770,6 +775,9 @@ namespace Gr4vy
 
         public async Task<Refund> GetAsync(string transactionId, string refundId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+            if (refundId == null) throw new ArgumentNullException(nameof(refundId));
+
             var request = new GetTransactionRefundRequest()
             {
                 TransactionId = transactionId,

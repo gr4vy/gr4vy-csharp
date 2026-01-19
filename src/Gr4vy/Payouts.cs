@@ -463,6 +463,8 @@ namespace Gr4vy
 
         public async Task<PayoutSummary> CreateAsync(PayoutCreate payoutCreate, string? merchantAccountId = null)
         {
+            if (payoutCreate == null) throw new ArgumentNullException(nameof(payoutCreate));
+
             var request = new CreatePayoutRequest()
             {
                 PayoutCreate = payoutCreate,
@@ -799,6 +801,8 @@ namespace Gr4vy
 
         public async Task<PayoutSummary> GetAsync(string payoutId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (payoutId == null) throw new ArgumentNullException(nameof(payoutId));
+
             var request = new GetPayoutRequest()
             {
                 PayoutId = payoutId,

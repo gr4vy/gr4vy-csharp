@@ -128,6 +128,10 @@ namespace Gr4vy
 
         public async Task<ListTransactionsResponse> ListAsync(ListTransactionsRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new ListTransactionsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -561,6 +565,8 @@ namespace Gr4vy
 
         public async Task<Transaction> CreateAsync(TransactionCreate transactionCreate, string? merchantAccountId = null, string? idempotencyKey = null, string? xForwardedFor = null)
         {
+            if (transactionCreate == null) throw new ArgumentNullException(nameof(transactionCreate));
+
             var request = new CreateTransactionRequest()
             {
                 TransactionCreate = transactionCreate,
@@ -899,6 +905,8 @@ namespace Gr4vy
 
         public async Task<Transaction> GetAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new GetTransactionRequest()
             {
                 TransactionId = transactionId,
@@ -1261,6 +1269,9 @@ namespace Gr4vy
 
         public async Task<Transaction> UpdateAsync(string transactionId, TransactionUpdate transactionUpdate, string? merchantAccountId = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+            if (transactionUpdate == null) throw new ArgumentNullException(nameof(transactionUpdate));
+
             var request = new UpdateTransactionRequest()
             {
                 TransactionId = transactionId,
@@ -1597,6 +1608,9 @@ namespace Gr4vy
 
         public async Task<ResponseCaptureTransaction> CaptureAsync(string transactionId, TransactionCaptureCreate transactionCaptureCreate, List<string>? prefer = null, string? merchantAccountId = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+            if (transactionCaptureCreate == null) throw new ArgumentNullException(nameof(transactionCaptureCreate));
+
             var request = new CaptureTransactionRequest()
             {
                 TransactionId = transactionId,
@@ -1934,6 +1948,8 @@ namespace Gr4vy
 
         public async Task<ResponseVoidTransaction> VoidAsync(string transactionId, List<string>? prefer = null, string? merchantAccountId = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new VoidTransactionRequest()
             {
                 TransactionId = transactionId,
@@ -2264,6 +2280,8 @@ namespace Gr4vy
 
         public async Task<TransactionCancel> CancelAsync(string transactionId, string? merchantAccountId = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new CancelTransactionRequest()
             {
                 TransactionId = transactionId,
@@ -2593,6 +2611,8 @@ namespace Gr4vy
 
         public async Task<Transaction> SyncAsync(string transactionId, string? merchantAccountId = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new SyncTransactionRequest()
             {
                 TransactionId = transactionId,

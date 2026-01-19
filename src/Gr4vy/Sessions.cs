@@ -69,6 +69,8 @@ namespace Gr4vy
 
         public async Task<GooglePaySession> GooglePayAsync(GooglePaySessionRequest googlePaySessionRequest, string? merchantAccountId = null)
         {
+            if (googlePaySessionRequest == null) throw new ArgumentNullException(nameof(googlePaySessionRequest));
+
             var request = new CreateGooglePayDigitalWalletSessionRequest()
             {
                 GooglePaySessionRequest = googlePaySessionRequest,
@@ -405,6 +407,8 @@ namespace Gr4vy
 
         public async Task<Dictionary<string, object>> ApplePayAsync(ApplePaySessionRequest applePaySessionRequest, string? merchantAccountId = null)
         {
+            if (applePaySessionRequest == null) throw new ArgumentNullException(nameof(applePaySessionRequest));
+
             var request = new CreateApplePayDigitalWalletSessionRequest()
             {
                 ApplePaySessionRequest = applePaySessionRequest,
@@ -741,6 +745,8 @@ namespace Gr4vy
 
         public async Task<ClickToPaySession> ClickToPayAsync(ClickToPaySessionRequest request)
         {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
             var urlString = baseUrl + "/digital-wallets/click-to-pay/session";

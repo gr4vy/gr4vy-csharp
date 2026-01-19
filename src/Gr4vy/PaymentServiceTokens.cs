@@ -69,6 +69,8 @@ namespace Gr4vy
 
         public async Task<Models.Components.PaymentServiceTokens> ListAsync(string paymentMethodId, string? paymentServiceId = null, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+
             var request = new ListPaymentMethodPaymentServiceTokensRequest()
             {
                 PaymentMethodId = paymentMethodId,
@@ -432,6 +434,9 @@ namespace Gr4vy
 
         public async Task<PaymentServiceToken> CreateAsync(string paymentMethodId, PaymentServiceTokenCreate paymentServiceTokenCreate, string? merchantAccountId = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+            if (paymentServiceTokenCreate == null) throw new ArgumentNullException(nameof(paymentServiceTokenCreate));
+
             var request = new CreatePaymentMethodPaymentServiceTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
@@ -768,6 +773,9 @@ namespace Gr4vy
 
         public async Task DeleteAsync(string paymentMethodId, string paymentServiceTokenId, string? merchantAccountId = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+            if (paymentServiceTokenId == null) throw new ArgumentNullException(nameof(paymentServiceTokenId));
+
             var request = new DeletePaymentMethodPaymentServiceTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,

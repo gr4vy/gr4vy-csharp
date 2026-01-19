@@ -51,6 +51,10 @@ namespace Gr4vy
 
         public async Task<Models.Components.Cryptogram> CreateAsync(string paymentMethodId, string networkTokenId, CryptogramCreate cryptogramCreate, string? merchantAccountId = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+            if (networkTokenId == null) throw new ArgumentNullException(nameof(networkTokenId));
+            if (cryptogramCreate == null) throw new ArgumentNullException(nameof(cryptogramCreate));
+
             var request = new CreatePaymentMethodNetworkTokenCryptogramRequest()
             {
                 PaymentMethodId = paymentMethodId,

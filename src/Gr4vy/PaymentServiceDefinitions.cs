@@ -458,6 +458,8 @@ namespace Gr4vy
 
         public async Task<PaymentServiceDefinition> GetAsync(string paymentServiceDefinitionId, RetryConfig? retryConfig = null)
         {
+            if (paymentServiceDefinitionId == null) throw new ArgumentNullException(nameof(paymentServiceDefinitionId));
+
             var request = new GetPaymentServiceDefinitionRequest()
             {
                 PaymentServiceDefinitionId = paymentServiceDefinitionId,
@@ -816,6 +818,9 @@ namespace Gr4vy
 
         public async Task<CreateSession> SessionAsync(string paymentServiceDefinitionId, Dictionary<string, object> requestBody)
         {
+            if (paymentServiceDefinitionId == null) throw new ArgumentNullException(nameof(paymentServiceDefinitionId));
+            if (requestBody == null) throw new ArgumentNullException(nameof(requestBody));
+
             var request = new CreatePaymentServiceDefinitionSessionRequest()
             {
                 PaymentServiceDefinitionId = paymentServiceDefinitionId,

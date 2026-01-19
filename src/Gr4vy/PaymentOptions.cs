@@ -51,6 +51,8 @@ namespace Gr4vy
 
         public async Task<Models.Components.PaymentOptions> ListAsync(PaymentOptionRequest paymentOptionRequest, string? merchantAccountId = null)
         {
+            if (paymentOptionRequest == null) throw new ArgumentNullException(nameof(paymentOptionRequest));
+
             var request = new ListPaymentOptionsRequest()
             {
                 PaymentOptionRequest = paymentOptionRequest,

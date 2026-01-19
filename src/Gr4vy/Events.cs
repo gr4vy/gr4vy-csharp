@@ -53,6 +53,8 @@ namespace Gr4vy
 
         public async Task<ListTransactionEventsResponse> ListAsync(string transactionId, string? cursor = null, long? limit = 100, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new ListTransactionEventsRequest()
             {
                 TransactionId = transactionId,

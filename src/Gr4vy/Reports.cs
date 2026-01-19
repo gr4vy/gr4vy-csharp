@@ -83,6 +83,10 @@ namespace Gr4vy
 
         public async Task<ListReportsResponse> ListAsync(ListReportsRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new ListReportsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -477,6 +481,8 @@ namespace Gr4vy
 
         public async Task<Report> CreateAsync(ReportCreate reportCreate, string? merchantAccountId = null)
         {
+            if (reportCreate == null) throw new ArgumentNullException(nameof(reportCreate));
+
             var request = new AddReportRequest()
             {
                 ReportCreate = reportCreate,
@@ -813,6 +819,8 @@ namespace Gr4vy
 
         public async Task<Report> GetAsync(string reportId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (reportId == null) throw new ArgumentNullException(nameof(reportId));
+
             var request = new GetReportRequest()
             {
                 ReportId = reportId,
@@ -1175,6 +1183,9 @@ namespace Gr4vy
 
         public async Task<Report> PutAsync(string reportId, ReportUpdate reportUpdate, string? merchantAccountId = null)
         {
+            if (reportId == null) throw new ArgumentNullException(nameof(reportId));
+            if (reportUpdate == null) throw new ArgumentNullException(nameof(reportUpdate));
+
             var request = new UpdateReportRequest()
             {
                 ReportId = reportId,

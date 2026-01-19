@@ -80,6 +80,8 @@ namespace Gr4vy
 
         public async Task<PaymentLink> CreateAsync(PaymentLinkCreate paymentLinkCreate, string? merchantAccountId = null)
         {
+            if (paymentLinkCreate == null) throw new ArgumentNullException(nameof(paymentLinkCreate));
+
             var request = new AddPaymentLinkRequest()
             {
                 PaymentLinkCreate = paymentLinkCreate,
@@ -810,6 +812,8 @@ namespace Gr4vy
 
         public async Task ExpireAsync(string paymentLinkId, string? merchantAccountId = null)
         {
+            if (paymentLinkId == null) throw new ArgumentNullException(nameof(paymentLinkId));
+
             var request = new ExpirePaymentLinkRequest()
             {
                 PaymentLinkId = paymentLinkId,
@@ -1003,6 +1007,8 @@ namespace Gr4vy
 
         public async Task<PaymentLink> GetAsync(string paymentLinkId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (paymentLinkId == null) throw new ArgumentNullException(nameof(paymentLinkId));
+
             var request = new GetPaymentLinkRequest()
             {
                 PaymentLinkId = paymentLinkId,
