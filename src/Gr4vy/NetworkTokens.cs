@@ -90,6 +90,8 @@ namespace Gr4vy
 
         public async Task<Models.Components.NetworkTokens> ListAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+
             var request = new ListPaymentMethodNetworkTokensRequest()
             {
                 PaymentMethodId = paymentMethodId,
@@ -452,6 +454,9 @@ namespace Gr4vy
 
         public async Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, string? merchantAccountId = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+            if (networkTokenCreate == null) throw new ArgumentNullException(nameof(networkTokenCreate));
+
             var request = new CreatePaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
@@ -788,6 +793,9 @@ namespace Gr4vy
 
         public async Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+            if (networkTokenId == null) throw new ArgumentNullException(nameof(networkTokenId));
+
             var request = new SuspendPaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
@@ -1118,6 +1126,9 @@ namespace Gr4vy
 
         public async Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+            if (networkTokenId == null) throw new ArgumentNullException(nameof(networkTokenId));
+
             var request = new ResumePaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,
@@ -1448,6 +1459,9 @@ namespace Gr4vy
 
         public async Task DeleteAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+            if (networkTokenId == null) throw new ArgumentNullException(nameof(networkTokenId));
+
             var request = new DeletePaymentMethodNetworkTokenRequest()
             {
                 PaymentMethodId = paymentMethodId,

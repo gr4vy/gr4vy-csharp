@@ -83,6 +83,8 @@ namespace Gr4vy
 
         public async Task<GiftCard> GetAsync(string giftCardId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (giftCardId == null) throw new ArgumentNullException(nameof(giftCardId));
+
             var request = new GetGiftCardRequest()
             {
                 GiftCardId = giftCardId,
@@ -445,6 +447,8 @@ namespace Gr4vy
 
         public async Task DeleteAsync(string giftCardId, string? merchantAccountId = null)
         {
+            if (giftCardId == null) throw new ArgumentNullException(nameof(giftCardId));
+
             var request = new DeleteGiftCardRequest()
             {
                 GiftCardId = giftCardId,
@@ -638,6 +642,8 @@ namespace Gr4vy
 
         public async Task<GiftCard> CreateAsync(GiftCardCreate giftCardCreate, string? merchantAccountId = null)
         {
+            if (giftCardCreate == null) throw new ArgumentNullException(nameof(giftCardCreate));
+
             var request = new CreateGiftCardRequest()
             {
                 GiftCardCreate = giftCardCreate,
@@ -974,6 +980,10 @@ namespace Gr4vy
 
         public async Task<ListGiftCardsResponse> ListAsync(ListGiftCardsRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new ListGiftCardsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();

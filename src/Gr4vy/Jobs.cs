@@ -51,6 +51,8 @@ namespace Gr4vy
 
         public async Task<AccountUpdaterJob> CreateAsync(AccountUpdaterJobCreate accountUpdaterJobCreate, string? merchantAccountId = null)
         {
+            if (accountUpdaterJobCreate == null) throw new ArgumentNullException(nameof(accountUpdaterJobCreate));
+
             var request = new CreateAccountUpdaterJobRequest()
             {
                 AccountUpdaterJobCreate = accountUpdaterJobCreate,

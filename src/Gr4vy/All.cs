@@ -51,6 +51,8 @@ namespace Gr4vy
 
         public async Task<Models.Components.Refunds> CreateAsync(string transactionId, string? merchantAccountId = null, TransactionRefundAllCreate? transactionRefundAllCreate = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new CreateFullTransactionRefundRequest()
             {
                 TransactionId = transactionId,

@@ -469,6 +469,8 @@ namespace Gr4vy
 
         public async Task<MerchantAccount> CreateAsync(MerchantAccountCreate request)
         {
+            if (request == null) throw new ArgumentNullException(nameof(request));
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
             var urlString = baseUrl + "/merchant-accounts";
@@ -797,6 +799,8 @@ namespace Gr4vy
 
         public async Task<MerchantAccount> GetAsync(string merchantAccountId, RetryConfig? retryConfig = null)
         {
+            if (merchantAccountId == null) throw new ArgumentNullException(nameof(merchantAccountId));
+
             var request = new GetMerchantAccountRequest()
             {
                 MerchantAccountId = merchantAccountId,
@@ -1157,6 +1161,9 @@ namespace Gr4vy
 
         public async Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate)
         {
+            if (merchantAccountId == null) throw new ArgumentNullException(nameof(merchantAccountId));
+            if (merchantAccountUpdate == null) throw new ArgumentNullException(nameof(merchantAccountUpdate));
+
             var request = new UpdateMerchantAccountRequest()
             {
                 MerchantAccountId = merchantAccountId,

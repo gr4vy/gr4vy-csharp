@@ -42,6 +42,7 @@ namespace Gr4vy
         public IReportExecutions ReportExecutions { get; }
         public ICheckoutSessions CheckoutSessions { get; }
         public IMerchantAccounts MerchantAccounts { get; }
+        public IThreeDsScenarios ThreeDsScenarios { get; }
         public IPayouts Payouts { get; }
         public IPaymentLinks PaymentLinks { get; }
     }
@@ -74,6 +75,7 @@ namespace Gr4vy
         public IReportExecutions ReportExecutions { get; private set; }
         public ICheckoutSessions CheckoutSessions { get; private set; }
         public IMerchantAccounts MerchantAccounts { get; private set; }
+        public IThreeDsScenarios ThreeDsScenarios { get; private set; }
         public IPayouts Payouts { get; private set; }
         public IPaymentLinks PaymentLinks { get; private set; }
 
@@ -113,6 +115,8 @@ namespace Gr4vy
             CheckoutSessions = new CheckoutSessions(SDKConfiguration);
 
             MerchantAccounts = new MerchantAccounts(SDKConfiguration);
+
+            ThreeDsScenarios = new ThreeDsScenarios(SDKConfiguration);
 
             Payouts = new Payouts(SDKConfiguration);
 
@@ -203,6 +207,8 @@ namespace Gr4vy
             CheckoutSessions = new CheckoutSessions(SDKConfiguration);
 
             MerchantAccounts = new MerchantAccounts(SDKConfiguration);
+
+            ThreeDsScenarios = new ThreeDsScenarios(SDKConfiguration);
 
             Payouts = new Payouts(SDKConfiguration);
 

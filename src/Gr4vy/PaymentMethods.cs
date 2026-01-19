@@ -86,6 +86,10 @@ namespace Gr4vy
 
         public async Task<ListPaymentMethodsResponse> ListAsync(ListPaymentMethodsRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new ListPaymentMethodsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -481,6 +485,8 @@ namespace Gr4vy
 
         public async Task<PaymentMethod> CreateAsync(Body requestBody, string? merchantAccountId = null)
         {
+            if (requestBody == null) throw new ArgumentNullException(nameof(requestBody));
+
             var request = new CreatePaymentMethodRequest()
             {
                 RequestBody = requestBody,
@@ -817,6 +823,8 @@ namespace Gr4vy
 
         public async Task<PaymentMethod> GetAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+
             var request = new GetPaymentMethodRequest()
             {
                 PaymentMethodId = paymentMethodId,
@@ -1179,6 +1187,8 @@ namespace Gr4vy
 
         public async Task DeleteAsync(string paymentMethodId, string? merchantAccountId = null)
         {
+            if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
+
             var request = new DeletePaymentMethodRequest()
             {
                 PaymentMethodId = paymentMethodId,

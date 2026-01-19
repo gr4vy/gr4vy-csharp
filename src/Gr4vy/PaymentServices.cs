@@ -107,6 +107,10 @@ namespace Gr4vy
 
         public async Task<ListPaymentServicesResponse> ListAsync(ListPaymentServicesRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new ListPaymentServicesRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -500,6 +504,8 @@ namespace Gr4vy
 
         public async Task<PaymentService> CreateAsync(PaymentServiceCreate paymentServiceCreate, string? merchantAccountId = null)
         {
+            if (paymentServiceCreate == null) throw new ArgumentNullException(nameof(paymentServiceCreate));
+
             var request = new UpdatePaymentServiceRequest()
             {
                 PaymentServiceCreate = paymentServiceCreate,
@@ -836,6 +842,8 @@ namespace Gr4vy
 
         public async Task<PaymentService> GetAsync(string paymentServiceId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (paymentServiceId == null) throw new ArgumentNullException(nameof(paymentServiceId));
+
             var request = new GetPaymentServiceRequest()
             {
                 PaymentServiceId = paymentServiceId,
@@ -1198,6 +1206,9 @@ namespace Gr4vy
 
         public async Task<PaymentService> UpdateAsync(string paymentServiceId, PaymentServiceUpdate paymentServiceUpdate, string? merchantAccountId = null)
         {
+            if (paymentServiceId == null) throw new ArgumentNullException(nameof(paymentServiceId));
+            if (paymentServiceUpdate == null) throw new ArgumentNullException(nameof(paymentServiceUpdate));
+
             var request = new CreatePaymentServiceRequest()
             {
                 PaymentServiceId = paymentServiceId,
@@ -1534,6 +1545,8 @@ namespace Gr4vy
 
         public async Task DeleteAsync(string paymentServiceId, string? merchantAccountId = null)
         {
+            if (paymentServiceId == null) throw new ArgumentNullException(nameof(paymentServiceId));
+
             var request = new DeletePaymentServiceRequest()
             {
                 PaymentServiceId = paymentServiceId,
@@ -1727,6 +1740,8 @@ namespace Gr4vy
 
         public async Task<object> VerifyAsync(VerifyCredentials verifyCredentials, string? merchantAccountId = null)
         {
+            if (verifyCredentials == null) throw new ArgumentNullException(nameof(verifyCredentials));
+
             var request = new VerifyPaymentServiceCredentialsRequest()
             {
                 VerifyCredentials = verifyCredentials,
@@ -2063,6 +2078,9 @@ namespace Gr4vy
 
         public async Task<CreateSession> SessionAsync(string paymentServiceId, Dictionary<string, object> requestBody, string? merchantAccountId = null)
         {
+            if (paymentServiceId == null) throw new ArgumentNullException(nameof(paymentServiceId));
+            if (requestBody == null) throw new ArgumentNullException(nameof(requestBody));
+
             var request = new CreatePaymentServiceSessionRequest()
             {
                 PaymentServiceId = paymentServiceId,

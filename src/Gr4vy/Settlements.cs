@@ -60,6 +60,9 @@ namespace Gr4vy
 
         public async Task<Settlement> GetAsync(string transactionId, string settlementId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+            if (settlementId == null) throw new ArgumentNullException(nameof(settlementId));
+
             var request = new GetTransactionSettlementRequest()
             {
                 TransactionId = transactionId,
@@ -423,6 +426,8 @@ namespace Gr4vy
 
         public async Task<Models.Components.Settlements> ListAsync(string transactionId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
+
             var request = new ListTransactionSettlementsRequest()
             {
                 TransactionId = transactionId,

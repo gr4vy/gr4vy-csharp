@@ -60,6 +60,9 @@ namespace Gr4vy
 
         public async Task<object> CreateAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? merchantAccountId = null)
         {
+            if (digitalWalletId == null) throw new ArgumentNullException(nameof(digitalWalletId));
+            if (digitalWalletDomain == null) throw new ArgumentNullException(nameof(digitalWalletDomain));
+
             var request = new RegisterDigitalWalletDomainRequest()
             {
                 DigitalWalletId = digitalWalletId,
@@ -396,6 +399,9 @@ namespace Gr4vy
 
         public async Task DeleteAsync(string digitalWalletId, DigitalWalletDomain digitalWalletDomain, string? merchantAccountId = null)
         {
+            if (digitalWalletId == null) throw new ArgumentNullException(nameof(digitalWalletId));
+            if (digitalWalletDomain == null) throw new ArgumentNullException(nameof(digitalWalletDomain));
+
             var request = new UnregisterDigitalWalletDomainRequest()
             {
                 DigitalWalletId = digitalWalletId,

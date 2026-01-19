@@ -53,6 +53,10 @@ namespace Gr4vy
 
         public async Task<ListAuditLogsResponse> ListAsync(ListAuditLogsRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new ListAuditLogsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();

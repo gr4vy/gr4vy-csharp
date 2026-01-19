@@ -51,6 +51,10 @@ namespace Gr4vy
 
         public async Task<PaymentMethodSummaries> ListAsync(ListBuyerPaymentMethodsRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new ListBuyerPaymentMethodsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();

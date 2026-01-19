@@ -53,6 +53,10 @@ namespace Gr4vy
 
         public async Task<ListAllReportExecutionsResponse> ListAsync(ListAllReportExecutionsRequest? request = null, RetryConfig? retryConfig = null)
         {
+            if (request == null)
+            {
+                request = new ListAllReportExecutionsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
             
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();

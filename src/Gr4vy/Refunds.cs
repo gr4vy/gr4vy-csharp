@@ -51,6 +51,8 @@ namespace Gr4vy
 
         public async Task<Refund> GetAsync(string refundId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
         {
+            if (refundId == null) throw new ArgumentNullException(nameof(refundId));
+
             var request = new GetRefundRequest()
             {
                 RefundId = refundId,
