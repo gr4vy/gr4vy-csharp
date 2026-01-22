@@ -13,18 +13,14 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     /// <summary>
     /// PayoutSummary<br/>
-    /// 
-    /// <remarks>
     /// <br/>
     /// Represents a summary of a payout.
-    /// </remarks>
     /// </summary>
     public class PayoutSummary
     {
-
         /// <summary>
         /// Always `payout`.
         /// </summary>

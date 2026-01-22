@@ -10,18 +10,17 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class DeletePaymentMethodPaymentServiceTokenRequest
     {
-
         /// <summary>
-        /// The ID of the payment method
+        /// The ID of the payment method.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=payment_method_id")]
         public string PaymentMethodId { get; set; } = default!;
 
         /// <summary>
-        /// The ID of the payment service token
+        /// The ID of the payment service token.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=payment_service_token_id")]
         public string PaymentServiceTokenId { get; set; } = default!;

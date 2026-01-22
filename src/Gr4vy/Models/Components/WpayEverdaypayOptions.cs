@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class WpayEverdaypayOptions
     {
-
         /// <summary>
         /// A dictionary of merchant defined data, to be passed to Wpay for anti-fraud control.
         /// </summary>
@@ -41,7 +40,7 @@ namespace Gr4vy.Models.Components
         public string? DeviceId { get; set; } = null;
 
         /// <summary>
-        /// Whether the transaction should redirect post-payment
+        /// Whether the transaction should redirect post-payment.
         /// </summary>
         [JsonProperty("postPaymentRedirect")]
         public bool? PostPaymentRedirect { get; set; } = null;

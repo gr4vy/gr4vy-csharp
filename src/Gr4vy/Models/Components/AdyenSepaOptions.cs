@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class AdyenSepaOptions
     {
-
         /// <summary>
         /// Set to `true` to enable Auto Rescue for a transaction. Use the `maxDaysToRescue` to specify a rescue window.
         /// </summary>

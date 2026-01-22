@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ThreeDSecure
     {
-
         /// <summary>
         /// The amount to be used for 3DS authentication. Optionally set this value to authenticate a greater amount than the transaction amount.
         /// </summary>

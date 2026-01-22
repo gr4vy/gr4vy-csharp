@@ -96,5 +96,4 @@ namespace Gr4vy.Models.Errors
            #pragma warning restore CS0618
         }
     }
-
 }

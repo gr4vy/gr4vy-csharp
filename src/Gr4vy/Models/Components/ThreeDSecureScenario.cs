@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class ThreeDSecureScenario
     {
-
         /// <summary>
         /// Always `three-d-secure-scenario`.
         /// </summary>
@@ -24,13 +23,13 @@ namespace Gr4vy.Models.Components
         public string Type { get; } = "three-d-secure-scenario";
 
         /// <summary>
-        /// Unique identifier for the 3DS scenario
+        /// Unique identifier for the 3DS scenario.
         /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// ID of the associated merchant account
+        /// ID of the associated merchant account.
         /// </summary>
         [JsonProperty("merchant_account_id")]
         public string MerchantAccountId { get; set; } = default!;

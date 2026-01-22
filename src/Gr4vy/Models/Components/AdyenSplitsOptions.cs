@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class AdyenSplitsOptions
     {
-
         /// <summary>
         /// Split payment values to pass to the Adyen API on payment authorization. See <a href="https://docs.adyen.com/platforms/online-payments/split-transactions/split-payments-at-authorization/">the Adyen docs</a> for details on the format and contents of the list.
         /// </summary>

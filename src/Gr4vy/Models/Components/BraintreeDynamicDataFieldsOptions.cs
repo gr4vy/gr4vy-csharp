@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class BraintreeDynamicDataFieldsOptions
     {
-
         /// <summary>
         /// Passes the 3DS status to the Braintree API using `customFields` with the key set to the value of `three_ds_auth_status`
         /// </summary>

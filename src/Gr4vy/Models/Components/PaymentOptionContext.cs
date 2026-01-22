@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class PaymentOptionContext
     {
-
         [JsonProperty("approval_ui")]
         public PaymentOptionContextApprovalUI? ApprovalUi { get; set; } = null;
 

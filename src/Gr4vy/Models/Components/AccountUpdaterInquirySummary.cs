@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class AccountUpdaterInquirySummary
     {
-
         /// <summary>
         /// Always `account-updater-inquiry`
         /// </summary>
@@ -28,7 +27,7 @@ namespace Gr4vy.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The ID of the payment method
+        /// The ID of the payment method.
         /// </summary>
         [JsonProperty("payment_method_id")]
         public string PaymentMethodId { get; set; } = default!;

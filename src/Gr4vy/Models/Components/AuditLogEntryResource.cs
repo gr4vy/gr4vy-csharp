@@ -11,12 +11,11 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class AuditLogEntryResource
     {
-
         /// <summary>
-        ///  The type of the resource.
+        /// The type of the resource.
         /// </summary>
         [JsonProperty("type")]
         public string Type { get; set; } = default!;

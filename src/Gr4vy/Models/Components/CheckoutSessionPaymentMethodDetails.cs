@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class CheckoutSessionPaymentMethodDetails
     {
-
         /// <summary>
         /// The first 6 digit of the card.
         /// </summary>

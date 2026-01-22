@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class GuestBuyer
     {
-
         /// <summary>
         /// The display name for the buyer.
         /// </summary>
@@ -35,7 +34,7 @@ namespace Gr4vy.Models.Components
         public BillingDetails? BillingDetails { get; set; } = null;
 
         /// <summary>
-        /// The buyer account number
+        /// The buyer account number.
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;

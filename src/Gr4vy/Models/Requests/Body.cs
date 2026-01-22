@@ -58,7 +58,6 @@ namespace Gr4vy.Models.Requests
         }
     }
 
-
     [JsonConverter(typeof(Body.BodyConverter))]
     public class Body
     {

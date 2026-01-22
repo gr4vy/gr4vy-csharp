@@ -58,7 +58,6 @@ namespace Gr4vy.Models.Components
         }
     }
 
-
     /// <summary>
     /// The report specification.
     /// </summary>

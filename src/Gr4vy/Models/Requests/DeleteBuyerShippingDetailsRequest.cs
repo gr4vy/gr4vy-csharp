@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class DeleteBuyerShippingDetailsRequest
     {
-
         /// <summary>
         /// The ID of the buyer to delete shipping details for.
         /// </summary>

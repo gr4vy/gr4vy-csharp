@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class GivingBlockOptions
     {
-
         /// <summary>
         /// The default cryptocurrency to present at checkout. This can be used to ensure the user is presented with the same currency in both your checkout and the Giving Block checkout.
         /// </summary>

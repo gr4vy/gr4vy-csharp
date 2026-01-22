@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ShippingDetails
     {
-
         /// <summary>
         /// The first name(s) or given name for the buyer.
         /// </summary>

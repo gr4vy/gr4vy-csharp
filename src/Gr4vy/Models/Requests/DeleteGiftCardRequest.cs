@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class DeleteGiftCardRequest
     {
-
         /// <summary>
         /// The ID of the gift card.
         /// </summary>

@@ -51,7 +51,6 @@ namespace Gr4vy.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(Loc.LocConverter))]
     public class Loc
     {

@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class TravelhubOptions
     {
-
         /// <summary>
         /// A list of `customData` to pass to the TravelHub API.
         /// </summary>

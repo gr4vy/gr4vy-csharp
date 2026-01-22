@@ -11,18 +11,14 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Plaid Payment Method<br/>
-    /// 
-    /// <remarks>
     /// <br/>
     /// Plaid Payment Method to use in a transaction.
-    /// </remarks>
     /// </summary>
     public class PlaidPaymentMethodCreate
     {
-
         /// <summary>
         /// Always `plaid`.
         /// </summary>

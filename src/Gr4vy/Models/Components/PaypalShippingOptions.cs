@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class PaypalShippingOptions
     {
-
         /// <summary>
         /// Shipping options that the payee or merchant offers to the payer to ship or pick up their items.
         /// </summary>

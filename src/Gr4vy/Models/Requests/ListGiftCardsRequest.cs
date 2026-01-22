@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class ListGiftCardsRequest
     {
-
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_external_identifier")]
         public string? BuyerExternalIdentifier { get; set; } = null;
 

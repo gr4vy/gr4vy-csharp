@@ -13,11 +13,10 @@ namespace Gr4vy.Models.Requests
     using Gr4vy.Utils;
     using System;
     using System.Threading.Tasks;
-    
+
     public class ListTransactionEventsResponse
     {
         public Func<Task<ListTransactionEventsResponse?>>? Next {get;set;}
-
         [SpeakeasyMetadata("")]
         public TransactionEvents Result { get; set; } = default!;
     }

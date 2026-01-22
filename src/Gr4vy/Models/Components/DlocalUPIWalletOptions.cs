@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class DlocalUPIWalletOptions
     {
-
         /// <summary>
         /// Passes `wallet.name` to the dLocal API for those connectors that need it.
         /// </summary>

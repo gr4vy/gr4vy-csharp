@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class PaymentServiceTokenCreate
     {
-
         /// <summary>
         /// The 3 or 4 digit security code often found on the card. This often referred to as the CVV or CVD.
         /// </summary>

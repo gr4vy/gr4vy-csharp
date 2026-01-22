@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class PaymentOption
     {
-
         [JsonProperty("type")]
         public string Type { get; } = "payment-option";
 

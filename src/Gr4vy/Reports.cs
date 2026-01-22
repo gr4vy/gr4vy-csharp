@@ -27,52 +27,128 @@ namespace Gr4vy
     public interface IReports
     {
         public IExecutions Executions { get; }
-
         /// <summary>
-        /// List configured reports
-        /// 
+        /// List configured reports.
+        /// </summary>
         /// <remarks>
         /// List all configured reports that can be generated.
         /// </remarks>
-        /// </summary>
-        Task<ListReportsResponse> ListAsync(ListReportsRequest? request = null, RetryConfig? retryConfig = null);
+        /// <param name="request">A <see cref="ListReportsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ListReportsResponse"/> object when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ListReportsResponse> ListAsync(ListReportsRequest? request = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Add a report
-        /// 
+        /// Add a report.
+        /// </summary>
         /// <remarks>
         /// Create a new report.
         /// </remarks>
-        /// </summary>
-        Task<Report> CreateAsync(ReportCreate reportCreate, string? merchantAccountId = null);
+        /// <param name="reportCreate">A <see cref="ReportCreate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="Report"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="reportCreate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Report> CreateAsync(ReportCreate reportCreate, string? merchantAccountId = null);
 
         /// <summary>
-        /// Get a report
-        /// 
+        /// Get a report.
+        /// </summary>
         /// <remarks>
         /// Fetches a report by its ID.
         /// </remarks>
-        /// </summary>
-        Task<Report> GetAsync(string reportId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        /// <param name="reportId">The ID of the report to retrieve details for.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="Report"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="reportId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Report> GetAsync(string reportId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update a report
-        /// 
+        /// Update a report.
+        /// </summary>
         /// <remarks>
         /// Updates the configuration of a report.
         /// </remarks>
-        /// </summary>
-        Task<Report> PutAsync(string reportId, ReportUpdate reportUpdate, string? merchantAccountId = null);
+        /// <param name="reportId">The ID of the report to edit.</param>
+        /// <param name="reportUpdate">A <see cref="ReportUpdate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="Report"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="reportId"/> or <paramref name="reportUpdate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Report> PutAsync(string reportId, ReportUpdate reportUpdate, string? merchantAccountId = null);
     }
 
     public class Reports: IReports
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Executions SubSDK.
+        /// <see cref="IExecutions"/>
+        /// </summary>
         public IExecutions Executions { get; private set; }
 
         public Reports(SDKConfig config)
@@ -81,14 +157,41 @@ namespace Gr4vy
             Executions = new Executions(SDKConfiguration);
         }
 
-        public async Task<ListReportsResponse> ListAsync(ListReportsRequest? request = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List configured reports.
+        /// </summary>
+        /// <remarks>
+        /// List all configured reports that can be generated.
+        /// </remarks>
+        /// <param name="request">A <see cref="ListReportsRequest"/> parameter.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ListReportsResponse"/> object when completed.</returns>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ListReportsResponse> ListAsync(
+            ListReportsRequest? request = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (request == null)
             {
                 request = new ListReportsRequest();
             }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/reports", request, null);
 
@@ -144,7 +247,7 @@ namespace Gr4vy
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -479,7 +582,33 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Report> CreateAsync(ReportCreate reportCreate, string? merchantAccountId = null)
+
+        /// <summary>
+        /// Add a report.
+        /// </summary>
+        /// <remarks>
+        /// Create a new report.
+        /// </remarks>
+        /// <param name="reportCreate">A <see cref="ReportCreate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="Report"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="reportCreate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Report> CreateAsync(ReportCreate reportCreate, string? merchantAccountId = null)
         {
             if (reportCreate == null) throw new ArgumentNullException(nameof(reportCreate));
 
@@ -489,9 +618,8 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
 
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = baseUrl + "/reports";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
@@ -519,7 +647,7 @@ namespace Gr4vy
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -817,7 +945,38 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Report> GetAsync(string reportId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get a report.
+        /// </summary>
+        /// <remarks>
+        /// Fetches a report by its ID.
+        /// </remarks>
+        /// <param name="reportId">The ID of the report to retrieve details for.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="Report"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="reportId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Report> GetAsync(
+            string reportId,
+            string? merchantAccountId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (reportId == null) throw new ArgumentNullException(nameof(reportId));
 
@@ -827,7 +986,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/reports/{report_id}", request, null);
 
@@ -883,7 +1042,7 @@ namespace Gr4vy
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1181,7 +1340,34 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Report> PutAsync(string reportId, ReportUpdate reportUpdate, string? merchantAccountId = null)
+
+        /// <summary>
+        /// Update a report.
+        /// </summary>
+        /// <remarks>
+        /// Updates the configuration of a report.
+        /// </remarks>
+        /// <param name="reportId">The ID of the report to edit.</param>
+        /// <param name="reportUpdate">A <see cref="ReportUpdate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="Report"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="reportId"/> or <paramref name="reportUpdate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Report> PutAsync(string reportId, ReportUpdate reportUpdate, string? merchantAccountId = null)
         {
             if (reportId == null) throw new ArgumentNullException(nameof(reportId));
             if (reportUpdate == null) throw new ArgumentNullException(nameof(reportUpdate));
@@ -1193,7 +1379,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/reports/{report_id}", request, null);
 
@@ -1222,7 +1408,7 @@ namespace Gr4vy
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1519,5 +1705,6 @@ namespace Gr4vy
 
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

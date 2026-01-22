@@ -13,11 +13,10 @@ namespace Gr4vy.Models.Requests
     using Gr4vy.Utils;
     using System;
     using System.Threading.Tasks;
-    
+
     public class ListAllReportExecutionsResponse
     {
         public Func<Task<ListAllReportExecutionsResponse?>>? Next {get;set;}
-
         [SpeakeasyMetadata("")]
         public Models.Components.ReportExecutions Result { get; set; } = default!;
     }

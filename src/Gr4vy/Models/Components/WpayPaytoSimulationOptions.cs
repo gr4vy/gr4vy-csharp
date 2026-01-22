@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class WpayPaytoSimulationOptions
     {
-
         /// <summary>
         /// The simulation being requested. Please refer to the developer guide for a list of all available simulations.
         /// </summary>

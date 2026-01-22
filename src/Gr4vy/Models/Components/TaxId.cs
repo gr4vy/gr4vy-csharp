@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class TaxId
     {
-
         /// <summary>
         /// The tax ID for the buyer.
         /// </summary>

@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class ValidationError
     {
-
         [JsonProperty("loc")]
         public List<Loc> Loc { get; set; } = default!;
 

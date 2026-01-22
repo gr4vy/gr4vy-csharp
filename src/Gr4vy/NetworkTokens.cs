@@ -25,61 +25,175 @@ namespace Gr4vy
     public interface INetworkTokens
     {
         public ICryptogram Cryptogram { get; }
-
         /// <summary>
-        /// List network tokens
-        /// 
+        /// List network tokens.
+        /// </summary>
         /// <remarks>
         /// List all network tokens stored for a payment method.
         /// </remarks>
-        /// </summary>
-        Task<Models.Components.NetworkTokens> ListAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Components.NetworkTokens"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="paymentMethodId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Components.NetworkTokens> ListAsync(
+            string paymentMethodId,
+            string? merchantAccountId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Provision network token
-        /// 
+        /// Provision network token.
+        /// </summary>
         /// <remarks>
         /// Provision a network token for a payment method.
         /// </remarks>
-        /// </summary>
-        Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, string? merchantAccountId = null);
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="networkTokenCreate">A <see cref="NetworkTokenCreate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="NetworkToken"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="paymentMethodId"/> or <paramref name="networkTokenCreate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<NetworkToken> CreateAsync(
+            string paymentMethodId,
+            NetworkTokenCreate networkTokenCreate,
+            string? merchantAccountId = null
+        );
 
         /// <summary>
-        /// Suspend network token
-        /// 
+        /// Suspend network token.
+        /// </summary>
         /// <remarks>
         /// Suspend a network token for a payment method.
         /// </remarks>
-        /// </summary>
-        Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="networkTokenId">The ID of the network token.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="NetworkToken"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="paymentMethodId"/> or <paramref name="networkTokenId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<NetworkToken> SuspendAsync(
+            string paymentMethodId,
+            string networkTokenId,
+            string? merchantAccountId = null
+        );
 
         /// <summary>
-        /// Resume network token
-        /// 
+        /// Resume network token.
+        /// </summary>
         /// <remarks>
         /// Resume a suspended network token for a payment method.
         /// </remarks>
-        /// </summary>
-        Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="networkTokenId">The ID of the network token.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="NetworkToken"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="paymentMethodId"/> or <paramref name="networkTokenId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<NetworkToken> ResumeAsync(
+            string paymentMethodId,
+            string networkTokenId,
+            string? merchantAccountId = null
+        );
 
         /// <summary>
-        /// Delete network token
-        /// 
+        /// Delete network token.
+        /// </summary>
         /// <remarks>
         /// Delete a network token for a payment method.
         /// </remarks>
-        /// </summary>
-        Task DeleteAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="networkTokenId">The ID of the network token.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="paymentMethodId"/> or <paramref name="networkTokenId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task DeleteAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null);
     }
 
     public class NetworkTokens: INetworkTokens
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Cryptogram SubSDK.
+        /// <see cref="ICryptogram"/>
+        /// </summary>
         public ICryptogram Cryptogram { get; private set; }
 
         public NetworkTokens(SDKConfig config)
@@ -88,7 +202,37 @@ namespace Gr4vy
             Cryptogram = new Cryptogram(SDKConfiguration);
         }
 
-        public async Task<Models.Components.NetworkTokens> ListAsync(string paymentMethodId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+        /// <summary>
+        /// List network tokens.
+        /// </summary>
+        /// <remarks>
+        /// List all network tokens stored for a payment method.
+        /// </remarks>
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Components.NetworkTokens"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="paymentMethodId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Components.NetworkTokens> ListAsync(
+            string paymentMethodId,
+            string? merchantAccountId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
 
@@ -98,7 +242,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/network-tokens", request, null);
 
@@ -154,7 +298,7 @@ namespace Gr4vy
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -452,7 +596,38 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<NetworkToken> CreateAsync(string paymentMethodId, NetworkTokenCreate networkTokenCreate, string? merchantAccountId = null)
+
+        /// <summary>
+        /// Provision network token.
+        /// </summary>
+        /// <remarks>
+        /// Provision a network token for a payment method.
+        /// </remarks>
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="networkTokenCreate">A <see cref="NetworkTokenCreate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="NetworkToken"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="paymentMethodId"/> or <paramref name="networkTokenCreate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<NetworkToken> CreateAsync(
+            string paymentMethodId,
+            NetworkTokenCreate networkTokenCreate,
+            string? merchantAccountId = null
+        )
         {
             if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
             if (networkTokenCreate == null) throw new ArgumentNullException(nameof(networkTokenCreate));
@@ -464,7 +639,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/network-tokens", request, null);
 
@@ -493,7 +668,7 @@ namespace Gr4vy
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -791,7 +966,38 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<NetworkToken> SuspendAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
+
+        /// <summary>
+        /// Suspend network token.
+        /// </summary>
+        /// <remarks>
+        /// Suspend a network token for a payment method.
+        /// </remarks>
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="networkTokenId">The ID of the network token.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="NetworkToken"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="paymentMethodId"/> or <paramref name="networkTokenId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<NetworkToken> SuspendAsync(
+            string paymentMethodId,
+            string networkTokenId,
+            string? merchantAccountId = null
+        )
         {
             if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
             if (networkTokenId == null) throw new ArgumentNullException(nameof(networkTokenId));
@@ -803,7 +1009,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/suspend", request, null);
 
@@ -826,7 +1032,7 @@ namespace Gr4vy
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1124,7 +1330,38 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<NetworkToken> ResumeAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
+
+        /// <summary>
+        /// Resume network token.
+        /// </summary>
+        /// <remarks>
+        /// Resume a suspended network token for a payment method.
+        /// </remarks>
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="networkTokenId">The ID of the network token.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="NetworkToken"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="paymentMethodId"/> or <paramref name="networkTokenId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<NetworkToken> ResumeAsync(
+            string paymentMethodId,
+            string networkTokenId,
+            string? merchantAccountId = null
+        )
         {
             if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
             if (networkTokenId == null) throw new ArgumentNullException(nameof(networkTokenId));
@@ -1136,7 +1373,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/network-tokens/{network_token_id}/resume", request, null);
 
@@ -1159,7 +1396,7 @@ namespace Gr4vy
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1457,7 +1694,34 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task DeleteAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
+
+        /// <summary>
+        /// Delete network token.
+        /// </summary>
+        /// <remarks>
+        /// Delete a network token for a payment method.
+        /// </remarks>
+        /// <param name="paymentMethodId">The ID of the payment method.</param>
+        /// <param name="networkTokenId">The ID of the network token.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="paymentMethodId"/> or <paramref name="networkTokenId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task DeleteAsync(string paymentMethodId, string networkTokenId, string? merchantAccountId = null)
         {
             if (paymentMethodId == null) throw new ArgumentNullException(nameof(paymentMethodId));
             if (networkTokenId == null) throw new ArgumentNullException(nameof(networkTokenId));
@@ -1469,7 +1733,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/payment-methods/{payment_method_id}/network-tokens/{network_token_id}", request, null);
 
@@ -1492,7 +1756,7 @@ namespace Gr4vy
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1653,5 +1917,6 @@ namespace Gr4vy
 
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

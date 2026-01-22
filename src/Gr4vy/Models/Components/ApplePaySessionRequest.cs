@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ApplePaySessionRequest
     {
-
         /// <summary>
         /// The validation URL as provided by the Apple SDK when processing a payment.
         /// </summary>

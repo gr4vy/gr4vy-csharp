@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class TransactionRefundAllCreate
     {
-
         /// <summary>
         /// An optional reason to attach extra context to the refund requests.
         /// </summary>

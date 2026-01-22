@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    
+
     public class CreatePayoutRequest
     {
-
         /// <summary>
         /// The ID of the merchant account to use for this request.
         /// </summary>

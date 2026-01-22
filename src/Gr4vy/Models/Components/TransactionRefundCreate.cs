@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class TransactionRefundCreate
     {
-
         /// <summary>
         /// The amount to refund, in the smallest currency unit (e.g., cents). If omitted, a full refund will be requested.
         /// </summary>

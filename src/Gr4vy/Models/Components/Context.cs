@@ -58,7 +58,6 @@ namespace Gr4vy.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(Context.ContextConverter))]
     public class Context
     {

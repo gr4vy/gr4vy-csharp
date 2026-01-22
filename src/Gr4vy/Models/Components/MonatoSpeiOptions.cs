@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class MonatoSpeiOptions
     {
-
         /// <summary>
         /// Approval URL that will receive a charge payment method reference.
         /// </summary>

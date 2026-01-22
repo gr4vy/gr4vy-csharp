@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class PaypalOptions
     {
-
         /// <summary>
         /// Additional Set Transaction Context Values (STC) to be sent to PayPal as part of the transaction.
         /// </summary>

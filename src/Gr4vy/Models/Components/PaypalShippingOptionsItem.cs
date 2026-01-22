@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class PaypalShippingOptionsItem
     {
-
         /// <summary>
         /// A unique ID that identifies a payer-selected shipping option.
         /// </summary>

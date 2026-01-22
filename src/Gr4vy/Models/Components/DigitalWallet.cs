@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class DigitalWallet
     {
-
         /// <summary>
         /// Always `digital-wallet`.
         /// </summary>

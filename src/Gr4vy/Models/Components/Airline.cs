@@ -14,13 +14,12 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// Information about an airline travel.
     /// </summary>
     public class Airline
     {
-
         /// <summary>
         /// The unique identifier of the reservation in the global distribution system.
         /// </summary>
@@ -106,7 +105,7 @@ namespace Gr4vy.Models.Components
         public string? TicketDeliveryMethod { get; set; } = null;
 
         /// <summary>
-        /// The airline&apos;s unique ticket number.
+        /// The airline's unique ticket number.
         /// </summary>
         [JsonProperty("ticket_number")]
         public string? TicketNumber { get; set; } = null;

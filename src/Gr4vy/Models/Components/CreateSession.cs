@@ -12,13 +12,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// The session data received from the payment service.
     /// </summary>
     public class CreateSession
     {
-
         /// <summary>
         /// Always `payment-service-session`.
         /// </summary>

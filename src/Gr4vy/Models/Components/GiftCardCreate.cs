@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class GiftCardCreate
     {
-
         /// <summary>
         /// The 16-19 digit number for the gift card.
         /// </summary>
@@ -28,7 +27,7 @@ namespace Gr4vy.Models.Components
         public string Pin { get; set; } = default!;
 
         /// <summary>
-        ///  The ID of the buyer to associate this gift card to. If this field is provided then the `buyer_external_identifier` field needs to be unset.
+        /// The ID of the buyer to associate this gift card to. If this field is provided then the `buyer_external_identifier` field needs to be unset.
         /// </summary>
         [JsonProperty("buyer_id")]
         public string? BuyerId { get; set; } = null;

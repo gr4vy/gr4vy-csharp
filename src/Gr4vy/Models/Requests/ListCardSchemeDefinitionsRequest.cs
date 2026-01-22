@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class ListCardSchemeDefinitionsRequest
     {
-
         /// <summary>
         /// The ID of the merchant account to use for this request.
         /// </summary>

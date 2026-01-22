@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class MerchantAccount
     {
-
         /// <summary>
         /// Always `merchant-account`.
         /// </summary>
@@ -36,49 +35,49 @@ namespace Gr4vy.Models.Components
         public string DisplayName { get; set; } = default!;
 
         /// <summary>
-        /// Client key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it&apos;s set to null, the Account Updater service doesn&apos;t get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
+        /// Client key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
         [JsonProperty("loon_client_key")]
         public string? LoonClientKey { get; set; } = null;
 
         /// <summary>
-        /// Secret key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it&apos;s set to null, the Account Updater service doesn&apos;t get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
+        /// Secret key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
         [JsonProperty("loon_secret_key")]
         public string? LoonSecretKey { get; set; } = null;
 
         /// <summary>
-        /// Card schemes accepted when creating jobs using this set of Loon API keys. Loon is the Account Updater service we use and if the field is not set or if it&apos;s set to null, the Account Updater service doesn&apos;t get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
+        /// Card schemes accepted when creating jobs using this set of Loon API keys. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
         [JsonProperty("loon_accepted_schemes")]
         public List<string>? LoonAcceptedSchemes { get; set; } = null;
 
         /// <summary>
-        /// The public key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it&apos;s set to `null`, the Account Updater service doesn&apos;t get called. If the field is set, the other `account_updater_*` fields must be set as well.
+        /// The public key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
         [JsonProperty("account_updater_request_encryption_key")]
         public string? AccountUpdaterRequestEncryptionKey { get; set; } = null;
 
         /// <summary>
-        /// The ID of the key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it&apos;s set to `null`, the Account Updater service doesn&apos;t get called. If the field is set, the other `account_updater_*` fields must be set as well.
+        /// The ID of the key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
         [JsonProperty("account_updater_request_encryption_key_id")]
         public string? AccountUpdaterRequestEncryptionKeyId { get; set; } = null;
 
         /// <summary>
-        /// The key used to decrypt the response from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it&apos;s set to `null`, the Account Updater service doesn&apos;t get called. If the field is set, the other `account_updater_*` fields must be set as well.
+        /// The key used to decrypt the response from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
         [JsonProperty("account_updater_response_decryption_key")]
         public string? AccountUpdaterResponseDecryptionKey { get; set; } = null;
 
         /// <summary>
-        /// The ID of the key used to decrypt the request from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it&apos;s set to `null`, the Account Updater service doesn&apos;t get called. If the field is set, the other `account_updater_*` fields must be set as well.
+        /// The ID of the key used to decrypt the request from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
         [JsonProperty("account_updater_response_decryption_key_id")]
         public string? AccountUpdaterResponseDecryptionKeyId { get; set; } = null;
 
         /// <summary>
-        /// Whether the Real-Time Account Updater service is enabled for this merchant account. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it&apos;s set to `false`, the Account Updater service doesn&apos;t get called if a payment fails with expired or invalid card details. If the field is set to `true`, the service is called. Please note that for this to work the other `account_updater_* fields` must be set as well.
+        /// Whether the Real-Time Account Updater service is enabled for this merchant account. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `false`, the Account Updater service doesn't get called if a payment fails with expired or invalid card details. If the field is set to `true`, the service is called. Please note that for this to work the other `account_updater_* fields` must be set as well.
         /// </summary>
         [JsonProperty("account_updater_enabled")]
         public bool AccountUpdaterEnabled { get; set; } = default!;

@@ -11,30 +11,29 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class NuveiPSEOptions
     {
-
         /// <summary>
-        /// Customer type (&quot;N&quot; for persona natural, &quot;J&quot; for persona jurídica)
+        /// Customer type ("N" for persona natural, "J" for persona jurídica).
         /// </summary>
         [JsonProperty("userType")]
         public string? UserType { get; set; } = null;
 
         /// <summary>
-        /// Customer’s document type
+        /// Customer’s document type.
         /// </summary>
         [JsonProperty("userFisNumber")]
         public string? UserFisNumber { get; set; } = null;
 
         /// <summary>
-        /// Customer’s document number
+        /// Customer’s document number.
         /// </summary>
         [JsonProperty("fiscalNumber")]
         public string? FiscalNumber { get; set; } = null;
 
         /// <summary>
-        /// The bank code of the selected bank
+        /// The bank code of the selected bank.
         /// </summary>
         [JsonProperty("bankCode")]
         public string? BankCode { get; set; } = null;

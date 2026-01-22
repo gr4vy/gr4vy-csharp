@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class GiftCard
     {
-
         /// <summary>
         /// Always `gift-card`.
         /// </summary>
@@ -57,7 +56,7 @@ namespace Gr4vy.Models.Components
         public string Last4 { get; set; } = default!;
 
         /// <summary>
-        ///  The date and time when this gift card expires. This is a full date/time and may be more accurate than the actual expiry date received by the gift card service.
+        /// The date and time when this gift card expires. This is a full date/time and may be more accurate than the actual expiry date received by the gift card service.
         /// </summary>
         [JsonProperty("expiration_date")]
         public DateTime? ExpirationDate { get; set; } = null;

@@ -12,13 +12,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Request body for updating an existing buyer
+    /// Request body for updating an existing buyer.
     /// </summary>
     public class BuyerUpdate
     {
-
         /// <summary>
         /// The display name for the buyer.
         /// </summary>
@@ -32,7 +31,7 @@ namespace Gr4vy.Models.Components
         public string? ExternalIdentifier { get; set; } = null;
 
         /// <summary>
-        /// The buyer account number
+        /// The buyer account number.
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;

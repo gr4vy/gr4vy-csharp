@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class PaymentServiceConfiguration
     {
-
         [JsonProperty("approval_ui_target")]
         public string ApprovalUiTarget { get; set; } = default!;
 

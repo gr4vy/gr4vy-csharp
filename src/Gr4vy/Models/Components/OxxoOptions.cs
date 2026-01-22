@@ -11,12 +11,11 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class OxxoOptions
     {
-
         /// <summary>
-        /// Defines a custom expiration time (unix time) after which Oxxo payment requests are cancelled
+        /// Defines a custom expiration time (unix time) after which Oxxo payment requests are cancelled.
         /// </summary>
         [JsonProperty("payment_method_expires_at")]
         public long? PaymentMethodExpiresAt { get; set; } = null;

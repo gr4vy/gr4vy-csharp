@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class WalletPaymentOptionContext
     {
-
         [JsonProperty("merchant_name")]
         public string MerchantName { get; set; } = default!;
 

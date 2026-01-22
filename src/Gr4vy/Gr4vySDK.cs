@@ -19,66 +19,140 @@ namespace Gr4vy
     using System.Collections.Generic;
     using System.Net.Http;
     using System.Threading.Tasks;
-
-
     /// <summary>
     /// Gr4vy: The Gr4vy API.
     /// </summary>
     public interface IGr4vySDK
     {
         public IAccountUpdater AccountUpdater { get; }
+
         public IBuyers Buyers { get; }
+
         public IPaymentMethods PaymentMethods { get; }
+
         public IGiftCards GiftCards { get; }
+
         public ICardSchemeDefinitions CardSchemeDefinitions { get; }
+
         public IDigitalWallets DigitalWallets { get; }
+
         public ITransactions Transactions { get; }
+
         public IRefunds Refunds { get; }
+
         public IPaymentOptions PaymentOptions { get; }
+
         public IPaymentServiceDefinitions PaymentServiceDefinitions { get; }
+
         public IPaymentServices PaymentServices { get; }
+
         public IAuditLogs AuditLogs { get; }
+
         public IReports Reports { get; }
+
         public IReportExecutions ReportExecutions { get; }
+
         public ICheckoutSessions CheckoutSessions { get; }
+
         public IMerchantAccounts MerchantAccounts { get; }
+
         public IThreeDsScenarios ThreeDsScenarios { get; }
+
         public IPayouts Payouts { get; }
+
         public IPaymentLinks PaymentLinks { get; }
     }
-
 
     /// <summary>
     /// Gr4vy: The Gr4vy API.
     /// </summary>
     public class Gr4vySDK: IGr4vySDK
     {
+        /// <summary>
+        /// The main SDK Configuration.
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// The AccountUpdater sub-SDK.
+        /// </summary>
         public IAccountUpdater AccountUpdater { get; private set; }
+        /// <summary>
+        /// The Buyers sub-SDK.
+        /// </summary>
         public IBuyers Buyers { get; private set; }
+        /// <summary>
+        /// The PaymentMethods sub-SDK.
+        /// </summary>
         public IPaymentMethods PaymentMethods { get; private set; }
+        /// <summary>
+        /// The GiftCards sub-SDK.
+        /// </summary>
         public IGiftCards GiftCards { get; private set; }
+        /// <summary>
+        /// The CardSchemeDefinitions sub-SDK.
+        /// </summary>
         public ICardSchemeDefinitions CardSchemeDefinitions { get; private set; }
+        /// <summary>
+        /// The DigitalWallets sub-SDK.
+        /// </summary>
         public IDigitalWallets DigitalWallets { get; private set; }
+        /// <summary>
+        /// The Transactions sub-SDK.
+        /// </summary>
         public ITransactions Transactions { get; private set; }
+        /// <summary>
+        /// The Refunds sub-SDK.
+        /// </summary>
         public IRefunds Refunds { get; private set; }
+        /// <summary>
+        /// The PaymentOptions sub-SDK.
+        /// </summary>
         public IPaymentOptions PaymentOptions { get; private set; }
+        /// <summary>
+        /// The PaymentServiceDefinitions sub-SDK.
+        /// </summary>
         public IPaymentServiceDefinitions PaymentServiceDefinitions { get; private set; }
+        /// <summary>
+        /// The PaymentServices sub-SDK.
+        /// </summary>
         public IPaymentServices PaymentServices { get; private set; }
+        /// <summary>
+        /// The AuditLogs sub-SDK.
+        /// </summary>
         public IAuditLogs AuditLogs { get; private set; }
+        /// <summary>
+        /// The Reports sub-SDK.
+        /// </summary>
         public IReports Reports { get; private set; }
+        /// <summary>
+        /// The ReportExecutions sub-SDK.
+        /// </summary>
         public IReportExecutions ReportExecutions { get; private set; }
+        /// <summary>
+        /// The CheckoutSessions sub-SDK.
+        /// </summary>
         public ICheckoutSessions CheckoutSessions { get; private set; }
+        /// <summary>
+        /// The MerchantAccounts sub-SDK.
+        /// </summary>
         public IMerchantAccounts MerchantAccounts { get; private set; }
+        /// <summary>
+        /// The ThreeDsScenarios sub-SDK.
+        /// </summary>
         public IThreeDsScenarios ThreeDsScenarios { get; private set; }
+        /// <summary>
+        /// The Payouts sub-SDK.
+        /// </summary>
         public IPayouts Payouts { get; private set; }
+        /// <summary>
+        /// The PaymentLinks sub-SDK.
+        /// </summary>
         public IPaymentLinks PaymentLinks { get; private set; }
 
+        /// <summary>
+        /// Initializes a new instance of the SDK based on a <see cref="SDKConfig"/> configuration object.
+        /// </summary>
+        /// <param name="config">The SDK configuration object.</param>
         public Gr4vySDK(SDKConfig config)
         {
             SDKConfiguration = config;
@@ -135,7 +209,18 @@ namespace Gr4vy
         /// <param name="urlParams">A dictionary of parameters to use for templating the serverUrl. Only used when serverUrl is provided.</param>
         /// <param name="client">A custom HTTP client implementation to use for making API requests. If not provided, the default SpeakeasyHttpClient will be used.</param>
         /// <param name="retryConfig">Configuration for retry behavior when API requests fail. Defines retry strategies, backoff policies, and maximum retry attempts.</param>
-        public Gr4vySDK(string? bearerAuth = null, Func<string>? bearerAuthSource = null, string? merchantAccountId = null, SDKConfig.Server? server = null, string? id = null, string? serverUrl = null, Dictionary<string, string>? urlParams = null, ISpeakeasyHttpClient? client = null, RetryConfig? retryConfig = null)
+        /// <exception cref="ArgumentException">None of <paramref name="bearerAuth"/> and <paramref name="bearerAuthSource"/> were provided.</exception>
+        public Gr4vySDK(
+            string? bearerAuth = null,
+            Func<string>? bearerAuthSource = null,
+            string? merchantAccountId = null,
+            SDKConfig.Server? server = null,
+            string? id = null,
+            string? serverUrl = null,
+            Dictionary<string, string>? urlParams = null,
+            ISpeakeasyHttpClient? client = null,
+            RetryConfig? retryConfig = null
+        )
         {
 
             if (serverUrl != null)
@@ -157,7 +242,7 @@ namespace Gr4vy
             }
             else
             {
-                throw new Exception("bearerAuth and bearerAuthSource cannot both be null");
+                throw new ArgumentException("bearerAuth and bearerAuthSource cannot both be null");
             }
 
             SDKConfiguration = new SDKConfig(client)
@@ -228,24 +313,36 @@ namespace Gr4vy
             SDKConfiguration = config;
         }
 
+        /// <summary>
+        /// Builder class for constructing an instance of the SDK.
+        /// </summary>
         public class SDKBuilder
         {
             private SDKConfig _sdkConfig = new SDKConfig(client: new SpeakeasyHttpClient());
 
             public SDKBuilder() { }
 
+            /// <summary>
+            /// Overrides the default server by name.
+            /// </summary>
             public SDKBuilder WithServer(SDKConfig.Server server)
             {
                 _sdkConfig.ServerName = server;
                 return this;
             }
 
+            /// <summary>
+            /// Sets the id server variable for the templated server URL.
+            /// </summary>
             public SDKBuilder WithId(string id)
             {
                 _sdkConfig.SetServerVariable("id", id);
                 return this;
             }
 
+            /// <summary>
+            /// Overrides the default server URL for the SDK.
+            /// </summary>
             public SDKBuilder WithServerUrl(string serverUrl, Dictionary<string, string>? serverVariables = null)
             {
                 if (serverVariables != null)
@@ -255,41 +352,58 @@ namespace Gr4vy
                 _sdkConfig.ServerUrl = serverUrl;
                 return this;
             }
-
+            /// <summary>
+            /// Sets the MerchantAccountId global parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithMerchantAccountId(string merchantAccountId)
             {
                 _sdkConfig.MerchantAccountId = merchantAccountId;
                 return this;
             }
 
+            /// <summary>
+            /// Sets the bearerAuthSource security parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithBearerAuthSource(Func<string> bearerAuthSource)
             {
                 _sdkConfig.SecuritySource = () => new Gr4vy.Models.Components.Security() { BearerAuth = bearerAuthSource() };
                 return this;
             }
 
+            /// <summary>
+            /// Sets the bearerAuth security parameter for the SDK.
+            /// </summary>
             public SDKBuilder WithBearerAuth(string bearerAuth)
             {
                 _sdkConfig.SecuritySource = () => new Gr4vy.Models.Components.Security() { BearerAuth = bearerAuth };
                 return this;
             }
 
+            /// <summary>
+            /// Sets a custom HTTP client to be used by the SDK.
+            /// </summary>
             public SDKBuilder WithClient(ISpeakeasyHttpClient client)
             {
                 _sdkConfig.Client = client;
                 return this;
             }
 
+            /// <summary>
+            /// Sets the retry configuration for the SDK.
+            /// </summary>
             public SDKBuilder WithRetryConfig(RetryConfig retryConfig)
             {
                 _sdkConfig.RetryConfig = retryConfig;
                 return this;
             }
 
+            /// <summary>
+            /// Builds and returns the SDK instance.
+            /// </summary>
             public Gr4vySDK Build()
             {
               if (_sdkConfig.SecuritySource == null) {
-                  throw new Exception("securitySource cannot be null. One of `BearerAuth` or `bearerAuthSource` needs to be defined.");
+                  throw new ArgumentException("securitySource cannot be null. One of `BearerAuth` or `bearerAuthSource` needs to be defined.");
               }
               return new Gr4vySDK(_sdkConfig);
             }

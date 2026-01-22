@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The ID of a stored gift card to fetch a balance for.
     /// </summary>
     public class GiftCardStoredRequest
     {
-
         /// <summary>
         /// The ID of the field to fetch a balance for.
         /// </summary>

@@ -13,13 +13,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// A list of settlement records for a transaction.
     /// </summary>
     public class Settlements
     {
-
         /// <summary>
         /// The list of settlement objects.
         /// </summary>

@@ -13,13 +13,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using NodaTime;
-    
+
     /// <summary>
-    /// Recipient of an account funding transaction
+    /// Recipient of an account funding transaction.
     /// </summary>
     public class Recipient
     {
-
         /// <summary>
         /// The first name of the recipient.
         /// </summary>
@@ -33,7 +32,7 @@ namespace Gr4vy.Models.Components
         public string LastName { get; set; } = default!;
 
         /// <summary>
-        /// The recipient of the fund&apos;s address.
+        /// The recipient of the fund's address.
         /// </summary>
         [JsonProperty("address")]
         public Address? Address { get; set; } = null;

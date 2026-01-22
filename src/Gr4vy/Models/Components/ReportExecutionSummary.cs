@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class ReportExecutionSummary
     {
-
         /// <summary>
         /// Always `report-execution`.
         /// </summary>

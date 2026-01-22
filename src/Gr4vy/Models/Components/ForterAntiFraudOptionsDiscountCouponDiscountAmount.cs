@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ForterAntiFraudOptionsDiscountCouponDiscountAmount
     {
-
         /// <summary>
         /// The discount amount in USD.
         /// </summary>

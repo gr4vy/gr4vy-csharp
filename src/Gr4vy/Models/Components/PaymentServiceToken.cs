@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class PaymentServiceToken
     {
-
         /// <summary>
         /// Always `payment-service-token`.
         /// </summary>
@@ -35,7 +34,7 @@ namespace Gr4vy.Models.Components
         public string? ApprovalUrl { get; set; } = null;
 
         /// <summary>
-        /// The ID of the payment method used to generate this token
+        /// The ID of the payment method used to generate this token.
         /// </summary>
         [JsonProperty("payment_method_id")]
         public string PaymentMethodId { get; set; } = default!;

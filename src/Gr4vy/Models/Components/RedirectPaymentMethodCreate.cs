@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Create a transaction for an APM/LPM that requires a redirect.
     /// </summary>
     public class RedirectPaymentMethodCreate
     {
-
         /// <summary>
         /// The method to use, this can be any of the methods that support redirect requests.
         /// </summary>

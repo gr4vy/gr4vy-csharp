@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// A field used in a payment service
+    /// A field used in a payment service.
     /// </summary>
     public class Field
     {
-
         /// <summary>
         /// The ID of the configured field.
         /// </summary>

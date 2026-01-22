@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class PaymentOptionContextApprovalUI
     {
-
         [JsonProperty("height")]
         public string? Height { get; set; } = null;
 

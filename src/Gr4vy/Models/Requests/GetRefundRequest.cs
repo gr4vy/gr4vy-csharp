@@ -10,12 +10,11 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class GetRefundRequest
     {
-
         /// <summary>
-        /// The ID of the refund
+        /// The ID of the refund.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=refund_id")]
         public string RefundId { get; set; } = default!;

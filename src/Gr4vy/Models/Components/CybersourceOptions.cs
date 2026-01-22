@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CybersourceOptions
     {
-
         /// <summary>
         /// The merchant ID to use for this transaction. This requires a meta key to be set up for use with Cybersource, and this overrides the connector configuration.
         /// </summary>

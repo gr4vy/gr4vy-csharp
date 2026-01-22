@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class GooglePaySessionRequest
     {
-
         /// <summary>
         /// The domain on which Google Pay is being loaded.
         /// </summary>

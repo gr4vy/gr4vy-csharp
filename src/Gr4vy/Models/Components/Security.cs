@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
-    
+
     public class Security
     {
-
         [SpeakeasyMetadata("security:scheme=true,type=http,subType=bearer,name=Authorization")]
         public string BearerAuth { get; set; } = default!;
     }

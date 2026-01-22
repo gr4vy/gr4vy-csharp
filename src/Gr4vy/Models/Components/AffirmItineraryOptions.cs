@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class AffirmItineraryOptions
     {
-
         /// <summary>
         /// The type of itinerary object.
         /// </summary>

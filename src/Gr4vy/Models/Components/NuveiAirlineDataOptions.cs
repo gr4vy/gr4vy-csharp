@@ -11,12 +11,11 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class NuveiAirlineDataOptions
     {
-
         /// <summary>
-        /// The seat class of the booking
+        /// The seat class of the booking.
         /// </summary>
         [JsonProperty("seatClass")]
         public string? SeatClass { get; set; } = null;

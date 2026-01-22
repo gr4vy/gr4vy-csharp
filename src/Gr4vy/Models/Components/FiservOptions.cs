@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class FiservOptions
     {
-
         /// <summary>
         /// Passes installment data to the Fiserv API. This is now also a dedicated feature on the Gr4vy API.
         /// </summary>

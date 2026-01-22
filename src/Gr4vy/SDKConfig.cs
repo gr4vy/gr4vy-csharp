@@ -17,6 +17,9 @@ namespace Gr4vy
     using System.Collections.Generic;
     using System.Linq;
 
+    /// <summary>
+    /// Main configuration for the SDK.
+    /// </summary>
     public struct SDKConfig
     {
         /// <summary>
@@ -66,7 +69,7 @@ namespace Gr4vy
                 }},
             };
             MerchantAccountId = null;
-            UserAgent = "speakeasy-sdk/csharp 2.7.14 2.797.1 1.0.0 Gr4vy";
+            UserAgent = "speakeasy-sdk/csharp 2.7.15 2.798.0 1.0.0 Gr4vy";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;

@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Information to show the user on their payments statement
+    /// Information to show the user on their payments statement.
     /// </summary>
     public class StatementDescriptor
     {
-
         /// <summary>
         /// Reflects your doing business as (DBA) name.
         /// </summary>
@@ -31,7 +30,7 @@ namespace Gr4vy.Models.Components
         public string? Description { get; set; } = null;
 
         /// <summary>
-        /// The merchant&apos;s city to be displayed in a statement descriptor.
+        /// The merchant's city to be displayed in a statement descriptor.
         /// </summary>
         [JsonProperty("city")]
         public string? City { get; set; } = null;
@@ -43,19 +42,19 @@ namespace Gr4vy.Models.Components
         public string? Country { get; set; } = null;
 
         /// <summary>
-        /// The value in the phone number field of a customer&apos;s statement which should be formatted according to the E164 number standard.
+        /// The value in the phone number field of a customer's statement which should be formatted according to the E164 number standard.
         /// </summary>
         [JsonProperty("phone_number")]
         public string? PhoneNumber { get; set; } = null;
 
         /// <summary>
-        /// The merchant&apos;s URL to be displayed in a statement descriptor.
+        /// The merchant's URL to be displayed in a statement descriptor.
         /// </summary>
         [JsonProperty("url")]
         public string? Url { get; set; } = null;
 
         /// <summary>
-        /// The merchant&apos;s postal code or zip code.
+        /// The merchant's postal code or zip code.
         /// </summary>
         [JsonProperty("postal_code")]
         public string? PostalCode { get; set; } = null;

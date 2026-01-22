@@ -14,10 +14,9 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class PaymentService
     {
-
         /// <summary>
         /// Always `payment-service`
         /// </summary>
@@ -55,7 +54,7 @@ namespace Gr4vy.Models.Components
         public string DisplayName { get; set; } = default!;
 
         /// <summary>
-        /// Deprecated field used to define the order in which to process payment services
+        /// Deprecated field used to define the order in which to process payment services.
         /// </summary>
         [JsonProperty("position")]
         public long Position { get; set; } = default!;
@@ -130,7 +129,7 @@ namespace Gr4vy.Models.Components
         public List<Field>? ReportingFields { get; set; } = null;
 
         /// <summary>
-        /// Defines if this payment service has been deleted
+        /// Defines if this payment service has been deleted.
         /// </summary>
         [JsonProperty("is_deleted")]
         public bool? IsDeleted { get; set; } = false;

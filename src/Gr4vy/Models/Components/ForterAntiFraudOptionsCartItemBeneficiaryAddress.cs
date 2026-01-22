@@ -11,48 +11,47 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ForterAntiFraudOptionsCartItemBeneficiaryAddress
     {
-
         /// <summary>
-        /// The country code of the beneficiary&apos;s address.
+        /// The country code of the beneficiary's address.
         /// </summary>
         [JsonProperty("country")]
         public string Country { get; set; } = default!;
 
         /// <summary>
-        /// First line of the beneficiary&apos;s address.
+        /// First line of the beneficiary's address.
         /// </summary>
         [JsonProperty("address1")]
         public string? Address1 { get; set; } = null;
 
         /// <summary>
-        /// Second line of the beneficiary&apos;s address.
+        /// Second line of the beneficiary's address.
         /// </summary>
         [JsonProperty("address2")]
         public string? Address2 { get; set; } = null;
 
         /// <summary>
-        /// Zip or postal code of the beneficiary&apos;s address.
+        /// Zip or postal code of the beneficiary's address.
         /// </summary>
         [JsonProperty("zip")]
         public string? Zip { get; set; } = null;
 
         /// <summary>
-        /// State or region of the beneficiary&apos;s address.
+        /// State or region of the beneficiary's address.
         /// </summary>
         [JsonProperty("region")]
         public string? Region { get; set; } = null;
 
         /// <summary>
-        /// Company name associated with the beneficiary&apos;s address.
+        /// Company name associated with the beneficiary's address.
         /// </summary>
         [JsonProperty("company")]
         public string? Company { get; set; } = null;
 
         /// <summary>
-        /// City of the beneficiary&apos;s address.
+        /// City of the beneficiary's address.
         /// </summary>
         [JsonProperty("city")]
         public string? City { get; set; } = null;

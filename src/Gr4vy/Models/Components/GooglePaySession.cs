@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class GooglePaySession
     {
-
         /// <summary>
         /// The gateway ID for the merchant as assigned by our platform.
         /// </summary>

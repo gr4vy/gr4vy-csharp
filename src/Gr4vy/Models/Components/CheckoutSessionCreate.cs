@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CheckoutSessionCreate
     {
-
         /// <summary>
         /// An array of cart items that represents the line items of a transaction.
         /// </summary>

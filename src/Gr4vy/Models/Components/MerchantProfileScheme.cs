@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class MerchantProfileScheme
     {
-
         /// <summary>
         /// Acquirer BIN to use when calling 3DS through this scheme.
         /// </summary>
@@ -31,7 +30,7 @@ namespace Gr4vy.Models.Components
         public string MerchantName { get; set; } = default!;
 
         /// <summary>
-        /// The merchant&apos;s ISO 3166-1 numeric country code.
+        /// The merchant's ISO 3166-1 numeric country code.
         /// </summary>
         [JsonProperty("merchant_country_code")]
         public string MerchantCountryCode { get; set; } = default!;

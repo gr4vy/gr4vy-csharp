@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class GetPayoutRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=payout_id")]
         public string PayoutId { get; set; } = default!;
 

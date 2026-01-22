@@ -52,7 +52,6 @@ namespace Gr4vy.Models.Components
         }
     }
 
-
     /// <summary>
     /// The type of payment method to send funds too.
     /// </summary>

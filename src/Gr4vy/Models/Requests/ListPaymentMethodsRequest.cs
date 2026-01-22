@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
     using System.Collections.Generic;
-    
+
     public class ListPaymentMethodsRequest
     {
-
         /// <summary>
         /// A pointer to the page of results to return.
         /// </summary>

@@ -11,12 +11,11 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ChaseOptions
     {
-
         /// <summary>
-        /// Custom order comment
+        /// Custom order comment.
         /// </summary>
         [JsonProperty("comments")]
         public string? Comments { get; set; } = null;

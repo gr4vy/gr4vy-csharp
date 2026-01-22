@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class GiftCardBalanceRequest
     {
-
         /// <summary>
         /// A list of gift cards to request a balance for.
         /// </summary>

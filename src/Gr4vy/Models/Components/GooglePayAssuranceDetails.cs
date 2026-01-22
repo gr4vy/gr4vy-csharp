@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// The assurance details provided by Google Pay
+    /// The assurance details provided by Google Pay.
     /// </summary>
     public class GooglePayAssuranceDetails
     {
-
         /// <summary>
         /// Defines if an account was verified.
         /// </summary>

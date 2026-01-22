@@ -14,10 +14,9 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class PaymentLink
     {
-
         /// <summary>
         /// The unique identifier for the payment link.
         /// </summary>
@@ -61,25 +60,25 @@ namespace Gr4vy.Models.Components
         public string? Locale { get; set; } = null;
 
         /// <summary>
-        /// The merchant&apos;s display name.
+        /// The merchant's display name.
         /// </summary>
         [JsonProperty("merchant_name")]
         public string? MerchantName { get; set; } = null;
 
         /// <summary>
-        /// The merchant&apos;s website URL.
+        /// The merchant's website URL.
         /// </summary>
         [JsonProperty("merchant_url")]
         public string? MerchantUrl { get; set; } = null;
 
         /// <summary>
-        /// The merchant&apos;s banner image URL.
+        /// The merchant's banner image URL.
         /// </summary>
         [JsonProperty("merchant_banner_url")]
         public string? MerchantBannerUrl { get; set; } = null;
 
         /// <summary>
-        /// The merchant&apos;s brand color.
+        /// The merchant's brand color.
         /// </summary>
         [JsonProperty("merchant_color")]
         public string? MerchantColor { get; set; } = null;
@@ -91,13 +90,13 @@ namespace Gr4vy.Models.Components
         public string? MerchantMessage { get; set; } = null;
 
         /// <summary>
-        /// URL to the merchant&apos;s terms and conditions.
+        /// URL to the merchant's terms and conditions.
         /// </summary>
         [JsonProperty("merchant_terms_and_conditions_url")]
         public string? MerchantTermsAndConditionsUrl { get; set; } = null;
 
         /// <summary>
-        /// URL to the merchant&apos;s favicon.
+        /// URL to the merchant's favicon.
         /// </summary>
         [JsonProperty("merchant_favicon_url")]
         public string? MerchantFaviconUrl { get; set; } = null;

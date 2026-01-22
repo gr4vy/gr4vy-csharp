@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class GetBuyerShippingDetailsRequest
     {
-
         /// <summary>
         /// The ID of the buyer to retrieve shipping details for.
         /// </summary>

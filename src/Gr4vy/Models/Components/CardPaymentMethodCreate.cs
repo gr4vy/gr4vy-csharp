@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class CardPaymentMethodCreate
     {
-
         /// <summary>
         /// The expiration date of the card, formatted `MM/YY`.
         /// </summary>
@@ -46,7 +45,7 @@ namespace Gr4vy.Models.Components
         public string? ExternalIdentifier { get; set; } = null;
 
         /// <summary>
-        /// The type of the card used
+        /// The type of the card used.
         /// </summary>
         [JsonProperty("card_type")]
         public string? CardType { get; set; } = null;

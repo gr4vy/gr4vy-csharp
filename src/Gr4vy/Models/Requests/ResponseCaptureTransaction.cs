@@ -52,9 +52,8 @@ namespace Gr4vy.Models.Requests
         }
     }
 
-
     /// <summary>
-    /// Successful Response
+    /// Successful Response.
     /// </summary>
     [JsonConverter(typeof(ResponseCaptureTransaction.ResponseCaptureTransactionConverter))]
     public class ResponseCaptureTransaction

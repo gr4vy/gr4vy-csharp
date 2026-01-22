@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ReportCreate
     {
-
         /// <summary>
         /// The name of the report.
         /// </summary>

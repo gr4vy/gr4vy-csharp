@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Create a charge against a gift card
+    /// Create a charge against a gift card.
     /// </summary>
     public class GiftCardTransactionCreate
     {
-
         /// <summary>
         /// The 16-19 digit number for the gift card.
         /// </summary>

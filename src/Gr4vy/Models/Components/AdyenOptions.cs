@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class AdyenOptions
     {
-
         /// <summary>
         /// Passes additional data to the Adyen API when creating a transaction.
         /// </summary>

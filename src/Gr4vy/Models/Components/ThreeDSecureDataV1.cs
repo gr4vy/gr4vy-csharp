@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ThreeDSecureDataV1
     {
-
         /// <summary>
         /// The cardholder authentication value or AAV.
         /// </summary>
@@ -46,7 +45,7 @@ namespace Gr4vy.Models.Components
         public string? Scheme { get; set; } = null;
 
         /// <summary>
-        ///  The response for the 3DS authentication call.
+        /// The response for the 3DS authentication call.
         /// </summary>
         [JsonProperty("authentication_response")]
         public string AuthenticationResponse { get; set; } = default!;
