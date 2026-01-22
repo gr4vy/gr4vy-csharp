@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    
+
     public class CreateReportExecutionUrlRequest
     {
-
         /// <summary>
         /// The ID of the report to retrieve a URL for.
         /// </summary>

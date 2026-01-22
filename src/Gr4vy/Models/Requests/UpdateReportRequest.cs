@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    
+
     public class UpdateReportRequest
     {
-
         /// <summary>
         /// The ID of the report to edit.
         /// </summary>

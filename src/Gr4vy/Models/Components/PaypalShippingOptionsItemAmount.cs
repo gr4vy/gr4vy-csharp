@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class PaypalShippingOptionsItemAmount
     {
-
         /// <summary>
         /// The three-character ISO currency code.
         /// </summary>

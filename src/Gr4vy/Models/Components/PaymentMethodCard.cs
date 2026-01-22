@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class PaymentMethodCard
     {
-
         /// <summary>
         /// Set to `card` to use a new card.
         /// </summary>
@@ -34,7 +33,7 @@ namespace Gr4vy.Models.Components
         public string ExpirationDate { get; set; } = default!;
 
         /// <summary>
-        /// The optional card&apos;s network scheme.
+        /// The optional card's network scheme.
         /// </summary>
         [JsonProperty("card_scheme")]
         public string? CardScheme { get; set; } = null;

@@ -9,22 +9,15 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class MockCardOptions
+    public class GoCardlessOptions
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// Specifies the high-level purpose of a mandate and/or payment using a set of pre-defined categories. Required for the PayTo scheme, optional for all others.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
-
-        /// <summary>
-        /// When set to true, prevents retries on failed transactions.
-        /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("purpose_code")]
+        public string? PurposeCode { get; set; } = null;
     }
 }

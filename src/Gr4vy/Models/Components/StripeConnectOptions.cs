@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class StripeConnectOptions
     {
-
         /// <summary>
         /// The Stripe Connect account to target using the `Stripe-Account` header.
         /// </summary>

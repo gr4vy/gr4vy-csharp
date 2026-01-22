@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Merchant provided browser info
+    /// Merchant provided browser info.
     /// </summary>
     public class BrowserInfo
     {
-
         [JsonProperty("javascript_enabled")]
         public bool JavascriptEnabled { get; set; } = default!;
 
@@ -52,7 +51,7 @@ namespace Gr4vy.Models.Components
         public string UserDevice { get; set; } = default!;
 
         /// <summary>
-        /// The Accept header of the request from the buyer&apos;s browser.
+        /// The Accept header of the request from the buyer's browser.
         /// </summary>
         [JsonProperty("accept_header")]
         public string? AcceptHeader { get; set; } = null;

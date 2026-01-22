@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CybersourceAntiFraudOptions
     {
-
         /// <summary>
         /// A list of merchant defined data to be passed to the Cybersource Decision Manager API. Each key needs to be a numeric string.
         /// </summary>

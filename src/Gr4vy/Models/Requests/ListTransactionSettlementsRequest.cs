@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class ListTransactionSettlementsRequest
     {
-
         /// <summary>
         /// The unique identifier of the transaction.
         /// </summary>

@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class AccountUpdaterJobCreate
     {
-
         /// <summary>
         /// A list of payment method IDs to request an update for.
         /// </summary>

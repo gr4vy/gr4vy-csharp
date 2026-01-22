@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ClickToPaySession
     {
-
         /// <summary>
         /// The ID of the Click to Pay application.
         /// </summary>

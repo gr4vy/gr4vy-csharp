@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class Refund
     {
-
         /// <summary>
         /// Always `refund`.
         /// </summary>
@@ -36,7 +35,7 @@ namespace Gr4vy.Models.Components
         public string TransactionId { get; set; } = default!;
 
         /// <summary>
-        /// The payment service&apos;s unique ID for the refund.
+        /// The payment service's unique ID for the refund.
         /// </summary>
         [JsonProperty("payment_service_refund_id")]
         public string? PaymentServiceRefundId { get; set; } = null;
@@ -72,7 +71,7 @@ namespace Gr4vy.Models.Components
         public string? TargetId { get; set; } = null;
 
         /// <summary>
-        /// The base62 encoded refund ID. This represents a shorter version of this refund&apos;s `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service&apos;s refund against our system.
+        /// The base62 encoded refund ID. This represents a shorter version of this refund's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's refund against our system.
         /// </summary>
         [JsonProperty("reconciliation_id")]
         public string ReconciliationId { get; set; } = default!;
@@ -84,7 +83,7 @@ namespace Gr4vy.Models.Components
         public string? ExternalIdentifier { get; set; } = null;
 
         /// <summary>
-        /// The base62 encoded transaction ID. This represents a shorter version of the related transaction&apos;s `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service&apos;s transaction against our system.
+        /// The base62 encoded transaction ID. This represents a shorter version of the related transaction's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's transaction against our system.
         /// </summary>
         [JsonProperty("transaction_reconciliation_id")]
         public string TransactionReconciliationId { get; set; } = default!;
@@ -108,7 +107,7 @@ namespace Gr4vy.Models.Components
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
-        /// The user that created this resource
+        /// The user that created this resource.
         /// </summary>
         [JsonProperty("creator")]
         public Creator? Creator { get; set; } = null;
@@ -126,7 +125,7 @@ namespace Gr4vy.Models.Components
         public string? RawResponseCode { get; set; } = null;
 
         /// <summary>
-        ///  This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
+        /// This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
         [JsonProperty("raw_response_description")]
         public string? RawResponseDescription { get; set; } = null;

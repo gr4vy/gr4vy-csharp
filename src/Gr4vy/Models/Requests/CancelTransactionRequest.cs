@@ -10,12 +10,11 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class CancelTransactionRequest
     {
-
         /// <summary>
-        /// The ID of the transaction
+        /// The ID of the transaction.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=transaction_id")]
         public string TransactionId { get; set; } = default!;

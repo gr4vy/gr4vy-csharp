@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class PaymentServiceDefinition
     {
-
         /// <summary>
         /// The definition ID of the payment service that can be configured. This is the underlying provider followed by a dash followed by the method.
         /// </summary>

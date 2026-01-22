@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class PaymentOptionRequest
     {
-
         /// <summary>
         /// The metadata to used to evaluate checkout rules, which will help determine the right payment options to display.
         /// </summary>

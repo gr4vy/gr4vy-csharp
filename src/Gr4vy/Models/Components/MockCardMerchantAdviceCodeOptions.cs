@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class MockCardMerchantAdviceCodeOptions
     {
-
         /// <summary>
         /// The MAC to return for this request.
         /// </summary>

@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class BraintreeOptions
     {
-
         /// <summary>
         /// Passes a discount amount to be applied to the transaction when using Braintree.
         /// </summary>
@@ -30,7 +29,7 @@ namespace Gr4vy.Models.Components
         public Dictionary<string, string>? CustomFields { get; set; } = null;
 
         /// <summary>
-        /// Additional dynamic fields to pass to the Braintree API
+        /// Additional dynamic fields to pass to the Braintree API.
         /// </summary>
         [JsonProperty("dynamic_data_fields")]
         public BraintreeDynamicDataFieldsOptions? DynamicDataFields { get; set; } = null;

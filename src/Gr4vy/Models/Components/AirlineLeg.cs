@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class AirlineLeg
     {
-
         /// <summary>
         /// Arrival airport code of leg. 3-letter ISO code according to IATA official directory.
         /// </summary>

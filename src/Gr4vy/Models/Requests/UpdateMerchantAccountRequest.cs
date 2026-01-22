@@ -11,12 +11,11 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    
+
     public class UpdateMerchantAccountRequest
     {
-
         /// <summary>
-        /// The ID of the merchant account
+        /// The ID of the merchant account.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=merchant_account_id")]
         public string MerchantAccountId { get; set; } = default!;

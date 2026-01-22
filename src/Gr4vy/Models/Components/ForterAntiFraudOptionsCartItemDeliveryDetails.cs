@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ForterAntiFraudOptionsCartItemDeliveryDetails
     {
-
         /// <summary>
         /// The type of delivery for this cart item.
         /// </summary>

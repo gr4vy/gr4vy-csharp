@@ -13,11 +13,10 @@ namespace Gr4vy.Models.Requests
     using Gr4vy.Utils;
     using System;
     using System.Threading.Tasks;
-    
+
     public class ListPaymentLinksResponse
     {
         public Func<Task<ListPaymentLinksResponse?>>? Next {get;set;}
-
         [SpeakeasyMetadata("")]
         public Models.Components.PaymentLinks Result { get; set; } = default!;
     }

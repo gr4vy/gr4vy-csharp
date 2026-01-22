@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class WpayPaytoResourceOptions
     {
-
         /// <summary>
         /// Simulate responses for this resource.
         /// </summary>

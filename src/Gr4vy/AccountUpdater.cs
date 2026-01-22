@@ -21,12 +21,16 @@ namespace Gr4vy
 
     public class AccountUpdater: IAccountUpdater
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
+        /// <summary>
+        /// Jobs SubSDK.
+        /// <see cref="IJobs"/>
+        /// </summary>
         public IJobs Jobs { get; private set; }
 
         public AccountUpdater(SDKConfig config)

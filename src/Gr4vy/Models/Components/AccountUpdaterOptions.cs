@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class AccountUpdaterOptions
     {
-
         /// <summary>
         /// The type of response to simulate.
         /// </summary>
@@ -22,19 +21,19 @@ namespace Gr4vy.Models.Components
         public string? ResponseCode { get; } = "updated";
 
         /// <summary>
-        /// When the `response_code` is set to `updated`, the payment method&apos;s account number will be updated to this value.
+        /// When the `response_code` is set to `updated`, the payment method's account number will be updated to this value.
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;
 
         /// <summary>
-        /// When the `response_code` is set to `updated`, the payment method&apos;s expiration month will be updated to this value.
+        /// When the `response_code` is set to `updated`, the payment method's expiration month will be updated to this value.
         /// </summary>
         [JsonProperty("expiration_month")]
         public string? ExpirationMonth { get; set; } = null;
 
         /// <summary>
-        /// When the `response_code` is set to `updated`, the payment method&apos;s expiration year will be updated to this value.
+        /// When the `response_code` is set to `updated`, the payment method's expiration year will be updated to this value.
         /// </summary>
         [JsonProperty("expiration_year")]
         public string? ExpirationYear { get; set; } = null;

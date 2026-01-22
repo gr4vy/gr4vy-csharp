@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class TransactionPaymentMethod
     {
-
         /// <summary>
         /// Always `payment-method`.
         /// </summary>
@@ -60,7 +59,7 @@ namespace Gr4vy.Models.Components
         public string? Fingerprint { get; set; } = null;
 
         /// <summary>
-        /// A label for the card or the account. For a paypal payment method this is the user&apos;s email address. For a card it is the last 4 digits of the card.
+        /// A label for the card or the account. For a paypal payment method this is the user's email address. For a card it is the last 4 digits of the card.
         /// </summary>
         [JsonProperty("label")]
         public string? Label { get; set; } = null;

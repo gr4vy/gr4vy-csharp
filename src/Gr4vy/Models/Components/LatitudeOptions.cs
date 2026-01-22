@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class LatitudeOptions
     {
-
         /// <summary>
         /// The `promotionReference` field passed to the purchase API.
         /// </summary>

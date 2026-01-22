@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class DigitalWalletDomain
     {
-
         /// <summary>
         /// The domain to add or remove.
         /// </summary>

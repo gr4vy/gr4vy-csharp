@@ -13,18 +13,17 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class ForterAntiFraudOptions
     {
-
         /// <summary>
-        /// The delivery type
+        /// The delivery type.
         /// </summary>
         [JsonProperty("delivery_type")]
         public string? DeliveryType { get; set; } = null;
 
         /// <summary>
-        /// The delivery method
+        /// The delivery method.
         /// </summary>
         [JsonProperty("delivery_method")]
         public string? DeliveryMethod { get; set; } = null;

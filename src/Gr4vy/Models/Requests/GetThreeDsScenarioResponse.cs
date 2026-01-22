@@ -13,11 +13,10 @@ namespace Gr4vy.Models.Requests
     using Gr4vy.Utils;
     using System;
     using System.Threading.Tasks;
-    
+
     public class GetThreeDsScenarioResponse
     {
         public Func<Task<GetThreeDsScenarioResponse?>>? Next {get;set;}
-
         [SpeakeasyMetadata("")]
         public ThreeDSecureScenarios Result { get; set; } = default!;
     }

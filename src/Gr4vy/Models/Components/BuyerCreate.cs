@@ -12,13 +12,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Request body for creating a new buyer
+    /// Request body for creating a new buyer.
     /// </summary>
     public class BuyerCreate
     {
-
         /// <summary>
         /// The display name for the buyer.
         /// </summary>
@@ -38,7 +37,7 @@ namespace Gr4vy.Models.Components
         public BillingDetails? BillingDetails { get; set; } = null;
 
         /// <summary>
-        /// The buyer account number
+        /// The buyer account number.
         /// </summary>
         [JsonProperty("account_number")]
         public string? AccountNumber { get; set; } = null;

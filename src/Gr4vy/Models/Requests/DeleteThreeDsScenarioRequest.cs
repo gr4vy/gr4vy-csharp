@@ -10,12 +10,11 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class DeleteThreeDsScenarioRequest
     {
-
         /// <summary>
-        /// The ID of the 3DS scenario
+        /// The ID of the 3DS scenario.
         /// </summary>
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=three_ds_scenario_id")]
         public string ThreeDsScenarioId { get; set; } = default!;

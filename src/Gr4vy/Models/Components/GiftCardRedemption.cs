@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class GiftCardRedemption
     {
-
         /// <summary>
         /// Always `gift-card-redemption`.
         /// </summary>
@@ -44,7 +43,7 @@ namespace Gr4vy.Models.Components
         public long RefundedAmount { get; set; } = default!;
 
         /// <summary>
-        /// The gift card service&apos;s unique ID for the redemption.
+        /// The gift card service's unique ID for the redemption.
         /// </summary>
         [JsonProperty("gift_card_service_redemption_id")]
         public string? GiftCardServiceRedemptionId { get; set; } = null;

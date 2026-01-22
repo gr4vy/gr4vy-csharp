@@ -11,18 +11,14 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Create a Click to Pay payment with a decrypted token and cryptogram. This<br/>
-    /// 
-    /// <remarks>
     /// is mainly used internally but can be used by anyone with their own C2P<br/>
     /// integration.
-    /// </remarks>
     /// </summary>
     public class ClickToPayPaymentMethodCreate
     {
-
         /// <summary>
         /// Aways `click-to-pay`.
         /// </summary>
@@ -48,7 +44,7 @@ namespace Gr4vy.Models.Components
         public string ExpirationDate { get; set; } = default!;
 
         /// <summary>
-        ///  The ID of the buyer to associate this transaction to.
+        /// The ID of the buyer to associate this transaction to.
         /// </summary>
         [JsonProperty("buyer_id")]
         public string? BuyerId { get; set; } = null;

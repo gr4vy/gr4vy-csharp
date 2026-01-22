@@ -12,13 +12,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Create a Google Pay transaction with a device token.
     /// </summary>
     public class GooglePayPaymentMethodCreate
     {
-
         /// <summary>
         /// The external identifier of the buyer to create a payment for.
         /// </summary>
@@ -74,7 +73,7 @@ namespace Gr4vy.Models.Components
         public Token Token { get; set; } = default!;
 
         /// <summary>
-        /// The assurance details provided by Google Pay
+        /// The assurance details provided by Google Pay.
         /// </summary>
         [JsonProperty("assurance_details")]
         public GooglePayAssuranceDetails? AssuranceDetails { get; set; } = null;

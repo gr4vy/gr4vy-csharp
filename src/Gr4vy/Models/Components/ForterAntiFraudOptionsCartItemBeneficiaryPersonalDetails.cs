@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails
     {
-
         /// <summary>
         /// First name of the beneficiary.
         /// </summary>

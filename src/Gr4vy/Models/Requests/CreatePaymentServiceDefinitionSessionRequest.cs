@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
     using System.Collections.Generic;
-    
+
     public class CreatePaymentServiceDefinitionSessionRequest
     {
-
         [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=payment_service_definition_id")]
         public string PaymentServiceDefinitionId { get; set; } = default!;
 

@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class DeleteDigitalWalletRequest
     {
-
         /// <summary>
         /// The ID of the digital wallet to delete.
         /// </summary>

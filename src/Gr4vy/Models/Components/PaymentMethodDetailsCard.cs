@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class PaymentMethodDetailsCard
     {
-
         [JsonProperty("bin")]
         public string? Bin { get; set; } = null;
 

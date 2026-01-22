@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ThreeDSecureScenarioOutcome
     {
-
         /// <summary>
         /// The version of 3DS which will be simulated.
         /// </summary>
@@ -26,7 +25,7 @@ namespace Gr4vy.Models.Components
         public ThreeDSecureScenarioOutcomeAuthentication Authentication { get; set; } = default!;
 
         /// <summary>
-        /// 3DS result value. Required if authentication status is &quot;C&quot;.
+        /// 3DS result value. Required if authentication status is "C".
         /// </summary>
         [JsonProperty("result")]
         public ThreeDSecureScenarioOutcomeResult? Result { get; set; } = null;

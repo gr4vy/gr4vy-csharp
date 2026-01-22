@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    
+
     public class UpdateBuyerShippingDetailsRequest
     {
-
         /// <summary>
         /// The ID of the buyer to update shipping details for.
         /// </summary>

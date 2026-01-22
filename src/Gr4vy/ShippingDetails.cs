@@ -24,68 +24,211 @@ namespace Gr4vy
 
     public interface IShippingDetails
     {
-
         /// <summary>
-        /// Add buyer shipping details
-        /// 
+        /// Add buyer shipping details.
+        /// </summary>
         /// <remarks>
         /// Associate shipping details to a buyer.
         /// </remarks>
-        /// </summary>
-        Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, string? merchantAccountId = null);
+        /// <param name="buyerId">The ID of the buyer to add shipping details to.</param>
+        /// <param name="shippingDetailsCreate">A <see cref="ShippingDetailsCreate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Components.ShippingDetails"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="buyerId"/> or <paramref name="shippingDetailsCreate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Components.ShippingDetails> CreateAsync(
+            string buyerId,
+            ShippingDetailsCreate shippingDetailsCreate,
+            string? merchantAccountId = null
+        );
 
         /// <summary>
-        /// List a buyer&apos;s shipping details
-        /// 
+        /// List a buyer's shipping details.
+        /// </summary>
         /// <remarks>
         /// List all the shipping details associated to a specific buyer.
         /// </remarks>
-        /// </summary>
-        Task<ShippingDetailsList> ListAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        /// <param name="buyerId">The ID of the buyer to retrieve shipping details for.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ShippingDetailsList"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="buyerId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<ShippingDetailsList> ListAsync(
+            string buyerId,
+            string? merchantAccountId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Get buyer shipping details
-        /// 
+        /// Get buyer shipping details.
+        /// </summary>
         /// <remarks>
-        /// Get a buyer&apos;s shipping details.
+        /// Get a buyer's shipping details.
         /// </remarks>
-        /// </summary>
-        Task<Models.Components.ShippingDetails> GetAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null, RetryConfig? retryConfig = null);
+        /// <param name="buyerId">The ID of the buyer to retrieve shipping details for.</param>
+        /// <param name="shippingDetailsId">The ID of the shipping details to retrieve.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Components.ShippingDetails"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="buyerId"/> or <paramref name="shippingDetailsId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Components.ShippingDetails> GetAsync(
+            string buyerId,
+            string shippingDetailsId,
+            string? merchantAccountId = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update a buyer&apos;s shipping details
-        /// 
+        /// Update a buyer's shipping details.
+        /// </summary>
         /// <remarks>
         /// Update the shipping details associated to a specific buyer.
         /// </remarks>
-        /// </summary>
-        Task<Models.Components.ShippingDetails> UpdateAsync(string buyerId, string shippingDetailsId, ShippingDetailsUpdate shippingDetailsUpdate, string? merchantAccountId = null);
+        /// <param name="buyerId">The ID of the buyer to update shipping details for.</param>
+        /// <param name="shippingDetailsId">The ID of the shipping details to update.</param>
+        /// <param name="shippingDetailsUpdate">A <see cref="ShippingDetailsUpdate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Components.ShippingDetails"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="buyerId"/>, <paramref name="shippingDetailsId"/> or <paramref name="shippingDetailsUpdate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task<Models.Components.ShippingDetails> UpdateAsync(
+            string buyerId,
+            string shippingDetailsId,
+            ShippingDetailsUpdate shippingDetailsUpdate,
+            string? merchantAccountId = null
+        );
 
         /// <summary>
-        /// Delete a buyer&apos;s shipping details
-        /// 
+        /// Delete a buyer's shipping details.
+        /// </summary>
         /// <remarks>
         /// Delete the shipping details associated to a specific buyer.
         /// </remarks>
-        /// </summary>
-        Task DeleteAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null);
+        /// <param name="buyerId">The ID of the buyer to delete shipping details for.</param>
+        /// <param name="shippingDetailsId">The ID of the shipping details to delete.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="buyerId"/> or <paramref name="shippingDetailsId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task DeleteAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null);
     }
 
     public class ShippingDetails: IShippingDetails
     {
+        /// <summary>
+        /// SDK Configuration.
+        /// <see cref="SDKConfig"/>
+        /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
-
-        private const string _language = Constants.Language;
-        private const string _sdkVersion = Constants.SdkVersion;
-        private const string _sdkGenVersion = Constants.SdkGenVersion;
-        private const string _openapiDocVersion = Constants.OpenApiDocVersion;
 
         public ShippingDetails(SDKConfig config)
         {
             SDKConfiguration = config;
         }
 
-        public async Task<Models.Components.ShippingDetails> CreateAsync(string buyerId, ShippingDetailsCreate shippingDetailsCreate, string? merchantAccountId = null)
+        /// <summary>
+        /// Add buyer shipping details.
+        /// </summary>
+        /// <remarks>
+        /// Associate shipping details to a buyer.
+        /// </remarks>
+        /// <param name="buyerId">The ID of the buyer to add shipping details to.</param>
+        /// <param name="shippingDetailsCreate">A <see cref="ShippingDetailsCreate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Components.ShippingDetails"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="buyerId"/> or <paramref name="shippingDetailsCreate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Components.ShippingDetails> CreateAsync(
+            string buyerId,
+            ShippingDetailsCreate shippingDetailsCreate,
+            string? merchantAccountId = null
+        )
         {
             if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
             if (shippingDetailsCreate == null) throw new ArgumentNullException(nameof(shippingDetailsCreate));
@@ -97,7 +240,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/buyers/{buyer_id}/shipping-details", request, null);
 
@@ -126,7 +269,7 @@ namespace Gr4vy
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -424,7 +567,38 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<ShippingDetailsList> ListAsync(string buyerId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// List a buyer's shipping details.
+        /// </summary>
+        /// <remarks>
+        /// List all the shipping details associated to a specific buyer.
+        /// </remarks>
+        /// <param name="buyerId">The ID of the buyer to retrieve shipping details for.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="ShippingDetailsList"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="buyerId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<ShippingDetailsList> ListAsync(
+            string buyerId,
+            string? merchantAccountId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
 
@@ -434,7 +608,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/buyers/{buyer_id}/shipping-details", request, null);
 
@@ -490,7 +664,7 @@ namespace Gr4vy
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -788,7 +962,40 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Components.ShippingDetails> GetAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null, RetryConfig? retryConfig = null)
+
+        /// <summary>
+        /// Get buyer shipping details.
+        /// </summary>
+        /// <remarks>
+        /// Get a buyer's shipping details.
+        /// </remarks>
+        /// <param name="buyerId">The ID of the buyer to retrieve shipping details for.</param>
+        /// <param name="shippingDetailsId">The ID of the shipping details to retrieve.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Components.ShippingDetails"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="buyerId"/> or <paramref name="shippingDetailsId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Components.ShippingDetails> GetAsync(
+            string buyerId,
+            string shippingDetailsId,
+            string? merchantAccountId = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
             if (shippingDetailsId == null) throw new ArgumentNullException(nameof(shippingDetailsId));
@@ -800,7 +1007,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/buyers/{buyer_id}/shipping-details/{shipping_details_id}", request, null);
 
@@ -856,7 +1063,7 @@ namespace Gr4vy
                 httpResponse = await retries.Run();
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1154,7 +1361,40 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task<Models.Components.ShippingDetails> UpdateAsync(string buyerId, string shippingDetailsId, ShippingDetailsUpdate shippingDetailsUpdate, string? merchantAccountId = null)
+
+        /// <summary>
+        /// Update a buyer's shipping details.
+        /// </summary>
+        /// <remarks>
+        /// Update the shipping details associated to a specific buyer.
+        /// </remarks>
+        /// <param name="buyerId">The ID of the buyer to update shipping details for.</param>
+        /// <param name="shippingDetailsId">The ID of the shipping details to update.</param>
+        /// <param name="shippingDetailsUpdate">A <see cref="ShippingDetailsUpdate"/> parameter.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>An awaitable task that returns a <see cref="Models.Components.ShippingDetails"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="buyerId"/>, <paramref name="shippingDetailsId"/> or <paramref name="shippingDetailsUpdate"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task<Models.Components.ShippingDetails> UpdateAsync(
+            string buyerId,
+            string shippingDetailsId,
+            ShippingDetailsUpdate shippingDetailsUpdate,
+            string? merchantAccountId = null
+        )
         {
             if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
             if (shippingDetailsId == null) throw new ArgumentNullException(nameof(shippingDetailsId));
@@ -1168,7 +1408,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/buyers/{buyer_id}/shipping-details/{shipping_details_id}", request, null);
 
@@ -1197,7 +1437,7 @@ namespace Gr4vy
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1495,7 +1735,34 @@ namespace Gr4vy
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
 
-        public async Task DeleteAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null)
+
+        /// <summary>
+        /// Delete a buyer's shipping details.
+        /// </summary>
+        /// <remarks>
+        /// Delete the shipping details associated to a specific buyer.
+        /// </remarks>
+        /// <param name="buyerId">The ID of the buyer to delete shipping details for.</param>
+        /// <param name="shippingDetailsId">The ID of the shipping details to delete.</param>
+        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="buyerId"/> or <paramref name="shippingDetailsId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task DeleteAsync(string buyerId, string shippingDetailsId, string? merchantAccountId = null)
         {
             if (buyerId == null) throw new ArgumentNullException(nameof(buyerId));
             if (shippingDetailsId == null) throw new ArgumentNullException(nameof(shippingDetailsId));
@@ -1507,7 +1774,7 @@ namespace Gr4vy
                 MerchantAccountId = merchantAccountId,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
-            
+
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
             var urlString = URLBuilder.Build(baseUrl, "/buyers/{buyer_id}/shipping-details/{shipping_details_id}", request, null);
 
@@ -1530,7 +1797,7 @@ namespace Gr4vy
                 httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
                 int _statusCode = (int)httpResponse.StatusCode;
 
-                if (_statusCode == 400 || _statusCode == 401 || _statusCode == 403 || _statusCode == 404 || _statusCode == 405 || _statusCode == 409 || _statusCode == 422 || _statusCode == 425 || _statusCode == 429 || _statusCode >= 400 && _statusCode < 500 || _statusCode == 500 || _statusCode == 502 || _statusCode == 504 || _statusCode >= 500 && _statusCode < 600)
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
                 {
                     var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
                     if (_httpResponse != null)
@@ -1691,5 +1958,6 @@ namespace Gr4vy
 
             throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
         }
+
     }
 }

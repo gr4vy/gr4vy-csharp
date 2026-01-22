@@ -12,13 +12,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// A collection of checkout fields and the conditions under which they are required.
     /// </summary>
     public class RequiredCheckoutFields
     {
-
         /// <summary>
         /// A list of transaction fields that are required to process a payment for this service.
         /// </summary>
@@ -26,7 +25,7 @@ namespace Gr4vy.Models.Components
         public List<string> RequiredFields { get; set; } = default!;
 
         /// <summary>
-        /// The conditions under which these fields are required
+        /// The conditions under which these fields are required.
         /// </summary>
         [JsonProperty("conditions")]
         public Dictionary<string, object>? Conditions { get; set; } = null;

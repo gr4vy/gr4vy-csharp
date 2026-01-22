@@ -12,18 +12,14 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// PayoutCreate<br/>
-    /// 
-    /// <remarks>
     /// <br/>
     /// Represents the data required to create a new payout.
-    /// </remarks>
     /// </summary>
     public class PayoutCreate
     {
-
         /// <summary>
         /// The monetary amount for this payout, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for $12.99.
         /// </summary>

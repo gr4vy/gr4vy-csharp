@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// A single field that needs to be submitted for a payment service when it is created.
     /// </summary>
     public class DefinitionField
     {
-
         /// <summary>
         /// The key of a field that can be submitted.
         /// </summary>
@@ -40,7 +39,7 @@ namespace Gr4vy.Models.Components
         public string Format { get; set; } = default!;
 
         /// <summary>
-        /// Defines if this field is secret. When `true` the field&apos;s value is not returned when querying the payment service information.
+        /// Defines if this field is secret. When `true` the field's value is not returned when querying the payment service information.
         /// </summary>
         [JsonProperty("secret")]
         public bool Secret { get; set; } = default!;

@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class ListBuyerPaymentMethodsRequest
     {
-
         /// <summary>
         /// The ID of the buyer to query payment methods for.
         /// </summary>

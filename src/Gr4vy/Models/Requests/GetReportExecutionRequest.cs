@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class GetReportExecutionRequest
     {
-
         /// <summary>
         /// The ID of the execution of a report to retrieve details for.
         /// </summary>

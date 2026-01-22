@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
-    /// Create a transaction with the ID (token) of a stored payment method (and an optional URL for approval)
+    /// Create a transaction with the ID (token) of a stored payment method (and an optional URL for approval).
     /// </summary>
     public class TokenPaymentMethodCreate
     {
-
         /// <summary>
         /// The ID for the payment method.
         /// </summary>

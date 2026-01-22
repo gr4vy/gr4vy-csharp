@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class TransactionConnectionOptions
     {
-
         /// <summary>
         /// Custom options to be passed to the `account-updater` connector, allowing for simulating different account updater responses.
         /// </summary>
@@ -159,6 +158,12 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("givingblock-givingblock")]
         public GivingBlockOptions? GivingblockGivingblock { get; set; } = null;
+
+        /// <summary>
+        /// Custom options to be passed to the `gocardless-gocardless` connector.
+        /// </summary>
+        [JsonProperty("gocardless-gocardless")]
+        public GoCardlessOptions? GocardlessGocardless { get; set; } = null;
 
         /// <summary>
         /// Custom options to be passed to the `latitude-latitude` connector.

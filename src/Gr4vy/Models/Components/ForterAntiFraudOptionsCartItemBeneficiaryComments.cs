@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ForterAntiFraudOptionsCartItemBeneficiaryComments
     {
-
         /// <summary>
         /// Comments from the user to the merchant.
         /// </summary>

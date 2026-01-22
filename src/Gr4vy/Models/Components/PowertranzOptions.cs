@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class PowertranzOptions
     {
-
         /// <summary>
         /// Indicates to PowerTranz whether to skip the 3DS authentication for this transaction.
         /// </summary>

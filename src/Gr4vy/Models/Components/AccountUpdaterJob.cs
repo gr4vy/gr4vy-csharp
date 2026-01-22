@@ -14,10 +14,9 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     public class AccountUpdaterJob
     {
-
         /// <summary>
         /// Always `account-updater-job`
         /// </summary>

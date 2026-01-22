@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using NodaTime;
-    
+
     public class AirlinePassenger
     {
-
         /// <summary>
         /// The age group for the passenger.
         /// </summary>
@@ -23,7 +22,7 @@ namespace Gr4vy.Models.Components
         public string? AgeGroup { get; set; } = null;
 
         /// <summary>
-        /// The passenger&apos;s date of birth in YYYY-MM-YY format.
+        /// The passenger's date of birth in YYYY-MM-YY format.
         /// </summary>
         [JsonProperty("date_of_birth")]
         public LocalDate? DateOfBirth { get; set; } = null;
@@ -41,7 +40,7 @@ namespace Gr4vy.Models.Components
         public string? FirstName { get; set; } = null;
 
         /// <summary>
-        /// The passenger&apos;s frequent flyer number.
+        /// The passenger's frequent flyer number.
         /// </summary>
         [JsonProperty("frequent_flyer_number")]
         public string? FrequentFlyerNumber { get; set; } = null;
@@ -53,7 +52,7 @@ namespace Gr4vy.Models.Components
         public string? LastName { get; set; } = null;
 
         /// <summary>
-        /// The passenger&apos;s unique passport number.
+        /// The passenger's unique passport number.
         /// </summary>
         [JsonProperty("passport_number")]
         public string? PassportNumber { get; set; } = null;
@@ -77,7 +76,7 @@ namespace Gr4vy.Models.Components
         public string? Title { get; set; } = null;
 
         /// <summary>
-        /// The country of residence of the passenger
+        /// The country of residence of the passenger.
         /// </summary>
         [JsonProperty("country_code")]
         public string? CountryCode { get; set; } = null;

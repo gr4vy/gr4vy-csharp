@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class CartItem
     {
-
         /// <summary>
         /// The name of the cart item. The value you set for this property may be truncated if the maximum length accepted by a payment service provider is less than 255 characters.
         /// </summary>

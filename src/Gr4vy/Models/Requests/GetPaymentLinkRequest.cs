@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class GetPaymentLinkRequest
     {
-
         /// <summary>
         /// The unique identifier for the payment link.
         /// </summary>

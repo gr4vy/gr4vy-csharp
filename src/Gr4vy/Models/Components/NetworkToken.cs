@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
-    
+
     public class NetworkToken
     {
-
         /// <summary>
         /// Always `network-token`.
         /// </summary>
@@ -35,7 +34,7 @@ namespace Gr4vy.Models.Components
         public string ExpirationDate { get; set; } = default!;
 
         /// <summary>
-        /// The ID of the payment method used to generate this token
+        /// The ID of the payment method used to generate this token.
         /// </summary>
         [JsonProperty("payment_method_id")]
         public string PaymentMethodId { get; set; } = default!;

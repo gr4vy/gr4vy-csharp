@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ThreeDSecureV2
     {
-
         [JsonProperty("version")]
         public string Version { get; set; } = default!;
 

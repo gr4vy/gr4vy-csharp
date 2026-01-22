@@ -12,18 +12,17 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class StripeOptions
     {
-
         /// <summary>
-        /// Passes the `error_on_requires_action` option to the Stripe API. Set to true to fail the payment attempt if it transitions into requires_action. Use this parameter for simpler integrations that don&apos;t handle customer actions, such as saving cards without authentication.
+        /// Passes the `error_on_requires_action` option to the Stripe API. Set to true to fail the payment attempt if it transitions into requires_action. Use this parameter for simpler integrations that don't handle customer actions, such as saving cards without authentication.
         /// </summary>
         [JsonProperty("error_on_requires_action")]
         public bool? ErrorOnRequiresAction { get; set; } = null;
 
         /// <summary>
-        /// Stripe options to support Stripe Connect
+        /// Stripe options to support Stripe Connect.
         /// </summary>
         [JsonProperty("stripe_connect")]
         public StripeConnectOptions? StripeConnect { get; set; } = null;

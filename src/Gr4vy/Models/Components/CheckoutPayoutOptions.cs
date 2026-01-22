@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class CheckoutPayoutOptions
     {
-
         /// <summary>
         /// The processing channel to be used for the payment.
         /// </summary>

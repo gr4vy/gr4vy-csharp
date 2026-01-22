@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class TrustlyOptions
     {
-
         /// <summary>
         /// Indicates to Gr4vy whether or not the stored Trustly agreement needs refreshing.
         /// </summary>

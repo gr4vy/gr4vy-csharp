@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ClickToPaySessionRequest
     {
-
         /// <summary>
         /// The checkout session ID to create a Click to Pay session for.
         /// </summary>

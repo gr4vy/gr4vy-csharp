@@ -13,12 +13,11 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class VerifyCredentials
     {
-
         /// <summary>
-        /// The ID of the payment service definition to verify the fields against
+        /// The ID of the payment service definition to verify the fields against.
         /// </summary>
         [JsonProperty("payment_service_definition_id")]
         public string PaymentServiceDefinitionId { get; set; } = default!;

@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Create a payment with a checkout session ID (and an optional URL for 3DS).
     /// </summary>
     public class CheckoutSessionWithUrlPaymentMethodCreate
     {
-
         /// <summary>
         /// Always `checkout-session`
         /// </summary>

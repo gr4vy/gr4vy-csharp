@@ -52,7 +52,6 @@ namespace Gr4vy.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(Item.ItemConverter))]
     public class Item
     {

@@ -14,13 +14,12 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// A transaction, summarised
+    /// A transaction, summarised.
     /// </summary>
     public class TransactionSummary
     {
-
         /// <summary>
         /// Always `transaction`.
         /// </summary>
@@ -34,7 +33,7 @@ namespace Gr4vy.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The base62 encoded transaction ID. This represents a shorter version of this transaction&apos;s `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service&apos;s transaction against our system. This ID is sent instead of the transaction ID because not all services support 36 digit identifiers.
+        /// The base62 encoded transaction ID. This represents a shorter version of this transaction's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's transaction against our system. This ID is sent instead of the transaction ID because not all services support 36 digit identifiers.
         /// </summary>
         [JsonProperty("reconciliation_id")]
         public string ReconciliationId { get; set; } = default!;
@@ -79,7 +78,7 @@ namespace Gr4vy.Models.Components
         public long RefundedAmount { get; set; } = default!;
 
         /// <summary>
-        /// The ISO 4217 currency code of this transaction&apos;s settlement.
+        /// The ISO 4217 currency code of this transaction's settlement.
         /// </summary>
         [JsonProperty("settled_currency")]
         public string? SettledCurrency { get; set; } = null;
@@ -160,7 +159,7 @@ namespace Gr4vy.Models.Components
         public string? RawResponseCode { get; set; } = null;
 
         /// <summary>
-        ///  This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
+        /// This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
         [JsonProperty("raw_response_description")]
         public string? RawResponseDescription { get; set; } = null;

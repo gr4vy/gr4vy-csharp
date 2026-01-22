@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class Creator
     {
-
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 

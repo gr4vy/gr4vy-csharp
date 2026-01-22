@@ -13,10 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     public class TransactionCreate
     {
-
         /// <summary>
         /// The monetary amount for this transaction, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`. If the `intent` is set to `capture`, an amount greater than zero must be supplied. All gift card amounts are subtracted from this amount before the remainder is charged to the provided `payment_method`.
         /// </summary>
@@ -30,7 +29,7 @@ namespace Gr4vy.Models.Components
         public string Currency { get; set; } = default!;
 
         /// <summary>
-        /// The 2-letter ISO code of the country where the transaction is processed. This is also used to filter the payment services that can process the transaction. If this value is provided for redirect requests and it&apos;s not `null`, it must match the one specified for `country` in `payment_method`. Otherwise, the value specified for `country` in `payment_method` will be assumed implicitly.
+        /// The 2-letter ISO code of the country where the transaction is processed. This is also used to filter the payment services that can process the transaction. If this value is provided for redirect requests and it's not `null`, it must match the one specified for `country` in `payment_method`. Otherwise, the value specified for `country` in `payment_method` will be assumed implicitly.
         /// </summary>
         [JsonProperty("country")]
         public string? Country { get; set; } = null;
@@ -75,13 +74,10 @@ namespace Gr4vy.Models.Components
         public string? Intent { get; set; }
 
         /// <summary>
-        ///  Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature. There are also a few restrictions on how the flag may be set:<br/>
-        /// 
-        /// <remarks>
+        /// Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature. There are also a few restrictions on how the flag may be set:<br/>
         /// <br/>
         /// * The flag has to be set to `true` when the `payment_source` is set to `recurring` or `installment`, and `merchant_initiated` is set to `false`.<br/>
         /// * The flag has to be set to `false` (or not set) when using a previously vaulted payment method.
-        /// </remarks>
         /// </summary>
         [JsonProperty("store")]
         public bool? Store { get; set; } = false;
@@ -106,8 +102,6 @@ namespace Gr4vy.Models.Components
 
         /// <summary>
         /// Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note there are some restrictions on how this flag may be used.<br/>
-        /// 
-        /// <remarks>
         /// <br/>
         /// The flag can only be `false` (or not set) when the transaction meets one of the following criteria:<br/>
         /// <br/>
@@ -118,7 +112,6 @@ namespace Gr4vy.Models.Components
         /// * It is not `merchant_initiated`.<br/>
         /// * `payment_source` is set to `recurring` or `installment` and `merchant_initiated` is set to `true`.<br/>
         /// * `payment_source` is set to `card_on_file`.
-        /// </remarks>
         /// </summary>
         [JsonProperty("is_subsequent_payment")]
         public bool? IsSubsequentPayment { get; set; } = false;
@@ -154,7 +147,7 @@ namespace Gr4vy.Models.Components
         public StatementDescriptor? StatementDescriptor { get; set; } = null;
 
         /// <summary>
-        /// A scheme&apos;s transaction identifier to use in connecting a merchant initiated transaction to a previous customer initiated transaction. If not provided, and a qualifying customer initiated transaction has been previously made with the stored payment method, then Gr4vy will populate this value with the identifier returned for that transaction. This field is also know as the Visa Transaction Identifier, or Mastercard Trace ID.
+        /// A scheme's transaction identifier to use in connecting a merchant initiated transaction to a previous customer initiated transaction. If not provided, and a qualifying customer initiated transaction has been previously made with the stored payment method, then Gr4vy will populate this value with the identifier returned for that transaction. This field is also know as the Visa Transaction Identifier, or Mastercard Trace ID.
         /// </summary>
         [JsonProperty("previous_scheme_transaction_id")]
         public string? PreviousSchemeTransactionId { get; set; } = null;
@@ -179,14 +172,11 @@ namespace Gr4vy.Models.Components
 
         /// <summary>
         /// Whether to capture the transaction asynchronously.<br/>
-        /// 
-        /// <remarks>
         /// <br/>
         /// - When `async_capture` is `false` (default), the transaction is captured in the same request.<br/>
         /// - When `async_capture` is `true`, the transaction is automatically captured at a later time.<br/>
         /// <br/>
         /// Redirect transactions are not affected by this flag. This flag can only be set to `true` when `intent` is set to `capture`.
-        /// </remarks>
         /// </summary>
         [JsonProperty("async_capture")]
         public bool? AsyncCapture { get; set; } = false;
@@ -204,7 +194,7 @@ namespace Gr4vy.Models.Components
         public string? PaymentServiceId { get; set; } = null;
 
         /// <summary>
-        /// Marks the transaction as an AFT. Requires the payment service to support this feature, and might `recipient` and `buyer` data
+        /// Marks the transaction as an AFT. Requires the payment service to support this feature, and might `recipient` and `buyer` data.
         /// </summary>
         [JsonProperty("account_funding_transaction")]
         public bool? AccountFundingTransaction { get; set; } = false;
@@ -258,7 +248,7 @@ namespace Gr4vy.Models.Components
         public bool? AmountIncludesTax { get; set; } = null;
 
         /// <summary>
-        /// The merchant&apos;s unique identifier for the sales order or invoice.
+        /// The merchant's unique identifier for the sales order or invoice.
         /// </summary>
         [JsonProperty("supplier_order_number")]
         public string? SupplierOrderNumber { get; set; } = null;

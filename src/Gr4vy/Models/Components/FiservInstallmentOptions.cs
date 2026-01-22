@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class FiservInstallmentOptions
     {
-
         /// <summary>
         /// Passes the `order.installmentOptions.numberOfInstallments` field to the Fiserv API.
         /// </summary>

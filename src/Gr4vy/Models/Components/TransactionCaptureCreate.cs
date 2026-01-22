@@ -12,13 +12,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// Request body for capturing an authorized transaction.
     /// </summary>
     public class TransactionCaptureCreate
     {
-
         /// <summary>
         /// The amount to capture, in the smallest currency unit (e.g., cents). This must be less than or equal to the authorized amount, unless over-capture is available.
         /// </summary>

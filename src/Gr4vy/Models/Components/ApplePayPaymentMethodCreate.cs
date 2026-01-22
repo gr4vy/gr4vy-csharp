@@ -12,13 +12,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// Create an Apple Pay transaction with a device or merchant token.
     /// </summary>
     public class ApplePayPaymentMethodCreate
     {
-
         /// <summary>
         /// The external identifier of the buyer to create a payment for.
         /// </summary>

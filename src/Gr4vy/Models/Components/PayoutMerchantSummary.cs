@@ -12,18 +12,14 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// PayoutMerchantSummary<br/>
-    /// 
-    /// <remarks>
     /// <br/>
     /// Represents a summary of a merchant.
-    /// </remarks>
     /// </summary>
     public class PayoutMerchantSummary
     {
-
         /// <summary>
         /// Always `merchant`.
         /// </summary>

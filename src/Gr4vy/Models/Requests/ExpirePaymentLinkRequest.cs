@@ -10,10 +10,9 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    
+
     public class ExpirePaymentLinkRequest
     {
-
         /// <summary>
         /// The unique identifier for the payment link.
         /// </summary>

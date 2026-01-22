@@ -52,7 +52,6 @@ namespace Gr4vy.Models.Components
         }
     }
 
-
     [JsonConverter(typeof(RequiredFields2.RequiredFields2Converter))]
     public class RequiredFields2
     {

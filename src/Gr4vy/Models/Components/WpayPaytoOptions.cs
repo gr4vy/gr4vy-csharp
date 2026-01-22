@@ -12,10 +12,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class WpayPaytoOptions
     {
-
         /// <summary>
         /// Options to pass to the `instrument` resource in the Wpay PayTo API.
         /// </summary>

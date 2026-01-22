@@ -13,13 +13,12 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
-    
+
     /// <summary>
-    /// Request body for updating a Payment Service
+    /// Request body for updating a Payment Service.
     /// </summary>
     public class PaymentServiceUpdate
     {
-
         /// <summary>
         /// The display name for the payment service.
         /// </summary>
@@ -39,7 +38,7 @@ namespace Gr4vy.Models.Components
         public List<VoidableField>? ReportingFields { get; set; } = null;
 
         /// <summary>
-        /// Deprecated field used to define the order in which to process payment services
+        /// Deprecated field used to define the order in which to process payment services.
         /// </summary>
         [JsonProperty("position")]
         public long? Position { get; set; } = null;

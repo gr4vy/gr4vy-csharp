@@ -14,13 +14,12 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
     using System.Collections.Generic;
-    
+
     /// <summary>
     /// A full transaction resource.
     /// </summary>
     public class Transaction
     {
-
         /// <summary>
         /// Always `transaction`.
         /// </summary>
@@ -34,7 +33,7 @@ namespace Gr4vy.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
-        /// The base62 encoded transaction ID. This represents a shorter version of this transaction&apos;s `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service&apos;s transaction against our system. This ID is sent instead of the transaction ID because not all services support 36 digit identifiers.
+        /// The base62 encoded transaction ID. This represents a shorter version of this transaction's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's transaction against our system. This ID is sent instead of the transaction ID because not all services support 36 digit identifiers.
         /// </summary>
         [JsonProperty("reconciliation_id")]
         public string ReconciliationId { get; set; } = default!;
@@ -79,7 +78,7 @@ namespace Gr4vy.Models.Components
         public long RefundedAmount { get; set; } = default!;
 
         /// <summary>
-        /// The ISO 4217 currency code of this transaction&apos;s settlement.
+        /// The ISO 4217 currency code of this transaction's settlement.
         /// </summary>
         [JsonProperty("settled_currency")]
         public string? SettledCurrency { get; set; } = null;
@@ -160,7 +159,7 @@ namespace Gr4vy.Models.Components
         public string? RawResponseCode { get; set; } = null;
 
         /// <summary>
-        ///  This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
+        /// This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
         [JsonProperty("raw_response_description")]
         public string? RawResponseDescription { get; set; } = null;
@@ -262,7 +261,7 @@ namespace Gr4vy.Models.Components
         public List<CartItem>? CartItems { get; set; } = null;
 
         /// <summary>
-        /// The statement descriptor is the text to be shown on the buyer&apos;s statements.
+        /// The statement descriptor is the text to be shown on the buyer's statements.
         /// </summary>
         [JsonProperty("statement_descriptor")]
         public StatementDescriptor? StatementDescriptor { get; set; } = null;
@@ -280,7 +279,7 @@ namespace Gr4vy.Models.Components
         public TransactionThreeDSecureSummary? ThreeDSecure { get; set; } = null;
 
         /// <summary>
-        /// The payment service&apos;s unique ID for the transaction.
+        /// The payment service's unique ID for the transaction.
         /// </summary>
         [JsonProperty("payment_service_transaction_id")]
         public string? PaymentServiceTransactionId { get; set; } = null;
@@ -322,13 +321,13 @@ namespace Gr4vy.Models.Components
         public DateTime? CanceledAt { get; set; } = null;
 
         /// <summary>
-        /// The date this transaction&apos;s approval URL will expire at.
+        /// The date this transaction's approval URL will expire at.
         /// </summary>
         [JsonProperty("approval_expires_at")]
         public DateTime? ApprovalExpiresAt { get; set; } = null;
 
         /// <summary>
-        /// The date this transaction&apos;s approval timed out at.
+        /// The date this transaction's approval timed out at.
         /// </summary>
         [JsonProperty("buyer_approval_timedout_at")]
         public DateTime? BuyerApprovalTimedoutAt { get; set; } = null;
@@ -343,7 +342,7 @@ namespace Gr4vy.Models.Components
         public bool MultiTender { get; set; } = default!;
 
         /// <summary>
-        /// Marks the transaction as an AFT. Requires the payment service to support this feature, and might `recipient` and `buyer` data
+        /// Marks the transaction as an AFT. Requires the payment service to support this feature, and might `recipient` and `buyer` data.
         /// </summary>
         [JsonProperty("account_funding_transaction")]
         public bool AccountFundingTransaction { get; set; } = default!;
@@ -403,7 +402,7 @@ namespace Gr4vy.Models.Components
         public bool? AmountIncludesTax { get; set; } = null;
 
         /// <summary>
-        /// The merchant&apos;s unique identifier for the sales order or invoice.
+        /// The merchant's unique identifier for the sales order or invoice.
         /// </summary>
         [JsonProperty("supplier_order_number")]
         public string? SupplierOrderNumber { get; set; } = null;

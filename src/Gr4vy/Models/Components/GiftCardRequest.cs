@@ -11,13 +11,12 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     /// <summary>
     /// The number and pin for a gift card to fetch a balance for.
     /// </summary>
     public class GiftCardRequest
     {
-
         /// <summary>
         /// The 16-19 digit number for the gift card.
         /// </summary>

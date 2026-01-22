@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ThreeDSecureScenarioOutcomeAuthentication
     {
-
         /// <summary>
         /// 3DS transaction status.
         /// </summary>

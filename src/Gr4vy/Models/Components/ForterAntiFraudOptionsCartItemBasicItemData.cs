@@ -11,10 +11,9 @@ namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    
+
     public class ForterAntiFraudOptionsCartItemBasicItemData
     {
-
         /// <summary>
         /// Indicates whether the item is a physical good or a service/digital item.
         /// </summary>
