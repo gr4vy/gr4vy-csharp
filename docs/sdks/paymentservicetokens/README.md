@@ -82,7 +82,7 @@ var res = await sdk.PaymentMethods.PaymentServiceTokens.CreateAsync(
     paymentMethodId: "ef9496d8-53a5-4aad-8ca2-00eb68334389",
     paymentServiceTokenCreate: new PaymentServiceTokenCreate() {
         PaymentServiceId = "fffd152a-9532-4087-9a4f-de58754210f0",
-        RedirectUrl = "https://dual-futon.biz",
+        RedirectUrl = "https://example.com/callback",
     }
 );
 
