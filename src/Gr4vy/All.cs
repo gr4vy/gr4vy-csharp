@@ -32,6 +32,7 @@ namespace Gr4vy
         /// </remarks>
         /// <param name="transactionId">The ID of the transaction.</param>
         /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="idempotencyKey">A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.</param>
         /// <param name="transactionRefundAllCreate">A <see cref="TransactionRefundAllCreate"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="Models.Components.Refunds"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="transactionId"/> is null.</exception>
@@ -53,6 +54,7 @@ namespace Gr4vy
         public  Task<Models.Components.Refunds> CreateAsync(
             string transactionId,
             string? merchantAccountId = null,
+            string? idempotencyKey = null,
             TransactionRefundAllCreate? transactionRefundAllCreate = null
         );
     }
@@ -78,6 +80,7 @@ namespace Gr4vy
         /// </remarks>
         /// <param name="transactionId">The ID of the transaction.</param>
         /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="idempotencyKey">A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.</param>
         /// <param name="transactionRefundAllCreate">A <see cref="TransactionRefundAllCreate"/> parameter.</param>
         /// <returns>An awaitable task that returns a <see cref="Models.Components.Refunds"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="transactionId"/> is null.</exception>
@@ -99,6 +102,7 @@ namespace Gr4vy
         public async  Task<Models.Components.Refunds> CreateAsync(
             string transactionId,
             string? merchantAccountId = null,
+            string? idempotencyKey = null,
             TransactionRefundAllCreate? transactionRefundAllCreate = null
         )
         {
@@ -108,6 +112,7 @@ namespace Gr4vy
             {
                 TransactionId = transactionId,
                 MerchantAccountId = merchantAccountId,
+                IdempotencyKey = idempotencyKey,
                 TransactionRefundAllCreate = transactionRefundAllCreate,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;

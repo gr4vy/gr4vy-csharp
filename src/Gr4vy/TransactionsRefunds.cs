@@ -66,6 +66,7 @@ namespace Gr4vy
         /// <param name="transactionId">The ID of the transaction.</param>
         /// <param name="transactionRefundCreate">A <see cref="TransactionRefundCreate"/> parameter.</param>
         /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="idempotencyKey">A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.</param>
         /// <returns>An awaitable task that returns a <see cref="Refund"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">One of <paramref name="transactionId"/> or <paramref name="transactionRefundCreate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -86,7 +87,8 @@ namespace Gr4vy
         public  Task<Refund> CreateAsync(
             string transactionId,
             TransactionRefundCreate transactionRefundCreate,
-            string? merchantAccountId = null
+            string? merchantAccountId = null,
+            string? idempotencyKey = null
         );
 
         /// <summary>
@@ -548,6 +550,7 @@ namespace Gr4vy
         /// <param name="transactionId">The ID of the transaction.</param>
         /// <param name="transactionRefundCreate">A <see cref="TransactionRefundCreate"/> parameter.</param>
         /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="idempotencyKey">A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.</param>
         /// <returns>An awaitable task that returns a <see cref="Refund"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">One of <paramref name="transactionId"/> or <paramref name="transactionRefundCreate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -568,7 +571,8 @@ namespace Gr4vy
         public async  Task<Refund> CreateAsync(
             string transactionId,
             TransactionRefundCreate transactionRefundCreate,
-            string? merchantAccountId = null
+            string? merchantAccountId = null,
+            string? idempotencyKey = null
         )
         {
             if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
@@ -579,6 +583,7 @@ namespace Gr4vy
                 TransactionId = transactionId,
                 TransactionRefundCreate = transactionRefundCreate,
                 MerchantAccountId = merchantAccountId,
+                IdempotencyKey = idempotencyKey,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
