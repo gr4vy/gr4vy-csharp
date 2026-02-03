@@ -31,5 +31,11 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-gr4vy-merchant-account-id")]
         public string? MerchantAccountId { get; set; }
+
+        /// <summary>
+        /// A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.
+        /// </summary>
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=idempotency-key")]
+        public string? IdempotencyKey { get; set; } = null;
     }
 }
