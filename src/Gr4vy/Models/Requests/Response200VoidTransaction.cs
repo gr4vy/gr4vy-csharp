@@ -18,23 +18,23 @@ namespace Gr4vy.Models.Requests
     using System.Numerics;
     using System.Reflection;
 
-    public class ResponseVoidTransactionType
+    public class Response200VoidTransactionType
     {
-        private ResponseVoidTransactionType(string value) { Value = value; }
+        private Response200VoidTransactionType(string value) { Value = value; }
 
         public string Value { get; private set; }
 
-        public static ResponseVoidTransactionType Transaction { get { return new ResponseVoidTransactionType("Transaction"); } }
+        public static Response200VoidTransactionType Transaction { get { return new Response200VoidTransactionType("Transaction"); } }
 
-        public static ResponseVoidTransactionType TransactionVoid { get { return new ResponseVoidTransactionType("TransactionVoid"); } }
+        public static Response200VoidTransactionType TransactionVoid { get { return new Response200VoidTransactionType("TransactionVoid"); } }
 
         public override string ToString() { return Value; }
-        public static implicit operator String(ResponseVoidTransactionType v) { return v.Value; }
-        public static ResponseVoidTransactionType FromString(string v) {
+        public static implicit operator String(Response200VoidTransactionType v) { return v.Value; }
+        public static Response200VoidTransactionType FromString(string v) {
             switch(v) {
                 case "Transaction": return Transaction;
                 case "TransactionVoid": return TransactionVoid;
-                default: throw new ArgumentException("Invalid value for ResponseVoidTransactionType");
+                default: throw new ArgumentException("Invalid value for Response200VoidTransactionType");
             }
         }
         public override bool Equals(object? obj)
@@ -43,7 +43,7 @@ namespace Gr4vy.Models.Requests
             {
                 return false;
             }
-            return Value.Equals(((ResponseVoidTransactionType)obj).Value);
+            return Value.Equals(((Response200VoidTransactionType)obj).Value);
         }
 
         public override int GetHashCode()
@@ -55,10 +55,10 @@ namespace Gr4vy.Models.Requests
     /// <summary>
     /// Successful Response.
     /// </summary>
-    [JsonConverter(typeof(ResponseVoidTransaction.ResponseVoidTransactionConverter))]
-    public class ResponseVoidTransaction
+    [JsonConverter(typeof(Response200VoidTransaction.Response200VoidTransactionConverter))]
+    public class Response200VoidTransaction
     {
-        public ResponseVoidTransaction(ResponseVoidTransactionType type)
+        public Response200VoidTransaction(Response200VoidTransactionType type)
         {
             Type = type;
         }
@@ -69,27 +69,27 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("form:explode=true")]
         public TransactionVoid? TransactionVoid { get; set; }
 
-        public ResponseVoidTransactionType Type { get; set; }
-        public static ResponseVoidTransaction CreateTransaction(Transaction transaction)
+        public Response200VoidTransactionType Type { get; set; }
+        public static Response200VoidTransaction CreateTransaction(Transaction transaction)
         {
-            ResponseVoidTransactionType typ = ResponseVoidTransactionType.Transaction;
+            Response200VoidTransactionType typ = Response200VoidTransactionType.Transaction;
 
-            ResponseVoidTransaction res = new ResponseVoidTransaction(typ);
+            Response200VoidTransaction res = new Response200VoidTransaction(typ);
             res.Transaction = transaction;
             return res;
         }
-        public static ResponseVoidTransaction CreateTransactionVoid(TransactionVoid transactionVoid)
+        public static Response200VoidTransaction CreateTransactionVoid(TransactionVoid transactionVoid)
         {
-            ResponseVoidTransactionType typ = ResponseVoidTransactionType.TransactionVoid;
+            Response200VoidTransactionType typ = Response200VoidTransactionType.TransactionVoid;
 
-            ResponseVoidTransaction res = new ResponseVoidTransaction(typ);
+            Response200VoidTransaction res = new Response200VoidTransaction(typ);
             res.TransactionVoid = transactionVoid;
             return res;
         }
 
-        public class ResponseVoidTransactionConverter : JsonConverter
+        public class Response200VoidTransactionConverter : JsonConverter
         {
-            public override bool CanConvert(System.Type objectType) => objectType == typeof(ResponseVoidTransaction);
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(Response200VoidTransaction);
 
             public override bool CanRead => true;
 
@@ -105,14 +105,14 @@ namespace Gr4vy.Models.Requests
 
                 try
                 {
-                    return new ResponseVoidTransaction(ResponseVoidTransactionType.TransactionVoid)
+                    return new Response200VoidTransaction(Response200VoidTransactionType.TransactionVoid)
                     {
                         TransactionVoid = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<TransactionVoid>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(TransactionVoid), new ResponseVoidTransaction(ResponseVoidTransactionType.TransactionVoid), "TransactionVoid"));
+                    fallbackCandidates.Add((typeof(TransactionVoid), new Response200VoidTransaction(Response200VoidTransactionType.TransactionVoid), "TransactionVoid"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -125,14 +125,14 @@ namespace Gr4vy.Models.Requests
 
                 try
                 {
-                    return new ResponseVoidTransaction(ResponseVoidTransactionType.Transaction)
+                    return new Response200VoidTransaction(Response200VoidTransactionType.Transaction)
                     {
                         Transaction = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Transaction>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Transaction), new ResponseVoidTransaction(ResponseVoidTransactionType.Transaction), "Transaction"));
+                    fallbackCandidates.Add((typeof(Transaction), new Response200VoidTransaction(Response200VoidTransactionType.Transaction), "Transaction"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -173,7 +173,7 @@ namespace Gr4vy.Models.Requests
                     throw new InvalidOperationException("Unexpected null JSON value.");
                 }
 
-                ResponseVoidTransaction res = (ResponseVoidTransaction)value;
+                Response200VoidTransaction res = (Response200VoidTransaction)value;
 
                 if (res.Transaction != null)
                 {

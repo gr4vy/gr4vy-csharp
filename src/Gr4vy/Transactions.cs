@@ -207,6 +207,7 @@ namespace Gr4vy
         /// <param name="transactionId">The ID of the transaction.</param>
         /// <param name="prefer">The preferred resource type in the response.</param>
         /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="idempotencyKey">A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.</param>
         /// <returns>Successful Response.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="transactionId"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -224,10 +225,11 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<ResponseVoidTransaction> VoidAsync(
+        public  Task<Response200VoidTransaction> VoidAsync(
             string transactionId,
             List<string>? prefer = null,
-            string? merchantAccountId = null
+            string? merchantAccountId = null,
+            string? idempotencyKey = null
         );
 
         /// <summary>
@@ -2314,6 +2316,7 @@ namespace Gr4vy
         /// <param name="transactionId">The ID of the transaction.</param>
         /// <param name="prefer">The preferred resource type in the response.</param>
         /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="idempotencyKey">A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.</param>
         /// <returns>Successful Response.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="transactionId"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -2331,10 +2334,11 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<ResponseVoidTransaction> VoidAsync(
+        public async  Task<Response200VoidTransaction> VoidAsync(
             string transactionId,
             List<string>? prefer = null,
-            string? merchantAccountId = null
+            string? merchantAccountId = null,
+            string? idempotencyKey = null
         )
         {
             if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
@@ -2344,6 +2348,7 @@ namespace Gr4vy
                 TransactionId = transactionId,
                 Prefer = prefer,
                 MerchantAccountId = merchantAccountId,
+                IdempotencyKey = idempotencyKey,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
@@ -2400,14 +2405,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ResponseVoidTransaction obj;
+                    Response200VoidTransaction obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<ResponseVoidTransaction>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Response200VoidTransaction>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into ResponseVoidTransaction.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into Response200VoidTransaction.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
