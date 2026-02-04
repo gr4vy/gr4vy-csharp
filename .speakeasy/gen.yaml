@@ -21,13 +21,14 @@ generation:
   schemas:
     allOfMergeStrategy: shallowMerge
   requestBodyFieldName: ""
+  versioningStrategy: automatic
   persistentEdits: {}
   tests:
     generateTests: true
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 2.7.19
+  version: 2.7.20
   additionalDependencies:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.9.0

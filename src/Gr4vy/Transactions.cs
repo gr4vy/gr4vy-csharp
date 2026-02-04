@@ -170,12 +170,9 @@ namespace Gr4vy
         /// <remarks>
         /// Captures a previously authorized transaction. You can capture the full or a partial amount, as long as it does not exceed the authorized amount (unless over-capture is enabled).
         /// </remarks>
-        /// <param name="transactionId">The ID of the transaction.</param>
-        /// <param name="transactionCaptureCreate">A <see cref="TransactionCaptureCreate"/> parameter.</param>
-        /// <param name="prefer">The preferred resource type in the response.</param>
-        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="request">A <see cref="CaptureTransactionRequest"/> parameter.</param>
         /// <returns>Successful Response.</returns>
-        /// <exception cref="ArgumentNullException">One of <paramref name="transactionId"/> or <paramref name="transactionCaptureCreate"/> is null.</exception>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -191,12 +188,7 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<ResponseCaptureTransaction> CaptureAsync(
-            string transactionId,
-            TransactionCaptureCreate transactionCaptureCreate,
-            List<string>? prefer = null,
-            string? merchantAccountId = null
-        );
+        public  Task<Response200CaptureTransaction> CaptureAsync(CaptureTransactionRequest request);
 
         /// <summary>
         /// Void transaction.
@@ -1940,12 +1932,9 @@ namespace Gr4vy
         /// <remarks>
         /// Captures a previously authorized transaction. You can capture the full or a partial amount, as long as it does not exceed the authorized amount (unless over-capture is enabled).
         /// </remarks>
-        /// <param name="transactionId">The ID of the transaction.</param>
-        /// <param name="transactionCaptureCreate">A <see cref="TransactionCaptureCreate"/> parameter.</param>
-        /// <param name="prefer">The preferred resource type in the response.</param>
-        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="request">A <see cref="CaptureTransactionRequest"/> parameter.</param>
         /// <returns>Successful Response.</returns>
-        /// <exception cref="ArgumentNullException">One of <paramref name="transactionId"/> or <paramref name="transactionCaptureCreate"/> is null.</exception>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -1961,23 +1950,9 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<ResponseCaptureTransaction> CaptureAsync(
-            string transactionId,
-            TransactionCaptureCreate transactionCaptureCreate,
-            List<string>? prefer = null,
-            string? merchantAccountId = null
-        )
+        public async  Task<Response200CaptureTransaction> CaptureAsync(CaptureTransactionRequest request)
         {
-            if (transactionId == null) throw new ArgumentNullException(nameof(transactionId));
-            if (transactionCaptureCreate == null) throw new ArgumentNullException(nameof(transactionCaptureCreate));
-
-            var request = new CaptureTransactionRequest()
-            {
-                TransactionId = transactionId,
-                TransactionCaptureCreate = transactionCaptureCreate,
-                Prefer = prefer,
-                MerchantAccountId = merchantAccountId,
-            };
+            if (request == null) throw new ArgumentNullException(nameof(request));
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -2039,14 +2014,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ResponseCaptureTransaction obj;
+                    Response200CaptureTransaction obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<ResponseCaptureTransaction>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<Response200CaptureTransaction>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into ResponseCaptureTransaction.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into Response200CaptureTransaction.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;

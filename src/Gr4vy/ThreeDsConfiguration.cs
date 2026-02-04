@@ -16,28 +16,24 @@ namespace Gr4vy
     using Gr4vy.Utils;
     using Gr4vy.Utils.Retries;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
     using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Net.Http;
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    public interface IMerchantAccounts
+    public interface IThreeDsConfiguration
     {
-        public IThreeDsConfiguration ThreeDsConfiguration { get; }
         /// <summary>
-        /// List all merchant accounts.
+        /// Create 3DS configuration for merchant.
         /// </summary>
         /// <remarks>
-        /// List all merchant accounts in an instance.
+        /// Create a new 3DS configuration for a merchant account.
         /// </remarks>
-        /// <param name="cursor">A pointer to the page of results to return.</param>
-        /// <param name="limit">The maximum number of items that are at returned.</param>
-        /// <param name="search">The search term to filter merchant accounts by.</param>
-        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="ListMerchantAccountsResponse"/> object when completed.</returns>
+        /// <param name="merchantAccountId">The ID of the merchant account.</param>
+        /// <param name="merchantAccountThreeDSConfigurationCreate">A <see cref="MerchantAccountThreeDSConfigurationCreate"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="MerchantAccountThreeDSConfiguration"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="merchantAccountThreeDSConfigurationCreate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -53,48 +49,21 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<ListMerchantAccountsResponse> ListAsync(
-            string? cursor = null,
-            long? limit = 20,
-            string? search = null,
-            RetryConfig? retryConfig = null
+        public  Task<MerchantAccountThreeDSConfiguration> CreateAsync(
+            string merchantAccountId,
+            MerchantAccountThreeDSConfigurationCreate merchantAccountThreeDSConfigurationCreate
         );
 
         /// <summary>
-        /// Create a merchant account.
+        /// List 3DS configurations for merchant.
         /// </summary>
         /// <remarks>
-        /// Create a new merchant account in an instance.
-        /// </remarks>
-        /// <param name="request">A <see cref="MerchantAccountCreate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
-        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
-        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
-        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
-        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
-        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
-        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
-        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<MerchantAccount> CreateAsync(MerchantAccountCreate request);
-
-        /// <summary>
-        /// Get a merchant account.
-        /// </summary>
-        /// <remarks>
-        /// Get info about a merchant account in an instance.
+        /// List all 3DS configurations for a merchant account.
         /// </remarks>
         /// <param name="merchantAccountId">The ID of the merchant account.</param>
+        /// <param name="currency">ISO 4217 currency code (3 characters) to filter 3DS configurations.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="MerchantAccountThreeDSConfigurations"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="merchantAccountId"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -111,18 +80,23 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<MerchantAccount> GetAsync(string merchantAccountId, RetryConfig? retryConfig = null);
+        public  Task<MerchantAccountThreeDSConfigurations> ListAsync(
+            string merchantAccountId,
+            string? currency = null,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
-        /// Update a merchant account.
+        /// Edit 3DS configuration.
         /// </summary>
         /// <remarks>
-        /// Update info for a merchant account in an instance.
+        /// Update the 3DS configuration for a merchant account.
         /// </remarks>
         /// <param name="merchantAccountId">The ID of the merchant account.</param>
-        /// <param name="merchantAccountUpdate">A <see cref="MerchantAccountUpdate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
-        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="merchantAccountUpdate"/> is null.</exception>
+        /// <param name="threeDsConfigurationId">The ID of the 3DS configuration for a merchant account.</param>
+        /// <param name="merchantAccountThreeDSConfigurationUpdate">A <see cref="MerchantAccountThreeDSConfigurationUpdate"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="MerchantAccountThreeDSConfiguration"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/>, <paramref name="threeDsConfigurationId"/> or <paramref name="merchantAccountThreeDSConfigurationUpdate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -138,10 +112,41 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate);
+        public  Task<MerchantAccountThreeDSConfiguration> UpdateAsync(
+            string merchantAccountId,
+            string threeDsConfigurationId,
+            MerchantAccountThreeDSConfigurationUpdate merchantAccountThreeDSConfigurationUpdate
+        );
+
+        /// <summary>
+        /// Delete 3DS configuration for a merchant.
+        /// </summary>
+        /// <remarks>
+        /// Delete a 3DS configuration for a merchant account.
+        /// </remarks>
+        /// <param name="merchantAccountId">The ID of the merchant account.</param>
+        /// <param name="threeDsConfigurationId">The ID of the 3DS configuration for a merchant account.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="threeDsConfigurationId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task DeleteAsync(string merchantAccountId, string threeDsConfigurationId);
     }
 
-    public class MerchantAccounts: IMerchantAccounts
+    public class ThreeDsConfiguration: IThreeDsConfiguration
     {
         /// <summary>
         /// SDK Configuration.
@@ -149,29 +154,21 @@ namespace Gr4vy
         /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        /// <summary>
-        /// ThreeDsConfiguration SubSDK.
-        /// <see cref="IThreeDsConfiguration"/>
-        /// </summary>
-        public IThreeDsConfiguration ThreeDsConfiguration { get; private set; }
-
-        public MerchantAccounts(SDKConfig config)
+        public ThreeDsConfiguration(SDKConfig config)
         {
             SDKConfiguration = config;
-            ThreeDsConfiguration = new ThreeDsConfiguration(SDKConfiguration);
         }
 
         /// <summary>
-        /// List all merchant accounts.
+        /// Create 3DS configuration for merchant.
         /// </summary>
         /// <remarks>
-        /// List all merchant accounts in an instance.
+        /// Create a new 3DS configuration for a merchant account.
         /// </remarks>
-        /// <param name="cursor">A pointer to the page of results to return.</param>
-        /// <param name="limit">The maximum number of items that are at returned.</param>
-        /// <param name="search">The search term to filter merchant accounts by.</param>
-        /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="ListMerchantAccountsResponse"/> object when completed.</returns>
+        /// <param name="merchantAccountId">The ID of the merchant account.</param>
+        /// <param name="merchantAccountThreeDSConfigurationCreate">A <see cref="MerchantAccountThreeDSConfigurationCreate"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="MerchantAccountThreeDSConfiguration"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="merchantAccountThreeDSConfigurationCreate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -187,437 +184,28 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<ListMerchantAccountsResponse> ListAsync(
-            string? cursor = null,
-            long? limit = 20,
-            string? search = null,
-            RetryConfig? retryConfig = null
+        public async  Task<MerchantAccountThreeDSConfiguration> CreateAsync(
+            string merchantAccountId,
+            MerchantAccountThreeDSConfigurationCreate merchantAccountThreeDSConfigurationCreate
         )
         {
-            var request = new ListMerchantAccountsRequest()
+            if (merchantAccountId == null) throw new ArgumentNullException(nameof(merchantAccountId));
+            if (merchantAccountThreeDSConfigurationCreate == null) throw new ArgumentNullException(nameof(merchantAccountThreeDSConfigurationCreate));
+
+            var request = new CreateThreeDsConfigurationRequest()
             {
-                Cursor = cursor,
-                Limit = limit,
-                Search = search,
+                MerchantAccountId = merchantAccountId,
+                MerchantAccountThreeDSConfigurationCreate = merchantAccountThreeDSConfigurationCreate,
             };
+            request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts", request, null);
-
-            var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
-            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
-
-            if (SDKConfiguration.SecuritySource != null)
-            {
-                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
-            }
-
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_merchant_accounts", null, SDKConfiguration.SecuritySource);
-
-            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
-            if (retryConfig == null)
-            {
-                if (this.SDKConfiguration.RetryConfig != null)
-                {
-                    retryConfig = this.SDKConfiguration.RetryConfig;
-                }
-                else
-                {
-                    var backoff = new BackoffStrategy(
-                        initialIntervalMs: 200L,
-                        maxIntervalMs: 200L,
-                        maxElapsedTimeMs: 1000L,
-                        exponent: 1
-                    );
-                    retryConfig = new RetryConfig(
-                        strategy: RetryConfig.RetryStrategy.BACKOFF,
-                        backoff: backoff,
-                        retryConnectionErrors: true
-                    );
-                }
-            }
-
-            List<string> statusCodes = new List<string>
-            {
-                "5XX",
-            };
-
-            Func<Task<HttpResponseMessage>> retrySend = async () =>
-            {
-                var _httpRequest = await SDKConfiguration.Client.CloneAsync(httpRequest);
-                return await SDKConfiguration.Client.SendAsync(_httpRequest);
-            };
-            var retries = new Gr4vy.Utils.Retries.Retries(retrySend, retryConfig, statusCodes);
-
-            HttpResponseMessage httpResponse;
-            try
-            {
-                httpResponse = await retries.Run();
-                int _statusCode = (int)httpResponse.StatusCode;
-
-                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
-                {
-                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
-                    if (_httpResponse != null)
-                    {
-                        httpResponse = _httpResponse;
-                    }
-                }
-            }
-            catch (Exception error)
-            {
-                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
-                if (_httpResponse != null)
-                {
-                    httpResponse = _httpResponse;
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
-
-            Func<Task<ListMerchantAccountsResponse?>> nextFunc = async delegate()
-            {
-                var body = JObject.Parse(await httpResponse.Content.ReadAsStringAsync());
-                var nextCursorToken = body.SelectToken("$.next_cursor");
-
-                if(nextCursorToken == null)
-                {
-                    return null;
-                }
-                var nextCursor = nextCursorToken.Value<string>();
-                if (string.IsNullOrWhiteSpace(nextCursor))
-                {
-                    return null;
-                }
-
-                return await ListAsync (
-                    cursor: nextCursor,
-                    limit: limit,
-                    search: search,
-                    retryConfig: retryConfig
-                );
-            };
-
-            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
-            int responseStatusCode = (int)httpResponse.StatusCode;
-            if(responseStatusCode == 200)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Models.Components.MerchantAccounts obj;
-                    try
-                    {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.MerchantAccounts>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.MerchantAccounts.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    var result = obj!;
-                    var response = new ListMerchantAccountsResponse()
-                    {
-                        Result = result,
-                        Next = nextFunc
-                    };
-                    return response;
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 400)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error400Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error400Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error400Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error400(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 401)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error401Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error401Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error401Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error401(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 403)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error403Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error403Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error403Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error403(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 404)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error404Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error404Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error404Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error404(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 405)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error405Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error405Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error405Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error405(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 409)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error409Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error409Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error409Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error409(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 422)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    HTTPValidationErrorPayload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<HTTPValidationErrorPayload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into HTTPValidationErrorPayload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new HTTPValidationError(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 425)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error425Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error425Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error425Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error425(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 429)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error429Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error429Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error429Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error429(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 500)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error500Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error500Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error500Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error500(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 502)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error502Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error502Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error502Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error502(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode == 504)
-            {
-                if(Utilities.IsContentTypeMatch("application/json", contentType))
-                {
-                    var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Error504Payload payload;
-                    try
-                    {
-                        payload = ResponseBodyDeserializer.DeserializeNotNull<Error504Payload>(httpResponseBody, NullValueHandling.Include);
-                    }
-                    catch (Exception ex)
-                    {
-                        throw new ResponseValidationException("Failed to deserialize response body into Error504Payload.", httpResponse, httpResponseBody, ex);
-                    }
-
-                    throw new Error504(payload, httpResponse, httpResponseBody);
-                }
-
-                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 400 && responseStatusCode < 500)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-            else if(responseStatusCode >= 500 && responseStatusCode < 600)
-            {
-                throw new Models.Errors.APIException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-            }
-
-            throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
-        }
-
-
-        /// <summary>
-        /// Create a merchant account.
-        /// </summary>
-        /// <remarks>
-        /// Create a new merchant account in an instance.
-        /// </remarks>
-        /// <param name="request">A <see cref="MerchantAccountCreate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
-        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
-        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
-        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
-        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
-        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
-        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
-        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
-        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
-        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
-        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
-        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
-        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
-        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
-        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
-        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<MerchantAccount> CreateAsync(MerchantAccountCreate request)
-        {
-            if (request == null) throw new ArgumentNullException(nameof(request));
-
-            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = baseUrl + "/merchant-accounts";
+            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts/{merchant_account_id}/three-ds-configurations", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "MerchantAccountThreeDSConfigurationCreate", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -628,7 +216,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "create_merchant_account", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "create_three_ds_configuration", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -669,14 +257,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    MerchantAccount obj;
+                    MerchantAccountThreeDSConfiguration obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<MerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<MerchantAccountThreeDSConfiguration>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into MerchantAccount.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into MerchantAccountThreeDSConfiguration.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -938,14 +526,15 @@ namespace Gr4vy
 
 
         /// <summary>
-        /// Get a merchant account.
+        /// List 3DS configurations for merchant.
         /// </summary>
         /// <remarks>
-        /// Get info about a merchant account in an instance.
+        /// List all 3DS configurations for a merchant account.
         /// </remarks>
         /// <param name="merchantAccountId">The ID of the merchant account.</param>
+        /// <param name="currency">ISO 4217 currency code (3 characters) to filter 3DS configurations.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="MerchantAccountThreeDSConfigurations"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="merchantAccountId"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -962,18 +551,23 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<MerchantAccount> GetAsync(string merchantAccountId, RetryConfig? retryConfig = null)
+        public async  Task<MerchantAccountThreeDSConfigurations> ListAsync(
+            string merchantAccountId,
+            string? currency = null,
+            RetryConfig? retryConfig = null
+        )
         {
             if (merchantAccountId == null) throw new ArgumentNullException(nameof(merchantAccountId));
 
-            var request = new GetMerchantAccountRequest()
+            var request = new ListThreeDsConfigurationsRequest()
             {
                 MerchantAccountId = merchantAccountId,
+                Currency = currency,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts/{merchant_account_id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts/{merchant_account_id}/three-ds-configurations", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -983,7 +577,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "get_merchant_account", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_three_ds_configurations", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1057,14 +651,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    MerchantAccount obj;
+                    MerchantAccountThreeDSConfigurations obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<MerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<MerchantAccountThreeDSConfigurations>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into MerchantAccount.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into MerchantAccountThreeDSConfigurations.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -1326,15 +920,16 @@ namespace Gr4vy
 
 
         /// <summary>
-        /// Update a merchant account.
+        /// Edit 3DS configuration.
         /// </summary>
         /// <remarks>
-        /// Update info for a merchant account in an instance.
+        /// Update the 3DS configuration for a merchant account.
         /// </remarks>
         /// <param name="merchantAccountId">The ID of the merchant account.</param>
-        /// <param name="merchantAccountUpdate">A <see cref="MerchantAccountUpdate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
-        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="merchantAccountUpdate"/> is null.</exception>
+        /// <param name="threeDsConfigurationId">The ID of the 3DS configuration for a merchant account.</param>
+        /// <param name="merchantAccountThreeDSConfigurationUpdate">A <see cref="MerchantAccountThreeDSConfigurationUpdate"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="MerchantAccountThreeDSConfiguration"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/>, <paramref name="threeDsConfigurationId"/> or <paramref name="merchantAccountThreeDSConfigurationUpdate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -1350,28 +945,31 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<MerchantAccount> UpdateAsync(
+        public async  Task<MerchantAccountThreeDSConfiguration> UpdateAsync(
             string merchantAccountId,
-            MerchantAccountUpdate merchantAccountUpdate
+            string threeDsConfigurationId,
+            MerchantAccountThreeDSConfigurationUpdate merchantAccountThreeDSConfigurationUpdate
         )
         {
             if (merchantAccountId == null) throw new ArgumentNullException(nameof(merchantAccountId));
-            if (merchantAccountUpdate == null) throw new ArgumentNullException(nameof(merchantAccountUpdate));
+            if (threeDsConfigurationId == null) throw new ArgumentNullException(nameof(threeDsConfigurationId));
+            if (merchantAccountThreeDSConfigurationUpdate == null) throw new ArgumentNullException(nameof(merchantAccountThreeDSConfigurationUpdate));
 
-            var request = new UpdateMerchantAccountRequest()
+            var request = new EditThreeDsConfigurationRequest()
             {
                 MerchantAccountId = merchantAccountId,
-                MerchantAccountUpdate = merchantAccountUpdate,
+                ThreeDsConfigurationId = threeDsConfigurationId,
+                MerchantAccountThreeDSConfigurationUpdate = merchantAccountThreeDSConfigurationUpdate,
             };
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts/{merchant_account_id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts/{merchant_account_id}/three-ds-configurations/{three_ds_configuration_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "MerchantAccountUpdate", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "MerchantAccountThreeDSConfigurationUpdate", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -1382,7 +980,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "update_merchant_account", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "edit_three_ds_configuration", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1423,14 +1021,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    MerchantAccount obj;
+                    MerchantAccountThreeDSConfiguration obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<MerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<MerchantAccountThreeDSConfiguration>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into MerchantAccount.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into MerchantAccountThreeDSConfiguration.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -1674,6 +1272,227 @@ namespace Gr4vy
                     }
 
                     throw new Error504(payload, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+
+        /// <summary>
+        /// Delete 3DS configuration for a merchant.
+        /// </summary>
+        /// <remarks>
+        /// Delete a 3DS configuration for a merchant account.
+        /// </remarks>
+        /// <param name="merchantAccountId">The ID of the merchant account.</param>
+        /// <param name="threeDsConfigurationId">The ID of the 3DS configuration for a merchant account.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="threeDsConfigurationId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task DeleteAsync(string merchantAccountId, string threeDsConfigurationId)
+        {
+            if (merchantAccountId == null) throw new ArgumentNullException(nameof(merchantAccountId));
+            if (threeDsConfigurationId == null) throw new ArgumentNullException(nameof(threeDsConfigurationId));
+
+            var request = new DeleteThreeDsConfigurationRequest()
+            {
+                MerchantAccountId = merchantAccountId,
+                ThreeDsConfigurationId = threeDsConfigurationId,
+            };
+            request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts/{merchant_account_id}/three-ds-configurations/{three_ds_configuration_id}", request, null);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "delete_three_ds_configuration", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception error)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, error);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 204)
+            {
+                return;
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 404)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 405)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 409)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 422)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 425)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 429)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 502)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 504)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());

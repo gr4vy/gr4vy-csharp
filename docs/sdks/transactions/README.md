@@ -322,32 +322,32 @@ Captures a previously authorized transaction. You can capture the full or a part
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 
 var sdk = new Gr4vySDK(
     merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Transactions.CaptureAsync(
-    transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
-    transactionCaptureCreate: new TransactionCaptureCreate() {}
-);
+CaptureTransactionRequest req = new CaptureTransactionRequest() {
+    TransactionId = "7099948d-7286-47e4-aad8-b68f7eb44591",
+    TransactionCaptureCreate = new TransactionCaptureCreate() {},
+};
+
+var res = await sdk.Transactions.CaptureAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
-| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| `TransactionId`                                                                 | *string*                                                                        | :heavy_check_mark:                                                              | The ID of the transaction                                                       | 7099948d-7286-47e4-aad8-b68f7eb44591                                            |
-| `TransactionCaptureCreate`                                                      | [TransactionCaptureCreate](../../Models/Components/TransactionCaptureCreate.md) | :heavy_check_mark:                                                              | N/A                                                                             |                                                                                 |
-| `Prefer`                                                                        | List<*string*>                                                                  | :heavy_minus_sign:                                                              | The preferred resource type in the response.                                    |                                                                                 |
-| `MerchantAccountId`                                                             | *string*                                                                        | :heavy_minus_sign:                                                              | The ID of the merchant account to use for this request.                         | default                                                                         |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [CaptureTransactionRequest](../../Models/Requests/CaptureTransactionRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
 ### Response
 
-**[ResponseCaptureTransaction](../../Models/Requests/ResponseCaptureTransaction.md)**
+**[Response200CaptureTransaction](../../Models/Requests/Response200CaptureTransaction.md)**
 
 ### Errors
 
