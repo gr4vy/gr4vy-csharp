@@ -140,9 +140,9 @@ var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345
 
 ### Parameters
 
-| Parameter                      | Type                           | Required                       | Description                    | Example                        |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `MerchantAccountId`            | *string*                       | :heavy_check_mark:             | The ID of the merchant account | merchant-12345                 |
+| Parameter                       | Type                            | Required                        | Description                     | Example                         |
+| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
+| `MerchantAccountId`             | *string*                        | :heavy_check_mark:              | The ID of the merchant account. | merchant-12345                  |
 
 ### Response
 
@@ -194,7 +194,7 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
 
 | Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
 | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `MerchantAccountId`                                                       | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the merchant account                                            | merchant-12345                                                            |
+| `MerchantAccountId`                                                       | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the merchant account.                                           | merchant-12345                                                            |
 | `MerchantAccountUpdate`                                                   | [MerchantAccountUpdate](../../Models/Components/MerchantAccountUpdate.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
 
 ### Response

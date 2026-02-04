@@ -1,23 +1,23 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 69b0ed6cfe567d204d09c4c46f755af4
+  docChecksum: 3340534d5829d52ee14ff3eb540ca916
   docVersion: 1.0.0
-  speakeasyVersion: 1.700.2
-  generationVersion: 2.801.2
-  releaseVersion: 2.7.19
-  configChecksum: c1c7f6a727bbb0500f5ebe61587bfa9e
+  speakeasyVersion: 1.703.0
+  generationVersion: 2.803.3
+  releaseVersion: 2.7.20
+  configChecksum: 47f3e82d003ac22b5a0b65678798e5f3
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   published: true
 persistentEdits:
-  generation_id: e5d5a8b1-2541-4de2-9a0e-0e40e7923ac3
-  pristine_commit_hash: 3dc8ee3ddea6e5c352927ca32131b363fbb54397
-  pristine_tree_hash: 41a0318751c7d2dc0c8f53a1d7557473b55b4beb
+  generation_id: 1e3228d8-9eae-4f0f-9444-077523ab3a06
+  pristine_commit_hash: bc29a308f3fb591054e879ea40817c4f1288e83e
+  pristine_tree_hash: 7e1948c565b59a5a67d9c86e2b16eb28da4035d4
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.1
-    core: 3.15.8
+    core: 3.15.9
     flattening: 2.81.3
     globalSecurity: 2.83.8
     globalSecurityCallbacks: 0.1.0
@@ -485,6 +485,22 @@ trackedFiles:
     id: 2319beae5d8c
     last_write_checksum: sha1:f9e28ff5061b9b691c3d5f3c5a090a3bcf8600a1
     pristine_git_object: 052ccb9ef046644a8faa5124bea98730ef13c44b
+  docs/Models/Components/MerchantAccountThreeDSConfiguration.md:
+    id: 0fcc17e58d64
+    last_write_checksum: sha1:56666ed2cc3032064ee4ffff2b36a4aace3decde
+    pristine_git_object: e61adf6cf9a4514eec8dff325da14050d533bac1
+  docs/Models/Components/MerchantAccountThreeDSConfigurationCreate.md:
+    id: 4e59ec68e0a5
+    last_write_checksum: sha1:b88d532c7aca12dd300311de5ce9f4636eeb8f6b
+    pristine_git_object: bb4dfcf0897df089eef41957ec252cb1e850739e
+  docs/Models/Components/MerchantAccountThreeDSConfigurationUpdate.md:
+    id: 57229bfcf41a
+    last_write_checksum: sha1:3708114672ba79bc22fd02893e75868f98ec060c
+    pristine_git_object: ed0d97be776c20d8f3ff0cf17315d9bd5b84bcb8
+  docs/Models/Components/MerchantAccountThreeDSConfigurations.md:
+    id: 3dfcf003fe0a
+    last_write_checksum: sha1:0272dc253b58d2a2832cdd1399fd23adb95442b6
+    pristine_git_object: a2d83302014cec56c66efe39c7f9f7096ecefb15
   docs/Models/Components/MerchantAccountUpdate.md:
     id: 521039f95c1a
     last_write_checksum: sha1:a86c20b2fa17fa58b9f7168b08cc72d2dec92f70
@@ -1111,8 +1127,8 @@ trackedFiles:
     pristine_git_object: 99f07f740de369be3602a65cacafd564dfdc9fbc
   docs/Models/Requests/CaptureTransactionRequest.md:
     id: db55d75f1b8b
-    last_write_checksum: sha1:0fc187b04992e2f199e79afa5953dccb3e8ee15e
-    pristine_git_object: b2bcd1b4ab5f9ba1a71d7b737996f3b93b156cb5
+    last_write_checksum: sha1:cd57d2e1203a818af22a1037bc8f1791a3b9435e
+    pristine_git_object: 10eebcb210280f54548e35c4c366457ec6f36771
   docs/Models/Requests/ConfigureDigitalWalletRequest.md:
     id: bd62c79a5039
     last_write_checksum: sha1:c915162248a5b9f7fd713acc04daba7dbfe84e62
@@ -1177,6 +1193,10 @@ trackedFiles:
     id: fdcef35134c7
     last_write_checksum: sha1:e4c7fee3b9434f99b2394c62a3e799440962fa0c
     pristine_git_object: e9b7d9f877ea8d9d3f3f5228526bb27cbb06c905
+  docs/Models/Requests/CreateThreeDsConfigurationRequest.md:
+    id: 77114f5f511e
+    last_write_checksum: sha1:e93f8cd002bfa9d464091cddb83885a6a91d911e
+    pristine_git_object: 7445f6f8b61402347d79e2dcf90cd3a1b04535d7
   docs/Models/Requests/CreateThreeDsScenarioRequest.md:
     id: 6076d868b027
     last_write_checksum: sha1:90ea707fd27ba2dfcfcb5415fe614682367ee1f1
@@ -1225,10 +1245,18 @@ trackedFiles:
     id: 06786d1533fc
     last_write_checksum: sha1:37dc2050b310e8fc2097fea2531458bf63aaf877
     pristine_git_object: 0f6f21f4e41350652c7c70afe78de57a3ce90db9
+  docs/Models/Requests/DeleteThreeDsConfigurationRequest.md:
+    id: 192d39d91474
+    last_write_checksum: sha1:7850674f61fb5540c5723e7e3f470932edeaa0bd
+    pristine_git_object: d4a54b7b6fa7f83893b4b3490c79302ea990a3de
   docs/Models/Requests/DeleteThreeDsScenarioRequest.md:
     id: 2eb5d28ad5b0
     last_write_checksum: sha1:85c441e49f59cc92faab25f7e0b78c3bb1bfef57
     pristine_git_object: 78d4f3b134e771c16ff71da030f1591b185b1f42
+  docs/Models/Requests/EditThreeDsConfigurationRequest.md:
+    id: 9d1c4655f33d
+    last_write_checksum: sha1:ba331c0a68ad8fbf18f4048635cb5d5d1d9aad54
+    pristine_git_object: 46072dead2449c43b273f0a2481ddcf7b3ad3b7c
   docs/Models/Requests/ExpirePaymentLinkRequest.md:
     id: ef563583f851
     last_write_checksum: sha1:016fbf045814ae44f2c54ab031b8a73cc3c4885f
@@ -1255,8 +1283,8 @@ trackedFiles:
     pristine_git_object: 7c36b59fbe926ba73e3c4a31dbd5dfd0884d57fc
   docs/Models/Requests/GetMerchantAccountRequest.md:
     id: cd2825d83081
-    last_write_checksum: sha1:912be55d499609f77d76bbec971080220f0c4bad
-    pristine_git_object: f0b3a2aed883c6663ae21a3a75ce16bfe86a40ee
+    last_write_checksum: sha1:fe0d4e389da2a06e1448cc882b87a44601b51382
+    pristine_git_object: c85eda6657652adcb659ee59ec82ed89d0f98070
   docs/Models/Requests/GetPaymentLinkRequest.md:
     id: 5f6d36ddb7d8
     last_write_checksum: sha1:db6ac9c8343605a539cc4242ea4c185229c2807e
@@ -1441,6 +1469,10 @@ trackedFiles:
     id: 63f172b03795
     last_write_checksum: sha1:012a7b37a47d8cbb1604cd8054d1fc356475f11a
     pristine_git_object: 1ae7c2513701bf139389034ca359e52a0f18338b
+  docs/Models/Requests/ListThreeDsConfigurationsRequest.md:
+    id: 4b11c0186113
+    last_write_checksum: sha1:50e98e3f83b5315806c28ed55f422e54a6886caf
+    pristine_git_object: ef91d951bf3764a0d68da5ab85d58748cc43ccdf
   docs/Models/Requests/ListTransactionActionsRequest.md:
     id: d476b961d555
     last_write_checksum: sha1:c9a5e7eb1aac174a093b95d709db17a7cd8b8f36
@@ -1473,14 +1505,14 @@ trackedFiles:
     id: 5386c528eaa2
     last_write_checksum: sha1:a97bcdb5c8b5a171e3434b3394cd778e7b04099a
     pristine_git_object: acac65f5979bb239f64a459641eec91990bfe30f
+  docs/Models/Requests/Response200CaptureTransaction.md:
+    id: c1b801a1ba7d
+    last_write_checksum: sha1:76803b2bb4ef8f5df2caff6eb90c4aa615036c97
+    pristine_git_object: 74078842b28a0963c87243df2f2fe4c050c712a1
   docs/Models/Requests/Response200VoidTransaction.md:
     id: 571a91a06ab8
     last_write_checksum: sha1:a876350ff4ed40dcdf1604bb21dcfa827a8e6d67
     pristine_git_object: 678ae03332e9ba0c2af24af56b37cb286ce31d32
-  docs/Models/Requests/ResponseCaptureTransaction.md:
-    id: 75bbd019b90a
-    last_write_checksum: sha1:0b1f312e2c3362e2c5a2e9031be0c369a2fcc7d9
-    pristine_git_object: 273d0a8f5c75352e2515a3640c87f9ffc77727b9
   docs/Models/Requests/ResumePaymentMethodNetworkTokenRequest.md:
     id: 85126fd27d15
     last_write_checksum: sha1:a685d663659d293066f6219fe0e0406d9b5848c0
@@ -1515,8 +1547,8 @@ trackedFiles:
     pristine_git_object: 33a9f95458f966762ba92f75cd7077128344c90b
   docs/Models/Requests/UpdateMerchantAccountRequest.md:
     id: 73fce816cf70
-    last_write_checksum: sha1:cf836ea2acbfe6f9fe82ecc14de3275715b332bd
-    pristine_git_object: 941840452287aba072a8f22e0a6d0536313fa3bb
+    last_write_checksum: sha1:0d002e3538343e50dfa746c7f578658c01d3f6cb
+    pristine_git_object: 358e7109375e379b270d1b07b95f1a1363564f18
   docs/Models/Requests/UpdatePaymentServiceRequest.md:
     id: fb21d582bb91
     last_write_checksum: sha1:b20a73208c268f6acd7889765e045c1ca7e88563
@@ -1607,8 +1639,8 @@ trackedFiles:
     pristine_git_object: 5baec90ac1dbe9c6373c95e1468393301f730179
   docs/sdks/merchantaccounts/README.md:
     id: 468eec4fc203
-    last_write_checksum: sha1:caab29fb343e730beaaf81f4f374cf4e80bb2709
-    pristine_git_object: 85a5f50a35313ebce8c71e7f8a001942e428fa4f
+    last_write_checksum: sha1:f3f95533ed90e2ab144f4324bd0eeb87395c4256
+    pristine_git_object: f45d3c4c685a7709910b654d8224b29cb3681918
   docs/sdks/networktokens/README.md:
     id: 4c1c913867c5
     last_write_checksum: sha1:aa321653ff2cc7d5ee2a0be0e674029d1170a2c7
@@ -1665,14 +1697,18 @@ trackedFiles:
     id: 4e0fcdcca80c
     last_write_checksum: sha1:6a8a5aa676555a51f7d6145a11611d5d6a2f1dc1
     pristine_git_object: 477123b860fe8bc7597746b8ed3925af6c3f2dbf
+  docs/sdks/threedsconfiguration/README.md:
+    id: 86aa349ed0d5
+    last_write_checksum: sha1:01af1e26154fd4e56e436568940c187d0b7f064a
+    pristine_git_object: 34be9dd6d097d3f09c9517cafe8e93c125648b7b
   docs/sdks/threedsscenarios/README.md:
     id: 81ff4c3f8215
     last_write_checksum: sha1:f34857e8cea23c347f61ddb39d9f802accac5087
     pristine_git_object: 16ad0c08dfcd72a9ddf4bec16a1dcc4a3040fa20
   docs/sdks/transactions/README.md:
     id: 85592abe3c6b
-    last_write_checksum: sha1:2289cff6dc0c2a0aa4642da9dff7f9ab2e61cb99
-    pristine_git_object: c535d7691743e10e6c8c24980ea78a4e928e3021
+    last_write_checksum: sha1:2b0a7d22d6dfda75274771c23323281be8e92e95
+    pristine_git_object: 9639e804574a70d1f294abd99cf2e95e8558ba51
   docs/sdks/transactionsrefunds/README.md:
     id: c6a0400f5020
     last_write_checksum: sha1:0deb30d284b435d5d247e9909c5eb9f006a10ddd
@@ -1747,8 +1783,8 @@ trackedFiles:
     pristine_git_object: 609e5a628d6cf7ed36dfa962fb7ea5ae574853b6
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:9c7e849f77b891410b3a36d2642f59bf5874f5a4
-    pristine_git_object: f778380ed40eea8c86bc9da485654a451df2a3ad
+    last_write_checksum: sha1:72ad7c54607ef97cec95d5b80440a409df2b3b50
+    pristine_git_object: 87121ef4a8726821726fdc8b9412ce1b72185335
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -1767,8 +1803,8 @@ trackedFiles:
     pristine_git_object: b3424d6a4594074d0a796b58c9cbe85bb1243288
   src/Gr4vy/MerchantAccounts.cs:
     id: a83bfc0cd001
-    last_write_checksum: sha1:44aa2cdce3af4870118b2d6919119a3cacc1d0b7
-    pristine_git_object: 51c9e748a0cdc2b2d53debae11946b8bf2237572
+    last_write_checksum: sha1:2f104a57b6252ef9217c733efb681ce2f3394730
+    pristine_git_object: d4d16eb0df2cd00dbe772f26cbf470714f4831d8
   src/Gr4vy/Models/Components/AccountUpdaterInquirySummary.cs:
     id: d21ffce2b522
     last_write_checksum: sha1:a08b2b64730c65fa346a6914faf2bae7270aef0d
@@ -2201,6 +2237,22 @@ trackedFiles:
     id: 40fb0469c2fe
     last_write_checksum: sha1:6f37392806ad80a723ea573d4cc51544dd96d1db
     pristine_git_object: 8e7f9329177fd6ce289f0d951548171a2543c5af
+  src/Gr4vy/Models/Components/MerchantAccountThreeDSConfiguration.cs:
+    id: e70332c4786d
+    last_write_checksum: sha1:55cd280672e4f2a2161f228fb43e2e600410e0c2
+    pristine_git_object: fb23ee1c327978f5ab2ff769128c75bfdf7f0a19
+  src/Gr4vy/Models/Components/MerchantAccountThreeDSConfigurationCreate.cs:
+    id: d40235d95e7e
+    last_write_checksum: sha1:ee1f83135961d05a2ee99afb1983c35b0960d5b1
+    pristine_git_object: 85be626d1b050a6aeca0ebccd4de39f32094feca
+  src/Gr4vy/Models/Components/MerchantAccountThreeDSConfigurationUpdate.cs:
+    id: 7b22bbc61f1d
+    last_write_checksum: sha1:ab5f1cb49bc6b350d61600c8167829eab75404ae
+    pristine_git_object: 209ccc7241efbf7b06f6896f451b63883adef912
+  src/Gr4vy/Models/Components/MerchantAccountThreeDSConfigurations.cs:
+    id: 48e4874f90c7
+    last_write_checksum: sha1:1e1fd05b502ba2afd71d996be5ca92b209783d45
+    pristine_git_object: a5b07abb245bd529bd595a0f60e12ea8694f3264
   src/Gr4vy/Models/Components/MerchantAccountUpdate.cs:
     id: 2cdd144e8eb1
     last_write_checksum: sha1:5b2589a11178ae321f677398afa2bb029830e497
@@ -2839,8 +2891,8 @@ trackedFiles:
     pristine_git_object: 1ec5d71bb6d82cbc343d1aa9cef2c754200a25e6
   src/Gr4vy/Models/Requests/CaptureTransactionRequest.cs:
     id: 0442b268db93
-    last_write_checksum: sha1:7986f538d74b28474d5a3f93b43947f3940ffac1
-    pristine_git_object: efe1ce745207e266d1ae014f37ce320daa20a429
+    last_write_checksum: sha1:8942f0dd5dd9779b7c3b50cf4c359d6dd1fdc6fc
+    pristine_git_object: 55439b3d51d974a8ddd2695cffc175b444b2cd00
   src/Gr4vy/Models/Requests/ConfigureDigitalWalletRequest.cs:
     id: a7983bb62934
     last_write_checksum: sha1:7594790b2b6bd4775407108f4d3c0c8fab15ca27
@@ -2905,6 +2957,10 @@ trackedFiles:
     id: 619d6f4238e5
     last_write_checksum: sha1:2e0adffcf2b6864e356b260f8851df3c9c9be8ca
     pristine_git_object: 8683d731f026d9118b0d35146d21636d85a15ce5
+  src/Gr4vy/Models/Requests/CreateThreeDsConfigurationRequest.cs:
+    id: d4a5254bb63f
+    last_write_checksum: sha1:8f6ce9bf2be53ef9f2331e2cff0d043d164cadd4
+    pristine_git_object: 11580dc12bdd986ed1d85935d9230925a460047f
   src/Gr4vy/Models/Requests/CreateThreeDsScenarioRequest.cs:
     id: 90dc40c02d35
     last_write_checksum: sha1:4096dee132649526cfb8294f4eeed615d1213470
@@ -2953,10 +3009,18 @@ trackedFiles:
     id: f7269ce1dc61
     last_write_checksum: sha1:e9350a395875a014b0943873f890eba63945fa49
     pristine_git_object: 56d27f6359bbb8fdcaba7da1f4a92e198b469542
+  src/Gr4vy/Models/Requests/DeleteThreeDsConfigurationRequest.cs:
+    id: a1867849fd0c
+    last_write_checksum: sha1:23a8aecd35e6e4652efd3157da3e49060573ae55
+    pristine_git_object: eedeb3fc40442a04521d547f37b6801550cee367
   src/Gr4vy/Models/Requests/DeleteThreeDsScenarioRequest.cs:
     id: 59b4610f8afe
     last_write_checksum: sha1:819068bfd42911be77b3d73a7b9010beb6ba0243
     pristine_git_object: 5402ad55d47399f65ff332c9639d062422184511
+  src/Gr4vy/Models/Requests/EditThreeDsConfigurationRequest.cs:
+    id: aeb591cf099c
+    last_write_checksum: sha1:af0720c093c4d57960cfbbfb6bcce48071b6138b
+    pristine_git_object: 9c25c3139791402e19136a9fe542b640c6fc7e2c
   src/Gr4vy/Models/Requests/ExpirePaymentLinkRequest.cs:
     id: b7669b6f7f67
     last_write_checksum: sha1:82f6ae0a1cf0bdc6b22df4890edf42cc8ac247d0
@@ -3169,6 +3233,10 @@ trackedFiles:
     id: 0052604ff23b
     last_write_checksum: sha1:284bb9e5dda79c84280386fb8c7a50d7488d8c7b
     pristine_git_object: 81f19f7c5b7adcc666a69ebeae94246dcc043369
+  src/Gr4vy/Models/Requests/ListThreeDsConfigurationsRequest.cs:
+    id: 173e40ce1b8b
+    last_write_checksum: sha1:abda7a2fc79acc8cd9f8c348cb4e86f2649e0e2e
+    pristine_git_object: 3f28f4e5003e1b027da39c4b093dc79b4150cddf
   src/Gr4vy/Models/Requests/ListTransactionActionsRequest.cs:
     id: fc3cecda7af6
     last_write_checksum: sha1:709a2d977c096d4b20e71e15c353b2daa1487124
@@ -3201,14 +3269,14 @@ trackedFiles:
     id: aa64b78cd46b
     last_write_checksum: sha1:deb90a12b39896efd1d94ec5937bc931dedbc57e
     pristine_git_object: 51f737ff39bdf61895f02474154db8f3de5b3334
+  src/Gr4vy/Models/Requests/Response200CaptureTransaction.cs:
+    id: 5347e8934c3e
+    last_write_checksum: sha1:bdd355d872d39cf37318f8d641e4cd90af83966a
+    pristine_git_object: 5bd0aada74d8f23b0ad74dd7758b0ba3f0f55f53
   src/Gr4vy/Models/Requests/Response200VoidTransaction.cs:
     id: dfe88674f727
     last_write_checksum: sha1:b785b5546cccd7a4c9757603acacb97ef3058657
     pristine_git_object: 4bd0e77aefe424a1145e53b101575739bc7fb6bf
-  src/Gr4vy/Models/Requests/ResponseCaptureTransaction.cs:
-    id: 6be7d49f1d32
-    last_write_checksum: sha1:b8b507395f7d8b59fa22151abd10dd1fc7980069
-    pristine_git_object: 496ac26bda7cd0fde2acd50c5bc985605ed7d8b3
   src/Gr4vy/Models/Requests/ResumePaymentMethodNetworkTokenRequest.cs:
     id: 82148e6cc2ad
     last_write_checksum: sha1:3031f7c0d3e07268ee2ac6b32140622627af2b80
@@ -3315,8 +3383,8 @@ trackedFiles:
     pristine_git_object: 2231afbaa09d3bddd8288529e5bdb66f4fe817c1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:2108499d548372f2abde2c8e88c476357bc0c3b3
-    pristine_git_object: 8591139fc2a29e2e00120031f8ed41b2e87ca4cb
+    last_write_checksum: sha1:2c1c5ae459bbb48f3fe9644cdf322c3032933d32
+    pristine_git_object: dcf68849ef3fd5ff24c32d2c7010588271accf46
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:7a01dbeb4d990317af4d4e6dee2838adc1ee88f5
@@ -3329,14 +3397,18 @@ trackedFiles:
     id: 2fc5446e391f
     last_write_checksum: sha1:acf6c59199bc6fa12cb0e41ae8dcadbbe676e738
     pristine_git_object: fac56186dc7e29e8c01a208fce8f6558248bfe9b
+  src/Gr4vy/ThreeDsConfiguration.cs:
+    id: 4d412c303a04
+    last_write_checksum: sha1:15fd69de9e14b7c0a843f77df6ba41d26aa34db7
+    pristine_git_object: 2f0d1c8d5605a834a92dd2bf39bbf70a27cbcb57
   src/Gr4vy/ThreeDsScenarios.cs:
     id: 4fa365cb8085
     last_write_checksum: sha1:34c0f4d7ee9ab7666b30d01be938dcd4a0571276
     pristine_git_object: 3f9d573bce832de558ae8427f84cb033f39f8122
   src/Gr4vy/Transactions.cs:
     id: a7261e823018
-    last_write_checksum: sha1:ffb746032c4b23f44075253498ff01e03e5d4e9e
-    pristine_git_object: 51a10a83e6963929cf6d997dde3deb7a13543446
+    last_write_checksum: sha1:23c69e63e2db4636249e28fbe1ed3bea8477ea7e
+    pristine_git_object: 8d7287d3d9305b11a57af698a801a4b80116784b
   src/Gr4vy/TransactionsRefunds.cs:
     id: 6c2e8b0bb9b8
     last_write_checksum: sha1:a61afad878c6e4a42860c6940b3d29aed2669649
@@ -3351,8 +3423,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:a9a134e09e25ec11050b3dfe7af03e8b050fac43
-    pristine_git_object: 9386ca6303542c4b72471c8b409cdf3e06f8c40d
+    last_write_checksum: sha1:a651218f9b3be8a8549cb32528516636bc939268
+    pristine_git_object: 86c49382ded1813b480c6920f3415f49c3048092
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -3415,8 +3487,8 @@ trackedFiles:
     pristine_git_object: 929b6518faf5645ad9270c668b3fcb226c6412be
   src/Gr4vy/Utils/Utilities.cs:
     id: f54b30f497d6
-    last_write_checksum: sha1:356553fb9650edf92ca5ab896f26269e3618f7ae
-    pristine_git_object: 157863ed30e8870c773be8167e8b20ed7c0e80f2
+    last_write_checksum: sha1:c225abbb672ca468d6c79b255f973884b97c773e
+    pristine_git_object: 5cc58bdf13122bcbcc9d1d8926ee9366360389a5
 examples:
   create_account_updater_job:
     speakeasy-default-create-account-updater-job:
@@ -7011,11 +7083,147 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  create_three_ds_configuration:
+    speakeasy-default-create-three-ds-configuration:
+      parameters:
+        path:
+          merchant_account_id: "merchant-12345"
+      requestBody:
+        application/json: {"merchant_acquirer_bin": "516327", "merchant_acquirer_id": "123456789012345", "merchant_name": "Acme Inc.", "merchant_country_code": "840", "merchant_category_code": "1234", "merchant_url": "https://example.com", "scheme": "<value>", "metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}
+      responses:
+        "201":
+          application/json: {"merchant_acquirer_bin": "516327", "merchant_acquirer_id": "123456789012345", "merchant_name": "Acme Inc.", "merchant_country_code": "840", "merchant_category_code": "1234", "merchant_url": "https://example.com", "type": "merchant-account.three-ds-configuration", "id": "8715f484-1b51-4a62-8fc4-8df19c6d52c7", "merchant_account_id": "<id>", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "scheme": "<value>", "currency": "USD", "metadata": {}}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  list_three_ds_configurations:
+    speakeasy-default-list-three-ds-configurations:
+      parameters:
+        path:
+          merchant_account_id: "merchant-12345"
+      responses:
+        "200":
+          application/json: {"items": []}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  edit_three_ds_configuration:
+    speakeasy-default-edit-three-ds-configuration:
+      parameters:
+        path:
+          merchant_account_id: "merchant-12345"
+          three_ds_configuration_id: "1808f5e6-b49c-4db9-94fa-22371ea352f5"
+      requestBody:
+        application/json: {}
+      responses:
+        "200":
+          application/json: {"merchant_acquirer_bin": "516327", "merchant_acquirer_id": "123456789012345", "merchant_name": "Acme Inc.", "merchant_country_code": "840", "merchant_category_code": "1234", "merchant_url": "https://example.com", "type": "merchant-account.three-ds-configuration", "id": "f9ebdb2a-60ad-4a87-8605-33f3843ebc89", "merchant_account_id": "<id>", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "scheme": "<value>", "currency": "USD", "metadata": {"key": "<value>", "key1": "<value>", "key2": "<value>"}}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  delete_three_ds_configuration:
+    speakeasy-default-delete-three-ds-configuration:
+      parameters:
+        path:
+          merchant_account_id: "merchant-12345"
+          three_ds_configuration_id: "1808f5e6-b49c-4db9-94fa-22371ea352f5"
+      responses:
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Csharp SDK Changes:
-  * `Gr4vy.Transactions.Void()`:  `request.idempotencyKey` **Added**
+  * `Gr4vy.Transactions.Capture()`:  `request` **Changed** **Breaking** ⚠️
+  * `Gr4vy.MerchantAccounts.ThreeDsConfiguration.Create()`: **Added**
+  * `Gr4vy.MerchantAccounts.ThreeDsConfiguration.List()`: **Added**
+  * `Gr4vy.MerchantAccounts.ThreeDsConfiguration.Update()`: **Added**
+  * `Gr4vy.MerchantAccounts.ThreeDsConfiguration.Delete()`: **Added**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln

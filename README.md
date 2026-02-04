@@ -279,6 +279,13 @@ catch(ArgumentException ex) {
 * [Get](docs/sdks/merchantaccounts/README.md#get) - Get a merchant account
 * [Update](docs/sdks/merchantaccounts/README.md#update) - Update a merchant account
 
+#### [MerchantAccounts.ThreeDsConfiguration](docs/sdks/threedsconfiguration/README.md)
+
+* [Create](docs/sdks/threedsconfiguration/README.md#create) - Create 3DS configuration for merchant
+* [List](docs/sdks/threedsconfiguration/README.md#list) - List 3DS configurations for merchant
+* [Update](docs/sdks/threedsconfiguration/README.md#update) - Edit 3DS configuration
+* [Delete](docs/sdks/threedsconfiguration/README.md#delete) - Delete 3DS configuration for a merchant
+
 ### [PaymentLinks](docs/sdks/paymentlinks/README.md)
 
 * [Create](docs/sdks/paymentlinks/README.md#create) - Add a payment link
