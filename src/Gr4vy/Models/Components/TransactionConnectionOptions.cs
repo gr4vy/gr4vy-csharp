@@ -214,6 +214,12 @@ namespace Gr4vy.Models.Components
         public NuveiIDealOptions? NuveiIdeal { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `nuvei-klarna` connector.
+        /// </summary>
+        [JsonProperty("nuvei-klarna")]
+        public NuveiKlarnaOptions? NuveiKlarna { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `nuvei-pse` connector.
         /// </summary>
         [JsonProperty("nuvei-pse")]
