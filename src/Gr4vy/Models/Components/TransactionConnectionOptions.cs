@@ -130,6 +130,12 @@ namespace Gr4vy.Models.Components
         public DlocalUPIOptions? DlocalUpi { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `dlocal-pix` connector.
+        /// </summary>
+        [JsonProperty("dlocal-pix")]
+        public DlocalPIXOptions? DlocalPix { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `fiserv-card` connector.
         /// </summary>
         [JsonProperty("fiserv-card")]

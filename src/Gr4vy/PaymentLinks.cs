@@ -659,6 +659,7 @@ namespace Gr4vy
                 {
                     return null;
                 }
+
                 var nextCursor = nextCursorToken.Value<string>();
                 if (string.IsNullOrWhiteSpace(nextCursor))
                 {
@@ -667,9 +668,9 @@ namespace Gr4vy
 
                 return await ListAsync (
                     cursor: nextCursor,
-                    limit: limit,
-                    buyerSearch: buyerSearch,
-                    merchantAccountId: merchantAccountId,
+                    limit: request?.Limit,
+                    buyerSearch: request?.BuyerSearch,
+                    merchantAccountId: request?.MerchantAccountId,
                     retryConfig: retryConfig
                 );
             };
