@@ -34,10 +34,10 @@ var sdk = new Gr4vySDK(
 
 ListTransactionsRequest req = new ListTransactionsRequest() {
     Cursor = "ZXhhbXBsZTE",
-    CreatedAtLte = System.DateTime.Parse("2022-01-01T12:00:00+08:00"),
-    CreatedAtGte = System.DateTime.Parse("2022-01-01T12:00:00+08:00"),
-    UpdatedAtLte = System.DateTime.Parse("2022-01-01T12:00:00+08:00"),
-    UpdatedAtGte = System.DateTime.Parse("2022-01-01T12:00:00+08:00"),
+    CreatedAtLte = System.DateTime.Parse("2022-01-01T12:00:00+08:00").ToUniversalTime(),
+    CreatedAtGte = System.DateTime.Parse("2022-01-01T12:00:00+08:00").ToUniversalTime(),
+    UpdatedAtLte = System.DateTime.Parse("2022-01-01T12:00:00+08:00").ToUniversalTime(),
+    UpdatedAtGte = System.DateTime.Parse("2022-01-01T12:00:00+08:00").ToUniversalTime(),
     Search = "transaction-12345",
     BuyerExternalIdentifier = "buyer-12345",
     BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",

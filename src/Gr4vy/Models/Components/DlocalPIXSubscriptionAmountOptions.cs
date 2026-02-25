@@ -29,7 +29,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Minimum payer enrollment limit, not minimum recurring charge amount.
         /// </summary>
-        [JsonProperty("min_value")]
-        public string MinValue { get; set; } = default!;
+        [JsonProperty("min_value", NullValueHandling = NullValueHandling.Include)]
+        public string? MinValue { get; set; }
     }
 }
