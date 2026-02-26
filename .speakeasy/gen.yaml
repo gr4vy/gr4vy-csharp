@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 2.7.30
+  version: 2.7.31
   additionalDependencies:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.9.0
