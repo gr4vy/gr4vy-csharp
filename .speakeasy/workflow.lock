@@ -1,4 +1,4 @@
-speakeasyVersion: 1.739.0
+speakeasyVersion: 1.739.1
 sources:
     -OAS:
         sourceNamespace: openapi
@@ -8,8 +8,8 @@ sources:
             - latest
     openapi:
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:cdd5b135e45d45ef86ca8d99f6c79f1da90cf7690b90219f0b53d58f9ed6cc79
-        sourceBlobDigest: sha256:848332675fa5e43ac0a150fc4bf3b571e157e640ed3789ec63b06d73d178453e
+        sourceRevisionDigest: sha256:0c21e7aee0473a93d219398a4206f2370577291c5dcb9512bcd880651d5a5d49
+        sourceBlobDigest: sha256:916194a91674e4888dab58c2cc2930c2ecb0f41ba729ea85dbf8c3b2317fd618
         tags:
             - latest
             - 1.0.0
@@ -17,10 +17,10 @@ targets:
     csharp:
         source: openapi
         sourceNamespace: openapi
-        sourceRevisionDigest: sha256:cdd5b135e45d45ef86ca8d99f6c79f1da90cf7690b90219f0b53d58f9ed6cc79
-        sourceBlobDigest: sha256:848332675fa5e43ac0a150fc4bf3b571e157e640ed3789ec63b06d73d178453e
+        sourceRevisionDigest: sha256:0c21e7aee0473a93d219398a4206f2370577291c5dcb9512bcd880651d5a5d49
+        sourceBlobDigest: sha256:916194a91674e4888dab58c2cc2930c2ecb0f41ba729ea85dbf8c3b2317fd618
         codeSamplesNamespace: openapi-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:f3443b35b49a44d6f5b1267688232f56dbf57242c856d410c31bfb08621897a7
+        codeSamplesRevisionDigest: sha256:3c96146c323210d5eb1ce2e0e205e4b8732ea2518ccc3381995770eb5fdcb0d8
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest
