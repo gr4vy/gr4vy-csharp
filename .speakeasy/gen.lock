@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: c03cd51f86998cf7414190c5d613236a
+  docChecksum: af2e488635ae1946208d8c985918189b
   docVersion: 1.0.0
-  speakeasyVersion: 1.739.1
-  generationVersion: 2.846.1
-  releaseVersion: 2.7.35
-  configChecksum: 35914be2e919f954a4d1dc199ccf9c8c
+  speakeasyVersion: 1.740.0
+  generationVersion: 2.846.4
+  releaseVersion: 2.7.36
+  configChecksum: a5afa247ad520778a61b3d5a069f0de4
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 0562b56e-746d-4c37-878e-ec49bea35d3b
-  pristine_commit_hash: ccaa3517f3617f55e528bd0f8f2b3c546f2e7967
-  pristine_tree_hash: 92e412294ecc6bb56fa930671fd40d097b9a7f75
+  generation_id: a48787ff-3d5b-4cee-aa92-e718d93dd1c7
+  pristine_commit_hash: c782207e7089a633710a63c1fa0d781e783c84e2
+  pristine_tree_hash: 99b0dc2cc64f0b304ee19fb5e0960695290767de
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -818,6 +818,14 @@ trackedFiles:
     id: ef5cc7a381b5
     last_write_checksum: sha1:1c8c6a744aaba8d8e848f6009e4620f96e20e749
     pristine_git_object: 4e2b69a8f2b1462c584dffa54b35bc5b8938a7ad
+  docs/Models/Components/RiskifiedAntiFraudOptions.md:
+    id: b5e66cc0e9bd
+    last_write_checksum: sha1:7ac12ea661e8c979443bbea5b947d14ba3b2a183
+    pristine_git_object: f10fae8d149b06e9f215d1f0e2630a73b5231751
+  docs/Models/Components/RiskifiedAntiFraudOptionsLineItem.md:
+    id: "247104722631"
+    last_write_checksum: sha1:a0ec4960c9fa4e1052cbd9d7595848eeb5aa0fa2
+    pristine_git_object: e7be883423acb7aeae9d73309547a093e111d290
   docs/Models/Components/Security.md:
     id: 7bcd54fda13a
     last_write_checksum: sha1:8960ce4a4454e4df662a448a45710eea3d43e378
@@ -960,8 +968,8 @@ trackedFiles:
     pristine_git_object: ede6da0674a6f4c947f02ed2ab48c847255b5c2c
   docs/Models/Components/TransactionConnectionOptions.md:
     id: 4cb8597cc3b4
-    last_write_checksum: sha1:112d00f69b7dfca894e8c0e17c09b78c24c0aff1
-    pristine_git_object: 1c4c64cc62258019684e7b56fd27651994c0d564
+    last_write_checksum: sha1:ece1a253a9ba932273ae9fb779a63c32ce8e9cf5
+    pristine_git_object: 504591d77a9320300a3444e4036df0899ce5c8c1
   docs/Models/Components/TransactionCreate.md:
     id: d1e261241de9
     last_write_checksum: sha1:6593d068b8c6a89a48e73eb8e3eb86718405ef85
@@ -1800,8 +1808,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:b3ab696a6c98f7f855c8f8433b3180ba57cbe2ae
-    pristine_git_object: 9c88d55deff0189576be0e65d5dcc54537b0ecb1
+    last_write_checksum: sha1:5d53c1cab56c3419ad1ced990a14938562e032bf
+    pristine_git_object: f8050ca396c846a96ebf271c714a7ca984c1ac24
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -2586,6 +2594,14 @@ trackedFiles:
     id: 81c582b117f2
     last_write_checksum: sha1:36201321365fc6334db18fb49bad655c47bd1d25
     pristine_git_object: eb80d45f24875a0f127cda046bd2367d47a0b93d
+  src/Gr4vy/Models/Components/RiskifiedAntiFraudOptions.cs:
+    id: ca291eaed77d
+    last_write_checksum: sha1:1bc906cf3a257a2299f5770fc4d7184455bc161f
+    pristine_git_object: 29d426c121f6adcb62206b42a82e100a12960d52
+  src/Gr4vy/Models/Components/RiskifiedAntiFraudOptionsLineItem.cs:
+    id: 521524305ccc
+    last_write_checksum: sha1:dca85c8837bd79cc9994ca303804ceb8fa29f8f6
+    pristine_git_object: 92f8f1b617bd4247facd25b7748993b8d45ceda6
   src/Gr4vy/Models/Components/Security.cs:
     id: 81736f8734a8
     last_write_checksum: sha1:79b040b37ee695cfcf988af76b34f960dc3d5ee4
@@ -2728,8 +2744,8 @@ trackedFiles:
     pristine_git_object: 287d676b2c4615b164a354803a807f693aac66b1
   src/Gr4vy/Models/Components/TransactionConnectionOptions.cs:
     id: d588699e12a3
-    last_write_checksum: sha1:6db44b3443ceac8bdd9ae00b9c98b21b3595ae3c
-    pristine_git_object: 0de3eaefafa34a6b20030ce0ff93163f56bbe610
+    last_write_checksum: sha1:acd03e3006b9e3b531df5ccb354e559cc192d82b
+    pristine_git_object: a9da3608cbc319b10f6e201037f987466f405fc3
   src/Gr4vy/Models/Components/TransactionCreate.cs:
     id: 87491918b33e
     last_write_checksum: sha1:06e04a6ec20a8606ef193fe9610a21e4cf82c732
@@ -3416,8 +3432,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:02168a86e9a81d45c96ac8b99172db401a1d6353
-    pristine_git_object: f3b92fa19aaedfd333ff63579692f3a7c8d6daf9
+    last_write_checksum: sha1:fc7da6fb581ee3f90fc7e76959632b1758c0a141
+    pristine_git_object: c50711405d085ea18dcd0aeaf6ca000f696b4b1f
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:92321777879c4d900441a98446fd58eb4cbaa7f1
@@ -3456,8 +3472,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:7723ec8de2acc96ff6493d537025c378d9e28441
-    pristine_git_object: a86561b33d73781aaa4e28739cc56d6c986c8843
+    last_write_checksum: sha1:68c6564de6c9e454a94542d510c3c53cb91e59ad
+    pristine_git_object: dad52b36e5337651e60e8e6688cf435a39fc85e9
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -7250,6 +7266,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.RiskifiedAntiFraud` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.RiskifiedAntiFraud` **Added**\n* `Gr4vy.PaymentLinks.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.RiskifiedAntiFraud` **Added**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
