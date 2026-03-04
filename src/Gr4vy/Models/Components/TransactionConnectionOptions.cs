@@ -256,6 +256,12 @@ namespace Gr4vy.Models.Components
         public PowertranzOptions? PowertranzCard { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `riskified-anti-fraud` connector.
+        /// </summary>
+        [JsonProperty("riskified-anti-fraud")]
+        public RiskifiedAntiFraudOptions? RiskifiedAntiFraud { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `stripe-card` connector.
         /// </summary>
         [JsonProperty("stripe-card")]
