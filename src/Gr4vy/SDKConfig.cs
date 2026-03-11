@@ -69,7 +69,7 @@ namespace Gr4vy
                 }},
             };
             MerchantAccountId = null;
-            UserAgent = "speakeasy-sdk/csharp 2.7.39 2.859.0 1.0.0 Gr4vy";
+            UserAgent = "speakeasy-sdk/csharp 2.7.40 2.859.2 1.0.0 Gr4vy";
             SecuritySource = null;
             Hooks = new SDKHooks();
             RetryConfig = null;
