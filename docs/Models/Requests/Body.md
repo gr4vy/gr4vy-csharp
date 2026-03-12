@@ -26,3 +26,21 @@ Body.CreateCheckoutSessionPaymentMethodCreate(/* values here */);
 ```csharp
 Body.CreatePlaidPaymentMethodCreate(/* values here */);
 ```
+
+### ACHBankPaymentMethodCreate
+
+```csharp
+Body.CreateACHBankPaymentMethodCreate(/* values here */);
+```
+
+### BACSBankPaymentMethodCreate
+
+```csharp
+Body.CreateBACSBankPaymentMethodCreate(/* values here */);
+```
+
+### SEPABankPaymentMethodCreate
+
+```csharp
+Body.CreateSEPABankPaymentMethodCreate(/* values here */);
+```

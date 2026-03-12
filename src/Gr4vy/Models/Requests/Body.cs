@@ -32,6 +32,12 @@ namespace Gr4vy.Models.Requests
 
         public static BodyType PlaidPaymentMethodCreate { get { return new BodyType("PlaidPaymentMethodCreate"); } }
 
+        public static BodyType ACHBankPaymentMethodCreate { get { return new BodyType("ACHBankPaymentMethodCreate"); } }
+
+        public static BodyType BACSBankPaymentMethodCreate { get { return new BodyType("BACSBankPaymentMethodCreate"); } }
+
+        public static BodyType SEPABankPaymentMethodCreate { get { return new BodyType("SEPABankPaymentMethodCreate"); } }
+
         public override string ToString() { return Value; }
         public static implicit operator String(BodyType v) { return v.Value; }
         public static BodyType FromString(string v) {
@@ -40,6 +46,9 @@ namespace Gr4vy.Models.Requests
                 case "RedirectPaymentMethodCreate": return RedirectPaymentMethodCreate;
                 case "CheckoutSessionPaymentMethodCreate": return CheckoutSessionPaymentMethodCreate;
                 case "PlaidPaymentMethodCreate": return PlaidPaymentMethodCreate;
+                case "ACHBankPaymentMethodCreate": return ACHBankPaymentMethodCreate;
+                case "BACSBankPaymentMethodCreate": return BACSBankPaymentMethodCreate;
+                case "SEPABankPaymentMethodCreate": return SEPABankPaymentMethodCreate;
                 default: throw new ArgumentException("Invalid value for BodyType");
             }
         }
@@ -78,6 +87,15 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("form:explode=true")]
         public PlaidPaymentMethodCreate? PlaidPaymentMethodCreate { get; set; }
 
+        [SpeakeasyMetadata("form:explode=true")]
+        public ACHBankPaymentMethodCreate? ACHBankPaymentMethodCreate { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public BACSBankPaymentMethodCreate? BACSBankPaymentMethodCreate { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public SEPABankPaymentMethodCreate? SEPABankPaymentMethodCreate { get; set; }
+
         public BodyType Type { get; set; }
         public static Body CreateCardPaymentMethodCreate(CardPaymentMethodCreate cardPaymentMethodCreate)
         {
@@ -109,6 +127,30 @@ namespace Gr4vy.Models.Requests
 
             Body res = new Body(typ);
             res.PlaidPaymentMethodCreate = plaidPaymentMethodCreate;
+            return res;
+        }
+        public static Body CreateACHBankPaymentMethodCreate(ACHBankPaymentMethodCreate achBankPaymentMethodCreate)
+        {
+            BodyType typ = BodyType.ACHBankPaymentMethodCreate;
+
+            Body res = new Body(typ);
+            res.ACHBankPaymentMethodCreate = achBankPaymentMethodCreate;
+            return res;
+        }
+        public static Body CreateBACSBankPaymentMethodCreate(BACSBankPaymentMethodCreate bacsBankPaymentMethodCreate)
+        {
+            BodyType typ = BodyType.BACSBankPaymentMethodCreate;
+
+            Body res = new Body(typ);
+            res.BACSBankPaymentMethodCreate = bacsBankPaymentMethodCreate;
+            return res;
+        }
+        public static Body CreateSEPABankPaymentMethodCreate(SEPABankPaymentMethodCreate sepaBankPaymentMethodCreate)
+        {
+            BodyType typ = BodyType.SEPABankPaymentMethodCreate;
+
+            Body res = new Body(typ);
+            res.SEPABankPaymentMethodCreate = sepaBankPaymentMethodCreate;
             return res;
         }
 
@@ -208,6 +250,66 @@ namespace Gr4vy.Models.Requests
                     throw;
                 }
 
+                try
+                {
+                    return new Body(BodyType.BACSBankPaymentMethodCreate)
+                    {
+                        BACSBankPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<BACSBankPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(BACSBankPaymentMethodCreate), new Body(BodyType.BACSBankPaymentMethodCreate), "BACSBankPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Body(BodyType.SEPABankPaymentMethodCreate)
+                    {
+                        SEPABankPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<SEPABankPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(SEPABankPaymentMethodCreate), new Body(BodyType.SEPABankPaymentMethodCreate), "SEPABankPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Body(BodyType.ACHBankPaymentMethodCreate)
+                    {
+                        ACHBankPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<ACHBankPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(ACHBankPaymentMethodCreate), new Body(BodyType.ACHBankPaymentMethodCreate), "ACHBankPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
                 if (fallbackCandidates.Count > 0)
                 {
                     fallbackCandidates.Sort((a, b) => ResponseBodyDeserializer.CompareFallbackCandidates(a.Item1, b.Item1, json));
@@ -261,6 +363,24 @@ namespace Gr4vy.Models.Requests
                 if (res.PlaidPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PlaidPaymentMethodCreate));
+                    return;
+                }
+
+                if (res.ACHBankPaymentMethodCreate != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.ACHBankPaymentMethodCreate));
+                    return;
+                }
+
+                if (res.BACSBankPaymentMethodCreate != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.BACSBankPaymentMethodCreate));
+                    return;
+                }
+
+                if (res.SEPABankPaymentMethodCreate != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.SEPABankPaymentMethodCreate));
                     return;
                 }
             }
