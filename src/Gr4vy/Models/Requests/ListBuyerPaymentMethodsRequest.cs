@@ -9,6 +9,7 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Requests;
     using Gr4vy.Utils;
 
     public class ListBuyerPaymentMethodsRequest
@@ -29,7 +30,7 @@ namespace Gr4vy.Models.Requests
         /// The field to sort the payment methods by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=sort_by")]
-        public string? SortBy { get; } = "last_used_at";
+        public SortBy? SortBy { get; set; } = null;
 
         /// <summary>
         /// The direction to sort the payment methods in.

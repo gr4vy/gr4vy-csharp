@@ -28,7 +28,6 @@ var sdk = new Gr4vySDK(
 var res = await sdk.ThreeDsScenarios.CreateAsync(threeDSecureScenarioCreate: new ThreeDSecureScenarioCreate() {
     Conditions = new ThreeDSecureScenarioConditions() {},
     Outcome = new ThreeDSecureScenarioOutcome() {
-        Version = "2.2.0",
         Authentication = new ThreeDSecureScenarioOutcomeAuthentication() {
             TransactionStatus = "Y",
         },
