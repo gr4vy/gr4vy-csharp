@@ -19,7 +19,7 @@ namespace Gr4vy.Models.Components
         /// The version of 3DS which will be simulated.
         /// </summary>
         [JsonProperty("version")]
-        public string Version { get; set; } = default!;
+        public string? Version { get; set; } = null;
 
         [JsonProperty("authentication")]
         public ThreeDSecureScenarioOutcomeAuthentication Authentication { get; set; } = default!;
