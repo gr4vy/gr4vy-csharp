@@ -65,6 +65,12 @@ TransactionCreatePaymentMethod.CreateNetworkTokenPaymentMethodCreate(/* values h
 TransactionCreatePaymentMethod.CreatePlaidPaymentMethodCreate(/* values here */);
 ```
 
+### BaseBankPaymentMethodCreate
+
+```csharp
+TransactionCreatePaymentMethod.CreateBaseBankPaymentMethodCreate(/* values here */);
+```
+
 ### CheckoutSessionWithUrlPaymentMethodCreate
 
 ```csharp

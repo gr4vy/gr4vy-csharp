@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 383b24dbc8c09500584941619675d2d3
+  docChecksum: 9ede7ba78649e38c4aa85a32e8783fdf
   docVersion: 1.0.0
-  speakeasyVersion: 1.755.1
-  generationVersion: 2.865.2
-  releaseVersion: 2.7.42
-  configChecksum: b75e6f3f1e90bd0a0a0e1b4ad910a603
+  speakeasyVersion: 1.757.1
+  generationVersion: 2.866.2
+  releaseVersion: 2.7.43
+  configChecksum: a91b75baffdbbd913fb3d2dca476bc25
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 75ad8d08-4056-4326-a51a-3a62aea30ce5
-  pristine_commit_hash: 8f2d3c1ce0cf79f810b3e4b90339828ad97bc0b0
-  pristine_tree_hash: 93ee383af2b9337393c62419a46922716926ad6e
+  generation_id: c21346f1-9e55-451e-a9f2-8bdf4571fd2b
+  pristine_commit_hash: fb1ef9f176df082053221d050cd58c99e88c7075
+  pristine_tree_hash: a99986ea44e8d83ace0ebf56fedbef6d7fccac0c
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -150,6 +150,10 @@ trackedFiles:
     id: 0a67dc193cb3
     last_write_checksum: sha1:0448d80b6269197969d36a37cd3d4270f4e22aef
     pristine_git_object: 6cc346feb9ba18bed288a260c875c7a0be3db5c0
+  docs/Models/Components/BaseBankPaymentMethodCreate.md:
+    id: a723f93bd3d2
+    last_write_checksum: sha1:b453398debd2518eb3bf788eec66f17cdfe2f297
+    pristine_git_object: d763f86f9c15723abab899c497e81d66d5346147
   docs/Models/Components/BillingDetails.md:
     id: c7459301e103
     last_write_checksum: sha1:9da8919487677abad8cabba674df2a82b7301e82
@@ -992,8 +996,8 @@ trackedFiles:
     pristine_git_object: eb41ab65c3af3373bcd3747fd6fa1ebcf8a85c4e
   docs/Models/Components/TransactionCreatePaymentMethod.md:
     id: cb76119202d5
-    last_write_checksum: sha1:d0e2c24ed06471e7cba0b96f0dc25bdf27101e23
-    pristine_git_object: 228152890c2a251cf4b05033ce4c367cb1e452a8
+    last_write_checksum: sha1:f468744880f6cebee09532661c0872a5ae72305c
+    pristine_git_object: ab5449c62f9326d9f2c5631a29cb1d729eed2366
   docs/Models/Components/TransactionEvent.md:
     id: 865ca14469ff
     last_write_checksum: sha1:92d0803f7049e77da9c4181f87cec494365e3181
@@ -1828,8 +1832,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:9c38cad103f66b41f67d000ec019c0865a937792
-    pristine_git_object: 3ebf99c377a4448d161c3c1508abc0d344f8d27b
+    last_write_checksum: sha1:3d78b81d0b9088433af88adfca2c5d09e13183d9
+    pristine_git_object: 3649d78e57e3bb51fe48b0329ba5314b502df896
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -1946,6 +1950,10 @@ trackedFiles:
     id: 1ab2d3511a17
     last_write_checksum: sha1:5bd5620d02dd684aca404b9a4724b1ef9ee4d190
     pristine_git_object: 7379985fbaa49d4c9011d96e4a3c6cf0f0624788
+  src/Gr4vy/Models/Components/BaseBankPaymentMethodCreate.cs:
+    id: 0b20dbdd5aa8
+    last_write_checksum: sha1:cb694de5552f7de78299fe6a721c77fc3e8a05fc
+    pristine_git_object: 814d45b1ff4d734afeff44eb694403a11eb929eb
   src/Gr4vy/Models/Components/BillingDetails.cs:
     id: e8ac28c8ba4b
     last_write_checksum: sha1:8e0e64f516b7c59428c4ce5a280e591fb9c35ff1
@@ -2788,8 +2796,8 @@ trackedFiles:
     pristine_git_object: 9a09268af915cc8f281b5673fee707ca64f9f227
   src/Gr4vy/Models/Components/TransactionCreatePaymentMethod.cs:
     id: 10765a90ff42
-    last_write_checksum: sha1:6c81e3310ea0b4557227cf2017b5b4a0343da5a7
-    pristine_git_object: 15decbc23661ebdc91a790f73e0011d786428d69
+    last_write_checksum: sha1:4cc2bdc8486484126f1ffafb028a44c6126bce35
+    pristine_git_object: 1fa9c5f0f55ad7fb7ecbea34355e30cf41adf093
   src/Gr4vy/Models/Components/TransactionEvent.cs:
     id: b251d9cdf1a5
     last_write_checksum: sha1:6ef71ea002cddc0e1fab9692647623c1017fa429
@@ -3472,8 +3480,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:79cd9b67b28357a7d23e190e2db6d98901b30450
-    pristine_git_object: 653fd8e9ec81a568151623f09d8d2c0f8219df4f
+    last_write_checksum: sha1:b92b6ff8522268ff921af6589c5f4ddb2b5ad3e0
+    pristine_git_object: dd89e873e0569d7b1bfa055a914031a4e896d0e7
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:92321777879c4d900441a98446fd58eb4cbaa7f1
@@ -3512,8 +3520,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:7ea96c7edac4273442b6370d9947981eb51d5fa5
-    pristine_git_object: 57d38a2d71742efdd95bc09413b60b1adaaa7c11
+    last_write_checksum: sha1:cb5926d055ef000fb3dca852677a31b9d48ecfc6
+    pristine_git_object: f4018ead8f9135b39fa6c99e3fa9a08b980dd706
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -7306,7 +7314,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.ThreeDsScenarios.Create()`: \n  *  `request.threeDSecureScenarioCreate.Outcome.Version` **Changed**\n  *  `response.outcome.Version` **Changed** (Breaking ⚠️)\n* `Gr4vy.ThreeDsScenarios.List()`:  `response.items[].Outcome.Version` **Changed** (Breaking ⚠️)\n* `Gr4vy.ThreeDsScenarios.Update()`: \n  *  `request.threeDSecureScenarioUpdate.Outcome.Version` **Changed**\n  *  `response.outcome.Version` **Changed** (Breaking ⚠️)\n"
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod.union(BaseBankPaymentMethodCreate)` **Added**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
