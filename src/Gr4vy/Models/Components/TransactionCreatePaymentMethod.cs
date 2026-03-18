@@ -44,6 +44,8 @@ namespace Gr4vy.Models.Components
 
         public static TransactionCreatePaymentMethodType PlaidPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("PlaidPaymentMethodCreate"); } }
 
+        public static TransactionCreatePaymentMethodType BaseBankPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("BaseBankPaymentMethodCreate"); } }
+
         public static TransactionCreatePaymentMethodType CheckoutSessionWithUrlPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("CheckoutSessionWithUrlPaymentMethodCreate"); } }
 
         public static TransactionCreatePaymentMethodType Null { get { return new TransactionCreatePaymentMethodType("null"); } }
@@ -62,6 +64,7 @@ namespace Gr4vy.Models.Components
                 case "GooglePayFPANPaymentMethodCreate": return GooglePayFPANPaymentMethodCreate;
                 case "NetworkTokenPaymentMethodCreate": return NetworkTokenPaymentMethodCreate;
                 case "PlaidPaymentMethodCreate": return PlaidPaymentMethodCreate;
+                case "BaseBankPaymentMethodCreate": return BaseBankPaymentMethodCreate;
                 case "CheckoutSessionWithUrlPaymentMethodCreate": return CheckoutSessionWithUrlPaymentMethodCreate;
                 case "null": return Null;
                 default: throw new ArgumentException("Invalid value for TransactionCreatePaymentMethodType");
@@ -122,6 +125,9 @@ namespace Gr4vy.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public PlaidPaymentMethodCreate? PlaidPaymentMethodCreate { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public BaseBankPaymentMethodCreate? BaseBankPaymentMethodCreate { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public CheckoutSessionWithUrlPaymentMethodCreate? CheckoutSessionWithUrlPaymentMethodCreate { get; set; }
@@ -207,6 +213,14 @@ namespace Gr4vy.Models.Components
             res.PlaidPaymentMethodCreate = plaidPaymentMethodCreate;
             return res;
         }
+        public static TransactionCreatePaymentMethod CreateBaseBankPaymentMethodCreate(BaseBankPaymentMethodCreate baseBankPaymentMethodCreate)
+        {
+            TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.BaseBankPaymentMethodCreate;
+
+            TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
+            res.BaseBankPaymentMethodCreate = baseBankPaymentMethodCreate;
+            return res;
+        }
         public static TransactionCreatePaymentMethod CreateCheckoutSessionWithUrlPaymentMethodCreate(CheckoutSessionWithUrlPaymentMethodCreate checkoutSessionWithURLPaymentMethodCreate)
         {
             TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.CheckoutSessionWithUrlPaymentMethodCreate;
@@ -248,6 +262,26 @@ namespace Gr4vy.Models.Components
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(TokenPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.TokenPaymentMethodCreate), "TokenPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.BaseBankPaymentMethodCreate)
+                    {
+                        BaseBankPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<BaseBankPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(BaseBankPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.BaseBankPaymentMethodCreate), "BaseBankPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -553,6 +587,12 @@ namespace Gr4vy.Models.Components
                 if (res.PlaidPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PlaidPaymentMethodCreate));
+                    return;
+                }
+
+                if (res.BaseBankPaymentMethodCreate != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.BaseBankPaymentMethodCreate));
                     return;
                 }
 
