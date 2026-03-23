@@ -47,6 +47,12 @@ namespace Gr4vy.Models.Errors
         /// </summary>
         [JsonProperty("details")]
         public List<ErrorDetail>? Details { get; set; }
+
+        /// <summary>
+        /// The ID of the conflicting resource.
+        /// </summary>
+        [JsonProperty("resource_id")]
+        public string? ResourceId { get; set; }
     }
 
     public class Error409 : BaseException
@@ -70,6 +76,9 @@ namespace Gr4vy.Models.Errors
 
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error409.Payload.Details instead.")]
         public List<ErrorDetail>? Details { get; set; }
+
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible. Use Error409.Payload.ResourceId instead.")]
+        public string? ResourceId { get; set; }
 
         private static string ErrorMessage(Error409Payload payload, string body)
         {
@@ -96,6 +105,7 @@ namespace Gr4vy.Models.Errors
            Status = payload.Status;
            _message = payload.Message;
            Details = payload.Details;
+           ResourceId = payload.ResourceId;
            #pragma warning restore CS0618
         }
     }
