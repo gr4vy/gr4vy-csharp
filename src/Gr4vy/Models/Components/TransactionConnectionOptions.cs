@@ -76,6 +76,12 @@ namespace Gr4vy.Models.Components
         public AdyenOptions? AdyenSofort { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `adyen-swish` connector.
+        /// </summary>
+        [JsonProperty("adyen-swish")]
+        public AdyenOptions? AdyenSwish { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `adyen-vipps` connector.
         /// </summary>
         [JsonProperty("adyen-vipps")]
