@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 9ede7ba78649e38c4aa85a32e8783fdf
+  docChecksum: 65c44724ff2c9a9651c65f44b7bdd65c
   docVersion: 1.0.0
-  speakeasyVersion: 1.757.1
-  generationVersion: 2.866.2
-  releaseVersion: 2.7.43
-  configChecksum: a91b75baffdbbd913fb3d2dca476bc25
+  speakeasyVersion: 1.759.1
+  generationVersion: 2.869.10
+  releaseVersion: 2.7.44
+  configChecksum: 839fcdfaa165e7006262a0788f3e5810
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: c21346f1-9e55-451e-a9f2-8bdf4571fd2b
-  pristine_commit_hash: fb1ef9f176df082053221d050cd58c99e88c7075
-  pristine_tree_hash: a99986ea44e8d83ace0ebf56fedbef6d7fccac0c
+  generation_id: b30ef428-edab-4c8e-bb14-f513e761cbc3
+  pristine_commit_hash: a7a2c12fbeb6d574b18c95f100d0141fe7b420bb
+  pristine_tree_hash: 0079a4d4446de62ea81310645e0c146ab946969c
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1120,8 +1120,8 @@ trackedFiles:
     pristine_git_object: b5795eac45580d0a901960fb55de0b8bff7b6cc7
   docs/Models/Errors/Error409.md:
     id: fbe11ff85a3b
-    last_write_checksum: sha1:81ac70f3e35e9eba86c1dbd91658779e4c76334a
-    pristine_git_object: 46c35709b6ed1e4d3a42cee9813d67f8e8dd750e
+    last_write_checksum: sha1:39242a694be9d434aa4e17aee93b1ee57d8a46e8
+    pristine_git_object: ae38c7f515c6eb63f047e318b63771d52762be3b
   docs/Models/Errors/Error425.md:
     id: aeba721cf7cf
     last_write_checksum: sha1:b0add6a0ceeaa802cc1709822c7b40e609d6121a
@@ -1832,8 +1832,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:3d78b81d0b9088433af88adfca2c5d09e13183d9
-    pristine_git_object: 3649d78e57e3bb51fe48b0329ba5314b502df896
+    last_write_checksum: sha1:c5f102bbc9eca07f6a6bf5a214086be3f6081802
+    pristine_git_object: 4352d33dafde3cf0abd4c1bc600f714297a1015d
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -2928,8 +2928,8 @@ trackedFiles:
     pristine_git_object: eaee79f4e061fe9381ff053da043e1b45c6f1f7f
   src/Gr4vy/Models/Errors/Error409.cs:
     id: 9b7cb86f0978
-    last_write_checksum: sha1:821dc05b418b87622365ed5aa74db5888c0e24dc
-    pristine_git_object: f43707cdab54437153c9a99d7ca09995f153bd21
+    last_write_checksum: sha1:549a63ab52e96aa71a34fca819fb2a02a1da6a2b
+    pristine_git_object: 1ff8000ea11cfe443f1fd93e3f10902d804a1273
   src/Gr4vy/Models/Errors/Error425.cs:
     id: 44ed408f8f71
     last_write_checksum: sha1:1f6938291800febae246f98d38582cb9e140c0b5
@@ -3480,8 +3480,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:b92b6ff8522268ff921af6589c5f4ddb2b5ad3e0
-    pristine_git_object: dd89e873e0569d7b1bfa055a914031a4e896d0e7
+    last_write_checksum: sha1:fe5082a4317ebdb56e0a086c1095ec43edfc666f
+    pristine_git_object: ee550e5a9bb23450b12807e1ca8eed0eb8aedcc0
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:92321777879c4d900441a98446fd58eb4cbaa7f1
@@ -3520,8 +3520,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:cb5926d055ef000fb3dca852677a31b9d48ecfc6
-    pristine_git_object: f4018ead8f9135b39fa6c99e3fa9a08b980dd706
+    last_write_checksum: sha1:a561b9d9f8f58604973462fc2a5474d275f7c56d
+    pristine_git_object: 556195a5d2111b5b0dc7ad32352b87b7b528d38b
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -7314,7 +7314,110 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod.union(BaseBankPaymentMethodCreate)` **Added**\n"
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Gr4vy.AccountUpdater.Jobs.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.Update()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.PaymentMethods.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.GiftCards.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.ShippingDetails.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.ShippingDetails.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.ShippingDetails.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.ShippingDetails.Update()`:  `error.resourceId` **Added**
+  * `Gr4vy.Buyers.ShippingDetails.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.PaymentServiceTokens.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.PaymentServiceTokens.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.PaymentServiceTokens.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.NetworkTokens.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.NetworkTokens.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.NetworkTokens.Suspend()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.NetworkTokens.Resume()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.NetworkTokens.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentMethods.NetworkTokens.Cryptogram.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.GiftCards.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.GiftCards.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.GiftCards.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.GiftCards.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.GiftCards.Balances.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.CardSchemeDefinitions.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.Update()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.Sessions.GooglePay()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.Sessions.ApplePay()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.Sessions.ClickToPay()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.Domains.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.DigitalWallets.Domains.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Update()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Capture()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Void()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Cancel()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Sync()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Refunds.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Refunds.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Refunds.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Refunds.All.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Actions.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Events.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Settlements.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.Transactions.Settlements.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Refunds.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentOptions.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServiceDefinitions.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServiceDefinitions.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServiceDefinitions.Session()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServices.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServices.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServices.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServices.Update()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServices.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServices.Verify()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentServices.Session()`:  `error.resourceId` **Added**
+  * `Gr4vy.AuditLogs.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Reports.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Reports.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.Reports.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.Reports.Put()`:  `error.resourceId` **Added**
+  * `Gr4vy.Reports.Executions.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Reports.Executions.Url()`:  `error.resourceId` **Added**
+  * `Gr4vy.Reports.Executions.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.ReportExecutions.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.CheckoutSessions.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.CheckoutSessions.Update()`:  `error.resourceId` **Added**
+  * `Gr4vy.CheckoutSessions.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.CheckoutSessions.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.MerchantAccounts.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.MerchantAccounts.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.MerchantAccounts.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.MerchantAccounts.Update()`:  `error.resourceId` **Added**
+  * `Gr4vy.MerchantAccounts.ThreeDsConfiguration.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.MerchantAccounts.ThreeDsConfiguration.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.MerchantAccounts.ThreeDsConfiguration.Update()`:  `error.resourceId` **Added**
+  * `Gr4vy.MerchantAccounts.ThreeDsConfiguration.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.ThreeDsScenarios.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.ThreeDsScenarios.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.ThreeDsScenarios.Update()`:  `error.resourceId` **Added**
+  * `Gr4vy.ThreeDsScenarios.Delete()`:  `error.resourceId` **Added**
+  * `Gr4vy.Payouts.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.Payouts.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.Payouts.Get()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentLinks.Create()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentLinks.List()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentLinks.Expire()`:  `error.resourceId` **Added**
+  * `Gr4vy.PaymentLinks.Get()`:  `error.resourceId` **Added**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
