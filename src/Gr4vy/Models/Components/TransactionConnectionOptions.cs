@@ -274,10 +274,22 @@ namespace Gr4vy.Models.Components
         public RiskifiedAntiFraudOptions? RiskifiedAntiFraud { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `stripe-affirm` connector.
+        /// </summary>
+        [JsonProperty("stripe-affirm")]
+        public StripeOptions? StripeAffirm { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `stripe-card` connector.
         /// </summary>
         [JsonProperty("stripe-card")]
-        public StripeOptions? StripeCard { get; set; } = null;
+        public StripeCardOptions? StripeCard { get; set; } = null;
+
+        /// <summary>
+        /// Custom options to be passed to the `stripe-klarna` connector.
+        /// </summary>
+        [JsonProperty("stripe-klarna")]
+        public StripeOptions? StripeKlarna { get; set; } = null;
 
         /// <summary>
         /// Custom options to be passed to the `travelhub-card` connector.
