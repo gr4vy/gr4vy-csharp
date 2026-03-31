@@ -15,18 +15,12 @@ namespace Gr4vy.Models.Requests
     public class CreatePaymentServiceRequest
     {
         /// <summary>
-        /// the ID of the payment service.
-        /// </summary>
-        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=payment_service_id")]
-        public string PaymentServiceId { get; set; } = default!;
-
-        /// <summary>
         /// The ID of the merchant account to use for this request.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-gr4vy-merchant-account-id")]
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public PaymentServiceUpdate PaymentServiceUpdate { get; set; } = default!;
+        public PaymentServiceCreate PaymentServiceCreate { get; set; } = default!;
     }
 }

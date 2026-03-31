@@ -331,9 +331,9 @@ catch(ArgumentException ex) {
 ### [PaymentServices](docs/sdks/paymentservices/README.md)
 
 * [List](docs/sdks/paymentservices/README.md#list) - List payment services
-* [Create](docs/sdks/paymentservices/README.md#create) - Update a configured payment service
+* [Create](docs/sdks/paymentservices/README.md#create) - Configure a payment service
 * [Get](docs/sdks/paymentservices/README.md#get) - Get payment service
-* [Update](docs/sdks/paymentservices/README.md#update) - Configure a payment service
+* [Update](docs/sdks/paymentservices/README.md#update) - Update a configured payment service
 * [Delete](docs/sdks/paymentservices/README.md#delete) - Delete a configured payment service
 * [Verify](docs/sdks/paymentservices/README.md#verify) - Verify payment service credentials
 * [Session](docs/sdks/paymentservices/README.md#session) - Create a session for a payment service definition

@@ -56,10 +56,10 @@ namespace Gr4vy
         );
 
         /// <summary>
-        /// Update a configured payment service.
+        /// Configure a payment service.
         /// </summary>
         /// <remarks>
-        /// Updates the configuration of a payment service.
+        /// Configures a new payment service for use by merchants.
         /// </remarks>
         /// <param name="paymentServiceCreate">A <see cref="PaymentServiceCreate"/> parameter.</param>
         /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
@@ -118,10 +118,10 @@ namespace Gr4vy
         );
 
         /// <summary>
-        /// Configure a payment service.
+        /// Update a configured payment service.
         /// </summary>
         /// <remarks>
-        /// Configures a new payment service for use by merchants.
+        /// Updates the configuration of a payment service.
         /// </remarks>
         /// <param name="paymentServiceId">the ID of the payment service.</param>
         /// <param name="paymentServiceUpdate">A <see cref="PaymentServiceUpdate"/> parameter.</param>
@@ -681,10 +681,10 @@ namespace Gr4vy
 
 
         /// <summary>
-        /// Update a configured payment service.
+        /// Configure a payment service.
         /// </summary>
         /// <remarks>
-        /// Updates the configuration of a payment service.
+        /// Configures a new payment service for use by merchants.
         /// </remarks>
         /// <param name="paymentServiceCreate">A <see cref="PaymentServiceCreate"/> parameter.</param>
         /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
@@ -712,7 +712,7 @@ namespace Gr4vy
         {
             if (paymentServiceCreate == null) throw new ArgumentNullException(nameof(paymentServiceCreate));
 
-            var request = new UpdatePaymentServiceRequest()
+            var request = new CreatePaymentServiceRequest()
             {
                 PaymentServiceCreate = paymentServiceCreate,
                 MerchantAccountId = merchantAccountId,
@@ -742,7 +742,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "update_payment_service", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "create_payment_service", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1452,10 +1452,10 @@ namespace Gr4vy
 
 
         /// <summary>
-        /// Configure a payment service.
+        /// Update a configured payment service.
         /// </summary>
         /// <remarks>
-        /// Configures a new payment service for use by merchants.
+        /// Updates the configuration of a payment service.
         /// </remarks>
         /// <param name="paymentServiceId">the ID of the payment service.</param>
         /// <param name="paymentServiceUpdate">A <see cref="PaymentServiceUpdate"/> parameter.</param>
@@ -1486,7 +1486,7 @@ namespace Gr4vy
             if (paymentServiceId == null) throw new ArgumentNullException(nameof(paymentServiceId));
             if (paymentServiceUpdate == null) throw new ArgumentNullException(nameof(paymentServiceUpdate));
 
-            var request = new CreatePaymentServiceRequest()
+            var request = new UpdatePaymentServiceRequest()
             {
                 PaymentServiceId = paymentServiceId,
                 PaymentServiceUpdate = paymentServiceUpdate,
@@ -1517,7 +1517,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "create_payment_service", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "update_payment_service", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
