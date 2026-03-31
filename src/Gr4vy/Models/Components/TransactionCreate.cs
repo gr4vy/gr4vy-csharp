@@ -12,6 +12,7 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
     using System.Collections.Generic;
 
     public class TransactionCreate
@@ -270,5 +271,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("integration_client")]
         public string? IntegrationClient { get; set; } = null;
+
+        /// <summary>
+        /// The date and time when the buyer's approval window for this transaction expires. If not provided, this is automatically computed from the connector's default expiration time. The value cannot exceed the connector's maximum approval window.
+        /// </summary>
+        [JsonProperty("approval_expires_at")]
+        public DateTime? ApprovalExpiresAt { get; set; } = null;
     }
 }
