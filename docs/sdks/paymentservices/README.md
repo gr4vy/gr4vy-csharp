@@ -5,9 +5,9 @@
 ### Available Operations
 
 * [List](#list) - List payment services
-* [Create](#create) - Update a configured payment service
+* [Create](#create) - Configure a payment service
 * [Get](#get) - Get payment service
-* [Update](#update) - Configure a payment service
+* [Update](#update) - Update a configured payment service
 * [Delete](#delete) - Delete a configured payment service
 * [Verify](#verify) - Verify payment service credentials
 * [Session](#session) - Create a session for a payment service definition
@@ -75,11 +75,11 @@ while(res != null)
 
 ## Create
 
-Updates the configuration of a payment service.
+Configures a new payment service for use by merchants.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="update_payment_service" method="post" path="/payment-services" -->
+<!-- UsageSnippet language="csharp" operationID="create_payment_service" method="post" path="/payment-services" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -94,10 +94,6 @@ var res = await sdk.PaymentServices.CreateAsync(paymentServiceCreate: new Paymen
     DisplayName = "Stripe",
     PaymentServiceDefinitionId = "stripe-card",
     Fields = new List<Field>() {
-        new Field() {
-            Key = "api_key",
-            Value = "key-12345",
-        },
         new Field() {
             Key = "api_key",
             Value = "key-12345",
@@ -201,11 +197,11 @@ var res = await sdk.PaymentServices.GetAsync(paymentServiceId: "fffd152a-9532-40
 
 ## Update
 
-Configures a new payment service for use by merchants.
+Updates the configuration of a payment service.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="create_payment_service" method="put" path="/payment-services/{payment_service_id}" -->
+<!-- UsageSnippet language="csharp" operationID="update_payment_service" method="put" path="/payment-services/{payment_service_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
