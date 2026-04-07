@@ -220,6 +220,12 @@ namespace Gr4vy.Models.Components
         public MockCardOptions? MockCard { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `mockds-card` connector.
+        /// </summary>
+        [JsonProperty("mockds-card")]
+        public MockCardOptions? MockdsCard { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `nuvei-card` connector.
         /// </summary>
         [JsonProperty("nuvei-card")]
