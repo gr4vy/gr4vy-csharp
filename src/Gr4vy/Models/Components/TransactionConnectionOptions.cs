@@ -58,6 +58,12 @@ namespace Gr4vy.Models.Components
         public AdyenOptions? AdyenIdeal { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `adyen-paypay` connector.
+        /// </summary>
+        [JsonProperty("adyen-paypay")]
+        public AdyenOptions? AdyenPaypay { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `adyen-pix` connector.
         /// </summary>
         [JsonProperty("adyen-pix")]
