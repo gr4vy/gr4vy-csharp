@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: feaf94a951df3be3e47b42c9e4bcc631
+  docChecksum: 33781e9be5d1bcbbab67a2e0944f0444
   docVersion: 1.0.0
   speakeasyVersion: 1.761.1
   generationVersion: 2.879.6
-  releaseVersion: 2.7.57
-  configChecksum: 9c10df801e8e107d3818f62d0da4eac4
+  releaseVersion: 2.7.58
+  configChecksum: c035dc9a5dd7ac8902bb296599c56ddb
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: b701a11d-7fb7-48d5-99bd-01fd8c696433
-  pristine_commit_hash: 9cda5b64449b52b38bc8b5542053b28e6110c2e1
-  pristine_tree_hash: 7bee101297220d99ae008b164bf4676d08b63e7a
+  generation_id: 2556eb89-11bb-45cb-a04e-85489ee96b3f
+  pristine_commit_hash: aaa4c17c67391c094d01c355b8505540f0b9fe4f
+  pristine_tree_hash: 804da4936ec1afc62e71eee5d8e201ff38640627
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -404,8 +404,8 @@ trackedFiles:
     pristine_git_object: 646836859de80a8e56512944048ae74f59ea9e38
   docs/Models/Components/GiftCard.md:
     id: e2686be6f3e3
-    last_write_checksum: sha1:4a25363b8c7f5d9d67c349b8d8a06d868921a721
-    pristine_git_object: a76e1a1c9b47e8f5a33dd89bce816238c0f38a23
+    last_write_checksum: sha1:1dd0ee8fa5361f3e0aabe43654d3dc4d02969956
+    pristine_git_object: 461c8dab94f0b6b39b597e8fc7b2be6d15489708
   docs/Models/Components/GiftCardBalanceRequest.md:
     id: 0e351e5aee1e
     last_write_checksum: sha1:a5a08ac14421cfb80cf233e3aa0b2de25fb1bdad
@@ -436,8 +436,8 @@ trackedFiles:
     pristine_git_object: ddac7c10d80c3d3aebe3b1cbd4bcdeb0fc2b2906
   docs/Models/Components/GiftCardSummary.md:
     id: ba701a98221a
-    last_write_checksum: sha1:8b93ed7c6c6e6f704b9dcb0bd45a5b9163025b65
-    pristine_git_object: 0265bcce4a9f15fb6a46b98a735e4e26b265a635
+    last_write_checksum: sha1:4b404c73320427a6a7e787a3d014d770ebc12d21
+    pristine_git_object: 4546d07978b06d0d818cba3a6562743ebb981881
   docs/Models/Components/GiftCardTokenTransactionCreate.md:
     id: 1bee3416f1fb
     last_write_checksum: sha1:6c2cd6f0e96d4914374dbb3c94ecfee9521fa613
@@ -1836,8 +1836,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:8ca9cabd7cef513db507d3230e50edf206034ac9
-    pristine_git_object: 1bf6884ab63692671c2028af7b5f1bd02165e4e6
+    last_write_checksum: sha1:ea6bd136869d180ca8977df9ed4bfefef01fc046
+    pristine_git_object: fabef96aba939705b873820282606170c3537a7c
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -2208,8 +2208,8 @@ trackedFiles:
     pristine_git_object: e9b335a3e9b9d713eff13a4403cbdc932f5ea9f6
   src/Gr4vy/Models/Components/GiftCard.cs:
     id: ceb906be9d08
-    last_write_checksum: sha1:ddfd494eff77e99ce2ffb8b4310f859ccded8b26
-    pristine_git_object: f3c1fa2d1293bee687b4f2de48eb90b5c2b8fbbc
+    last_write_checksum: sha1:553171b7009acd1accfec6f7e90bf3af3a75a0a7
+    pristine_git_object: 2906d386a82c20f9dbd3878106f0d2a849fe74aa
   src/Gr4vy/Models/Components/GiftCardBalanceRequest.cs:
     id: a45f4043a797
     last_write_checksum: sha1:a961d710b096307705bc03cba0cd14ce38290ef3
@@ -2240,8 +2240,8 @@ trackedFiles:
     pristine_git_object: d880d1f760332b3a118e42b6d83f6f28a0415b9c
   src/Gr4vy/Models/Components/GiftCardSummary.cs:
     id: 490adeec5751
-    last_write_checksum: sha1:024d8575f29f99dc41917537170a15a23fbb7bda
-    pristine_git_object: 7ae3fb1ee3dbf0b01d043fba53a6623761d8dbe4
+    last_write_checksum: sha1:270def555eaaec5f8f2cb389f19fbc312038d034
+    pristine_git_object: 78106bf0757ae6db5260cbf65bf98e1497f7b7f9
   src/Gr4vy/Models/Components/GiftCardTokenTransactionCreate.cs:
     id: ead73fe313ab
     last_write_checksum: sha1:a0add19beaa1e93e5917f1fb3e76c7a55a88115d
@@ -3488,8 +3488,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:6aeee0d358cfc5a6e806b877bddbb7ec6dd474f1
-    pristine_git_object: c593ca2eebf12976d371d552af2176d79c6928d0
+    last_write_checksum: sha1:4f2fbc873d118a5884fcb9233e98eea2ae7be23f
+    pristine_git_object: 189d37d881a012b330918850ab30de569dcd5126
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:92321777879c4d900441a98446fd58eb4cbaa7f1
@@ -3528,8 +3528,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:da5250cd49fda32ad3ba7f7420b77dbc4e99643b
-    pristine_git_object: ff9b7f247b0a43c0f2994f8a4a99db084be73830
+    last_write_checksum: sha1:b83f1a27269c0412dc2c50dea8cc729d1be4d629
+    pristine_git_object: cc6ff866247456189ea281ccc7c253950ee07689
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -3867,7 +3867,7 @@ examples:
           x-gr4vy-merchant-account-id: "default"
       responses:
         "200":
-          application/json: {"items": [{"type": "gift-card", "merchant_account_id": "default", "bin": "412345", "sub_bin": "554", "last4": "1234"}]}
+          application/json: {"items": [{"type": "gift-card", "merchant_account_id": "default", "bin": "412345", "sub_bin": "554", "last4": "1234", "usage_count": 100, "cit_usage_count": 50}]}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4578,7 +4578,7 @@ examples:
           x-gr4vy-merchant-account-id: "default"
       responses:
         "200":
-          application/json: {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "mock-gift-card", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "mock-gift-card", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "usage_count": 100, "cit_usage_count": 50}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4652,7 +4652,7 @@ examples:
         application/json: {"number": "4123455541234561234", "pin": "1234"}
       responses:
         "201":
-          application/json: {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "mock-gift-card", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "mock-gift-card", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "usage_count": 100, "cit_usage_count": 50}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4687,7 +4687,7 @@ examples:
           x-gr4vy-merchant-account-id: "default"
       responses:
         "200":
-          application/json: {"items": [{"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "mock-gift-card", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}, {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "mock-gift-card", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
+          application/json: {"items": [{"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "mock-gift-card", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "usage_count": 100, "cit_usage_count": 50}, {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "mock-gift-card", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "usage_count": 100, "cit_usage_count": 50}], "limit": 20}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -7328,7 +7328,13 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.DlocalGcash` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.DlocalGcash` **Added**\n* `Gr4vy.PaymentLinks.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.DlocalGcash` **Added**\n"
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Gr4vy.Buyers.GiftCards.List()`:  `response.items[]` **Changed**
+  * `Gr4vy.GiftCards.Get()`:  `response` **Changed**
+  * `Gr4vy.GiftCards.Create()`:  `response` **Changed**
+  * `Gr4vy.GiftCards.List()`:  `response.items[]` **Changed**
+  * `Gr4vy.GiftCards.Balances.List()`:  `response.items[]` **Changed**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
