@@ -154,6 +154,12 @@ namespace Gr4vy.Models.Components
         public DlocalPIXOptions? DlocalPix { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `dlocal-gcash` connector.
+        /// </summary>
+        [JsonProperty("dlocal-gcash")]
+        public DlocalOptions? DlocalGcash { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `fiserv-card` connector.
         /// </summary>
         [JsonProperty("fiserv-card")]
