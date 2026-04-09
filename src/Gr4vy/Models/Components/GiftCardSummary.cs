@@ -86,5 +86,29 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("balance_raw_error_message")]
         public string? BalanceRawErrorMessage { get; set; } = null;
+
+        /// <summary>
+        /// The timestamp when this gift card was last used in a transaction.
+        /// </summary>
+        [JsonProperty("last_used_at")]
+        public DateTime? LastUsedAt { get; set; } = null;
+
+        /// <summary>
+        /// The number of times this gift card has been used in transactions.
+        /// </summary>
+        [JsonProperty("usage_count")]
+        public long UsageCount { get; set; } = default!;
+
+        /// <summary>
+        /// The timestamp when this gift card was last used in a transaction for client initiated transactions.
+        /// </summary>
+        [JsonProperty("cit_last_used_at")]
+        public DateTime? CitLastUsedAt { get; set; } = null;
+
+        /// <summary>
+        /// The number of times this gift card has been used in transactions for client initiated transactions.
+        /// </summary>
+        [JsonProperty("cit_usage_count")]
+        public long CitUsageCount { get; set; } = default!;
     }
 }
