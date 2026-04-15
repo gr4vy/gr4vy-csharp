@@ -9,6 +9,7 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Requests;
     using Gr4vy.Utils;
 
     public class ListBuyerGiftCardsRequest
@@ -18,6 +19,18 @@ namespace Gr4vy.Models.Requests
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_id")]
         public string? BuyerId { get; set; } = null;
+
+        /// <summary>
+        /// The field to sort the gift cards by.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=sort_by")]
+        public ListBuyerGiftCardsSortBy? SortBy { get; set; } = null;
+
+        /// <summary>
+        /// The direction to sort the gift cards in.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=order_by")]
+        public string? OrderBy { get; set; } = "desc";
 
         /// <summary>
         /// The ID of the merchant account to use for this request.

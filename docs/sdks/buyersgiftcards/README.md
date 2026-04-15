@@ -16,24 +16,25 @@ List all the stored gift cards for a specific buyer.
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
+using Gr4vy.Models.Requests;
 
 var sdk = new Gr4vySDK(
     merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-var res = await sdk.Buyers.GiftCards.ListAsync();
+ListBuyerGiftCardsRequest req = new ListBuyerGiftCardsRequest() {};
+
+var res = await sdk.Buyers.GiftCards.ListAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `BuyerExternalIdentifier`                               | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
-| `BuyerId`                                               | *string*                                                | :heavy_minus_sign:                                      | N/A                                                     |                                                         |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [ListBuyerGiftCardsRequest](../../Models/Requests/ListBuyerGiftCardsRequest.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
 
 ### Response
 

@@ -1,4 +1,4 @@
-# SortBy
+# ListBuyerPaymentMethodsSortBy
 
 The field to sort the payment methods by.
 
@@ -7,7 +7,7 @@ The field to sort the payment methods by.
 ```csharp
 using Gr4vy.Models.Requests;
 
-var value = SortBy.LastUsedAt;
+var value = ListBuyerPaymentMethodsSortBy.LastUsedAt;
 ```
 
 

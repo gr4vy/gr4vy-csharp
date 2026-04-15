@@ -16,7 +16,7 @@ namespace Gr4vy.Models.Requests
     /// <summary>
     /// The field to sort the payment methods by.
     /// </summary>
-    public enum SortBy
+    public enum ListBuyerPaymentMethodsSortBy
     {
         [JsonProperty("last_used_at")]
         LastUsedAt,
@@ -28,16 +28,16 @@ namespace Gr4vy.Models.Requests
         CitUsageCount,
     }
 
-    public static class SortByExtension
+    public static class ListBuyerPaymentMethodsSortByExtension
     {
-        public static string Value(this SortBy value)
+        public static string Value(this ListBuyerPaymentMethodsSortBy value)
         {
             return ((JsonPropertyAttribute)value.GetType().GetMember(value.ToString())[0].GetCustomAttributes(typeof(JsonPropertyAttribute), false)[0]).PropertyName ?? value.ToString();
         }
 
-        public static SortBy ToEnum(this string value)
+        public static ListBuyerPaymentMethodsSortBy ToEnum(this string value)
         {
-            foreach(var field in typeof(SortBy).GetFields())
+            foreach(var field in typeof(ListBuyerPaymentMethodsSortBy).GetFields())
             {
                 var attributes = field.GetCustomAttributes(typeof(JsonPropertyAttribute), false);
                 if (attributes.Length == 0)
@@ -50,14 +50,14 @@ namespace Gr4vy.Models.Requests
                 {
                     var enumVal = field.GetValue(null);
 
-                    if (enumVal is SortBy)
+                    if (enumVal is ListBuyerPaymentMethodsSortBy)
                     {
-                        return (SortBy)enumVal;
+                        return (ListBuyerPaymentMethodsSortBy)enumVal;
                     }
                 }
             }
 
-            throw new Exception($"Unknown value {value} for enum SortBy");
+            throw new Exception($"Unknown value {value} for enum ListBuyerPaymentMethodsSortBy");
         }
     }
 }

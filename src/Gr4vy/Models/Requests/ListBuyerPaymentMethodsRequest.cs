@@ -30,7 +30,7 @@ namespace Gr4vy.Models.Requests
         /// The field to sort the payment methods by.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=sort_by")]
-        public SortBy? SortBy { get; set; } = null;
+        public ListBuyerPaymentMethodsSortBy? SortBy { get; set; } = null;
 
         /// <summary>
         /// The direction to sort the payment methods in.
