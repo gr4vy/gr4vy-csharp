@@ -30,9 +30,7 @@ namespace Gr4vy
         /// <remarks>
         /// List all the stored gift cards for a specific buyer.
         /// </remarks>
-        /// <param name="buyerExternalIdentifier">Description not available.</param>
-        /// <param name="buyerId">Description not available.</param>
-        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="request">A <see cref="ListBuyerGiftCardsRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="GiftCardSummaries"/> object when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -51,9 +49,7 @@ namespace Gr4vy
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public  Task<GiftCardSummaries> ListAsync(
-            string? buyerExternalIdentifier = null,
-            string? buyerId = null,
-            string? merchantAccountId = null,
+            ListBuyerGiftCardsRequest? request = null,
             RetryConfig? retryConfig = null
         );
     }
@@ -77,9 +73,7 @@ namespace Gr4vy
         /// <remarks>
         /// List all the stored gift cards for a specific buyer.
         /// </remarks>
-        /// <param name="buyerExternalIdentifier">Description not available.</param>
-        /// <param name="buyerId">Description not available.</param>
-        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="request">A <see cref="ListBuyerGiftCardsRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="GiftCardSummaries"/> object when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -98,18 +92,14 @@ namespace Gr4vy
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public async  Task<GiftCardSummaries> ListAsync(
-            string? buyerExternalIdentifier = null,
-            string? buyerId = null,
-            string? merchantAccountId = null,
+            ListBuyerGiftCardsRequest? request = null,
             RetryConfig? retryConfig = null
         )
         {
-            var request = new ListBuyerGiftCardsRequest()
+            if (request == null)
             {
-                BuyerExternalIdentifier = buyerExternalIdentifier,
-                BuyerId = buyerId,
-                MerchantAccountId = merchantAccountId,
-            };
+                request = new ListBuyerGiftCardsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
