@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 6c048e5a61d385d8a4dce22525c8c6b6
+  docChecksum: 581a01cee6ed4cc9f830984556c18299
   docVersion: 1.0.0
-  speakeasyVersion: 1.761.5
+  speakeasyVersion: 1.761.6
   generationVersion: 2.879.13
-  releaseVersion: 2.7.60
-  configChecksum: 18acbb5f216e6c10e5f8bc586cdcbddc
+  releaseVersion: 2.7.61
+  configChecksum: 55face012d7d22c5feb50a85a95ae86c
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 169a8e29-1c07-4327-a324-65b324bb7a35
-  pristine_commit_hash: ec9a1dee2c892b3cf3ac4741a9d4a2f4c6e22a45
-  pristine_tree_hash: 558e4fc921137d05145c2f6122a38ef861545a35
+  generation_id: 1df5e735-e3e8-4222-b51d-f2ec3409e190
+  pristine_commit_hash: f7016323555d0e51a2bc13f28712722b0c300d30
+  pristine_tree_hash: fa91aa744214edf2df0cd47a1354d2ec91316236
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -612,8 +612,8 @@ trackedFiles:
     pristine_git_object: 123e1c55fd51746fcb71435576c5976779d116e0
   docs/Models/Components/PaymentMethod.md:
     id: 5da8df995e06
-    last_write_checksum: sha1:b9d28db086a9f56624144c785cfef0451c9af9bf
-    pristine_git_object: d72f8196dd7ab0849fdbe16e28d9e41cb2a3af22
+    last_write_checksum: sha1:dafe3c4a72ec82f0ae073c2355d27e0002bf70d4
+    pristine_git_object: d35b66304004f76d961ab0bc41fd0ecbeed3c17f
   docs/Models/Components/PaymentMethodCard.md:
     id: cdec0209d541
     last_write_checksum: sha1:3de6dd2d6c0735ac445c7e8335480643d155dff6
@@ -632,8 +632,8 @@ trackedFiles:
     pristine_git_object: 195e4eb16c5fd19225c9870811ac3f4a00e63297
   docs/Models/Components/PaymentMethodSummary.md:
     id: d438e3096517
-    last_write_checksum: sha1:44c965e00989d0c728d089857f660eab4354517b
-    pristine_git_object: b2178ae4957cb3970f9602f63a0c7e802fe1cd6a
+    last_write_checksum: sha1:d6555e81277f66558b19a8e70403d01fe0566418
+    pristine_git_object: 11a200c2ea59c696be20b6f23854c79aea075352
   docs/Models/Components/PaymentMethods.md:
     id: 5ea510e7e6b9
     last_write_checksum: sha1:397099fd67f3b897dd92755d702d0eb454b75ddd
@@ -1840,8 +1840,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:f96f04af90bbd9674eb929d8f92f7c39a98e1034
-    pristine_git_object: d36c5f5a922d15576406698a11ebc44a8278aae5
+    last_write_checksum: sha1:b041efeb5351f42a8eb0b2fd3f55f9623a6d2426
+    pristine_git_object: 057c4dcc02cd11305140543fc3ece4fe743958a7
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -2420,8 +2420,8 @@ trackedFiles:
     pristine_git_object: 7c005ee1892b62cb160d7a3c77f08769bd205976
   src/Gr4vy/Models/Components/PaymentMethod.cs:
     id: dc22daf0609a
-    last_write_checksum: sha1:295b6c87fff5129a91befa5fce9e1c4bdb8d14f7
-    pristine_git_object: ed132429600a44e29c77d3f9baa934eb255edc64
+    last_write_checksum: sha1:eb2ffbe63ba1b8cad1cd406549cc63b3998f08e0
+    pristine_git_object: 8b66bb2f38018755d847a7c8bd6976a017242988
   src/Gr4vy/Models/Components/PaymentMethodCard.cs:
     id: 3be49527bf71
     last_write_checksum: sha1:d1d70c954b56ed3c333780b1919a510110187d77
@@ -2440,8 +2440,8 @@ trackedFiles:
     pristine_git_object: 40521970c57bb8635dc31894738276f97ef31a5f
   src/Gr4vy/Models/Components/PaymentMethodSummary.cs:
     id: 890497b80917
-    last_write_checksum: sha1:421129fd09b3e2d772519493e7acb7fc1f7013dd
-    pristine_git_object: 27c8144a4d71f54a0c2164567a9916200d15f955
+    last_write_checksum: sha1:eab22ed1e22798e25312ef6b3e37c877f8cb8180
+    pristine_git_object: aae433b1cec22b9c72421e3bfc013a26484fcccb
   src/Gr4vy/Models/Components/PaymentMethods.cs:
     id: ad6b03c01625
     last_write_checksum: sha1:7d8726976e27214ae41f58215399f90ca924f931
@@ -3496,8 +3496,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:43f3fc15d01467f8e919efd0c3597b47dd4433fe
-    pristine_git_object: b06eee78be8ddf9a8d09827aec83a68526def1b1
+    last_write_checksum: sha1:731b8dcb4ca72f9a68ef2a4b3e786edd7f6424e2
+    pristine_git_object: ca88d17e3d31559eb1349b385e1b6dd33d5e531d
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:92321777879c4d900441a98446fd58eb4cbaa7f1
@@ -3536,8 +3536,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:ce81fc2b07809dde78050479038dd5d629d01706
-    pristine_git_object: be2747a5f2c4d9564a7d068259c92bc867e56015
+    last_write_checksum: sha1:301d46f9bf79d8c9e1b9deab3d839a954a5a5d82
+    pristine_git_object: dd027169b7614e4349eb53f377a5380b9ff04d43
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -3840,7 +3840,7 @@ examples:
           x-gr4vy-merchant-account-id: "default"
       responses:
         "200":
-          application/json: {"items": [{"type": "payment-method", "method": "multibanco", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100}]}
+          application/json: {"items": [{"type": "payment-method", "method": "multibanco", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "scheme_transaction_id": "123456789012345", "scheme_transaction_id_scheme": "visa"}]}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4105,7 +4105,7 @@ examples:
           x-gr4vy-merchant-account-id: "default"
       responses:
         "200":
-          application/json: {"items": [{"type": "payment-method", "method": "laybuy", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "status": "processing", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
+          application/json: {"items": [{"type": "payment-method", "method": "laybuy", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "scheme_transaction_id": "123456789012345", "scheme_transaction_id_scheme": "visa", "status": "processing", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4142,7 +4142,7 @@ examples:
         application/json: {"method": "checkout-session", "id": "4137b1cf-39ac-42a8-bad6-1c680d5dab6b"}
       responses:
         "201":
-          application/json: {"type": "payment-method", "method": "alipay", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "status": "paused", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "payment-method", "method": "alipay", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "scheme_transaction_id": "123456789012345", "scheme_transaction_id_scheme": "visa", "status": "paused", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4178,7 +4178,7 @@ examples:
           x-gr4vy-merchant-account-id: "default"
       responses:
         "200":
-          application/json: {"type": "payment-method", "method": "efecty", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "status": "succeeded", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "payment-method", "method": "efecty", "id": "ef9496d8-53a5-4aad-8ca2-00eb68334389", "merchant_account_id": "default", "cit_usage_count": 50, "has_replacement": false, "usage_count": 100, "scheme_transaction_id": "123456789012345", "scheme_transaction_id_scheme": "visa", "status": "succeeded", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -7337,6 +7337,12 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Gr4vy.Buyers.PaymentMethods.List()`:  `response.items[]` **Changed**
+  * `Gr4vy.PaymentMethods.List()`:  `response.items[]` **Changed**
+  * `Gr4vy.PaymentMethods.Create()`:  `response` **Changed**
+  * `Gr4vy.PaymentMethods.Get()`:  `response` **Changed**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
