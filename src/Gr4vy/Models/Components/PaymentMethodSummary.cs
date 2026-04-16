@@ -138,5 +138,17 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("usage_count")]
         public long UsageCount { get; set; } = default!;
+
+        /// <summary>
+        /// The scheme transaction identifier stored against this payment method.
+        /// </summary>
+        [JsonProperty("scheme_transaction_id", NullValueHandling = NullValueHandling.Include)]
+        public string? SchemeTransactionId { get; set; }
+
+        /// <summary>
+        /// The scheme associated with scheme_transaction_id. Only applies to card payments.
+        /// </summary>
+        [JsonProperty("scheme_transaction_id_scheme", NullValueHandling = NullValueHandling.Include)]
+        public string? SchemeTransactionIdScheme { get; set; }
     }
 }
