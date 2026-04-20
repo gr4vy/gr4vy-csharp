@@ -160,6 +160,12 @@ namespace Gr4vy.Models.Components
         public DlocalOptions? DlocalGcash { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `ecommpay-card` connector.
+        /// </summary>
+        [JsonProperty("ecommpay-card")]
+        public EcommpayOptions? EcommpayCard { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `fiserv-card` connector.
         /// </summary>
         [JsonProperty("fiserv-card")]
