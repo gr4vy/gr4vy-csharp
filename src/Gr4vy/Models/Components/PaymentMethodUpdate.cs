@@ -24,13 +24,13 @@ namespace Gr4vy.Models.Components
         public string? ExpirationDate { get; set; } = null;
 
         /// <summary>
-        /// A scheme transaction identifier to associate with this payment method.
+        /// A scheme transaction identifier to associate with this payment method. Explicitly setting this field to `null` will also clear `scheme_transaction_id_scheme` as a side-effect. When setting a new value and `scheme_transaction_id_scheme` is both omitted from the payload and previously unset,`scheme_transaction_id_scheme` will be populated from the payment method's existing `scheme`.
         /// </summary>
         [JsonProperty("scheme_transaction_id")]
         public string? SchemeTransactionId { get; set; } = null;
 
         /// <summary>
-        /// The scheme associated with scheme_transaction_id. Only applies to card payments.
+        /// The scheme associated with `scheme_transaction_id`. Only applies to card payments. When setting a new value for `scheme_transaction_id`, if `scheme_transaction_id_scheme`is both omitted from the payload and previously unset, `scheme_transaction_id_scheme` will be populated from the payment method's existing `scheme`.
         /// </summary>
         [JsonProperty("scheme_transaction_id_scheme")]
         public string? SchemeTransactionIdScheme { get; set; } = null;
