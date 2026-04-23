@@ -9,6 +9,7 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
@@ -60,6 +61,24 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("merchant_country_code")]
         public string? MerchantCountryCode { get; set; } = null;
+
+        /// <summary>
+        /// Merchant classification for the type of goods or services it provides.
+        /// </summary>
+        [JsonProperty("merchant_category_code")]
+        public string? MerchantCategoryCode { get; set; } = null;
+
+        /// <summary>
+        /// The merchant address associated with the digital wallet.
+        /// </summary>
+        [JsonProperty("address")]
+        public DigitalWalletAddress? Address { get; set; } = null;
+
+        /// <summary>
+        /// Provider-specific configuration. Currently only used by Paze.
+        /// </summary>
+        [JsonProperty("extra_configuration")]
+        public Dictionary<string, object>? ExtraConfiguration { get; set; } = null;
 
         /// <summary>
         /// The list of domain names that a digital wallet can be used on (deprecated).
