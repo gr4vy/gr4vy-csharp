@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 475ae0efa0e6afa331e1c982ecf0df00
+  docChecksum: 323c928101ba66b9eb7e070f2ab218ac
   docVersion: 1.0.0
   speakeasyVersion: 1.761.9
   generationVersion: 2.881.4
-  releaseVersion: 2.8.1
-  configChecksum: e328e51bd09b9e83f0ac48dfbcb1b180
+  releaseVersion: 2.8.2
+  configChecksum: 3fdb3277d726a271a27a0f53228fac73
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 90dd0f8c-8a04-474a-b09d-2678dff6ae6e
-  pristine_commit_hash: 0849f35635acac2183df6903c803d7377087fa03
-  pristine_tree_hash: 4ecc74152c8e881909435a6a25fd2a66a5377011
+  generation_id: ec0b3ac9-1bec-4a86-b0e6-432457b9054a
+  pristine_commit_hash: 4facb8a7a87c3fdd173cca1230ded500fec5716b
+  pristine_tree_hash: bc74f7888d5c5b88b3ad34e0d8653d8020e72b33
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -292,20 +292,24 @@ trackedFiles:
     pristine_git_object: 1709174f4774a318b2a8e58abea90bc3189aca75
   docs/Models/Components/DigitalWallet.md:
     id: 190bf64ebeb3
-    last_write_checksum: sha1:934efe3e444d953cfb67257347fdda251f84baa4
-    pristine_git_object: 7434d78e074505837994b3be23af29347d4df7ae
+    last_write_checksum: sha1:ca82ea64a6bb6abbf505b74d53543936c2ba4e2a
+    pristine_git_object: 5d9a14f06f0e6f364293f78a57ee8e801f286bfe
+  docs/Models/Components/DigitalWalletAddress.md:
+    id: fb41ecba89b5
+    last_write_checksum: sha1:10d64c8e690f9138fdd700b21b18b66288e382d4
+    pristine_git_object: ee627bcdce74631f029367d20ee7eea67472951c
   docs/Models/Components/DigitalWalletCreate.md:
     id: 59da02b066cf
-    last_write_checksum: sha1:42cc9211d6d15289a2d25280b81fe02c9f573487
-    pristine_git_object: 22b977c9bf3366548e30c58ce402bc5520fb027a
+    last_write_checksum: sha1:cddbcd545afeada19d8c84bde9c7512db8f3ca01
+    pristine_git_object: 522b270df7bdec4bca793bcc7847d2cad0481537
   docs/Models/Components/DigitalWalletDomain.md:
     id: c88c1709189e
     last_write_checksum: sha1:aa31ec490392f395e9af452076797f06917b8be5
     pristine_git_object: 072f459079695aa38ded13c578ed570796d9d5b0
   docs/Models/Components/DigitalWalletUpdate.md:
     id: cf6f3cd44c04
-    last_write_checksum: sha1:99270d30869ac3d01b6f66dd5e5b59fb0545051b
-    pristine_git_object: ed842caca549c5f2984d4330a2923cf50e11230a
+    last_write_checksum: sha1:bc5ed1e54bc64288fee9e6964eaff499629e6dc9
+    pristine_git_object: 2d37316a8691e7ab7eddb23589995986349ffadc
   docs/Models/Components/DigitalWallets.md:
     id: 8f54059c7153
     last_write_checksum: sha1:b3a4d3a5c9a8a4178a368790d7289af612d65467
@@ -1852,8 +1856,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:f5c6c46243c27d7ffcdf9e8f3d500c8da0b1aae6
-    pristine_git_object: aee977d5fa89ad727b7a2015ae736bc9012a0cce
+    last_write_checksum: sha1:806b6d46278f3a20328498b269927ca9913fa79d
+    pristine_git_object: de4997f7fcf03536bdb62aacc9014596aa97447f
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -2112,20 +2116,24 @@ trackedFiles:
     pristine_git_object: 71fef0014dd4e86e8d44988df681004f2cbd46b6
   src/Gr4vy/Models/Components/DigitalWallet.cs:
     id: 797d5e25ddf9
-    last_write_checksum: sha1:d5911b9fec878326b43baa5dc1d8c8a01b6a3e8c
-    pristine_git_object: 1ef68088cc1bb762d6b7b88cd6031d5d3c57b54a
+    last_write_checksum: sha1:35d933e4a6e90d4326852b88eee06464b1ae93d5
+    pristine_git_object: 4441fb2caaf92d20e99e5ee099d3debb2badf4b7
+  src/Gr4vy/Models/Components/DigitalWalletAddress.cs:
+    id: aac5d26e0ab9
+    last_write_checksum: sha1:952bd52ef87be0b84ea6d84e6e187eab6b0a5eff
+    pristine_git_object: a8597f30240afb24766b81cb2f21a557a217654c
   src/Gr4vy/Models/Components/DigitalWalletCreate.cs:
     id: 698270cf9d76
-    last_write_checksum: sha1:f5934f43125844c0f4cb7a8d6ce6002b29bedaa5
-    pristine_git_object: c725ec150c08520a1f0fa15c496ef0b7e9f116b7
+    last_write_checksum: sha1:10b740a85c271363cac60960c2bfd2f43c86b124
+    pristine_git_object: d7c0758e551ff75910fa30ec47373716b7c4afc1
   src/Gr4vy/Models/Components/DigitalWalletDomain.cs:
     id: acbde9094dd7
     last_write_checksum: sha1:193fab686ab61285a028b5bb6d6d3fcc4a528bbc
     pristine_git_object: cb9e513652a2a44dcfd5a216ff4b93aba1dac579
   src/Gr4vy/Models/Components/DigitalWalletUpdate.cs:
     id: 7742242cb131
-    last_write_checksum: sha1:7226f6d0a7914e036c6e21f0fba009ad6f5e36c1
-    pristine_git_object: 4df0e2c5dde60652e7cf6332858ba9af833d45b0
+    last_write_checksum: sha1:a2a0328a338addab945ba61124eed131197dee7d
+    pristine_git_object: ae5bfd58b2d9076bd5ea0a737063df3b31727545
   src/Gr4vy/Models/Components/DigitalWallets.cs:
     id: d2445dd71233
     last_write_checksum: sha1:7ddb5a08b74dc95d1adccdb9c83b38f60640bac8
@@ -3520,8 +3528,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:811bef678cea99be1eb1166edd81aea8cdb2b058
-    pristine_git_object: d5740f1b7c79f19e65038440f95e32d481a743c6
+    last_write_checksum: sha1:7ee4417958d9430f05ed0713549b42956d86b65f
+    pristine_git_object: b540517751a396d58d75d52839c7c32e6222041c
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:92321777879c4d900441a98446fd58eb4cbaa7f1
@@ -3560,8 +3568,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:686185149dc066064fa0a7c2714c82b562bae9b4
-    pristine_git_object: 409e6be49a56aed885be315c3e6e1e419e17bec2
+    last_write_checksum: sha1:4b489c585d986b2a4da8011f27c566c6b5d939f4
+    pristine_git_object: e2b09441640d88d24af5e0cc69cef7501911b603
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -7395,6 +7403,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.DigitalWallets.Create()`: \n  *  `request.digitalWalletCreate` **Changed**\n  *  `response` **Changed**\n* `Gr4vy.DigitalWallets.List()`:  `response.items[]` **Changed**\n* `Gr4vy.DigitalWallets.Get()`:  `response` **Changed**\n* `Gr4vy.DigitalWallets.Update()`: \n  *  `request.digitalWalletUpdate` **Changed**\n  *  `response` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln

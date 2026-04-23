@@ -9,6 +9,7 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System.Collections.Generic;
@@ -32,5 +33,14 @@ namespace Gr4vy.Models.Components
 
         [JsonProperty("merchant_country_code")]
         public string? MerchantCountryCode { get; set; } = null;
+
+        [JsonProperty("merchant_category_code")]
+        public string? MerchantCategoryCode { get; set; } = null;
+
+        [JsonProperty("address")]
+        public DigitalWalletAddress? Address { get; set; } = null;
+
+        [JsonProperty("extra_configuration")]
+        public Dictionary<string, object>? ExtraConfiguration { get; set; } = null;
     }
 }
