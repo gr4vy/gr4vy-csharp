@@ -72,7 +72,7 @@ namespace Gr4vy.Models.Components
         /// The merchant address associated with the digital wallet.
         /// </summary>
         [JsonProperty("address")]
-        public DigitalWalletAddress? Address { get; set; } = null;
+        public ApiTypesDigitalWalletAddress? Address { get; set; } = null;
 
         /// <summary>
         /// Provider-specific configuration. Currently only used by Paze.
