@@ -1,0 +1,9 @@
+# AdyenPixOptions
+
+
+## Fields
+
+| Field                                                                           | Type                                                                            | Required                                                                        | Description                                                                     | Example                                                                         |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `AdditionalData`                                                                | Dictionary<String, *string*>                                                    | :heavy_minus_sign:                                                              | Passes additional data to the Adyen API when creating a transaction.            | {<br/>"subMerchantID": "12345"<br/>}                                            |
+| `PixRecurring`                                                                  | [AdyenPixRecurringOptions](../../Models/Components/AdyenPixRecurringOptions.md) | :heavy_minus_sign:                                                              | Passes `pixRecurring` data to Adyen                                             |                                                                                 |
