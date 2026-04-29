@@ -40,6 +40,8 @@ namespace Gr4vy.Models.Components
 
         public static TransactionCreatePaymentMethodType GooglePayFPANPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("GooglePayFPANPaymentMethodCreate"); } }
 
+        public static TransactionCreatePaymentMethodType PazePaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("PazePaymentMethodCreate"); } }
+
         public static TransactionCreatePaymentMethodType NetworkTokenPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("NetworkTokenPaymentMethodCreate"); } }
 
         public static TransactionCreatePaymentMethodType PlaidPaymentMethodCreate { get { return new TransactionCreatePaymentMethodType("PlaidPaymentMethodCreate"); } }
@@ -62,6 +64,7 @@ namespace Gr4vy.Models.Components
                 case "ClickToPayFPANPaymentMethodCreate": return ClickToPayFPANPaymentMethodCreate;
                 case "GooglePayPaymentMethodCreate": return GooglePayPaymentMethodCreate;
                 case "GooglePayFPANPaymentMethodCreate": return GooglePayFPANPaymentMethodCreate;
+                case "PazePaymentMethodCreate": return PazePaymentMethodCreate;
                 case "NetworkTokenPaymentMethodCreate": return NetworkTokenPaymentMethodCreate;
                 case "PlaidPaymentMethodCreate": return PlaidPaymentMethodCreate;
                 case "BaseBankPaymentMethodCreate": return BaseBankPaymentMethodCreate;
@@ -119,6 +122,9 @@ namespace Gr4vy.Models.Components
 
         [SpeakeasyMetadata("form:explode=true")]
         public GooglePayFPANPaymentMethodCreate? GooglePayFPANPaymentMethodCreate { get; set; }
+
+        [SpeakeasyMetadata("form:explode=true")]
+        public PazePaymentMethodCreate? PazePaymentMethodCreate { get; set; }
 
         [SpeakeasyMetadata("form:explode=true")]
         public NetworkTokenPaymentMethodCreate? NetworkTokenPaymentMethodCreate { get; set; }
@@ -195,6 +201,14 @@ namespace Gr4vy.Models.Components
 
             TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
             res.GooglePayFPANPaymentMethodCreate = googlePayFPANPaymentMethodCreate;
+            return res;
+        }
+        public static TransactionCreatePaymentMethod CreatePazePaymentMethodCreate(PazePaymentMethodCreate pazePaymentMethodCreate)
+        {
+            TransactionCreatePaymentMethodType typ = TransactionCreatePaymentMethodType.PazePaymentMethodCreate;
+
+            TransactionCreatePaymentMethod res = new TransactionCreatePaymentMethod(typ);
+            res.PazePaymentMethodCreate = pazePaymentMethodCreate;
             return res;
         }
         public static TransactionCreatePaymentMethod CreateNetworkTokenPaymentMethodCreate(NetworkTokenPaymentMethodCreate networkTokenPaymentMethodCreate)
@@ -374,26 +388,6 @@ namespace Gr4vy.Models.Components
 
                 try
                 {
-                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CardWithUrlPaymentMethodCreate)
-                    {
-                        CardWithUrlPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CardWithUrlPaymentMethodCreate>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(CardWithUrlPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CardWithUrlPaymentMethodCreate), "CardWithUrlPaymentMethodCreate"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                try
-                {
                     return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.ApplePayPaymentMethodCreate)
                     {
                         ApplePayPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<ApplePayPaymentMethodCreate>(json)
@@ -434,6 +428,26 @@ namespace Gr4vy.Models.Components
 
                 try
                 {
+                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CardWithUrlPaymentMethodCreate)
+                    {
+                        CardWithUrlPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CardWithUrlPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(CardWithUrlPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CardWithUrlPaymentMethodCreate), "CardWithUrlPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
                     return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.GooglePayFPANPaymentMethodCreate)
                     {
                         GooglePayFPANPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<GooglePayFPANPaymentMethodCreate>(json)
@@ -442,6 +456,26 @@ namespace Gr4vy.Models.Components
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(GooglePayFPANPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.GooglePayFPANPaymentMethodCreate), "GooglePayFPANPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.PazePaymentMethodCreate)
+                    {
+                        PazePaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<PazePaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(PazePaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.PazePaymentMethodCreate), "PazePaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -575,6 +609,12 @@ namespace Gr4vy.Models.Components
                 if (res.GooglePayFPANPaymentMethodCreate != null)
                 {
                     writer.WriteRawValue(Utilities.SerializeJSON(res.GooglePayFPANPaymentMethodCreate));
+                    return;
+                }
+
+                if (res.PazePaymentMethodCreate != null)
+                {
+                    writer.WriteRawValue(Utilities.SerializeJSON(res.PazePaymentMethodCreate));
                     return;
                 }
 

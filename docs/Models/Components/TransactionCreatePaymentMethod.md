@@ -53,6 +53,12 @@ TransactionCreatePaymentMethod.CreateGooglePayPaymentMethodCreate(/* values here
 TransactionCreatePaymentMethod.CreateGooglePayFPANPaymentMethodCreate(/* values here */);
 ```
 
+### PazePaymentMethodCreate
+
+```csharp
+TransactionCreatePaymentMethod.CreatePazePaymentMethodCreate(/* values here */);
+```
+
 ### NetworkTokenPaymentMethodCreate
 
 ```csharp
