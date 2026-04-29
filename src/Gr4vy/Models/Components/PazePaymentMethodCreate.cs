@@ -14,9 +14,9 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
 
     /// <summary>
-    /// Create a Google Pay transaction with a device token.
+    /// Create a Paze transaction with a device token.
     /// </summary>
-    public class GooglePayPaymentMethodCreate
+    public class PazePaymentMethodCreate
     {
         /// <summary>
         /// The external identifier of the buyer to create a payment for.
@@ -61,21 +61,15 @@ namespace Gr4vy.Models.Components
         public string? CardType { get; set; } = null;
 
         /// <summary>
-        /// Always `googlepay`
+        /// Always `paze`
         /// </summary>
         [JsonProperty("method")]
-        public string Method { get; } = "googlepay";
+        public string Method { get; } = "paze";
 
         /// <summary>
-        /// The opaque token as received from the Google Pay JS library. This format may change between JS library versions.
+        /// The opaque token as received from the Paze complete response.
         /// </summary>
         [JsonProperty("token", NullValueHandling = NullValueHandling.Include)]
-        public GooglePayPaymentMethodCreateToken Token { get; set; } = default!;
-
-        /// <summary>
-        /// The assurance details provided by Google Pay.
-        /// </summary>
-        [JsonProperty("assurance_details")]
-        public GooglePayAssuranceDetails? AssuranceDetails { get; set; } = null;
+        public PazePaymentMethodCreateToken Token { get; set; } = default!;
     }
 }

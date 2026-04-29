@@ -17,23 +17,23 @@ namespace Gr4vy.Models.Components
     using System.Numerics;
     using System.Reflection;
 
-    public class TokenType
+    public class PazePaymentMethodCreateTokenType
     {
-        private TokenType(string value) { Value = value; }
+        private PazePaymentMethodCreateTokenType(string value) { Value = value; }
 
         public string Value { get; private set; }
 
-        public static TokenType Str { get { return new TokenType("str"); } }
+        public static PazePaymentMethodCreateTokenType Str { get { return new PazePaymentMethodCreateTokenType("str"); } }
 
-        public static TokenType MapOfAny { get { return new TokenType("mapOfAny"); } }
+        public static PazePaymentMethodCreateTokenType MapOfAny { get { return new PazePaymentMethodCreateTokenType("mapOfAny"); } }
 
         public override string ToString() { return Value; }
-        public static implicit operator String(TokenType v) { return v.Value; }
-        public static TokenType FromString(string v) {
+        public static implicit operator String(PazePaymentMethodCreateTokenType v) { return v.Value; }
+        public static PazePaymentMethodCreateTokenType FromString(string v) {
             switch(v) {
                 case "str": return Str;
                 case "mapOfAny": return MapOfAny;
-                default: throw new ArgumentException("Invalid value for TokenType");
+                default: throw new ArgumentException("Invalid value for PazePaymentMethodCreateTokenType");
             }
         }
         public override bool Equals(object? obj)
@@ -42,7 +42,7 @@ namespace Gr4vy.Models.Components
             {
                 return false;
             }
-            return Value.Equals(((TokenType)obj).Value);
+            return Value.Equals(((PazePaymentMethodCreateTokenType)obj).Value);
         }
 
         public override int GetHashCode()
@@ -52,12 +52,12 @@ namespace Gr4vy.Models.Components
     }
 
     /// <summary>
-    /// The opaque token as received from the Google Pay JS library. This format may change between JS library versions.
+    /// The opaque token as received from the Paze complete response.
     /// </summary>
-    [JsonConverter(typeof(Token.TokenConverter))]
-    public class Token
+    [JsonConverter(typeof(PazePaymentMethodCreateToken.PazePaymentMethodCreateTokenConverter))]
+    public class PazePaymentMethodCreateToken
     {
-        public Token(TokenType type)
+        public PazePaymentMethodCreateToken(PazePaymentMethodCreateTokenType type)
         {
             Type = type;
         }
@@ -68,27 +68,27 @@ namespace Gr4vy.Models.Components
         [SpeakeasyMetadata("form:explode=true")]
         public Dictionary<string, object>? MapOfAny { get; set; }
 
-        public TokenType Type { get; set; }
-        public static Token CreateStr(string str)
+        public PazePaymentMethodCreateTokenType Type { get; set; }
+        public static PazePaymentMethodCreateToken CreateStr(string str)
         {
-            TokenType typ = TokenType.Str;
+            PazePaymentMethodCreateTokenType typ = PazePaymentMethodCreateTokenType.Str;
 
-            Token res = new Token(typ);
+            PazePaymentMethodCreateToken res = new PazePaymentMethodCreateToken(typ);
             res.Str = str;
             return res;
         }
-        public static Token CreateMapOfAny(Dictionary<string, object> mapOfAny)
+        public static PazePaymentMethodCreateToken CreateMapOfAny(Dictionary<string, object> mapOfAny)
         {
-            TokenType typ = TokenType.MapOfAny;
+            PazePaymentMethodCreateTokenType typ = PazePaymentMethodCreateTokenType.MapOfAny;
 
-            Token res = new Token(typ);
+            PazePaymentMethodCreateToken res = new PazePaymentMethodCreateToken(typ);
             res.MapOfAny = mapOfAny;
             return res;
         }
 
-        public class TokenConverter : JsonConverter
+        public class PazePaymentMethodCreateTokenConverter : JsonConverter
         {
-            public override bool CanConvert(System.Type objectType) => objectType == typeof(Token);
+            public override bool CanConvert(System.Type objectType) => objectType == typeof(PazePaymentMethodCreateToken);
 
             public override bool CanRead => true;
 
@@ -103,7 +103,7 @@ namespace Gr4vy.Models.Components
                 var fallbackCandidates = new List<(System.Type, object, string)>();
 
                 if (json[0] == '"' && json[^1] == '"'){
-                    return new Token(TokenType.Str)
+                    return new PazePaymentMethodCreateToken(PazePaymentMethodCreateTokenType.Str)
                     {
                         Str = json[1..^1]
                     };
@@ -111,14 +111,14 @@ namespace Gr4vy.Models.Components
 
                 try
                 {
-                    return new Token(TokenType.MapOfAny)
+                    return new PazePaymentMethodCreateToken(PazePaymentMethodCreateTokenType.MapOfAny)
                     {
                         MapOfAny = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<Dictionary<string, object>>(json)
                     };
                 }
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
-                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new Token(TokenType.MapOfAny), "MapOfAny"));
+                    fallbackCandidates.Add((typeof(Dictionary<string, object>), new PazePaymentMethodCreateToken(PazePaymentMethodCreateTokenType.MapOfAny), "MapOfAny"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -159,7 +159,7 @@ namespace Gr4vy.Models.Components
                     throw new InvalidOperationException("Unexpected null JSON value.");
                 }
 
-                Token res = (Token)value;
+                PazePaymentMethodCreateToken res = (PazePaymentMethodCreateToken)value;
 
                 if (res.Str != null)
                 {
