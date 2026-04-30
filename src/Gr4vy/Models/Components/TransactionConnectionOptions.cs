@@ -46,6 +46,12 @@ namespace Gr4vy.Models.Components
         public AdyenOptions? AdyenCashapp { get; set; } = null;
 
         /// <summary>
+        /// Custom options to be passed to the `adyen-gcash` connector.
+        /// </summary>
+        [JsonProperty("adyen-gcash")]
+        public AdyenOptions? AdyenGcash { get; set; } = null;
+
+        /// <summary>
         /// Custom options to be passed to the `adyen-giropay` connector.
         /// </summary>
         [JsonProperty("adyen-giropay")]
