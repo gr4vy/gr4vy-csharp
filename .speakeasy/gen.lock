@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: b2f1f1a7e1cf8db3eebedf3d555c5ab0
+  docChecksum: 1ef20e0bc72779e53d57f0a18a90212b
   docVersion: 1.0.0
-  speakeasyVersion: 1.761.10
-  generationVersion: 2.881.16
-  releaseVersion: 2.8.7
-  configChecksum: b31268bd98001ce8bdbe318c10bdc03d
+  speakeasyVersion: 1.761.11
+  generationVersion: 2.881.17
+  releaseVersion: 2.8.8
+  configChecksum: 5f9aed07a4afdac7a38d60493165f901
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 5787a350-ffcc-4484-94d0-5f1e4c25dd4c
-  pristine_commit_hash: 18087aa2d6b82ae5e8882e3b0d6d80e4ba94bc46
-  pristine_tree_hash: 04babcb7585a111dc9c64bccfafb0e305cf7ae41
+  generation_id: 7e32f9da-3a36-41fc-b19f-50416cb089b6
+  pristine_commit_hash: a3c56ec4dafbabd5a64d1b9b22039daf0b9d5180
+  pristine_tree_hash: 5ee7b0f7f64685b74484108ff92cf652034d9c70
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -496,12 +496,8 @@ trackedFiles:
     pristine_git_object: 469ad056390a459c5de5170435bb6699bc8594f3
   docs/Models/Components/GooglePayPaymentMethodCreate.md:
     id: fd840716b7cf
-    last_write_checksum: sha1:4396ee191eedf31fb81b18095f2830bde73e56c0
-    pristine_git_object: 6e05d84f55cab02d1a7c396e658ca939a6b0f814
-  docs/Models/Components/GooglePayPaymentMethodCreateToken.md:
-    id: 1f7921ff6f40
-    last_write_checksum: sha1:96393c0ed5a735f97b6d2d33a66f45d18bfbd19a
-    pristine_git_object: 810986f33b673f9c6e0015df03bad1237819f427
+    last_write_checksum: sha1:214cd4c7518efe0c7dd517ae6d33fe4b0f9ea00f
+    pristine_git_object: b29066828843cee036472c24856ba590247a5441
   docs/Models/Components/GooglePayPaymentOptionContext.md:
     id: 27fe16e00e20
     last_write_checksum: sha1:3b44ca0adf8a7cd256ab0a6e14e1591ba7991f5c
@@ -780,12 +776,8 @@ trackedFiles:
     pristine_git_object: fcaa1278d0727ce315b51f1419e2fc3ae59fe468
   docs/Models/Components/PazePaymentMethodCreate.md:
     id: 88b01808a69b
-    last_write_checksum: sha1:e9dc5ed7bd1ac109fb03c12a2d503a1ee34b7e3f
-    pristine_git_object: c09dba8d49ec01dd6b1b2963d005ed2afdda39f3
-  docs/Models/Components/PazePaymentMethodCreateToken.md:
-    id: 18880a76fd2d
-    last_write_checksum: sha1:640bf736aed184070d74727eb002260260703c53
-    pristine_git_object: 7d61d425162615b51d701988eb49c210714161b4
+    last_write_checksum: sha1:491aa66361c88b9a6f443de588a0eb553422d718
+    pristine_git_object: 8f56d2ece87a8a4ae78a5e6a62238d7c4286468b
   docs/Models/Components/PlaidPaymentMethodCreate.md:
     id: c60e42463557
     last_write_checksum: sha1:15461c6ea5d3ef371b7ead496dc5fd2e9f8aa713
@@ -994,6 +986,10 @@ trackedFiles:
     id: cdccb2e0c7bf
     last_write_checksum: sha1:f7419028f0fbc1726d50eca4a284a43d08342e70
     pristine_git_object: 6e98dff3f9ea2b00914b11f2cf6c12dcee9c18c1
+  docs/Models/Components/Token.md:
+    id: 6b95f3df6ffd
+    last_write_checksum: sha1:819bed6f3127032c3bbe166336e29445c3564810
+    pristine_git_object: db1e310925cd62c9fbda68da915f14bbf7c1d771
   docs/Models/Components/TokenPaymentMethodCreate.md:
     id: 2ab2ecddd5b0
     last_write_checksum: sha1:bbcf27335936aa3efa2a4225462abe196497635e
@@ -1880,8 +1876,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:0f13da4f38c50c54dd6af77e0593547bdfc2d215
-    pristine_git_object: 396130c1ddd596a7ab1a59d00f164db2a14fc30a
+    last_write_checksum: sha1:0f8a39f647c6b4810f02b08af7bb7f87a868b81a
+    pristine_git_object: a07cde5f957fb19eb6c7d7c5640475543bfd8596
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -2344,12 +2340,8 @@ trackedFiles:
     pristine_git_object: ba57d02fb56bf8659275137008132efec59c98a6
   src/Gr4vy/Models/Components/GooglePayPaymentMethodCreate.cs:
     id: 3837ad2f12c9
-    last_write_checksum: sha1:a3f17b44b17bdb39d02bcd17361ff28cd3e8783d
-    pristine_git_object: 216835d66ade9dd0ea3443725088373cce928e81
-  src/Gr4vy/Models/Components/GooglePayPaymentMethodCreateToken.cs:
-    id: ff6a307dc8f7
-    last_write_checksum: sha1:71e19a7ac8854dd83cf73c84565f491133c5ba7e
-    pristine_git_object: f6a4a5cafd4c1285f63e20a12e9bfb22f86e0b7e
+    last_write_checksum: sha1:33e1301c5c7dba9d0eb44e1ff472c3d931141eea
+    pristine_git_object: af65a83bf4d7b065499ab9c8522bc66d5fe43ae5
   src/Gr4vy/Models/Components/GooglePayPaymentOptionContext.cs:
     id: 40229fc89fe9
     last_write_checksum: sha1:e09695be02e041b4a4258da0c9ea556b9ebb9ef1
@@ -2628,12 +2620,8 @@ trackedFiles:
     pristine_git_object: d130978fa4a1e459dd2780962232435f124bbeaa
   src/Gr4vy/Models/Components/PazePaymentMethodCreate.cs:
     id: d9a399aa9d57
-    last_write_checksum: sha1:0736d9b09d699c870cfde0a01ca9067e53c60918
-    pristine_git_object: 42b8be7cfe048b3bf200739086e2f6295b28afe7
-  src/Gr4vy/Models/Components/PazePaymentMethodCreateToken.cs:
-    id: 3bb1d2238f10
-    last_write_checksum: sha1:163ca0da26a7a4098723f08536eb1ae941aa6cf9
-    pristine_git_object: b00dc60cfad06e6d872e9ec718516317dd8fd7a0
+    last_write_checksum: sha1:c0be8aa623648285f4e84aba1de1983fa02715f0
+    pristine_git_object: 647600b25eb0cbd6100244347dc9d3cf76a01c8b
   src/Gr4vy/Models/Components/PlaidPaymentMethodCreate.cs:
     id: c936139fd115
     last_write_checksum: sha1:9099871ada945bd02759d17200507588082a3548
@@ -2842,6 +2830,10 @@ trackedFiles:
     id: cf8ba657beae
     last_write_checksum: sha1:bb655a97047cf95b81ad87488b493e047d49829a
     pristine_git_object: 81eebd80b97e6518c12eb63e042101a00788eab2
+  src/Gr4vy/Models/Components/Token.cs:
+    id: 99f3651a8f42
+    last_write_checksum: sha1:e14a27becfc2c9e4b7324b98b5b27a2bddddfdb4
+    pristine_git_object: 6ab93319da45e1c9d0ffdc2eb03759ab927fd224
   src/Gr4vy/Models/Components/TokenPaymentMethodCreate.cs:
     id: 813c3c67b010
     last_write_checksum: sha1:790665cae8579e713c1f407749e5ea46456015af
@@ -3576,8 +3568,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:638f87df1307d3c875435036deac8ba312576e3e
-    pristine_git_object: 57c35919385ca5786ce1fafd9b06670c52c9436a
+    last_write_checksum: sha1:6c65b1b170c73d3adcc1b040ea579dd7645d697d
+    pristine_git_object: b21e3921adcbd3676e6ea225b698f345222ddd84
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:92321777879c4d900441a98446fd58eb4cbaa7f1
@@ -3616,8 +3608,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:3a9a117081af5a8eed99655904fa2a5ac1212f61
-    pristine_git_object: 845b2e3ae4d0aa8e609839e52a330df270e41b5f
+    last_write_checksum: sha1:e049706e720d75547c3a540f09fc8fd317a9513e
+    pristine_git_object: b6d8e240920776de6eb87472b58cdfd638ace61f
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -7451,7 +7443,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.AdyenGcash` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.AdyenGcash` **Added**\n* `Gr4vy.PaymentLinks.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.AdyenGcash` **Added**\n"
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod.union(PazePaymentMethodCreate).Token` **Changed** (Breaking ⚠️)\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
