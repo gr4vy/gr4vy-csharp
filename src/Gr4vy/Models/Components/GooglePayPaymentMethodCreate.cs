@@ -70,7 +70,7 @@ namespace Gr4vy.Models.Components
         /// The opaque token as received from the Google Pay JS library. This format may change between JS library versions.
         /// </summary>
         [JsonProperty("token", NullValueHandling = NullValueHandling.Include)]
-        public GooglePayPaymentMethodCreateToken Token { get; set; } = default!;
+        public Token Token { get; set; } = default!;
 
         /// <summary>
         /// The assurance details provided by Google Pay.

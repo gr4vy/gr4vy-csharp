@@ -9,7 +9,6 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
@@ -69,7 +68,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The opaque token as received from the Paze complete response.
         /// </summary>
-        [JsonProperty("token", NullValueHandling = NullValueHandling.Include)]
-        public PazePaymentMethodCreateToken Token { get; set; } = default!;
+        [JsonProperty("token")]
+        public string Token { get; set; } = default!;
     }
 }

@@ -1,4 +1,4 @@
-# GooglePayPaymentMethodCreateToken
+# Token
 
 The opaque token as received from the Google Pay JS library. This format may change between JS library versions.
 
@@ -8,11 +8,11 @@ The opaque token as received from the Google Pay JS library. This format may cha
 ### Str
 
 ```csharp
-GooglePayPaymentMethodCreateToken.CreateStr(/* values here */);
+Token.CreateStr(/* values here */);
 ```
 
 ### MapOfAny
 
 ```csharp
-GooglePayPaymentMethodCreateToken.CreateMapOfAny(/* values here */);
+Token.CreateMapOfAny(/* values here */);
 ```
