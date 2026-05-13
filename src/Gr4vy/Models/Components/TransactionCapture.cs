@@ -47,5 +47,17 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("transaction")]
         public Transaction Transaction { get; set; } = default!;
+
+        /// <summary>
+        /// The ID of the capture resource created for this capture.
+        /// </summary>
+        [JsonProperty("capture_id")]
+        public string? CaptureId { get; set; } = null;
+
+        /// <summary>
+        /// The payment service's unique ID for the capture.
+        /// </summary>
+        [JsonProperty("payment_service_capture_id")]
+        public string? PaymentServiceCaptureId { get; set; } = null;
     }
 }
