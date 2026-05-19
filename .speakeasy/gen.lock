@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: e46eae716a1847b48ae9c55a8cc77e25
+  docChecksum: ce5f4a8c976290b3d01f160696a5661d
   docVersion: 1.0.0
-  speakeasyVersion: 1.763.1
+  speakeasyVersion: 1.763.2
   generationVersion: 2.884.4
-  releaseVersion: 2.8.12
-  configChecksum: 7d2811003eb32815919dcd2877a7e8c2
+  releaseVersion: 2.8.13
+  configChecksum: f12090b000bafc66d2bbd3b88846904c
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: cbfb0f8c-ea26-4475-bcb5-a7042a3f7650
-  pristine_commit_hash: f8575814de4c632fff31167156884db3fd1bd4da
-  pristine_tree_hash: ececb4d315bb54005de3e1d5f9e6dc896a4f76a8
+  generation_id: 7f9204d8-6e8c-43a2-9731-a66582fd0161
+  pristine_commit_hash: c401b99b611d1517129129964d3fcb186aa5dde5
+  pristine_tree_hash: 52f60ca1791ca1356f72b048331dd273f358a3eb
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1016,8 +1016,8 @@ trackedFiles:
     pristine_git_object: 9a4151c227c884938fb5bb2919bd787b374316ed
   docs/Models/Components/TransactionCapture.md:
     id: 689f6652f1e5
-    last_write_checksum: sha1:aecf71e034ece9723ef3ca0e174b4de57841b15f
-    pristine_git_object: 816c12c4e22fbfb7d877c00c8a7dd20abe7c7b34
+    last_write_checksum: sha1:d1fd1369c680aba2db667acdf0abf9f661f22cab
+    pristine_git_object: 2717bfd80f13067f8505489322126f07d6e64fba
   docs/Models/Components/TransactionCaptureCreate.md:
     id: a0e553b48eaf
     last_write_checksum: sha1:9af8ef4e4eb71aeef21ebe6b78a613ad6db22d60
@@ -1876,8 +1876,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:7f5bb51aa232dcb9ac86c572516df7e26552fce7
-    pristine_git_object: dca796c6fc209c16172d9e047fac0d9bf8335796
+    last_write_checksum: sha1:bce7cefafa083d9153d6a893909b39f8dbdeb81e
+    pristine_git_object: 3c6c33d4559e8fe14b73851c7f5c622e3b528ef2
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -2860,8 +2860,8 @@ trackedFiles:
     pristine_git_object: 1791c63ec06a6e5e79a3d1a21fb1a6e866ee0538
   src/Gr4vy/Models/Components/TransactionCapture.cs:
     id: 3e6e5ecbef6d
-    last_write_checksum: sha1:a9285339a6cc048df4047c3bfd77f2253eb718f1
-    pristine_git_object: 9a0f1d3b0e580dffad546f7a8daf46f9f4cbc869
+    last_write_checksum: sha1:e0a2c3292f1bfe8e481447d709b66004e46c56a9
+    pristine_git_object: b9ebd50fda40fc7d2afd28c41e01f9a4225426a4
   src/Gr4vy/Models/Components/TransactionCaptureCreate.cs:
     id: 933653310c80
     last_write_checksum: sha1:c774bd75cdb71badef37f3271e39a2eec1d36686
@@ -3568,8 +3568,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:bd86c364fde9fa2b6f47216f27c4010064d98914
-    pristine_git_object: 08859efe2ec40f0596d47afcd67ff66619e13405
+    last_write_checksum: sha1:8eaefa69b32a21008402be1832487cddc9993105
+    pristine_git_object: f3481488907eee6c19afd3ae91f962d5299acfc9
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:92321777879c4d900441a98446fd58eb4cbaa7f1
@@ -3608,8 +3608,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:dd6039998b4158822acb24f0c13c8b43601a9d0a
-    pristine_git_object: d90d51e464ae1899360f97dadc502084d8438e4e
+    last_write_checksum: sha1:e0a5ac4bf1c0113c94aa4451892b2073501c87cd
+    pristine_git_object: 58a610177cb89a0c22aaf1365adc73bbc1605a3e
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -7443,7 +7443,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod.union(PazePaymentMethodCreate).CheckoutToken` **Added**\n"
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Gr4vy.Transactions.Capture()`:  `response.union(TransactionCapture).ExternalIdentifier` **Added**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
