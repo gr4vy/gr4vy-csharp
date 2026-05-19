@@ -59,5 +59,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("payment_service_capture_id")]
         public string? PaymentServiceCaptureId { get; set; } = null;
+
+        /// <summary>
+        /// The external identifier for the capture.
+        /// </summary>
+        [JsonProperty("external_identifier")]
+        public string? ExternalIdentifier { get; set; } = null;
     }
 }
