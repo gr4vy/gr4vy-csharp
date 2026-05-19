@@ -70,5 +70,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("token")]
         public string Token { get; set; } = default!;
+
+        /// <summary>
+        /// The signed checkout JWS as received from the Paze checkout response.
+        /// </summary>
+        [JsonProperty("checkout_token")]
+        public string? CheckoutToken { get; set; } = null;
     }
 }
