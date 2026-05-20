@@ -76,5 +76,25 @@ namespace Gr4vy.Models.Components
         private bool _schemeTransactionIdSchemeSet = false;
 
         public bool ShouldSerializeSchemeTransactionIdScheme() => _schemeTransactionIdSchemeSet;
+
+        /// <summary>
+        /// A transaction link identifier to associate with this payment method.
+        /// </summary>
+        [JsonProperty("transaction_link_id", NullValueHandling = NullValueHandling.Include)]
+        public string? TransactionLinkId
+        {
+            get => _transactionLinkId;
+            set
+            {
+                _transactionLinkId = value;
+                _transactionLinkIdSet = true;
+            }
+        }
+
+        private string? _transactionLinkId = null;
+
+        private bool _transactionLinkIdSet = false;
+
+        public bool ShouldSerializeTransactionLinkId() => _transactionLinkIdSet;
     }
 }
