@@ -45,24 +45,23 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout base branch (trusted source of patch script)
-        uses: actions/checkout@v4
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
         with:
           ref: ${{ github.event.pull_request.base.sha }}
           path: base
           persist-credentials: false
 
       - name: Checkout PR head (untrusted)
-        uses: actions/checkout@v4
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
         with:
           ref: ${{ github.event.pull_request.head.sha }}
           path: head
           persist-credentials: false
 
-      - name: Set up Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-
+      # The patch script uses only Python stdlib (re, sys, pathlib, argparse),
+      # so we rely on the system python3 that ships with the ubuntu-latest
+      # runner rather than introducing a new pinned `actions/setup-python`
+      # SHA. This also keeps the dependency surface narrow.
       - name: Apply tri-state nullable patch using trusted script against PR head
         run: python3 base/.speakeasy/scripts/patch_update_models.py head
 
