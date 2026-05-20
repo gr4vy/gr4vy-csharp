@@ -43,6 +43,7 @@ file needs it.
 """
 from __future__ import annotations
 
+import argparse
 import re
 import sys
 from pathlib import Path
@@ -142,11 +143,25 @@ def is_update_request_model(path: Path) -> bool:
 
 
 def main(argv: list[str]) -> int:
-    if len(argv) > 1:
-        # Explicit repo root from the caller. Used by CI when the script lives
-        # in a different checkout (trusted base) than the files being patched
-        # (untrusted PR head) — see `.github/workflows/patch_speakeasy_regen.yaml`.
-        repo_root = Path(argv[1]).resolve()
+    parser = argparse.ArgumentParser(
+        prog=Path(argv[0]).name,
+        description="Apply tri-state nullable patch to *Update.cs models.",
+    )
+    parser.add_argument(
+        "repo_root",
+        nargs="?",
+        type=Path,
+        help=(
+            "Path to the SDK repo root. Defaults to the repo containing this "
+            "script. Used by CI when the script lives in a different checkout "
+            "(trusted base) than the files being patched (untrusted PR head); "
+            "see .github/workflows/patch_speakeasy_regen.yaml."
+        ),
+    )
+    args = parser.parse_args(argv[1:])
+
+    if args.repo_root is not None:
+        repo_root = args.repo_root.resolve()
     else:
         repo_root = Path(__file__).resolve().parents[2]
     components = repo_root / "src" / "Gr4vy" / "Models" / "Components"

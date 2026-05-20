@@ -26,6 +26,17 @@ on:
 permissions:
   contents: read
 
+# Multiple PR events (opened, synchronize) can fire close together on the
+# same regen branch — most often when Speakeasy follows the regen commit
+# with an "empty trigger" commit. Without this guard, two patch runs can
+# race on the push and one fails non-fast-forward, surfacing a noisy
+# failure notification even though the later run would have self-healed.
+# Group by PR number and cancel anything in-flight when a newer event
+# arrives.
+concurrency:
+  group: patch-speakeasy-regen-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
 jobs:
   patch:
     if: >-
