@@ -36,14 +36,14 @@ jobs:
       - name: Checkout base branch (trusted source of patch script)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.base.ref }}
+          ref: ${{ github.event.pull_request.base.sha }}
           path: base
           persist-credentials: false
 
       - name: Checkout PR head (untrusted)
         uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.pull_request.head.ref }}
+          ref: ${{ github.event.pull_request.head.sha }}
           path: head
           persist-credentials: false
 
@@ -70,3 +70,21 @@ jobs:
           git commit -m "fix: apply tri-state nullable patch to *Update models"
           git push "https://x-access-token:${PAT}@github.com/${{ github.repository }}.git" \
             "HEAD:${{ github.event.pull_request.head.ref }}"
+
+  notify:
+    needs: patch
+    runs-on: ubuntu-latest
+    if: ${{ always() && needs.patch.result == 'failure' }}
+    steps:
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2
+        env:
+          SLACK_USERNAME: C# SDK
+          SLACK_TITLE: C# SDK
+          SLACK_WEBHOOK: ${{ secrets.SLACK_SDK_WEBHOOK_URL }}
+          SLACK_CHANNEL: sdk-updates
+          SLACK_MSG_AUTHOR: gr4vy-code
+          SLACK_ICON_EMOJI: ":gr4vy:"
+          SLACK_COLOR: failure
+          SLACK_MESSAGE_ON_FAILURE: "Tri-state nullable patch failed on regen PR ${{ github.event.pull_request.html_url }}"
+          SLACK_FOOTER: ""
