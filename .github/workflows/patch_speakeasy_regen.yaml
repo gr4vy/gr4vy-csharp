@@ -8,35 +8,57 @@ name: Patch Speakeasy Regen
 # the tri-state patch in `.speakeasy/scripts/patch_update_models.py` to any
 # *Update.cs files the regen reset, and pushes the result back.
 #
-# The push uses DISPATCH_ACCESS_TOKEN (a PAT) rather than GITHUB_TOKEN so
-# that the follow-up commit retriggers the CI workflow on the patched code
-# — GitHub does not re-run workflows for pushes authenticated with
-# GITHUB_TOKEN.
+# Security model: the workflow filters to same-repo PRs whose head branch
+# matches the Speakeasy-regen prefix. It checks out the base branch (a
+# trusted source for the patch script) and the PR head (untrusted) into
+# separate worktrees, both with `persist-credentials: false` so the PAT
+# never ends up in `.git/config`. The patch script is invoked from the
+# trusted checkout. The PAT (DISPATCH_ACCESS_TOKEN) is supplied only on
+# the final `git push` command via an inlined URL — never persisted to
+# the filesystem. We need a PAT (not GITHUB_TOKEN) at push time because
+# GitHub will not retrigger the CI workflow for commits authenticated
+# with GITHUB_TOKEN.
 
 on:
   pull_request:
     types: [opened, reopened, synchronize]
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   patch:
-    if: ${{ startsWith(github.event.pull_request.head.ref, 'speakeasy-sdk-regen-') }}
+    if: >-
+      ${{ github.event.pull_request.head.repo.full_name == github.repository
+       && startsWith(github.event.pull_request.head.ref, 'speakeasy-sdk-regen-') }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout PR head
+      - name: Checkout base branch (trusted source of patch script)
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.ref }}
+          path: base
+          persist-credentials: false
+
+      - name: Checkout PR head (untrusted)
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.ref }}
-          token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+          path: head
+          persist-credentials: false
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - name: Apply tri-state nullable patch to *Update models
-        run: python3 .speakeasy/scripts/patch_update_models.py
-      - name: Commit and push patch
+
+      - name: Apply tri-state nullable patch using trusted script against PR head
+        run: python3 base/.speakeasy/scripts/patch_update_models.py head
+
+      - name: Commit and push patch (PAT scoped to push command only)
+        working-directory: head
+        env:
+          PAT: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
         run: |
           if git diff --quiet -- src/Gr4vy/Models/Components; then
             echo "No tri-state patches to apply; nothing to commit."
@@ -46,4 +68,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add src/Gr4vy/Models/Components
           git commit -m "fix: apply tri-state nullable patch to *Update models"
-          git push origin HEAD:${{ github.event.pull_request.head.ref }}
+          git push "https://x-access-token:${PAT}@github.com/${{ github.repository }}.git" \
+            "HEAD:${{ github.event.pull_request.head.ref }}"

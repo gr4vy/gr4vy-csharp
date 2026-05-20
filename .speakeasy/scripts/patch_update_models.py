@@ -142,7 +142,13 @@ def is_update_request_model(path: Path) -> bool:
 
 
 def main(argv: list[str]) -> int:
-    repo_root = Path(__file__).resolve().parents[2]
+    if len(argv) > 1:
+        # Explicit repo root from the caller. Used by CI when the script lives
+        # in a different checkout (trusted base) than the files being patched
+        # (untrusted PR head) — see `.github/workflows/patch_speakeasy_regen.yaml`.
+        repo_root = Path(argv[1]).resolve()
+    else:
+        repo_root = Path(__file__).resolve().parents[2]
     components = repo_root / "src" / "Gr4vy" / "Models" / "Components"
     if not components.is_dir():
         print(f"error: components directory not found: {components}", file=sys.stderr)
