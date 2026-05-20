@@ -31,8 +31,38 @@ jobs:
       nuget_api_key: ${{ secrets.NUGET_API_KEY }}
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
 
-  notify:
+  patch_update_models:
     needs: generate
+    if: ${{ needs.generate.outputs.csharp_regenerated == 'true' && needs.generate.outputs.branch_name != '' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout generated branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.generate.outputs.branch_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Apply tri-state nullable patch to *Update models
+        run: python3 .speakeasy/scripts/patch_update_models.py
+      - name: Commit and push patch
+        run: |
+          if git diff --quiet -- src/Gr4vy/Models/Components; then
+            echo "No tri-state patches to apply; nothing to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src/Gr4vy/Models/Components
+          git commit -m "fix: re-apply tri-state nullable patch to *Update models"
+          git push origin HEAD:${{ needs.generate.outputs.branch_name }}
+
+  notify:
+    needs: [generate, patch_update_models]
     runs-on: ubuntu-latest
     if: ${{ contains(needs.*.result, 'failure') }}
     steps:
