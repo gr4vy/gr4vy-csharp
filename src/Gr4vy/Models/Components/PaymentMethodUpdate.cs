@@ -34,5 +34,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("scheme_transaction_id_scheme")]
         public string? SchemeTransactionIdScheme { get; set; } = null;
+
+        /// <summary>
+        /// A transaction link identifier to associate with this payment method.
+        /// </summary>
+        [JsonProperty("transaction_link_id")]
+        public string? TransactionLinkId { get; set; } = null;
     }
 }
