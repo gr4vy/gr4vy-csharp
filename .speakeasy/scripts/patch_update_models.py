@@ -54,6 +54,24 @@ PROP_RE = re.compile(
     re.MULTILINE,
 )
 
+NULL_VALUE_HANDLING_RE = re.compile(
+    r",?\s*NullValueHandling\s*=\s*NullValueHandling\.\w+"
+)
+
+
+def force_null_value_handling_include(attr: str) -> str:
+    """Ensure the [JsonProperty(...)] attribute has NullValueHandling.Include.
+
+    Replaces any existing `NullValueHandling = NullValueHandling.X` (Ignore,
+    Default, etc.) with `Include`, and appends the argument if absent. We do
+    this unconditionally rather than only when the argument is missing so the
+    patch stays correct if Speakeasy ever starts emitting a different value.
+    """
+    if "NullValueHandling.Include" in attr:
+        return attr
+    stripped = NULL_VALUE_HANDLING_RE.sub("", attr)
+    return stripped[:-2] + ", NullValueHandling = NullValueHandling.Include)]"
+
 
 def patch_source(source: str) -> str | None:
     matches = list(PROP_RE.finditer(source))
@@ -72,10 +90,7 @@ def patch_source(source: str) -> str | None:
         type_str = type_and_name[:space_idx].strip()
         name = type_and_name[space_idx + 1 :].strip()
 
-        if "NullValueHandling" in attr:
-            new_attr = attr
-        else:
-            new_attr = attr[:-2] + ", NullValueHandling = NullValueHandling.Include)]"
+        new_attr = force_null_value_handling_include(attr)
 
         backing = "_" + name[0].lower() + name[1:]
         set_flag = backing + "Set"
@@ -109,7 +124,15 @@ def patch_source(source: str) -> str | None:
 
 
 def is_update_request_model(path: Path) -> bool:
-    """Filter for files matching *Update.cs but excluding noun-form 'Updater' names."""
+    """Filter for files matching *Update.cs.
+
+    The `*Update.cs` glob in `main()` already excludes the only known
+    noun-form `Updater` files in this codebase (AccountUpdaterJob.cs,
+    AccountUpdaterOptions.cs, etc.) because they don't end in `Update.cs`.
+    The AccountUpdater* guard is a belt-and-suspenders check in case a
+    future schema introduces e.g. `AccountUpdaterUpdate.cs`, which would
+    be ambiguous; broaden it if/when such cases appear.
+    """
     name = path.name
     if not name.endswith("Update.cs"):
         return False
