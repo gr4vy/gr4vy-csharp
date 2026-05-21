@@ -154,6 +154,12 @@ namespace Gr4vy.Models.Components
         public string? PreviousSchemeTransactionId { get; set; } = null;
 
         /// <summary>
+        /// A scheme's transaction link identifier to use in connecting a merchant initiated transaction to a previous customer initiated transaction. If not provided, and a qualifying customer initiated transaction has been previously made with the stored payment method, then Gr4vy will populate this value with the identifier returned for that transaction. This field is also know as the Mastercard Transaction Link ID (TLID).
+        /// </summary>
+        [JsonProperty("previous_transaction_link_id")]
+        public string? PreviousTransactionLinkId { get; set; } = null;
+
+        /// <summary>
         /// Information about the browser used by the buyer. This can be used by anti-fraud services.
         /// </summary>
         [JsonProperty("browser_info")]

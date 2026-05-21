@@ -273,6 +273,12 @@ namespace Gr4vy.Models.Components
         public string? SchemeTransactionId { get; set; } = null;
 
         /// <summary>
+        /// A transaction link identifier for the transaction used by the scheme itself, when available.
+        /// </summary>
+        [JsonProperty("transaction_link_id")]
+        public string? TransactionLinkId { get; set; } = null;
+
+        /// <summary>
         /// The 3-D Secure data that was sent to the payment service for the transaction.
         /// </summary>
         [JsonProperty("three_d_secure")]
