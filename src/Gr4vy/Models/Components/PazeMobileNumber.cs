@@ -9,22 +9,21 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class ThreeDSecureScenarioUpdate
+    public class PazeMobileNumber
     {
         /// <summary>
-        /// Conditions for the scenario.
+        /// ITU country dialing code.
         /// </summary>
-        [JsonProperty("conditions")]
-        public ThreeDSecureScenarioConditions? Conditions { get; set; } = null;
+        [JsonProperty("countryCode")]
+        public string CountryCode { get; set; } = default!;
 
         /// <summary>
-        /// Outcome for the scenario.
+        /// Phone number without country code.
         /// </summary>
-        [JsonProperty("outcome")]
-        public ThreeDSecureScenarioOutcome? Outcome { get; set; } = null;
+        [JsonProperty("phoneNumber")]
+        public string PhoneNumber { get; set; } = default!;
     }
 }

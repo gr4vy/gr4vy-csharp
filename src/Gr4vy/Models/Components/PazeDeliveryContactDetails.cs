@@ -13,18 +13,15 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class ThreeDSecureScenarioUpdate
+    public class PazeDeliveryContactDetails
     {
         /// <summary>
-        /// Conditions for the scenario.
+        /// Consumer-provided name of the contact person.
         /// </summary>
-        [JsonProperty("conditions")]
-        public ThreeDSecureScenarioConditions? Conditions { get; set; } = null;
+        [JsonProperty("contactFullName", NullValueHandling = NullValueHandling.Include)]
+        public string? ContactFullName { get; set; }
 
-        /// <summary>
-        /// Outcome for the scenario.
-        /// </summary>
-        [JsonProperty("outcome")]
-        public ThreeDSecureScenarioOutcome? Outcome { get; set; } = null;
+        [JsonProperty("contactPhoneNumber", NullValueHandling = NullValueHandling.Include)]
+        public PazeMobileNumber? ContactPhoneNumber { get; set; }
     }
 }

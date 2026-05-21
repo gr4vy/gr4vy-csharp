@@ -9,22 +9,21 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class ThreeDSecureScenarioUpdate
+    public class PazeSessionReviewLinks
     {
         /// <summary>
-        /// Conditions for the scenario.
+        /// Follow-up link to change the selected card.
         /// </summary>
-        [JsonProperty("conditions")]
-        public ThreeDSecureScenarioConditions? Conditions { get; set; } = null;
+        [JsonProperty("CHANGE_CARD", NullValueHandling = NullValueHandling.Include)]
+        public string? ChangeCard { get; set; }
 
         /// <summary>
-        /// Outcome for the scenario.
+        /// Follow-up link to change the shipping address.
         /// </summary>
-        [JsonProperty("outcome")]
-        public ThreeDSecureScenarioOutcome? Outcome { get; set; } = null;
+        [JsonProperty("CHANGE_SHIPPING_ADDRESS", NullValueHandling = NullValueHandling.Include)]
+        public string? ChangeShippingAddress { get; set; }
     }
 }

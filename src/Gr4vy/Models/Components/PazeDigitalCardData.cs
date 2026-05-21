@@ -9,22 +9,27 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class ThreeDSecureScenarioUpdate
+    public class PazeDigitalCardData
     {
         /// <summary>
-        /// Conditions for the scenario.
+        /// URI hosting the card art image.
         /// </summary>
-        [JsonProperty("conditions")]
-        public ThreeDSecureScenarioConditions? Conditions { get; set; } = null;
+        [JsonProperty("artUri")]
+        public string ArtUri { get; set; } = default!;
 
         /// <summary>
-        /// Outcome for the scenario.
+        /// Card art height in pixels.
         /// </summary>
-        [JsonProperty("outcome")]
-        public ThreeDSecureScenarioOutcome? Outcome { get; set; } = null;
+        [JsonProperty("artHeight")]
+        public long ArtHeight { get; set; } = default!;
+
+        /// <summary>
+        /// Card art width in pixels.
+        /// </summary>
+        [JsonProperty("artWidth")]
+        public long ArtWidth { get; set; } = default!;
     }
 }
