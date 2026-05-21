@@ -150,5 +150,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("scheme_transaction_id_scheme", NullValueHandling = NullValueHandling.Include)]
         public string? SchemeTransactionIdScheme { get; set; }
+
+        /// <summary>
+        /// The transaction link identifier stored against this payment method.
+        /// </summary>
+        [JsonProperty("transaction_link_id")]
+        public string? TransactionLinkId { get; set; } = null;
     }
 }

@@ -152,6 +152,12 @@ namespace Gr4vy.Models.Components
         public string? SchemeTransactionIdScheme { get; set; }
 
         /// <summary>
+        /// The transaction link identifier stored against this payment method.
+        /// </summary>
+        [JsonProperty("transaction_link_id")]
+        public string? TransactionLinkId { get; set; } = null;
+
+        /// <summary>
         /// The optional buyer for which this payment method has been stored.
         /// </summary>
         [JsonProperty("buyer")]
