@@ -145,4 +145,47 @@ public class UpdateModelSerializationTests
         Assert.That(json["scheme_transaction_id"]!.Type, Is.EqualTo(JTokenType.Null));
         Assert.That(json.ContainsKey("scheme_transaction_id_scheme"), Is.False);
     }
+
+    [Test]
+    public void BuyerUpdate_NestedAddressField_ExplicitNullIsSentAsNull()
+    {
+        // Mirrors the Wpay repro: clearing a field on a nested object
+        // (BillingDetails.Address.HouseNumberOrName) must produce an
+        // explicit JSON null rather than omitting the key.
+        var update = new BuyerUpdate
+        {
+            BillingDetails = new BillingDetails
+            {
+                Address = new Address
+                {
+                    HouseNumberOrName = null,
+                    Line2 = null,
+                    State = null,
+                    Organization = null,
+                },
+            },
+        };
+        var json = SerializeToJObject(update);
+
+        var address = json["billing_details"]!["address"]!;
+        Assert.That(address["house_number_or_name"]!.Type, Is.EqualTo(JTokenType.Null));
+        Assert.That(address["line2"]!.Type, Is.EqualTo(JTokenType.Null));
+        Assert.That(address["state"]!.Type, Is.EqualTo(JTokenType.Null));
+        Assert.That(address["organization"]!.Type, Is.EqualTo(JTokenType.Null));
+        Assert.That(address.ToObject<JObject>()!.ContainsKey("city"), Is.False,
+            "Unset nested fields must still be omitted.");
+    }
+
+    [Test]
+    public void BuyerUpdate_NestedAddressField_UnsetIsOmitted()
+    {
+        var update = new BuyerUpdate
+        {
+            BillingDetails = new BillingDetails { Address = new Address() },
+        };
+        var json = SerializeToJObject(update);
+        var address = json["billing_details"]!["address"]!.ToObject<JObject>()!;
+        Assert.That(address.Count, Is.EqualTo(0),
+            "An untouched nested Address must serialize as {}.");
+    }
 }
