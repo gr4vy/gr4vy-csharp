@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Indicates whether the item will be shipped or picked up.
         /// </summary>
-        [JsonProperty("delivered_to", NullValueHandling = NullValueHandling.Include)]
-        public string? DeliveredTo
-        {
-            get => _deliveredTo;
-            set
-            {
-                _deliveredTo = value;
-                _deliveredToSet = true;
-            }
-        }
-
-        private string? _deliveredTo = null;
-
-        private bool _deliveredToSet = false;
-
-        public bool ShouldSerializeDeliveredTo() => _deliveredToSet;
+        [JsonProperty("delivered_to")]
+        public string? DeliveredTo { get; set; } = null;
     }
 }
