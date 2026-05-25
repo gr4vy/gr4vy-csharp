@@ -6,6 +6,7 @@
 
 * [GooglePay](#googlepay) - Create a Google Pay session
 * [ApplePay](#applepay) - Create a Apple Pay session
+* [PazeMobileSessionCreate](#pazemobilesessioncreate) - Create a Paze mobile session
 * [Paze](#paze) - Create a Paze session
 * [PazeMobileSessionReview](#pazemobilesessionreview) - Review a Paze session
 * [ClickToPay](#clicktopay) - Create a Click to Pay session
@@ -96,6 +97,64 @@ var res = await sdk.DigitalWallets.Sessions.ApplePayAsync(applePaySessionRequest
 ### Response
 
 **[Dictionary<string, object>](../../Models/.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| Gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| Gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| Gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| Gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| Gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| Gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## PazeMobileSessionCreate
+
+Create a mobile session for use with Paze.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="create_paze_mobile_session" method="post" path="/digital-wallets/paze/session/create" -->
+```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
+
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+var res = await sdk.DigitalWallets.Sessions.PazeMobileSessionCreateAsync(pazeMobileSessionCreateRequest: new PazeMobileSessionCreateRequest() {
+    Client = new PazeClient() {
+        Id = "0UVAS9Y03YNJ39XXYIN313F4DZNCjIGmqs4Iw32EPnZV0800o",
+    },
+    SessionId = "24e4dbb9-4f5e-43e8-8375-e9fd45650bc9",
+    AccessToken = "<value>",
+    CallbackURLScheme = "Gr4vyCallback",
+    Intent = "EXPRESS_CHECKOUT",
+});
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                   | Type                                                                                        | Required                                                                                    | Description                                                                                 | Example                                                                                     |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `PazeMobileSessionCreateRequest`                                                            | [PazeMobileSessionCreateRequest](../../Models/Components/PazeMobileSessionCreateRequest.md) | :heavy_check_mark:                                                                          | N/A                                                                                         |                                                                                             |
+| `MerchantAccountId`                                                                         | *string*                                                                                    | :heavy_minus_sign:                                                                          | The ID of the merchant account to use for this request.                                     | default                                                                                     |
+
+### Response
+
+**[PazeMobileSessionCreate](../../Models/Components/PazeMobileSessionCreate.md)**
 
 ### Errors
 
