@@ -7,24 +7,20 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Gr4vy.Models.Components
+namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    using Newtonsoft.Json;
 
-    public class ThreeDSecureScenarioUpdate
+    public class CreatePazeMobileSessionRequest
     {
         /// <summary>
-        /// Conditions for the scenario.
+        /// The ID of the merchant account to use for this request.
         /// </summary>
-        [JsonProperty("conditions")]
-        public ThreeDSecureScenarioConditions? Conditions { get; set; } = null;
+        [SpeakeasyMetadata("header:style=simple,explode=false,name=x-gr4vy-merchant-account-id")]
+        public string? MerchantAccountId { get; set; }
 
-        /// <summary>
-        /// Outcome for the scenario.
-        /// </summary>
-        [JsonProperty("outcome")]
-        public ThreeDSecureScenarioOutcome? Outcome { get; set; } = null;
+        [SpeakeasyMetadata("request:mediaType=application/json")]
+        public PazeMobileSessionCreateRequest PazeMobileSessionCreateRequest { get; set; } = default!;
     }
 }

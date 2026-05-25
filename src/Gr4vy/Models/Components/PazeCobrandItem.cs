@@ -9,22 +9,21 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class ThreeDSecureScenarioUpdate
+    public class PazeCobrandItem
     {
         /// <summary>
-        /// Conditions for the scenario.
+        /// Product name of the cobrand card. Must match exactly with the card name from the network.
         /// </summary>
-        [JsonProperty("conditions")]
-        public ThreeDSecureScenarioConditions? Conditions { get; set; } = null;
+        [JsonProperty("name")]
+        public string Name { get; set; } = default!;
 
         /// <summary>
-        /// Outcome for the scenario.
+        /// Whether benefits are offered for this cobrand card.
         /// </summary>
-        [JsonProperty("outcome")]
-        public ThreeDSecureScenarioOutcome? Outcome { get; set; } = null;
+        [JsonProperty("benefitsOffered")]
+        public bool? BenefitsOffered { get; set; } = null;
     }
 }

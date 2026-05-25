@@ -9,22 +9,21 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class ThreeDSecureScenarioUpdate
+    public class PazeTransactionValue
     {
         /// <summary>
-        /// Conditions for the scenario.
+        /// ISO 4217 currency code of the transaction.
         /// </summary>
-        [JsonProperty("conditions")]
-        public ThreeDSecureScenarioConditions? Conditions { get; set; } = null;
+        [JsonProperty("transactionCurrency")]
+        public string TransactionCurrency { get; set; } = default!;
 
         /// <summary>
-        /// Outcome for the scenario.
+        /// Amount of the transaction including dollar and cents, e.g. '99.95'.
         /// </summary>
-        [JsonProperty("outcome")]
-        public ThreeDSecureScenarioOutcome? Outcome { get; set; } = null;
+        [JsonProperty("transactionAmount")]
+        public string TransactionAmount { get; set; } = default!;
     }
 }
