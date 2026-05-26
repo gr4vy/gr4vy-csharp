@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 2a8ecbe07e9b9f0aa431323d68f6ee78
+  docChecksum: 04f6e43a793e8964cb588bab11e04d3b
   docVersion: 1.0.0
-  speakeasyVersion: 1.765.0
-  generationVersion: 2.886.0
-  releaseVersion: 2.8.21
-  configChecksum: c0faa2522b6dc6597dc2f07704e76419
+  speakeasyVersion: 1.766.0
+  generationVersion: 2.887.0
+  releaseVersion: 2.8.22
+  configChecksum: b04e1e59c6d043e62e6f2b3e26cfad92
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: d37cd391-b475-4c7d-8310-4de224a67112
-  pristine_commit_hash: 0fd3e180526a7bf6df19d1212d61c17e97e2e643
-  pristine_tree_hash: 32981ededc77df19787c8ede405f8732025e80e5
+  generation_id: f10efd66-8aea-460a-a86e-5172c6a84954
+  pristine_commit_hash: d3bfb8cacc04a3f5220ccbb4f1c465830eacc7a5
+  pristine_tree_hash: e56347eca977523f4fce009566f36f6425155dd4
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -300,8 +300,8 @@ trackedFiles:
     pristine_git_object: 32e0709193a7db100bed46cd81030f547caf2f72
   docs/Models/Components/DefinitionField.md:
     id: 3c44e9f55667
-    last_write_checksum: sha1:5745fc25e2ab56c4d915fdcc9e6bd382e70d5418
-    pristine_git_object: d643386b2d64beca0dd97054d0d3c24963f4ae22
+    last_write_checksum: sha1:ca3f0a731d3f643e72e789a88ae3efb242a6b71c
+    pristine_git_object: 2491131e36ce8e7686840128639778e69c84712f
   docs/Models/Components/DetailedSettlementReportSpec.md:
     id: 1cb76a72202b
     last_write_checksum: sha1:73f53db395ef628eac3a106ce9682c04a5314afd
@@ -1964,8 +1964,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:d6ce197a75d881e22823781e440c580fb807ea3c
-    pristine_git_object: c8f3697d415e36530e68aab843f4c7df40357efd
+    last_write_checksum: sha1:96c59ce33969280b0c100cc21476d2fab0a55818
+    pristine_git_object: 2a88c22b402bd2ed4cc9bb7f8944a8250fc8384d
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -2232,8 +2232,8 @@ trackedFiles:
     pristine_git_object: 4b59da729410ac7ccd482ac815e1082751b2f4b2
   src/Gr4vy/Models/Components/DefinitionField.cs:
     id: f08349eae95c
-    last_write_checksum: sha1:5503d7d7e75e5c975b474a9da7ef31b35bf322be
-    pristine_git_object: fb2093430c0e36ae5cac1499d77be5ce67bf0ee5
+    last_write_checksum: sha1:c688335fae4218931f233cf30b91ae96b1876405
+    pristine_git_object: cb86ed43897165c1547b52313d23f7207490bc70
   src/Gr4vy/Models/Components/DetailedSettlementReportSpec.cs:
     id: 8d8546d47757
     last_write_checksum: sha1:aef2c6540a74484c6de7dfb9ebfc5391d1dc1aaa
@@ -3744,8 +3744,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:01d7931159e052db92c73b5e64eb79d2b319cf17
-    pristine_git_object: c7b051b94c3cffa6cfb09c47f5a90fb498d2ebfd
+    last_write_checksum: sha1:7415c884efe388f6dfb4b22344b99c31654d8ee6
+    pristine_git_object: f998f5f9e5266f68f4bcd266f25f963ce315b65c
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:39f5063e51fd4d2caa64cf8cb805d374d7636416
@@ -3784,8 +3784,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:ac14d7db22048bf7f07abe44b7c1805cd7ad1776
-    pristine_git_object: fa1d43dd396f6dcc47f31ce66123046d429c6b0b
+    last_write_checksum: sha1:d13c6255764be0159608fb57b318e318d7d3ccd6
+    pristine_git_object: 8b28938240d04e1f4f505988ffb2825ece7d0b3f
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -5971,7 +5971,7 @@ examples:
           application_name: "core-api"
       responses:
         "200":
-          application/json: {"id": "adyen-ideal", "type": "payment-service-definition", "display_name": "iDEAL", "method": "multibanco", "fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "boolean", "secret": true}], "reporting_fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}, {"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true}], "supported_currencies": ["USD", "GBP", "EUR", "AUD"], "supported_countries": ["US"], "mode": "card", "supported_features": {"key": true, "key1": false}, "required_checkout_fields": [{"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}], "configuration": {"approval_ui_target": "any", "approval_ui_height": "100px", "approval_ui_width": "100px", "cart_items_limit": 100, "cart_items_required": true, "cart_items_should_match_amount": true}, "supported_integration_clients": ["redirect"]}
+          application/json: {"id": "adyen-ideal", "type": "payment-service-definition", "display_name": "iDEAL", "method": "multibanco", "fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "boolean", "secret": true, "verifiable": true}], "reporting_fields": [{"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true, "verifiable": true}, {"key": "private_api_key", "display_name": "Private API key", "required": true, "format": "multiline", "secret": true, "verifiable": true}], "supported_currencies": ["USD", "GBP", "EUR", "AUD"], "supported_countries": ["US"], "mode": "card", "supported_features": {"key": true, "key1": false}, "required_checkout_fields": [{"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}, {"required_fields": ["address.line1", "address.country", "address.city", "address.postal_code"]}], "configuration": {"approval_ui_target": "any", "approval_ui_height": "100px", "approval_ui_width": "100px", "cart_items_limit": 100, "cart_items_required": true, "cart_items_should_match_amount": true}, "supported_integration_clients": ["redirect"]}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -7712,6 +7712,10 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Gr4vy.PaymentServiceDefinitions.List()`:  `response.items[].Fields[].Verifiable` **Added**
+  * `Gr4vy.PaymentServiceDefinitions.Get()`:  `response.fields[].Verifiable` **Added**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
