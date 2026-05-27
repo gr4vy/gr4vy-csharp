@@ -1,4 +1,4 @@
-# PazeBillingAddress
+# PazeLocationAddress
 
 
 ## Fields
@@ -12,4 +12,4 @@
 | `City`                                             | *string*                                           | :heavy_check_mark:                                 | City.                                              |
 | `State`                                            | *string*                                           | :heavy_check_mark:                                 | State or region.                                   |
 | `Zip`                                              | *string*                                           | :heavy_check_mark:                                 | Postal code.                                       |
-| `CountryCode`                                      | *string*                                           | :heavy_minus_sign:                                 | ISO 3166-1 alpha-2 country code.                   |
+| `CountryCode`                                      | *string*                                           | :heavy_check_mark:                                 | ISO 3166-1 alpha-2 country code.                   |

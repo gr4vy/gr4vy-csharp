@@ -12,7 +12,7 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class PazeBillingAddress
+    public class PazeLocationAddress
     {
         /// <summary>
         /// Name of the organization or entity at the address.
@@ -60,6 +60,6 @@ namespace Gr4vy.Models.Components
         /// ISO 3166-1 alpha-2 country code.
         /// </summary>
         [JsonProperty("countryCode")]
-        public string? CountryCode { get; set; } = null;
+        public string CountryCode { get; set; } = default!;
     }
 }

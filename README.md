@@ -262,6 +262,7 @@ catch(ArgumentException ex) {
 * [PazeMobileSessionCreate](docs/sdks/sessions/README.md#pazemobilesessioncreate) - Create a Paze mobile session
 * [Paze](docs/sdks/sessions/README.md#paze) - Create a Paze session
 * [PazeMobileSessionReview](docs/sdks/sessions/README.md#pazemobilesessionreview) - Review a Paze session
+* [PazeMobileSessionComplete](docs/sdks/sessions/README.md#pazemobilesessioncomplete) - Complete a Paze session
 * [ClickToPay](docs/sdks/sessions/README.md#clicktopay) - Create a Click to Pay session
 
 ### [GiftCards](docs/sdks/giftcards/README.md)
