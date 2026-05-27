@@ -17,42 +17,14 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Indicates the amount type unit for the subscription. Allowed values are: `FIXED`, `VARIABLE`.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public string Type
-        {
-            get => _type;
-            set
-            {
-                _type = value;
-                _typeSet = true;
-            }
-        }
-
-        private string _type = default!;
-
-        private bool _typeSet = true;
-
-        public bool ShouldSerializeType() => _typeSet;
+        [JsonProperty("type")]
+        public string Type { get; set; } = default!;
 
         /// <summary>
         /// Fixed subscription amount in local currency. Required only for fixed amount subscriptions depending on the payment method.
         /// </summary>
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
-        public string? Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-                _valueSet = true;
-            }
-        }
-
-        private string? _value = null;
-
-        private bool _valueSet = false;
-
-        public bool ShouldSerializeValue() => _valueSet;
+        [JsonProperty("value")]
+        public string? Value { get; set; } = null;
 
         /// <summary>
         /// Minimum payer enrollment limit, not minimum recurring charge amount.
