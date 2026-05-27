@@ -17,8 +17,8 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Name of the organization or entity at the address.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string? Name { get; set; }
+        [JsonProperty("name")]
+        public string? Name { get; set; } = null;
 
         /// <summary>
         /// Line 1 of the address.
@@ -29,14 +29,14 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Line 2 of the address.
         /// </summary>
-        [JsonProperty("line2", NullValueHandling = NullValueHandling.Include)]
-        public string? Line2 { get; set; }
+        [JsonProperty("line2")]
+        public string? Line2 { get; set; } = null;
 
         /// <summary>
         /// Line 3 of the address.
         /// </summary>
-        [JsonProperty("line3", NullValueHandling = NullValueHandling.Include)]
-        public string? Line3 { get; set; }
+        [JsonProperty("line3")]
+        public string? Line3 { get; set; } = null;
 
         /// <summary>
         /// City.
@@ -59,7 +59,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// ISO 3166-1 alpha-2 country code.
         /// </summary>
-        [JsonProperty("countryCode", NullValueHandling = NullValueHandling.Include)]
-        public string? CountryCode { get; set; }
+        [JsonProperty("countryCode")]
+        public string? CountryCode { get; set; } = null;
     }
 }
