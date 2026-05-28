@@ -176,6 +176,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeAdyenIdeal() => _adyenIdealSet;
 
         /// <summary>
+        /// Custom options to be passed to the `adyen-konbini` connector.
+        /// </summary>
+        [JsonProperty("adyen-konbini", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenKonbini
+        {
+            get => _adyenKonbini;
+            set
+            {
+                _adyenKonbini = value;
+                _adyenKonbiniSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenKonbini = null;
+
+        private bool _adyenKonbiniSet = false;
+
+        public bool ShouldSerializeAdyenKonbini() => _adyenKonbiniSet;
+
+        /// <summary>
         /// Custom options to be passed to the `adyen-paypay` connector.
         /// </summary>
         [JsonProperty("adyen-paypay", NullValueHandling = NullValueHandling.Include)]
@@ -234,6 +254,26 @@ namespace Gr4vy.Models.Components
         private bool _adyenSepaSet = false;
 
         public bool ShouldSerializeAdyenSepa() => _adyenSepaSet;
+
+        /// <summary>
+        /// Custom options to be passed to the `adyen-seveneleven` connector.
+        /// </summary>
+        [JsonProperty("adyen-seveneleven", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenSeveneleven
+        {
+            get => _adyenSeveneleven;
+            set
+            {
+                _adyenSeveneleven = value;
+                _adyenSevenelevenSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenSeveneleven = null;
+
+        private bool _adyenSevenelevenSet = false;
+
+        public bool ShouldSerializeAdyenSeveneleven() => _adyenSevenelevenSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-sofort` connector.
