@@ -891,6 +891,12 @@ To run the tests, install .NET and run the following.
 dotnet test src/Gr4vy.Tests
 ```
 
+This SDK ships a full end-to-end test suite that runs against the E2E sandbox,
+covers the complete transaction lifecycle and back-office surface, reaches every
+API operation, and includes property-based tests. See **[TESTING.md](TESTING.md)**
+for prerequisites, how to run individual suites, and how endpoint coverage is
+reported on PRs.
+
 ## Contributions
 
 While we value open-source contributions to this SDK, this library is generated programmatically. Any manual changes added to internal files will be overwritten on the next generation. 
