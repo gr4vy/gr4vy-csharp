@@ -9,186 +9,25 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
-    using Newtonsoft.Json.Linq;
-    using System;
     using System.Collections.Generic;
-    using System.Numerics;
-    using System.Reflection;
-
-    public class SpecType
-    {
-        private SpecType(string value) { Value = value; }
-
-        public string Value { get; private set; }
-
-        public static SpecType AccountsReceivables { get { return new SpecType("accounts_receivables"); } }
-
-        public static SpecType DetailedSettlement { get { return new SpecType("detailed_settlement"); } }
-
-        public static SpecType TransactionRetries { get { return new SpecType("transaction_retries"); } }
-
-        public static SpecType Transactions { get { return new SpecType("transactions"); } }
-
-        public override string ToString() { return Value; }
-        public static implicit operator String(SpecType v) { return v.Value; }
-        public static SpecType FromString(string v) {
-            switch(v) {
-                case "accounts_receivables": return AccountsReceivables;
-                case "detailed_settlement": return DetailedSettlement;
-                case "transaction_retries": return TransactionRetries;
-                case "transactions": return Transactions;
-                default: throw new ArgumentException("Invalid value for SpecType");
-            }
-        }
-        public override bool Equals(object? obj)
-        {
-            if (obj == null || GetType() != obj.GetType())
-            {
-                return false;
-            }
-            return Value.Equals(((SpecType)obj).Value);
-        }
-
-        public override int GetHashCode()
-        {
-            return Value.GetHashCode();
-        }
-    }
 
     /// <summary>
     /// The report specification.
     /// </summary>
-    [JsonConverter(typeof(Spec.SpecConverter))]
     public class Spec
     {
-        public Spec(SpecType type)
-        {
-            Type = type;
-        }
+        /// <summary>
+        /// The report model. One of `transactions`, `transaction_retries`, `detailed_settlement`, `accounts_receivables`.
+        /// </summary>
+        [JsonProperty("model")]
+        public string Model { get; set; } = default!;
 
-        [SpeakeasyMetadata("form:explode=true")]
-        public TransactionsReportSpec? TransactionsReportSpec { get; set; }
-
-        [SpeakeasyMetadata("form:explode=true")]
-        public TransactionRetriesReportSpec? TransactionRetriesReportSpec { get; set; }
-
-        [SpeakeasyMetadata("form:explode=true")]
-        public DetailedSettlementReportSpec? DetailedSettlementReportSpec { get; set; }
-
-        [SpeakeasyMetadata("form:explode=true")]
-        public AccountsReceivablesReportSpec? AccountsReceivablesReportSpec { get; set; }
-
-        public SpecType Type { get; set; }
-
-        public static Spec CreateAccountsReceivables(AccountsReceivablesReportSpec accountsReceivables)
-        {
-            SpecType typ = SpecType.AccountsReceivables;
-            Spec res = new Spec(typ);
-            res.AccountsReceivablesReportSpec = accountsReceivables;
-            return res;
-        }
-
-        public static Spec CreateDetailedSettlement(DetailedSettlementReportSpec detailedSettlement)
-        {
-            SpecType typ = SpecType.DetailedSettlement;
-            Spec res = new Spec(typ);
-            res.DetailedSettlementReportSpec = detailedSettlement;
-            return res;
-        }
-
-        public static Spec CreateTransactionRetries(TransactionRetriesReportSpec transactionRetries)
-        {
-            SpecType typ = SpecType.TransactionRetries;
-            Spec res = new Spec(typ);
-            res.TransactionRetriesReportSpec = transactionRetries;
-            return res;
-        }
-
-        public static Spec CreateTransactions(TransactionsReportSpec transactions)
-        {
-            SpecType typ = SpecType.Transactions;
-            Spec res = new Spec(typ);
-            res.TransactionsReportSpec = transactions;
-            return res;
-        }
-
-        public class SpecConverter : JsonConverter
-        {
-            public override bool CanConvert(System.Type objectType) => objectType == typeof(Spec);
-
-            public override bool CanRead => true;
-
-            public override object? ReadJson(JsonReader reader, System.Type objectType, object? existingValue, JsonSerializer serializer)
-            {
-                if (reader.TokenType == JsonToken.Null)
-                {
-                    throw new InvalidOperationException("Received unexpected null JSON value");
-                }
-
-                JObject jo = JObject.Load(reader);
-                string discriminator = jo.GetValue("model")?.ToString() ?? throw new ArgumentNullException("Could not find discriminator field.");
-                if (discriminator == SpecType.AccountsReceivables.ToString())
-                {
-                    AccountsReceivablesReportSpec accountsReceivablesReportSpec = ResponseBodyDeserializer.DeserializeNotNull<AccountsReceivablesReportSpec>(jo.ToString());
-                    return CreateAccountsReceivables(accountsReceivablesReportSpec);
-                }
-                if (discriminator == SpecType.DetailedSettlement.ToString())
-                {
-                    DetailedSettlementReportSpec detailedSettlementReportSpec = ResponseBodyDeserializer.DeserializeNotNull<DetailedSettlementReportSpec>(jo.ToString());
-                    return CreateDetailedSettlement(detailedSettlementReportSpec);
-                }
-                if (discriminator == SpecType.TransactionRetries.ToString())
-                {
-                    TransactionRetriesReportSpec transactionRetriesReportSpec = ResponseBodyDeserializer.DeserializeNotNull<TransactionRetriesReportSpec>(jo.ToString());
-                    return CreateTransactionRetries(transactionRetriesReportSpec);
-                }
-                if (discriminator == SpecType.Transactions.ToString())
-                {
-                    TransactionsReportSpec transactionsReportSpec = ResponseBodyDeserializer.DeserializeNotNull<TransactionsReportSpec>(jo.ToString());
-                    return CreateTransactions(transactionsReportSpec);
-                }
-
-                throw new InvalidOperationException("Could not deserialize into any supported types.");
-            }
-
-            public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)
-            {
-                if (value == null)
-                {
-                    throw new InvalidOperationException("Unexpected null JSON value.");
-                }
-
-                Spec res = (Spec)value;
-
-                if (res.TransactionsReportSpec != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionsReportSpec));
-                    return;
-                }
-
-                if (res.TransactionRetriesReportSpec != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.TransactionRetriesReportSpec));
-                    return;
-                }
-
-                if (res.DetailedSettlementReportSpec != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.DetailedSettlementReportSpec));
-                    return;
-                }
-
-                if (res.AccountsReceivablesReportSpec != null)
-                {
-                    writer.WriteRawValue(Utilities.SerializeJSON(res.AccountsReceivablesReportSpec));
-                    return;
-                }
-            }
-
-        }
-
+        /// <summary>
+        /// The parameters for the report, specific to the model.
+        /// </summary>
+        [JsonProperty("params")]
+        public Dictionary<string, object> Params { get; set; } = default!;
     }
 }

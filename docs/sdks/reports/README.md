@@ -88,18 +88,17 @@ var res = await sdk.Reports.CreateAsync(reportCreate: new ReportCreate() {
     Schedule = "<value>",
     ScheduleEnabled = true,
     ScheduleTimezone = "UTC",
-    Spec = Spec.CreateDetailedSettlement(
-        new DetailedSettlementReportSpec() {
-            Params = new Dictionary<string, object>() {
-                { "filters", new Dictionary<string, object>() {
-                    { "ingested_at", new Dictionary<string, object>() {
-                        { "end", "day_end" },
-                        { "start", "day_start" },
-                    } },
+    Spec = new Spec() {
+        Model = "detailed_settlement",
+        Params = new Dictionary<string, object>() {
+            { "filters", new Dictionary<string, object>() {
+                { "ingested_at", new Dictionary<string, object>() {
+                    { "end", "day_end" },
+                    { "start", "day_start" },
                 } },
-            },
-        }
-    ),
+            } },
+        },
+    },
 });
 
 // handle response
