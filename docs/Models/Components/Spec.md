@@ -3,28 +3,9 @@
 The report specification.
 
 
-## Supported Types
+## Fields
 
-### AccountsReceivables
-
-```csharp
-Spec.CreateAccountsReceivables(/* values here */);
-```
-
-### DetailedSettlement
-
-```csharp
-Spec.CreateDetailedSettlement(/* values here */);
-```
-
-### TransactionRetries
-
-```csharp
-Spec.CreateTransactionRetries(/* values here */);
-```
-
-### Transactions
-
-```csharp
-Spec.CreateTransactions(/* values here */);
-```
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `Model`                                                                                                        | *string*                                                                                                       | :heavy_check_mark:                                                                                             | The report model. One of `transactions`, `transaction_retries`, `detailed_settlement`, `accounts_receivables`. |
+| `Params`                                                                                                       | Dictionary<String, *object*>                                                                                   | :heavy_check_mark:                                                                                             | The parameters for the report, specific to the model.                                                          |

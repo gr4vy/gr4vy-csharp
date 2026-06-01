@@ -45,27 +45,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The report specification.
         /// </summary>
-        [JsonProperty("spec", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("spec")]
         public Spec Spec { get; set; } = default!;
-
-        public AccountsReceivablesReportSpec? GetSpecAccountsReceivables()
-        {
-            return Spec.AccountsReceivablesReportSpec;
-        }
-
-        public DetailedSettlementReportSpec? GetSpecDetailedSettlement()
-        {
-            return Spec.DetailedSettlementReportSpec;
-        }
-
-        public TransactionRetriesReportSpec? GetSpecTransactionRetries()
-        {
-            return Spec.TransactionRetriesReportSpec;
-        }
-
-        public TransactionsReportSpec? GetSpecTransactions()
-        {
-            return Spec.TransactionsReportSpec;
-        }
     }
 }
