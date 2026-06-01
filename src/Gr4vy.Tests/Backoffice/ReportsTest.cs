@@ -45,17 +45,15 @@ namespace Gr4vy.Tests.Backoffice
                             Name = "Daily transactions",
                             Schedule = "0 0 * * *",
                             ScheduleEnabled = false,
-                            // Build the spec via the factory so a populated body is
-                            // sent. `new Spec(SpecType.Transactions)` with no sub-spec
-                            // serializes the required `spec` field as `null` (the
-                            // union writer emits a body only when a member is set),
-                            // which crashed the API's report validator (CORE-API-3AE).
-                            Spec = Spec.CreateTransactions(
-                                new TransactionsReportSpec
-                                {
-                                    Params = new Dictionary<string, object>(),
-                                }
-                            ),
+                            // `spec` was flattened from a union to a plain object
+                            // (overlay fix-report-spec-union.yaml, #212) so it can no
+                            // longer serialize to null — `model` is required, which
+                            // prevents the CORE-API-3AE crash.
+                            Spec = new Spec
+                            {
+                                Model = "transactions",
+                                Params = new Dictionary<string, object>(),
+                            },
                         }
                     ),
                 "reports.create"
