@@ -14,6 +14,7 @@ sources:
             - location: ./.speakeasy/overlays/fix-checkout-session-body.yaml
             - location: ./.speakeasy/overlays/fix-remove-unwanted-headers.yaml
             - location: ./.speakeasy/overlays/fix-add-x-forwarded-for-header.yaml
+            - location: ./.speakeasy/overlays/fix-report-spec-union.yaml
         registry:
             location: registry.speakeasyapi.dev/gr4vy/gr4vy/openapi
 targets:
