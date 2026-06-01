@@ -1859,3 +1859,53 @@ Based on:
 - [csharp v2.8.20] .
 ### Releases
 - [NuGet v2.8.20] https://www.nuget.org/packages/Gr4vy/2.8.20 - .
+
+## 2026-05-25 17:43:54
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.765.0 (2.886.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v2.8.21] .
+### Releases
+- [NuGet v2.8.21] https://www.nuget.org/packages/Gr4vy/2.8.21 - .
+
+## 2026-05-26 14:16:29
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.766.0 (2.887.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v2.8.22] .
+### Releases
+- [NuGet v2.8.22] https://www.nuget.org/packages/Gr4vy/2.8.22 - .
+
+## 2026-05-27 09:16:14
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.767.0 (2.888.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v2.8.23] .
+### Releases
+- [NuGet v2.8.23] https://www.nuget.org/packages/Gr4vy/2.8.23 - .
+
+## 2026-05-27 15:34:43
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.768.0 (2.889.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v2.8.24] .
+### Releases
+- [NuGet v2.8.24] https://www.nuget.org/packages/Gr4vy/2.8.24 - .
+
+## 2026-05-28 12:34:24
+### Changes
+Based on:
+- OpenAPI Doc  
+- Speakeasy CLI 1.768.2 (2.889.1) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [csharp v2.8.25] .
+### Releases
+- [NuGet v2.8.25] https://www.nuget.org/packages/Gr4vy/2.8.25 - .

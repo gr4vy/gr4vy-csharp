@@ -43,5 +43,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("secret")]
         public bool Secret { get; set; } = default!;
+
+        /// <summary>
+        /// Defines if this field can be verified through the verify credentials button.
+        /// </summary>
+        [JsonProperty("verifiable")]
+        public bool Verifiable { get; set; } = default!;
     }
 }

@@ -18,331 +18,1141 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Custom options to be passed to the `account-updater` connector, allowing for simulating different account updater responses.
         /// </summary>
-        [JsonProperty("account-updater")]
-        public AccountUpdaterOptions? AccountUpdater { get; set; } = null;
+        [JsonProperty("account-updater", NullValueHandling = NullValueHandling.Include)]
+        public AccountUpdaterOptions? AccountUpdater
+        {
+            get => _accountUpdater;
+            set
+            {
+                _accountUpdater = value;
+                _accountUpdaterSet = true;
+            }
+        }
+
+        private AccountUpdaterOptions? _accountUpdater = null;
+
+        private bool _accountUpdaterSet = false;
+
+        public bool ShouldSerializeAccountUpdater() => _accountUpdaterSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-afterpay` connector.
         /// </summary>
-        [JsonProperty("adyen-afterpay")]
-        public AdyenOptions? AdyenAfterpay { get; set; } = null;
+        [JsonProperty("adyen-afterpay", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenAfterpay
+        {
+            get => _adyenAfterpay;
+            set
+            {
+                _adyenAfterpay = value;
+                _adyenAfterpaySet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenAfterpay = null;
+
+        private bool _adyenAfterpaySet = false;
+
+        public bool ShouldSerializeAdyenAfterpay() => _adyenAfterpaySet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-alipay` connector.
         /// </summary>
-        [JsonProperty("adyen-alipay")]
-        public AdyenOptions? AdyenAlipay { get; set; } = null;
+        [JsonProperty("adyen-alipay", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenAlipay
+        {
+            get => _adyenAlipay;
+            set
+            {
+                _adyenAlipay = value;
+                _adyenAlipaySet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenAlipay = null;
+
+        private bool _adyenAlipaySet = false;
+
+        public bool ShouldSerializeAdyenAlipay() => _adyenAlipaySet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-card` connector.
         /// </summary>
-        [JsonProperty("adyen-card")]
-        public AdyenCardOptions? AdyenCard { get; set; } = null;
+        [JsonProperty("adyen-card", NullValueHandling = NullValueHandling.Include)]
+        public AdyenCardOptions? AdyenCard
+        {
+            get => _adyenCard;
+            set
+            {
+                _adyenCard = value;
+                _adyenCardSet = true;
+            }
+        }
+
+        private AdyenCardOptions? _adyenCard = null;
+
+        private bool _adyenCardSet = false;
+
+        public bool ShouldSerializeAdyenCard() => _adyenCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-cashapp` connector.
         /// </summary>
-        [JsonProperty("adyen-cashapp")]
-        public AdyenOptions? AdyenCashapp { get; set; } = null;
+        [JsonProperty("adyen-cashapp", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenCashapp
+        {
+            get => _adyenCashapp;
+            set
+            {
+                _adyenCashapp = value;
+                _adyenCashappSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenCashapp = null;
+
+        private bool _adyenCashappSet = false;
+
+        public bool ShouldSerializeAdyenCashapp() => _adyenCashappSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-gcash` connector.
         /// </summary>
-        [JsonProperty("adyen-gcash")]
-        public AdyenOptions? AdyenGcash { get; set; } = null;
+        [JsonProperty("adyen-gcash", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenGcash
+        {
+            get => _adyenGcash;
+            set
+            {
+                _adyenGcash = value;
+                _adyenGcashSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenGcash = null;
+
+        private bool _adyenGcashSet = false;
+
+        public bool ShouldSerializeAdyenGcash() => _adyenGcashSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-giropay` connector.
         /// </summary>
-        [JsonProperty("adyen-giropay")]
-        public AdyenOptions? AdyenGiropay { get; set; } = null;
+        [JsonProperty("adyen-giropay", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenGiropay
+        {
+            get => _adyenGiropay;
+            set
+            {
+                _adyenGiropay = value;
+                _adyenGiropaySet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenGiropay = null;
+
+        private bool _adyenGiropaySet = false;
+
+        public bool ShouldSerializeAdyenGiropay() => _adyenGiropaySet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-ideal` connector.
         /// </summary>
-        [JsonProperty("adyen-ideal")]
-        public AdyenOptions? AdyenIdeal { get; set; } = null;
+        [JsonProperty("adyen-ideal", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenIdeal
+        {
+            get => _adyenIdeal;
+            set
+            {
+                _adyenIdeal = value;
+                _adyenIdealSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenIdeal = null;
+
+        private bool _adyenIdealSet = false;
+
+        public bool ShouldSerializeAdyenIdeal() => _adyenIdealSet;
+
+        /// <summary>
+        /// Custom options to be passed to the `adyen-konbini` connector.
+        /// </summary>
+        [JsonProperty("adyen-konbini", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenKonbini
+        {
+            get => _adyenKonbini;
+            set
+            {
+                _adyenKonbini = value;
+                _adyenKonbiniSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenKonbini = null;
+
+        private bool _adyenKonbiniSet = false;
+
+        public bool ShouldSerializeAdyenKonbini() => _adyenKonbiniSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-paypay` connector.
         /// </summary>
-        [JsonProperty("adyen-paypay")]
-        public AdyenOptions? AdyenPaypay { get; set; } = null;
+        [JsonProperty("adyen-paypay", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenPaypay
+        {
+            get => _adyenPaypay;
+            set
+            {
+                _adyenPaypay = value;
+                _adyenPaypaySet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenPaypay = null;
+
+        private bool _adyenPaypaySet = false;
+
+        public bool ShouldSerializeAdyenPaypay() => _adyenPaypaySet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-pix` connector.
         /// </summary>
-        [JsonProperty("adyen-pix")]
-        public AdyenPixOptions? AdyenPix { get; set; } = null;
+        [JsonProperty("adyen-pix", NullValueHandling = NullValueHandling.Include)]
+        public AdyenPixOptions? AdyenPix
+        {
+            get => _adyenPix;
+            set
+            {
+                _adyenPix = value;
+                _adyenPixSet = true;
+            }
+        }
+
+        private AdyenPixOptions? _adyenPix = null;
+
+        private bool _adyenPixSet = false;
+
+        public bool ShouldSerializeAdyenPix() => _adyenPixSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-sepa` connector.
         /// </summary>
-        [JsonProperty("adyen-sepa")]
-        public AdyenSepaOptions? AdyenSepa { get; set; } = null;
+        [JsonProperty("adyen-sepa", NullValueHandling = NullValueHandling.Include)]
+        public AdyenSepaOptions? AdyenSepa
+        {
+            get => _adyenSepa;
+            set
+            {
+                _adyenSepa = value;
+                _adyenSepaSet = true;
+            }
+        }
+
+        private AdyenSepaOptions? _adyenSepa = null;
+
+        private bool _adyenSepaSet = false;
+
+        public bool ShouldSerializeAdyenSepa() => _adyenSepaSet;
+
+        /// <summary>
+        /// Custom options to be passed to the `adyen-seveneleven` connector.
+        /// </summary>
+        [JsonProperty("adyen-seveneleven", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenSeveneleven
+        {
+            get => _adyenSeveneleven;
+            set
+            {
+                _adyenSeveneleven = value;
+                _adyenSevenelevenSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenSeveneleven = null;
+
+        private bool _adyenSevenelevenSet = false;
+
+        public bool ShouldSerializeAdyenSeveneleven() => _adyenSevenelevenSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-sofort` connector.
         /// </summary>
-        [JsonProperty("adyen-sofort")]
-        public AdyenOptions? AdyenSofort { get; set; } = null;
+        [JsonProperty("adyen-sofort", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenSofort
+        {
+            get => _adyenSofort;
+            set
+            {
+                _adyenSofort = value;
+                _adyenSofortSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenSofort = null;
+
+        private bool _adyenSofortSet = false;
+
+        public bool ShouldSerializeAdyenSofort() => _adyenSofortSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-swish` connector.
         /// </summary>
-        [JsonProperty("adyen-swish")]
-        public AdyenOptions? AdyenSwish { get; set; } = null;
+        [JsonProperty("adyen-swish", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenSwish
+        {
+            get => _adyenSwish;
+            set
+            {
+                _adyenSwish = value;
+                _adyenSwishSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenSwish = null;
+
+        private bool _adyenSwishSet = false;
+
+        public bool ShouldSerializeAdyenSwish() => _adyenSwishSet;
 
         /// <summary>
         /// Custom options to be passed to the `adyen-vipps` connector.
         /// </summary>
-        [JsonProperty("adyen-vipps")]
-        public AdyenOptions? AdyenVipps { get; set; } = null;
+        [JsonProperty("adyen-vipps", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenVipps
+        {
+            get => _adyenVipps;
+            set
+            {
+                _adyenVipps = value;
+                _adyenVippsSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenVipps = null;
+
+        private bool _adyenVippsSet = false;
+
+        public bool ShouldSerializeAdyenVipps() => _adyenVippsSet;
 
         /// <summary>
         /// Custom options to be passed to the `affirm-affirm` connector.
         /// </summary>
-        [JsonProperty("affirm-affirm")]
-        public AffirmOptions? AffirmAffirm { get; set; } = null;
+        [JsonProperty("affirm-affirm", NullValueHandling = NullValueHandling.Include)]
+        public AffirmOptions? AffirmAffirm
+        {
+            get => _affirmAffirm;
+            set
+            {
+                _affirmAffirm = value;
+                _affirmAffirmSet = true;
+            }
+        }
+
+        private AffirmOptions? _affirmAffirm = null;
+
+        private bool _affirmAffirmSet = false;
+
+        public bool ShouldSerializeAffirmAffirm() => _affirmAffirmSet;
 
         /// <summary>
         /// Custom options to be passed to the `braintree-card` connector.
         /// </summary>
-        [JsonProperty("braintree-card")]
-        public BraintreeOptions? BraintreeCard { get; set; } = null;
+        [JsonProperty("braintree-card", NullValueHandling = NullValueHandling.Include)]
+        public BraintreeOptions? BraintreeCard
+        {
+            get => _braintreeCard;
+            set
+            {
+                _braintreeCard = value;
+                _braintreeCardSet = true;
+            }
+        }
+
+        private BraintreeOptions? _braintreeCard = null;
+
+        private bool _braintreeCardSet = false;
+
+        public bool ShouldSerializeBraintreeCard() => _braintreeCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `chaseorbital-card` connector.
         /// </summary>
-        [JsonProperty("chaseorbital-card")]
-        public ChaseOptions? ChaseorbitalCard { get; set; } = null;
+        [JsonProperty("chaseorbital-card", NullValueHandling = NullValueHandling.Include)]
+        public ChaseOptions? ChaseorbitalCard
+        {
+            get => _chaseorbitalCard;
+            set
+            {
+                _chaseorbitalCard = value;
+                _chaseorbitalCardSet = true;
+            }
+        }
+
+        private ChaseOptions? _chaseorbitalCard = null;
+
+        private bool _chaseorbitalCardSet = false;
+
+        public bool ShouldSerializeChaseorbitalCard() => _chaseorbitalCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `cybersource-anti-fraud` connector.
         /// </summary>
-        [JsonProperty("cybersource-anti-fraud")]
-        public CybersourceAntiFraudOptions? CybersourceAntiFraud { get; set; } = null;
+        [JsonProperty("cybersource-anti-fraud", NullValueHandling = NullValueHandling.Include)]
+        public CybersourceAntiFraudOptions? CybersourceAntiFraud
+        {
+            get => _cybersourceAntiFraud;
+            set
+            {
+                _cybersourceAntiFraud = value;
+                _cybersourceAntiFraudSet = true;
+            }
+        }
+
+        private CybersourceAntiFraudOptions? _cybersourceAntiFraud = null;
+
+        private bool _cybersourceAntiFraudSet = false;
+
+        public bool ShouldSerializeCybersourceAntiFraud() => _cybersourceAntiFraudSet;
 
         /// <summary>
         /// Custom options to be passed to the `cybersource-card` connector.
         /// </summary>
-        [JsonProperty("cybersource-card")]
-        public CybersourceOptions? CybersourceCard { get; set; } = null;
+        [JsonProperty("cybersource-card", NullValueHandling = NullValueHandling.Include)]
+        public CybersourceOptions? CybersourceCard
+        {
+            get => _cybersourceCard;
+            set
+            {
+                _cybersourceCard = value;
+                _cybersourceCardSet = true;
+            }
+        }
+
+        private CybersourceOptions? _cybersourceCard = null;
+
+        private bool _cybersourceCardSet = false;
+
+        public bool ShouldSerializeCybersourceCard() => _cybersourceCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `cybersource-ideal` connector.
         /// </summary>
-        [JsonProperty("cybersource-ideal")]
-        public CybersourceOptions? CybersourceIdeal { get; set; } = null;
+        [JsonProperty("cybersource-ideal", NullValueHandling = NullValueHandling.Include)]
+        public CybersourceOptions? CybersourceIdeal
+        {
+            get => _cybersourceIdeal;
+            set
+            {
+                _cybersourceIdeal = value;
+                _cybersourceIdealSet = true;
+            }
+        }
+
+        private CybersourceOptions? _cybersourceIdeal = null;
+
+        private bool _cybersourceIdealSet = false;
+
+        public bool ShouldSerializeCybersourceIdeal() => _cybersourceIdealSet;
 
         /// <summary>
         /// Custom options to be passed to the `cybersource-kcp` connector.
         /// </summary>
-        [JsonProperty("cybersource-kcp")]
-        public CybersourceOptions? CybersourceKcp { get; set; } = null;
+        [JsonProperty("cybersource-kcp", NullValueHandling = NullValueHandling.Include)]
+        public CybersourceOptions? CybersourceKcp
+        {
+            get => _cybersourceKcp;
+            set
+            {
+                _cybersourceKcp = value;
+                _cybersourceKcpSet = true;
+            }
+        }
+
+        private CybersourceOptions? _cybersourceKcp = null;
+
+        private bool _cybersourceKcpSet = false;
+
+        public bool ShouldSerializeCybersourceKcp() => _cybersourceKcpSet;
 
         /// <summary>
         /// Custom options to be passed to the `dlocal-nequi` connector.
         /// </summary>
-        [JsonProperty("dlocal-nequi")]
-        public DlocalOptions? DlocalNequi { get; set; } = null;
+        [JsonProperty("dlocal-nequi", NullValueHandling = NullValueHandling.Include)]
+        public DlocalOptions? DlocalNequi
+        {
+            get => _dlocalNequi;
+            set
+            {
+                _dlocalNequi = value;
+                _dlocalNequiSet = true;
+            }
+        }
+
+        private DlocalOptions? _dlocalNequi = null;
+
+        private bool _dlocalNequiSet = false;
+
+        public bool ShouldSerializeDlocalNequi() => _dlocalNequiSet;
 
         /// <summary>
         /// Custom options to be passed to the `dlocal-upi` connector.
         /// </summary>
-        [JsonProperty("dlocal-upi")]
-        public DlocalUPIOptions? DlocalUpi { get; set; } = null;
+        [JsonProperty("dlocal-upi", NullValueHandling = NullValueHandling.Include)]
+        public DlocalUPIOptions? DlocalUpi
+        {
+            get => _dlocalUpi;
+            set
+            {
+                _dlocalUpi = value;
+                _dlocalUpiSet = true;
+            }
+        }
+
+        private DlocalUPIOptions? _dlocalUpi = null;
+
+        private bool _dlocalUpiSet = false;
+
+        public bool ShouldSerializeDlocalUpi() => _dlocalUpiSet;
 
         /// <summary>
         /// Custom options to be passed to the `dlocal-pix` connector.
         /// </summary>
-        [JsonProperty("dlocal-pix")]
-        public DlocalPIXOptions? DlocalPix { get; set; } = null;
+        [JsonProperty("dlocal-pix", NullValueHandling = NullValueHandling.Include)]
+        public DlocalPIXOptions? DlocalPix
+        {
+            get => _dlocalPix;
+            set
+            {
+                _dlocalPix = value;
+                _dlocalPixSet = true;
+            }
+        }
+
+        private DlocalPIXOptions? _dlocalPix = null;
+
+        private bool _dlocalPixSet = false;
+
+        public bool ShouldSerializeDlocalPix() => _dlocalPixSet;
 
         /// <summary>
         /// Custom options to be passed to the `dlocal-gcash` connector.
         /// </summary>
-        [JsonProperty("dlocal-gcash")]
-        public DlocalOptions? DlocalGcash { get; set; } = null;
+        [JsonProperty("dlocal-gcash", NullValueHandling = NullValueHandling.Include)]
+        public DlocalOptions? DlocalGcash
+        {
+            get => _dlocalGcash;
+            set
+            {
+                _dlocalGcash = value;
+                _dlocalGcashSet = true;
+            }
+        }
+
+        private DlocalOptions? _dlocalGcash = null;
+
+        private bool _dlocalGcashSet = false;
+
+        public bool ShouldSerializeDlocalGcash() => _dlocalGcashSet;
 
         /// <summary>
         /// Custom options to be passed to the `ecommpay-card` connector.
         /// </summary>
-        [JsonProperty("ecommpay-card")]
-        public EcommpayOptions? EcommpayCard { get; set; } = null;
+        [JsonProperty("ecommpay-card", NullValueHandling = NullValueHandling.Include)]
+        public EcommpayOptions? EcommpayCard
+        {
+            get => _ecommpayCard;
+            set
+            {
+                _ecommpayCard = value;
+                _ecommpayCardSet = true;
+            }
+        }
+
+        private EcommpayOptions? _ecommpayCard = null;
+
+        private bool _ecommpayCardSet = false;
+
+        public bool ShouldSerializeEcommpayCard() => _ecommpayCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `fiserv-card` connector.
         /// </summary>
-        [JsonProperty("fiserv-card")]
-        public FiservOptions? FiservCard { get; set; } = null;
+        [JsonProperty("fiserv-card", NullValueHandling = NullValueHandling.Include)]
+        public FiservOptions? FiservCard
+        {
+            get => _fiservCard;
+            set
+            {
+                _fiservCard = value;
+                _fiservCardSet = true;
+            }
+        }
+
+        private FiservOptions? _fiservCard = null;
+
+        private bool _fiservCardSet = false;
+
+        public bool ShouldSerializeFiservCard() => _fiservCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `forter-anti-fraud` connector.
         /// </summary>
-        [JsonProperty("forter-anti-fraud")]
-        public ForterAntiFraudOptions? ForterAntiFraud { get; set; } = null;
+        [JsonProperty("forter-anti-fraud", NullValueHandling = NullValueHandling.Include)]
+        public ForterAntiFraudOptions? ForterAntiFraud
+        {
+            get => _forterAntiFraud;
+            set
+            {
+                _forterAntiFraud = value;
+                _forterAntiFraudSet = true;
+            }
+        }
+
+        private ForterAntiFraudOptions? _forterAntiFraud = null;
+
+        private bool _forterAntiFraudSet = false;
+
+        public bool ShouldSerializeForterAntiFraud() => _forterAntiFraudSet;
 
         /// <summary>
         /// Custom options to be passed to the `gem-gem` connector.
         /// </summary>
-        [JsonProperty("gem-gem")]
-        public LatitudeOptions? GemGem { get; set; } = null;
+        [JsonProperty("gem-gem", NullValueHandling = NullValueHandling.Include)]
+        public LatitudeOptions? GemGem
+        {
+            get => _gemGem;
+            set
+            {
+                _gemGem = value;
+                _gemGemSet = true;
+            }
+        }
+
+        private LatitudeOptions? _gemGem = null;
+
+        private bool _gemGemSet = false;
+
+        public bool ShouldSerializeGemGem() => _gemGemSet;
 
         /// <summary>
         /// Custom options to be passed to the `gem-gemds` connector.
         /// </summary>
-        [JsonProperty("gem-gemds")]
-        public LatitudeOptions? GemGemds { get; set; } = null;
+        [JsonProperty("gem-gemds", NullValueHandling = NullValueHandling.Include)]
+        public LatitudeOptions? GemGemds
+        {
+            get => _gemGemds;
+            set
+            {
+                _gemGemds = value;
+                _gemGemdsSet = true;
+            }
+        }
+
+        private LatitudeOptions? _gemGemds = null;
+
+        private bool _gemGemdsSet = false;
+
+        public bool ShouldSerializeGemGemds() => _gemGemdsSet;
 
         /// <summary>
         /// Custom options to be passed to the `givingblock-givingblock` connector.
         /// </summary>
-        [JsonProperty("givingblock-givingblock")]
-        public GivingBlockOptions? GivingblockGivingblock { get; set; } = null;
+        [JsonProperty("givingblock-givingblock", NullValueHandling = NullValueHandling.Include)]
+        public GivingBlockOptions? GivingblockGivingblock
+        {
+            get => _givingblockGivingblock;
+            set
+            {
+                _givingblockGivingblock = value;
+                _givingblockGivingblockSet = true;
+            }
+        }
+
+        private GivingBlockOptions? _givingblockGivingblock = null;
+
+        private bool _givingblockGivingblockSet = false;
+
+        public bool ShouldSerializeGivingblockGivingblock() => _givingblockGivingblockSet;
 
         /// <summary>
         /// Custom options to be passed to the `gocardless-gocardless` connector.
         /// </summary>
-        [JsonProperty("gocardless-gocardless")]
-        public GoCardlessOptions? GocardlessGocardless { get; set; } = null;
+        [JsonProperty("gocardless-gocardless", NullValueHandling = NullValueHandling.Include)]
+        public GoCardlessOptions? GocardlessGocardless
+        {
+            get => _gocardlessGocardless;
+            set
+            {
+                _gocardlessGocardless = value;
+                _gocardlessGocardlessSet = true;
+            }
+        }
+
+        private GoCardlessOptions? _gocardlessGocardless = null;
+
+        private bool _gocardlessGocardlessSet = false;
+
+        public bool ShouldSerializeGocardlessGocardless() => _gocardlessGocardlessSet;
 
         /// <summary>
         /// Custom options to be passed to the `latitude-latitude` connector.
         /// </summary>
-        [JsonProperty("latitude-latitude")]
-        public LatitudeOptions? LatitudeLatitude { get; set; } = null;
+        [JsonProperty("latitude-latitude", NullValueHandling = NullValueHandling.Include)]
+        public LatitudeOptions? LatitudeLatitude
+        {
+            get => _latitudeLatitude;
+            set
+            {
+                _latitudeLatitude = value;
+                _latitudeLatitudeSet = true;
+            }
+        }
+
+        private LatitudeOptions? _latitudeLatitude = null;
+
+        private bool _latitudeLatitudeSet = false;
+
+        public bool ShouldSerializeLatitudeLatitude() => _latitudeLatitudeSet;
 
         /// <summary>
         /// Custom options to be passed to the `latitude-latitudeds` connector.
         /// </summary>
-        [JsonProperty("latitude-latitudeds")]
-        public LatitudeOptions? LatitudeLatitudeds { get; set; } = null;
+        [JsonProperty("latitude-latitudeds", NullValueHandling = NullValueHandling.Include)]
+        public LatitudeOptions? LatitudeLatitudeds
+        {
+            get => _latitudeLatitudeds;
+            set
+            {
+                _latitudeLatitudeds = value;
+                _latitudeLatitudedsSet = true;
+            }
+        }
+
+        private LatitudeOptions? _latitudeLatitudeds = null;
+
+        private bool _latitudeLatitudedsSet = false;
+
+        public bool ShouldSerializeLatitudeLatitudeds() => _latitudeLatitudedsSet;
 
         /// <summary>
         /// Custom options to be passed to the `mattilda-tapi` connector.
         /// </summary>
-        [JsonProperty("mattilda-tapi")]
-        public MattildaTapiOptions? MattildaTapi { get; set; } = null;
+        [JsonProperty("mattilda-tapi", NullValueHandling = NullValueHandling.Include)]
+        public MattildaTapiOptions? MattildaTapi
+        {
+            get => _mattildaTapi;
+            set
+            {
+                _mattildaTapi = value;
+                _mattildaTapiSet = true;
+            }
+        }
+
+        private MattildaTapiOptions? _mattildaTapi = null;
+
+        private bool _mattildaTapiSet = false;
+
+        public bool ShouldSerializeMattildaTapi() => _mattildaTapiSet;
 
         /// <summary>
         /// Custom options to be passed to the `mattilda-tapifintechs` connector.
         /// </summary>
-        [JsonProperty("mattilda-tapifintechs")]
-        public MattildaTapiOptions? MattildaTapifintechs { get; set; } = null;
+        [JsonProperty("mattilda-tapifintechs", NullValueHandling = NullValueHandling.Include)]
+        public MattildaTapiOptions? MattildaTapifintechs
+        {
+            get => _mattildaTapifintechs;
+            set
+            {
+                _mattildaTapifintechs = value;
+                _mattildaTapifintechsSet = true;
+            }
+        }
+
+        private MattildaTapiOptions? _mattildaTapifintechs = null;
+
+        private bool _mattildaTapifintechsSet = false;
+
+        public bool ShouldSerializeMattildaTapifintechs() => _mattildaTapifintechsSet;
 
         /// <summary>
         /// Custom options to be passed to the `monato-spei` connector.
         /// </summary>
-        [JsonProperty("monato-spei")]
-        public MonatoSpeiOptions? MonatoSpei { get; set; } = null;
+        [JsonProperty("monato-spei", NullValueHandling = NullValueHandling.Include)]
+        public MonatoSpeiOptions? MonatoSpei
+        {
+            get => _monatoSpei;
+            set
+            {
+                _monatoSpei = value;
+                _monatoSpeiSet = true;
+            }
+        }
+
+        private MonatoSpeiOptions? _monatoSpei = null;
+
+        private bool _monatoSpeiSet = false;
+
+        public bool ShouldSerializeMonatoSpei() => _monatoSpeiSet;
 
         /// <summary>
         /// Custom options to be passed to the `mock-card` connector.
         /// </summary>
-        [JsonProperty("mock-card")]
-        public MockCardOptions? MockCard { get; set; } = null;
+        [JsonProperty("mock-card", NullValueHandling = NullValueHandling.Include)]
+        public MockCardOptions? MockCard
+        {
+            get => _mockCard;
+            set
+            {
+                _mockCard = value;
+                _mockCardSet = true;
+            }
+        }
+
+        private MockCardOptions? _mockCard = null;
+
+        private bool _mockCardSet = false;
+
+        public bool ShouldSerializeMockCard() => _mockCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `mockds-card` connector.
         /// </summary>
-        [JsonProperty("mockds-card")]
-        public MockCardOptions? MockdsCard { get; set; } = null;
+        [JsonProperty("mockds-card", NullValueHandling = NullValueHandling.Include)]
+        public MockCardOptions? MockdsCard
+        {
+            get => _mockdsCard;
+            set
+            {
+                _mockdsCard = value;
+                _mockdsCardSet = true;
+            }
+        }
+
+        private MockCardOptions? _mockdsCard = null;
+
+        private bool _mockdsCardSet = false;
+
+        public bool ShouldSerializeMockdsCard() => _mockdsCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `nuvei-card` connector.
         /// </summary>
-        [JsonProperty("nuvei-card")]
-        public NuveiOptions? NuveiCard { get; set; } = null;
+        [JsonProperty("nuvei-card", NullValueHandling = NullValueHandling.Include)]
+        public NuveiOptions? NuveiCard
+        {
+            get => _nuveiCard;
+            set
+            {
+                _nuveiCard = value;
+                _nuveiCardSet = true;
+            }
+        }
+
+        private NuveiOptions? _nuveiCard = null;
+
+        private bool _nuveiCardSet = false;
+
+        public bool ShouldSerializeNuveiCard() => _nuveiCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `nuvei-ideal` connector.
         /// </summary>
-        [JsonProperty("nuvei-ideal")]
-        public NuveiIDealOptions? NuveiIdeal { get; set; } = null;
+        [JsonProperty("nuvei-ideal", NullValueHandling = NullValueHandling.Include)]
+        public NuveiIDealOptions? NuveiIdeal
+        {
+            get => _nuveiIdeal;
+            set
+            {
+                _nuveiIdeal = value;
+                _nuveiIdealSet = true;
+            }
+        }
+
+        private NuveiIDealOptions? _nuveiIdeal = null;
+
+        private bool _nuveiIdealSet = false;
+
+        public bool ShouldSerializeNuveiIdeal() => _nuveiIdealSet;
 
         /// <summary>
         /// Custom options to be passed to the `nuvei-klarna` connector.
         /// </summary>
-        [JsonProperty("nuvei-klarna")]
-        public NuveiKlarnaOptions? NuveiKlarna { get; set; } = null;
+        [JsonProperty("nuvei-klarna", NullValueHandling = NullValueHandling.Include)]
+        public NuveiKlarnaOptions? NuveiKlarna
+        {
+            get => _nuveiKlarna;
+            set
+            {
+                _nuveiKlarna = value;
+                _nuveiKlarnaSet = true;
+            }
+        }
+
+        private NuveiKlarnaOptions? _nuveiKlarna = null;
+
+        private bool _nuveiKlarnaSet = false;
+
+        public bool ShouldSerializeNuveiKlarna() => _nuveiKlarnaSet;
 
         /// <summary>
         /// Custom options to be passed to the `nuvei-pse` connector.
         /// </summary>
-        [JsonProperty("nuvei-pse")]
-        public NuveiPSEOptions? NuveiPse { get; set; } = null;
+        [JsonProperty("nuvei-pse", NullValueHandling = NullValueHandling.Include)]
+        public NuveiPSEOptions? NuveiPse
+        {
+            get => _nuveiPse;
+            set
+            {
+                _nuveiPse = value;
+                _nuveiPseSet = true;
+            }
+        }
+
+        private NuveiPSEOptions? _nuveiPse = null;
+
+        private bool _nuveiPseSet = false;
+
+        public bool ShouldSerializeNuveiPse() => _nuveiPseSet;
 
         /// <summary>
         /// Custom options to be passed to the `oxxo-oxxo` connector.
         /// </summary>
-        [JsonProperty("oxxo-oxxo")]
-        public OxxoOptions? OxxoOxxo { get; set; } = null;
+        [JsonProperty("oxxo-oxxo", NullValueHandling = NullValueHandling.Include)]
+        public OxxoOptions? OxxoOxxo
+        {
+            get => _oxxoOxxo;
+            set
+            {
+                _oxxoOxxo = value;
+                _oxxoOxxoSet = true;
+            }
+        }
+
+        private OxxoOptions? _oxxoOxxo = null;
+
+        private bool _oxxoOxxoSet = false;
+
+        public bool ShouldSerializeOxxoOxxo() => _oxxoOxxoSet;
 
         /// <summary>
         /// Custom options to be passed to the `paypal-paypal` connector.
         /// </summary>
-        [JsonProperty("paypal-paypal")]
-        public PaypalOptions? PaypalPaypal { get; set; } = null;
+        [JsonProperty("paypal-paypal", NullValueHandling = NullValueHandling.Include)]
+        public PaypalOptions? PaypalPaypal
+        {
+            get => _paypalPaypal;
+            set
+            {
+                _paypalPaypal = value;
+                _paypalPaypalSet = true;
+            }
+        }
+
+        private PaypalOptions? _paypalPaypal = null;
+
+        private bool _paypalPaypalSet = false;
+
+        public bool ShouldSerializePaypalPaypal() => _paypalPaypalSet;
 
         /// <summary>
         /// Custom options to be passed to the `paypal-paypalpaylater` connector.
         /// </summary>
-        [JsonProperty("paypal-paypalpaylater")]
-        public PaypalOptions? PaypalPaypalpaylater { get; set; } = null;
+        [JsonProperty("paypal-paypalpaylater", NullValueHandling = NullValueHandling.Include)]
+        public PaypalOptions? PaypalPaypalpaylater
+        {
+            get => _paypalPaypalpaylater;
+            set
+            {
+                _paypalPaypalpaylater = value;
+                _paypalPaypalpaylaterSet = true;
+            }
+        }
+
+        private PaypalOptions? _paypalPaypalpaylater = null;
+
+        private bool _paypalPaypalpaylaterSet = false;
+
+        public bool ShouldSerializePaypalPaypalpaylater() => _paypalPaypalpaylaterSet;
 
         /// <summary>
         /// Custom options to be passed to the `powertranz-card` connector.
         /// </summary>
-        [JsonProperty("powertranz-card")]
-        public PowertranzOptions? PowertranzCard { get; set; } = null;
+        [JsonProperty("powertranz-card", NullValueHandling = NullValueHandling.Include)]
+        public PowertranzOptions? PowertranzCard
+        {
+            get => _powertranzCard;
+            set
+            {
+                _powertranzCard = value;
+                _powertranzCardSet = true;
+            }
+        }
+
+        private PowertranzOptions? _powertranzCard = null;
+
+        private bool _powertranzCardSet = false;
+
+        public bool ShouldSerializePowertranzCard() => _powertranzCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `riskified-anti-fraud` connector.
         /// </summary>
-        [JsonProperty("riskified-anti-fraud")]
-        public RiskifiedAntiFraudOptions? RiskifiedAntiFraud { get; set; } = null;
+        [JsonProperty("riskified-anti-fraud", NullValueHandling = NullValueHandling.Include)]
+        public RiskifiedAntiFraudOptions? RiskifiedAntiFraud
+        {
+            get => _riskifiedAntiFraud;
+            set
+            {
+                _riskifiedAntiFraud = value;
+                _riskifiedAntiFraudSet = true;
+            }
+        }
+
+        private RiskifiedAntiFraudOptions? _riskifiedAntiFraud = null;
+
+        private bool _riskifiedAntiFraudSet = false;
+
+        public bool ShouldSerializeRiskifiedAntiFraud() => _riskifiedAntiFraudSet;
 
         /// <summary>
         /// Custom options to be passed to the `stripe-affirm` connector.
         /// </summary>
-        [JsonProperty("stripe-affirm")]
-        public StripeOptions? StripeAffirm { get; set; } = null;
+        [JsonProperty("stripe-affirm", NullValueHandling = NullValueHandling.Include)]
+        public StripeOptions? StripeAffirm
+        {
+            get => _stripeAffirm;
+            set
+            {
+                _stripeAffirm = value;
+                _stripeAffirmSet = true;
+            }
+        }
+
+        private StripeOptions? _stripeAffirm = null;
+
+        private bool _stripeAffirmSet = false;
+
+        public bool ShouldSerializeStripeAffirm() => _stripeAffirmSet;
 
         /// <summary>
         /// Custom options to be passed to the `stripe-card` connector.
         /// </summary>
-        [JsonProperty("stripe-card")]
-        public StripeCardOptions? StripeCard { get; set; } = null;
+        [JsonProperty("stripe-card", NullValueHandling = NullValueHandling.Include)]
+        public StripeCardOptions? StripeCard
+        {
+            get => _stripeCard;
+            set
+            {
+                _stripeCard = value;
+                _stripeCardSet = true;
+            }
+        }
+
+        private StripeCardOptions? _stripeCard = null;
+
+        private bool _stripeCardSet = false;
+
+        public bool ShouldSerializeStripeCard() => _stripeCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `stripe-klarna` connector.
         /// </summary>
-        [JsonProperty("stripe-klarna")]
-        public StripeOptions? StripeKlarna { get; set; } = null;
+        [JsonProperty("stripe-klarna", NullValueHandling = NullValueHandling.Include)]
+        public StripeOptions? StripeKlarna
+        {
+            get => _stripeKlarna;
+            set
+            {
+                _stripeKlarna = value;
+                _stripeKlarnaSet = true;
+            }
+        }
+
+        private StripeOptions? _stripeKlarna = null;
+
+        private bool _stripeKlarnaSet = false;
+
+        public bool ShouldSerializeStripeKlarna() => _stripeKlarnaSet;
 
         /// <summary>
         /// Custom options to be passed to the `travelhub-card` connector.
         /// </summary>
-        [JsonProperty("travelhub-card")]
-        public TravelhubOptions? TravelhubCard { get; set; } = null;
+        [JsonProperty("travelhub-card", NullValueHandling = NullValueHandling.Include)]
+        public TravelhubOptions? TravelhubCard
+        {
+            get => _travelhubCard;
+            set
+            {
+                _travelhubCard = value;
+                _travelhubCardSet = true;
+            }
+        }
+
+        private TravelhubOptions? _travelhubCard = null;
+
+        private bool _travelhubCardSet = false;
+
+        public bool ShouldSerializeTravelhubCard() => _travelhubCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `trustly-trustly` connector.
         /// </summary>
-        [JsonProperty("trustly-trustly")]
-        public TrustlyOptions? TrustlyTrustly { get; set; } = null;
+        [JsonProperty("trustly-trustly", NullValueHandling = NullValueHandling.Include)]
+        public TrustlyOptions? TrustlyTrustly
+        {
+            get => _trustlyTrustly;
+            set
+            {
+                _trustlyTrustly = value;
+                _trustlyTrustlySet = true;
+            }
+        }
+
+        private TrustlyOptions? _trustlyTrustly = null;
+
+        private bool _trustlyTrustlySet = false;
+
+        public bool ShouldSerializeTrustlyTrustly() => _trustlyTrustlySet;
 
         /// <summary>
         /// Custom options to be passed to the `wpay-everydaypay` connector.
         /// </summary>
-        [JsonProperty("wpay-everydaypay")]
-        public WpayEverdaypayOptions? WpayEverydaypay { get; set; } = null;
+        [JsonProperty("wpay-everydaypay", NullValueHandling = NullValueHandling.Include)]
+        public WpayEverdaypayOptions? WpayEverydaypay
+        {
+            get => _wpayEverydaypay;
+            set
+            {
+                _wpayEverydaypay = value;
+                _wpayEverydaypaySet = true;
+            }
+        }
+
+        private WpayEverdaypayOptions? _wpayEverydaypay = null;
+
+        private bool _wpayEverydaypaySet = false;
+
+        public bool ShouldSerializeWpayEverydaypay() => _wpayEverydaypaySet;
 
         /// <summary>
         /// Custom options to be passed to the `wpay-payto` connector.
         /// </summary>
-        [JsonProperty("wpay-payto")]
-        public WpayPaytoOptions? WpayPayto { get; set; } = null;
+        [JsonProperty("wpay-payto", NullValueHandling = NullValueHandling.Include)]
+        public WpayPaytoOptions? WpayPayto
+        {
+            get => _wpayPayto;
+            set
+            {
+                _wpayPayto = value;
+                _wpayPaytoSet = true;
+            }
+        }
+
+        private WpayPaytoOptions? _wpayPayto = null;
+
+        private bool _wpayPaytoSet = false;
+
+        public bool ShouldSerializeWpayPayto() => _wpayPaytoSet;
     }
 }

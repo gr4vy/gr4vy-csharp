@@ -17,25 +17,81 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Customer type ("N" for persona natural, "J" for persona jurídica).
         /// </summary>
-        [JsonProperty("userType")]
-        public string? UserType { get; set; } = null;
+        [JsonProperty("userType", NullValueHandling = NullValueHandling.Include)]
+        public string? UserType
+        {
+            get => _userType;
+            set
+            {
+                _userType = value;
+                _userTypeSet = true;
+            }
+        }
+
+        private string? _userType = null;
+
+        private bool _userTypeSet = false;
+
+        public bool ShouldSerializeUserType() => _userTypeSet;
 
         /// <summary>
         /// Customer’s document type.
         /// </summary>
-        [JsonProperty("userFisNumber")]
-        public string? UserFisNumber { get; set; } = null;
+        [JsonProperty("userFisNumber", NullValueHandling = NullValueHandling.Include)]
+        public string? UserFisNumber
+        {
+            get => _userFisNumber;
+            set
+            {
+                _userFisNumber = value;
+                _userFisNumberSet = true;
+            }
+        }
+
+        private string? _userFisNumber = null;
+
+        private bool _userFisNumberSet = false;
+
+        public bool ShouldSerializeUserFisNumber() => _userFisNumberSet;
 
         /// <summary>
         /// Customer’s document number.
         /// </summary>
-        [JsonProperty("fiscalNumber")]
-        public string? FiscalNumber { get; set; } = null;
+        [JsonProperty("fiscalNumber", NullValueHandling = NullValueHandling.Include)]
+        public string? FiscalNumber
+        {
+            get => _fiscalNumber;
+            set
+            {
+                _fiscalNumber = value;
+                _fiscalNumberSet = true;
+            }
+        }
+
+        private string? _fiscalNumber = null;
+
+        private bool _fiscalNumberSet = false;
+
+        public bool ShouldSerializeFiscalNumber() => _fiscalNumberSet;
 
         /// <summary>
         /// The bank code of the selected bank.
         /// </summary>
-        [JsonProperty("bankCode")]
-        public string? BankCode { get; set; } = null;
+        [JsonProperty("bankCode", NullValueHandling = NullValueHandling.Include)]
+        public string? BankCode
+        {
+            get => _bankCode;
+            set
+            {
+                _bankCode = value;
+                _bankCodeSet = true;
+            }
+        }
+
+        private string? _bankCode = null;
+
+        private bool _bankCodeSet = false;
+
+        public bool ShouldSerializeBankCode() => _bankCodeSet;
     }
 }

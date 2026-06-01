@@ -12,6 +12,7 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     /// <summary>
     /// Request body for capturing an authorized transaction.
@@ -29,5 +30,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("airline")]
         public Airline? Airline { get; set; } = null;
+
+        /// <summary>
+        /// An array of cart items that represents the line items of this capture.
+        /// </summary>
+        [JsonProperty("cart_items")]
+        public List<CartItem>? CartItems { get; set; } = null;
     }
 }

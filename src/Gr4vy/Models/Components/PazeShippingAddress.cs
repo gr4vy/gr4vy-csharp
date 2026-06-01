@@ -24,14 +24,14 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Line 2 of the address.
         /// </summary>
-        [JsonProperty("line2", NullValueHandling = NullValueHandling.Include)]
-        public string? Line2 { get; set; }
+        [JsonProperty("line2")]
+        public string? Line2 { get; set; } = null;
 
         /// <summary>
         /// Line 3 of the address.
         /// </summary>
-        [JsonProperty("line3", NullValueHandling = NullValueHandling.Include)]
-        public string? Line3 { get; set; }
+        [JsonProperty("line3")]
+        public string? Line3 { get; set; } = null;
 
         /// <summary>
         /// City.

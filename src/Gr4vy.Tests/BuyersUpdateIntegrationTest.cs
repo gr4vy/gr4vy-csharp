@@ -109,6 +109,68 @@ namespace Gr4vy.Tests
         }
 
         [Test]
+        public async Task NestedAddressField_ExplicitNull_ClearsOnServer()
+        {
+            // Mirrors the Wpay repro: clearing fields on a nested
+            // BillingDetails.Address must actually clear them server-side.
+            var created = await _client.Buyers.CreateAsync(
+                new BuyerCreate
+                {
+                    DisplayName = "Nested Clear",
+                    BillingDetails = new BillingDetails
+                    {
+                        FirstName = "Sean",
+                        LastName = "Lin",
+                        Address = new Address
+                        {
+                            City = "Auckland",
+                            Country = "NZ",
+                            PostalCode = "1010",
+                            State = "Auckland",
+                            HouseNumberOrName = "122A",
+                            Line1 = "122A Newton Road",
+                            Line2 = "Eden Terrace",
+                            Organization = "Acme",
+                        },
+                    },
+                }
+            );
+            Assert.That(created.Id, Is.Not.Null);
+
+            await _client.Buyers.UpdateAsync(
+                created.Id!,
+                new BuyerUpdate
+                {
+                    BillingDetails = new BillingDetails
+                    {
+                        Address = new Address
+                        {
+                            HouseNumberOrName = null,
+                            Line2 = null,
+                            State = null,
+                            Organization = null,
+                        },
+                    },
+                }
+            );
+
+            var fetched = await _client.Buyers.GetAsync(created.Id!);
+            Assert.That(fetched.BillingDetails, Is.Not.Null);
+            var addr = fetched.BillingDetails!.Address;
+            Assert.That(addr, Is.Not.Null);
+            Assert.That(addr!.HouseNumberOrName, Is.Null);
+            Assert.That(addr.Line2, Is.Null);
+            Assert.That(addr.State, Is.Null);
+            Assert.That(addr.Organization, Is.Null);
+            Assert.That(
+                addr.City,
+                Is.EqualTo("Auckland"),
+                "Untouched nested fields must not be cleared."
+            );
+            Assert.That(addr.Line1, Is.EqualTo("122A Newton Road"));
+        }
+
+        [Test]
         public async Task ExplicitValue_OverwritesField_OnServer()
         {
             var created = await _client.Buyers.CreateAsync(
