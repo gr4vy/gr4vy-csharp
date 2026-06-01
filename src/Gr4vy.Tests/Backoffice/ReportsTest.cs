@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -44,7 +45,17 @@ namespace Gr4vy.Tests.Backoffice
                             Name = "Daily transactions",
                             Schedule = "0 0 * * *",
                             ScheduleEnabled = false,
-                            Spec = new Spec(SpecType.Transactions),
+                            // Build the spec via the factory so a populated body is
+                            // sent. `new Spec(SpecType.Transactions)` with no sub-spec
+                            // serializes the required `spec` field as `null` (the
+                            // union writer emits a body only when a member is set),
+                            // which crashed the API's report validator (CORE-API-3AE).
+                            Spec = Spec.CreateTransactions(
+                                new TransactionsReportSpec
+                                {
+                                    Params = new Dictionary<string, object>(),
+                                }
+                            ),
                         }
                     ),
                 "reports.create"
