@@ -4,6 +4,7 @@
 obj/
 bin/
 debug/
+coverage/
 .DS_Store
 **/.speakeasy/temp/
 **/.speakeasy/logs/

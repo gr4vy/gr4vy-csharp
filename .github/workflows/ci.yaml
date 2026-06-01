@@ -14,12 +14,27 @@ on:
 jobs:
   test:
     runs-on: ubuntu-latest
-    
-    timeout-minutes: 3
+
+    timeout-minutes: 10
     strategy:
+      fail-fast: false
       matrix:
         dotnet:
           - 8
+        # The E2E suite runs against the real sandbox with PRIVATE_KEY. Each test
+        # fixture provisions its own merchant account, so fixtures are isolated and
+        # safe to run in parallel — both within a job (LevelOfParallelism, see
+        # AssemblyInfo.cs) and split across these shards. Each shard owns a slice of
+        # the fixtures via a test filter; add a shard by extending this list.
+        shard:
+          - name: flows
+            filter: FullyQualifiedName~Gr4vy.Tests.Flows
+          - name: processing
+            filter: FullyQualifiedName~Gr4vy.Tests.Processing
+          - name: backoffice
+            filter: FullyQualifiedName~Gr4vy.Tests.Backoffice
+          - name: other
+            filter: FullyQualifiedName!~Gr4vy.Tests.Flows&FullyQualifiedName!~Gr4vy.Tests.Processing&FullyQualifiedName!~Gr4vy.Tests.Backoffice
 
     permissions:
       contents: write
@@ -34,19 +49,84 @@ jobs:
         with:
           dotnet-version: ${{ matrix.dotnet }}
 
-      - name: Run tests
+      - name: Run tests (${{ matrix.shard.name }})
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
         run: |
-          dotnet test src/Gr4vy.Tests  
+          dotnet test src/Gr4vy.Tests --filter "${{ matrix.shard.filter }}"
 
-      - uses: hmarr/auto-approve-action@8f929096a962e83ccdfa8afcf855f39f12d4dac7 # v4
-        if: "github.event.pull_request.user.login == 'github-actions[bot]'"
+  # Single, stable status check that gates merge. The `test` job fans out across a
+  # dotnet × shard matrix, so its per-job names change whenever the matrix changes
+  # — which silently breaks any branch ruleset that requires the old names. This
+  # job gives the ruleset one fixed context ("ci-complete") to require, and it only
+  # succeeds when every shard passed. It also performs the auto-approve once, after
+  # all shards are green, rather than prematurely per shard.
+  ci-complete:
+    needs: test
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+    steps:
+      - name: Verify all test shards passed
+        run: |
+          if [ "${{ needs.test.result }}" != "success" ]; then
+            echo "test matrix result: ${{ needs.test.result }}"
+            exit 1
+          fi
+      - name: Auto-approve generated SDK PRs
+        if: ${{ github.event.pull_request.user.login == 'github-actions[bot]' }}
+        uses: hmarr/auto-approve-action@8f929096a962e83ccdfa8afcf855f39f12d4dac7 # v4
         with:
           github-token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
 
+  # Reports endpoint reach as a sticky PR comment. Runs the full suite once
+  # (un-sharded) with HTTP tracking so a single coverage report is produced. This
+  # job is intentionally NOT a dependency of `merge`, so it never blocks the
+  # auto-merge of generated SDK PRs.
+  #
+  # Purpose: generated SDK PRs (new OpenAPI spec -> Speakeasy regen) add new
+  # operations but no E2E tests. This comment surfaces every operation the suite
+  # does not yet reach, so newly generated endpoints show up as "not reached" and
+  # tests can be added for them over time.
+  coverage:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    if: github.event_name == 'pull_request'
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+
+      - name: Use .NET 8
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: 8
+
+      - name: Run tests with HTTP tracking
+        env:
+          PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
+          # Record outgoing HTTP calls so endpoint reach is measured from real
+          # requests (see src/Gr4vy.Tests/Utils/TestEnvironment.cs).
+          GR4VY_TRACK_HTTP: "1"
+        run: dotnet test src/Gr4vy.Tests
+
+      - name: Build endpoint coverage report
+        run: node scripts/endpoint-coverage.mjs
+
+      - name: Comment coverage on the PR
+        uses: marocchino/sticky-pull-request-comment@d2ad0de260ae8b0235ce059e63f2949ba9e05943 # v2.9.3
+        with:
+          header: test-coverage
+          path: coverage/endpoint-coverage.md
+
   merge:
-    needs: test
+    needs: ci-complete
     runs-on: ubuntu-latest
 
     permissions:
@@ -78,7 +158,7 @@ jobs:
         uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2
         if: github.ref == 'refs/heads/main' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'github-actions[bot]')
         env:
-            SLACK_USERNAME: C# SDK 
+            SLACK_USERNAME: C# SDK
             SLACK_TITLE: C# SDK
             SLACK_WEBHOOK: ${{ secrets.SLACK_SDK_WEBHOOK_URL }}
             SLACK_CHANNEL: sdk-updates
