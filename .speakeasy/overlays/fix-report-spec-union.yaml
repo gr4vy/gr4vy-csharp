@@ -1,0 +1,38 @@
+overlay: 1.0.0
+x-speakeasy-jsonpath: rfc9535
+info:
+  title: Flatten the report spec union so it cannot serialize to null
+  version: 0.0.1
+# `ReportCreate.spec` is a discriminated `oneOf` of four report-spec variants
+# (transactions / transaction_retries / detailed_settlement / accounts_receivables),
+# each just `{ model: <const>, params: <free-form object> }`. Speakeasy renders that
+# as a C# union whose JSON writer emits a body only when one of the variant members
+# is set — so a Spec built without a body serialises the *required* `spec` field as
+# `null`, which the API's report validator cannot handle (Sentry CORE-API-3AE:
+# AttributeError on `values.get("spec", {}).get("model")`).
+#
+# The variants are structurally identical (params is a free-form object in every
+# case), so the union adds no type safety on the wire. Collapse it into a single
+# required object: `spec` then generates a plain model with required `model` +
+# `params` that can never be empty/null and forces the caller to set `model`.
+actions:
+  - target: $.components.schemas.ReportCreate.properties.spec.oneOf
+    remove: true
+  - target: $.components.schemas.ReportCreate.properties.spec.discriminator
+    remove: true
+  - target: $.components.schemas.ReportCreate.properties.spec
+    update:
+      type: object
+      required:
+        - model
+        - params
+      properties:
+        model:
+          type: string
+          description: >-
+            The report model. One of `transactions`, `transaction_retries`,
+            `detailed_settlement`, `accounts_receivables`.
+        params:
+          type: object
+          additionalProperties: true
+          description: The parameters for the report, specific to the model.
