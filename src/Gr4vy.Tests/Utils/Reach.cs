@@ -16,8 +16,12 @@ namespace Gr4vy.Tests.Utils
     {
         /// <summary>
         /// Runs <paramref name="action"/> and asserts it either succeeds or fails
-        /// with a Gr4vy API error (i.e. the request reached the server). A
-        /// transport/other exception still fails the test.
+        /// with a Gr4vy <b>client</b> error (4xx — i.e. the request reached the
+        /// server and was cleanly rejected). A <b>5xx</b> is re-thrown so the test
+        /// fails: a server error means we sent something that crashed the API, which
+        /// is a real defect to surface, not an "expected" outcome (this is how the
+        /// suite would have caught CORE-API-3AE). Transport/other exceptions also
+        /// fail the test.
         /// </summary>
         public static async Task ReachesAsync(Func<Task> action, string description)
         {
@@ -25,10 +29,11 @@ namespace Gr4vy.Tests.Utils
             {
                 await action();
             }
-            catch (BaseException ex)
+            catch (BaseException ex) when (ex.StatusCode < 500)
             {
                 TestContext.Out.WriteLine(
-                    $"[reach] {description}: endpoint reached, got expected API error: {ex.GetType().Name}"
+                    $"[reach] {description}: endpoint reached, got expected API error: "
+                        + $"{ex.GetType().Name} ({ex.StatusCode})"
                 );
             }
         }
