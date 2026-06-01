@@ -18,361 +18,109 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Whether the Real-Time Account Updater service is enabled for this merchant account. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `false`, the Account Updater service doesn't get called if a payment fails with expired or invalid card details. If the field is set to `true`, the service is called. Please note that for this to work the other `account_updater_* fields` must be set as well.
         /// </summary>
-        [JsonProperty("account_updater_enabled", NullValueHandling = NullValueHandling.Include)]
-        public bool? AccountUpdaterEnabled
-        {
-            get => _accountUpdaterEnabled;
-            set
-            {
-                _accountUpdaterEnabled = value;
-                _accountUpdaterEnabledSet = true;
-            }
-        }
-
-        private bool? _accountUpdaterEnabled = false;
-
-        private bool _accountUpdaterEnabledSet = true;
-
-        public bool ShouldSerializeAccountUpdaterEnabled() => _accountUpdaterEnabledSet;
+        [JsonProperty("account_updater_enabled")]
+        public bool? AccountUpdaterEnabled { get; set; } = false;
 
         /// <summary>
         /// The public key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
-        [JsonProperty("account_updater_request_encryption_key", NullValueHandling = NullValueHandling.Include)]
-        public string? AccountUpdaterRequestEncryptionKey
-        {
-            get => _accountUpdaterRequestEncryptionKey;
-            set
-            {
-                _accountUpdaterRequestEncryptionKey = value;
-                _accountUpdaterRequestEncryptionKeySet = true;
-            }
-        }
-
-        private string? _accountUpdaterRequestEncryptionKey = null;
-
-        private bool _accountUpdaterRequestEncryptionKeySet = false;
-
-        public bool ShouldSerializeAccountUpdaterRequestEncryptionKey() => _accountUpdaterRequestEncryptionKeySet;
+        [JsonProperty("account_updater_request_encryption_key")]
+        public string? AccountUpdaterRequestEncryptionKey { get; set; } = null;
 
         /// <summary>
         /// The ID of the key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
-        [JsonProperty("account_updater_request_encryption_key_id", NullValueHandling = NullValueHandling.Include)]
-        public string? AccountUpdaterRequestEncryptionKeyId
-        {
-            get => _accountUpdaterRequestEncryptionKeyId;
-            set
-            {
-                _accountUpdaterRequestEncryptionKeyId = value;
-                _accountUpdaterRequestEncryptionKeyIdSet = true;
-            }
-        }
-
-        private string? _accountUpdaterRequestEncryptionKeyId = null;
-
-        private bool _accountUpdaterRequestEncryptionKeyIdSet = false;
-
-        public bool ShouldSerializeAccountUpdaterRequestEncryptionKeyId() => _accountUpdaterRequestEncryptionKeyIdSet;
+        [JsonProperty("account_updater_request_encryption_key_id")]
+        public string? AccountUpdaterRequestEncryptionKeyId { get; set; } = null;
 
         /// <summary>
         /// The key used to decrypt the response from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
-        [JsonProperty("account_updater_response_decryption_key", NullValueHandling = NullValueHandling.Include)]
-        public string? AccountUpdaterResponseDecryptionKey
-        {
-            get => _accountUpdaterResponseDecryptionKey;
-            set
-            {
-                _accountUpdaterResponseDecryptionKey = value;
-                _accountUpdaterResponseDecryptionKeySet = true;
-            }
-        }
-
-        private string? _accountUpdaterResponseDecryptionKey = null;
-
-        private bool _accountUpdaterResponseDecryptionKeySet = false;
-
-        public bool ShouldSerializeAccountUpdaterResponseDecryptionKey() => _accountUpdaterResponseDecryptionKeySet;
+        [JsonProperty("account_updater_response_decryption_key")]
+        public string? AccountUpdaterResponseDecryptionKey { get; set; } = null;
 
         /// <summary>
         /// The ID of the key used to decrypt the request from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
-        [JsonProperty("account_updater_response_decryption_key_id", NullValueHandling = NullValueHandling.Include)]
-        public string? AccountUpdaterResponseDecryptionKeyId
-        {
-            get => _accountUpdaterResponseDecryptionKeyId;
-            set
-            {
-                _accountUpdaterResponseDecryptionKeyId = value;
-                _accountUpdaterResponseDecryptionKeyIdSet = true;
-            }
-        }
-
-        private string? _accountUpdaterResponseDecryptionKeyId = null;
-
-        private bool _accountUpdaterResponseDecryptionKeyIdSet = false;
-
-        public bool ShouldSerializeAccountUpdaterResponseDecryptionKeyId() => _accountUpdaterResponseDecryptionKeyIdSet;
+        [JsonProperty("account_updater_response_decryption_key_id")]
+        public string? AccountUpdaterResponseDecryptionKeyId { get; set; } = null;
 
         /// <summary>
         /// The maximum monetary amount allowed for over-capture, in the smallest currency unit, for example `1299` cents to allow for an over-capture of `$12.99`.
         /// </summary>
-        [JsonProperty("over_capture_amount", NullValueHandling = NullValueHandling.Include)]
-        public long? OverCaptureAmount
-        {
-            get => _overCaptureAmount;
-            set
-            {
-                _overCaptureAmount = value;
-                _overCaptureAmountSet = true;
-            }
-        }
-
-        private long? _overCaptureAmount = null;
-
-        private bool _overCaptureAmountSet = false;
-
-        public bool ShouldSerializeOverCaptureAmount() => _overCaptureAmountSet;
+        [JsonProperty("over_capture_amount")]
+        public long? OverCaptureAmount { get; set; } = null;
 
         /// <summary>
         /// The maximum percentage allowed for over-capture, for example `25` to allow for an over-capture of `25%` of the original transaction amount.
         /// </summary>
-        [JsonProperty("over_capture_percentage", NullValueHandling = NullValueHandling.Include)]
-        public long? OverCapturePercentage
-        {
-            get => _overCapturePercentage;
-            set
-            {
-                _overCapturePercentage = value;
-                _overCapturePercentageSet = true;
-            }
-        }
-
-        private long? _overCapturePercentage = null;
-
-        private bool _overCapturePercentageSet = false;
-
-        public bool ShouldSerializeOverCapturePercentage() => _overCapturePercentageSet;
+        [JsonProperty("over_capture_percentage")]
+        public long? OverCapturePercentage { get; set; } = null;
 
         /// <summary>
         /// Client key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
-        [JsonProperty("loon_client_key", NullValueHandling = NullValueHandling.Include)]
-        public string? LoonClientKey
-        {
-            get => _loonClientKey;
-            set
-            {
-                _loonClientKey = value;
-                _loonClientKeySet = true;
-            }
-        }
-
-        private string? _loonClientKey = null;
-
-        private bool _loonClientKeySet = false;
-
-        public bool ShouldSerializeLoonClientKey() => _loonClientKeySet;
+        [JsonProperty("loon_client_key")]
+        public string? LoonClientKey { get; set; } = null;
 
         /// <summary>
         /// Secret key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
-        [JsonProperty("loon_secret_key", NullValueHandling = NullValueHandling.Include)]
-        public string? LoonSecretKey
-        {
-            get => _loonSecretKey;
-            set
-            {
-                _loonSecretKey = value;
-                _loonSecretKeySet = true;
-            }
-        }
-
-        private string? _loonSecretKey = null;
-
-        private bool _loonSecretKeySet = false;
-
-        public bool ShouldSerializeLoonSecretKey() => _loonSecretKeySet;
+        [JsonProperty("loon_secret_key")]
+        public string? LoonSecretKey { get; set; } = null;
 
         /// <summary>
         /// Card schemes accepted when creating jobs using this set of Loon API keys. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
-        [JsonProperty("loon_accepted_schemes", NullValueHandling = NullValueHandling.Include)]
-        public List<string>? LoonAcceptedSchemes
-        {
-            get => _loonAcceptedSchemes;
-            set
-            {
-                _loonAcceptedSchemes = value;
-                _loonAcceptedSchemesSet = true;
-            }
-        }
-
-        private List<string>? _loonAcceptedSchemes = null;
-
-        private bool _loonAcceptedSchemesSet = false;
-
-        public bool ShouldSerializeLoonAcceptedSchemes() => _loonAcceptedSchemesSet;
+        [JsonProperty("loon_accepted_schemes")]
+        public List<string>? LoonAcceptedSchemes { get; set; } = null;
 
         /// <summary>
         /// Requestor ID provided for Visa after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("visa_network_tokens_requestor_id", NullValueHandling = NullValueHandling.Include)]
-        public string? VisaNetworkTokensRequestorId
-        {
-            get => _visaNetworkTokensRequestorId;
-            set
-            {
-                _visaNetworkTokensRequestorId = value;
-                _visaNetworkTokensRequestorIdSet = true;
-            }
-        }
-
-        private string? _visaNetworkTokensRequestorId = null;
-
-        private bool _visaNetworkTokensRequestorIdSet = false;
-
-        public bool ShouldSerializeVisaNetworkTokensRequestorId() => _visaNetworkTokensRequestorIdSet;
+        [JsonProperty("visa_network_tokens_requestor_id")]
+        public string? VisaNetworkTokensRequestorId { get; set; } = null;
 
         /// <summary>
         /// Application ID provided for Visa after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("visa_network_tokens_app_id", NullValueHandling = NullValueHandling.Include)]
-        public string? VisaNetworkTokensAppId
-        {
-            get => _visaNetworkTokensAppId;
-            set
-            {
-                _visaNetworkTokensAppId = value;
-                _visaNetworkTokensAppIdSet = true;
-            }
-        }
-
-        private string? _visaNetworkTokensAppId = null;
-
-        private bool _visaNetworkTokensAppIdSet = false;
-
-        public bool ShouldSerializeVisaNetworkTokensAppId() => _visaNetworkTokensAppIdSet;
+        [JsonProperty("visa_network_tokens_app_id")]
+        public string? VisaNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
         /// Requestor ID provided for American Express after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("amex_network_tokens_requestor_id", NullValueHandling = NullValueHandling.Include)]
-        public string? AmexNetworkTokensRequestorId
-        {
-            get => _amexNetworkTokensRequestorId;
-            set
-            {
-                _amexNetworkTokensRequestorId = value;
-                _amexNetworkTokensRequestorIdSet = true;
-            }
-        }
-
-        private string? _amexNetworkTokensRequestorId = null;
-
-        private bool _amexNetworkTokensRequestorIdSet = false;
-
-        public bool ShouldSerializeAmexNetworkTokensRequestorId() => _amexNetworkTokensRequestorIdSet;
+        [JsonProperty("amex_network_tokens_requestor_id")]
+        public string? AmexNetworkTokensRequestorId { get; set; } = null;
 
         /// <summary>
         /// Application ID provided for American Express after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("amex_network_tokens_app_id", NullValueHandling = NullValueHandling.Include)]
-        public string? AmexNetworkTokensAppId
-        {
-            get => _amexNetworkTokensAppId;
-            set
-            {
-                _amexNetworkTokensAppId = value;
-                _amexNetworkTokensAppIdSet = true;
-            }
-        }
-
-        private string? _amexNetworkTokensAppId = null;
-
-        private bool _amexNetworkTokensAppIdSet = false;
-
-        public bool ShouldSerializeAmexNetworkTokensAppId() => _amexNetworkTokensAppIdSet;
+        [JsonProperty("amex_network_tokens_app_id")]
+        public string? AmexNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
         /// Requestor ID provided for Mastercard after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("mastercard_network_tokens_requestor_id", NullValueHandling = NullValueHandling.Include)]
-        public string? MastercardNetworkTokensRequestorId
-        {
-            get => _mastercardNetworkTokensRequestorId;
-            set
-            {
-                _mastercardNetworkTokensRequestorId = value;
-                _mastercardNetworkTokensRequestorIdSet = true;
-            }
-        }
-
-        private string? _mastercardNetworkTokensRequestorId = null;
-
-        private bool _mastercardNetworkTokensRequestorIdSet = false;
-
-        public bool ShouldSerializeMastercardNetworkTokensRequestorId() => _mastercardNetworkTokensRequestorIdSet;
+        [JsonProperty("mastercard_network_tokens_requestor_id")]
+        public string? MastercardNetworkTokensRequestorId { get; set; } = null;
 
         /// <summary>
         /// Application ID provided for Mastercard after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("mastercard_network_tokens_app_id", NullValueHandling = NullValueHandling.Include)]
-        public string? MastercardNetworkTokensAppId
-        {
-            get => _mastercardNetworkTokensAppId;
-            set
-            {
-                _mastercardNetworkTokensAppId = value;
-                _mastercardNetworkTokensAppIdSet = true;
-            }
-        }
-
-        private string? _mastercardNetworkTokensAppId = null;
-
-        private bool _mastercardNetworkTokensAppIdSet = false;
-
-        public bool ShouldSerializeMastercardNetworkTokensAppId() => _mastercardNetworkTokensAppIdSet;
+        [JsonProperty("mastercard_network_tokens_app_id")]
+        public string? MastercardNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
         /// When enabled network tokens will be generated asynchronously and only used on subsequent transactions to speed up transaction processing.
         /// </summary>
-        [JsonProperty("async_network_tokens_enabled", NullValueHandling = NullValueHandling.Include)]
-        public bool? AsyncNetworkTokensEnabled
-        {
-            get => _asyncNetworkTokensEnabled;
-            set
-            {
-                _asyncNetworkTokensEnabled = value;
-                _asyncNetworkTokensEnabledSet = true;
-            }
-        }
-
-        private bool? _asyncNetworkTokensEnabled = false;
-
-        private bool _asyncNetworkTokensEnabledSet = true;
-
-        public bool ShouldSerializeAsyncNetworkTokensEnabled() => _asyncNetworkTokensEnabledSet;
+        [JsonProperty("async_network_tokens_enabled")]
+        public bool? AsyncNetworkTokensEnabled { get; set; } = false;
 
         /// <summary>
         /// The display name for the merchant account.
         /// </summary>
-        [JsonProperty("display_name", NullValueHandling = NullValueHandling.Include)]
-        public string? DisplayName
-        {
-            get => _displayName;
-            set
-            {
-                _displayName = value;
-                _displayNameSet = true;
-            }
-        }
-
-        private string? _displayName = null;
-
-        private bool _displayNameSet = false;
-
-        public bool ShouldSerializeDisplayName() => _displayNameSet;
+        [JsonProperty("display_name")]
+        public string? DisplayName { get; set; } = null;
     }
 }

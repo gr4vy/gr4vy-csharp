@@ -19,41 +19,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Additional Set Transaction Context Values (STC) to be sent to PayPal as part of the transaction.
         /// </summary>
-        [JsonProperty("additional_data", NullValueHandling = NullValueHandling.Include)]
-        public List<Dictionary<string, string>>? AdditionalData
-        {
-            get => _additionalData;
-            set
-            {
-                _additionalData = value;
-                _additionalDataSet = true;
-            }
-        }
-
-        private List<Dictionary<string, string>>? _additionalData = null;
-
-        private bool _additionalDataSet = false;
-
-        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
+        [JsonProperty("additional_data")]
+        public List<Dictionary<string, string>>? AdditionalData { get; set; } = null;
 
         /// <summary>
         /// Shipping information to be passed to the PayPal API.
         /// </summary>
-        [JsonProperty("shipping", NullValueHandling = NullValueHandling.Include)]
-        public PaypalShippingOptions? Shipping
-        {
-            get => _shipping;
-            set
-            {
-                _shipping = value;
-                _shippingSet = true;
-            }
-        }
-
-        private PaypalShippingOptions? _shipping = null;
-
-        private bool _shippingSet = false;
-
-        public bool ShouldSerializeShipping() => _shippingSet;
+        [JsonProperty("shipping")]
+        public PaypalShippingOptions? Shipping { get; set; } = null;
     }
 }

@@ -19,121 +19,37 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Set to `true` to enable Auto Rescue for a transaction. Use the `maxDaysToRescue` to specify a rescue window.
         /// </summary>
-        [JsonProperty("autoRescue", NullValueHandling = NullValueHandling.Include)]
-        public bool? AutoRescue
-        {
-            get => _autoRescue;
-            set
-            {
-                _autoRescue = value;
-                _autoRescueSet = true;
-            }
-        }
-
-        private bool? _autoRescue = null;
-
-        private bool _autoRescueSet = false;
-
-        public bool ShouldSerializeAutoRescue() => _autoRescueSet;
+        [JsonProperty("autoRescue")]
+        public bool? AutoRescue { get; set; } = null;
 
         /// <summary>
         /// The rescue window for a transaction, in days, when `autoRescue` is set to `true`. You can specify a value between 1 and 48. For cards, the default is one calendar month. For SEPA, the default is 42 days.
         /// </summary>
-        [JsonProperty("maxDaysToRescue", NullValueHandling = NullValueHandling.Include)]
-        public long? MaxDaysToRescue
-        {
-            get => _maxDaysToRescue;
-            set
-            {
-                _maxDaysToRescue = value;
-                _maxDaysToRescueSet = true;
-            }
-        }
-
-        private long? _maxDaysToRescue = null;
-
-        private bool _maxDaysToRescueSet = false;
-
-        public bool ShouldSerializeMaxDaysToRescue() => _maxDaysToRescueSet;
+        [JsonProperty("maxDaysToRescue")]
+        public long? MaxDaysToRescue { get; set; } = null;
 
         /// <summary>
         /// Passes additional data to the Adyen API when creating a transaction.
         /// </summary>
-        [JsonProperty("additionalData", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? AdditionalData
-        {
-            get => _additionalData;
-            set
-            {
-                _additionalData = value;
-                _additionalDataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _additionalData = null;
-
-        private bool _additionalDataSet = false;
-
-        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
+        [JsonProperty("additionalData")]
+        public Dictionary<string, string>? AdditionalData { get; set; } = null;
 
         /// <summary>
         /// The rescue scenario to simulate for a transaction, when `autoRescue` is set to `true`.
         /// </summary>
-        [JsonProperty("autoRescueScenario", NullValueHandling = NullValueHandling.Include)]
-        public string? AutoRescueScenario
-        {
-            get => _autoRescueScenario;
-            set
-            {
-                _autoRescueScenario = value;
-                _autoRescueScenarioSet = true;
-            }
-        }
-
-        private string? _autoRescueScenario = null;
-
-        private bool _autoRescueScenarioSet = false;
-
-        public bool ShouldSerializeAutoRescueScenario() => _autoRescueScenarioSet;
+        [JsonProperty("autoRescueScenario")]
+        public string? AutoRescueScenario { get; set; } = null;
 
         /// <summary>
         /// The origin of the window where the payment is initiated, used for 3D Secure authentication.
         /// </summary>
-        [JsonProperty("window_origin", NullValueHandling = NullValueHandling.Include)]
-        public string? WindowOrigin
-        {
-            get => _windowOrigin;
-            set
-            {
-                _windowOrigin = value;
-                _windowOriginSet = true;
-            }
-        }
-
-        private string? _windowOrigin = null;
-
-        private bool _windowOriginSet = false;
-
-        public bool ShouldSerializeWindowOrigin() => _windowOriginSet;
+        [JsonProperty("window_origin")]
+        public string? WindowOrigin { get; set; } = null;
 
         /// <summary>
         /// Passes information of splitting payment amounts to the Adyen API.
         /// </summary>
-        [JsonProperty("splits", NullValueHandling = NullValueHandling.Include)]
-        public AdyenSplitsOptions? Splits
-        {
-            get => _splits;
-            set
-            {
-                _splits = value;
-                _splitsSet = true;
-            }
-        }
-
-        private AdyenSplitsOptions? _splits = null;
-
-        private bool _splitsSet = false;
-
-        public bool ShouldSerializeSplits() => _splitsSet;
+        [JsonProperty("splits")]
+        public AdyenSplitsOptions? Splits { get; set; } = null;
     }
 }
