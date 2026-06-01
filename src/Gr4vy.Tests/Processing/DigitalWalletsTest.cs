@@ -143,6 +143,19 @@ namespace Gr4vy.Tests.Processing
                     ),
                 "sessions.paze-mobile-review"
             );
+            await Reach.ReachesAsync(
+                () =>
+                    Client.DigitalWallets.Sessions.PazeMobileSessionCompleteAsync(
+                        new PazeSessionCompleteRequest
+                        {
+                            SessionId = "sess-1",
+                            Code = "code-1",
+                            AccessToken = "token-1",
+                            TransactionType = "checkout",
+                        }
+                    ),
+                "sessions.paze-mobile-complete"
+            );
         }
     }
 }
