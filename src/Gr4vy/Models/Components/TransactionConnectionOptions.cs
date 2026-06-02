@@ -36,6 +36,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeAccountUpdater() => _accountUpdaterSet;
 
         /// <summary>
+        /// Custom options to be passed to the `adyen-ach` connector.
+        /// </summary>
+        [JsonProperty("adyen-ach", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenAch
+        {
+            get => _adyenAch;
+            set
+            {
+                _adyenAch = value;
+                _adyenAchSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenAch = null;
+
+        private bool _adyenAchSet = false;
+
+        public bool ShouldSerializeAdyenAch() => _adyenAchSet;
+
+        /// <summary>
         /// Custom options to be passed to the `adyen-afterpay` connector.
         /// </summary>
         [JsonProperty("adyen-afterpay", NullValueHandling = NullValueHandling.Include)]
