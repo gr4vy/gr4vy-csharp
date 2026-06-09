@@ -216,6 +216,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeAdyenKonbini() => _adyenKonbiniSet;
 
         /// <summary>
+        /// Custom options to be passed to the `adyen-paybybank` connector.
+        /// </summary>
+        [JsonProperty("adyen-paybybank", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenPaybybank
+        {
+            get => _adyenPaybybank;
+            set
+            {
+                _adyenPaybybank = value;
+                _adyenPaybybankSet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenPaybybank = null;
+
+        private bool _adyenPaybybankSet = false;
+
+        public bool ShouldSerializeAdyenPaybybank() => _adyenPaybybankSet;
+
+        /// <summary>
         /// Custom options to be passed to the `adyen-paypay` connector.
         /// </summary>
         [JsonProperty("adyen-paypay", NullValueHandling = NullValueHandling.Include)]
