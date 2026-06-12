@@ -160,11 +160,21 @@ rw==
         );
     }
 
+    private static int GetFreePort()
+    {
+        var tcp = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Loopback, 0);
+        tcp.Start();
+        var port = ((System.Net.IPEndPoint)tcp.LocalEndpoint).Port;
+        tcp.Stop();
+        return port;
+    }
+
     [Test]
     public async Task GetEmbedTokenWithCheckoutSession_ShouldPinCreatedCheckoutSessionId()
     {
+        var port = GetFreePort();
         var listener = new System.Net.HttpListener();
-        var prefix = "http://127.0.0.1:8723/";
+        var prefix = $"http://127.0.0.1:{port}/";
         listener.Prefixes.Add(prefix);
         listener.Start();
 
@@ -186,7 +196,7 @@ rw==
         {
             var client = new Gr4vySDK(
                 bearerAuth: "test-token",
-                serverUrl: "http://127.0.0.1:8723"
+                serverUrl: $"http://127.0.0.1:{port}"
             );
 
             var token = await Auth.GetEmbedTokenWithCheckoutSession(
@@ -194,8 +204,6 @@ rw==
                 privateKey: PrivateKey,
                 embedParams: _embedParams
             );
-
-            await serverTask;
 
             var handler = new JwtSecurityTokenHandler();
             var jwtToken = handler.ReadJwtToken(token);
@@ -210,6 +218,7 @@ rw==
         finally
         {
             listener.Stop();
+            try { await serverTask; } catch { /* swallow errors from listener.Stop() */ }
         }
     }
 

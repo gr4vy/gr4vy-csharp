@@ -154,9 +154,9 @@ returns an Embed token with the resulting `checkout_session_id` already pinned, 
 ```csharp
 using Gr4vy;
 
-// Loaded the key from a file, env variable, 
+// Load the key from a file, env variable,
 // or anywhere else
-var privateKey = "..."; 
+var privateKey = "...";
 
 var sdk = new Gr4vySDK(
     id: "example",
