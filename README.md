@@ -128,22 +128,58 @@ var sdk = new Gr4vySDK(
     merchantAccountId: "default"
 );
 
-var checkoutSession = await sdk.CheckoutSessions.CreateAsync()
+var checkoutSession = await sdk.CheckoutSessions.CreateAsync();
 
-auth.get_embed_token(
-    privatekey,
-    embedParams=new Dictionary<string, object>
+var token = Auth.GetEmbedToken(
+    privateKey: privateKey,
+    embedParams: new Dictionary<string, object>
     {
-        ["amount"]: 1299,
-        ["currency"]: 'USD',
-        ["buyer_external_identifier"]: 'user-1234',
+        ["amount"] = 1299,
+        ["currency"] = "USD",
+        ["buyer_external_identifier"] = "user-1234",
     },
-    checkoutSessionId=checkoutSession.ID
-)
+    checkoutSessionId: checkoutSession.Id
+);
 ```
 
 > **Note:** This will only create a token once. Use `Auth.WithToken()` to dynamically generate a token
 > for every request.
+
+### Attaching a checkout session automatically
+
+For Embed, it is recommended to attach a checkout session to every transaction. The
+`Auth.GetEmbedTokenWithCheckoutSession` helper creates a checkout session using your SDK client and
+returns an Embed token with the resulting `checkout_session_id` already pinned, in a single call.
+
+```csharp
+using Gr4vy;
+
+// Loaded the key from a file, env variable, 
+// or anywhere else
+var privateKey = "..."; 
+
+var sdk = new Gr4vySDK(
+    id: "example",
+    server: SDKConfig.Server.Sandbox,
+    bearerAuthSource: Auth.WithToken(privateKey),
+    merchantAccountId: "default"
+);
+
+var token = await Auth.GetEmbedTokenWithCheckoutSession(
+    client: sdk,
+    privateKey: privateKey,
+    embedParams: new Dictionary<string, object>
+    {
+        ["amount"] = 1299,
+        ["currency"] = "USD",
+        ["buyer_external_identifier"] = "user-1234",
+    }
+);
+```
+
+You can optionally pass a `checkoutSession` body (a `CheckoutSessionCreate`) to seed the session
+(for example with cart items or metadata), and a `merchantAccountId` to override the client's
+configured merchant account.
 
 ## Merchant account ID selection
 

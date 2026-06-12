@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text.Json;
+using Gr4vy;
 using NUnit.Framework;
 
 [TestFixture]
@@ -157,6 +158,59 @@ rw==
             jwtToken.Claims.First(c => c.Type == "checkout_session_id").Value,
             Is.EqualTo(CheckoutSessionId)
         );
+    }
+
+    [Test]
+    public async Task GetEmbedTokenWithCheckoutSession_ShouldPinCreatedCheckoutSessionId()
+    {
+        var listener = new System.Net.HttpListener();
+        var prefix = "http://127.0.0.1:8723/";
+        listener.Prefixes.Add(prefix);
+        listener.Start();
+
+        var createCalls = 0;
+        var serverTask = Task.Run(async () =>
+        {
+            var context = await listener.GetContextAsync();
+            createCalls++;
+            var body = System.Text.Encoding.UTF8.GetBytes(
+                "{\"type\":\"checkout-session\",\"id\":\"" + CheckoutSessionId + "\"}"
+            );
+            context.Response.StatusCode = 201;
+            context.Response.ContentType = "application/json";
+            context.Response.OutputStream.Write(body, 0, body.Length);
+            context.Response.OutputStream.Close();
+        });
+
+        try
+        {
+            var client = new Gr4vySDK(
+                bearerAuth: "test-token",
+                serverUrl: "http://127.0.0.1:8723"
+            );
+
+            var token = await Auth.GetEmbedTokenWithCheckoutSession(
+                client: client,
+                privateKey: PrivateKey,
+                embedParams: _embedParams
+            );
+
+            await serverTask;
+
+            var handler = new JwtSecurityTokenHandler();
+            var jwtToken = handler.ReadJwtToken(token);
+
+            Assert.That(createCalls, Is.EqualTo(1));
+            Assert.Contains(JWTScope.Embed, jwtToken.Claims.Select(c => c.Type).ToList());
+            Assert.That(
+                jwtToken.Claims.First(c => c.Type == "checkout_session_id").Value,
+                Is.EqualTo(CheckoutSessionId)
+            );
+        }
+        finally
+        {
+            listener.Stop();
+        }
     }
 
     [Test]
