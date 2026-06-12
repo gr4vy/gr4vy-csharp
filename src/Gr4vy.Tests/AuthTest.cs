@@ -182,6 +182,12 @@ rw==
         var serverTask = Task.Run(async () =>
         {
             var context = await listener.GetContextAsync();
+            if (context.Request.HttpMethod != "POST" || context.Request.Url?.AbsolutePath != "/checkout/sessions")
+            {
+                context.Response.StatusCode = 404;
+                context.Response.OutputStream.Close();
+                return;
+            }
             createCalls++;
             var body = System.Text.Encoding.UTF8.GetBytes(
                 "{\"type\":\"checkout-session\",\"id\":\"" + CheckoutSessionId + "\"}"
@@ -218,7 +224,7 @@ rw==
         finally
         {
             listener.Close();
-            try { await serverTask; } catch { /* swallow errors from listener.Close() */ }
+            try { await serverTask; } catch (System.Net.HttpListenerException) { /* expected when Close() interrupts GetContextAsync() */ }
         }
     }
 

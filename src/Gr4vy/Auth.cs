@@ -300,6 +300,8 @@ public class Auth
         string? merchantAccountId = null
     )
     {
+        if (client == null) throw new ArgumentNullException(nameof(client));
+
         var session = await client.CheckoutSessions.CreateAsync(
             merchantAccountId: merchantAccountId,
             checkoutSessionCreate: checkoutSession
