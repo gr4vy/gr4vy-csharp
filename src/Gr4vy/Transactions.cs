@@ -33,6 +33,8 @@ namespace Gr4vy
         public IEvents Events { get; }
 
         public ISettlements Settlements { get; }
+
+        public ICaptures Captures { get; }
         /// <summary>
         /// List transactions.
         /// </summary>
@@ -311,6 +313,12 @@ namespace Gr4vy
         /// </summary>
         public ISettlements Settlements { get; private set; }
 
+        /// <summary>
+        /// Captures SubSDK.
+        /// <see cref="ICaptures"/>
+        /// </summary>
+        public ICaptures Captures { get; private set; }
+
         public Transactions(SDKConfig config)
         {
             SDKConfiguration = config;
@@ -318,6 +326,7 @@ namespace Gr4vy
             Actions = new Actions(SDKConfiguration);
             Events = new Events(SDKConfiguration);
             Settlements = new Settlements(SDKConfiguration);
+            Captures = new Captures(SDKConfiguration);
         }
 
         /// <summary>

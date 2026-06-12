@@ -36,5 +36,17 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("cart_items")]
         public List<CartItem>? CartItems { get; set; } = null;
+
+        /// <summary>
+        /// Whether this is marked as the final capture for the associated transaction. Must be `true` or omitted when multi-capture is not enabled; a value of `false` is only valid when multi-capture is available on the connection.
+        /// </summary>
+        [JsonProperty("final")]
+        public bool? Final { get; set; } = true;
+
+        /// <summary>
+        /// An external identifier that can be used to match the capture against your own records.
+        /// </summary>
+        [JsonProperty("external_identifier")]
+        public string? ExternalIdentifier { get; set; } = null;
     }
 }

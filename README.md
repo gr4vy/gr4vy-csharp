@@ -430,6 +430,11 @@ catch(ArgumentException ex) {
 
 * [List](docs/sdks/actions/README.md#list) - List transaction Flow rules
 
+#### [Transactions.Captures](docs/sdks/captures/README.md)
+
+* [List](docs/sdks/captures/README.md#list) - List transaction captures
+* [Get](docs/sdks/captures/README.md#get) - Get transaction capture
+
 #### [Transactions.Events](docs/sdks/events/README.md)
 
 * [List](docs/sdks/events/README.md#list) - List transaction events

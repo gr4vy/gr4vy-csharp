@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: fbdea662f5fa03d569ef6969b018aa01
+  docChecksum: 79fbe33195250dda7fb5a1162082934a
   docVersion: 1.0.0
-  speakeasyVersion: 1.773.1
-  generationVersion: 2.897.1
-  releaseVersion: 2.8.30
-  configChecksum: 4785902fddc584d93df87b950e33e410
+  speakeasyVersion: 1.778.0
+  generationVersion: 2.904.2
+  releaseVersion: 2.8.31
+  configChecksum: 0fcee7c6bf3e2c6ff60fe360f42d5042
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: b012acba-0d02-4df7-85e2-c833994e9959
-  pristine_commit_hash: 0e67f01334fb6e8a89259964ac9e7a60f6a5040f
-  pristine_tree_hash: a48b27bad5c624664787d85130c521f8350a3930
+  generation_id: 114b8159-7ab3-4533-b6d8-935f50014a74
+  pristine_commit_hash: 2d34f268b2b81941f1c6eb05c71b0bdd73271ddb
+  pristine_tree_hash: 32c39e93760d9823632412ccad40757d64c1a258
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -198,6 +198,14 @@ trackedFiles:
     id: c3639dfcbd5b
     last_write_checksum: sha1:dffb61114853516a1b3269228026b3ec736eb47e
     pristine_git_object: dc68a67af14e3e143002b743801d490b0d9f25a4
+  docs/Models/Components/Capture.md:
+    id: 7191e8a5129c
+    last_write_checksum: sha1:446781ea77ff91d40bccde29cd82bc3345aa1ca1
+    pristine_git_object: 8b0693423de34bbb177628cd89d5f1f141c10ab8
+  docs/Models/Components/CaptureCollection.md:
+    id: 977d5f30eb14
+    last_write_checksum: sha1:8d54bdf90c2649b69795dba2652ca3899a9bb169
+    pristine_git_object: ff9d056ceffd56a3538be1cb1ab742bbdb39cce4
   docs/Models/Components/CardPaymentMethodCreate.md:
     id: 9579feffcb61
     last_write_checksum: sha1:e7de82afd931f459f3906d24057106c8fb779092
@@ -608,8 +616,8 @@ trackedFiles:
     pristine_git_object: e39f7051ee8fb049116e74df07c372c405a3e93b
   docs/Models/Components/NuveiPSEOptions.md:
     id: c44c8b3f9796
-    last_write_checksum: sha1:94799b034a1404d4c5c6c4e222ededecb0dfa5ab
-    pristine_git_object: 3df98152287087385a92b65342e932812c7edb91
+    last_write_checksum: sha1:74710efed101ab5538a1e9c1769178e1be0c3043
+    pristine_git_object: aec634ba27835200724f41ce0f3405f717de69ae
   docs/Models/Components/OxxoOptions.md:
     id: 7359297fd46f
     last_write_checksum: sha1:cab47f6927ff79383b221a34ef2f65270d977f15
@@ -1112,8 +1120,8 @@ trackedFiles:
     pristine_git_object: 2717bfd80f13067f8505489322126f07d6e64fba
   docs/Models/Components/TransactionCaptureCreate.md:
     id: a0e553b48eaf
-    last_write_checksum: sha1:769b42a9182c8f94a753a589eb886e337ed92c9c
-    pristine_git_object: 1b51b1476a21b9dec5f6230fe7fd863a5d81fc44
+    last_write_checksum: sha1:29d821fa49b0a0d446a5d32ba27f8b8166efb4b7
+    pristine_git_object: 58a78db17b2aa9b06d62c409edfc05f6a4b00ae9
   docs/Models/Components/TransactionConnectionOptions.md:
     id: 4cb8597cc3b4
     last_write_checksum: sha1:6fbcf04578c8d04fc89ff817725c424c400f14a8
@@ -1502,6 +1510,10 @@ trackedFiles:
     id: 1cf678470c4f
     last_write_checksum: sha1:1db657a9498af9880d75f16266675fc0e200f1cc
     pristine_git_object: c016a018a11310fc9acbc2837ce70bbc834af784
+  docs/Models/Requests/GetTransactionCaptureRequest.md:
+    id: 4819c1153b8b
+    last_write_checksum: sha1:33f74ecbff99d9596e914cd0991c39b2c469a07e
+    pristine_git_object: d7b74401dd711c730a8cd498af33b8afe2835a97
   docs/Models/Requests/GetTransactionRefundRequest.md:
     id: a8010e501429
     last_write_checksum: sha1:cda0f08166a8c04b48c7618959bcc4e6fc302e09
@@ -1662,6 +1674,10 @@ trackedFiles:
     id: d476b961d555
     last_write_checksum: sha1:c9a5e7eb1aac174a093b95d709db17a7cd8b8f36
     pristine_git_object: b5a92bcc566d50e7f664916b48b5562c301589fa
+  docs/Models/Requests/ListTransactionCapturesRequest.md:
+    id: 80cf36188b80
+    last_write_checksum: sha1:b78d7e83e45be9dfcb0dafb5aebc4b0e93f4c77d
+    pristine_git_object: 18772c02fba31381c7535f7d783fcfe2d00eb723
   docs/Models/Requests/ListTransactionEventsRequest.md:
     id: 9c45a28ab972
     last_write_checksum: sha1:1463339ab78f71b48a8d6b195cc7de237330430a
@@ -1798,6 +1814,10 @@ trackedFiles:
     id: 4aff3957cf89
     last_write_checksum: sha1:4dc2661fd894a5e5cd3b1b134f5363184509a91a
     pristine_git_object: dc19712cb503690ff67889de228954cb9052f7d7
+  docs/sdks/captures/README.md:
+    id: 7598191d8c6a
+    last_write_checksum: sha1:66aceb1f7fdae668e725b9017d21edb3bc991085
+    pristine_git_object: 0049ca2bfbe7b312a821adc19c2c553cedfb78f6
   docs/sdks/cardschemedefinitions/README.md:
     id: a8ca8c2fbb07
     last_write_checksum: sha1:5d1c8385082c07d402094eaed304c02b9861dfe6
@@ -1946,6 +1966,10 @@ trackedFiles:
     id: 069de698c23b
     last_write_checksum: sha1:d6225734424666ef6efeba465dc541c0a6003e39
     pristine_git_object: d9347571c431dc3fe89601c8878d4ac1c69cbab5
+  src/Gr4vy/Captures.cs:
+    id: 40307883f77d
+    last_write_checksum: sha1:f6a16a0d0dc958b30d2333729f2caf468d3c37bb
+    pristine_git_object: eda075a00cae4b20f43958634d351a4f281fe488
   src/Gr4vy/CardSchemeDefinitions.cs:
     id: d0c5a900f971
     last_write_checksum: sha1:0a1db759f312a775bd6775a5434de59ac1e13d75
@@ -1980,8 +2004,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:3c7d35a3e2c205ad1adebb3cf3101efa672db78b
-    pristine_git_object: 380081e6c96f81e56ddbbd8e13dfd55a3deb5eaa
+    last_write_checksum: sha1:04508c44bf2c1532227badcf62539dc1bca9b54b
+    pristine_git_object: 1243cfc3308d1f5dc3cb107bda6e8e3cdadf0137
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -2146,6 +2170,14 @@ trackedFiles:
     id: a1e6ceb700ef
     last_write_checksum: sha1:4482b228886b1f5fccd2af6e545cb5709ef3796f
     pristine_git_object: 4f99d43546205cdb78c706f9fa6d361e5759086f
+  src/Gr4vy/Models/Components/Capture.cs:
+    id: 52626526b3c8
+    last_write_checksum: sha1:2eff10cbf129badc8fbaf92ba802c80a9c722517
+    pristine_git_object: 533af2916d9ecf90d2e326e11918cf8031216c3f
+  src/Gr4vy/Models/Components/CaptureCollection.cs:
+    id: 30f3d11ef075
+    last_write_checksum: sha1:944c6cb1fe966fce3a8ffeffae329f1a0714d846
+    pristine_git_object: 2220fc868dacfca0551c034149e68c8391cf4d27
   src/Gr4vy/Models/Components/CardPaymentMethodCreate.cs:
     id: 25e19f957e62
     last_write_checksum: sha1:197cae0bace3df842445aa3853d5a903213ce4d3
@@ -2556,8 +2588,8 @@ trackedFiles:
     pristine_git_object: 89a3dfbfca798c7808c1aecc621fd33d3b73f755
   src/Gr4vy/Models/Components/NuveiPSEOptions.cs:
     id: 2ad324c7f727
-    last_write_checksum: sha1:f5e7f224d1b05e38a569472a2d26e69922d85bbe
-    pristine_git_object: 152312a34b1f2469c42ac0321fc65b5f6facdc92
+    last_write_checksum: sha1:81817d56e0f0d9c223cf9fa0f0395f6ec7eabac3
+    pristine_git_object: 54d050745037b0d06c5b862d730fb508e4f0f01a
   src/Gr4vy/Models/Components/OxxoOptions.cs:
     id: 95123dc3ddc8
     last_write_checksum: sha1:f51db8a4fcf00a702f3707c3885f129ee25156b5
@@ -3060,8 +3092,8 @@ trackedFiles:
     pristine_git_object: b9ebd50fda40fc7d2afd28c41e01f9a4225426a4
   src/Gr4vy/Models/Components/TransactionCaptureCreate.cs:
     id: 933653310c80
-    last_write_checksum: sha1:9d949991884c328c93f90dd35be0147bc95f42cc
-    pristine_git_object: f365ad36af261e52b404c8a15b4d7ddf8ba63e63
+    last_write_checksum: sha1:9bffb7b8882caf3c52b3dfd9b959febf994abe02
+    pristine_git_object: 94fb946c5a868d5b1dd2012b0b84c1baf4391333
   src/Gr4vy/Models/Components/TransactionConnectionOptions.cs:
     id: d588699e12a3
     last_write_checksum: sha1:eb532f301b2c013edfbb3e37f8a16907feb952b7
@@ -3462,6 +3494,10 @@ trackedFiles:
     id: f5f265dff984
     last_write_checksum: sha1:f668998b6e7d52516af5222246f2710f9c003a20
     pristine_git_object: 5e07e2dded226557b84f351eb5939efdfb3d2265
+  src/Gr4vy/Models/Requests/GetTransactionCaptureRequest.cs:
+    id: 7e6bb4b42869
+    last_write_checksum: sha1:efb55d787e9821c29ecf105e2c8a2611bd609fdb
+    pristine_git_object: f064a6a9e58badf68da67d409f16f07e03853f29
   src/Gr4vy/Models/Requests/GetTransactionRefundRequest.cs:
     id: 39bc617071d5
     last_write_checksum: sha1:1b485ad6ed0c1056f3e88f84374939bbb77c56f0
@@ -3622,6 +3658,10 @@ trackedFiles:
     id: fc3cecda7af6
     last_write_checksum: sha1:709a2d977c096d4b20e71e15c353b2daa1487124
     pristine_git_object: 79979e4039628e00795ad07ce50dc9e99b195e10
+  src/Gr4vy/Models/Requests/ListTransactionCapturesRequest.cs:
+    id: f1437bc27189
+    last_write_checksum: sha1:b3606a4732a552149973e6e2e398e5e7273a600a
+    pristine_git_object: 8b6379289dd1c7690e5e1eea7d0052e2a6e45041
   src/Gr4vy/Models/Requests/ListTransactionEventsRequest.cs:
     id: 7080a5c3d31b
     last_write_checksum: sha1:734708c83b40678d88a235c5eb82c8a42e25e211
@@ -3776,8 +3816,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:eda44d88f22453a0062db3714aa2d78e4445fc3b
-    pristine_git_object: 3df1c4ab0a7e2ef51f23d3a32c1fd3703c896b7f
+    last_write_checksum: sha1:d0e51e0f82edcff4ff7519f43aaa81a542d332cd
+    pristine_git_object: fcdd163cdd671c716ffca8215ee335333f038969
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -3800,8 +3840,8 @@ trackedFiles:
     pristine_git_object: 0bc0bed4aa6e2b99a18a20e0f20a4901d02413d9
   src/Gr4vy/Transactions.cs:
     id: a7261e823018
-    last_write_checksum: sha1:9768f96a0b3039c14de6a257fe1335fe8a67ba2d
-    pristine_git_object: 0a1e6110154adc9a495462f4b4afbde3aca6cf11
+    last_write_checksum: sha1:a39566880057501b5c275368a103c5c093004036
+    pristine_git_object: 975e0fafac4affdafd2bc9cb475c94038cc02fc5
   src/Gr4vy/TransactionsRefunds.cs:
     id: 6c2e8b0bb9b8
     last_write_checksum: sha1:472d0266575faddb68e95d26cc7844e6320a2a8e
@@ -3816,8 +3856,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:a6174df7bf11c2fb867292e49a0d143cbef3c42a
-    pristine_git_object: 37594e818a1dd0c074873da92f8099a8d128824d
+    last_write_checksum: sha1:a1e5d088e53d851a92f55ec51a0a1abcde339786
+    pristine_git_object: 138d380e6c60ee5db65f47f7468b73589ad01bbe
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -5601,7 +5641,7 @@ examples:
         header:
           x-gr4vy-merchant-account-id: "default"
       requestBody:
-        application/json: {}
+        application/json: {"final": true}
       responses:
         "200":
           application/json: {"type": "transaction-capture", "status": "authorization_voided", "code": "service_error", "raw_response_code": "E104", "raw_response_description": "Internal error", "transaction": {"type": "transaction", "id": "7099948d-7286-47e4-aad8-b68f7eb44591", "reconciliation_id": "default", "merchant_account_id": "default", "currency": "EUR", "amount": 1299, "status": "<value>", "authorized_amount": 1299, "captured_amount": 1299, "refunded_amount": 1299, "settled_amount": 1100, "settled": true, "intent": "<value>", "pending_review": false, "gift_card_redemptions": [], "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "disputed": true, "payment_source": "<value>", "merchant_initiated": true, "is_subsequent_payment": false, "intent_outcome": "<value>", "multi_tender": true, "account_funding_transaction": true}}
@@ -7773,9 +7813,74 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  list_transaction_captures:
+    speakeasy-default-list-transaction-captures:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+      responses:
+        "200":
+          application/json: {"items": [], "limit": 20}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  get_transaction_capture:
+    speakeasy-default-get-transaction-capture:
+      parameters:
+        path:
+          transaction_id: "7099948d-7286-47e4-aad8-b68f7eb44591"
+          capture_id: "b1e2c3d4-5678-1234-9abc-1234567890ab"
+      responses:
+        "200":
+          application/json: {"type": "capture", "id": "b1e2c3d4-5678-1234-9abc-1234567890ab", "merchant_account_id": "default", "transaction_id": "7099948d-7286-47e4-aad8-b68f7eb44591", "currency": "USD", "amount": 1299, "status": "<value>", "final": true, "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.AdyenPaybybank` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.AdyenPaybybank` **Added**\n* `Gr4vy.PaymentLinks.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.AdyenPaybybank` **Added**\n"
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Captures.List()`: **Added**\n* `Gr4vy.Transactions.Captures.Get()`: **Added**\n* `Gr4vy.Transactions.Capture()`: \n  *  `request.TransactionCaptureCreate` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln

@@ -35,7 +35,7 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeUserType() => _userTypeSet;
 
         /// <summary>
-        /// Customer’s document type.
+        /// Customer's document type.
         /// </summary>
         [JsonProperty("userFisNumber", NullValueHandling = NullValueHandling.Include)]
         public string? UserFisNumber
@@ -55,7 +55,7 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeUserFisNumber() => _userFisNumberSet;
 
         /// <summary>
-        /// Customer’s document number.
+        /// Customer's document number.
         /// </summary>
         [JsonProperty("fiscalNumber", NullValueHandling = NullValueHandling.Include)]
         public string? FiscalNumber
