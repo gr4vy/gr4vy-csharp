@@ -6,7 +6,9 @@ using System.Reflection;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 using Gr4vy;
+using Gr4vy.Models.Components;
 using Microsoft.IdentityModel.Tokens;
 
 public static class JWTScope
@@ -273,5 +275,38 @@ public class Auth
             embedParams,
             checkoutSessionId
         );
+    }
+
+    /// <summary>
+    /// Creates a checkout session and returns an Embed token with its ID pinned.
+    /// </summary>
+    /// <remarks>
+    /// This is a convenience wrapper around <see cref="GetEmbedToken"/> for the common Embed
+    /// flow where every transaction should be tied to a checkout session. It uses the provided
+    /// (already authenticated) SDK client to create the checkout session, then signs an Embed
+    /// token that pins the resulting <c>checkout_session_id</c>.
+    /// </remarks>
+    /// <param name="client">An authenticated Gr4vy SDK client.</param>
+    /// <param name="privateKey">The EC private key in string-PEM format.</param>
+    /// <param name="embedParams">An optional map of Embed params to pin.</param>
+    /// <param name="checkoutSession">An optional checkout session body to seed cart items, metadata, and so on.</param>
+    /// <param name="merchantAccountId">An optional merchant account ID override. Defaults to the client's configured one.</param>
+    /// <returns>A signed JWT string for use with Embed.</returns>
+    public static async Task<string> GetEmbedTokenWithCheckoutSessionAsync(
+        IGr4vySDK client,
+        string privateKey,
+        Dictionary<string, object>? embedParams = null,
+        CheckoutSessionCreate? checkoutSession = null,
+        string? merchantAccountId = null
+    )
+    {
+        if (client == null) throw new ArgumentNullException(nameof(client));
+
+        var session = await client.CheckoutSessions.CreateAsync(
+            merchantAccountId: merchantAccountId,
+            checkoutSessionCreate: checkoutSession
+        );
+
+        return GetEmbedToken(privateKey, embedParams, session.Id);
     }
 }

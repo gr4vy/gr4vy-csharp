@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text.Json;
+using Gr4vy;
 using NUnit.Framework;
 
 [TestFixture]
@@ -157,6 +158,74 @@ rw==
             jwtToken.Claims.First(c => c.Type == "checkout_session_id").Value,
             Is.EqualTo(CheckoutSessionId)
         );
+    }
+
+    private static int GetFreePort()
+    {
+        var tcp = new System.Net.Sockets.TcpListener(System.Net.IPAddress.Loopback, 0);
+        tcp.Start();
+        var port = ((System.Net.IPEndPoint)tcp.LocalEndpoint).Port;
+        tcp.Stop();
+        return port;
+    }
+
+    [Test]
+    public async Task GetEmbedTokenWithCheckoutSessionAsync_ShouldPinCreatedCheckoutSessionId()
+    {
+        var port = GetFreePort();
+        var listener = new System.Net.HttpListener();
+        var prefix = $"http://127.0.0.1:{port}/";
+        listener.Prefixes.Add(prefix);
+        listener.Start();
+
+        var createCalls = 0;
+        var serverTask = Task.Run(async () =>
+        {
+            var context = await listener.GetContextAsync();
+            if (context.Request.HttpMethod != "POST" || context.Request.Url?.AbsolutePath != "/checkout/sessions")
+            {
+                context.Response.StatusCode = 404;
+                context.Response.OutputStream.Close();
+                return;
+            }
+            createCalls++;
+            var body = System.Text.Encoding.UTF8.GetBytes(
+                "{\"type\":\"checkout-session\",\"id\":\"" + CheckoutSessionId + "\"}"
+            );
+            context.Response.StatusCode = 201;
+            context.Response.ContentType = "application/json";
+            context.Response.OutputStream.Write(body, 0, body.Length);
+            context.Response.OutputStream.Close();
+        });
+
+        try
+        {
+            var client = new Gr4vySDK(
+                bearerAuth: "test-token",
+                serverUrl: $"http://127.0.0.1:{port}"
+            );
+
+            var token = await Auth.GetEmbedTokenWithCheckoutSessionAsync(
+                client: client,
+                privateKey: PrivateKey,
+                embedParams: _embedParams
+            );
+
+            var handler = new JwtSecurityTokenHandler();
+            var jwtToken = handler.ReadJwtToken(token);
+
+            Assert.That(createCalls, Is.EqualTo(1));
+            Assert.Contains(JWTScope.Embed, jwtToken.Claims.Select(c => c.Type).ToList());
+            Assert.That(
+                jwtToken.Claims.First(c => c.Type == "checkout_session_id").Value,
+                Is.EqualTo(CheckoutSessionId)
+            );
+        }
+        finally
+        {
+            listener.Close();
+            try { await serverTask; } catch (System.Net.HttpListenerException) { /* expected when Close() interrupts GetContextAsync() */ }
+        }
     }
 
     [Test]
