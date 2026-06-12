@@ -154,6 +154,7 @@ returns an Embed token with the resulting `checkout_session_id` already pinned, 
 
 ```csharp
 using Gr4vy;
+using System.Collections.Generic;
 
 // Load the key from a file, env variable,
 // or anywhere else
