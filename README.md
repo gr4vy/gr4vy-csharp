@@ -116,6 +116,7 @@ Alternatively, you can create a token for use with Embed as follows.
 
 ```csharp
 using Gr4vy;
+using System.Collections.Generic;
 
 // Loaded the key from a file, env variable, 
 // or anywhere else
@@ -142,7 +143,7 @@ var token = Auth.GetEmbedToken(
 );
 ```
 
-> **Note:** This will only create a token once. Use `Auth.WithToken()` to dynamically generate a token
+> **Note:** This will only create a token once. Use `Auth.WithToken(privateKey)` to dynamically generate a token
 > for every request.
 
 ### Attaching a checkout session automatically

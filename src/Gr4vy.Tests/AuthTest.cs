@@ -217,8 +217,8 @@ rw==
         }
         finally
         {
-            listener.Stop();
-            try { await serverTask; } catch { /* swallow errors from listener.Stop() */ }
+            listener.Close();
+            try { await serverTask; } catch { /* swallow errors from listener.Close() */ }
         }
     }
 
