@@ -170,7 +170,7 @@ rw==
     }
 
     [Test]
-    public async Task GetEmbedTokenWithCheckoutSession_ShouldPinCreatedCheckoutSessionId()
+    public async Task GetEmbedTokenWithCheckoutSessionAsync_ShouldPinCreatedCheckoutSessionId()
     {
         var port = GetFreePort();
         var listener = new System.Net.HttpListener();
@@ -205,7 +205,7 @@ rw==
                 serverUrl: $"http://127.0.0.1:{port}"
             );
 
-            var token = await Auth.GetEmbedTokenWithCheckoutSession(
+            var token = await Auth.GetEmbedTokenWithCheckoutSessionAsync(
                 client: client,
                 privateKey: PrivateKey,
                 embedParams: _embedParams

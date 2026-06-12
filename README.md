@@ -149,7 +149,7 @@ var token = Auth.GetEmbedToken(
 ### Attaching a checkout session automatically
 
 For Embed, it is recommended to attach a checkout session to every transaction. The
-`Auth.GetEmbedTokenWithCheckoutSession` helper creates a checkout session using your SDK client and
+`Auth.GetEmbedTokenWithCheckoutSessionAsync` helper creates a checkout session using your SDK client and
 returns an Embed token with the resulting `checkout_session_id` already pinned, in a single call.
 
 ```csharp
@@ -167,7 +167,7 @@ var sdk = new Gr4vySDK(
     merchantAccountId: "default"
 );
 
-var token = await Auth.GetEmbedTokenWithCheckoutSession(
+var token = await Auth.GetEmbedTokenWithCheckoutSessionAsync(
     client: sdk,
     privateKey: privateKey,
     embedParams: new Dictionary<string, object>

@@ -292,7 +292,7 @@ public class Auth
     /// <param name="checkoutSession">An optional checkout session body to seed cart items, metadata, and so on.</param>
     /// <param name="merchantAccountId">An optional merchant account ID override. Defaults to the client's configured one.</param>
     /// <returns>A signed JWT string for use with Embed.</returns>
-    public static async Task<string> GetEmbedTokenWithCheckoutSession(
+    public static async Task<string> GetEmbedTokenWithCheckoutSessionAsync(
         IGr4vySDK client,
         string privateKey,
         Dictionary<string, object>? embedParams = null,
