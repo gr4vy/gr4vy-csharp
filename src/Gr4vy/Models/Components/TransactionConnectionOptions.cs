@@ -76,6 +76,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeAdyenAfterpay() => _adyenAfterpaySet;
 
         /// <summary>
+        /// Custom options to be passed to the `adyen-cashappafterpay` connector.
+        /// </summary>
+        [JsonProperty("adyen-cashappafterpay", NullValueHandling = NullValueHandling.Include)]
+        public AdyenOptions? AdyenCashappafterpay
+        {
+            get => _adyenCashappafterpay;
+            set
+            {
+                _adyenCashappafterpay = value;
+                _adyenCashappafterpaySet = true;
+            }
+        }
+
+        private AdyenOptions? _adyenCashappafterpay = null;
+
+        private bool _adyenCashappafterpaySet = false;
+
+        public bool ShouldSerializeAdyenCashappafterpay() => _adyenCashappafterpaySet;
+
+        /// <summary>
         /// Custom options to be passed to the `adyen-alipay` connector.
         /// </summary>
         [JsonProperty("adyen-alipay", NullValueHandling = NullValueHandling.Include)]
