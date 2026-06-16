@@ -135,5 +135,105 @@ namespace Gr4vy.Models.Components
         private bool _splitsSet = false;
 
         public bool ShouldSerializeSplits() => _splitsSet;
+
+        /// <summary>
+        /// Passes `merchantRiskIndicator` data to Adyen.
+        /// </summary>
+        [JsonProperty("merchantRiskIndicator", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, object>? MerchantRiskIndicator
+        {
+            get => _merchantRiskIndicator;
+            set
+            {
+                _merchantRiskIndicator = value;
+                _merchantRiskIndicatorSet = true;
+            }
+        }
+
+        private Dictionary<string, object>? _merchantRiskIndicator = null;
+
+        private bool _merchantRiskIndicatorSet = false;
+
+        public bool ShouldSerializeMerchantRiskIndicator() => _merchantRiskIndicatorSet;
+
+        /// <summary>
+        /// Passes `accountInfo` data to Adyen.
+        /// </summary>
+        [JsonProperty("accountInfo", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, object>? AccountInfo
+        {
+            get => _accountInfo;
+            set
+            {
+                _accountInfo = value;
+                _accountInfoSet = true;
+            }
+        }
+
+        private Dictionary<string, object>? _accountInfo = null;
+
+        private bool _accountInfoSet = false;
+
+        public bool ShouldSerializeAccountInfo() => _accountInfoSet;
+
+        /// <summary>
+        /// Passes `riskData.customFields` to Adyen.
+        /// </summary>
+        [JsonProperty("riskData", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, object>? RiskData
+        {
+            get => _riskData;
+            set
+            {
+                _riskData = value;
+                _riskDataSet = true;
+            }
+        }
+
+        private Dictionary<string, object>? _riskData = null;
+
+        private bool _riskDataSet = false;
+
+        public bool ShouldSerializeRiskData() => _riskDataSet;
+
+        /// <summary>
+        /// Passes `threeDS2RequestData.threeDSRequestorChallengeInd` to Adyen.
+        /// </summary>
+        [JsonProperty("threeDSRequestorChallengeInd", NullValueHandling = NullValueHandling.Include)]
+        public string? ThreeDSRequestorChallengeInd
+        {
+            get => _threeDSRequestorChallengeInd;
+            set
+            {
+                _threeDSRequestorChallengeInd = value;
+                _threeDSRequestorChallengeIndSet = true;
+            }
+        }
+
+        private string? _threeDSRequestorChallengeInd = null;
+
+        private bool _threeDSRequestorChallengeIndSet = false;
+
+        public bool ShouldSerializeThreeDSRequestorChallengeInd() => _threeDSRequestorChallengeIndSet;
+
+        /// <summary>
+        /// Passes `authenticationData.attemptAuthentication` to Adyen.
+        /// </summary>
+        [JsonProperty("attemptAuthentication", NullValueHandling = NullValueHandling.Include)]
+        public string? AttemptAuthentication
+        {
+            get => _attemptAuthentication;
+            set
+            {
+                _attemptAuthentication = value;
+                _attemptAuthenticationSet = true;
+            }
+        }
+
+        private string? _attemptAuthentication = null;
+
+        private bool _attemptAuthenticationSet = false;
+
+        public bool ShouldSerializeAttemptAuthentication() => _attemptAuthenticationSet;
     }
 }
