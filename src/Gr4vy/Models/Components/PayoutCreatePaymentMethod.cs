@@ -186,6 +186,10 @@ namespace Gr4vy.Models.Components
                     writer.WriteRawValue(Utilities.SerializeJSON(res.PaymentMethodStoredCard));
                     return;
                 }
+
+                throw new InvalidOperationException(
+                    "Could not serialize union to JSON: no variant value was set. " +
+                    "Construct this union using one of the Create* factory methods.");
             }
 
         }
