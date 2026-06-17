@@ -17,41 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The three-character ISO currency code.
         /// </summary>
-        [JsonProperty("currency_code", NullValueHandling = NullValueHandling.Include)]
-        public string CurrencyCode
-        {
-            get => _currencyCode;
-            set
-            {
-                _currencyCode = value;
-                _currencyCodeSet = true;
-            }
-        }
-
-        private string _currencyCode = default!;
-
-        private bool _currencyCodeSet = true;
-
-        public bool ShouldSerializeCurrencyCode() => _currencyCodeSet;
+        [JsonProperty("currency_code")]
+        public string CurrencyCode { get; set; } = default!;
 
         /// <summary>
         /// The amount value, which might include a decimal portion.
         /// </summary>
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
-        public string Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-                _valueSet = true;
-            }
-        }
-
-        private string _value = default!;
-
-        private bool _valueSet = true;
-
-        public bool ShouldSerializeValue() => _valueSet;
+        [JsonProperty("value")]
+        public string Value { get; set; } = default!;
     }
 }

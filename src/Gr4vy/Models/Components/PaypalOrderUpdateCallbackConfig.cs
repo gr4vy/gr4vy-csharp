@@ -9,22 +9,22 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
-    public class MockCardOptions
+    public class PaypalOrderUpdateCallbackConfig
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// The URL for the webhook endpoint you provide for PayPal to send you order update events.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
+        [JsonProperty("callback_url")]
+        public string? CallbackUrl { get; set; } = null;
 
         /// <summary>
-        /// When set to true, prevents retries on failed transactions.
+        /// The events that trigger a callback.
         /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("callback_events")]
+        public List<string>? CallbackEvents { get; set; } = null;
     }
 }
