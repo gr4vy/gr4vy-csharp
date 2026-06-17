@@ -1,0 +1,9 @@
+# PaypalOrderUpdateCallbackConfig
+
+
+## Fields
+
+| Field                                                                                    | Type                                                                                     | Required                                                                                 | Description                                                                              | Example                                                                                  |
+| ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+| `CallbackUrl`                                                                            | *string*                                                                                 | :heavy_minus_sign:                                                                       | The URL for the webhook endpoint you provide for PayPal to send you order update events. | https://example.com/callback                                                             |
+| `CallbackEvents`                                                                         | List<*string*>                                                                           | :heavy_minus_sign:                                                                       | The events that trigger a callback.                                                      | [<br/>"SHIPPING_ADDRESS",<br/>"SHIPPING_OPTIONS"<br/>]                                   |

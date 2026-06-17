@@ -17,6 +17,26 @@ namespace Gr4vy.Models.Components
     public class PaypalOptions
     {
         /// <summary>
+        /// Configuration for server-side callbacks during the PayPal checkout flow.
+        /// </summary>
+        [JsonProperty("order_update_callback_config", NullValueHandling = NullValueHandling.Include)]
+        public PaypalOrderUpdateCallbackConfig? OrderUpdateCallbackConfig
+        {
+            get => _orderUpdateCallbackConfig;
+            set
+            {
+                _orderUpdateCallbackConfig = value;
+                _orderUpdateCallbackConfigSet = true;
+            }
+        }
+
+        private PaypalOrderUpdateCallbackConfig? _orderUpdateCallbackConfig = null;
+
+        private bool _orderUpdateCallbackConfigSet = false;
+
+        public bool ShouldSerializeOrderUpdateCallbackConfig() => _orderUpdateCallbackConfigSet;
+
+        /// <summary>
         /// Additional Set Transaction Context Values (STC) to be sent to PayPal as part of the transaction.
         /// </summary>
         [JsonProperty("additional_data", NullValueHandling = NullValueHandling.Include)]
