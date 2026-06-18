@@ -241,6 +241,12 @@ namespace Gr4vy.Models.Requests
         public bool? Disputed { get; set; } = null;
 
         /// <summary>
+        /// Filters for transactions that were reauthorized from the transaction with the provided ID.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=reauthorized_from_transaction_id")]
+        public string? ReauthorizedFromTransactionId { get; set; } = null;
+
+        /// <summary>
         /// Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_search")]

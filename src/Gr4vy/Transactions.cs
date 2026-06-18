@@ -509,6 +509,7 @@ namespace Gr4vy
                     MerchantInitiated = request?.MerchantInitiated,
                     Used3ds = request?.Used3ds,
                     Disputed = request?.Disputed,
+                    ReauthorizedFromTransactionId = request?.ReauthorizedFromTransactionId,
                     BuyerSearch = request?.BuyerSearch,
                     MerchantAccountId = request?.MerchantAccountId
                 };
