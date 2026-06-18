@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: ed79b5319e33caaf905a20cdc3ae245f
+  docChecksum: 814ef264c419e1d2d78ecd5c326c7d61
   docVersion: 1.0.0
   speakeasyVersion: 1.783.1
   generationVersion: 2.910.1
-  releaseVersion: 2.8.36
-  configChecksum: c66f7a355cab16d6746c749628532e49
+  releaseVersion: 2.8.37
+  configChecksum: 4d6cb1264617e3ea9e238a01b6143181
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 45036ae9-58c4-4bce-a3f8-729ef2f99ffd
-  pristine_commit_hash: d0f3b23a1d3c13b2862cb516ed489b666811a76d
-  pristine_tree_hash: c44a0813f2f97c566c8016dc39d6a5a5e626a7e5
+  generation_id: 9363a971-c23f-4c50-9cfa-7a2cd774d3bc
+  pristine_commit_hash: 1faf18a5f3cfb473be1d1c59d1dcf684996eee89
+  pristine_tree_hash: c619ea326629a4f7b49a2dff16e9f7dce63423ce
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1700,8 +1700,8 @@ trackedFiles:
     pristine_git_object: ca16e204a9f7b2b2d8dac0f3b3ebfcf28d4c57f1
   docs/Models/Requests/ListTransactionsRequest.md:
     id: 21ff0104c772
-    last_write_checksum: sha1:e7fe2101864cef0bd9939f22de777c85169a29b4
-    pristine_git_object: ca366c946f2c70b44a24fa3ed75cfee2e99b5ccd
+    last_write_checksum: sha1:7db3e1170aa755aff855de45546fc78b23bf42d3
+    pristine_git_object: 8b69dbf4f960455599b3e23c2c718be5f229faf9
   docs/Models/Requests/ListTransactionsResponse.md:
     id: c361103e7389
     last_write_checksum: sha1:810146037053a5c42a588983253276ed444766ba
@@ -2008,8 +2008,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:e7ed87ed52656013baf02ed86383a581eac04739
-    pristine_git_object: 489eff7470f68a5aa6d3a2c48686c4519c35a46d
+    last_write_checksum: sha1:276c4fb5ebc6c7f8813cb932a76479df4e8d3211
+    pristine_git_object: 2f01128ccec39a188a4a28af47b6b3a3a5924aff
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:8495e2a90da04cf39d026cd1f01f57176902809a
@@ -3688,8 +3688,8 @@ trackedFiles:
     pristine_git_object: 6822d1ffdb1f677a1c1b637b3ee012618b61a532
   src/Gr4vy/Models/Requests/ListTransactionsRequest.cs:
     id: 8268c7c67623
-    last_write_checksum: sha1:3c47d25d4eed2eac49a516b3396120da250be8c7
-    pristine_git_object: 58528563ef8f43769c8ab26444c84f1ddb7485c4
+    last_write_checksum: sha1:b16d459b7da24aa609917ff4ec6e3c3fd0260d1a
+    pristine_git_object: 1ab14eaf2722ba65b3650d7c2cf5a1747b89d549
   src/Gr4vy/Models/Requests/ListTransactionsResponse.cs:
     id: 2a26263bd50c
     last_write_checksum: sha1:d3626e0f3fd640d03cf065f906ab0578ce02a682
@@ -3824,8 +3824,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:5a2764f47cf28f49ba65cb0b4e8de57845d8762a
-    pristine_git_object: 6583f6cb25000b2a74a00e0efd0a1c8aece3a0b1
+    last_write_checksum: sha1:e70e740dd6561e30616036a23970324e19ba7460
+    pristine_git_object: c97cbd026ccc73ceb77a16f769c37af97f531966
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -3848,8 +3848,8 @@ trackedFiles:
     pristine_git_object: 0bc0bed4aa6e2b99a18a20e0f20a4901d02413d9
   src/Gr4vy/Transactions.cs:
     id: a7261e823018
-    last_write_checksum: sha1:a39566880057501b5c275368a103c5c093004036
-    pristine_git_object: 975e0fafac4affdafd2bc9cb475c94038cc02fc5
+    last_write_checksum: sha1:affdd7eb4e630556fd8fa81b07f35b6c568cf011
+    pristine_git_object: 808ceca52a48e916c5d551e00cd36d34ed25fccf
   src/Gr4vy/TransactionsRefunds.cs:
     id: 6c2e8b0bb9b8
     last_write_checksum: sha1:472d0266575faddb68e95d26cc7844e6320a2a8e
@@ -3864,8 +3864,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:6d5ee48329ba668e9c8df3f7299c9fa54aa898f9
-    pristine_git_object: c749a7d5f90c875a2c27aa03331211c2ee20a974
+    last_write_checksum: sha1:c246de0deb54321eb2419022bcd6ba105ff73bf1
+    pristine_git_object: 01e6fa915b05c23ddb9bf9a15f3ec09a26eb0050
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -7888,6 +7888,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.List()`: \n  *  `request.ReauthorizedFromTransactionId` **Added**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln

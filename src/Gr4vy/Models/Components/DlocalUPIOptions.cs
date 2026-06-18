@@ -18,21 +18,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes `wallet` data to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("wallet", NullValueHandling = NullValueHandling.Include)]
-        public DlocalUPIWalletOptions? Wallet
-        {
-            get => _wallet;
-            set
-            {
-                _wallet = value;
-                _walletSet = true;
-            }
-        }
-
-        private DlocalUPIWalletOptions? _wallet = null;
-
-        private bool _walletSet = false;
-
-        public bool ShouldSerializeWallet() => _walletSet;
+        [JsonProperty("wallet")]
+        public DlocalUPIWalletOptions? Wallet { get; set; } = null;
     }
 }
