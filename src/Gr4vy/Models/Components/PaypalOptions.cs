@@ -19,19 +19,61 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Configuration for server-side callbacks during the PayPal checkout flow.
         /// </summary>
-        [JsonProperty("order_update_callback_config")]
-        public PaypalOrderUpdateCallbackConfig? OrderUpdateCallbackConfig { get; set; } = null;
+        [JsonProperty("order_update_callback_config", NullValueHandling = NullValueHandling.Include)]
+        public PaypalOrderUpdateCallbackConfig? OrderUpdateCallbackConfig
+        {
+            get => _orderUpdateCallbackConfig;
+            set
+            {
+                _orderUpdateCallbackConfig = value;
+                _orderUpdateCallbackConfigSet = true;
+            }
+        }
+
+        private PaypalOrderUpdateCallbackConfig? _orderUpdateCallbackConfig = null;
+
+        private bool _orderUpdateCallbackConfigSet = false;
+
+        public bool ShouldSerializeOrderUpdateCallbackConfig() => _orderUpdateCallbackConfigSet;
 
         /// <summary>
         /// Additional Set Transaction Context Values (STC) to be sent to PayPal as part of the transaction.
         /// </summary>
-        [JsonProperty("additional_data")]
-        public List<Dictionary<string, string>>? AdditionalData { get; set; } = null;
+        [JsonProperty("additional_data", NullValueHandling = NullValueHandling.Include)]
+        public List<Dictionary<string, string>>? AdditionalData
+        {
+            get => _additionalData;
+            set
+            {
+                _additionalData = value;
+                _additionalDataSet = true;
+            }
+        }
+
+        private List<Dictionary<string, string>>? _additionalData = null;
+
+        private bool _additionalDataSet = false;
+
+        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
 
         /// <summary>
         /// Shipping information to be passed to the PayPal API.
         /// </summary>
-        [JsonProperty("shipping")]
-        public PaypalShippingOptions? Shipping { get; set; } = null;
+        [JsonProperty("shipping", NullValueHandling = NullValueHandling.Include)]
+        public PaypalShippingOptions? Shipping
+        {
+            get => _shipping;
+            set
+            {
+                _shipping = value;
+                _shippingSet = true;
+            }
+        }
+
+        private PaypalShippingOptions? _shipping = null;
+
+        private bool _shippingSet = false;
+
+        public bool ShouldSerializeShipping() => _shippingSet;
     }
 }
