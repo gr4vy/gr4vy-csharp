@@ -1156,6 +1156,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeStripeOnelink() => _stripeOnelinkSet;
 
         /// <summary>
+        /// Custom options to be passed to the `stripe-stripe` connector.
+        /// </summary>
+        [JsonProperty("stripe-stripe", NullValueHandling = NullValueHandling.Include)]
+        public StripeOptions? StripeStripe
+        {
+            get => _stripeStripe;
+            set
+            {
+                _stripeStripe = value;
+                _stripeStripeSet = true;
+            }
+        }
+
+        private StripeOptions? _stripeStripe = null;
+
+        private bool _stripeStripeSet = false;
+
+        public bool ShouldSerializeStripeStripe() => _stripeStripeSet;
+
+        /// <summary>
         /// Custom options to be passed to the `travelhub-card` connector.
         /// </summary>
         [JsonProperty("travelhub-card", NullValueHandling = NullValueHandling.Include)]
