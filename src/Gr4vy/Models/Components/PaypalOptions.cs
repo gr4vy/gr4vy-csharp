@@ -19,61 +19,49 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Configuration for server-side callbacks during the PayPal checkout flow.
         /// </summary>
-        [JsonProperty("order_update_callback_config", NullValueHandling = NullValueHandling.Include)]
-        public PaypalOrderUpdateCallbackConfig? OrderUpdateCallbackConfig
-        {
-            get => _orderUpdateCallbackConfig;
-            set
-            {
-                _orderUpdateCallbackConfig = value;
-                _orderUpdateCallbackConfigSet = true;
-            }
-        }
-
-        private PaypalOrderUpdateCallbackConfig? _orderUpdateCallbackConfig = null;
-
-        private bool _orderUpdateCallbackConfigSet = false;
-
-        public bool ShouldSerializeOrderUpdateCallbackConfig() => _orderUpdateCallbackConfigSet;
+        [JsonProperty("order_update_callback_config")]
+        public PaypalOrderUpdateCallbackConfig? OrderUpdateCallbackConfig { get; set; } = null;
 
         /// <summary>
         /// Additional Set Transaction Context Values (STC) to be sent to PayPal as part of the transaction.
         /// </summary>
-        [JsonProperty("additional_data", NullValueHandling = NullValueHandling.Include)]
-        public List<Dictionary<string, string>>? AdditionalData
-        {
-            get => _additionalData;
-            set
-            {
-                _additionalData = value;
-                _additionalDataSet = true;
-            }
-        }
-
-        private List<Dictionary<string, string>>? _additionalData = null;
-
-        private bool _additionalDataSet = false;
-
-        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
+        [JsonProperty("additional_data")]
+        public List<Dictionary<string, string>>? AdditionalData { get; set; } = null;
 
         /// <summary>
         /// Shipping information to be passed to the PayPal API.
         /// </summary>
-        [JsonProperty("shipping", NullValueHandling = NullValueHandling.Include)]
-        public PaypalShippingOptions? Shipping
-        {
-            get => _shipping;
-            set
-            {
-                _shipping = value;
-                _shippingSet = true;
-            }
-        }
+        [JsonProperty("shipping")]
+        public PaypalShippingOptions? Shipping { get; set; } = null;
 
-        private PaypalShippingOptions? _shipping = null;
+        /// <summary>
+        /// Customizes the PayPal Checkout button text. Use `PAY_NOW` to show a pay now button, or `CONTINUE` to show a continue button for deferred payments.
+        /// </summary>
+        [JsonProperty("user_action")]
+        public string? UserAction { get; set; } = null;
 
-        private bool _shippingSet = false;
+        /// <summary>
+        /// Controls the shipping address display in the PayPal Checkout flow. Use `GET_FROM_FILE` to use the shipping address from the PayPal account, `NO_SHIPPING` to hide shipping address fields, or `SET_PROVIDED_ADDRESS` to use the shipping address provided in the request.
+        /// </summary>
+        [JsonProperty("shipping_preference")]
+        public string? ShippingPreference { get; set; } = null;
 
-        public bool ShouldSerializeShipping() => _shippingSet;
+        /// <summary>
+        /// The merchant brand name that appears in the PayPal Checkout flow. Maximum 127 characters.
+        /// </summary>
+        [JsonProperty("brand_name")]
+        public string? BrandName { get; set; } = null;
+
+        /// <summary>
+        /// The type of landing page to display on the PayPal Checkout. Use `LOGIN` to show the PayPal login page, `GUEST_CHECKOUT` to show the guest checkout page, or `NO_PREFERENCE` to let PayPal decide.
+        /// </summary>
+        [JsonProperty("landing_page")]
+        public string? LandingPage { get; set; } = null;
+
+        /// <summary>
+        /// The BCP 47 locale used to localize the PayPal Checkout page. For example, `en-US` or `fr-FR`.
+        /// </summary>
+        [JsonProperty("locale")]
+        public string? Locale { get; set; } = null;
     }
 }
