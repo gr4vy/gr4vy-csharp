@@ -75,5 +75,105 @@ namespace Gr4vy.Models.Components
         private bool _shippingSet = false;
 
         public bool ShouldSerializeShipping() => _shippingSet;
+
+        /// <summary>
+        /// Customizes the PayPal Checkout button text. Use `PAY_NOW` to show a pay now button, or `CONTINUE` to show a continue button for deferred payments.
+        /// </summary>
+        [JsonProperty("user_action", NullValueHandling = NullValueHandling.Include)]
+        public string? UserAction
+        {
+            get => _userAction;
+            set
+            {
+                _userAction = value;
+                _userActionSet = true;
+            }
+        }
+
+        private string? _userAction = null;
+
+        private bool _userActionSet = false;
+
+        public bool ShouldSerializeUserAction() => _userActionSet;
+
+        /// <summary>
+        /// Controls the shipping address display in the PayPal Checkout flow. Use `GET_FROM_FILE` to use the shipping address from the PayPal account, `NO_SHIPPING` to hide shipping address fields, or `SET_PROVIDED_ADDRESS` to use the shipping address provided in the request.
+        /// </summary>
+        [JsonProperty("shipping_preference", NullValueHandling = NullValueHandling.Include)]
+        public string? ShippingPreference
+        {
+            get => _shippingPreference;
+            set
+            {
+                _shippingPreference = value;
+                _shippingPreferenceSet = true;
+            }
+        }
+
+        private string? _shippingPreference = null;
+
+        private bool _shippingPreferenceSet = false;
+
+        public bool ShouldSerializeShippingPreference() => _shippingPreferenceSet;
+
+        /// <summary>
+        /// The merchant brand name that appears in the PayPal Checkout flow. Maximum 127 characters.
+        /// </summary>
+        [JsonProperty("brand_name", NullValueHandling = NullValueHandling.Include)]
+        public string? BrandName
+        {
+            get => _brandName;
+            set
+            {
+                _brandName = value;
+                _brandNameSet = true;
+            }
+        }
+
+        private string? _brandName = null;
+
+        private bool _brandNameSet = false;
+
+        public bool ShouldSerializeBrandName() => _brandNameSet;
+
+        /// <summary>
+        /// The type of landing page to display on the PayPal Checkout. Use `LOGIN` to show the PayPal login page, `GUEST_CHECKOUT` to show the guest checkout page, or `NO_PREFERENCE` to let PayPal decide.
+        /// </summary>
+        [JsonProperty("landing_page", NullValueHandling = NullValueHandling.Include)]
+        public string? LandingPage
+        {
+            get => _landingPage;
+            set
+            {
+                _landingPage = value;
+                _landingPageSet = true;
+            }
+        }
+
+        private string? _landingPage = null;
+
+        private bool _landingPageSet = false;
+
+        public bool ShouldSerializeLandingPage() => _landingPageSet;
+
+        /// <summary>
+        /// The BCP 47 locale used to localize the PayPal Checkout page. For example, `en-US` or `fr-FR`.
+        /// </summary>
+        [JsonProperty("locale", NullValueHandling = NullValueHandling.Include)]
+        public string? Locale
+        {
+            get => _locale;
+            set
+            {
+                _locale = value;
+                _localeSet = true;
+            }
+        }
+
+        private string? _locale = null;
+
+        private bool _localeSet = false;
+
+        public bool ShouldSerializeLocale() => _localeSet;
     }
 }
