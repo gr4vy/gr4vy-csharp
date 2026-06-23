@@ -17,181 +17,55 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The city for the address.
         /// </summary>
-        [JsonProperty("city", NullValueHandling = NullValueHandling.Include)]
-        public string? City
-        {
-            get => _city;
-            set
-            {
-                _city = value;
-                _citySet = true;
-            }
-        }
-
-        private string? _city = null;
-
-        private bool _citySet = false;
-
-        public bool ShouldSerializeCity() => _citySet;
+        [JsonProperty("city")]
+        public string? City { get; set; } = null;
 
         /// <summary>
         /// The country for the address in ISO 3166 format.
         /// </summary>
-        [JsonProperty("country", NullValueHandling = NullValueHandling.Include)]
-        public string? Country
-        {
-            get => _country;
-            set
-            {
-                _country = value;
-                _countrySet = true;
-            }
-        }
-
-        private string? _country = null;
-
-        private bool _countrySet = false;
-
-        public bool ShouldSerializeCountry() => _countrySet;
+        [JsonProperty("country")]
+        public string? Country { get; set; } = null;
 
         /// <summary>
         /// The postal code or zip code for the address.
         /// </summary>
-        [JsonProperty("postal_code", NullValueHandling = NullValueHandling.Include)]
-        public string? PostalCode
-        {
-            get => _postalCode;
-            set
-            {
-                _postalCode = value;
-                _postalCodeSet = true;
-            }
-        }
-
-        private string? _postalCode = null;
-
-        private bool _postalCodeSet = false;
-
-        public bool ShouldSerializePostalCode() => _postalCodeSet;
+        [JsonProperty("postal_code")]
+        public string? PostalCode { get; set; } = null;
 
         /// <summary>
         /// The state, county, or province for the address.
         /// </summary>
-        [JsonProperty("state", NullValueHandling = NullValueHandling.Include)]
-        public string? State
-        {
-            get => _state;
-            set
-            {
-                _state = value;
-                _stateSet = true;
-            }
-        }
-
-        private string? _state = null;
-
-        private bool _stateSet = false;
-
-        public bool ShouldSerializeState() => _stateSet;
+        [JsonProperty("state")]
+        public string? State { get; set; } = null;
 
         /// <summary>
         /// The code of state, county, or province for the address in ISO 3166-2 format.
         /// </summary>
-        [JsonProperty("state_code", NullValueHandling = NullValueHandling.Include)]
-        public string? StateCode
-        {
-            get => _stateCode;
-            set
-            {
-                _stateCode = value;
-                _stateCodeSet = true;
-            }
-        }
-
-        private string? _stateCode = null;
-
-        private bool _stateCodeSet = false;
-
-        public bool ShouldSerializeStateCode() => _stateCodeSet;
+        [JsonProperty("state_code")]
+        public string? StateCode { get; set; } = null;
 
         /// <summary>
         /// The house number or name for the address. Not all payment services use this field but some do.
         /// </summary>
-        [JsonProperty("house_number_or_name", NullValueHandling = NullValueHandling.Include)]
-        public string? HouseNumberOrName
-        {
-            get => _houseNumberOrName;
-            set
-            {
-                _houseNumberOrName = value;
-                _houseNumberOrNameSet = true;
-            }
-        }
-
-        private string? _houseNumberOrName = null;
-
-        private bool _houseNumberOrNameSet = false;
-
-        public bool ShouldSerializeHouseNumberOrName() => _houseNumberOrNameSet;
+        [JsonProperty("house_number_or_name")]
+        public string? HouseNumberOrName { get; set; } = null;
 
         /// <summary>
         /// The first line of the address.
         /// </summary>
-        [JsonProperty("line1", NullValueHandling = NullValueHandling.Include)]
-        public string? Line1
-        {
-            get => _line1;
-            set
-            {
-                _line1 = value;
-                _line1Set = true;
-            }
-        }
-
-        private string? _line1 = null;
-
-        private bool _line1Set = false;
-
-        public bool ShouldSerializeLine1() => _line1Set;
+        [JsonProperty("line1")]
+        public string? Line1 { get; set; } = null;
 
         /// <summary>
         /// The second line of the address.
         /// </summary>
-        [JsonProperty("line2", NullValueHandling = NullValueHandling.Include)]
-        public string? Line2
-        {
-            get => _line2;
-            set
-            {
-                _line2 = value;
-                _line2Set = true;
-            }
-        }
-
-        private string? _line2 = null;
-
-        private bool _line2Set = false;
-
-        public bool ShouldSerializeLine2() => _line2Set;
+        [JsonProperty("line2")]
+        public string? Line2 { get; set; } = null;
 
         /// <summary>
         /// The optional name of the company or organisation to add to the address.
         /// </summary>
-        [JsonProperty("organization", NullValueHandling = NullValueHandling.Include)]
-        public string? Organization
-        {
-            get => _organization;
-            set
-            {
-                _organization = value;
-                _organizationSet = true;
-            }
-        }
-
-        private string? _organization = null;
-
-        private bool _organizationSet = false;
-
-        public bool ShouldSerializeOrganization() => _organizationSet;
+        [JsonProperty("organization")]
+        public string? Organization { get; set; } = null;
     }
 }

@@ -18,41 +18,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Stripe options to support Stripe Connect.
         /// </summary>
-        [JsonProperty("stripe_connect", NullValueHandling = NullValueHandling.Include)]
-        public StripeConnectOptions? StripeConnect
-        {
-            get => _stripeConnect;
-            set
-            {
-                _stripeConnect = value;
-                _stripeConnectSet = true;
-            }
-        }
+        [JsonProperty("stripe_connect")]
+        public StripeConnectOptions? StripeConnect { get; set; } = null;
 
-        private StripeConnectOptions? _stripeConnect = null;
-
-        private bool _stripeConnectSet = false;
-
-        public bool ShouldSerializeStripeConnect() => _stripeConnectSet;
+        /// <summary>
+        /// A Stripe customer ID (`cus_xxx`) to associate with the PaymentIntent for network token transactions. When provided, Stripe Radar can access the customer's payment history, dispute rate, and account age to improve risk scoring for returning customers.
+        /// </summary>
+        [JsonProperty("customer_id")]
+        public string? CustomerId { get; set; } = null;
 
         /// <summary>
         /// Passes the `error_on_requires_action` option to the Stripe API. Set to true to fail the payment attempt if it transitions into requires_action. Use this parameter for simpler integrations that don't handle customer actions, such as saving cards without authentication.
         /// </summary>
-        [JsonProperty("error_on_requires_action", NullValueHandling = NullValueHandling.Include)]
-        public bool? ErrorOnRequiresAction
-        {
-            get => _errorOnRequiresAction;
-            set
-            {
-                _errorOnRequiresAction = value;
-                _errorOnRequiresActionSet = true;
-            }
-        }
-
-        private bool? _errorOnRequiresAction = null;
-
-        private bool _errorOnRequiresActionSet = false;
-
-        public bool ShouldSerializeErrorOnRequiresAction() => _errorOnRequiresActionSet;
+        [JsonProperty("error_on_requires_action")]
+        public bool? ErrorOnRequiresAction { get; set; } = null;
     }
 }
