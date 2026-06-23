@@ -112,6 +112,18 @@ namespace Gr4vy.Models.Components
         public string? MastercardNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
+        /// Requestor ID provided for Discover after onboarding to use Network Tokens.
+        /// </summary>
+        [JsonProperty("discover_network_tokens_requestor_id")]
+        public string? DiscoverNetworkTokensRequestorId { get; set; } = null;
+
+        /// <summary>
+        /// Application ID provided for Discover after onboarding to use Network Tokens.
+        /// </summary>
+        [JsonProperty("discover_network_tokens_app_id")]
+        public string? DiscoverNetworkTokensAppId { get; set; } = null;
+
+        /// <summary>
         /// When enabled network tokens will be generated asynchronously and only used on subsequent transactions to speed up transaction processing.
         /// </summary>
         [JsonProperty("async_network_tokens_enabled")]
