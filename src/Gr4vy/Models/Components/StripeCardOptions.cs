@@ -36,6 +36,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeStripeConnect() => _stripeConnectSet;
 
         /// <summary>
+        /// A Stripe customer ID (`cus_xxx`) to associate with the PaymentIntent for network token transactions. When provided, Stripe Radar can access the customer's payment history, dispute rate, and account age to improve risk scoring for returning customers.
+        /// </summary>
+        [JsonProperty("customer_id", NullValueHandling = NullValueHandling.Include)]
+        public string? CustomerId
+        {
+            get => _customerId;
+            set
+            {
+                _customerId = value;
+                _customerIdSet = true;
+            }
+        }
+
+        private string? _customerId = null;
+
+        private bool _customerIdSet = false;
+
+        public bool ShouldSerializeCustomerId() => _customerIdSet;
+
+        /// <summary>
         /// Passes the `error_on_requires_action` option to the Stripe API. Set to true to fail the payment attempt if it transitions into requires_action. Use this parameter for simpler integrations that don't handle customer actions, such as saving cards without authentication.
         /// </summary>
         [JsonProperty("error_on_requires_action", NullValueHandling = NullValueHandling.Include)]
