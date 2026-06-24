@@ -10,6 +10,8 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
+    using System;
+    using System.Collections.Generic;
 
     public class ListPayoutsRequest
     {
@@ -24,6 +26,48 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
+
+        /// <summary>
+        /// Filters the results to only payouts created before this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=created_at_lte")]
+        public DateTime? CreatedAtLte { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only payouts created after this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=created_at_gte")]
+        public DateTime? CreatedAtGte { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only payouts updated before this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=updated_at_lte")]
+        public DateTime? UpdatedAtLte { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only payouts updated after this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=updated_at_gte")]
+        public DateTime? UpdatedAtGte { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only the payouts that have an `external_identifier` that exactly matches this value.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=external_identifier")]
+        public string? ExternalIdentifier { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only the payouts that have a `payment_service_payout_id` that exactly matches this value.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_service_payout_id")]
+        public string? PaymentServicePayoutId { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only the payouts that have a `status` that matches with any of the provided status values.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")]
+        public List<string>? Status { get; set; } = null;
 
         /// <summary>
         /// The ID of the merchant account to use for this request.

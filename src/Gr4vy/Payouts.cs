@@ -32,9 +32,7 @@ namespace Gr4vy
         /// <remarks>
         /// Returns a list of payouts made.
         /// </remarks>
-        /// <param name="cursor">A pointer to the page of results to return.</param>
-        /// <param name="limit">The maximum number of items that are at returned.</param>
-        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="request">A <see cref="ListPayoutsRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="ListPayoutsResponse"/> object when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -52,12 +50,7 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<ListPayoutsResponse> ListAsync(
-            string? cursor = null,
-            long? limit = 20,
-            string? merchantAccountId = null,
-            RetryConfig? retryConfig = null
-        );
+        public  Task<ListPayoutsResponse> ListAsync(ListPayoutsRequest? request = null, RetryConfig? retryConfig = null);
 
         /// <summary>
         /// Create a payout.
@@ -146,9 +139,7 @@ namespace Gr4vy
         /// <remarks>
         /// Returns a list of payouts made.
         /// </remarks>
-        /// <param name="cursor">A pointer to the page of results to return.</param>
-        /// <param name="limit">The maximum number of items that are at returned.</param>
-        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="request">A <see cref="ListPayoutsRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="ListPayoutsResponse"/> object when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -167,18 +158,14 @@ namespace Gr4vy
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public async  Task<ListPayoutsResponse> ListAsync(
-            string? cursor = null,
-            long? limit = 20,
-            string? merchantAccountId = null,
+            ListPayoutsRequest? request = null,
             RetryConfig? retryConfig = null
         )
         {
-            var request = new ListPayoutsRequest()
+            if (request == null)
             {
-                Cursor = cursor,
-                Limit = limit,
-                MerchantAccountId = merchantAccountId,
-            };
+                request = new ListPayoutsRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -281,10 +268,22 @@ namespace Gr4vy
                     return null;
                 }
 
+                var newRequest = new ListPayoutsRequest
+                {
+                    Cursor = nextCursor,
+                    Limit = request?.Limit,
+                    CreatedAtLte = request?.CreatedAtLte,
+                    CreatedAtGte = request?.CreatedAtGte,
+                    UpdatedAtLte = request?.UpdatedAtLte,
+                    UpdatedAtGte = request?.UpdatedAtGte,
+                    ExternalIdentifier = request?.ExternalIdentifier,
+                    PaymentServicePayoutId = request?.PaymentServicePayoutId,
+                    Status = request?.Status,
+                    MerchantAccountId = request?.MerchantAccountId
+                };
+
                 return await ListAsync (
-                    cursor: nextCursor,
-                    limit: request?.Limit,
-                    merchantAccountId: request?.MerchantAccountId,
+                    request: newRequest,
                     retryConfig: retryConfig
                 );
             };

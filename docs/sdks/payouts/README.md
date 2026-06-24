@@ -25,10 +25,11 @@ var sdk = new Gr4vySDK(
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-ListPayoutsResponse? res = await sdk.Payouts.ListAsync(
-    cursor: "ZXhhbXBsZTE",
-    limit: 20
-);
+ListPayoutsRequest req = new ListPayoutsRequest() {
+    Cursor = "ZXhhbXBsZTE",
+};
+
+ListPayoutsResponse? res = await sdk.Payouts.ListAsync(req);
 
 while(res != null)
 {
@@ -40,11 +41,9 @@ while(res != null)
 
 ### Parameters
 
-| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
-| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `Cursor`                                                | *string*                                                | :heavy_minus_sign:                                      | A pointer to the page of results to return.             | ZXhhbXBsZTE                                             |
-| `Limit`                                                 | *long*                                                  | :heavy_minus_sign:                                      | The maximum number of items that are at returned.       | 20                                                      |
-| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [ListPayoutsRequest](../../Models/Requests/ListPayoutsRequest.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
 
 ### Response
 
