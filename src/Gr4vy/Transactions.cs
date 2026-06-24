@@ -498,6 +498,7 @@ namespace Gr4vy
                     HasRefunds = request?.HasRefunds,
                     PendingReview = request?.PendingReview,
                     CheckoutSessionId = request?.CheckoutSessionId,
+                    PaymentLinkId = request?.PaymentLinkId,
                     ReconciliationId = request?.ReconciliationId,
                     HasGiftCardRedemptions = request?.HasGiftCardRedemptions,
                     GiftCardId = request?.GiftCardId,

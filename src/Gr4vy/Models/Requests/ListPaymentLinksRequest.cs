@@ -10,6 +10,7 @@
 namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
+    using System;
     using System.Collections.Generic;
 
     public class ListPaymentLinksRequest
@@ -25,6 +26,60 @@ namespace Gr4vy.Models.Requests
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
         public long? Limit { get; set; } = 20;
+
+        /// <summary>
+        /// Filters the results to only payment links created before this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=created_at_lte")]
+        public DateTime? CreatedAtLte { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only payment links created after this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=created_at_gte")]
+        public DateTime? CreatedAtGte { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only payment links updated before this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=updated_at_lte")]
+        public DateTime? UpdatedAtLte { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only payment links updated after this ISO date-time string. The time zone must be included. Ensure that the date-time string is URL encoded, e.g. `2022-01-01T12:00:00+08:00` must be encoded as `2022-01-01T12%3A00%3A00%2B08%3A00`.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=updated_at_gte")]
+        public DateTime? UpdatedAtGte { get; set; } = null;
+
+        /// <summary>
+        /// Filters for payment links that have matching `currency` values. The `currency` values provided must be formatted as 3-letter ISO currency codes.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=currency")]
+        public List<string>? Currency { get; set; } = null;
+
+        /// <summary>
+        /// Filters for payment links that have an `amount` equal to this value.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=amount_eq")]
+        public long? AmountEq { get; set; } = null;
+
+        /// <summary>
+        /// Filters for payment links that have an `amount` greater than or equal to this value.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=amount_gte")]
+        public long? AmountGte { get; set; } = null;
+
+        /// <summary>
+        /// Filters for payment links that have an `amount` less than or equal to this value.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=amount_lte")]
+        public long? AmountLte { get; set; } = null;
+
+        /// <summary>
+        /// Filters the results to only the payment links that have a `status` that matches with any of the provided status values.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")]
+        public List<string>? Status { get; set; } = null;
 
         /// <summary>
         /// Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.
