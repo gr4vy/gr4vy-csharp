@@ -59,10 +59,7 @@ namespace Gr4vy
         /// <remarks>
         /// List all created payment links.
         /// </remarks>
-        /// <param name="cursor">A pointer to the page of results to return.</param>
-        /// <param name="limit">The maximum number of items that are returned.</param>
-        /// <param name="buyerSearch">Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.</param>
-        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="request">A <see cref="ListPaymentLinksRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="ListPaymentLinksResponse"/> object when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -81,10 +78,7 @@ namespace Gr4vy
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public  Task<ListPaymentLinksResponse> ListAsync(
-            string? cursor = null,
-            long? limit = 20,
-            List<string>? buyerSearch = null,
-            string? merchantAccountId = null,
+            ListPaymentLinksRequest? request = null,
             RetryConfig? retryConfig = null
         );
 
@@ -538,10 +532,7 @@ namespace Gr4vy
         /// <remarks>
         /// List all created payment links.
         /// </remarks>
-        /// <param name="cursor">A pointer to the page of results to return.</param>
-        /// <param name="limit">The maximum number of items that are returned.</param>
-        /// <param name="buyerSearch">Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.</param>
-        /// <param name="merchantAccountId">The ID of the merchant account to use for this request.</param>
+        /// <param name="request">A <see cref="ListPaymentLinksRequest"/> parameter.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
         /// <returns>An awaitable task that returns a <see cref="ListPaymentLinksResponse"/> object when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
@@ -560,20 +551,14 @@ namespace Gr4vy
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
         public async  Task<ListPaymentLinksResponse> ListAsync(
-            string? cursor = null,
-            long? limit = 20,
-            List<string>? buyerSearch = null,
-            string? merchantAccountId = null,
+            ListPaymentLinksRequest? request = null,
             RetryConfig? retryConfig = null
         )
         {
-            var request = new ListPaymentLinksRequest()
+            if (request == null)
             {
-                Cursor = cursor,
-                Limit = limit,
-                BuyerSearch = buyerSearch,
-                MerchantAccountId = merchantAccountId,
-            };
+                request = new ListPaymentLinksRequest();
+            }
             request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
@@ -676,11 +661,25 @@ namespace Gr4vy
                     return null;
                 }
 
+                var newRequest = new ListPaymentLinksRequest
+                {
+                    Cursor = nextCursor,
+                    Limit = request?.Limit,
+                    CreatedAtLte = request?.CreatedAtLte,
+                    CreatedAtGte = request?.CreatedAtGte,
+                    UpdatedAtLte = request?.UpdatedAtLte,
+                    UpdatedAtGte = request?.UpdatedAtGte,
+                    Currency = request?.Currency,
+                    AmountEq = request?.AmountEq,
+                    AmountGte = request?.AmountGte,
+                    AmountLte = request?.AmountLte,
+                    Status = request?.Status,
+                    BuyerSearch = request?.BuyerSearch,
+                    MerchantAccountId = request?.MerchantAccountId
+                };
+
                 return await ListAsync (
-                    cursor: nextCursor,
-                    limit: request?.Limit,
-                    buyerSearch: request?.BuyerSearch,
-                    merchantAccountId: request?.MerchantAccountId,
+                    request: newRequest,
                     retryConfig: retryConfig
                 );
             };

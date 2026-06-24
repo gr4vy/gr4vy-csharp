@@ -175,6 +175,12 @@ namespace Gr4vy.Models.Requests
         public string? CheckoutSessionId { get; set; } = null;
 
         /// <summary>
+        /// Filters for transactions where the `payment_link_id` matches the provided value.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_link_id")]
+        public string? PaymentLinkId { get; set; } = null;
+
+        /// <summary>
         /// Filters for transactions where the `reconciliation_id` matches the provided value.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=reconciliation_id")]
