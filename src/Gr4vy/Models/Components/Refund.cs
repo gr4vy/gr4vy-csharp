@@ -129,5 +129,23 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("raw_response_description")]
         public string? RawResponseDescription { get; set; } = null;
+
+        /// <summary>
+        /// The ISO 4217 currency code of this refund's settlement.
+        /// </summary>
+        [JsonProperty("settled_currency")]
+        public string? SettledCurrency { get; set; } = null;
+
+        /// <summary>
+        /// The net amount settled for this refund, in the smallest currency unit (for example, cents or pence).
+        /// </summary>
+        [JsonProperty("settled_amount")]
+        public long? SettledAmount { get; set; } = 0;
+
+        /// <summary>
+        /// Indicates whether this refund has been settled.
+        /// </summary>
+        [JsonProperty("settled")]
+        public bool Settled { get; set; } = default!;
     }
 }
