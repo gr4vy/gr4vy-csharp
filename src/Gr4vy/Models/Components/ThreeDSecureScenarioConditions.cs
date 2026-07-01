@@ -17,37 +17,121 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// First name of the buyer to match.
         /// </summary>
-        [JsonProperty("first_name")]
-        public string? FirstName { get; set; } = null;
+        [JsonProperty("first_name", NullValueHandling = NullValueHandling.Include)]
+        public string? FirstName
+        {
+            get => _firstName;
+            set
+            {
+                _firstName = value;
+                _firstNameSet = true;
+            }
+        }
+
+        private string? _firstName = null;
+
+        private bool _firstNameSet = false;
+
+        public bool ShouldSerializeFirstName() => _firstNameSet;
 
         /// <summary>
         /// Last name of the buyer to match.
         /// </summary>
-        [JsonProperty("last_name")]
-        public string? LastName { get; set; } = null;
+        [JsonProperty("last_name", NullValueHandling = NullValueHandling.Include)]
+        public string? LastName
+        {
+            get => _lastName;
+            set
+            {
+                _lastName = value;
+                _lastNameSet = true;
+            }
+        }
+
+        private string? _lastName = null;
+
+        private bool _lastNameSet = false;
+
+        public bool ShouldSerializeLastName() => _lastNameSet;
 
         /// <summary>
         /// Email address of the buyer to match.
         /// </summary>
-        [JsonProperty("email_address")]
-        public string? EmailAddress { get; set; } = null;
+        [JsonProperty("email_address", NullValueHandling = NullValueHandling.Include)]
+        public string? EmailAddress
+        {
+            get => _emailAddress;
+            set
+            {
+                _emailAddress = value;
+                _emailAddressSet = true;
+            }
+        }
+
+        private string? _emailAddress = null;
+
+        private bool _emailAddressSet = false;
+
+        public bool ShouldSerializeEmailAddress() => _emailAddressSet;
 
         /// <summary>
         /// Amount of the transaction to match.
         /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; } = null;
+        [JsonProperty("amount", NullValueHandling = NullValueHandling.Include)]
+        public long? Amount
+        {
+            get => _amount;
+            set
+            {
+                _amount = value;
+                _amountSet = true;
+            }
+        }
+
+        private long? _amount = null;
+
+        private bool _amountSet = false;
+
+        public bool ShouldSerializeAmount() => _amountSet;
 
         /// <summary>
         /// External identifier to match.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", NullValueHandling = NullValueHandling.Include)]
+        public string? ExternalIdentifier
+        {
+            get => _externalIdentifier;
+            set
+            {
+                _externalIdentifier = value;
+                _externalIdentifierSet = true;
+            }
+        }
+
+        private string? _externalIdentifier = null;
+
+        private bool _externalIdentifierSet = false;
+
+        public bool ShouldSerializeExternalIdentifier() => _externalIdentifierSet;
 
         /// <summary>
         /// Card number to match.
         /// </summary>
-        [JsonProperty("card_number")]
-        public string? CardNumber { get; set; } = null;
+        [JsonProperty("card_number", NullValueHandling = NullValueHandling.Include)]
+        public string? CardNumber
+        {
+            get => _cardNumber;
+            set
+            {
+                _cardNumber = value;
+                _cardNumberSet = true;
+            }
+        }
+
+        private string? _cardNumber = null;
+
+        private bool _cardNumberSet = false;
+
+        public bool ShouldSerializeCardNumber() => _cardNumberSet;
     }
 }
