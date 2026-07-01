@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 2.8.45
+  version: 2.8.46
   additionalDependencies:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.17.0
@@ -65,4 +65,5 @@ csharp:
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: flat
   sourceDirectory: src
+  targetFramework: dotnetVersion
   useNodatime: true
