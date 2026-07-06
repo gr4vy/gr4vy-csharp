@@ -110,7 +110,7 @@ namespace Gr4vy.Models.Components
         /// The user that created this resource.
         /// </summary>
         [JsonProperty("creator")]
-        public Creator? Creator { get; set; } = null;
+        public ApiCommonSchemasCreator? Creator { get; set; } = null;
 
         /// <summary>
         /// The standardized error code set by Gr4vy.

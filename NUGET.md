@@ -106,18 +106,9 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    merchantAccountId: "default",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
-
-ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
+ListApiKeyPairsResponse? res = await sdk.ApiKeyPairs.ListAsync(limit: 20);
 
 while(res != null)
 {
@@ -139,18 +130,9 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    merchantAccountId: "default",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
-
-ListBuyersResponse? res = await sdk.Buyers.ListAsync(
+ListApiKeyPairsResponse? res = await sdk.ApiKeyPairs.ListAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -161,7 +143,7 @@ ListBuyersResponse? res = await sdk.Buyers.ListAsync(
         ),
         retryConnectionErrors: false
     ),
-    request: req
+    limit: 20
 );
 
 while(res != null)
@@ -189,17 +171,10 @@ var sdk = new Gr4vySDK(
         ),
         retryConnectionErrors: false
     ),
-    merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
-
-ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
+ListApiKeyPairsResponse? res = await sdk.ApiKeyPairs.ListAsync(limit: 20);
 
 while(res != null)
 {

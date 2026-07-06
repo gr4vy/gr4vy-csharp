@@ -1,21 +1,22 @@
-# MerchantAccounts
+# ApiKeyPairs
 
 ## Overview
 
 ### Available Operations
 
-* [List](#list) - List all merchant accounts
-* [Create](#create) - Create a merchant account
-* [Get](#get) - Get a merchant account
-* [Update](#update) - Update a merchant account
+* [List](#list) - List all API key pairs
+* [Create](#create) - Create an API key pair
+* [Get](#get) - Get an API key pair
+* [Update](#update) - Update an API key pair
+* [Delete](#delete) - Delete an API key pair
 
 ## List
 
-List all merchant accounts in an instance.
+List all API key pairs.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="list_merchant_accounts" method="get" path="/merchant-accounts" -->
+<!-- UsageSnippet language="csharp" operationID="list_api_key_pairs" method="get" path="/api-key-pairs" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
@@ -23,11 +24,7 @@ using Gr4vy.Models.Requests;
 
 var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListMerchantAccountsResponse? res = await sdk.MerchantAccounts.ListAsync(
-    cursor: "ZXhhbXBsZTE",
-    limit: 20,
-    search: "merchant-12345"
-);
+ListApiKeyPairsResponse? res = await sdk.ApiKeyPairs.ListAsync(limit: 20);
 
 while(res != null)
 {
@@ -39,15 +36,14 @@ while(res != null)
 
 ### Parameters
 
-| Parameter                                         | Type                                              | Required                                          | Description                                       | Example                                           |
-| ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- | ------------------------------------------------- |
-| `Cursor`                                          | *string*                                          | :heavy_minus_sign:                                | A pointer to the page of results to return.       | ZXhhbXBsZTE                                       |
-| `Limit`                                           | *long*                                            | :heavy_minus_sign:                                | The maximum number of items that are at returned. | 20                                                |
-| `Search`                                          | *string*                                          | :heavy_minus_sign:                                | The search term to filter merchant accounts by.   | merchant-12345                                    |
+| Parameter                                      | Type                                           | Required                                       | Description                                    | Example                                        |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `Cursor`                                       | *string*                                       | :heavy_minus_sign:                             | A pointer to the page of results to return.    | ZXhhbXBsZTE                                    |
+| `Limit`                                        | *long*                                         | :heavy_minus_sign:                             | The maximum number of items that are returned. | 20                                             |
 
 ### Response
 
-**[ListMerchantAccountsResponse](../../Models/Requests/ListMerchantAccountsResponse.md)**
+**[ListApiKeyPairsResponse](../../Models/Requests/ListApiKeyPairsResponse.md)**
 
 ### Errors
 
@@ -69,38 +65,39 @@ while(res != null)
 
 ## Create
 
-Create a new merchant account in an instance.
+Create a new API key pair.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="create_merchant_account" method="post" path="/merchant-accounts" -->
+<!-- UsageSnippet language="csharp" operationID="create_api_key_pair" method="post" path="/api-key-pairs" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
+using System.Collections.Generic;
 
 var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-MerchantAccountCreate req = new MerchantAccountCreate() {
-    AccountUpdaterEnabled = true,
-    AsyncNetworkTokensEnabled = true,
-    Id = "merchant-12345",
-    DisplayName = "Example",
+APIKeyPairCreate req = new APIKeyPairCreate() {
+    DisplayName = "Production key",
+    RoleIds = new List<string>() {
+        "8f4b8c1a-1b2c-4d3e-9f5a-6b7c8d9e0f1a",
+    },
 };
 
-var res = await sdk.MerchantAccounts.CreateAsync(req);
+var res = await sdk.ApiKeyPairs.CreateAsync(req);
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `request`                                                                 | [MerchantAccountCreate](../../Models/Components/MerchantAccountCreate.md) | :heavy_check_mark:                                                        | The request object to use for the request.                                |
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `request`                                                       | [APIKeyPairCreate](../../Models/Components/APIKeyPairCreate.md) | :heavy_check_mark:                                              | The request object to use for the request.                      |
 
 ### Response
 
-**[ApiRoutersMerchantAccountsSchemasMerchantAccount](../../Models/Components/ApiRoutersMerchantAccountsSchemasMerchantAccount.md)**
+**[APIKeyPair](../../Models/Components/APIKeyPair.md)**
 
 ### Errors
 
@@ -122,31 +119,31 @@ var res = await sdk.MerchantAccounts.CreateAsync(req);
 
 ## Get
 
-Get info about a merchant account in an instance.
+Fetches an API key pair by its ID.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="get_merchant_account" method="get" path="/merchant-accounts/{merchant_account_id}" -->
+<!-- UsageSnippet language="csharp" operationID="get_api_key_pair" method="get" path="/api-key-pairs/{api_key_pair_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
 
 var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345");
+var res = await sdk.ApiKeyPairs.GetAsync(apiKeyPairId: "fe26475d-ec3e-4884-9553-f7356683f7f9");
 
 // handle response
 ```
 
 ### Parameters
 
-| Parameter                       | Type                            | Required                        | Description                     | Example                         |
-| ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- | ------------------------------- |
-| `MerchantAccountId`             | *string*                        | :heavy_check_mark:              | The ID of the merchant account. | merchant-12345                  |
+| Parameter                            | Type                                 | Required                             | Description                          | Example                              |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `ApiKeyPairId`                       | *string*                             | :heavy_check_mark:                   | The ID of the API key pair.          | fe26475d-ec3e-4884-9553-f7356683f7f9 |
 
 ### Response
 
-**[ApiRoutersMerchantAccountsSchemasMerchantAccount](../../Models/Components/ApiRoutersMerchantAccountsSchemasMerchantAccount.md)**
+**[APIKeyPair](../../Models/Components/APIKeyPair.md)**
 
 ### Errors
 
@@ -168,23 +165,20 @@ var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345
 
 ## Update
 
-Update info for a merchant account in an instance.
+Updates an API key pair.
 
 ### Example Usage
 
-<!-- UsageSnippet language="csharp" operationID="update_merchant_account" method="put" path="/merchant-accounts/{merchant_account_id}" -->
+<!-- UsageSnippet language="csharp" operationID="update_api_key_pair" method="put" path="/api-key-pairs/{api_key_pair_id}" -->
 ```csharp
 using Gr4vy;
 using Gr4vy.Models.Components;
 
 var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-var res = await sdk.MerchantAccounts.UpdateAsync(
-    merchantAccountId: "merchant-12345",
-    merchantAccountUpdate: new MerchantAccountUpdate() {
-        AccountUpdaterEnabled = true,
-        AsyncNetworkTokensEnabled = true,
-    }
+var res = await sdk.ApiKeyPairs.UpdateAsync(
+    apiKeyPairId: "fe26475d-ec3e-4884-9553-f7356683f7f9",
+    apiKeyPairUpdate: new APIKeyPairUpdate() {}
 );
 
 // handle response
@@ -192,14 +186,56 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
 
 ### Parameters
 
-| Parameter                                                                 | Type                                                                      | Required                                                                  | Description                                                               | Example                                                                   |
-| ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| `MerchantAccountId`                                                       | *string*                                                                  | :heavy_check_mark:                                                        | The ID of the merchant account.                                           | merchant-12345                                                            |
-| `MerchantAccountUpdate`                                                   | [MerchantAccountUpdate](../../Models/Components/MerchantAccountUpdate.md) | :heavy_check_mark:                                                        | N/A                                                                       |                                                                           |
+| Parameter                                                       | Type                                                            | Required                                                        | Description                                                     | Example                                                         |
+| --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- | --------------------------------------------------------------- |
+| `ApiKeyPairId`                                                  | *string*                                                        | :heavy_check_mark:                                              | The ID of the API key pair.                                     | fe26475d-ec3e-4884-9553-f7356683f7f9                            |
+| `APIKeyPairUpdate`                                              | [APIKeyPairUpdate](../../Models/Components/APIKeyPairUpdate.md) | :heavy_check_mark:                                              | N/A                                                             |                                                                 |
 
 ### Response
 
-**[ApiRoutersMerchantAccountsSchemasMerchantAccount](../../Models/Components/ApiRoutersMerchantAccountsSchemasMerchantAccount.md)**
+**[APIKeyPair](../../Models/Components/APIKeyPair.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| Gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| Gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| Gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| Gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| Gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| Gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## Delete
+
+Permanently removes an API key pair.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="delete_api_key_pair" method="delete" path="/api-key-pairs/{api_key_pair_id}" -->
+```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
+
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
+
+await sdk.ApiKeyPairs.DeleteAsync(apiKeyPairId: "fe26475d-ec3e-4884-9553-f7356683f7f9");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                            | Type                                 | Required                             | Description                          | Example                              |
+| ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ | ------------------------------------ |
+| `ApiKeyPairId`                       | *string*                             | :heavy_check_mark:                   | The ID of the API key pair.          | fe26475d-ec3e-4884-9553-f7356683f7f9 |
 
 ### Errors
 

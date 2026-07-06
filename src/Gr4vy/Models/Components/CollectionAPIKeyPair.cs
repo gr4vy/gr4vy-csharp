@@ -14,13 +14,13 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    public class MerchantAccounts
+    public class CollectionAPIKeyPair
     {
         /// <summary>
         /// A list of items returned for this request.
         /// </summary>
         [JsonProperty("items")]
-        public List<ApiRoutersMerchantAccountsSchemasMerchantAccount> Items { get; set; } = default!;
+        public List<APIKeyPair> Items { get; set; } = default!;
 
         /// <summary>
         /// The number of items for this page.

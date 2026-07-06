@@ -24,20 +24,18 @@ namespace Gr4vy
     using System.Net.Http.Headers;
     using System.Threading.Tasks;
 
-    public interface IMerchantAccounts
+    public interface IApiKeyPairs
     {
-        public IThreeDsConfiguration ThreeDsConfiguration { get; }
         /// <summary>
-        /// List all merchant accounts.
+        /// List all API key pairs.
         /// </summary>
         /// <remarks>
-        /// List all merchant accounts in an instance.
+        /// List all API key pairs.
         /// </remarks>
         /// <param name="cursor">A pointer to the page of results to return.</param>
-        /// <param name="limit">The maximum number of items that are at returned.</param>
-        /// <param name="search">The search term to filter merchant accounts by.</param>
+        /// <param name="limit">The maximum number of items that are returned.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="ListMerchantAccountsResponse"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="ListApiKeyPairsResponse"/> object when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -53,21 +51,20 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<ListMerchantAccountsResponse> ListAsync(
+        public  Task<ListApiKeyPairsResponse> ListAsync(
             string? cursor = null,
             long? limit = 20,
-            string? search = null,
             RetryConfig? retryConfig = null
         );
 
         /// <summary>
-        /// Create a merchant account.
+        /// Create an API key pair.
         /// </summary>
         /// <remarks>
-        /// Create a new merchant account in an instance.
+        /// Create a new API key pair.
         /// </remarks>
-        /// <param name="request">A <see cref="MerchantAccountCreate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
+        /// <param name="request">A <see cref="APIKeyPairCreate"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="APIKeyPair"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -84,18 +81,18 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> CreateAsync(MerchantAccountCreate request);
+        public  Task<APIKeyPair> CreateAsync(APIKeyPairCreate request);
 
         /// <summary>
-        /// Get a merchant account.
+        /// Get an API key pair.
         /// </summary>
         /// <remarks>
-        /// Get info about a merchant account in an instance.
+        /// Fetches an API key pair by its ID.
         /// </remarks>
-        /// <param name="merchantAccountId">The ID of the merchant account.</param>
+        /// <param name="apiKeyPairId">The ID of the API key pair.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="merchantAccountId"/> is null.</exception>
+        /// <returns>An awaitable task that returns a <see cref="APIKeyPair"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="apiKeyPairId"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -111,21 +108,18 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> GetAsync(
-            string merchantAccountId,
-            RetryConfig? retryConfig = null
-        );
+        public  Task<APIKeyPair> GetAsync(string apiKeyPairId, RetryConfig? retryConfig = null);
 
         /// <summary>
-        /// Update a merchant account.
+        /// Update an API key pair.
         /// </summary>
         /// <remarks>
-        /// Update info for a merchant account in an instance.
+        /// Updates an API key pair.
         /// </remarks>
-        /// <param name="merchantAccountId">The ID of the merchant account.</param>
-        /// <param name="merchantAccountUpdate">A <see cref="MerchantAccountUpdate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
-        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="merchantAccountUpdate"/> is null.</exception>
+        /// <param name="apiKeyPairId">The ID of the API key pair.</param>
+        /// <param name="apiKeyPairUpdate">A <see cref="APIKeyPairUpdate"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="APIKeyPair"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="apiKeyPairId"/> or <paramref name="apiKeyPairUpdate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -141,13 +135,36 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> UpdateAsync(
-            string merchantAccountId,
-            MerchantAccountUpdate merchantAccountUpdate
-        );
+        public  Task<APIKeyPair> UpdateAsync(string apiKeyPairId, APIKeyPairUpdate apiKeyPairUpdate);
+
+        /// <summary>
+        /// Delete an API key pair.
+        /// </summary>
+        /// <remarks>
+        /// Permanently removes an API key pair.
+        /// </remarks>
+        /// <param name="apiKeyPairId">The ID of the API key pair.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="apiKeyPairId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public  Task DeleteAsync(string apiKeyPairId);
     }
 
-    public class MerchantAccounts: IMerchantAccounts
+    public class ApiKeyPairs: IApiKeyPairs
     {
         /// <summary>
         /// SDK Configuration.
@@ -155,29 +172,21 @@ namespace Gr4vy
         /// </summary>
         public SDKConfig SDKConfiguration { get; private set; }
 
-        /// <summary>
-        /// ThreeDsConfiguration SubSDK.
-        /// <see cref="IThreeDsConfiguration"/>
-        /// </summary>
-        public IThreeDsConfiguration ThreeDsConfiguration { get; private set; }
-
-        public MerchantAccounts(SDKConfig config)
+        public ApiKeyPairs(SDKConfig config)
         {
             SDKConfiguration = config;
-            ThreeDsConfiguration = new ThreeDsConfiguration(SDKConfiguration);
         }
 
         /// <summary>
-        /// List all merchant accounts.
+        /// List all API key pairs.
         /// </summary>
         /// <remarks>
-        /// List all merchant accounts in an instance.
+        /// List all API key pairs.
         /// </remarks>
         /// <param name="cursor">A pointer to the page of results to return.</param>
-        /// <param name="limit">The maximum number of items that are at returned.</param>
-        /// <param name="search">The search term to filter merchant accounts by.</param>
+        /// <param name="limit">The maximum number of items that are returned.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="ListMerchantAccountsResponse"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="ListApiKeyPairsResponse"/> object when completed.</returns>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -193,22 +202,20 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<ListMerchantAccountsResponse> ListAsync(
+        public async  Task<ListApiKeyPairsResponse> ListAsync(
             string? cursor = null,
             long? limit = 20,
-            string? search = null,
             RetryConfig? retryConfig = null
         )
         {
-            var request = new ListMerchantAccountsRequest()
+            var request = new ListApiKeyPairsRequest()
             {
                 Cursor = cursor,
                 Limit = limit,
-                Search = search,
             };
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/api-key-pairs", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -223,7 +230,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_merchant_accounts", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "list_api_key_pairs", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -290,7 +297,7 @@ namespace Gr4vy
 
             httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
 
-            Func<Task<ListMerchantAccountsResponse?>> nextFunc = async delegate()
+            Func<Task<ListApiKeyPairsResponse?>> nextFunc = async delegate()
             {
                 var body = JObject.Parse(await httpResponse.Content.ReadAsStringAsync());
                 var nextCursorToken = body.SelectToken("$.next_cursor");
@@ -309,7 +316,6 @@ namespace Gr4vy
                 return await ListAsync (
                     cursor: nextCursor,
                     limit: request?.Limit,
-                    search: request?.Search,
                     retryConfig: retryConfig
                 );
             };
@@ -321,18 +327,18 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    Models.Components.MerchantAccounts obj;
+                    CollectionAPIKeyPair obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<Models.Components.MerchantAccounts>(httpResponseBody, NullValueHandling.Include);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<CollectionAPIKeyPair>(httpResponseBody, NullValueHandling.Include);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into Models.Components.MerchantAccounts.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into CollectionAPIKeyPair.", httpResponse, httpResponseBody, ex);
                     }
 
                     var result = obj!;
-                    var response = new ListMerchantAccountsResponse()
+                    var response = new ListApiKeyPairsResponse()
                     {
                         Result = result,
                         Next = nextFunc
@@ -596,13 +602,13 @@ namespace Gr4vy
 
 
         /// <summary>
-        /// Create a merchant account.
+        /// Create an API key pair.
         /// </summary>
         /// <remarks>
-        /// Create a new merchant account in an instance.
+        /// Create a new API key pair.
         /// </remarks>
-        /// <param name="request">A <see cref="MerchantAccountCreate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
+        /// <param name="request">A <see cref="APIKeyPairCreate"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="APIKeyPair"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -619,12 +625,12 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> CreateAsync(MerchantAccountCreate request)
+        public async  Task<APIKeyPair> CreateAsync(APIKeyPairCreate request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = baseUrl + "/merchant-accounts";
+            var urlString = baseUrl + "/api-key-pairs";
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -645,7 +651,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "create_merchant_account", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "create_api_key_pair", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -686,14 +692,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ApiRoutersMerchantAccountsSchemasMerchantAccount obj;
+                    APIKeyPair obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<ApiRoutersMerchantAccountsSchemasMerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<APIKeyPair>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into ApiRoutersMerchantAccountsSchemasMerchantAccount.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into APIKeyPair.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -955,15 +961,15 @@ namespace Gr4vy
 
 
         /// <summary>
-        /// Get a merchant account.
+        /// Get an API key pair.
         /// </summary>
         /// <remarks>
-        /// Get info about a merchant account in an instance.
+        /// Fetches an API key pair by its ID.
         /// </remarks>
-        /// <param name="merchantAccountId">The ID of the merchant account.</param>
+        /// <param name="apiKeyPairId">The ID of the API key pair.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
-        /// <exception cref="ArgumentNullException">The required parameter <paramref name="merchantAccountId"/> is null.</exception>
+        /// <returns>An awaitable task that returns a <see cref="APIKeyPair"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="apiKeyPairId"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -979,21 +985,17 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> GetAsync(
-            string merchantAccountId,
-            RetryConfig? retryConfig = null
-        )
+        public async  Task<APIKeyPair> GetAsync(string apiKeyPairId, RetryConfig? retryConfig = null)
         {
-            if (merchantAccountId == null) throw new ArgumentNullException(nameof(merchantAccountId));
+            if (apiKeyPairId == null) throw new ArgumentNullException(nameof(apiKeyPairId));
 
-            var request = new GetMerchantAccountRequest()
+            var request = new GetApiKeyPairRequest()
             {
-                MerchantAccountId = merchantAccountId,
+                ApiKeyPairId = apiKeyPairId,
             };
-            request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts/{merchant_account_id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/api-key-pairs/{api_key_pair_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Get, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1008,7 +1010,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "get_merchant_account", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "get_api_key_pair", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
             if (retryConfig == null)
@@ -1082,14 +1084,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ApiRoutersMerchantAccountsSchemasMerchantAccount obj;
+                    APIKeyPair obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<ApiRoutersMerchantAccountsSchemasMerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<APIKeyPair>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into ApiRoutersMerchantAccountsSchemasMerchantAccount.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into APIKeyPair.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -1351,15 +1353,15 @@ namespace Gr4vy
 
 
         /// <summary>
-        /// Update a merchant account.
+        /// Update an API key pair.
         /// </summary>
         /// <remarks>
-        /// Update info for a merchant account in an instance.
+        /// Updates an API key pair.
         /// </remarks>
-        /// <param name="merchantAccountId">The ID of the merchant account.</param>
-        /// <param name="merchantAccountUpdate">A <see cref="MerchantAccountUpdate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
-        /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="merchantAccountUpdate"/> is null.</exception>
+        /// <param name="apiKeyPairId">The ID of the API key pair.</param>
+        /// <param name="apiKeyPairUpdate">A <see cref="APIKeyPairUpdate"/> parameter.</param>
+        /// <returns>An awaitable task that returns a <see cref="APIKeyPair"/> object when completed.</returns>
+        /// <exception cref="ArgumentNullException">One of <paramref name="apiKeyPairId"/> or <paramref name="apiKeyPairUpdate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
         /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
@@ -1375,23 +1377,19 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> UpdateAsync(
-            string merchantAccountId,
-            MerchantAccountUpdate merchantAccountUpdate
-        )
+        public async  Task<APIKeyPair> UpdateAsync(string apiKeyPairId, APIKeyPairUpdate apiKeyPairUpdate)
         {
-            if (merchantAccountId == null) throw new ArgumentNullException(nameof(merchantAccountId));
-            if (merchantAccountUpdate == null) throw new ArgumentNullException(nameof(merchantAccountUpdate));
+            if (apiKeyPairId == null) throw new ArgumentNullException(nameof(apiKeyPairId));
+            if (apiKeyPairUpdate == null) throw new ArgumentNullException(nameof(apiKeyPairUpdate));
 
-            var request = new UpdateMerchantAccountRequest()
+            var request = new UpdateApiKeyPairRequest()
             {
-                MerchantAccountId = merchantAccountId,
-                MerchantAccountUpdate = merchantAccountUpdate,
+                ApiKeyPairId = apiKeyPairId,
+                APIKeyPairUpdate = apiKeyPairUpdate,
             };
-            request.MerchantAccountId ??= SDKConfiguration.MerchantAccountId;
 
             string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
-            var urlString = URLBuilder.Build(baseUrl, "/merchant-accounts/{merchant_account_id}", request, null);
+            var urlString = URLBuilder.Build(baseUrl, "/api-key-pairs/{api_key_pair_id}", request, null);
 
             var httpRequest = new HttpRequestMessage(HttpMethod.Put, urlString);
             httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
@@ -1401,7 +1399,7 @@ namespace Gr4vy
                 httpRequest.Headers.Add("Accept", "application/json");
             }
 
-            var serializedBody = RequestBodySerializer.Serialize(request, "MerchantAccountUpdate", "json", false, false);
+            var serializedBody = RequestBodySerializer.Serialize(request, "APIKeyPairUpdate", "json", false, false);
             if (serializedBody != null)
             {
                 httpRequest.Content = serializedBody;
@@ -1412,7 +1410,7 @@ namespace Gr4vy
                 httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
             }
 
-            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "update_merchant_account", null, SDKConfiguration.SecuritySource);
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "update_api_key_pair", null, SDKConfiguration.SecuritySource);
 
             httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
 
@@ -1453,14 +1451,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    ApiRoutersMerchantAccountsSchemasMerchantAccount obj;
+                    APIKeyPair obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<ApiRoutersMerchantAccountsSchemasMerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<APIKeyPair>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into ApiRoutersMerchantAccountsSchemasMerchantAccount.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into APIKeyPair.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -1704,6 +1702,228 @@ namespace Gr4vy
                     }
 
                     throw new Error504(payload, httpResponse, httpResponseBody);
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 400 && responseStatusCode < 500)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode >= 500 && responseStatusCode < 600)
+            {
+                throw new Models.Errors.APIException("API error occurred", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+
+            throw new Models.Errors.APIException("Unknown status code received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+        }
+
+
+        /// <summary>
+        /// Delete an API key pair.
+        /// </summary>
+        /// <remarks>
+        /// Permanently removes an API key pair.
+        /// </remarks>
+        /// <param name="apiKeyPairId">The ID of the API key pair.</param>
+        /// <returns>A task that represents the asynchronous operation.</returns>
+        /// <exception cref="ArgumentNullException">The required parameter <paramref name="apiKeyPairId"/> is null.</exception>
+        /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
+        /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
+        /// <exception cref="Error400">The request was invalid. Thrown when the API returns a 400 response.</exception>
+        /// <exception cref="Error401">The request was unauthorized. Thrown when the API returns a 401 response.</exception>
+        /// <exception cref="Error403">The credentials were invalid or the caller did not have permission to act on the resource. Thrown when the API returns a 403 response.</exception>
+        /// <exception cref="Error404">The resource was not found. Thrown when the API returns a 404 response.</exception>
+        /// <exception cref="Error405">The request method was not allowed. Thrown when the API returns a 405 response.</exception>
+        /// <exception cref="Error409">A duplicate record was found. Thrown when the API returns a 409 response.</exception>
+        /// <exception cref="HTTPValidationError">Validation Error. Thrown when the API returns a 422 response.</exception>
+        /// <exception cref="Error425">The request was too early. Thrown when the API returns a 425 response.</exception>
+        /// <exception cref="Error429">Too many requests were made. Thrown when the API returns a 429 response.</exception>
+        /// <exception cref="Error500">The server encountered an error. Thrown when the API returns a 500 response.</exception>
+        /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
+        /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
+        /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
+        public async  Task DeleteAsync(string apiKeyPairId)
+        {
+            if (apiKeyPairId == null) throw new ArgumentNullException(nameof(apiKeyPairId));
+
+            var request = new DeleteApiKeyPairRequest()
+            {
+                ApiKeyPairId = apiKeyPairId,
+            };
+
+            string baseUrl = this.SDKConfiguration.GetTemplatedServerUrl();
+            var urlString = URLBuilder.Build(baseUrl, "/api-key-pairs/{api_key_pair_id}", request, null);
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Delete, urlString);
+            httpRequest.Headers.Add("user-agent", SDKConfiguration.UserAgent);
+
+            if (!httpRequest.Headers.Contains("Accept"))
+            {
+                httpRequest.Headers.Add("Accept", "application/json");
+            }
+
+            if (SDKConfiguration.SecuritySource != null)
+            {
+                httpRequest = new SecurityMetadata(SDKConfiguration.SecuritySource).Apply(httpRequest);
+            }
+
+            var hookCtx = new HookContext(SDKConfiguration, baseUrl, "delete_api_key_pair", null, SDKConfiguration.SecuritySource);
+
+            httpRequest = await this.SDKConfiguration.Hooks.BeforeRequestAsync(new BeforeRequestContext(hookCtx), httpRequest);
+
+            HttpResponseMessage httpResponse;
+            try
+            {
+                httpResponse = await SDKConfiguration.Client.SendAsync(httpRequest);
+                int _statusCode = (int)httpResponse.StatusCode;
+
+                if (_statusCode >= 400 && _statusCode < 500 || _statusCode >= 500 && _statusCode < 600)
+                {
+                    var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), httpResponse, null);
+                    if (_httpResponse != null)
+                    {
+                        httpResponse = _httpResponse;
+                    }
+                }
+            }
+            catch (Exception _hookError)
+            {
+                var _httpResponse = await this.SDKConfiguration.Hooks.AfterErrorAsync(new AfterErrorContext(hookCtx), null, _hookError);
+                if (_httpResponse != null)
+                {
+                    httpResponse = _httpResponse;
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            httpResponse = await this.SDKConfiguration.Hooks.AfterSuccessAsync(new AfterSuccessContext(hookCtx), httpResponse);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            int responseStatusCode = (int)httpResponse.StatusCode;
+            if(responseStatusCode == 204)
+            {
+                return;
+            }
+            else if(responseStatusCode == 400)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 401)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 403)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 404)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 405)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 409)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 422)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 425)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 429)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 500)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 502)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
+                }
+
+                throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());
+            }
+            else if(responseStatusCode == 504)
+            {
+                if(Utilities.IsContentTypeMatch("application/json", contentType))
+                {
+
+                    return;
                 }
 
                 throw new Models.Errors.APIException("Unknown content type received", httpResponse, await httpResponse.Content.ReadAsStringAsync());

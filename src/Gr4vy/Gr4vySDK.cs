@@ -26,6 +26,8 @@ namespace Gr4vy
     {
         public IAccountUpdater AccountUpdater { get; }
 
+        public IApiKeyPairs ApiKeyPairs { get; }
+
         public IBuyers Buyers { get; }
 
         public IPaymentMethods PaymentMethods { get; }
@@ -76,6 +78,10 @@ namespace Gr4vy
         /// The AccountUpdater sub-SDK.
         /// </summary>
         public IAccountUpdater AccountUpdater { get; private set; }
+        /// <summary>
+        /// The ApiKeyPairs sub-SDK.
+        /// </summary>
+        public IApiKeyPairs ApiKeyPairs { get; private set; }
         /// <summary>
         /// The Buyers sub-SDK.
         /// </summary>
@@ -159,6 +165,8 @@ namespace Gr4vy
             InitHooks();
 
             AccountUpdater = new AccountUpdater(SDKConfiguration);
+
+            ApiKeyPairs = new ApiKeyPairs(SDKConfiguration);
 
             Buyers = new Buyers(SDKConfiguration);
 
@@ -262,6 +270,8 @@ namespace Gr4vy
             InitHooks();
 
             AccountUpdater = new AccountUpdater(SDKConfiguration);
+
+            ApiKeyPairs = new ApiKeyPairs(SDKConfiguration);
 
             Buyers = new Buyers(SDKConfiguration);
 
