@@ -7,20 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Gr4vy.Models.Components
+namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    using Newtonsoft.Json;
 
-    public class Creator
+    public class DeleteApiKeyPairRequest
     {
-        [JsonProperty("id")]
-        public string Id { get; set; } = default!;
-
-        [JsonProperty("name")]
-        public string Name { get; set; } = default!;
-
-        [JsonProperty("email_address")]
-        public string EmailAddress { get; set; } = default!;
+        /// <summary>
+        /// The ID of the API key pair.
+        /// </summary>
+        [SpeakeasyMetadata("pathParam:style=simple,explode=false,name=api_key_pair_id")]
+        public string ApiKeyPairId { get; set; } = default!;
     }
 }

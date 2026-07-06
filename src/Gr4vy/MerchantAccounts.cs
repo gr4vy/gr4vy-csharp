@@ -67,7 +67,7 @@ namespace Gr4vy
         /// Create a new merchant account in an instance.
         /// </remarks>
         /// <param name="request">A <see cref="MerchantAccountCreate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -84,7 +84,7 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<MerchantAccount> CreateAsync(MerchantAccountCreate request);
+        public  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> CreateAsync(MerchantAccountCreate request);
 
         /// <summary>
         /// Get a merchant account.
@@ -94,7 +94,7 @@ namespace Gr4vy
         /// </remarks>
         /// <param name="merchantAccountId">The ID of the merchant account.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="merchantAccountId"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -111,7 +111,10 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<MerchantAccount> GetAsync(string merchantAccountId, RetryConfig? retryConfig = null);
+        public  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> GetAsync(
+            string merchantAccountId,
+            RetryConfig? retryConfig = null
+        );
 
         /// <summary>
         /// Update a merchant account.
@@ -121,7 +124,7 @@ namespace Gr4vy
         /// </remarks>
         /// <param name="merchantAccountId">The ID of the merchant account.</param>
         /// <param name="merchantAccountUpdate">A <see cref="MerchantAccountUpdate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="merchantAccountUpdate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -138,7 +141,10 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public  Task<MerchantAccount> UpdateAsync(string merchantAccountId, MerchantAccountUpdate merchantAccountUpdate);
+        public  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> UpdateAsync(
+            string merchantAccountId,
+            MerchantAccountUpdate merchantAccountUpdate
+        );
     }
 
     public class MerchantAccounts: IMerchantAccounts
@@ -596,7 +602,7 @@ namespace Gr4vy
         /// Create a new merchant account in an instance.
         /// </remarks>
         /// <param name="request">A <see cref="MerchantAccountCreate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="request"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -613,7 +619,7 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<MerchantAccount> CreateAsync(MerchantAccountCreate request)
+        public async  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> CreateAsync(MerchantAccountCreate request)
         {
             if (request == null) throw new ArgumentNullException(nameof(request));
 
@@ -680,14 +686,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    MerchantAccount obj;
+                    ApiRoutersMerchantAccountsSchemasMerchantAccount obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<MerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<ApiRoutersMerchantAccountsSchemasMerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into MerchantAccount.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into ApiRoutersMerchantAccountsSchemasMerchantAccount.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -956,7 +962,7 @@ namespace Gr4vy
         /// </remarks>
         /// <param name="merchantAccountId">The ID of the merchant account.</param>
         /// <param name="retryConfig">The retry configuration to use for this operation.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">The required parameter <paramref name="merchantAccountId"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -973,7 +979,10 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<MerchantAccount> GetAsync(string merchantAccountId, RetryConfig? retryConfig = null)
+        public async  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> GetAsync(
+            string merchantAccountId,
+            RetryConfig? retryConfig = null
+        )
         {
             if (merchantAccountId == null) throw new ArgumentNullException(nameof(merchantAccountId));
 
@@ -1073,14 +1082,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    MerchantAccount obj;
+                    ApiRoutersMerchantAccountsSchemasMerchantAccount obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<MerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<ApiRoutersMerchantAccountsSchemasMerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into MerchantAccount.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into ApiRoutersMerchantAccountsSchemasMerchantAccount.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;
@@ -1349,7 +1358,7 @@ namespace Gr4vy
         /// </remarks>
         /// <param name="merchantAccountId">The ID of the merchant account.</param>
         /// <param name="merchantAccountUpdate">A <see cref="MerchantAccountUpdate"/> parameter.</param>
-        /// <returns>An awaitable task that returns a <see cref="MerchantAccount"/> object when completed.</returns>
+        /// <returns>An awaitable task that returns a <see cref="ApiRoutersMerchantAccountsSchemasMerchantAccount"/> object when completed.</returns>
         /// <exception cref="ArgumentNullException">One of <paramref name="merchantAccountId"/> or <paramref name="merchantAccountUpdate"/> is null.</exception>
         /// <exception cref="HttpRequestException">The HTTP request failed due to network issues.</exception>
         /// <exception cref="ResponseValidationException">The response body could not be deserialized.</exception>
@@ -1366,7 +1375,7 @@ namespace Gr4vy
         /// <exception cref="Error502">The server encountered an error. Thrown when the API returns a 502 response.</exception>
         /// <exception cref="Error504">The server encountered an error. Thrown when the API returns a 504 response.</exception>
         /// <exception cref="APIException">Default API Exception. Thrown when the API returns a 4XX or 5XX response.</exception>
-        public async  Task<MerchantAccount> UpdateAsync(
+        public async  Task<ApiRoutersMerchantAccountsSchemasMerchantAccount> UpdateAsync(
             string merchantAccountId,
             MerchantAccountUpdate merchantAccountUpdate
         )
@@ -1444,14 +1453,14 @@ namespace Gr4vy
                 if(Utilities.IsContentTypeMatch("application/json", contentType))
                 {
                     var httpResponseBody = await httpResponse.Content.ReadAsStringAsync();
-                    MerchantAccount obj;
+                    ApiRoutersMerchantAccountsSchemasMerchantAccount obj;
                     try
                     {
-                        obj = ResponseBodyDeserializer.DeserializeNotNull<MerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
+                        obj = ResponseBodyDeserializer.DeserializeNotNull<ApiRoutersMerchantAccountsSchemasMerchantAccount>(httpResponseBody, NullValueHandling.Ignore);
                     }
                     catch (Exception ex)
                     {
-                        throw new ResponseValidationException("Failed to deserialize response body into MerchantAccount.", httpResponse, httpResponseBody, ex);
+                        throw new ResponseValidationException("Failed to deserialize response body into ApiRoutersMerchantAccountsSchemasMerchantAccount.", httpResponse, httpResponseBody, ex);
                     }
 
                     return obj!;

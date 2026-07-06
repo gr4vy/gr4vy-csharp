@@ -100,7 +100,7 @@ var res = await sdk.MerchantAccounts.CreateAsync(req);
 
 ### Response
 
-**[MerchantAccount](../../Models/Components/MerchantAccount.md)**
+**[ApiRoutersMerchantAccountsSchemasMerchantAccount](../../Models/Components/ApiRoutersMerchantAccountsSchemasMerchantAccount.md)**
 
 ### Errors
 
@@ -146,7 +146,7 @@ var res = await sdk.MerchantAccounts.GetAsync(merchantAccountId: "merchant-12345
 
 ### Response
 
-**[MerchantAccount](../../Models/Components/MerchantAccount.md)**
+**[ApiRoutersMerchantAccountsSchemasMerchantAccount](../../Models/Components/ApiRoutersMerchantAccountsSchemasMerchantAccount.md)**
 
 ### Errors
 
@@ -199,7 +199,7 @@ var res = await sdk.MerchantAccounts.UpdateAsync(
 
 ### Response
 
-**[MerchantAccount](../../Models/Components/MerchantAccount.md)**
+**[ApiRoutersMerchantAccountsSchemasMerchantAccount](../../Models/Components/ApiRoutersMerchantAccountsSchemasMerchantAccount.md)**
 
 ### Errors
 

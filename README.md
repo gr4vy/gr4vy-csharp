@@ -241,6 +241,14 @@ catch(ArgumentException ex) {
 
 * [Create](docs/sdks/jobs/README.md#create) - Create account updater job
 
+### [ApiKeyPairs](docs/sdks/apikeypairs/README.md)
+
+* [List](docs/sdks/apikeypairs/README.md#list) - List all API key pairs
+* [Create](docs/sdks/apikeypairs/README.md#create) - Create an API key pair
+* [Get](docs/sdks/apikeypairs/README.md#get) - Get an API key pair
+* [Update](docs/sdks/apikeypairs/README.md#update) - Update an API key pair
+* [Delete](docs/sdks/apikeypairs/README.md#delete) - Delete an API key pair
+
 ### [AuditLogs](docs/sdks/auditlogs/README.md)
 
 * [List](docs/sdks/auditlogs/README.md#list) - List audit log entries
@@ -503,18 +511,9 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    merchantAccountId: "default",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
-
-ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
+ListApiKeyPairsResponse? res = await sdk.ApiKeyPairs.ListAsync(limit: 20);
 
 while(res != null)
 {
@@ -536,18 +535,9 @@ using Gr4vy;
 using Gr4vy.Models.Components;
 using Gr4vy.Models.Requests;
 
-var sdk = new Gr4vySDK(
-    merchantAccountId: "default",
-    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
-);
+var sdk = new Gr4vySDK(bearerAuth: "<YOUR_BEARER_TOKEN_HERE>");
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
-
-ListBuyersResponse? res = await sdk.Buyers.ListAsync(
+ListApiKeyPairsResponse? res = await sdk.ApiKeyPairs.ListAsync(
     retryConfig: new RetryConfig(
         strategy: RetryConfig.RetryStrategy.BACKOFF,
         backoff: new BackoffStrategy(
@@ -558,7 +548,7 @@ ListBuyersResponse? res = await sdk.Buyers.ListAsync(
         ),
         retryConnectionErrors: false
     ),
-    request: req
+    limit: 20
 );
 
 while(res != null)
@@ -586,17 +576,10 @@ var sdk = new Gr4vySDK(
         ),
         retryConnectionErrors: false
     ),
-    merchantAccountId: "default",
     bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
 );
 
-ListBuyersRequest req = new ListBuyersRequest() {
-    Cursor = "ZXhhbXBsZTE",
-    Search = "John",
-    ExternalIdentifier = "buyer-12345",
-};
-
-ListBuyersResponse? res = await sdk.Buyers.ListAsync(req);
+ListApiKeyPairsResponse? res = await sdk.ApiKeyPairs.ListAsync(limit: 20);
 
 while(res != null)
 {
