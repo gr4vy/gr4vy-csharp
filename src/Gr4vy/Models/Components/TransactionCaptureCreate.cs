@@ -48,5 +48,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("external_identifier")]
         public string? ExternalIdentifier { get; set; } = null;
+
+        /// <summary>
+        /// Whether this capture request should re-authorize the transaction if it has expired.
+        /// </summary>
+        [JsonProperty("reauthorize_if_authorization_expired")]
+        public bool? ReauthorizeIfAuthorizationExpired { get; set; } = null;
     }
 }
