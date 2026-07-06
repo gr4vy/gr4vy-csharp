@@ -1,4 +1,4 @@
-# ApiCommonSchemasMerchantAccount
+# MerchantAccountSummary
 
 
 ## Fields

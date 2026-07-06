@@ -78,7 +78,7 @@ namespace Gr4vy.Models.Components
         /// The merchant accounts this API key pair has access to. An empty list means it has access to all merchant accounts.
         /// </summary>
         [JsonProperty("merchant_accounts")]
-        public List<ApiCommonSchemasMerchantAccount>? MerchantAccounts { get; set; }
+        public List<MerchantAccountSummary>? MerchantAccounts { get; set; }
 
         /// <summary>
         /// The roles assigned to this API key pair.

@@ -14,7 +14,7 @@ namespace Gr4vy.Models.Components
     using System;
     using System.Collections.Generic;
 
-    public class ApiRoutersMerchantAccountsSchemasMerchantAccount
+    public class MerchantAccount
     {
         /// <summary>
         /// Always `merchant-account`.

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 2341d579b13e0417b9322e2f99e6227a
+  docChecksum: 61cebaa4c41b22b941f810a24fb724a6
   docVersion: 1.0.0
   speakeasyVersion: 1.788.1
   generationVersion: 2.915.1
-  releaseVersion: 2.8.47
-  configChecksum: 53ca687afbda19a9800b5551fff25d08
+  releaseVersion: 2.8.48
+  configChecksum: a7816d457269bdc4591fded6bfa7a3d5
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: edf72b70-d92f-41e2-9f92-571bbb50e3fe
-  pristine_commit_hash: 102ebf305b6e68bf37216acac296a969d3afaa3a
-  pristine_tree_hash: 903b655d5ef03a76c6148c3d8e525a6a0ac772ca
+  generation_id: a11a1496-a3e5-4a0e-8150-05bf2853c67c
+  pristine_commit_hash: 428f6a311fdc91839749731d3c617d369fe17fa2
+  pristine_tree_hash: d6bcd71bac0091b1d12fa6c55fcdec7c58539ece
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -60,8 +60,8 @@ trackedFiles:
     pristine_git_object: 4a502ae5a435a4b1af14cd401f195aa85c937e50
   docs/Models/Components/APIKeyPair.md:
     id: c5ac3fd7eb82
-    last_write_checksum: sha1:6639367a148e15f514cd3249de25392e1ef2a4bf
-    pristine_git_object: a93e64a780024409e0a3412a8e56c5a4ed5a76e9
+    last_write_checksum: sha1:af2461c4a1855d7ad30042eed5a4af75de710cf2
+    pristine_git_object: 85007bd5c319a10e3b6d421fd19536683a6a9ebe
   docs/Models/Components/APIKeyPairCreate.md:
     id: c7e1e45b86c7
     last_write_checksum: sha1:fae5e43393f0f677e8570c9165cae07b38c4623f
@@ -142,18 +142,10 @@ trackedFiles:
     id: 93c9c8b4cd40
     last_write_checksum: sha1:7aa44a050f34005cc60152a090aab520815efb2d
     pristine_git_object: e482bf2bed836010bda5fb85d25f16f8612f7270
-  docs/Models/Components/ApiCommonSchemasMerchantAccount.md:
-    id: 4013a6ff66e3
-    last_write_checksum: sha1:07c923a3f28ef575a881ee2bb465076fbf5cf52d
-    pristine_git_object: ae04b265697da729057eabc0bd750f67236854a3
   docs/Models/Components/ApiRoutersApiKeyPairsSchemasCreator.md:
     id: f480ad80038d
     last_write_checksum: sha1:950df205bf9987650f8d665a5b5b9251a2b7b66a
     pristine_git_object: 4daee4247794ae20d740fe6241871e96cbb4ba3c
-  docs/Models/Components/ApiRoutersMerchantAccountsSchemasMerchantAccount.md:
-    id: 3b5e9dba57a2
-    last_write_checksum: sha1:979010d071cbba5bc1c86b4375facc10f82b64d3
-    pristine_git_object: 491246d7670c380103db233c800a223ca855f55d
   docs/Models/Components/ApiTypesDigitalWalletAddress.md:
     id: 191abe2ceee6
     last_write_checksum: sha1:6cde488fdaf1c7909814d9f3249ae4eaa62102d5
@@ -558,10 +550,18 @@ trackedFiles:
     id: f9d0b35f9a41
     last_write_checksum: sha1:27524283e34ec11ba36fe81ddff2c5e0ab93c3cd
     pristine_git_object: fa9a1b0f584aba1f957dec6d482a987d959e5463
+  docs/Models/Components/MerchantAccount.md:
+    id: 8a6ecfabb4fe
+    last_write_checksum: sha1:1673a9fce5609eacdff91db4b7ccc87e18132032
+    pristine_git_object: a9ba4b596a105efc830af6d18e61b05ad40d092e
   docs/Models/Components/MerchantAccountCreate.md:
     id: 2319beae5d8c
     last_write_checksum: sha1:b1090c885f9f9d331ae51a9c38cc2e70eb7291a1
     pristine_git_object: 15d12806d424da8b906084119b32b4be55469ba5
+  docs/Models/Components/MerchantAccountSummary.md:
+    id: e8d6f609a8ba
+    last_write_checksum: sha1:e564d29f60765a42bb33685630b9fcd426f43bcc
+    pristine_git_object: 5783135042c35a83b4bc839495a183613aec7c8e
   docs/Models/Components/MerchantAccountThreeDSConfiguration.md:
     id: 0fcc17e58d64
     last_write_checksum: sha1:614a1142ea4c3be71a4d165abc2a4829be556fe3
@@ -584,8 +584,8 @@ trackedFiles:
     pristine_git_object: b1bbb70979745bbb9db55a0dace509c5ad958510
   docs/Models/Components/MerchantAccounts.md:
     id: 9a3841a8da63
-    last_write_checksum: sha1:42ea8589ecbd718a4ebaf6fb244b67e36b05e885
-    pristine_git_object: bdd62e07c0cd7183ed1aa8e63b65070e78f1da54
+    last_write_checksum: sha1:5c52633088d0feb152c1a54aa0f2b15c77e96bad
+    pristine_git_object: ced88ae20732fe116e108c1de6e295ddbb229c37
   docs/Models/Components/MerchantProfileScheme.md:
     id: 235c92de58de
     last_write_checksum: sha1:c517596740eb76f5d1742d8c1fcbe67a7e6b3dee
@@ -1916,8 +1916,8 @@ trackedFiles:
     pristine_git_object: 5baec90ac1dbe9c6373c95e1468393301f730179
   docs/sdks/merchantaccounts/README.md:
     id: 468eec4fc203
-    last_write_checksum: sha1:32f03a52473f3eae2a5ad230d962e55cb21115b6
-    pristine_git_object: 1bf74e0a92240c53f45bf15dc4eafa16b8336fe6
+    last_write_checksum: sha1:f3f95533ed90e2ab144f4324bd0eeb87395c4256
+    pristine_git_object: f45d3c4c685a7709910b654d8224b29cb3681918
   docs/sdks/networktokens/README.md:
     id: 4c1c913867c5
     last_write_checksum: sha1:aa321653ff2cc7d5ee2a0be0e674029d1170a2c7
@@ -2068,8 +2068,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:beef3150b2515718c43cede7b76210d958127f7a
-    pristine_git_object: 4751326dc840d640c4b7b74a5ac2a426342aaea0
+    last_write_checksum: sha1:a93e8f1ef562a9c92639c4132161d86ab5f8d57c
+    pristine_git_object: 2473d67bea47b17d659b5de0c031ee1be01c4c71
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:4b05b2f4cb25a0046b719765211cdd041c1b7441
@@ -2088,16 +2088,16 @@ trackedFiles:
     pristine_git_object: c27d8ec9eb586f514994b11aef7cf716bdd8d50c
   src/Gr4vy/MerchantAccounts.cs:
     id: a83bfc0cd001
-    last_write_checksum: sha1:c229c8a67c5f4ab68bd316c32a3b10b33d7731e9
-    pristine_git_object: 8286f4f64ff029fe40e46e9cab87370a06e65658
+    last_write_checksum: sha1:e83392606917b18096bfef802bfd10e778ba3f07
+    pristine_git_object: d63b55fd0ac95f60078965812c51410b969a193a
   src/Gr4vy/Models/Components/ACHBankPaymentMethodCreate.cs:
     id: 278e34244f10
     last_write_checksum: sha1:cde298a24ffff3af3ac0ba27eba294ad18538b48
     pristine_git_object: 1275c219f25246a523322685a3e9f00cae3dbf4f
   src/Gr4vy/Models/Components/APIKeyPair.cs:
     id: 17488aa56eea
-    last_write_checksum: sha1:1ba4088837a9fbd6f38c990508ae2beefe764864
-    pristine_git_object: 0bad1b4e1f590a370316f48baab38b613c9fcf65
+    last_write_checksum: sha1:8b8294d8d2157393a6ea57ca37170e8d255c6014
+    pristine_git_object: 60e6bb1136d6b5faa7fa30bf51c74c9acf99d1b8
   src/Gr4vy/Models/Components/APIKeyPairCreate.cs:
     id: 3b7d10c5af90
     last_write_checksum: sha1:c09d688d15ea2c986b19a8cf08dd257cc4c7133c
@@ -2178,18 +2178,10 @@ trackedFiles:
     id: fcb78c60bd1c
     last_write_checksum: sha1:eb674dc9fade19041dc0737e0c4b8a057f894afc
     pristine_git_object: abec0c4a825fcf2bf0e7de794de95f2fe37d7eed
-  src/Gr4vy/Models/Components/ApiCommonSchemasMerchantAccount.cs:
-    id: f0670f2dd389
-    last_write_checksum: sha1:eb93e0ca801909f8b9655ef3829382c5f9f138e2
-    pristine_git_object: a88dce0aad7f49ec6b971e7e693ab5ea6240e3fa
   src/Gr4vy/Models/Components/ApiRoutersApiKeyPairsSchemasCreator.cs:
     id: fe8369cf5ca2
     last_write_checksum: sha1:17a1dae8c83e584d355579b38e8dd000a9c7bdab
     pristine_git_object: ae9ae141dcb79afeb24b2840645b41a0e3be55f7
-  src/Gr4vy/Models/Components/ApiRoutersMerchantAccountsSchemasMerchantAccount.cs:
-    id: 05ccf6d30867
-    last_write_checksum: sha1:a785bebf667611bef40c2d8632bc77895243d1c1
-    pristine_git_object: 0230c15826829082fb2bd27b0f66a25a29ddc983
   src/Gr4vy/Models/Components/ApiTypesDigitalWalletAddress.cs:
     id: 8db52f6105cb
     last_write_checksum: sha1:d8b6879a0e289574ff25c1f4562cde6515ea469b
@@ -2594,10 +2586,18 @@ trackedFiles:
     id: 6d741b0c0b27
     last_write_checksum: sha1:1c89f73696d002eb6e102150950f4ddaf3bc0b48
     pristine_git_object: 35df27212a60373ba1fb15b11ea50367ee3beb86
+  src/Gr4vy/Models/Components/MerchantAccount.cs:
+    id: 41760c6b0725
+    last_write_checksum: sha1:befba086f724b3efaf07dd7fef3817458319abea
+    pristine_git_object: 2bdabc1c85fc2901bb05ccc351cdac2d763b32d2
   src/Gr4vy/Models/Components/MerchantAccountCreate.cs:
     id: 40fb0469c2fe
     last_write_checksum: sha1:c96fe41dd7ab0f237e51c5cbb2b0a93628b9dcd7
     pristine_git_object: 729a52c70b37cb248be8589fd5ce6d5ef06eaf13
+  src/Gr4vy/Models/Components/MerchantAccountSummary.cs:
+    id: 916a60f343f5
+    last_write_checksum: sha1:f74ee34217f80d7c0b694d831f55883ffa12b88f
+    pristine_git_object: 23ccaa0ffbce4b54c403e0d188c133c1212be260
   src/Gr4vy/Models/Components/MerchantAccountThreeDSConfiguration.cs:
     id: e70332c4786d
     last_write_checksum: sha1:55cd280672e4f2a2161f228fb43e2e600410e0c2
@@ -2620,8 +2620,8 @@ trackedFiles:
     pristine_git_object: aa8f4284653d87f8ff5eb441f0210ae02997ccf4
   src/Gr4vy/Models/Components/MerchantAccounts.cs:
     id: 79a2252533d2
-    last_write_checksum: sha1:1881673020371940ddd0043398a9b94319d2292d
-    pristine_git_object: 9b196ecb7274517d041b8be5dd43cdfd7d858354
+    last_write_checksum: sha1:54c4c399bacc7bd768690178180866cef2296526
+    pristine_git_object: 2a1900e31a458daf7cb6f8fbc970c9b955c8ab54
   src/Gr4vy/Models/Components/MerchantProfileScheme.cs:
     id: ad591ab70967
     last_write_checksum: sha1:567b155356784eed66b1978b47dfdf58d6b88428
@@ -3936,8 +3936,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:6bfe1aef86a9843200430eb9a92b703f799fd3fc
-    pristine_git_object: e7e0ca8e1556616b6b7974a27191b811334f8170
+    last_write_checksum: sha1:93961d7f7818b5457eb06fc0e14e92ba6fc2fb93
+    pristine_git_object: f77d504fba99d287f5409e9be975916ef88c4b95
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -3976,8 +3976,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:be0bf1fafe262fc890595a38713d4630408996ce
-    pristine_git_object: 8873aa92b33d76329c1b4af7852b237dc9a09de2
+    last_write_checksum: sha1:cc188131dbc48158a2027e11f98e55486601e342
+    pristine_git_object: 7fdd1e60954bb196e50c41a516a137a3b5a15c32
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8159,13 +8159,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes:
-  * `Gr4vy.ApiKeyPairs.List()`: **Added**
-  * `Gr4vy.ApiKeyPairs.Create()`: **Added**
-  * `Gr4vy.ApiKeyPairs.Get()`: **Added**
-  * `Gr4vy.ApiKeyPairs.Update()`: **Added**
-  * `Gr4vy.ApiKeyPairs.Delete()`: **Added**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
