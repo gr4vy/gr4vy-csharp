@@ -20,7 +20,7 @@ namespace Gr4vy.Models.Components
         /// A list of items returned for this request.
         /// </summary>
         [JsonProperty("items")]
-        public List<ApiRoutersMerchantAccountsSchemasMerchantAccount> Items { get; set; } = default!;
+        public List<MerchantAccount> Items { get; set; } = default!;
 
         /// <summary>
         /// The number of items for this page.

@@ -13,7 +13,7 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System;
 
-    public class ApiCommonSchemasMerchantAccount
+    public class MerchantAccountSummary
     {
         [JsonProperty("type")]
         public string Type { get; } = "merchant-account";
