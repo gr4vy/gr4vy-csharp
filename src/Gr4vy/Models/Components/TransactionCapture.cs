@@ -65,5 +65,17 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("external_identifier")]
         public string? ExternalIdentifier { get; set; } = null;
+
+        /// <summary>
+        /// The billing details associated with the capture.
+        /// </summary>
+        [JsonProperty("billing_details")]
+        public BillingDetails? BillingDetails { get; set; } = null;
+
+        /// <summary>
+        /// The shipping details associated with the catpure.
+        /// </summary>
+        [JsonProperty("shipping_details")]
+        public Models.Components.ShippingDetails? ShippingDetails { get; set; } = null;
     }
 }
