@@ -19,67 +19,221 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Set to `true` to enable Auto Rescue for a transaction. Use the `maxDaysToRescue` to specify a rescue window.
         /// </summary>
-        [JsonProperty("autoRescue")]
-        public bool? AutoRescue { get; set; } = null;
+        [JsonProperty("autoRescue", NullValueHandling = NullValueHandling.Include)]
+        public bool? AutoRescue
+        {
+            get => _autoRescue;
+            set
+            {
+                _autoRescue = value;
+                _autoRescueSet = true;
+            }
+        }
+
+        private bool? _autoRescue = null;
+
+        private bool _autoRescueSet = false;
+
+        public bool ShouldSerializeAutoRescue() => _autoRescueSet;
 
         /// <summary>
         /// The rescue window for a transaction, in days, when `autoRescue` is set to `true`. You can specify a value between 1 and 48. For cards, the default is one calendar month. For SEPA, the default is 42 days.
         /// </summary>
-        [JsonProperty("maxDaysToRescue")]
-        public long? MaxDaysToRescue { get; set; } = null;
+        [JsonProperty("maxDaysToRescue", NullValueHandling = NullValueHandling.Include)]
+        public long? MaxDaysToRescue
+        {
+            get => _maxDaysToRescue;
+            set
+            {
+                _maxDaysToRescue = value;
+                _maxDaysToRescueSet = true;
+            }
+        }
+
+        private long? _maxDaysToRescue = null;
+
+        private bool _maxDaysToRescueSet = false;
+
+        public bool ShouldSerializeMaxDaysToRescue() => _maxDaysToRescueSet;
 
         /// <summary>
         /// Passes additional data to the Adyen API when creating a transaction.
         /// </summary>
-        [JsonProperty("additionalData")]
-        public Dictionary<string, string>? AdditionalData { get; set; } = null;
+        [JsonProperty("additionalData", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, string>? AdditionalData
+        {
+            get => _additionalData;
+            set
+            {
+                _additionalData = value;
+                _additionalDataSet = true;
+            }
+        }
+
+        private Dictionary<string, string>? _additionalData = null;
+
+        private bool _additionalDataSet = false;
+
+        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
 
         /// <summary>
         /// The rescue scenario to simulate for a transaction, when `autoRescue` is set to `true`.
         /// </summary>
-        [JsonProperty("autoRescueScenario")]
-        public string? AutoRescueScenario { get; set; } = null;
+        [JsonProperty("autoRescueScenario", NullValueHandling = NullValueHandling.Include)]
+        public string? AutoRescueScenario
+        {
+            get => _autoRescueScenario;
+            set
+            {
+                _autoRescueScenario = value;
+                _autoRescueScenarioSet = true;
+            }
+        }
+
+        private string? _autoRescueScenario = null;
+
+        private bool _autoRescueScenarioSet = false;
+
+        public bool ShouldSerializeAutoRescueScenario() => _autoRescueScenarioSet;
 
         /// <summary>
         /// The origin of the window where the payment is initiated, used for 3D Secure authentication.
         /// </summary>
-        [JsonProperty("window_origin")]
-        public string? WindowOrigin { get; set; } = null;
+        [JsonProperty("window_origin", NullValueHandling = NullValueHandling.Include)]
+        public string? WindowOrigin
+        {
+            get => _windowOrigin;
+            set
+            {
+                _windowOrigin = value;
+                _windowOriginSet = true;
+            }
+        }
+
+        private string? _windowOrigin = null;
+
+        private bool _windowOriginSet = false;
+
+        public bool ShouldSerializeWindowOrigin() => _windowOriginSet;
 
         /// <summary>
         /// Passes information of splitting payment amounts to the Adyen API.
         /// </summary>
-        [JsonProperty("splits")]
-        public AdyenSplitsOptions? Splits { get; set; } = null;
+        [JsonProperty("splits", NullValueHandling = NullValueHandling.Include)]
+        public AdyenSplitsOptions? Splits
+        {
+            get => _splits;
+            set
+            {
+                _splits = value;
+                _splitsSet = true;
+            }
+        }
+
+        private AdyenSplitsOptions? _splits = null;
+
+        private bool _splitsSet = false;
+
+        public bool ShouldSerializeSplits() => _splitsSet;
 
         /// <summary>
         /// Passes `merchantRiskIndicator` data to Adyen.
         /// </summary>
-        [JsonProperty("merchantRiskIndicator")]
-        public Dictionary<string, object>? MerchantRiskIndicator { get; set; } = null;
+        [JsonProperty("merchantRiskIndicator", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, object>? MerchantRiskIndicator
+        {
+            get => _merchantRiskIndicator;
+            set
+            {
+                _merchantRiskIndicator = value;
+                _merchantRiskIndicatorSet = true;
+            }
+        }
+
+        private Dictionary<string, object>? _merchantRiskIndicator = null;
+
+        private bool _merchantRiskIndicatorSet = false;
+
+        public bool ShouldSerializeMerchantRiskIndicator() => _merchantRiskIndicatorSet;
 
         /// <summary>
         /// Passes `accountInfo` data to Adyen.
         /// </summary>
-        [JsonProperty("accountInfo")]
-        public Dictionary<string, object>? AccountInfo { get; set; } = null;
+        [JsonProperty("accountInfo", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, object>? AccountInfo
+        {
+            get => _accountInfo;
+            set
+            {
+                _accountInfo = value;
+                _accountInfoSet = true;
+            }
+        }
+
+        private Dictionary<string, object>? _accountInfo = null;
+
+        private bool _accountInfoSet = false;
+
+        public bool ShouldSerializeAccountInfo() => _accountInfoSet;
 
         /// <summary>
         /// Passes `riskData.customFields` to Adyen.
         /// </summary>
-        [JsonProperty("riskData")]
-        public Dictionary<string, object>? RiskData { get; set; } = null;
+        [JsonProperty("riskData", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, object>? RiskData
+        {
+            get => _riskData;
+            set
+            {
+                _riskData = value;
+                _riskDataSet = true;
+            }
+        }
+
+        private Dictionary<string, object>? _riskData = null;
+
+        private bool _riskDataSet = false;
+
+        public bool ShouldSerializeRiskData() => _riskDataSet;
 
         /// <summary>
         /// Passes `threeDS2RequestData.threeDSRequestorChallengeInd` to Adyen.
         /// </summary>
-        [JsonProperty("threeDSRequestorChallengeInd")]
-        public string? ThreeDSRequestorChallengeInd { get; set; } = null;
+        [JsonProperty("threeDSRequestorChallengeInd", NullValueHandling = NullValueHandling.Include)]
+        public string? ThreeDSRequestorChallengeInd
+        {
+            get => _threeDSRequestorChallengeInd;
+            set
+            {
+                _threeDSRequestorChallengeInd = value;
+                _threeDSRequestorChallengeIndSet = true;
+            }
+        }
+
+        private string? _threeDSRequestorChallengeInd = null;
+
+        private bool _threeDSRequestorChallengeIndSet = false;
+
+        public bool ShouldSerializeThreeDSRequestorChallengeInd() => _threeDSRequestorChallengeIndSet;
 
         /// <summary>
         /// Passes `authenticationData.attemptAuthentication` to Adyen.
         /// </summary>
-        [JsonProperty("attemptAuthentication")]
-        public string? AttemptAuthentication { get; set; } = null;
+        [JsonProperty("attemptAuthentication", NullValueHandling = NullValueHandling.Include)]
+        public string? AttemptAuthentication
+        {
+            get => _attemptAuthentication;
+            set
+            {
+                _attemptAuthentication = value;
+                _attemptAuthenticationSet = true;
+            }
+        }
+
+        private string? _attemptAuthentication = null;
+
+        private bool _attemptAuthenticationSet = false;
+
+        public bool ShouldSerializeAttemptAuthentication() => _attemptAuthenticationSet;
     }
 }
