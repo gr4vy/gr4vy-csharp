@@ -19,19 +19,61 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes a discount amount to be applied to the transaction when using Braintree.
         /// </summary>
-        [JsonProperty("discount_amount")]
-        public long? DiscountAmount { get; set; } = null;
+        [JsonProperty("discount_amount", NullValueHandling = NullValueHandling.Include)]
+        public long? DiscountAmount
+        {
+            get => _discountAmount;
+            set
+            {
+                _discountAmount = value;
+                _discountAmountSet = true;
+            }
+        }
+
+        private long? _discountAmount = null;
+
+        private bool _discountAmountSet = false;
+
+        public bool ShouldSerializeDiscountAmount() => _discountAmountSet;
 
         /// <summary>
         /// Passes `customFields` to the Braintree API when creating a new payment. Custom fields allow you to customize your checkout experience by collecting specific information about your customers and their purchases.
         /// </summary>
-        [JsonProperty("custom_fields")]
-        public Dictionary<string, string>? CustomFields { get; set; } = null;
+        [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, string>? CustomFields
+        {
+            get => _customFields;
+            set
+            {
+                _customFields = value;
+                _customFieldsSet = true;
+            }
+        }
+
+        private Dictionary<string, string>? _customFields = null;
+
+        private bool _customFieldsSet = false;
+
+        public bool ShouldSerializeCustomFields() => _customFieldsSet;
 
         /// <summary>
         /// Additional dynamic fields to pass to the Braintree API.
         /// </summary>
-        [JsonProperty("dynamic_data_fields")]
-        public BraintreeDynamicDataFieldsOptions? DynamicDataFields { get; set; } = null;
+        [JsonProperty("dynamic_data_fields", NullValueHandling = NullValueHandling.Include)]
+        public BraintreeDynamicDataFieldsOptions? DynamicDataFields
+        {
+            get => _dynamicDataFields;
+            set
+            {
+                _dynamicDataFields = value;
+                _dynamicDataFieldsSet = true;
+            }
+        }
+
+        private BraintreeDynamicDataFieldsOptions? _dynamicDataFields = null;
+
+        private bool _dynamicDataFieldsSet = false;
+
+        public bool ShouldSerializeDynamicDataFields() => _dynamicDataFieldsSet;
     }
 }
