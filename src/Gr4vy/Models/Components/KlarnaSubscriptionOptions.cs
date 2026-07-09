@@ -12,24 +12,30 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class TravelHubCustomData
+    public class KlarnaSubscriptionOptions
     {
         /// <summary>
-        /// The key of the custom data field.
+        /// The name of the subscription product. The recommended format includes a subscription id and double curly brackets.
         /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
         /// <summary>
-        /// The value of the custom data field.
+        /// The cadence unit for the subscription plan.
         /// </summary>
-        [JsonProperty("value")]
-        public string Value { get; set; } = default!;
+        [JsonProperty("interval")]
+        public string Interval { get; set; } = default!;
 
         /// <summary>
-        /// The type of the custom data field.
+        /// The number corresponding to the interval unit.
         /// </summary>
-        [JsonProperty("type")]
-        public string? Type { get; set; } = null;
+        [JsonProperty("interval_count")]
+        public long IntervalCount { get; set; } = default!;
+
+        /// <summary>
+        /// Reference to a SKU in the transaction's cart items to link subscription to.
+        /// </summary>
+        [JsonProperty("reference")]
+        public string Reference { get; set; } = default!;
     }
 }
