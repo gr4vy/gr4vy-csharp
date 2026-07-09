@@ -636,6 +636,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeEcommpayCard() => _ecommpayCardSet;
 
         /// <summary>
+        /// Custom options to be passed to the `klarna-klarna` connector.
+        /// </summary>
+        [JsonProperty("klarna-klarna", NullValueHandling = NullValueHandling.Include)]
+        public KlarnaOptions? KlarnaKlarna
+        {
+            get => _klarnaKlarna;
+            set
+            {
+                _klarnaKlarna = value;
+                _klarnaKlarnaSet = true;
+            }
+        }
+
+        private KlarnaOptions? _klarnaKlarna = null;
+
+        private bool _klarnaKlarnaSet = false;
+
+        public bool ShouldSerializeKlarnaKlarna() => _klarnaKlarnaSet;
+
+        /// <summary>
         /// Custom options to be passed to the `fiserv-card` connector.
         /// </summary>
         [JsonProperty("fiserv-card", NullValueHandling = NullValueHandling.Include)]
