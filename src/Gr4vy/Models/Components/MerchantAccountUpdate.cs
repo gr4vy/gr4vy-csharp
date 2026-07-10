@@ -216,6 +216,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeLoonAcceptedSchemes() => _loonAcceptedSchemesSet;
 
         /// <summary>
+        /// Merchant account ID provided by Pagos to identify this merchant account on the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
+        /// </summary>
+        [JsonProperty("loon_merchant_account_id", NullValueHandling = NullValueHandling.Include)]
+        public string? LoonMerchantAccountId
+        {
+            get => _loonMerchantAccountId;
+            set
+            {
+                _loonMerchantAccountId = value;
+                _loonMerchantAccountIdSet = true;
+            }
+        }
+
+        private string? _loonMerchantAccountId = null;
+
+        private bool _loonMerchantAccountIdSet = false;
+
+        public bool ShouldSerializeLoonMerchantAccountId() => _loonMerchantAccountIdSet;
+
+        /// <summary>
         /// Requestor ID provided for Visa after onboarding to use Network Tokens.
         /// </summary>
         [JsonProperty("visa_network_tokens_requestor_id", NullValueHandling = NullValueHandling.Include)]

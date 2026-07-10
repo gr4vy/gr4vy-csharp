@@ -22,12 +22,12 @@ namespace Gr4vy.Utils
         /// <summary>
         /// The version of the SDK.
         /// </summary>
-        public const string SdkVersion = "2.8.52";
+        public const string SdkVersion = "2.8.53";
 
         /// <summary>
         /// The version of the SDK generator used to create this SDK.
         /// </summary>
-        public const string SdkGenVersion = "2.916.2";
+        public const string SdkGenVersion = "2.916.4";
 
         /// <summary>
         /// The version of the OpenAPI document used to generate this SDK.
