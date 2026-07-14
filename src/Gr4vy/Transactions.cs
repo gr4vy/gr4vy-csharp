@@ -34,6 +34,8 @@ namespace Gr4vy
 
         public ISettlements Settlements { get; }
 
+        public IRefundSettlements RefundSettlements { get; }
+
         public ICaptures Captures { get; }
         /// <summary>
         /// List transactions.
@@ -314,6 +316,12 @@ namespace Gr4vy
         public ISettlements Settlements { get; private set; }
 
         /// <summary>
+        /// RefundSettlements SubSDK.
+        /// <see cref="IRefundSettlements"/>
+        /// </summary>
+        public IRefundSettlements RefundSettlements { get; private set; }
+
+        /// <summary>
         /// Captures SubSDK.
         /// <see cref="ICaptures"/>
         /// </summary>
@@ -326,6 +334,7 @@ namespace Gr4vy
             Actions = new Actions(SDKConfiguration);
             Events = new Events(SDKConfiguration);
             Settlements = new Settlements(SDKConfiguration);
+            RefundSettlements = new RefundSettlements(SDKConfiguration);
             Captures = new Captures(SDKConfiguration);
         }
 
