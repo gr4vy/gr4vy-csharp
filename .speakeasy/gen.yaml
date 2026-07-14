@@ -29,7 +29,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 2.8.53
+  version: 2.8.54
   additionalDependencies:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.17.0
@@ -62,8 +62,10 @@ csharp:
   outputModelSuffix: output
   packageName: Gr4vy
   packageTags: gr4vy payments orchestration sdk pci credit cards
+  presenceAwareJsonSerialization: false
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: flat
   sourceDirectory: src
   targetFramework: dotnetVersion
+  unionStrategy: left-to-right
   useNodatime: true

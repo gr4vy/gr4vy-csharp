@@ -331,7 +331,9 @@ var sdk = new Gr4vySDK(
 
 CaptureTransactionRequest req = new CaptureTransactionRequest() {
     TransactionId = "7099948d-7286-47e4-aad8-b68f7eb44591",
-    TransactionCaptureCreate = new TransactionCaptureCreate() {},
+    TransactionCaptureCreate = new TransactionCaptureCreate() {
+        ReauthorizeIfAuthorizationExpired = true,
+    },
 };
 
 var res = await sdk.Transactions.CaptureAsync(req);

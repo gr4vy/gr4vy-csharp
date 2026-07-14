@@ -53,6 +53,6 @@ namespace Gr4vy.Models.Components
         /// Whether this capture request should re-authorize the transaction if it has expired.
         /// </summary>
         [JsonProperty("reauthorize_if_authorization_expired")]
-        public bool? ReauthorizeIfAuthorizationExpired { get; set; } = null;
+        public bool? ReauthorizeIfAuthorizationExpired { get; set; } = false;
     }
 }
