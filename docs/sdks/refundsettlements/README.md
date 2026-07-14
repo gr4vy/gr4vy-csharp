@@ -1,0 +1,112 @@
+# Transactions.RefundSettlements
+
+## Overview
+
+### Available Operations
+
+* [Get](#get) - Get transaction refund settlement
+* [List](#list) - List transaction refund settlements
+
+## Get
+
+Retrieve a specific refund settlement for a transaction by its unique identifier.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="get_transaction_refund_settlement" method="get" path="/transactions/{transaction_id}/refund-settlements/{settlement_id}" -->
+```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
+
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+var res = await sdk.Transactions.RefundSettlements.GetAsync(
+    transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
+    settlementId: "b1e2c3d4-5678-1234-9abc-1234567890ab"
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | The unique identifier of the transaction.               | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
+| `SettlementId`                                          | *string*                                                | :heavy_check_mark:                                      | The unique identifier of the refund settlement.         | b1e2c3d4-5678-1234-9abc-1234567890ab                    |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
+
+### Response
+
+**[RefundSettlement](../../Models/Components/RefundSettlement.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| Gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| Gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| Gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| Gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| Gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| Gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## List
+
+List all refund settlements for a specific transaction.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="list_transaction_refund_settlements" method="get" path="/transactions/{transaction_id}/refund-settlements" -->
+```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
+
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+var res = await sdk.Transactions.RefundSettlements.ListAsync(transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                               | Type                                                    | Required                                                | Description                                             | Example                                                 |
+| ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
+| `TransactionId`                                         | *string*                                                | :heavy_check_mark:                                      | The unique identifier of the transaction.               | 7099948d-7286-47e4-aad8-b68f7eb44591                    |
+| `MerchantAccountId`                                     | *string*                                                | :heavy_minus_sign:                                      | The ID of the merchant account to use for this request. | default                                                 |
+
+### Response
+
+**[Models.Components.RefundSettlements](../../Models/Components/RefundSettlements.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| Gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| Gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| Gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| Gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| Gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| Gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
