@@ -19,13 +19,41 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of `customData` to pass to the TravelHub API.
         /// </summary>
-        [JsonProperty("customData")]
-        public List<TravelHubCustomData>? CustomData { get; set; } = null;
+        [JsonProperty("customData", NullValueHandling = NullValueHandling.Include)]
+        public List<TravelHubCustomData>? CustomData
+        {
+            get => _customData;
+            set
+            {
+                _customData = value;
+                _customDataSet = true;
+            }
+        }
+
+        private List<TravelHubCustomData>? _customData = null;
+
+        private bool _customDataSet = false;
+
+        public bool ShouldSerializeCustomData() => _customDataSet;
 
         /// <summary>
         /// Customer company name to pass to the TravelHub API.
         /// </summary>
-        [JsonProperty("companyName")]
-        public string? CompanyName { get; set; } = null;
+        [JsonProperty("companyName", NullValueHandling = NullValueHandling.Include)]
+        public string? CompanyName
+        {
+            get => _companyName;
+            set
+            {
+                _companyName = value;
+                _companyNameSet = true;
+            }
+        }
+
+        private string? _companyName = null;
+
+        private bool _companyNameSet = false;
+
+        public bool ShouldSerializeCompanyName() => _companyNameSet;
     }
 }
