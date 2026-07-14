@@ -17,34 +17,118 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Acquirer BIN to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_acquirer_bin")]
-        public string MerchantAcquirerBin { get; set; } = default!;
+        [JsonProperty("merchant_acquirer_bin", NullValueHandling = NullValueHandling.Include)]
+        public string MerchantAcquirerBin
+        {
+            get => _merchantAcquirerBin;
+            set
+            {
+                _merchantAcquirerBin = value;
+                _merchantAcquirerBinSet = true;
+            }
+        }
+
+        private string _merchantAcquirerBin = default!;
+
+        private bool _merchantAcquirerBinSet = true;
+
+        public bool ShouldSerializeMerchantAcquirerBin() => _merchantAcquirerBinSet;
 
         /// <summary>
         /// Merchant ID to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_acquirer_id")]
-        public string MerchantAcquirerId { get; set; } = default!;
+        [JsonProperty("merchant_acquirer_id", NullValueHandling = NullValueHandling.Include)]
+        public string MerchantAcquirerId
+        {
+            get => _merchantAcquirerId;
+            set
+            {
+                _merchantAcquirerId = value;
+                _merchantAcquirerIdSet = true;
+            }
+        }
 
-        [JsonProperty("merchant_name")]
-        public string MerchantName { get; set; } = default!;
+        private string _merchantAcquirerId = default!;
+
+        private bool _merchantAcquirerIdSet = true;
+
+        public bool ShouldSerializeMerchantAcquirerId() => _merchantAcquirerIdSet;
+
+        [JsonProperty("merchant_name", NullValueHandling = NullValueHandling.Include)]
+        public string MerchantName
+        {
+            get => _merchantName;
+            set
+            {
+                _merchantName = value;
+                _merchantNameSet = true;
+            }
+        }
+
+        private string _merchantName = default!;
+
+        private bool _merchantNameSet = true;
+
+        public bool ShouldSerializeMerchantName() => _merchantNameSet;
 
         /// <summary>
         /// The merchant's ISO 3166-1 numeric country code.
         /// </summary>
-        [JsonProperty("merchant_country_code")]
-        public string MerchantCountryCode { get; set; } = default!;
+        [JsonProperty("merchant_country_code", NullValueHandling = NullValueHandling.Include)]
+        public string MerchantCountryCode
+        {
+            get => _merchantCountryCode;
+            set
+            {
+                _merchantCountryCode = value;
+                _merchantCountryCodeSet = true;
+            }
+        }
+
+        private string _merchantCountryCode = default!;
+
+        private bool _merchantCountryCodeSet = true;
+
+        public bool ShouldSerializeMerchantCountryCode() => _merchantCountryCodeSet;
 
         /// <summary>
         /// Merchant category code to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_category_code")]
-        public string MerchantCategoryCode { get; set; } = default!;
+        [JsonProperty("merchant_category_code", NullValueHandling = NullValueHandling.Include)]
+        public string MerchantCategoryCode
+        {
+            get => _merchantCategoryCode;
+            set
+            {
+                _merchantCategoryCode = value;
+                _merchantCategoryCodeSet = true;
+            }
+        }
+
+        private string _merchantCategoryCode = default!;
+
+        private bool _merchantCategoryCodeSet = true;
+
+        public bool ShouldSerializeMerchantCategoryCode() => _merchantCategoryCodeSet;
 
         /// <summary>
         /// URL to send when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_url")]
-        public string MerchantUrl { get; set; } = default!;
+        [JsonProperty("merchant_url", NullValueHandling = NullValueHandling.Include)]
+        public string MerchantUrl
+        {
+            get => _merchantUrl;
+            set
+            {
+                _merchantUrl = value;
+                _merchantUrlSet = true;
+            }
+        }
+
+        private string _merchantUrl = default!;
+
+        private bool _merchantUrlSet = true;
+
+        public bool ShouldSerializeMerchantUrl() => _merchantUrlSet;
     }
 }
