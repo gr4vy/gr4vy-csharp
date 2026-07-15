@@ -22,7 +22,7 @@ namespace Gr4vy.Utils
         /// <summary>
         /// The version of the SDK.
         /// </summary>
-        public const string SdkVersion = "2.8.56";
+        public const string SdkVersion = "2.8.57";
 
         /// <summary>
         /// The version of the SDK generator used to create this SDK.

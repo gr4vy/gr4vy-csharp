@@ -18,78 +18,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The display name for the API key pair.
         /// </summary>
-        [JsonProperty("display_name", NullValueHandling = NullValueHandling.Include)]
-        public string? DisplayName
-        {
-            get => _displayName;
-            set
-            {
-                _displayName = value;
-                _displayNameSet = true;
-            }
-        }
-
-        private string? _displayName = null;
-
-        private bool _displayNameSet = false;
-
-        public bool ShouldSerializeDisplayName() => _displayNameSet;
+        [JsonProperty("display_name")]
+        public string? DisplayName { get; set; } = null;
 
         /// <summary>
         /// Whether the API key pair is active and can be used to authenticate.
         /// </summary>
-        [JsonProperty("active", NullValueHandling = NullValueHandling.Include)]
-        public bool? Active
-        {
-            get => _active;
-            set
-            {
-                _active = value;
-                _activeSet = true;
-            }
-        }
+        [JsonProperty("active")]
+        public bool? Active { get; set; } = null;
 
-        private bool? _active = null;
-
-        private bool _activeSet = false;
-
-        public bool ShouldSerializeActive() => _activeSet;
-
-        [JsonProperty("role_ids", NullValueHandling = NullValueHandling.Include)]
-        public List<string>? RoleIds
-        {
-            get => _roleIds;
-            set
-            {
-                _roleIds = value;
-                _roleIdsSet = true;
-            }
-        }
-
-        private List<string>? _roleIds = null;
-
-        private bool _roleIdsSet = false;
-
-        public bool ShouldSerializeRoleIds() => _roleIdsSet;
+        [JsonProperty("role_ids")]
+        public List<string>? RoleIds { get; set; } = null;
 
         /// <summary>
         /// The IDs of the merchant accounts to associate with the API key pair. The caller can only assign merchant accounts it has access to.
         /// </summary>
-        [JsonProperty("merchant_account_ids", NullValueHandling = NullValueHandling.Include)]
-        public List<string>? MerchantAccountIds
-        {
-            get => _merchantAccountIds;
-            set
-            {
-                _merchantAccountIds = value;
-                _merchantAccountIdsSet = true;
-            }
-        }
-
-        private List<string>? _merchantAccountIds = null;
-
-        private bool _merchantAccountIdsSet = false;
-
-        public bool ShouldSerializeMerchantAccountIds() => _merchantAccountIdsSet;
+        [JsonProperty("merchant_account_ids")]
+        public List<string>? MerchantAccountIds { get; set; } = null;
     }
 }

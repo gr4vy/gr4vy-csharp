@@ -10,15 +10,8 @@
 namespace Gr4vy.Models.Components
 {
     using Gr4vy.Utils;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
 
-    public class AdyenOptions
+    public class ValidationErrorContext
     {
-        /// <summary>
-        /// Passes additional data to the Adyen API when creating a transaction.
-        /// </summary>
-        [JsonProperty("additionalData")]
-        public Dictionary<string, string>? AdditionalData { get; set; } = null;
     }
 }
