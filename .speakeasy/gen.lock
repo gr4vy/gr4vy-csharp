@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: dca582c356138aceb28ccd41b14f675d
+  docChecksum: da1ae9b6d994bdb33ecd4619d6f16164
   docVersion: 1.0.0
   speakeasyVersion: 1.790.1
   generationVersion: 2.918.1
-  releaseVersion: 2.8.55
-  configChecksum: 2d9ac9daa4f467f76330a1eb6af1d85e
+  releaseVersion: 2.8.56
+  configChecksum: f5bd84a45e879ef13905739b8fdd4d99
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 888fab42-a4ec-4c12-84a5-08324f168098
-  pristine_commit_hash: 93bebbca5e80450ffdac8fad395c293a3d25f821
-  pristine_tree_hash: b68d6a44ec51e724bcce7287809dd4458c137a37
+  generation_id: 865a2fee-a743-4db9-be60-a271256c9827
+  pristine_commit_hash: 2a6e7fb8c8ca9f65a611a114decea2cc07fbcb8a
+  pristine_tree_hash: 5bd2413c30a01bd652ff5fbf6690ee3a344069f0
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -146,10 +146,6 @@ trackedFiles:
     id: f480ad80038d
     last_write_checksum: sha1:950df205bf9987650f8d665a5b5b9251a2b7b66a
     pristine_git_object: 4daee4247794ae20d740fe6241871e96cbb4ba3c
-  docs/Models/Components/ApiTypesDigitalWalletAddress.md:
-    id: 191abe2ceee6
-    last_write_checksum: sha1:6cde488fdaf1c7909814d9f3249ae4eaa62102d5
-    pristine_git_object: 004d6e614ed49f4e542a6a885c2d7bd0cc38cb28
   docs/Models/Components/ApplePayPaymentMethodCreate.md:
     id: c27d276112e8
     last_write_checksum: sha1:2966eaa0713cce8b2d52064fbc5478b83dc5c17b
@@ -328,8 +324,8 @@ trackedFiles:
     pristine_git_object: 2491131e36ce8e7686840128639778e69c84712f
   docs/Models/Components/DigitalWallet.md:
     id: 190bf64ebeb3
-    last_write_checksum: sha1:1a949f86252bc72140027ef1822d44907ecd5ed8
-    pristine_git_object: 510180ec4525ac7d4e424bb1ccdf80949e9ce177
+    last_write_checksum: sha1:ca82ea64a6bb6abbf505b74d53543936c2ba4e2a
+    pristine_git_object: 5d9a14f06f0e6f364293f78a57ee8e801f286bfe
   docs/Models/Components/DigitalWalletAddress.md:
     id: fb41ecba89b5
     last_write_checksum: sha1:10d64c8e690f9138fdd700b21b18b66288e382d4
@@ -2096,8 +2092,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:b3b0925a2b441fb787142d5ad0ee1c8b03c88594
-    pristine_git_object: 2efeb1a7b455665164168ef8c1a8fe4a1b4701e7
+    last_write_checksum: sha1:fdb6d193862926d94356fe817da4501ec69cabe1
+    pristine_git_object: 2a4d33c7ef056cff6c3d254742603592b85e8f21
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:4b05b2f4cb25a0046b719765211cdd041c1b7441
@@ -2210,10 +2206,6 @@ trackedFiles:
     id: fe8369cf5ca2
     last_write_checksum: sha1:17a1dae8c83e584d355579b38e8dd000a9c7bdab
     pristine_git_object: ae9ae141dcb79afeb24b2840645b41a0e3be55f7
-  src/Gr4vy/Models/Components/ApiTypesDigitalWalletAddress.cs:
-    id: 8db52f6105cb
-    last_write_checksum: sha1:d8b6879a0e289574ff25c1f4562cde6515ea469b
-    pristine_git_object: 22b1bdafe9c79c8ecacc4e42aba1e6ca17525661
   src/Gr4vy/Models/Components/ApplePayPaymentMethodCreate.cs:
     id: 50ee57b31233
     last_write_checksum: sha1:9a8a837c0ea185db57add1184ca4fc485e854987
@@ -2392,8 +2384,8 @@ trackedFiles:
     pristine_git_object: cb86ed43897165c1547b52313d23f7207490bc70
   src/Gr4vy/Models/Components/DigitalWallet.cs:
     id: 797d5e25ddf9
-    last_write_checksum: sha1:2817666f2cea1991b77ac5f66c0e64bef0ac8915
-    pristine_git_object: 3bd6f580c88f3a5b52d2aac92ec5b8c504e372cc
+    last_write_checksum: sha1:35d933e4a6e90d4326852b88eee06464b1ae93d5
+    pristine_git_object: 4441fb2caaf92d20e99e5ee099d3debb2badf4b7
   src/Gr4vy/Models/Components/DigitalWalletAddress.cs:
     id: aac5d26e0ab9
     last_write_checksum: sha1:952bd52ef87be0b84ea6d84e6e187eab6b0a5eff
@@ -3992,8 +3984,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:21c4eab9c3807448c8c689b6b7ae71adab625d2f
-    pristine_git_object: 5d3c5dcfc89d1b5f6cec9a6fc71ebcb866e2fb5f
+    last_write_checksum: sha1:cd737b490c9e1da6f2655c2e9860d9f119993e86
+    pristine_git_object: 1987dd952c6a81355dcd30af770e7bab77471d5c
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4032,8 +4024,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:a6da3406eeed841706ea0bab89b6c5ae1655abe3
-    pristine_git_object: 567829a0668ccd026d63309b98e300dd3b765ad1
+    last_write_checksum: sha1:9d5c642f8453190e8f4ec6ea60a7e3c3821d90bd
+    pristine_git_object: bd949755f54b997dd4e704351d18c5cfc852ada9
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8282,8 +8274,10 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Csharp SDK Changes:
-  * `Gr4vy.Transactions.RefundSettlements.Get()`: **Added**
-  * `Gr4vy.Transactions.RefundSettlements.List()`: **Added**
+  * `Gr4vy.DigitalWallets.Create()`:  `response.address.Line2` **Changed**
+  * `Gr4vy.DigitalWallets.List()`:  `response.items[].Address.Line2` **Changed**
+  * `Gr4vy.DigitalWallets.Get()`:  `response.address.Line2` **Changed**
+  * `Gr4vy.DigitalWallets.Update()`:  `response.address.Line2` **Changed**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
