@@ -3,8 +3,10 @@
 
 ## Fields
 
-| Field                                       | Type                                        | Required                                    | Description                                 |
-| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
-| `Loc`                                       | List<[Loc](../../Models/Components/Loc.md)> | :heavy_check_mark:                          | N/A                                         |
-| `Msg`                                       | *string*                                    | :heavy_check_mark:                          | N/A                                         |
-| `Type`                                      | *string*                                    | :heavy_check_mark:                          | N/A                                         |
+| Field                                                                       | Type                                                                        | Required                                                                    | Description                                                                 |
+| --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- | --------------------------------------------------------------------------- |
+| `Loc`                                                                       | List<[Loc](../../Models/Components/Loc.md)>                                 | :heavy_check_mark:                                                          | N/A                                                                         |
+| `Msg`                                                                       | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `Type`                                                                      | *string*                                                                    | :heavy_check_mark:                                                          | N/A                                                                         |
+| `Input`                                                                     | *object*                                                                    | :heavy_minus_sign:                                                          | N/A                                                                         |
+| `Ctx`                                                                       | [ValidationErrorContext](../../Models/Components/ValidationErrorContext.md) | :heavy_minus_sign:                                                          | N/A                                                                         |

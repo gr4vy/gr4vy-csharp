@@ -24,5 +24,11 @@ namespace Gr4vy.Models.Components
 
         [JsonProperty("type")]
         public string Type { get; set; } = default!;
+
+        [JsonProperty("input")]
+        public object? Input { get; set; }
+
+        [JsonProperty("ctx")]
+        public ValidationErrorContext? Ctx { get; set; }
     }
 }
