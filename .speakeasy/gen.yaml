@@ -62,7 +62,7 @@ csharp:
   outputModelSuffix: output
   packageName: Gr4vy
   packageTags: gr4vy payments orchestration sdk pci credit cards
-  presenceAwareJsonSerialization: false
+  presenceAwareJsonSerialization: true
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: flat
   sourceDirectory: src
