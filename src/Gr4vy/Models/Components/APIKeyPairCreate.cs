@@ -18,34 +18,35 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The display name for the API key pair.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
 
-        [JsonProperty("algorithm")]
+        [JsonProperty("algorithm", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? Algorithm { get; set; }
 
         /// <summary>
         /// Whether the API key pair should be active and usable once created.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonProperty("active", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? Active { get; set; } = true;
 
         /// <summary>
         /// The ID of the role to assign to the API key pair. Exactly one role is supported. The caller can only assign a role whose scopes are a subset of its own.
         /// </summary>
-        [JsonProperty("role_ids")]
+        [JsonProperty("role_ids", Required = Newtonsoft.Json.Required.Always)]
         public List<string> RoleIds { get; set; } = default!;
 
         /// <summary>
         /// The IDs of the merchant accounts to associate with the API key pair. An empty list grants access to all merchant accounts. The caller can only assign merchant accounts it has access to.
         /// </summary>
-        [JsonProperty("merchant_account_ids")]
+        [JsonProperty("merchant_account_ids", Required = Newtonsoft.Json.Required.DisallowNull)]
         public List<string>? MerchantAccountIds { get; set; }
 
         /// <summary>
         /// A PEM-encoded ECDSA P-521 (ES512) public key. Provide this to register your own key pair (bring your own key); If omitted, Gr4vy will generate the key pair and return the private key.
         /// </summary>
-        [JsonProperty("public_key")]
-        public string? PublicKey { get; set; } = null;
+        [JsonProperty("public_key", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PublicKey { get; set; }
+        public bool ShouldSerializePublicKey() => PublicKey.IsSet;
     }
 }

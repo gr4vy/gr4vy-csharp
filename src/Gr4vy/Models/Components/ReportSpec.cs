@@ -15,13 +15,13 @@ namespace Gr4vy.Models.Components
 
     public class ReportSpec
     {
-        [JsonProperty("model")]
+        [JsonProperty("model", Required = Newtonsoft.Json.Required.Always)]
         public string Model { get; set; } = default!;
 
         /// <summary>
         /// The parameters for the report model.
         /// </summary>
-        [JsonProperty("params")]
+        [JsonProperty("params", Required = Newtonsoft.Json.Required.Always)]
         public Dictionary<string, object> Params { get; set; } = default!;
     }
 }

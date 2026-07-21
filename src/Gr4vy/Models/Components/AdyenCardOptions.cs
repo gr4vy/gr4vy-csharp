@@ -19,221 +19,78 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Set to `true` to enable Auto Rescue for a transaction. Use the `maxDaysToRescue` to specify a rescue window.
         /// </summary>
-        [JsonProperty("autoRescue", NullValueHandling = NullValueHandling.Include)]
-        public bool? AutoRescue
-        {
-            get => _autoRescue;
-            set
-            {
-                _autoRescue = value;
-                _autoRescueSet = true;
-            }
-        }
-
-        private bool? _autoRescue = null;
-
-        private bool _autoRescueSet = false;
-
-        public bool ShouldSerializeAutoRescue() => _autoRescueSet;
+        [JsonProperty("autoRescue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> AutoRescue { get; set; }
+        public bool ShouldSerializeAutoRescue() => AutoRescue.IsSet;
 
         /// <summary>
         /// The rescue window for a transaction, in days, when `autoRescue` is set to `true`. You can specify a value between 1 and 48. For cards, the default is one calendar month. For SEPA, the default is 42 days.
         /// </summary>
-        [JsonProperty("maxDaysToRescue", NullValueHandling = NullValueHandling.Include)]
-        public long? MaxDaysToRescue
-        {
-            get => _maxDaysToRescue;
-            set
-            {
-                _maxDaysToRescue = value;
-                _maxDaysToRescueSet = true;
-            }
-        }
-
-        private long? _maxDaysToRescue = null;
-
-        private bool _maxDaysToRescueSet = false;
-
-        public bool ShouldSerializeMaxDaysToRescue() => _maxDaysToRescueSet;
+        [JsonProperty("maxDaysToRescue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> MaxDaysToRescue { get; set; }
+        public bool ShouldSerializeMaxDaysToRescue() => MaxDaysToRescue.IsSet;
 
         /// <summary>
         /// Passes additional data to the Adyen API when creating a transaction.
         /// </summary>
-        [JsonProperty("additionalData", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? AdditionalData
-        {
-            get => _additionalData;
-            set
-            {
-                _additionalData = value;
-                _additionalDataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _additionalData = null;
-
-        private bool _additionalDataSet = false;
-
-        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
+        [JsonProperty("additionalData", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> AdditionalData { get; set; }
+        public bool ShouldSerializeAdditionalData() => AdditionalData.IsSet;
 
         /// <summary>
         /// The rescue scenario to simulate for a transaction, when `autoRescue` is set to `true`.
         /// </summary>
-        [JsonProperty("autoRescueScenario", NullValueHandling = NullValueHandling.Include)]
-        public string? AutoRescueScenario
-        {
-            get => _autoRescueScenario;
-            set
-            {
-                _autoRescueScenario = value;
-                _autoRescueScenarioSet = true;
-            }
-        }
-
-        private string? _autoRescueScenario = null;
-
-        private bool _autoRescueScenarioSet = false;
-
-        public bool ShouldSerializeAutoRescueScenario() => _autoRescueScenarioSet;
+        [JsonProperty("autoRescueScenario", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AutoRescueScenario { get; set; }
+        public bool ShouldSerializeAutoRescueScenario() => AutoRescueScenario.IsSet;
 
         /// <summary>
         /// The origin of the window where the payment is initiated, used for 3D Secure authentication.
         /// </summary>
-        [JsonProperty("window_origin", NullValueHandling = NullValueHandling.Include)]
-        public string? WindowOrigin
-        {
-            get => _windowOrigin;
-            set
-            {
-                _windowOrigin = value;
-                _windowOriginSet = true;
-            }
-        }
-
-        private string? _windowOrigin = null;
-
-        private bool _windowOriginSet = false;
-
-        public bool ShouldSerializeWindowOrigin() => _windowOriginSet;
+        [JsonProperty("window_origin", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> WindowOrigin { get; set; }
+        public bool ShouldSerializeWindowOrigin() => WindowOrigin.IsSet;
 
         /// <summary>
         /// Passes information of splitting payment amounts to the Adyen API.
         /// </summary>
-        [JsonProperty("splits", NullValueHandling = NullValueHandling.Include)]
-        public AdyenSplitsOptions? Splits
-        {
-            get => _splits;
-            set
-            {
-                _splits = value;
-                _splitsSet = true;
-            }
-        }
-
-        private AdyenSplitsOptions? _splits = null;
-
-        private bool _splitsSet = false;
-
-        public bool ShouldSerializeSplits() => _splitsSet;
+        [JsonProperty("splits", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<AdyenSplitsOptions?> Splits { get; set; }
+        public bool ShouldSerializeSplits() => Splits.IsSet;
 
         /// <summary>
         /// Passes `merchantRiskIndicator` data to Adyen.
         /// </summary>
-        [JsonProperty("merchantRiskIndicator", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, object>? MerchantRiskIndicator
-        {
-            get => _merchantRiskIndicator;
-            set
-            {
-                _merchantRiskIndicator = value;
-                _merchantRiskIndicatorSet = true;
-            }
-        }
-
-        private Dictionary<string, object>? _merchantRiskIndicator = null;
-
-        private bool _merchantRiskIndicatorSet = false;
-
-        public bool ShouldSerializeMerchantRiskIndicator() => _merchantRiskIndicatorSet;
+        [JsonProperty("merchantRiskIndicator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, object>?> MerchantRiskIndicator { get; set; }
+        public bool ShouldSerializeMerchantRiskIndicator() => MerchantRiskIndicator.IsSet;
 
         /// <summary>
         /// Passes `accountInfo` data to Adyen.
         /// </summary>
-        [JsonProperty("accountInfo", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, object>? AccountInfo
-        {
-            get => _accountInfo;
-            set
-            {
-                _accountInfo = value;
-                _accountInfoSet = true;
-            }
-        }
-
-        private Dictionary<string, object>? _accountInfo = null;
-
-        private bool _accountInfoSet = false;
-
-        public bool ShouldSerializeAccountInfo() => _accountInfoSet;
+        [JsonProperty("accountInfo", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, object>?> AccountInfo { get; set; }
+        public bool ShouldSerializeAccountInfo() => AccountInfo.IsSet;
 
         /// <summary>
         /// Passes `riskData.customFields` to Adyen.
         /// </summary>
-        [JsonProperty("riskData", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, object>? RiskData
-        {
-            get => _riskData;
-            set
-            {
-                _riskData = value;
-                _riskDataSet = true;
-            }
-        }
-
-        private Dictionary<string, object>? _riskData = null;
-
-        private bool _riskDataSet = false;
-
-        public bool ShouldSerializeRiskData() => _riskDataSet;
+        [JsonProperty("riskData", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, object>?> RiskData { get; set; }
+        public bool ShouldSerializeRiskData() => RiskData.IsSet;
 
         /// <summary>
         /// Passes `threeDS2RequestData.threeDSRequestorChallengeInd` to Adyen.
         /// </summary>
-        [JsonProperty("threeDSRequestorChallengeInd", NullValueHandling = NullValueHandling.Include)]
-        public string? ThreeDSRequestorChallengeInd
-        {
-            get => _threeDSRequestorChallengeInd;
-            set
-            {
-                _threeDSRequestorChallengeInd = value;
-                _threeDSRequestorChallengeIndSet = true;
-            }
-        }
-
-        private string? _threeDSRequestorChallengeInd = null;
-
-        private bool _threeDSRequestorChallengeIndSet = false;
-
-        public bool ShouldSerializeThreeDSRequestorChallengeInd() => _threeDSRequestorChallengeIndSet;
+        [JsonProperty("threeDSRequestorChallengeInd", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ThreeDSRequestorChallengeInd { get; set; }
+        public bool ShouldSerializeThreeDSRequestorChallengeInd() => ThreeDSRequestorChallengeInd.IsSet;
 
         /// <summary>
         /// Passes `authenticationData.attemptAuthentication` to Adyen.
         /// </summary>
-        [JsonProperty("attemptAuthentication", NullValueHandling = NullValueHandling.Include)]
-        public string? AttemptAuthentication
-        {
-            get => _attemptAuthentication;
-            set
-            {
-                _attemptAuthentication = value;
-                _attemptAuthenticationSet = true;
-            }
-        }
-
-        private string? _attemptAuthentication = null;
-
-        private bool _attemptAuthenticationSet = false;
-
-        public bool ShouldSerializeAttemptAuthentication() => _attemptAuthenticationSet;
+        [JsonProperty("attemptAuthentication", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AttemptAuthentication { get; set; }
+        public bool ShouldSerializeAttemptAuthentication() => AttemptAuthentication.IsSet;
     }
 }

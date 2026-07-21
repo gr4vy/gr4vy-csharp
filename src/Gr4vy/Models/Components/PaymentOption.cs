@@ -15,28 +15,31 @@ namespace Gr4vy.Models.Components
 
     public class PaymentOption
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-option";
 
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public string Method { get; set; } = default!;
 
-        [JsonProperty("icon_url")]
-        public string? IconUrl { get; set; } = null;
+        [JsonProperty("icon_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IconUrl { get; set; }
+        public bool ShouldSerializeIconUrl() => IconUrl.IsSet;
 
-        [JsonProperty("mode")]
+        [JsonProperty("mode", Required = Newtonsoft.Json.Required.Always)]
         public string Mode { get; set; } = default!;
 
-        [JsonProperty("label")]
-        public string? Label { get; set; } = null;
+        [JsonProperty("label", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Label { get; set; }
+        public bool ShouldSerializeLabel() => Label.IsSet;
 
-        [JsonProperty("can_store_payment_method")]
+        [JsonProperty("can_store_payment_method", Required = Newtonsoft.Json.Required.Always)]
         public bool CanStorePaymentMethod { get; set; } = default!;
 
-        [JsonProperty("can_delay_capture")]
+        [JsonProperty("can_delay_capture", Required = Newtonsoft.Json.Required.Always)]
         public bool CanDelayCapture { get; set; } = default!;
 
-        [JsonProperty("context", NullValueHandling = NullValueHandling.Include)]
-        public Context? Context { get; set; } = null;
+        [JsonProperty("context", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Context?> Context { get; set; }
+        public bool ShouldSerializeContext() => Context.IsSet;
     }
 }

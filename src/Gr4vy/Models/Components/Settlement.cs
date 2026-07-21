@@ -22,103 +22,107 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The unique identifier for the record.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The merchant account this record belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The date and time the record was created, in ISO 8601 format.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time the record was last updated, in ISO 8601 format.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time the record was posted, in ISO 8601 format.
         /// </summary>
-        [JsonProperty("posted_at")]
+        [JsonProperty("posted_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime PostedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time the record was ingested, in ISO 8601 format.
         /// </summary>
-        [JsonProperty("ingested_at")]
+        [JsonProperty("ingested_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime IngestedAt { get; set; } = default!;
 
         /// <summary>
         /// ISO 4217 currency code.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Always)]
         public string Currency { get; set; } = default!;
 
         /// <summary>
         /// The total amount in the smallest currency unit (e.g. cents).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
         /// <summary>
         /// The exchange rate, if applicable.
         /// </summary>
-        [JsonProperty("exchange_rate")]
-        public double? ExchangeRate { get; set; } = null;
+        [JsonProperty("exchange_rate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<double?> ExchangeRate { get; set; }
+        public bool ShouldSerializeExchangeRate() => ExchangeRate.IsSet;
 
         /// <summary>
         /// The commission amount deducted in the smallest currency unit.
         /// </summary>
-        [JsonProperty("commission")]
+        [JsonProperty("commission", Required = Newtonsoft.Json.Required.Always)]
         public long Commission { get; set; } = default!;
 
         /// <summary>
         /// The interchange fee, if applicable, in the smallest currency unit.
         /// </summary>
-        [JsonProperty("interchange")]
-        public long? Interchange { get; set; } = null;
+        [JsonProperty("interchange", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Interchange { get; set; }
+        public bool ShouldSerializeInterchange() => Interchange.IsSet;
 
         /// <summary>
         /// The markup fee, if applicable, in the smallest currency unit.
         /// </summary>
-        [JsonProperty("markup")]
-        public long? Markup { get; set; } = null;
+        [JsonProperty("markup", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Markup { get; set; }
+        public bool ShouldSerializeMarkup() => Markup.IsSet;
 
         /// <summary>
         /// The scheme fee, if applicable, in the smallest currency unit.
         /// </summary>
-        [JsonProperty("scheme_fee")]
-        public long? SchemeFee { get; set; } = null;
+        [JsonProperty("scheme_fee", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> SchemeFee { get; set; }
+        public bool ShouldSerializeSchemeFee() => SchemeFee.IsSet;
 
         /// <summary>
         /// The report ID from the payment service.
         /// </summary>
-        [JsonProperty("payment_service_report_id")]
+        [JsonProperty("payment_service_report_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentServiceReportId { get; set; } = default!;
 
         /// <summary>
         /// List of file IDs for the payment service report.
         /// </summary>
-        [JsonProperty("payment_service_report_file_ids")]
+        [JsonProperty("payment_service_report_file_ids", Required = Newtonsoft.Json.Required.Always)]
         public List<string> PaymentServiceReportFileIds { get; set; } = default!;
 
         /// <summary>
         /// The transaction this record is associated with.
         /// </summary>
-        [JsonProperty("transaction_id")]
+        [JsonProperty("transaction_id", Required = Newtonsoft.Json.Required.Always)]
         public string TransactionId { get; set; } = default!;
 
         /// <summary>
         /// Always `settlement`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "settlement";
     }
 }

@@ -17,43 +17,46 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `report`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "report";
 
         /// <summary>
         /// The unique ID for the report.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The merchant account ID this report belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The name of the report.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The ID of the user who created the report.
         /// </summary>
-        [JsonProperty("creator_id")]
-        public string? CreatorId { get; set; } = null;
+        [JsonProperty("creator_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CreatorId { get; set; }
+        public bool ShouldSerializeCreatorId() => CreatorId.IsSet;
 
         /// <summary>
         /// The display name of the report creator.
         /// </summary>
-        [JsonProperty("creator_display_name")]
-        public string? CreatorDisplayName { get; set; } = null;
+        [JsonProperty("creator_display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CreatorDisplayName { get; set; }
+        public bool ShouldSerializeCreatorDisplayName() => CreatorDisplayName.IsSet;
 
         /// <summary>
         /// The type of the report creator.
         /// </summary>
-        [JsonProperty("creator_type")]
-        public string? CreatorType { get; set; } = null;
+        [JsonProperty("creator_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CreatorType { get; set; }
+        public bool ShouldSerializeCreatorType() => CreatorType.IsSet;
     }
 }

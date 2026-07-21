@@ -19,41 +19,15 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes additional discounts to the Affirm widget.
         /// </summary>
-        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, Dictionary<string, object>>? Discounts
-        {
-            get => _discounts;
-            set
-            {
-                _discounts = value;
-                _discountsSet = true;
-            }
-        }
-
-        private Dictionary<string, Dictionary<string, object>>? _discounts = null;
-
-        private bool _discountsSet = false;
-
-        public bool ShouldSerializeDiscounts() => _discountsSet;
+        [JsonProperty("discounts", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, Dictionary<string, object>>?> Discounts { get; set; }
+        public bool ShouldSerializeDiscounts() => Discounts.IsSet;
 
         /// <summary>
         /// Passes itinerary data to the Affirm API.
         /// </summary>
-        [JsonProperty("itinerary", NullValueHandling = NullValueHandling.Include)]
-        public AffirmItineraryOptions? Itinerary
-        {
-            get => _itinerary;
-            set
-            {
-                _itinerary = value;
-                _itinerarySet = true;
-            }
-        }
-
-        private AffirmItineraryOptions? _itinerary = null;
-
-        private bool _itinerarySet = false;
-
-        public bool ShouldSerializeItinerary() => _itinerarySet;
+        [JsonProperty("itinerary", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<AffirmItineraryOptions?> Itinerary { get; set; }
+        public bool ShouldSerializeItinerary() => Itinerary.IsSet;
     }
 }

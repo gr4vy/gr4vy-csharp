@@ -17,13 +17,15 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// An optional reason to attach extra context to the refund requests.
         /// </summary>
-        [JsonProperty("reason")]
-        public string? Reason { get; set; } = null;
+        [JsonProperty("reason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Reason { get; set; }
+        public bool ShouldSerializeReason() => Reason.IsSet;
 
         /// <summary>
         /// An external identifier that can be used to match the refunds against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
     }
 }

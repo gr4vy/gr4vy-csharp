@@ -17,38 +17,10 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The tax ID for the buyer.
         /// </summary>
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
-        public string Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-                _valueSet = true;
-            }
-        }
+        [JsonProperty("value", Required = Newtonsoft.Json.Required.Always)]
+        public string Value { get; set; } = default!;
 
-        private string _value = default!;
-
-        private bool _valueSet = true;
-
-        public bool ShouldSerializeValue() => _valueSet;
-
-        [JsonProperty("kind", NullValueHandling = NullValueHandling.Include)]
-        public string Kind
-        {
-            get => _kind;
-            set
-            {
-                _kind = value;
-                _kindSet = true;
-            }
-        }
-
-        private string _kind = default!;
-
-        private bool _kindSet = true;
-
-        public bool ShouldSerializeKind() => _kindSet;
+        [JsonProperty("kind", Required = Newtonsoft.Json.Required.Always)]
+        public string Kind { get; set; } = default!;
     }
 }

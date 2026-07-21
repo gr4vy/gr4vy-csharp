@@ -18,31 +18,36 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Whether the current transaction includes a gift card purchase.
         /// </summary>
-        [JsonProperty("cartContainsGiftCard")]
-        public bool? CartContainsGiftCard { get; set; } = null;
+        [JsonProperty("cartContainsGiftCard", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> CartContainsGiftCard { get; set; }
+        public bool ShouldSerializeCartContainsGiftCard() => CartContainsGiftCard.IsSet;
 
         /// <summary>
         /// Whether the consumer order will be picked up rather than shipped.
         /// </summary>
-        [JsonProperty("orderForPickup")]
-        public bool? OrderForPickup { get; set; } = null;
+        [JsonProperty("orderForPickup", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> OrderForPickup { get; set; }
+        public bool ShouldSerializeOrderForPickup() => OrderForPickup.IsSet;
 
         /// <summary>
         /// Dollar value of the most expensive item ordered.
         /// </summary>
-        [JsonProperty("orderHighestCost")]
-        public string? OrderHighestCost { get; set; } = null;
+        [JsonProperty("orderHighestCost", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> OrderHighestCost { get; set; }
+        public bool ShouldSerializeOrderHighestCost() => OrderHighestCost.IsSet;
 
         /// <summary>
         /// Number of items ordered.
         /// </summary>
-        [JsonProperty("orderQuantity")]
-        public string? OrderQuantity { get; set; } = null;
+        [JsonProperty("orderQuantity", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> OrderQuantity { get; set; }
+        public bool ShouldSerializeOrderQuantity() => OrderQuantity.IsSet;
 
         /// <summary>
         /// The selected shipping address. Returned only when `shippingPreference` is not `NONE`.
         /// </summary>
-        [JsonProperty("finalShippingAddress")]
-        public PazeShippingAddress? FinalShippingAddress { get; set; } = null;
+        [JsonProperty("finalShippingAddress", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<PazeShippingAddress?> FinalShippingAddress { get; set; }
+        public bool ShouldSerializeFinalShippingAddress() => FinalShippingAddress.IsSet;
     }
 }

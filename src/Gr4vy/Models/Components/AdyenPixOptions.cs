@@ -19,41 +19,15 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes additional data to the Adyen API when creating a transaction.
         /// </summary>
-        [JsonProperty("additionalData", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? AdditionalData
-        {
-            get => _additionalData;
-            set
-            {
-                _additionalData = value;
-                _additionalDataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _additionalData = null;
-
-        private bool _additionalDataSet = false;
-
-        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
+        [JsonProperty("additionalData", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> AdditionalData { get; set; }
+        public bool ShouldSerializeAdditionalData() => AdditionalData.IsSet;
 
         /// <summary>
         /// Passes `pixRecurring` data to Adyen.
         /// </summary>
-        [JsonProperty("pixRecurring", NullValueHandling = NullValueHandling.Include)]
-        public AdyenPixRecurringOptions? PixRecurring
-        {
-            get => _pixRecurring;
-            set
-            {
-                _pixRecurring = value;
-                _pixRecurringSet = true;
-            }
-        }
-
-        private AdyenPixRecurringOptions? _pixRecurring = null;
-
-        private bool _pixRecurringSet = false;
-
-        public bool ShouldSerializePixRecurring() => _pixRecurringSet;
+        [JsonProperty("pixRecurring", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<AdyenPixRecurringOptions?> PixRecurring { get; set; }
+        public bool ShouldSerializePixRecurring() => PixRecurring.IsSet;
     }
 }

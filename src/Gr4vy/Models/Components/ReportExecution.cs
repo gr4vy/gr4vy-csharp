@@ -19,34 +19,34 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `report-execution`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "report-execution";
 
         /// <summary>
         /// The unique ID for the report execution.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The date this report execution was created at.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date this report execution was last updated.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
 
-        [JsonProperty("context")]
-        public ReportExecutionContext Context { get; set; } = default!;
+        [JsonProperty("context", Required = Newtonsoft.Json.Required.Always)]
+        public ReportExecutionContext Context { get; set; } = new();
 
-        [JsonProperty("report")]
-        public ReportSummary Report { get; set; } = default!;
+        [JsonProperty("report", Required = Newtonsoft.Json.Required.Always)]
+        public ReportSummary Report { get; set; } = new();
     }
 }

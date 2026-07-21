@@ -19,31 +19,31 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `action`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "action";
 
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
-        [JsonProperty("flow")]
+        [JsonProperty("flow", Required = Newtonsoft.Json.Required.Always)]
         public string Flow { get; set; } = default!;
 
         /// <summary>
         /// The ID of the rule that triggered this action.
         /// </summary>
-        [JsonProperty("rule_id")]
+        [JsonProperty("rule_id", Required = Newtonsoft.Json.Required.Always)]
         public string RuleId { get; set; } = default!;
 
         /// <summary>
         /// The date this action was created at.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The outcome of the action.
         /// </summary>
-        [JsonProperty("outcome")]
+        [JsonProperty("outcome", Required = Newtonsoft.Json.Required.Always)]
         public Dictionary<string, object> Outcome { get; set; } = default!;
     }
 }

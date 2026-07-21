@@ -18,46 +18,46 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `network-token`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "network-token";
 
         /// <summary>
         /// The ID for the network token.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The expiration date for the network token.
         /// </summary>
-        [JsonProperty("expiration_date")]
+        [JsonProperty("expiration_date", Required = Newtonsoft.Json.Required.Always)]
         public string ExpirationDate { get; set; } = default!;
 
         /// <summary>
         /// The ID of the payment method used to generate this token.
         /// </summary>
-        [JsonProperty("payment_method_id")]
+        [JsonProperty("payment_method_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentMethodId { get; set; } = default!;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
 
         /// <summary>
         /// The token value. Will be present if succeeded.
         /// </summary>
-        [JsonProperty("token")]
+        [JsonProperty("token", Required = Newtonsoft.Json.Required.Always)]
         public string Token { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this network token was first created in our system.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this network token was last updated in our system.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
     }
 }

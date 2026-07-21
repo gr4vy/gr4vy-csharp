@@ -17,13 +17,14 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Product name of the cobrand card. Must match exactly with the card name from the network.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// Whether benefits are offered for this cobrand card.
         /// </summary>
-        [JsonProperty("benefitsOffered")]
-        public bool? BenefitsOffered { get; set; } = null;
+        [JsonProperty("benefitsOffered", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> BenefitsOffered { get; set; }
+        public bool ShouldSerializeBenefitsOffered() => BenefitsOffered.IsSet;
     }
 }

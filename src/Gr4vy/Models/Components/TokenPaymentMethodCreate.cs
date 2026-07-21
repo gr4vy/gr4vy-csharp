@@ -20,25 +20,27 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The ID for the payment method.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// Always `id`.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Method { get; } = "id";
 
         /// <summary>
         /// The 3 or 4 digit security code often found on the card. This often referred to as the CVV or CVD.
         /// </summary>
-        [JsonProperty("security_code")]
-        public string? SecurityCode { get; set; } = null;
+        [JsonProperty("security_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> SecurityCode { get; set; }
+        public bool ShouldSerializeSecurityCode() => SecurityCode.IsSet;
 
         /// <summary>
         /// The URL to redirect a user back to after they approve the transaction in the browser.
         /// </summary>
-        [JsonProperty("redirect_url")]
-        public string? RedirectUrl { get; set; } = null;
+        [JsonProperty("redirect_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RedirectUrl { get; set; }
+        public bool ShouldSerializeRedirectUrl() => RedirectUrl.IsSet;
     }
 }

@@ -21,6 +21,6 @@ namespace Gr4vy.Models.Requests
         public string ApiKeyPairId { get; set; } = default!;
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public APIKeyPairUpdate APIKeyPairUpdate { get; set; } = default!;
+        public APIKeyPairUpdate APIKeyPairUpdate { get; set; } = new();
     }
 }

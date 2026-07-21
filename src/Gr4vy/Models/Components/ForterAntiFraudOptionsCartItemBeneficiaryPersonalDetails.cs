@@ -17,61 +17,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// First name of the beneficiary.
         /// </summary>
-        [JsonProperty("first_name", NullValueHandling = NullValueHandling.Include)]
-        public string? FirstName
-        {
-            get => _firstName;
-            set
-            {
-                _firstName = value;
-                _firstNameSet = true;
-            }
-        }
-
-        private string? _firstName = null;
-
-        private bool _firstNameSet = false;
-
-        public bool ShouldSerializeFirstName() => _firstNameSet;
+        [JsonProperty("first_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FirstName { get; set; }
+        public bool ShouldSerializeFirstName() => FirstName.IsSet;
 
         /// <summary>
         /// Last name of the beneficiary.
         /// </summary>
-        [JsonProperty("last_name", NullValueHandling = NullValueHandling.Include)]
-        public string? LastName
-        {
-            get => _lastName;
-            set
-            {
-                _lastName = value;
-                _lastNameSet = true;
-            }
-        }
-
-        private string? _lastName = null;
-
-        private bool _lastNameSet = false;
-
-        public bool ShouldSerializeLastName() => _lastNameSet;
+        [JsonProperty("last_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> LastName { get; set; }
+        public bool ShouldSerializeLastName() => LastName.IsSet;
 
         /// <summary>
         /// Email address of the beneficiary.
         /// </summary>
-        [JsonProperty("email", NullValueHandling = NullValueHandling.Include)]
-        public string? Email
-        {
-            get => _email;
-            set
-            {
-                _email = value;
-                _emailSet = true;
-            }
-        }
-
-        private string? _email = null;
-
-        private bool _emailSet = false;
-
-        public bool ShouldSerializeEmail() => _emailSet;
+        [JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Email { get; set; }
+        public bool ShouldSerializeEmail() => Email.IsSet;
     }
 }

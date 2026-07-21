@@ -15,22 +15,22 @@ namespace Gr4vy.Models.Components
 
     public class PazeSessionReview
     {
-        [JsonProperty("consumer")]
-        public PazeConsumer Consumer { get; set; } = default!;
+        [JsonProperty("consumer", Required = Newtonsoft.Json.Required.Always)]
+        public PazeConsumer Consumer { get; set; } = new();
 
-        [JsonProperty("shippingAddress", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("shippingAddress", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public PazeShippingAddress? ShippingAddress { get; set; }
 
-        [JsonProperty("maskedCard")]
-        public PazeMaskedCard MaskedCard { get; set; } = default!;
+        [JsonProperty("maskedCard", Required = Newtonsoft.Json.Required.Always)]
+        public PazeMaskedCard MaskedCard { get; set; } = new();
 
-        [JsonProperty("links")]
-        public PazeSessionReviewLinks Links { get; set; } = default!;
+        [JsonProperty("links", Required = Newtonsoft.Json.Required.Always)]
+        public PazeSessionReviewLinks Links { get; set; } = new();
 
         /// <summary>
         /// Opaque token issued by the Paze service to be used in the next Paze interaction.
         /// </summary>
-        [JsonProperty("code")]
+        [JsonProperty("code", Required = Newtonsoft.Json.Required.Always)]
         public string Code { get; set; } = default!;
     }
 }

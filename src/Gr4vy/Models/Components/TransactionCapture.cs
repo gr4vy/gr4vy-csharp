@@ -18,64 +18,69 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `transaction-capture`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "transaction-capture";
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
 
         /// <summary>
         /// The standardized error code set by Gr4vy.
         /// </summary>
-        [JsonProperty("code", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("code", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? Code { get; set; }
 
         /// <summary>
         /// This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_code", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("raw_response_code", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? RawResponseCode { get; set; }
 
         /// <summary>
         /// This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_description", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("raw_response_description", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? RawResponseDescription { get; set; }
 
         /// <summary>
         /// A full transaction resource.
         /// </summary>
-        [JsonProperty("transaction")]
-        public Transaction Transaction { get; set; } = default!;
+        [JsonProperty("transaction", Required = Newtonsoft.Json.Required.Always)]
+        public Transaction Transaction { get; set; } = new();
 
         /// <summary>
         /// The ID of the capture resource created for this capture.
         /// </summary>
-        [JsonProperty("capture_id")]
-        public string? CaptureId { get; set; } = null;
+        [JsonProperty("capture_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CaptureId { get; set; }
+        public bool ShouldSerializeCaptureId() => CaptureId.IsSet;
 
         /// <summary>
         /// The payment service's unique ID for the capture.
         /// </summary>
-        [JsonProperty("payment_service_capture_id")]
-        public string? PaymentServiceCaptureId { get; set; } = null;
+        [JsonProperty("payment_service_capture_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PaymentServiceCaptureId { get; set; }
+        public bool ShouldSerializePaymentServiceCaptureId() => PaymentServiceCaptureId.IsSet;
 
         /// <summary>
         /// The external identifier for the capture.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The billing details associated with the capture.
         /// </summary>
-        [JsonProperty("billing_details")]
-        public BillingDetails? BillingDetails { get; set; } = null;
+        [JsonProperty("billing_details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<BillingDetails?> BillingDetails { get; set; }
+        public bool ShouldSerializeBillingDetails() => BillingDetails.IsSet;
 
         /// <summary>
         /// The shipping details associated with the catpure.
         /// </summary>
-        [JsonProperty("shipping_details")]
-        public Models.Components.ShippingDetails? ShippingDetails { get; set; } = null;
+        [JsonProperty("shipping_details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Models.Components.ShippingDetails?> ShippingDetails { get; set; }
+        public bool ShouldSerializeShippingDetails() => ShippingDetails.IsSet;
     }
 }

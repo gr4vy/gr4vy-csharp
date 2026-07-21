@@ -18,121 +18,43 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes `wallet.name` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string? Name
-        {
-            get => _name;
-            set
-            {
-                _name = value;
-                _nameSet = true;
-            }
-        }
-
-        private string? _name = null;
-
-        private bool _nameSet = false;
-
-        public bool ShouldSerializeName() => _nameSet;
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Name { get; set; }
+        public bool ShouldSerializeName() => Name.IsSet;
 
         /// <summary>
         /// Passes `wallet.email` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("email", NullValueHandling = NullValueHandling.Include)]
-        public string? Email
-        {
-            get => _email;
-            set
-            {
-                _email = value;
-                _emailSet = true;
-            }
-        }
-
-        private string? _email = null;
-
-        private bool _emailSet = false;
-
-        public bool ShouldSerializeEmail() => _emailSet;
+        [JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Email { get; set; }
+        public bool ShouldSerializeEmail() => Email.IsSet;
 
         /// <summary>
         /// Passes `wallet.token` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("token", NullValueHandling = NullValueHandling.Include)]
-        public string? Token
-        {
-            get => _token;
-            set
-            {
-                _token = value;
-                _tokenSet = true;
-            }
-        }
-
-        private string? _token = null;
-
-        private bool _tokenSet = false;
-
-        public bool ShouldSerializeToken() => _tokenSet;
+        [JsonProperty("token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Token { get; set; }
+        public bool ShouldSerializeToken() => Token.IsSet;
 
         /// <summary>
         /// Passes `wallet.username` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("username", NullValueHandling = NullValueHandling.Include)]
-        public string? Username
-        {
-            get => _username;
-            set
-            {
-                _username = value;
-                _usernameSet = true;
-            }
-        }
-
-        private string? _username = null;
-
-        private bool _usernameSet = false;
-
-        public bool ShouldSerializeUsername() => _usernameSet;
+        [JsonProperty("username", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Username { get; set; }
+        public bool ShouldSerializeUsername() => Username.IsSet;
 
         /// <summary>
         /// Passes `wallet.verify` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("verify", NullValueHandling = NullValueHandling.Include)]
-        public bool? Verify
-        {
-            get => _verify;
-            set
-            {
-                _verify = value;
-                _verifySet = true;
-            }
-        }
-
-        private bool? _verify = null;
-
-        private bool _verifySet = false;
-
-        public bool ShouldSerializeVerify() => _verifySet;
+        [JsonProperty("verify", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> Verify { get; set; }
+        public bool ShouldSerializeVerify() => Verify.IsSet;
 
         /// <summary>
         /// Passes `wallet.recurring_info` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("recurring_info", NullValueHandling = NullValueHandling.Include)]
-        public DlocalUPIRecurringInfoOptions? RecurringInfo
-        {
-            get => _recurringInfo;
-            set
-            {
-                _recurringInfo = value;
-                _recurringInfoSet = true;
-            }
-        }
-
-        private DlocalUPIRecurringInfoOptions? _recurringInfo = null;
-
-        private bool _recurringInfoSet = false;
-
-        public bool ShouldSerializeRecurringInfo() => _recurringInfoSet;
+        [JsonProperty("recurring_info", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DlocalUPIRecurringInfoOptions?> RecurringInfo { get; set; }
+        public bool ShouldSerializeRecurringInfo() => RecurringInfo.IsSet;
     }
 }

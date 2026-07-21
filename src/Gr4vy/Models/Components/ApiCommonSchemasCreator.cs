@@ -14,13 +14,13 @@ namespace Gr4vy.Models.Components
 
     public class ApiCommonSchemasCreator
     {
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
-        [JsonProperty("email_address")]
+        [JsonProperty("email_address", Required = Newtonsoft.Json.Required.Always)]
         public string EmailAddress { get; set; } = default!;
     }
 }

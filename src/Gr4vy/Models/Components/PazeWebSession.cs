@@ -17,19 +17,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The Paze merchant data ID.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The merchant display name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The Paze profile ID for the given domain.
         /// </summary>
-        [JsonProperty("profileId")]
+        [JsonProperty("profileId", Required = Newtonsoft.Json.Required.Always)]
         public string ProfileId { get; set; } = default!;
     }
 }

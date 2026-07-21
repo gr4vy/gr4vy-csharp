@@ -19,34 +19,36 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `audit-log`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "audit-log";
 
         /// <summary>
         /// The ID for the audit log entry.
         /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; } = null;
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Id { get; set; }
+        public bool ShouldSerializeId() => Id.IsSet;
 
         /// <summary>
         /// The ID of the merchant account this entry was created for.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
-        public string? MerchantAccountId { get; set; } = null;
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantAccountId { get; set; }
+        public bool ShouldSerializeMerchantAccountId() => MerchantAccountId.IsSet;
 
-        [JsonProperty("resource")]
-        public AuditLogEntryResource Resource { get; set; } = default!;
+        [JsonProperty("resource", Required = Newtonsoft.Json.Required.Always)]
+        public AuditLogEntryResource Resource { get; set; } = new();
 
-        [JsonProperty("action")]
+        [JsonProperty("action", Required = Newtonsoft.Json.Required.Always)]
         public string Action { get; set; } = default!;
 
-        [JsonProperty("user")]
-        public AuditLogEntryUser User { get; set; } = default!;
+        [JsonProperty("user", Required = Newtonsoft.Json.Required.Always)]
+        public AuditLogEntryUser User { get; set; } = new();
 
         /// <summary>
         /// The date and time that the action was performed.
         /// </summary>
-        [JsonProperty("timestamp")]
+        [JsonProperty("timestamp", Required = Newtonsoft.Json.Required.Always)]
         public DateTime Timestamp { get; set; } = default!;
     }
 }

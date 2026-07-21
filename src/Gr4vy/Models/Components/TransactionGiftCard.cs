@@ -17,31 +17,32 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `gift-card`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "gift-card";
 
         /// <summary>
         /// The ID for the gift card.
         /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; } = null;
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Id { get; set; }
+        public bool ShouldSerializeId() => Id.IsSet;
 
         /// <summary>
         /// The first 6 digits of the full gift card number.
         /// </summary>
-        [JsonProperty("bin")]
+        [JsonProperty("bin", Required = Newtonsoft.Json.Required.Always)]
         public string Bin { get; set; } = default!;
 
         /// <summary>
         /// The 3 digits after the `bin` of the full gift card number.
         /// </summary>
-        [JsonProperty("sub_bin")]
+        [JsonProperty("sub_bin", Required = Newtonsoft.Json.Required.Always)]
         public string SubBin { get; set; } = default!;
 
         /// <summary>
         /// The last 4 digits for the gift card.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonProperty("last4", Required = Newtonsoft.Json.Required.Always)]
         public string Last4 { get; set; } = default!;
     }
 }

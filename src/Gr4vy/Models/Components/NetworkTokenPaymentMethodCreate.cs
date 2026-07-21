@@ -17,61 +17,68 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `network-token`.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public string Method { get; } = "network-token";
 
         /// <summary>
         /// The scheme token.
         /// </summary>
-        [JsonProperty("token")]
+        [JsonProperty("token", Required = Newtonsoft.Json.Required.Always)]
         public string Token { get; set; } = default!;
 
         /// <summary>
         /// The expiration date of the token.
         /// </summary>
-        [JsonProperty("expiration_date")]
+        [JsonProperty("expiration_date", Required = Newtonsoft.Json.Required.Always)]
         public string ExpirationDate { get; set; } = default!;
 
         /// <summary>
         /// The payment cryptogram for the network token.
         /// </summary>
-        [JsonProperty("cryptogram")]
-        public string? Cryptogram { get; set; } = null;
+        [JsonProperty("cryptogram", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Cryptogram { get; set; }
+        public bool ShouldSerializeCryptogram() => Cryptogram.IsSet;
 
         /// <summary>
         /// The URL to redirect a user back to after the complete 3DS in browser.
         /// </summary>
-        [JsonProperty("redirect_url")]
-        public string? RedirectUrl { get; set; } = null;
+        [JsonProperty("redirect_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RedirectUrl { get; set; }
+        public bool ShouldSerializeRedirectUrl() => RedirectUrl.IsSet;
 
         /// <summary>
         /// The optional source of the decrypted device token.
         /// </summary>
-        [JsonProperty("card_source")]
-        public string? CardSource { get; set; } = null;
+        [JsonProperty("card_source", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardSource { get; set; }
+        public bool ShouldSerializeCardSource() => CardSource.IsSet;
 
         /// <summary>
         /// The original card scheme for which the token was generated.
         /// </summary>
-        [JsonProperty("card_scheme")]
-        public string? CardScheme { get; set; } = null;
+        [JsonProperty("card_scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardScheme { get; set; }
+        public bool ShouldSerializeCardScheme() => CardScheme.IsSet;
 
         /// <summary>
         /// The last 4 digits of the original card used to generate the token.
         /// </summary>
-        [JsonProperty("card_suffix")]
-        public string? CardSuffix { get; set; } = null;
+        [JsonProperty("card_suffix", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardSuffix { get; set; }
+        public bool ShouldSerializeCardSuffix() => CardSuffix.IsSet;
 
         /// <summary>
         /// The card holder name associated to the original card for the token.
         /// </summary>
-        [JsonProperty("cardholder_name")]
-        public string? CardholderName { get; set; } = null;
+        [JsonProperty("cardholder_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardholderName { get; set; }
+        public bool ShouldSerializeCardholderName() => CardholderName.IsSet;
 
         /// <summary>
         /// The ecommerce indicator for the token.
         /// </summary>
-        [JsonProperty("eci")]
-        public string? Eci { get; set; } = null;
+        [JsonProperty("eci", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Eci { get; set; }
+        public bool ShouldSerializeEci() => Eci.IsSet;
     }
 }

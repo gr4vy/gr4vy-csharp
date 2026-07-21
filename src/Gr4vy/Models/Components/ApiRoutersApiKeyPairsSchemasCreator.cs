@@ -17,25 +17,27 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The ID of the user or API key pair that created the API key pair.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The name of the user or API key pair that created the API key pair.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The email address of the user that created the API key pair, when it was created by a dashboard user.
         /// </summary>
-        [JsonProperty("email_address")]
-        public string? EmailAddress { get; set; } = null;
+        [JsonProperty("email_address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> EmailAddress { get; set; }
+        public bool ShouldSerializeEmailAddress() => EmailAddress.IsSet;
 
         /// <summary>
         /// The thumbprint of the API key pair that created the API key pair, when it was created by another API key.
         /// </summary>
-        [JsonProperty("thumbprint")]
-        public string? Thumbprint { get; set; } = null;
+        [JsonProperty("thumbprint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Thumbprint { get; set; }
+        public bool ShouldSerializeThumbprint() => Thumbprint.IsSet;
     }
 }

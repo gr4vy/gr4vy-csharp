@@ -18,13 +18,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The reference timestamp for the report execution context.
         /// </summary>
-        [JsonProperty("reference_timestamp")]
+        [JsonProperty("reference_timestamp", Required = Newtonsoft.Json.Required.Always)]
         public DateTime ReferenceTimestamp { get; set; } = default!;
 
         /// <summary>
         /// The reference timezone for the report execution context.
         /// </summary>
-        [JsonProperty("reference_timezone")]
+        [JsonProperty("reference_timezone", Required = Newtonsoft.Json.Required.Always)]
         public string ReferenceTimezone { get; set; } = default!;
     }
 }

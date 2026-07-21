@@ -17,25 +17,29 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The first 6 digit of the card.
         /// </summary>
-        [JsonProperty("bin")]
-        public string? Bin { get; set; } = null;
+        [JsonProperty("bin", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Bin { get; set; }
+        public bool ShouldSerializeBin() => Bin.IsSet;
 
         /// <summary>
         /// The country of the card issuer.
         /// </summary>
-        [JsonProperty("card_country")]
-        public string? CardCountry { get; set; } = null;
+        [JsonProperty("card_country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardCountry { get; set; }
+        public bool ShouldSerializeCardCountry() => CardCountry.IsSet;
 
         /// <summary>
         /// The payment scheme of the card.
         /// </summary>
-        [JsonProperty("card_type")]
-        public string? CardType { get; set; } = null;
+        [JsonProperty("card_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardType { get; set; }
+        public bool ShouldSerializeCardType() => CardType.IsSet;
 
         /// <summary>
         /// The card issuer.
         /// </summary>
-        [JsonProperty("card_issuer_name")]
-        public string? CardIssuerName { get; set; } = null;
+        [JsonProperty("card_issuer_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardIssuerName { get; set; }
+        public bool ShouldSerializeCardIssuerName() => CardIssuerName.IsSet;
     }
 }

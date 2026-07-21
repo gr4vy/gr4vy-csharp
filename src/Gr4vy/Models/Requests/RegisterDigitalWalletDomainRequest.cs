@@ -27,6 +27,6 @@ namespace Gr4vy.Models.Requests
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public DigitalWalletDomain DigitalWalletDomain { get; set; } = default!;
+        public DigitalWalletDomain DigitalWalletDomain { get; set; } = new();
     }
 }

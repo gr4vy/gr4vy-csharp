@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// 3DS transaction status.
         /// </summary>
-        [JsonProperty("transaction_status", NullValueHandling = NullValueHandling.Include)]
-        public string TransactionStatus
-        {
-            get => _transactionStatus;
-            set
-            {
-                _transactionStatus = value;
-                _transactionStatusSet = true;
-            }
-        }
-
-        private string _transactionStatus = default!;
-
-        private bool _transactionStatusSet = true;
-
-        public bool ShouldSerializeTransactionStatus() => _transactionStatusSet;
+        [JsonProperty("transaction_status", Required = Newtonsoft.Json.Required.Always)]
+        public string TransactionStatus { get; set; } = default!;
     }
 }

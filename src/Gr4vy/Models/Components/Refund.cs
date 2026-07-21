@@ -19,133 +19,143 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `refund`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "refund";
 
         /// <summary>
         /// The unique identifier for the refund.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of the transaction associated with this refund.
         /// </summary>
-        [JsonProperty("transaction_id")]
+        [JsonProperty("transaction_id", Required = Newtonsoft.Json.Required.Always)]
         public string TransactionId { get; set; } = default!;
 
         /// <summary>
         /// The payment service's unique ID for the refund.
         /// </summary>
-        [JsonProperty("payment_service_refund_id")]
-        public string? PaymentServiceRefundId { get; set; } = null;
+        [JsonProperty("payment_service_refund_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PaymentServiceRefundId { get; set; }
+        public bool ShouldSerializePaymentServiceRefundId() => PaymentServiceRefundId.IsSet;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
 
         /// <summary>
         /// The ISO 4217 currency code for this refund. Will always match that of the associated transaction.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Always)]
         public string Currency { get; set; } = default!;
 
         /// <summary>
         /// The amount of this refund, in the smallest currency unit (for example, cents or pence).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
         /// <summary>
         /// The reason for this refund. Could be a multiline string.
         /// </summary>
-        [JsonProperty("reason")]
-        public string? Reason { get; set; } = null;
+        [JsonProperty("reason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Reason { get; set; }
+        public bool ShouldSerializeReason() => Reason.IsSet;
 
-        [JsonProperty("target_type")]
+        [JsonProperty("target_type", Required = Newtonsoft.Json.Required.Always)]
         public string TargetType { get; set; } = default!;
 
         /// <summary>
         /// The optional ID of the instrument that was refunded. This may be `null` if the instrument was not stored.
         /// </summary>
-        [JsonProperty("target_id")]
-        public string? TargetId { get; set; } = null;
+        [JsonProperty("target_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TargetId { get; set; }
+        public bool ShouldSerializeTargetId() => TargetId.IsSet;
 
         /// <summary>
         /// The base62 encoded refund ID. This represents a shorter version of this refund's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's refund against our system.
         /// </summary>
-        [JsonProperty("reconciliation_id")]
+        [JsonProperty("reconciliation_id", Required = Newtonsoft.Json.Required.Always)]
         public string ReconciliationId { get; set; } = default!;
 
         /// <summary>
         /// An external identifier that can be used to match the refund against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The base62 encoded transaction ID. This represents a shorter version of the related transaction's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's transaction against our system.
         /// </summary>
-        [JsonProperty("transaction_reconciliation_id")]
+        [JsonProperty("transaction_reconciliation_id", Required = Newtonsoft.Json.Required.Always)]
         public string TransactionReconciliationId { get; set; } = default!;
 
         /// <summary>
         /// An external identifier that can be used to match the transaction against your own records.
         /// </summary>
-        [JsonProperty("transaction_external_identifier")]
-        public string? TransactionExternalIdentifier { get; set; } = null;
+        [JsonProperty("transaction_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TransactionExternalIdentifier { get; set; }
+        public bool ShouldSerializeTransactionExternalIdentifier() => TransactionExternalIdentifier.IsSet;
 
         /// <summary>
         /// The date this refund was created at.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date this refund was last updated at.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
         /// The user that created this resource.
         /// </summary>
-        [JsonProperty("creator")]
-        public ApiCommonSchemasCreator? Creator { get; set; } = null;
+        [JsonProperty("creator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ApiCommonSchemasCreator?> Creator { get; set; }
+        public bool ShouldSerializeCreator() => Creator.IsSet;
 
         /// <summary>
         /// The standardized error code set by Gr4vy.
         /// </summary>
-        [JsonProperty("error_code")]
-        public string? ErrorCode { get; set; } = null;
+        [JsonProperty("error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ErrorCode { get; set; }
+        public bool ShouldSerializeErrorCode() => ErrorCode.IsSet;
 
         /// <summary>
         /// This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_code")]
-        public string? RawResponseCode { get; set; } = null;
+        [JsonProperty("raw_response_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RawResponseCode { get; set; }
+        public bool ShouldSerializeRawResponseCode() => RawResponseCode.IsSet;
 
         /// <summary>
         /// This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_description")]
-        public string? RawResponseDescription { get; set; } = null;
+        [JsonProperty("raw_response_description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RawResponseDescription { get; set; }
+        public bool ShouldSerializeRawResponseDescription() => RawResponseDescription.IsSet;
 
         /// <summary>
         /// The ISO 4217 currency code of this refund's settlement.
         /// </summary>
-        [JsonProperty("settled_currency")]
-        public string? SettledCurrency { get; set; } = null;
+        [JsonProperty("settled_currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> SettledCurrency { get; set; }
+        public bool ShouldSerializeSettledCurrency() => SettledCurrency.IsSet;
 
         /// <summary>
         /// The net amount settled for this refund, in the smallest currency unit (for example, cents or pence).
         /// </summary>
-        [JsonProperty("settled_amount")]
+        [JsonProperty("settled_amount", Required = Newtonsoft.Json.Required.DisallowNull)]
         public long? SettledAmount { get; set; } = 0;
 
         /// <summary>
         /// Indicates whether this refund has been settled.
         /// </summary>
-        [JsonProperty("settled")]
+        [JsonProperty("settled", Required = Newtonsoft.Json.Required.Always)]
         public bool Settled { get; set; } = default!;
     }
 }

@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The gateway ID for the merchant as assigned by our platform.
         /// </summary>
-        [JsonProperty("gateway_merchant_id")]
+        [JsonProperty("gateway_merchant_id", Required = Newtonsoft.Json.Required.Always)]
         public string GatewayMerchantId { get; set; } = default!;
 
         /// <summary>
         /// The session token for Google Pay.
         /// </summary>
-        [JsonProperty("token")]
+        [JsonProperty("token", Required = Newtonsoft.Json.Required.Always)]
         public string Token { get; set; } = default!;
     }
 }

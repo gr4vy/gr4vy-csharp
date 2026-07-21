@@ -20,13 +20,15 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Defines if an account was verified.
         /// </summary>
-        [JsonProperty("account_verified")]
-        public bool? AccountVerified { get; set; } = null;
+        [JsonProperty("account_verified", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> AccountVerified { get; set; }
+        public bool ShouldSerializeAccountVerified() => AccountVerified.IsSet;
 
         /// <summary>
         /// Defines if the card holder was authenticated.
         /// </summary>
-        [JsonProperty("card_holder_authenticated")]
-        public bool? CardHolderAuthenticated { get; set; } = null;
+        [JsonProperty("card_holder_authenticated", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> CardHolderAuthenticated { get; set; }
+        public bool ShouldSerializeCardHolderAuthenticated() => CardHolderAuthenticated.IsSet;
     }
 }

@@ -18,41 +18,15 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes `subscription` data to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("subscription", NullValueHandling = NullValueHandling.Include)]
-        public DlocalPIXSubscriptionOptions? Subscription
-        {
-            get => _subscription;
-            set
-            {
-                _subscription = value;
-                _subscriptionSet = true;
-            }
-        }
-
-        private DlocalPIXSubscriptionOptions? _subscription = null;
-
-        private bool _subscriptionSet = false;
-
-        public bool ShouldSerializeSubscription() => _subscriptionSet;
+        [JsonProperty("subscription", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DlocalPIXSubscriptionOptions?> Subscription { get; set; }
+        public bool ShouldSerializeSubscription() => Subscription.IsSet;
 
         /// <summary>
         /// Defines scheduled payment start date. Must be provided in ISO 8601 format `(YYYY-MM-DD`). If not specified, The default is 2 days in the future.
         /// </summary>
-        [JsonProperty("scheduled_date", NullValueHandling = NullValueHandling.Include)]
-        public string? ScheduledDate
-        {
-            get => _scheduledDate;
-            set
-            {
-                _scheduledDate = value;
-                _scheduledDateSet = true;
-            }
-        }
-
-        private string? _scheduledDate = null;
-
-        private bool _scheduledDateSet = false;
-
-        public bool ShouldSerializeScheduledDate() => _scheduledDateSet;
+        [JsonProperty("scheduled_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ScheduledDate { get; set; }
+        public bool ShouldSerializeScheduledDate() => ScheduledDate.IsSet;
     }
 }

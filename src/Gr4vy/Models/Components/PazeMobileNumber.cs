@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// ITU country dialing code.
         /// </summary>
-        [JsonProperty("countryCode")]
+        [JsonProperty("countryCode", Required = Newtonsoft.Json.Required.Always)]
         public string CountryCode { get; set; } = default!;
 
         /// <summary>
         /// Phone number without country code.
         /// </summary>
-        [JsonProperty("phoneNumber")]
+        [JsonProperty("phoneNumber", Required = Newtonsoft.Json.Required.Always)]
         public string PhoneNumber { get; set; } = default!;
     }
 }

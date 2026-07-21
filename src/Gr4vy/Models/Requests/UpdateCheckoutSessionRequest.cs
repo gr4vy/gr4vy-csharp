@@ -27,6 +27,6 @@ namespace Gr4vy.Models.Requests
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public CheckoutSessionCreate CheckoutSessionCreate { get; set; } = default!;
+        public CheckoutSessionCreate CheckoutSessionCreate { get; set; } = new();
     }
 }

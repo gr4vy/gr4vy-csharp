@@ -18,61 +18,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Provides subscription information to Klarna.
         /// </summary>
-        [JsonProperty("subscription", NullValueHandling = NullValueHandling.Include)]
-        public KlarnaSubscriptionOptions? Subscription
-        {
-            get => _subscription;
-            set
-            {
-                _subscription = value;
-                _subscriptionSet = true;
-            }
-        }
-
-        private KlarnaSubscriptionOptions? _subscription = null;
-
-        private bool _subscriptionSet = false;
-
-        public bool ShouldSerializeSubscription() => _subscriptionSet;
+        [JsonProperty("subscription", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<KlarnaSubscriptionOptions?> Subscription { get; set; }
+        public bool ShouldSerializeSubscription() => Subscription.IsSet;
 
         /// <summary>
         /// When set to `true`, this will authorize the transaction with Klarna for the purposes of tokenizing the payment method with the transaction details. No funds will be captured and the authorization will be automatically voided. This is useful for up-sell scenarios where you want to tokenize a Klarna payment method for future use.
         /// </summary>
-        [JsonProperty("token_only_mode", NullValueHandling = NullValueHandling.Include)]
-        public bool? TokenOnlyMode
-        {
-            get => _tokenOnlyMode;
-            set
-            {
-                _tokenOnlyMode = value;
-                _tokenOnlyModeSet = true;
-            }
-        }
-
-        private bool? _tokenOnlyMode = null;
-
-        private bool _tokenOnlyModeSet = false;
-
-        public bool ShouldSerializeTokenOnlyMode() => _tokenOnlyModeSet;
+        [JsonProperty("token_only_mode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> TokenOnlyMode { get; set; }
+        public bool ShouldSerializeTokenOnlyMode() => TokenOnlyMode.IsSet;
 
         /// <summary>
         /// An authorization token returned by the Klarna Express Checkout JS SDK after the buyer completes payment in the embedded widget. When provided, the connector skips the HPP redirect and places the Klarna order directly using this token.
         /// </summary>
-        [JsonProperty("authorization_token", NullValueHandling = NullValueHandling.Include)]
-        public string? AuthorizationToken
-        {
-            get => _authorizationToken;
-            set
-            {
-                _authorizationToken = value;
-                _authorizationTokenSet = true;
-            }
-        }
-
-        private string? _authorizationToken = null;
-
-        private bool _authorizationTokenSet = false;
-
-        public bool ShouldSerializeAuthorizationToken() => _authorizationTokenSet;
+        [JsonProperty("authorization_token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AuthorizationToken { get; set; }
+        public bool ShouldSerializeAuthorizationToken() => AuthorizationToken.IsSet;
     }
 }

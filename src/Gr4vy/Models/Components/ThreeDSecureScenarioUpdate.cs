@@ -18,41 +18,15 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Conditions for the scenario.
         /// </summary>
-        [JsonProperty("conditions", NullValueHandling = NullValueHandling.Include)]
-        public ThreeDSecureScenarioConditions? Conditions
-        {
-            get => _conditions;
-            set
-            {
-                _conditions = value;
-                _conditionsSet = true;
-            }
-        }
-
-        private ThreeDSecureScenarioConditions? _conditions = null;
-
-        private bool _conditionsSet = false;
-
-        public bool ShouldSerializeConditions() => _conditionsSet;
+        [JsonProperty("conditions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ThreeDSecureScenarioConditions?> Conditions { get; set; }
+        public bool ShouldSerializeConditions() => Conditions.IsSet;
 
         /// <summary>
         /// Outcome for the scenario.
         /// </summary>
-        [JsonProperty("outcome", NullValueHandling = NullValueHandling.Include)]
-        public ThreeDSecureScenarioOutcome? Outcome
-        {
-            get => _outcome;
-            set
-            {
-                _outcome = value;
-                _outcomeSet = true;
-            }
-        }
-
-        private ThreeDSecureScenarioOutcome? _outcome = null;
-
-        private bool _outcomeSet = false;
-
-        public bool ShouldSerializeOutcome() => _outcomeSet;
+        [JsonProperty("outcome", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ThreeDSecureScenarioOutcome?> Outcome { get; set; }
+        public bool ShouldSerializeOutcome() => Outcome.IsSet;
     }
 }

@@ -18,61 +18,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Options to pass to the `instrument` resource in the Wpay PayTo API.
         /// </summary>
-        [JsonProperty("instrument", NullValueHandling = NullValueHandling.Include)]
-        public WpayPaytoResourceOptions? Instrument
-        {
-            get => _instrument;
-            set
-            {
-                _instrument = value;
-                _instrumentSet = true;
-            }
-        }
-
-        private WpayPaytoResourceOptions? _instrument = null;
-
-        private bool _instrumentSet = false;
-
-        public bool ShouldSerializeInstrument() => _instrumentSet;
+        [JsonProperty("instrument", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<WpayPaytoResourceOptions?> Instrument { get; set; }
+        public bool ShouldSerializeInstrument() => Instrument.IsSet;
 
         /// <summary>
         /// Options to pass to the `payment` resource in the Wpay PayTo API.
         /// </summary>
-        [JsonProperty("payment", NullValueHandling = NullValueHandling.Include)]
-        public WpayPaytoResourceOptions? Payment
-        {
-            get => _payment;
-            set
-            {
-                _payment = value;
-                _paymentSet = true;
-            }
-        }
-
-        private WpayPaytoResourceOptions? _payment = null;
-
-        private bool _paymentSet = false;
-
-        public bool ShouldSerializePayment() => _paymentSet;
+        [JsonProperty("payment", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<WpayPaytoResourceOptions?> Payment { get; set; }
+        public bool ShouldSerializePayment() => Payment.IsSet;
 
         /// <summary>
         /// Options to pass to the `refund` resource in the Wpay PayTo API.
         /// </summary>
-        [JsonProperty("refund", NullValueHandling = NullValueHandling.Include)]
-        public WpayPaytoResourceOptions? Refund
-        {
-            get => _refund;
-            set
-            {
-                _refund = value;
-                _refundSet = true;
-            }
-        }
-
-        private WpayPaytoResourceOptions? _refund = null;
-
-        private bool _refundSet = false;
-
-        public bool ShouldSerializeRefund() => _refundSet;
+        [JsonProperty("refund", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<WpayPaytoResourceOptions?> Refund { get; set; }
+        public bool ShouldSerializeRefund() => Refund.IsSet;
     }
 }

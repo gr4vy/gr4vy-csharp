@@ -19,101 +19,36 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The delivery type.
         /// </summary>
-        [JsonProperty("delivery_type", NullValueHandling = NullValueHandling.Include)]
-        public string? DeliveryType
-        {
-            get => _deliveryType;
-            set
-            {
-                _deliveryType = value;
-                _deliveryTypeSet = true;
-            }
-        }
-
-        private string? _deliveryType = null;
-
-        private bool _deliveryTypeSet = false;
-
-        public bool ShouldSerializeDeliveryType() => _deliveryTypeSet;
+        [JsonProperty("delivery_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DeliveryType { get; set; }
+        public bool ShouldSerializeDeliveryType() => DeliveryType.IsSet;
 
         /// <summary>
         /// The delivery method.
         /// </summary>
-        [JsonProperty("delivery_method", NullValueHandling = NullValueHandling.Include)]
-        public string? DeliveryMethod
-        {
-            get => _deliveryMethod;
-            set
-            {
-                _deliveryMethod = value;
-                _deliveryMethodSet = true;
-            }
-        }
-
-        private string? _deliveryMethod = null;
-
-        private bool _deliveryMethodSet = false;
-
-        public bool ShouldSerializeDeliveryMethod() => _deliveryMethodSet;
+        [JsonProperty("delivery_method", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DeliveryMethod { get; set; }
+        public bool ShouldSerializeDeliveryMethod() => DeliveryMethod.IsSet;
 
         /// <summary>
         /// Defines if this payment is made using guest checkout.
         /// </summary>
-        [JsonProperty("is_guest_buyer", NullValueHandling = NullValueHandling.Include)]
-        public bool? IsGuestBuyer
-        {
-            get => _isGuestBuyer;
-            set
-            {
-                _isGuestBuyer = value;
-                _isGuestBuyerSet = true;
-            }
-        }
-
-        private bool? _isGuestBuyer = null;
-
-        private bool _isGuestBuyerSet = false;
-
-        public bool ShouldSerializeIsGuestBuyer() => _isGuestBuyerSet;
+        [JsonProperty("is_guest_buyer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> IsGuestBuyer { get; set; }
+        public bool ShouldSerializeIsGuestBuyer() => IsGuestBuyer.IsSet;
 
         /// <summary>
         /// A list of cart items details to pass to the Forter API.
         /// </summary>
-        [JsonProperty("cart_items", NullValueHandling = NullValueHandling.Include)]
-        public List<ForterAntiFraudOptionsCartItem>? CartItems
-        {
-            get => _cartItems;
-            set
-            {
-                _cartItems = value;
-                _cartItemsSet = true;
-            }
-        }
-
-        private List<ForterAntiFraudOptionsCartItem>? _cartItems = null;
-
-        private bool _cartItemsSet = false;
-
-        public bool ShouldSerializeCartItems() => _cartItemsSet;
+        [JsonProperty("cart_items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<ForterAntiFraudOptionsCartItem>?> CartItems { get; set; }
+        public bool ShouldSerializeCartItems() => CartItems.IsSet;
 
         /// <summary>
         /// Information about the discount applied to this order.
         /// </summary>
-        [JsonProperty("total_discount", NullValueHandling = NullValueHandling.Include)]
-        public ForterAntiFraudOptionsDiscount? TotalDiscount
-        {
-            get => _totalDiscount;
-            set
-            {
-                _totalDiscount = value;
-                _totalDiscountSet = true;
-            }
-        }
-
-        private ForterAntiFraudOptionsDiscount? _totalDiscount = null;
-
-        private bool _totalDiscountSet = false;
-
-        public bool ShouldSerializeTotalDiscount() => _totalDiscountSet;
+        [JsonProperty("total_discount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ForterAntiFraudOptionsDiscount?> TotalDiscount { get; set; }
+        public bool ShouldSerializeTotalDiscount() => TotalDiscount.IsSet;
     }
 }

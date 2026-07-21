@@ -27,7 +27,7 @@ namespace Gr4vy.Utils
 
             foreach (var prop in props)
             {
-                var val = prop.GetValue(request);
+                var val = Utilities.UnwrapValue(prop.GetValue(request));
                 if (val == null)
                 {
                     continue;
@@ -57,7 +57,7 @@ namespace Gr4vy.Utils
 
                 foreach (var prop in props)
                 {
-                    var val = prop.GetValue(value);
+                    var val = Utilities.UnwrapValue(prop.GetValue(value));
                     if (val == null)
                     {
                         continue;

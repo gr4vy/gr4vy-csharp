@@ -19,34 +19,40 @@ namespace Gr4vy.Models.Components
     /// </summary>
     public class DigitalWalletCreate
     {
-        [JsonProperty("provider")]
+        [JsonProperty("provider", Required = Newtonsoft.Json.Required.Always)]
         public string Provider { get; set; } = default!;
 
-        [JsonProperty("merchant_name")]
+        [JsonProperty("merchant_name", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantName { get; set; } = default!;
 
-        [JsonProperty("merchant_display_name")]
-        public string? MerchantDisplayName { get; set; } = null;
+        [JsonProperty("merchant_display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantDisplayName { get; set; }
+        public bool ShouldSerializeMerchantDisplayName() => MerchantDisplayName.IsSet;
 
-        [JsonProperty("merchant_url")]
-        public string? MerchantUrl { get; set; } = null;
+        [JsonProperty("merchant_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantUrl { get; set; }
+        public bool ShouldSerializeMerchantUrl() => MerchantUrl.IsSet;
 
-        [JsonProperty("merchant_country_code")]
-        public string? MerchantCountryCode { get; set; } = null;
+        [JsonProperty("merchant_country_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantCountryCode { get; set; }
+        public bool ShouldSerializeMerchantCountryCode() => MerchantCountryCode.IsSet;
 
-        [JsonProperty("merchant_category_code")]
-        public string? MerchantCategoryCode { get; set; } = null;
+        [JsonProperty("merchant_category_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantCategoryCode { get; set; }
+        public bool ShouldSerializeMerchantCategoryCode() => MerchantCategoryCode.IsSet;
 
-        [JsonProperty("address")]
-        public DigitalWalletAddress? Address { get; set; } = null;
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DigitalWalletAddress?> Address { get; set; }
+        public bool ShouldSerializeAddress() => Address.IsSet;
 
-        [JsonProperty("extra_configuration")]
-        public Dictionary<string, object>? ExtraConfiguration { get; set; } = null;
+        [JsonProperty("extra_configuration", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, object>?> ExtraConfiguration { get; set; }
+        public bool ShouldSerializeExtraConfiguration() => ExtraConfiguration.IsSet;
 
-        [JsonProperty("domain_names")]
+        [JsonProperty("domain_names", Required = Newtonsoft.Json.Required.DisallowNull)]
         public List<string>? DomainNames { get; set; }
 
-        [JsonProperty("accept_terms_and_conditions")]
+        [JsonProperty("accept_terms_and_conditions", Required = Newtonsoft.Json.Required.Always)]
         public bool AcceptTermsAndConditions { get; set; } = default!;
     }
 }

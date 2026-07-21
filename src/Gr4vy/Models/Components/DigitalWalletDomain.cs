@@ -17,7 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The domain to add or remove.
         /// </summary>
-        [JsonProperty("domain_name")]
+        [JsonProperty("domain_name", Required = Newtonsoft.Json.Required.Always)]
         public string DomainName { get; set; } = default!;
     }
 }

@@ -19,21 +19,8 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of line items details to override when passing to the Riskified API.
         /// </summary>
-        [JsonProperty("line_items", NullValueHandling = NullValueHandling.Include)]
-        public List<RiskifiedAntiFraudOptionsLineItem>? LineItems
-        {
-            get => _lineItems;
-            set
-            {
-                _lineItems = value;
-                _lineItemsSet = true;
-            }
-        }
-
-        private List<RiskifiedAntiFraudOptionsLineItem>? _lineItems = null;
-
-        private bool _lineItemsSet = false;
-
-        public bool ShouldSerializeLineItems() => _lineItemsSet;
+        [JsonProperty("line_items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<RiskifiedAntiFraudOptionsLineItem>?> LineItems { get; set; }
+        public bool ShouldSerializeLineItems() => LineItems.IsSet;
     }
 }

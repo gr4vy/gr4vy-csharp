@@ -17,49 +17,52 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Name of the organization or entity at the address.
         /// </summary>
-        [JsonProperty("name")]
-        public string? Name { get; set; } = null;
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Name { get; set; }
+        public bool ShouldSerializeName() => Name.IsSet;
 
         /// <summary>
         /// Line 1 of the address.
         /// </summary>
-        [JsonProperty("line1")]
+        [JsonProperty("line1", Required = Newtonsoft.Json.Required.Always)]
         public string Line1 { get; set; } = default!;
 
         /// <summary>
         /// Line 2 of the address.
         /// </summary>
-        [JsonProperty("line2")]
-        public string? Line2 { get; set; } = null;
+        [JsonProperty("line2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Line2 { get; set; }
+        public bool ShouldSerializeLine2() => Line2.IsSet;
 
         /// <summary>
         /// Line 3 of the address.
         /// </summary>
-        [JsonProperty("line3")]
-        public string? Line3 { get; set; } = null;
+        [JsonProperty("line3", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Line3 { get; set; }
+        public bool ShouldSerializeLine3() => Line3.IsSet;
 
         /// <summary>
         /// City.
         /// </summary>
-        [JsonProperty("city")]
+        [JsonProperty("city", Required = Newtonsoft.Json.Required.Always)]
         public string City { get; set; } = default!;
 
         /// <summary>
         /// State or region.
         /// </summary>
-        [JsonProperty("state")]
+        [JsonProperty("state", Required = Newtonsoft.Json.Required.Always)]
         public string State { get; set; } = default!;
 
         /// <summary>
         /// Postal code.
         /// </summary>
-        [JsonProperty("zip")]
+        [JsonProperty("zip", Required = Newtonsoft.Json.Required.Always)]
         public string Zip { get; set; } = default!;
 
         /// <summary>
         /// ISO 3166-1 alpha-2 country code.
         /// </summary>
-        [JsonProperty("countryCode")]
+        [JsonProperty("countryCode", Required = Newtonsoft.Json.Required.Always)]
         public string CountryCode { get; set; } = default!;
     }
 }

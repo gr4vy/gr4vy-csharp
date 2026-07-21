@@ -19,76 +19,77 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The definition ID of the payment service that can be configured. This is the underlying provider followed by a dash followed by the method.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// Always `payment-service-definition`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-service-definition";
 
         /// <summary>
         /// A human friendly name for this service.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
 
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public string Method { get; set; } = default!;
 
         /// <summary>
         /// A list of credentials and related fields which can be configured for this service.
         /// </summary>
-        [JsonProperty("fields")]
+        [JsonProperty("fields", Required = Newtonsoft.Json.Required.Always)]
         public List<DefinitionField> Fields { get; set; } = default!;
 
         /// <summary>
         /// A list of reporting fields which can be configured for this service.
         /// </summary>
-        [JsonProperty("reporting_fields")]
+        [JsonProperty("reporting_fields", Required = Newtonsoft.Json.Required.Always)]
         public List<DefinitionField> ReportingFields { get; set; } = default!;
 
         /// <summary>
         /// A list of three-letter ISO currency codes that this service supports.
         /// </summary>
-        [JsonProperty("supported_currencies")]
+        [JsonProperty("supported_currencies", Required = Newtonsoft.Json.Required.Always)]
         public List<string> SupportedCurrencies { get; set; } = default!;
 
         /// <summary>
         /// A list of two-letter ISO country codes that this service supports.
         /// </summary>
-        [JsonProperty("supported_countries")]
+        [JsonProperty("supported_countries", Required = Newtonsoft.Json.Required.Always)]
         public List<string> SupportedCountries { get; set; } = default!;
 
-        [JsonProperty("mode")]
+        [JsonProperty("mode", Required = Newtonsoft.Json.Required.Always)]
         public string Mode { get; set; } = default!;
 
         /// <summary>
         /// An icon to display for the payment service.
         /// </summary>
-        [JsonProperty("icon_url")]
-        public string? IconUrl { get; set; } = null;
+        [JsonProperty("icon_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IconUrl { get; set; }
+        public bool ShouldSerializeIconUrl() => IconUrl.IsSet;
 
         /// <summary>
         /// Features supported by the payment service.
         /// </summary>
-        [JsonProperty("supported_features")]
+        [JsonProperty("supported_features", Required = Newtonsoft.Json.Required.Always)]
         public Dictionary<string, bool> SupportedFeatures { get; set; } = default!;
 
         /// <summary>
         /// A list of condition that define when some fields must be provided with a transaction request.
         /// </summary>
-        [JsonProperty("required_checkout_fields")]
+        [JsonProperty("required_checkout_fields", Required = Newtonsoft.Json.Required.Always)]
         public List<RequiredCheckoutFields> RequiredCheckoutFields { get; set; } = default!;
 
-        [JsonProperty("configuration")]
-        public PaymentServiceConfiguration Configuration { get; set; } = default!;
+        [JsonProperty("configuration", Required = Newtonsoft.Json.Required.Always)]
+        public PaymentServiceConfiguration Configuration { get; set; } = new();
 
         /// <summary>
         /// List of supported integration clients. Defaults to redirect for most redirect connectors.
         /// </summary>
-        [JsonProperty("supported_integration_clients", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("supported_integration_clients", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public List<string>? SupportedIntegrationClients { get; set; }
     }
 }

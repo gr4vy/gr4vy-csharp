@@ -18,37 +18,42 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `buyer`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "buyer";
 
         /// <summary>
         /// The ID for the buyer.
         /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; } = null;
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Id { get; set; }
+        public bool ShouldSerializeId() => Id.IsSet;
 
         /// <summary>
         /// The display name for the buyer.
         /// </summary>
-        [JsonProperty("display_name")]
-        public string? DisplayName { get; set; } = null;
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DisplayName { get; set; }
+        public bool ShouldSerializeDisplayName() => DisplayName.IsSet;
 
         /// <summary>
         /// The merchant identifier for this buyer.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The billing name, address, email, and other fields for this buyer.
         /// </summary>
-        [JsonProperty("billing_details")]
-        public BillingDetails? BillingDetails { get; set; } = null;
+        [JsonProperty("billing_details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<BillingDetails?> BillingDetails { get; set; }
+        public bool ShouldSerializeBillingDetails() => BillingDetails.IsSet;
 
         /// <summary>
         /// The buyer account number.
         /// </summary>
-        [JsonProperty("account_number")]
-        public string? AccountNumber { get; set; } = null;
+        [JsonProperty("account_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AccountNumber { get; set; }
+        public bool ShouldSerializeAccountNumber() => AccountNumber.IsSet;
     }
 }

@@ -15,25 +15,27 @@ namespace Gr4vy.Models.Components
 
     public class MerchantAccountSummary
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "merchant-account";
 
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
 
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
-        [JsonProperty("over_capture_amount")]
-        public long? OverCaptureAmount { get; set; } = null;
+        [JsonProperty("over_capture_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> OverCaptureAmount { get; set; }
+        public bool ShouldSerializeOverCaptureAmount() => OverCaptureAmount.IsSet;
 
-        [JsonProperty("over_capture_percentage")]
-        public long? OverCapturePercentage { get; set; } = null;
+        [JsonProperty("over_capture_percentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> OverCapturePercentage { get; set; }
+        public bool ShouldSerializeOverCapturePercentage() => OverCapturePercentage.IsSet;
     }
 }

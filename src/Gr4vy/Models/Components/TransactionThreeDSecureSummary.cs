@@ -18,37 +18,43 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The version of 3DS used for this transaction.
         /// </summary>
-        [JsonProperty("version")]
-        public string? Version { get; set; } = null;
+        [JsonProperty("version", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Version { get; set; }
+        public bool ShouldSerializeVersion() => Version.IsSet;
 
         /// <summary>
         /// The status of the 3DS challenge for this transaction.
         /// </summary>
-        [JsonProperty("status")]
-        public string? Status { get; set; } = null;
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Status { get; set; }
+        public bool ShouldSerializeStatus() => Status.IsSet;
 
         /// <summary>
         /// The method used for 3DS authentication for this transaction.
         /// </summary>
-        [JsonProperty("method")]
-        public string? Method { get; set; } = null;
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Method { get; set; }
+        public bool ShouldSerializeMethod() => Method.IsSet;
 
         /// <summary>
         /// The 3DS data sent to the payment service for this transaction. This will only be populated if external 3DS data was passed in directly as part of the transaction API call, or if our 3DS server returned a status code of `Y` or `A`. In case of a failure to authenticate (status `N`, `R`, or `U`) this field will not be populated. To see full details about the 3DS calls please use our transaction events API.
         /// </summary>
-        [JsonProperty("response_data", NullValueHandling = NullValueHandling.Include)]
-        public ResponseData? ResponseData { get; set; } = null;
+        [JsonProperty("response_data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ResponseData?> ResponseData { get; set; }
+        public bool ShouldSerializeResponseData() => ResponseData.IsSet;
 
         /// <summary>
         /// The error data received from our 3DS server. This will not be populated if the customer failed the authentication with a status code of `N`, `R`, or `U`.  To see full details about the 3DS calls in those situations please use our transaction events API.
         /// </summary>
-        [JsonProperty("error_data")]
-        public ThreeDSecureError? ErrorData { get; set; } = null;
+        [JsonProperty("error_data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ThreeDSecureError?> ErrorData { get; set; }
+        public bool ShouldSerializeErrorData() => ErrorData.IsSet;
 
         /// <summary>
         /// The amount used for 3DS authentication.
         /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; } = null;
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Amount { get; set; }
+        public bool ShouldSerializeAmount() => Amount.IsSet;
     }
 }

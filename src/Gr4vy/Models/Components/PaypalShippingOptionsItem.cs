@@ -18,101 +18,33 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A unique ID that identifies a payer-selected shipping option.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Include)]
-        public string Id
-        {
-            get => _id;
-            set
-            {
-                _id = value;
-                _idSet = true;
-            }
-        }
-
-        private string _id = default!;
-
-        private bool _idSet = true;
-
-        public bool ShouldSerializeId() => _idSet;
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
+        public string Id { get; set; } = default!;
 
         /// <summary>
         /// A description that the payer sees, which helps them choose an appropriate shipping option.
         /// </summary>
-        [JsonProperty("label", NullValueHandling = NullValueHandling.Include)]
-        public string Label
-        {
-            get => _label;
-            set
-            {
-                _label = value;
-                _labelSet = true;
-            }
-        }
-
-        private string _label = default!;
-
-        private bool _labelSet = true;
-
-        public bool ShouldSerializeLabel() => _labelSet;
+        [JsonProperty("label", Required = Newtonsoft.Json.Required.Always)]
+        public string Label { get; set; } = default!;
 
         /// <summary>
         /// If the API request sets selected = true, it represents the shipping option that the payee or merchant expects to be pre-selected for the payer when they first view the shipping.options in the PayPal Checkout experience. Only one shipping.option can be set to selected=true.
         /// </summary>
-        [JsonProperty("selected", NullValueHandling = NullValueHandling.Include)]
-        public bool Selected
-        {
-            get => _selected;
-            set
-            {
-                _selected = value;
-                _selectedSet = true;
-            }
-        }
-
-        private bool _selected = default!;
-
-        private bool _selectedSet = true;
-
-        public bool ShouldSerializeSelected() => _selectedSet;
+        [JsonProperty("selected", Required = Newtonsoft.Json.Required.Always)]
+        public bool Selected { get; set; } = default!;
 
         /// <summary>
         /// A classification for the method of purchase fulfillment.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public string? Type
-        {
-            get => _type;
-            set
-            {
-                _type = value;
-                _typeSet = true;
-            }
-        }
-
-        private string? _type = null;
-
-        private bool _typeSet = false;
-
-        public bool ShouldSerializeType() => _typeSet;
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Type { get; set; }
+        public bool ShouldSerializeType() => Type.IsSet;
 
         /// <summary>
         /// The shipping cost for the selected option.
         /// </summary>
-        [JsonProperty("amount", NullValueHandling = NullValueHandling.Include)]
-        public PaypalShippingOptionsItemAmount? Amount
-        {
-            get => _amount;
-            set
-            {
-                _amount = value;
-                _amountSet = true;
-            }
-        }
-
-        private PaypalShippingOptionsItemAmount? _amount = null;
-
-        private bool _amountSet = false;
-
-        public bool ShouldSerializeAmount() => _amountSet;
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<PaypalShippingOptionsItemAmount?> Amount { get; set; }
+        public bool ShouldSerializeAmount() => Amount.IsSet;
     }
 }

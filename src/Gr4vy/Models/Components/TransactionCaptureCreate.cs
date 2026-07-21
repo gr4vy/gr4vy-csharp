@@ -22,37 +22,41 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The amount to capture, in the smallest currency unit (e.g., cents). This must be less than or equal to the authorized amount, unless over-capture is available.
         /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; } = null;
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Amount { get; set; }
+        public bool ShouldSerializeAmount() => Amount.IsSet;
 
         /// <summary>
         /// The airline data to submit to the payment service during the capture call.
         /// </summary>
-        [JsonProperty("airline")]
-        public Airline? Airline { get; set; } = null;
+        [JsonProperty("airline", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Airline?> Airline { get; set; }
+        public bool ShouldSerializeAirline() => Airline.IsSet;
 
         /// <summary>
         /// An array of cart items that represents the line items of this capture.
         /// </summary>
-        [JsonProperty("cart_items")]
-        public List<CartItem>? CartItems { get; set; } = null;
+        [JsonProperty("cart_items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<CartItem>?> CartItems { get; set; }
+        public bool ShouldSerializeCartItems() => CartItems.IsSet;
 
         /// <summary>
         /// Whether this is marked as the final capture for the associated transaction. Must be `true` or omitted when multi-capture is not enabled; a value of `false` is only valid when multi-capture is available on the connection.
         /// </summary>
-        [JsonProperty("final")]
+        [JsonProperty("final", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? Final { get; set; } = true;
 
         /// <summary>
         /// An external identifier that can be used to match the capture against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// Whether this capture request should re-authorize the transaction if it has expired.
         /// </summary>
-        [JsonProperty("reauthorize_if_authorization_expired")]
+        [JsonProperty("reauthorize_if_authorization_expired", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? ReauthorizeIfAuthorizationExpired { get; set; } = false;
     }
 }

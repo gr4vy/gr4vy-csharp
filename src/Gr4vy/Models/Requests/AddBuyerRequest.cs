@@ -21,6 +21,6 @@ namespace Gr4vy.Models.Requests
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public BuyerCreate BuyerCreate { get; set; } = default!;
+        public BuyerCreate BuyerCreate { get; set; } = new();
     }
 }

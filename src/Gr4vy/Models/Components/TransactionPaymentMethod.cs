@@ -19,94 +19,108 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-method`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-method";
 
         /// <summary>
         /// The optional URL that the buyer needs to be redirected to to further authorize their payment.
         /// </summary>
-        [JsonProperty("approval_url")]
-        public string? ApprovalUrl { get; set; } = null;
+        [JsonProperty("approval_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ApprovalUrl { get; set; }
+        public bool ShouldSerializeApprovalUrl() => ApprovalUrl.IsSet;
 
         /// <summary>
         /// The 2-letter ISO code of the country this payment method can be used for. If this value is null the payment method may be used in multiple countries.
         /// </summary>
-        [JsonProperty("country")]
-        public string? Country { get; set; } = null;
+        [JsonProperty("country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Country { get; set; }
+        public bool ShouldSerializeCountry() => Country.IsSet;
 
         /// <summary>
         /// The ISO-4217 currency code that this payment method can be used for. If this value is null the payment method may be used for multiple currencies.
         /// </summary>
-        [JsonProperty("currency")]
-        public string? Currency { get; set; } = null;
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Currency { get; set; }
+        public bool ShouldSerializeCurrency() => Currency.IsSet;
 
         /// <summary>
         /// Details for credit or debit card payment method.
         /// </summary>
-        [JsonProperty("details")]
-        public PaymentMethodDetailsCard? Details { get; set; } = null;
+        [JsonProperty("details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<PaymentMethodDetailsCard?> Details { get; set; }
+        public bool ShouldSerializeDetails() => Details.IsSet;
 
         /// <summary>
         /// The expiration date for the payment method.
         /// </summary>
-        [JsonProperty("expiration_date")]
-        public string? ExpirationDate { get; set; } = null;
+        [JsonProperty("expiration_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExpirationDate { get; set; }
+        public bool ShouldSerializeExpirationDate() => ExpirationDate.IsSet;
 
         /// <summary>
         /// The unique hash derived from the payment method identifier (e.g. card number).
         /// </summary>
-        [JsonProperty("fingerprint")]
-        public string? Fingerprint { get; set; } = null;
+        [JsonProperty("fingerprint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Fingerprint { get; set; }
+        public bool ShouldSerializeFingerprint() => Fingerprint.IsSet;
 
         /// <summary>
         /// A label for the card or the account. For a paypal payment method this is the user's email address. For a card it is the last 4 digits of the card.
         /// </summary>
-        [JsonProperty("label")]
-        public string? Label { get; set; } = null;
+        [JsonProperty("label", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Label { get; set; }
+        public bool ShouldSerializeLabel() => Label.IsSet;
 
         /// <summary>
         /// The date and time when this card was last replaced by the account updater.
         /// </summary>
-        [JsonProperty("last_replaced_at")]
-        public DateTime? LastReplacedAt { get; set; } = null;
+        [JsonProperty("last_replaced_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> LastReplacedAt { get; set; }
+        public bool ShouldSerializeLastReplacedAt() => LastReplacedAt.IsSet;
 
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public string Method { get; set; } = default!;
 
         /// <summary>
         /// The mode to use with this payment method.
         /// </summary>
-        [JsonProperty("mode")]
-        public string? Mode { get; set; } = null;
+        [JsonProperty("mode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Mode { get; set; }
+        public bool ShouldSerializeMode() => Mode.IsSet;
 
         /// <summary>
         /// The scheme of the card. Only applies to card payments.
         /// </summary>
-        [JsonProperty("scheme")]
-        public string? Scheme { get; set; } = null;
+        [JsonProperty("scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Scheme { get; set; }
+        public bool ShouldSerializeScheme() => Scheme.IsSet;
 
         /// <summary>
         /// The ID of the payment method.
         /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; } = null;
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Id { get; set; }
+        public bool ShouldSerializeId() => Id.IsSet;
 
         /// <summary>
         /// The browser target that an approval URL must be opened in. If any or null, then there is no specific requirement.
         /// </summary>
-        [JsonProperty("approval_target")]
-        public string? ApprovalTarget { get; set; } = null;
+        [JsonProperty("approval_target", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ApprovalTarget { get; set; }
+        public bool ShouldSerializeApprovalTarget() => ApprovalTarget.IsSet;
 
         /// <summary>
         /// An external identifier that can be used to match the payment method against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The payment account reference (PAR) returned by the card scheme. This is a unique reference to the underlying account that has been used to fund this payment method.
         /// </summary>
-        [JsonProperty("payment_account_reference")]
-        public string? PaymentAccountReference { get; set; } = null;
+        [JsonProperty("payment_account_reference", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PaymentAccountReference { get; set; }
+        public bool ShouldSerializePaymentAccountReference() => PaymentAccountReference.IsSet;
     }
 }

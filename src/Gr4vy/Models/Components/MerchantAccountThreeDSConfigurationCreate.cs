@@ -18,49 +18,50 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Acquirer BIN to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_acquirer_bin")]
+        [JsonProperty("merchant_acquirer_bin", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAcquirerBin { get; set; } = default!;
 
         /// <summary>
         /// Merchant ID to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_acquirer_id")]
+        [JsonProperty("merchant_acquirer_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAcquirerId { get; set; } = default!;
 
-        [JsonProperty("merchant_name")]
+        [JsonProperty("merchant_name", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantName { get; set; } = default!;
 
         /// <summary>
         /// The merchant's ISO 3166-1 numeric country code.
         /// </summary>
-        [JsonProperty("merchant_country_code")]
+        [JsonProperty("merchant_country_code", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantCountryCode { get; set; } = default!;
 
         /// <summary>
         /// Merchant category code to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_category_code")]
+        [JsonProperty("merchant_category_code", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantCategoryCode { get; set; } = default!;
 
         /// <summary>
         /// URL to send when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_url")]
+        [JsonProperty("merchant_url", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantUrl { get; set; } = default!;
 
-        [JsonProperty("scheme")]
+        [JsonProperty("scheme", Required = Newtonsoft.Json.Required.Always)]
         public string Scheme { get; set; } = default!;
 
         /// <summary>
         /// ISO 4217 currency code (3 characters). If left null, the configuration will apply to all currencies.
         /// </summary>
-        [JsonProperty("currency")]
-        public string? Currency { get; set; } = null;
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Currency { get; set; }
+        public bool ShouldSerializeCurrency() => Currency.IsSet;
 
         /// <summary>
         /// Any additional information about the 3DS configuration that you would like to store as key-value pairs.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", Required = Newtonsoft.Json.Required.Always)]
         public Dictionary<string, string> Metadata { get; set; } = default!;
     }
 }

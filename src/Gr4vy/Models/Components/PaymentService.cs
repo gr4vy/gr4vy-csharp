@@ -20,130 +20,135 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-service`
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-service";
 
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? Id { get; set; } = "The ID of the payment service";
 
         /// <summary>
         /// The ID of the merchant account this job belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The definition ID of the service that has been configured.
         /// </summary>
-        [JsonProperty("payment_service_definition_id")]
+        [JsonProperty("payment_service_definition_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentServiceDefinitionId { get; set; } = default!;
 
         /// <summary>
         /// Defines if this payment service is currently active.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonProperty("active", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? Active { get; set; } = true;
 
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public string Method { get; set; } = default!;
 
         /// <summary>
         /// The display name for the payment service.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
 
         /// <summary>
         /// Deprecated field used to define the order in which to process payment services.
         /// </summary>
-        [JsonProperty("position")]
+        [JsonProperty("position", Required = Newtonsoft.Json.Required.Always)]
         public long Position { get; set; } = default!;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? Status { get; set; }
 
         /// <summary>
         /// A list of currencies for which this service is enabled, in ISO 4217 three-letter code format.
         /// </summary>
-        [JsonProperty("accepted_currencies")]
+        [JsonProperty("accepted_currencies", Required = Newtonsoft.Json.Required.Always)]
         public List<string> AcceptedCurrencies { get; set; } = default!;
 
         /// <summary>
         /// A list of countries for which this service is enabled, in ISO two-letter code format.
         /// </summary>
-        [JsonProperty("accepted_countries")]
+        [JsonProperty("accepted_countries", Required = Newtonsoft.Json.Required.Always)]
         public List<string> AcceptedCountries { get; set; } = default!;
 
         /// <summary>
         /// Defines if this payment service support payment method tokenization.
         /// </summary>
-        [JsonProperty("payment_method_tokenization_enabled")]
+        [JsonProperty("payment_method_tokenization_enabled", Required = Newtonsoft.Json.Required.Always)]
         public bool PaymentMethodTokenizationEnabled { get; set; } = default!;
 
         /// <summary>
         /// Defines if this payment service supports network tokens.
         /// </summary>
-        [JsonProperty("network_tokens_enabled")]
+        [JsonProperty("network_tokens_enabled", Required = Newtonsoft.Json.Required.Always)]
         public bool NetworkTokensEnabled { get; set; } = default!;
 
         /// <summary>
         /// Defines if this payment service is open loop.
         /// </summary>
-        [JsonProperty("open_loop")]
+        [JsonProperty("open_loop", Required = Newtonsoft.Json.Required.Always)]
         public bool OpenLoop { get; set; } = default!;
 
         /// <summary>
         /// Defines if this payment service has settlement reporting enabled.
         /// </summary>
-        [JsonProperty("settlement_reporting_enabled")]
+        [JsonProperty("settlement_reporting_enabled", Required = Newtonsoft.Json.Required.Always)]
         public bool SettlementReportingEnabled { get; set; } = default!;
 
         /// <summary>
         /// Defines if this payment service has 3DS enabled.
         /// </summary>
-        [JsonProperty("three_d_secure_enabled")]
-        public bool? ThreeDSecureEnabled { get; set; } = null;
+        [JsonProperty("three_d_secure_enabled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> ThreeDSecureEnabled { get; set; }
+        public bool ShouldSerializeThreeDSecureEnabled() => ThreeDSecureEnabled.IsSet;
 
         /// <summary>
         /// An object containing a key for each supported card schemes, and for each key an object with the 3DS profile for this service for that scheme.
         /// </summary>
-        [JsonProperty("merchant_profile")]
-        public Dictionary<string, MerchantProfileSchemeSummary?>? MerchantProfile { get; set; } = null;
+        [JsonProperty("merchant_profile", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, MerchantProfileSchemeSummary?>?> MerchantProfile { get; set; }
+        public bool ShouldSerializeMerchantProfile() => MerchantProfile.IsSet;
 
         /// <summary>
         /// The URL that needs to be configured with this payment service as the receiving endpoint for webhooks from the service to our system. Currently, we dp not yet automatically register webhooks on setup, and therefore webhooks need to be registered manually by the merchant.
         /// </summary>
-        [JsonProperty("webhook_url")]
-        public string? WebhookUrl { get; set; } = null;
+        [JsonProperty("webhook_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> WebhookUrl { get; set; }
+        public bool ShouldSerializeWebhookUrl() => WebhookUrl.IsSet;
 
         /// <summary>
         /// The non-secret credential fields that have been configured for this payment service. Any secret fields are omitted.
         /// </summary>
-        [JsonProperty("fields")]
-        public List<Field>? Fields { get; set; } = null;
+        [JsonProperty("fields", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<Field>?> Fields { get; set; }
+        public bool ShouldSerializeFields() => Fields.IsSet;
 
         /// <summary>
         /// The non-secret reporting fields that have been configured for this payment service. Any secret fields are omitted.
         /// </summary>
-        [JsonProperty("reporting_fields")]
-        public List<Field>? ReportingFields { get; set; } = null;
+        [JsonProperty("reporting_fields", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<Field>?> ReportingFields { get; set; }
+        public bool ShouldSerializeReportingFields() => ReportingFields.IsSet;
 
         /// <summary>
         /// Defines if this payment service has been deleted.
         /// </summary>
-        [JsonProperty("is_deleted")]
+        [JsonProperty("is_deleted", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? IsDeleted { get; set; } = false;
 
         /// <summary>
         /// The date and time when this payment service was first created in our system.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this payment service was last updated in our system.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
     }
 }

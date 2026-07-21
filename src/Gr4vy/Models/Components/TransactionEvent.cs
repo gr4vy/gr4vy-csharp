@@ -19,28 +19,28 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `transaction-event`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "transaction-event";
 
         /// <summary>
         /// The ID for the event.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The specific event name.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The date this event was created at.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
-        [JsonProperty("context")]
+        [JsonProperty("context", Required = Newtonsoft.Json.Required.Always)]
         public Dictionary<string, object> Context { get; set; } = default!;
     }
 }

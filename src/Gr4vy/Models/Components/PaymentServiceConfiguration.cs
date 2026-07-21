@@ -14,37 +14,37 @@ namespace Gr4vy.Models.Components
 
     public class PaymentServiceConfiguration
     {
-        [JsonProperty("approval_ui_target")]
+        [JsonProperty("approval_ui_target", Required = Newtonsoft.Json.Required.Always)]
         public string ApprovalUiTarget { get; set; } = default!;
 
         /// <summary>
         /// Height of the approval interface in either pixels or view height (vh).
         /// </summary>
-        [JsonProperty("approval_ui_height")]
+        [JsonProperty("approval_ui_height", Required = Newtonsoft.Json.Required.Always)]
         public string ApprovalUiHeight { get; set; } = default!;
 
         /// <summary>
         /// Width of the approval interface in either pixels or view width (vw).
         /// </summary>
-        [JsonProperty("approval_ui_width")]
+        [JsonProperty("approval_ui_width", Required = Newtonsoft.Json.Required.Always)]
         public string ApprovalUiWidth { get; set; } = default!;
 
         /// <summary>
         /// The maximum number of cart items supported by this connector before we will truncate the list.
         /// </summary>
-        [JsonProperty("cart_items_limit")]
+        [JsonProperty("cart_items_limit", Required = Newtonsoft.Json.Required.Always)]
         public long CartItemsLimit { get; set; } = default!;
 
         /// <summary>
         /// Defines if cart items are required by this connector.
         /// </summary>
-        [JsonProperty("cart_items_required")]
+        [JsonProperty("cart_items_required", Required = Newtonsoft.Json.Required.Always)]
         public bool CartItemsRequired { get; set; } = default!;
 
         /// <summary>
         /// Defines if the cart items sum value should match the transaction amount.
         /// </summary>
-        [JsonProperty("cart_items_should_match_amount")]
+        [JsonProperty("cart_items_should_match_amount", Required = Newtonsoft.Json.Required.Always)]
         public bool CartItemsShouldMatchAmount { get; set; } = default!;
     }
 }

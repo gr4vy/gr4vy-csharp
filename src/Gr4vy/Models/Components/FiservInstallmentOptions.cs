@@ -17,81 +17,29 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes the `order.installmentOptions.numberOfInstallments` field to the Fiserv API.
         /// </summary>
-        [JsonProperty("numberOfInstallments", NullValueHandling = NullValueHandling.Include)]
-        public long? NumberOfInstallments
-        {
-            get => _numberOfInstallments;
-            set
-            {
-                _numberOfInstallments = value;
-                _numberOfInstallmentsSet = true;
-            }
-        }
-
-        private long? _numberOfInstallments = null;
-
-        private bool _numberOfInstallmentsSet = false;
-
-        public bool ShouldSerializeNumberOfInstallments() => _numberOfInstallmentsSet;
+        [JsonProperty("numberOfInstallments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> NumberOfInstallments { get; set; }
+        public bool ShouldSerializeNumberOfInstallments() => NumberOfInstallments.IsSet;
 
         /// <summary>
         /// Passes the `order.installmentOptions.installmentsInterest` field to the Fiserv API.
         /// </summary>
-        [JsonProperty("installmentsInterest", NullValueHandling = NullValueHandling.Include)]
-        public bool? InstallmentsInterest
-        {
-            get => _installmentsInterest;
-            set
-            {
-                _installmentsInterest = value;
-                _installmentsInterestSet = true;
-            }
-        }
-
-        private bool? _installmentsInterest = null;
-
-        private bool _installmentsInterestSet = false;
-
-        public bool ShouldSerializeInstallmentsInterest() => _installmentsInterestSet;
+        [JsonProperty("installmentsInterest", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> InstallmentsInterest { get; set; }
+        public bool ShouldSerializeInstallmentsInterest() => InstallmentsInterest.IsSet;
 
         /// <summary>
         /// Passes the `order.installmentOptions.installmentDelayMonths` field to the Fiserv API.
         /// </summary>
-        [JsonProperty("installmentDelayMonths", NullValueHandling = NullValueHandling.Include)]
-        public long? InstallmentDelayMonths
-        {
-            get => _installmentDelayMonths;
-            set
-            {
-                _installmentDelayMonths = value;
-                _installmentDelayMonthsSet = true;
-            }
-        }
-
-        private long? _installmentDelayMonths = null;
-
-        private bool _installmentDelayMonthsSet = false;
-
-        public bool ShouldSerializeInstallmentDelayMonths() => _installmentDelayMonthsSet;
+        [JsonProperty("installmentDelayMonths", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> InstallmentDelayMonths { get; set; }
+        public bool ShouldSerializeInstallmentDelayMonths() => InstallmentDelayMonths.IsSet;
 
         /// <summary>
         /// Passes the `order.installmentOptions.merchantAdviceCodeSupported` field to the Fiserv API.
         /// </summary>
-        [JsonProperty("merchantAdviceCodeSupported", NullValueHandling = NullValueHandling.Include)]
-        public bool? MerchantAdviceCodeSupported
-        {
-            get => _merchantAdviceCodeSupported;
-            set
-            {
-                _merchantAdviceCodeSupported = value;
-                _merchantAdviceCodeSupportedSet = true;
-            }
-        }
-
-        private bool? _merchantAdviceCodeSupported = null;
-
-        private bool _merchantAdviceCodeSupportedSet = false;
-
-        public bool ShouldSerializeMerchantAdviceCodeSupported() => _merchantAdviceCodeSupportedSet;
+        [JsonProperty("merchantAdviceCodeSupported", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> MerchantAdviceCodeSupported { get; set; }
+        public bool ShouldSerializeMerchantAdviceCodeSupported() => MerchantAdviceCodeSupported.IsSet;
     }
 }

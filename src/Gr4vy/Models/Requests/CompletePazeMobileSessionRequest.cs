@@ -21,6 +21,6 @@ namespace Gr4vy.Models.Requests
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public PazeSessionCompleteRequest PazeSessionCompleteRequest { get; set; } = default!;
+        public PazeSessionCompleteRequest PazeSessionCompleteRequest { get; set; } = new();
     }
 }

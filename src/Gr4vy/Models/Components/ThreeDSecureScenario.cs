@@ -19,37 +19,37 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `three-d-secure-scenario`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "three-d-secure-scenario";
 
         /// <summary>
         /// Unique identifier for the 3DS scenario.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// ID of the associated merchant account.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this 3DS scenario was first created in our system.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this 3DS scenario was last updated in our system.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
-        [JsonProperty("conditions")]
-        public ThreeDSecureScenarioConditions Conditions { get; set; } = default!;
+        [JsonProperty("conditions", Required = Newtonsoft.Json.Required.Always)]
+        public ThreeDSecureScenarioConditions Conditions { get; set; } = new();
 
-        [JsonProperty("outcome")]
-        public ThreeDSecureScenarioOutcome Outcome { get; set; } = default!;
+        [JsonProperty("outcome", Required = Newtonsoft.Json.Required.Always)]
+        public ThreeDSecureScenarioOutcome Outcome { get; set; } = new();
     }
 }

@@ -18,67 +18,78 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The age group for the passenger.
         /// </summary>
-        [JsonProperty("age_group")]
-        public string? AgeGroup { get; set; } = null;
+        [JsonProperty("age_group", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AgeGroup { get; set; }
+        public bool ShouldSerializeAgeGroup() => AgeGroup.IsSet;
 
         /// <summary>
         /// The passenger's date of birth in YYYY-MM-YY format.
         /// </summary>
-        [JsonProperty("date_of_birth")]
-        public LocalDate? DateOfBirth { get; set; } = null;
+        [JsonProperty("date_of_birth", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<LocalDate?> DateOfBirth { get; set; }
+        public bool ShouldSerializeDateOfBirth() => DateOfBirth.IsSet;
 
         /// <summary>
         /// The email address of the passenger.
         /// </summary>
-        [JsonProperty("email_address")]
-        public string? EmailAddress { get; set; } = null;
+        [JsonProperty("email_address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> EmailAddress { get; set; }
+        public bool ShouldSerializeEmailAddress() => EmailAddress.IsSet;
 
         /// <summary>
         /// The first name(s) or given name of the passenger.
         /// </summary>
-        [JsonProperty("first_name")]
-        public string? FirstName { get; set; } = null;
+        [JsonProperty("first_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FirstName { get; set; }
+        public bool ShouldSerializeFirstName() => FirstName.IsSet;
 
         /// <summary>
         /// The passenger's frequent flyer number.
         /// </summary>
-        [JsonProperty("frequent_flyer_number")]
-        public string? FrequentFlyerNumber { get; set; } = null;
+        [JsonProperty("frequent_flyer_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FrequentFlyerNumber { get; set; }
+        public bool ShouldSerializeFrequentFlyerNumber() => FrequentFlyerNumber.IsSet;
 
         /// <summary>
         /// The last name, or family name, of the passenger.
         /// </summary>
-        [JsonProperty("last_name")]
-        public string? LastName { get; set; } = null;
+        [JsonProperty("last_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> LastName { get; set; }
+        public bool ShouldSerializeLastName() => LastName.IsSet;
 
         /// <summary>
         /// The passenger's unique passport number.
         /// </summary>
-        [JsonProperty("passport_number")]
-        public string? PassportNumber { get; set; } = null;
+        [JsonProperty("passport_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PassportNumber { get; set; }
+        public bool ShouldSerializePassportNumber() => PassportNumber.IsSet;
 
         /// <summary>
         /// The phone number of the passenger. This number is formatted according to the E164 number standard.
         /// </summary>
-        [JsonProperty("phone_number")]
-        public string? PhoneNumber { get; set; } = null;
+        [JsonProperty("phone_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PhoneNumber { get; set; }
+        public bool ShouldSerializePhoneNumber() => PhoneNumber.IsSet;
 
         /// <summary>
         /// The ticket number for a flight.
         /// </summary>
-        [JsonProperty("ticket_number")]
-        public string? TicketNumber { get; set; } = null;
+        [JsonProperty("ticket_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TicketNumber { get; set; }
+        public bool ShouldSerializeTicketNumber() => TicketNumber.IsSet;
 
         /// <summary>
         /// Title of the passenger.
         /// </summary>
-        [JsonProperty("title")]
-        public string? Title { get; set; } = null;
+        [JsonProperty("title", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Title { get; set; }
+        public bool ShouldSerializeTitle() => Title.IsSet;
 
         /// <summary>
         /// The country of residence of the passenger.
         /// </summary>
-        [JsonProperty("country_code")]
-        public string? CountryCode { get; set; } = null;
+        [JsonProperty("country_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CountryCode { get; set; }
+        public bool ShouldSerializeCountryCode() => CountryCode.IsSet;
     }
 }

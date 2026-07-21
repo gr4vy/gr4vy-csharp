@@ -27,6 +27,6 @@ namespace Gr4vy.Models.Requests
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public PaymentServiceTokenCreate PaymentServiceTokenCreate { get; set; } = default!;
+        public PaymentServiceTokenCreate PaymentServiceTokenCreate { get; set; } = new();
     }
 }

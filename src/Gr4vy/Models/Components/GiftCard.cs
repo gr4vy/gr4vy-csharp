@@ -19,88 +19,92 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `gift-card`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "gift-card";
 
         /// <summary>
         /// The ID for the gift card.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of the merchant account this buyer belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
-        [JsonProperty("gift_card_service")]
-        public GiftCardService GiftCardService { get; set; } = default!;
+        [JsonProperty("gift_card_service", Required = Newtonsoft.Json.Required.Always)]
+        public GiftCardService GiftCardService { get; set; } = new();
 
         /// <summary>
         /// The first 6 digits of the full gift card number.
         /// </summary>
-        [JsonProperty("bin")]
+        [JsonProperty("bin", Required = Newtonsoft.Json.Required.Always)]
         public string Bin { get; set; } = default!;
 
         /// <summary>
         /// The 3 digits after the `bin` of the full gift card number.
         /// </summary>
-        [JsonProperty("sub_bin")]
+        [JsonProperty("sub_bin", Required = Newtonsoft.Json.Required.Always)]
         public string SubBin { get; set; } = default!;
 
         /// <summary>
         /// The last 4 digits for the gift card.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonProperty("last4", Required = Newtonsoft.Json.Required.Always)]
         public string Last4 { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this gift card expires. This is a full date/time and may be more accurate than the actual expiry date received by the gift card service.
         /// </summary>
-        [JsonProperty("expiration_date")]
-        public DateTime? ExpirationDate { get; set; } = null;
+        [JsonProperty("expiration_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> ExpirationDate { get; set; }
+        public bool ShouldSerializeExpirationDate() => ExpirationDate.IsSet;
 
         /// <summary>
         /// The buyer for which this gift card is stored.
         /// </summary>
-        [JsonProperty("buyer")]
-        public Buyer? Buyer { get; set; } = null;
+        [JsonProperty("buyer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Buyer?> Buyer { get; set; }
+        public bool ShouldSerializeBuyer() => Buyer.IsSet;
 
         /// <summary>
         /// The date this gift card record was created at.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date this gift card record was last updated at.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
         /// The timestamp when this gift card was last used in a transaction.
         /// </summary>
-        [JsonProperty("last_used_at")]
-        public DateTime? LastUsedAt { get; set; } = null;
+        [JsonProperty("last_used_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> LastUsedAt { get; set; }
+        public bool ShouldSerializeLastUsedAt() => LastUsedAt.IsSet;
 
         /// <summary>
         /// The number of times this gift card has been used in transactions.
         /// </summary>
-        [JsonProperty("usage_count")]
+        [JsonProperty("usage_count", Required = Newtonsoft.Json.Required.Always)]
         public long UsageCount { get; set; } = default!;
 
         /// <summary>
         /// The timestamp when this gift card was last used in a transaction for client initiated transactions.
         /// </summary>
-        [JsonProperty("cit_last_used_at")]
-        public DateTime? CitLastUsedAt { get; set; } = null;
+        [JsonProperty("cit_last_used_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> CitLastUsedAt { get; set; }
+        public bool ShouldSerializeCitLastUsedAt() => CitLastUsedAt.IsSet;
 
         /// <summary>
         /// The number of times this gift card has been used in transactions for client initiated transactions.
         /// </summary>
-        [JsonProperty("cit_usage_count")]
+        [JsonProperty("cit_usage_count", Required = Newtonsoft.Json.Required.Always)]
         public long CitUsageCount { get; set; } = default!;
     }
 }

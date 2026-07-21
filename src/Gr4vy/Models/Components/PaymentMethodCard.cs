@@ -17,31 +17,33 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Set to `card` to use a new card.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Method { get; } = "card";
 
         /// <summary>
         /// The 13-19 digit number for this card as it can be found on the front of the card.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonProperty("number", Required = Newtonsoft.Json.Required.Always)]
         public string Number { get; set; } = default!;
 
         /// <summary>
         /// The expiration date of the card, formatted `MM/YY`.
         /// </summary>
-        [JsonProperty("expiration_date")]
+        [JsonProperty("expiration_date", Required = Newtonsoft.Json.Required.Always)]
         public string ExpirationDate { get; set; } = default!;
 
         /// <summary>
         /// The optional card's network scheme.
         /// </summary>
-        [JsonProperty("card_scheme")]
-        public string? CardScheme { get; set; } = null;
+        [JsonProperty("card_scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardScheme { get; set; }
+        public bool ShouldSerializeCardScheme() => CardScheme.IsSet;
 
         /// <summary>
         /// The merchant identifier for this card.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
     }
 }

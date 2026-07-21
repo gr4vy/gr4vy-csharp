@@ -15,16 +15,16 @@ namespace Gr4vy.Models.Components
 
     public class GooglePayPaymentOptionContext
     {
-        [JsonProperty("merchant_name")]
+        [JsonProperty("merchant_name", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantName { get; set; } = default!;
 
-        [JsonProperty("supported_schemes")]
+        [JsonProperty("supported_schemes", Required = Newtonsoft.Json.Required.Always)]
         public List<string> SupportedSchemes { get; set; } = default!;
 
-        [JsonProperty("gateway")]
+        [JsonProperty("gateway", Required = Newtonsoft.Json.Required.Always)]
         public string Gateway { get; set; } = default!;
 
-        [JsonProperty("gateway_merchant_id")]
+        [JsonProperty("gateway_merchant_id", Required = Newtonsoft.Json.Required.Always)]
         public string GatewayMerchantId { get; set; } = default!;
     }
 }

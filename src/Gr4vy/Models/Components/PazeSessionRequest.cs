@@ -17,13 +17,14 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The platform that the Paze session is being created for. Defaults to `web`.
         /// </summary>
-        [JsonProperty("source")]
+        [JsonProperty("source", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? Source { get; set; } = "web";
 
         /// <summary>
         /// The domain on which Paze is being loaded. Required when `source` is `web`.
         /// </summary>
-        [JsonProperty("domain_name")]
-        public string? DomainName { get; set; } = null;
+        [JsonProperty("domain_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DomainName { get; set; }
+        public bool ShouldSerializeDomainName() => DomainName.IsSet;
     }
 }

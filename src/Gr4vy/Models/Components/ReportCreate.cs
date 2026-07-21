@@ -18,34 +18,35 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The name of the report.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// A description of the report.
         /// </summary>
-        [JsonProperty("description")]
-        public string? Description { get; set; } = null;
+        [JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Description { get; set; }
+        public bool ShouldSerializeDescription() => Description.IsSet;
 
-        [JsonProperty("schedule")]
+        [JsonProperty("schedule", Required = Newtonsoft.Json.Required.Always)]
         public string Schedule { get; set; } = default!;
 
         /// <summary>
         /// Whether the report schedule is enabled.
         /// </summary>
-        [JsonProperty("schedule_enabled")]
+        [JsonProperty("schedule_enabled", Required = Newtonsoft.Json.Required.Always)]
         public bool ScheduleEnabled { get; set; } = default!;
 
         /// <summary>
         /// The timezone for the report schedule.
         /// </summary>
-        [JsonProperty("schedule_timezone")]
+        [JsonProperty("schedule_timezone", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? ScheduleTimezone { get; set; } = "Etc/UTC";
 
         /// <summary>
         /// The report specification.
         /// </summary>
-        [JsonProperty("spec")]
-        public Spec Spec { get; set; } = default!;
+        [JsonProperty("spec", Required = Newtonsoft.Json.Required.Always)]
+        public Spec Spec { get; set; } = new();
     }
 }

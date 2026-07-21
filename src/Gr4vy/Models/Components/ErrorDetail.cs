@@ -14,25 +14,25 @@ namespace Gr4vy.Models.Components
 
     public class ErrorDetail
     {
-        [JsonProperty("location")]
+        [JsonProperty("location", Required = Newtonsoft.Json.Required.Always)]
         public string Location { get; set; } = default!;
 
         /// <summary>
         /// A JSON pointer for the particular property that caused the error.
         /// </summary>
-        [JsonProperty("pointer")]
+        [JsonProperty("pointer", Required = Newtonsoft.Json.Required.Always)]
         public string Pointer { get; set; } = default!;
 
         /// <summary>
         /// A human-readdable explanation of the error.
         /// </summary>
-        [JsonProperty("message")]
+        [JsonProperty("message", Required = Newtonsoft.Json.Required.Always)]
         public string Message { get; set; } = default!;
 
         /// <summary>
         /// The type of error that was raised for this property.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.Always)]
         public string Type { get; set; } = default!;
     }
 }

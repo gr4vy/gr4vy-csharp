@@ -20,43 +20,50 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Reflects your doing business as (DBA) name.
         /// </summary>
-        [JsonProperty("name")]
-        public string? Name { get; set; } = null;
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Name { get; set; }
+        public bool ShouldSerializeName() => Name.IsSet;
 
         /// <summary>
         /// A short description about the purchase.
         /// </summary>
-        [JsonProperty("description")]
-        public string? Description { get; set; } = null;
+        [JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Description { get; set; }
+        public bool ShouldSerializeDescription() => Description.IsSet;
 
         /// <summary>
         /// The merchant's city to be displayed in a statement descriptor.
         /// </summary>
-        [JsonProperty("city")]
-        public string? City { get; set; } = null;
+        [JsonProperty("city", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> City { get; set; }
+        public bool ShouldSerializeCity() => City.IsSet;
 
         /// <summary>
         /// The 2-letter ISO country code of the merchant to be displayed in a statement descriptor.
         /// </summary>
-        [JsonProperty("country")]
-        public string? Country { get; set; } = null;
+        [JsonProperty("country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Country { get; set; }
+        public bool ShouldSerializeCountry() => Country.IsSet;
 
         /// <summary>
         /// The value in the phone number field of a customer's statement which should be formatted according to the E164 number standard.
         /// </summary>
-        [JsonProperty("phone_number")]
-        public string? PhoneNumber { get; set; } = null;
+        [JsonProperty("phone_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PhoneNumber { get; set; }
+        public bool ShouldSerializePhoneNumber() => PhoneNumber.IsSet;
 
         /// <summary>
         /// The merchant's URL to be displayed in a statement descriptor.
         /// </summary>
-        [JsonProperty("url")]
-        public string? Url { get; set; } = null;
+        [JsonProperty("url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Url { get; set; }
+        public bool ShouldSerializeUrl() => Url.IsSet;
 
         /// <summary>
         /// The merchant's postal code or zip code.
         /// </summary>
-        [JsonProperty("postal_code")]
-        public string? PostalCode { get; set; } = null;
+        [JsonProperty("postal_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PostalCode { get; set; }
+        public bool ShouldSerializePostalCode() => PostalCode.IsSet;
     }
 }

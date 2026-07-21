@@ -17,22 +17,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `gift-card-service`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "gift-card-service";
 
         /// <summary>
         /// The ID for the gift card service.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
-        [JsonProperty("gift_card_service_definition_id")]
+        [JsonProperty("gift_card_service_definition_id", Required = Newtonsoft.Json.Required.Always)]
         public string GiftCardServiceDefinitionId { get; set; } = default!;
 
         /// <summary>
         /// The display name for the gift card service.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
     }
 }

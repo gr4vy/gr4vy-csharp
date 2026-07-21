@@ -18,115 +18,131 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The name of the cart item. The value you set for this property may be truncated if the maximum length accepted by a payment service provider is less than 255 characters.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The quantity of this item in the cart. This value cannot be negative or zero.
         /// </summary>
-        [JsonProperty("quantity")]
+        [JsonProperty("quantity", Required = Newtonsoft.Json.Required.Always)]
         public long Quantity { get; set; } = default!;
 
         /// <summary>
         /// The amount for an individual item represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` USD cents represents `$12.99`. The amount sent through to the payment processor as unitary amount will be calculated to include the discount and tax values sent as part of this cart item.
         /// </summary>
-        [JsonProperty("unit_amount")]
+        [JsonProperty("unit_amount", Required = Newtonsoft.Json.Required.Always)]
         public long UnitAmount { get; set; } = default!;
 
         /// <summary>
         /// The amount discounted for this item represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` USD cents represents `$12.99`.
         /// </summary>
-        [JsonProperty("discount_amount")]
-        public long? DiscountAmount { get; set; } = null;
+        [JsonProperty("discount_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> DiscountAmount { get; set; }
+        public bool ShouldSerializeDiscountAmount() => DiscountAmount.IsSet;
 
         /// <summary>
         /// The tax amount for this item represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` USD cents represents `$12.99`.
         /// </summary>
-        [JsonProperty("tax_amount")]
-        public long? TaxAmount { get; set; } = null;
+        [JsonProperty("tax_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> TaxAmount { get; set; }
+        public bool ShouldSerializeTaxAmount() => TaxAmount.IsSet;
 
         /// <summary>
         /// An external identifier for the cart item. This can be set to any value and is not sent to the payment service.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The SKU or product code for the item.
         /// </summary>
-        [JsonProperty("sku")]
-        public string? Sku { get; set; } = null;
+        [JsonProperty("sku", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Sku { get; set; }
+        public bool ShouldSerializeSku() => Sku.IsSet;
 
         /// <summary>
         /// The UPC for the item.
         /// </summary>
-        [JsonProperty("upc")]
-        public string? Upc { get; set; } = null;
+        [JsonProperty("upc", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Upc { get; set; }
+        public bool ShouldSerializeUpc() => Upc.IsSet;
 
         /// <summary>
         /// The product URL for the item.
         /// </summary>
-        [JsonProperty("product_url")]
-        public string? ProductUrl { get; set; } = null;
+        [JsonProperty("product_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ProductUrl { get; set; }
+        public bool ShouldSerializeProductUrl() => ProductUrl.IsSet;
 
         /// <summary>
         /// The URL for the image of the item.
         /// </summary>
-        [JsonProperty("image_url")]
-        public string? ImageUrl { get; set; } = null;
+        [JsonProperty("image_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ImageUrl { get; set; }
+        public bool ShouldSerializeImageUrl() => ImageUrl.IsSet;
 
         /// <summary>
         /// A list of strings containing product categories for the item.
         /// </summary>
-        [JsonProperty("categories")]
-        public List<string>? Categories { get; set; } = null;
+        [JsonProperty("categories", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<string>?> Categories { get; set; }
+        public bool ShouldSerializeCategories() => Categories.IsSet;
 
         /// <summary>
         /// The product type of the cart item.
         /// </summary>
-        [JsonProperty("product_type")]
-        public string? ProductType { get; set; } = null;
+        [JsonProperty("product_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ProductType { get; set; }
+        public bool ShouldSerializeProductType() => ProductType.IsSet;
 
         /// <summary>
         /// The seller country of the cart item.
         /// </summary>
-        [JsonProperty("seller_country")]
-        public string? SellerCountry { get; set; } = null;
+        [JsonProperty("seller_country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> SellerCountry { get; set; }
+        public bool ShouldSerializeSellerCountry() => SellerCountry.IsSet;
 
         /// <summary>
         /// Whether the item is exempt of tax.
         /// </summary>
-        [JsonProperty("tax_exempt")]
-        public bool? TaxExempt { get; set; } = null;
+        [JsonProperty("tax_exempt", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> TaxExempt { get; set; }
+        public bool ShouldSerializeTaxExempt() => TaxExempt.IsSet;
 
         /// <summary>
         /// The unit of measure or the unit of measure code.
         /// </summary>
-        [JsonProperty("unit_of_measure")]
-        public string? UnitOfMeasure { get; set; } = null;
+        [JsonProperty("unit_of_measure", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> UnitOfMeasure { get; set; }
+        public bool ShouldSerializeUnitOfMeasure() => UnitOfMeasure.IsSet;
 
         /// <summary>
         /// Item commodity code. Generally a UNSPSC code.
         /// </summary>
-        [JsonProperty("commodity_code")]
-        public string? CommodityCode { get; set; } = null;
+        [JsonProperty("commodity_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CommodityCode { get; set; }
+        public bool ShouldSerializeCommodityCode() => CommodityCode.IsSet;
 
         /// <summary>
         /// Brief item description.
         /// </summary>
-        [JsonProperty("description")]
-        public string? Description { get; set; } = null;
+        [JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Description { get; set; }
+        public bool ShouldSerializeDescription() => Description.IsSet;
 
         /// <summary>
         /// Item import or export duties represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
         /// </summary>
-        [JsonProperty("duty_amount")]
-        public long? DutyAmount { get; set; } = null;
+        [JsonProperty("duty_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> DutyAmount { get; set; }
+        public bool ShouldSerializeDutyAmount() => DutyAmount.IsSet;
 
         /// <summary>
         /// Freight/shipping amount represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
         /// </summary>
-        [JsonProperty("shipping_amount")]
-        public long? ShippingAmount { get; set; } = null;
+        [JsonProperty("shipping_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> ShippingAmount { get; set; }
+        public bool ShouldSerializeShippingAmount() => ShippingAmount.IsSet;
     }
 }

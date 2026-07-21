@@ -20,34 +20,34 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The key of a field that can be submitted.
         /// </summary>
-        [JsonProperty("key")]
+        [JsonProperty("key", Required = Newtonsoft.Json.Required.Always)]
         public string Key { get; set; } = default!;
 
         /// <summary>
         /// The human readable name for this field.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
 
         /// <summary>
         /// Defines if this field is required when the service is created.
         /// </summary>
-        [JsonProperty("required")]
+        [JsonProperty("required", Required = Newtonsoft.Json.Required.Always)]
         public bool Required { get; set; } = default!;
 
-        [JsonProperty("format")]
+        [JsonProperty("format", Required = Newtonsoft.Json.Required.Always)]
         public string Format { get; set; } = default!;
 
         /// <summary>
         /// Defines if this field is secret. When `true` the field's value is not returned when querying the payment service information.
         /// </summary>
-        [JsonProperty("secret")]
+        [JsonProperty("secret", Required = Newtonsoft.Json.Required.Always)]
         public bool Secret { get; set; } = default!;
 
         /// <summary>
         /// Defines if this field can be verified through the verify credentials button.
         /// </summary>
-        [JsonProperty("verifiable")]
+        [JsonProperty("verifiable", Required = Newtonsoft.Json.Required.Always)]
         public bool Verifiable { get; set; } = default!;
     }
 }

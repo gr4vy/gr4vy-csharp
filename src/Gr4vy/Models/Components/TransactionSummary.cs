@@ -23,187 +23,201 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `transaction`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "transaction";
 
         /// <summary>
         /// The ID for the transaction.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The base62 encoded transaction ID. This represents a shorter version of this transaction's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's transaction against our system. This ID is sent instead of the transaction ID because not all services support 36 digit identifiers.
         /// </summary>
-        [JsonProperty("reconciliation_id")]
+        [JsonProperty("reconciliation_id", Required = Newtonsoft.Json.Required.Always)]
         public string ReconciliationId { get; set; } = default!;
 
         /// <summary>
         /// The ID of the merchant account this transaction belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The currency code for this transaction.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Always)]
         public string Currency { get; set; } = default!;
 
         /// <summary>
         /// The total amount for this transaction across all funding sources including gift cards.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
 
         /// <summary>
         /// The amount for this transaction that has been authorized for the `payment_method`. This can be less than the `amount` if gift cards were used.
         /// </summary>
-        [JsonProperty("authorized_amount")]
+        [JsonProperty("authorized_amount", Required = Newtonsoft.Json.Required.Always)]
         public long AuthorizedAmount { get; set; } = default!;
 
         /// <summary>
         /// The total amount captured for this transaction, in the smallest currency unit (for example, cents or pence). This can be the full value of the `authorized_amount` or less.
         /// </summary>
-        [JsonProperty("captured_amount")]
+        [JsonProperty("captured_amount", Required = Newtonsoft.Json.Required.Always)]
         public long CapturedAmount { get; set; } = default!;
 
         /// <summary>
         /// The total amount refunded for this transaction, in the smallest currency unit (for example, cents or pence). This can be the full value of the `captured_amount` or less.
         /// </summary>
-        [JsonProperty("refunded_amount")]
+        [JsonProperty("refunded_amount", Required = Newtonsoft.Json.Required.Always)]
         public long RefundedAmount { get; set; } = default!;
 
         /// <summary>
         /// The ISO 4217 currency code of this transaction's settlement.
         /// </summary>
-        [JsonProperty("settled_currency")]
-        public string? SettledCurrency { get; set; } = null;
+        [JsonProperty("settled_currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> SettledCurrency { get; set; }
+        public bool ShouldSerializeSettledCurrency() => SettledCurrency.IsSet;
 
         /// <summary>
         /// The net amount settled for this transaction, in the smallest currency unit (for example, cents or pence).
         /// </summary>
-        [JsonProperty("settled_amount")]
+        [JsonProperty("settled_amount", Required = Newtonsoft.Json.Required.Always)]
         public long SettledAmount { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether this transaction has been settled.
         /// </summary>
-        [JsonProperty("settled")]
+        [JsonProperty("settled", Required = Newtonsoft.Json.Required.Always)]
         public bool Settled { get; set; } = default!;
 
         /// <summary>
         /// The 2-letter ISO 3166-1 alpha-2 country code for the transaction. Used to filter payment services for processing.
         /// </summary>
-        [JsonProperty("country")]
-        public string? Country { get; set; } = null;
+        [JsonProperty("country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Country { get; set; }
+        public bool ShouldSerializeCountry() => Country.IsSet;
 
         /// <summary>
         /// An external identifier that can be used to match the transaction against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
-        [JsonProperty("intent")]
+        [JsonProperty("intent", Required = Newtonsoft.Json.Required.Always)]
         public string Intent { get; set; } = default!;
 
         /// <summary>
         /// The payment method used for this transaction.
         /// </summary>
-        [JsonProperty("payment_method")]
-        public TransactionPaymentMethod? PaymentMethod { get; set; } = null;
+        [JsonProperty("payment_method", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<TransactionPaymentMethod?> PaymentMethod { get; set; }
+        public bool ShouldSerializePaymentMethod() => PaymentMethod.IsSet;
 
         /// <summary>
         /// The method used for the transaction.
         /// </summary>
-        [JsonProperty("method")]
-        public string? Method { get; set; } = null;
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Method { get; set; }
+        public bool ShouldSerializeMethod() => Method.IsSet;
 
         /// <summary>
         /// The name of the instrument used to process the transaction.
         /// </summary>
-        [JsonProperty("instrument_type")]
-        public string? InstrumentType { get; set; } = null;
+        [JsonProperty("instrument_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> InstrumentType { get; set; }
+        public bool ShouldSerializeInstrumentType() => InstrumentType.IsSet;
 
         /// <summary>
         /// The standardized error code set by Gr4vy.
         /// </summary>
-        [JsonProperty("error_code")]
-        public string? ErrorCode { get; set; } = null;
+        [JsonProperty("error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ErrorCode { get; set; }
+        public bool ShouldSerializeErrorCode() => ErrorCode.IsSet;
 
         /// <summary>
         /// The payment service used for this transaction.
         /// </summary>
-        [JsonProperty("payment_service")]
-        public TransactionPaymentService? PaymentService { get; set; } = null;
+        [JsonProperty("payment_service", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<TransactionPaymentService?> PaymentService { get; set; }
+        public bool ShouldSerializePaymentService() => PaymentService.IsSet;
 
         /// <summary>
         /// Whether a manual anti fraud review is pending with an anti fraud service.
         /// </summary>
-        [JsonProperty("pending_review")]
+        [JsonProperty("pending_review", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? PendingReview { get; set; } = false;
 
         /// <summary>
         /// The buyer used for this transaction.
         /// </summary>
-        [JsonProperty("buyer")]
-        public TransactionBuyer? Buyer { get; set; } = null;
+        [JsonProperty("buyer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<TransactionBuyer?> Buyer { get; set; }
+        public bool ShouldSerializeBuyer() => Buyer.IsSet;
 
         /// <summary>
         /// This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_code")]
-        public string? RawResponseCode { get; set; } = null;
+        [JsonProperty("raw_response_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RawResponseCode { get; set; }
+        public bool ShouldSerializeRawResponseCode() => RawResponseCode.IsSet;
 
         /// <summary>
         /// This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_description")]
-        public string? RawResponseDescription { get; set; } = null;
+        [JsonProperty("raw_response_description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RawResponseDescription { get; set; }
+        public bool ShouldSerializeRawResponseDescription() => RawResponseDescription.IsSet;
 
         /// <summary>
         /// The shipping details associated with the transaction.
         /// </summary>
-        [JsonProperty("shipping_details")]
-        public Models.Components.ShippingDetails? ShippingDetails { get; set; } = null;
+        [JsonProperty("shipping_details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Models.Components.ShippingDetails?> ShippingDetails { get; set; }
+        public bool ShouldSerializeShippingDetails() => ShippingDetails.IsSet;
 
         /// <summary>
         /// The identifier for the checkout session this transaction is associated with.
         /// </summary>
-        [JsonProperty("checkout_session_id")]
-        public string? CheckoutSessionId { get; set; } = null;
+        [JsonProperty("checkout_session_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CheckoutSessionId { get; set; }
+        public bool ShouldSerializeCheckoutSessionId() => CheckoutSessionId.IsSet;
 
         /// <summary>
         /// The gift cards redeemed for this transaction.
         /// </summary>
-        [JsonProperty("gift_card_redemptions")]
+        [JsonProperty("gift_card_redemptions", Required = Newtonsoft.Json.Required.Always)]
         public List<GiftCardRedemption> GiftCardRedemptions { get; set; } = default!;
 
         /// <summary>
         /// The gift card service used for this transaction.
         /// </summary>
-        [JsonProperty("gift_card_service")]
-        public GiftCardService? GiftCardService { get; set; } = null;
+        [JsonProperty("gift_card_service", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<GiftCardService?> GiftCardService { get; set; }
+        public bool ShouldSerializeGiftCardService() => GiftCardService.IsSet;
 
         /// <summary>
         /// The date and time when the transaction was created, in ISO 8601 format.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when the transaction was last updated, in ISO 8601 format.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether this transaction has been disputed.
         /// </summary>
-        [JsonProperty("disputed")]
+        [JsonProperty("disputed", Required = Newtonsoft.Json.Required.Always)]
         public bool Disputed { get; set; } = default!;
     }
 }

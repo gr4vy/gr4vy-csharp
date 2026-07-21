@@ -17,28 +17,28 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-service`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-service";
 
         /// <summary>
         /// The ID for the payment-service.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The definition ID of the service used to process this payment.
         /// </summary>
-        [JsonProperty("payment_service_definition_id")]
+        [JsonProperty("payment_service_definition_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentServiceDefinitionId { get; set; } = default!;
 
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public string Method { get; set; } = default!;
 
         /// <summary>
         /// The display name for the payment service.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
     }
 }

@@ -18,34 +18,34 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `transaction-cancel`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "transaction-cancel";
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
 
         /// <summary>
         /// The standardized error code set by Gr4vy.
         /// </summary>
-        [JsonProperty("code", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("code", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? Code { get; set; }
 
         /// <summary>
         /// This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_code", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("raw_response_code", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? RawResponseCode { get; set; }
 
         /// <summary>
         /// This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_description", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("raw_response_description", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? RawResponseDescription { get; set; }
 
         /// <summary>
         /// A full transaction resource.
         /// </summary>
-        [JsonProperty("transaction")]
-        public Transaction Transaction { get; set; } = default!;
+        [JsonProperty("transaction", Required = Newtonsoft.Json.Required.Always)]
+        public Transaction Transaction { get; set; } = new();
     }
 }

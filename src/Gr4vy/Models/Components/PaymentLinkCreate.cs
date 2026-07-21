@@ -20,142 +20,160 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The guest buyer for the payment link.
         /// </summary>
-        [JsonProperty("buyer")]
-        public GuestBuyer? Buyer { get; set; } = null;
+        [JsonProperty("buyer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<GuestBuyer?> Buyer { get; set; }
+        public bool ShouldSerializeBuyer() => Buyer.IsSet;
 
         /// <summary>
         /// The expiration date and time for the payment link.
         /// </summary>
-        [JsonProperty("expires_at")]
-        public DateTime? ExpiresAt { get; set; } = null;
+        [JsonProperty("expires_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> ExpiresAt { get; set; }
+        public bool ShouldSerializeExpiresAt() => ExpiresAt.IsSet;
 
         /// <summary>
         /// Connection options for the payment link.
         /// </summary>
-        [JsonProperty("connection_options")]
-        public TransactionConnectionOptions? ConnectionOptions { get; set; } = null;
+        [JsonProperty("connection_options", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<TransactionConnectionOptions?> ConnectionOptions { get; set; }
+        public bool ShouldSerializeConnectionOptions() => ConnectionOptions.IsSet;
 
         /// <summary>
         /// The merchant reference for the payment link.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The statement descriptor for the payment link.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
-        public StatementDescriptor? StatementDescriptor { get; set; } = null;
+        [JsonProperty("statement_descriptor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<StatementDescriptor?> StatementDescriptor { get; set; }
+        public bool ShouldSerializeStatementDescriptor() => StatementDescriptor.IsSet;
 
         /// <summary>
         /// The locale for the payment link.
         /// </summary>
-        [JsonProperty("locale")]
-        public string? Locale { get; set; } = null;
+        [JsonProperty("locale", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Locale { get; set; }
+        public bool ShouldSerializeLocale() => Locale.IsSet;
 
         /// <summary>
         /// The merchant's display name.
         /// </summary>
-        [JsonProperty("merchant_name")]
-        public string? MerchantName { get; set; } = null;
+        [JsonProperty("merchant_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantName { get; set; }
+        public bool ShouldSerializeMerchantName() => MerchantName.IsSet;
 
         /// <summary>
         /// The merchant's website URL.
         /// </summary>
-        [JsonProperty("merchant_url")]
-        public string? MerchantUrl { get; set; } = null;
+        [JsonProperty("merchant_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantUrl { get; set; }
+        public bool ShouldSerializeMerchantUrl() => MerchantUrl.IsSet;
 
         /// <summary>
         /// The merchant's banner image URL.
         /// </summary>
-        [JsonProperty("merchant_banner_url")]
-        public string? MerchantBannerUrl { get; set; } = null;
+        [JsonProperty("merchant_banner_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantBannerUrl { get; set; }
+        public bool ShouldSerializeMerchantBannerUrl() => MerchantBannerUrl.IsSet;
 
         /// <summary>
         /// The merchant's brand color.
         /// </summary>
-        [JsonProperty("merchant_color")]
-        public string? MerchantColor { get; set; } = null;
+        [JsonProperty("merchant_color", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantColor { get; set; }
+        public bool ShouldSerializeMerchantColor() => MerchantColor.IsSet;
 
         /// <summary>
         /// A message from the merchant.
         /// </summary>
-        [JsonProperty("merchant_message")]
-        public string? MerchantMessage { get; set; } = null;
+        [JsonProperty("merchant_message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantMessage { get; set; }
+        public bool ShouldSerializeMerchantMessage() => MerchantMessage.IsSet;
 
         /// <summary>
         /// URL to the merchant's terms and conditions.
         /// </summary>
-        [JsonProperty("merchant_terms_and_conditions_url")]
-        public string? MerchantTermsAndConditionsUrl { get; set; } = null;
+        [JsonProperty("merchant_terms_and_conditions_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantTermsAndConditionsUrl { get; set; }
+        public bool ShouldSerializeMerchantTermsAndConditionsUrl() => MerchantTermsAndConditionsUrl.IsSet;
 
         /// <summary>
         /// URL to the merchant's favicon.
         /// </summary>
-        [JsonProperty("merchant_favicon_url")]
-        public string? MerchantFaviconUrl { get; set; } = null;
+        [JsonProperty("merchant_favicon_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantFaviconUrl { get; set; }
+        public bool ShouldSerializeMerchantFaviconUrl() => MerchantFaviconUrl.IsSet;
 
         /// <summary>
         /// The amount for the payment link.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
         /// <summary>
         /// The country code for the payment link.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonProperty("country", Required = Newtonsoft.Json.Required.Always)]
         public string Country { get; set; } = default!;
 
         /// <summary>
         /// The currency code for the payment link.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Always)]
         public string Currency { get; set; } = default!;
 
-        [JsonProperty("intent")]
+        [JsonProperty("intent", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? Intent { get; set; }
 
         /// <summary>
         /// The return URL after payment completion.
         /// </summary>
-        [JsonProperty("return_url")]
-        public string? ReturnUrl { get; set; } = null;
+        [JsonProperty("return_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ReturnUrl { get; set; }
+        public bool ShouldSerializeReturnUrl() => ReturnUrl.IsSet;
 
         /// <summary>
         /// The cart items for the payment link.
         /// </summary>
-        [JsonProperty("cart_items")]
-        public List<CartItem>? CartItems { get; set; } = null;
+        [JsonProperty("cart_items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<CartItem>?> CartItems { get; set; }
+        public bool ShouldSerializeCartItems() => CartItems.IsSet;
 
         /// <summary>
         /// Arbitrary metadata for the payment link.
         /// </summary>
-        [JsonProperty("metadata")]
-        public Dictionary<string, object>? Metadata { get; set; } = null;
+        [JsonProperty("metadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, object>?> Metadata { get; set; }
+        public bool ShouldSerializeMetadata() => Metadata.IsSet;
 
         /// <summary>
         /// The way payment method information made it to this transaction.
         /// </summary>
-        [JsonProperty("payment_source")]
+        [JsonProperty("payment_source", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? PaymentSource { get; set; }
 
         /// <summary>
         /// Whether to store the payment method for future use.
         /// </summary>
-        [JsonProperty("store")]
+        [JsonProperty("store", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? Store { get; set; } = false;
 
         /// <summary>
         /// The ID of the buyer to associate the payment method with. Note: When `buyer_id` is provided, the payment link should be treated as a secret as it will allow the user to manage payment methods for the associated buyer.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// The number of installments a buyer is required to make.
         /// </summary>
-        [JsonProperty("installment_count")]
-        public long? InstallmentCount { get; set; } = null;
+        [JsonProperty("installment_count", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> InstallmentCount { get; set; }
+        public bool ShouldSerializeInstallmentCount() => InstallmentCount.IsSet;
     }
 }

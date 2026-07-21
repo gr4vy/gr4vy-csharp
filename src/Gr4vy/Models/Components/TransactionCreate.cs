@@ -20,58 +20,65 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The monetary amount for this transaction, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`. If the `intent` is set to `capture`, an amount greater than zero must be supplied. All gift card amounts are subtracted from this amount before the remainder is charged to the provided `payment_method`.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
         /// <summary>
         /// A supported ISO 4217 currency code. For redirect requests, this value must match the one specified for `currency` in `payment_method`.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Always)]
         public string Currency { get; set; } = default!;
 
         /// <summary>
         /// The 2-letter ISO code of the country where the transaction is processed. This is also used to filter the payment services that can process the transaction. If this value is provided for redirect requests and it's not `null`, it must match the one specified for `country` in `payment_method`. Otherwise, the value specified for `country` in `payment_method` will be assumed implicitly.
         /// </summary>
-        [JsonProperty("country")]
-        public string? Country { get; set; } = null;
+        [JsonProperty("country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Country { get; set; }
+        public bool ShouldSerializeCountry() => Country.IsSet;
 
         /// <summary>
         /// The optional payment method to use for this transaction. This field is required if no `gift_cards` have been added.
         /// </summary>
-        [JsonProperty("payment_method", NullValueHandling = NullValueHandling.Include)]
-        public TransactionCreatePaymentMethod? PaymentMethod { get; set; } = null;
+        [JsonProperty("payment_method", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<TransactionCreatePaymentMethod?> PaymentMethod { get; set; }
+        public bool ShouldSerializePaymentMethod() => PaymentMethod.IsSet;
 
         /// <summary>
         /// Guest buyer details provided inline rather than creating a buyer resource beforehand and using the `buyer_id` or `buyer_external_identifier` keys. No buyer resource will be created on Gr4vy when used.
         /// </summary>
-        [JsonProperty("buyer")]
-        public GuestBuyer? Buyer { get; set; } = null;
+        [JsonProperty("buyer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<GuestBuyer?> Buyer { get; set; }
+        public bool ShouldSerializeBuyer() => Buyer.IsSet;
 
         /// <summary>
         /// The ID of the buyer to associate this payment method to. If this field is provided then the `buyer_external_identifier` field needs to be unset. If a stored payment method or gift card is provided, then the buyer for that payment method needs to match the buyer for this field.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// The `external_identifier` of the buyer to associate this payment method to. If this field is provided then the `buyer_id` field needs to be unset. If a stored payment method or gift card is provided, then the buyer for that payment method needs to match the buyer for this field.
         /// </summary>
-        [JsonProperty("buyer_external_identifier")]
-        public string? BuyerExternalIdentifier { get; set; } = null;
+        [JsonProperty("buyer_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerExternalIdentifier { get; set; }
+        public bool ShouldSerializeBuyerExternalIdentifier() => BuyerExternalIdentifier.IsSet;
 
         /// <summary>
         /// The optional gift card(s) to use for this transaction. At least one gift card is required if no other `payment_method` has been added. By default, only a maximum limit of 10 gift cards may be used in a single transaction. Please contact our team to change this limit.
         /// </summary>
-        [JsonProperty("gift_cards")]
-        public List<GiftCardUnion>? GiftCards { get; set; } = null;
+        [JsonProperty("gift_cards", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<GiftCardUnion>?> GiftCards { get; set; }
+        public bool ShouldSerializeGiftCards() => GiftCards.IsSet;
 
         /// <summary>
         /// An external identifier that can be used to match the transaction against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
-        [JsonProperty("intent")]
+        [JsonProperty("intent", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? Intent { get; set; }
 
         /// <summary>
@@ -80,26 +87,29 @@ namespace Gr4vy.Models.Components
         /// * The flag has to be set to `true` when the `payment_source` is set to `recurring` or `installment`, and `merchant_initiated` is set to `false`.<br/>
         /// * The flag has to be set to `false` (or not set) when using a previously vaulted payment method.
         /// </summary>
-        [JsonProperty("store")]
+        [JsonProperty("store", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? Store { get; set; } = false;
 
         /// <summary>
         /// Pass through 3-D Secure data to support external 3-D Secure authorisation. If using an external 3-D Secure provider, you should not pass a `redirect_url` in the `payment_method` object for a transaction.
         /// </summary>
-        [JsonProperty("three_d_secure_data", NullValueHandling = NullValueHandling.Include)]
-        public ThreeDSecureData? ThreeDSecureData { get; set; } = null;
+        [JsonProperty("three_d_secure_data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ThreeDSecureData?> ThreeDSecureData { get; set; }
+        public bool ShouldSerializeThreeDSecureData() => ThreeDSecureData.IsSet;
 
         /// <summary>
         /// Optional 3-D Secure values to use during the authentication flow.
         /// </summary>
-        [JsonProperty("three_d_secure")]
-        public ThreeDSecure? ThreeDSecure { get; set; } = null;
+        [JsonProperty("three_d_secure", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ThreeDSecure?> ThreeDSecure { get; set; }
+        public bool ShouldSerializeThreeDSecure() => ThreeDSecure.IsSet;
 
         /// <summary>
         /// Any additional information about the transaction that you would like to store as key-value pairs. This data is passed to payment service providers that support it.
         /// </summary>
-        [JsonProperty("metadata")]
-        public Dictionary<string, string>? Metadata { get; set; } = null;
+        [JsonProperty("metadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> Metadata { get; set; }
+        public bool ShouldSerializeMetadata() => Metadata.IsSet;
 
         /// <summary>
         /// Indicates whether the transaction represents a subsequent payment coming from a setup recurring payment. Please note there are some restrictions on how this flag may be used.<br/>
@@ -114,68 +124,76 @@ namespace Gr4vy.Models.Components
         /// * `payment_source` is set to `recurring` or `installment` and `merchant_initiated` is set to `true`.<br/>
         /// * `payment_source` is set to `card_on_file`.
         /// </summary>
-        [JsonProperty("is_subsequent_payment")]
+        [JsonProperty("is_subsequent_payment", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? IsSubsequentPayment { get; set; } = false;
 
         /// <summary>
         /// Indicates whether the transaction was initiated by the merchant (true) or customer (false).
         /// </summary>
-        [JsonProperty("merchant_initiated")]
+        [JsonProperty("merchant_initiated", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? MerchantInitiated { get; set; } = false;
 
         /// <summary>
         /// The way payment method information made it to this transaction.
         /// </summary>
-        [JsonProperty("payment_source")]
+        [JsonProperty("payment_source", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? PaymentSource { get; set; }
 
         /// <summary>
         /// The airline addendum data which describes the airline booking associated with this transaction.
         /// </summary>
-        [JsonProperty("airline")]
-        public Airline? Airline { get; set; } = null;
+        [JsonProperty("airline", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Airline?> Airline { get; set; }
+        public bool ShouldSerializeAirline() => Airline.IsSet;
 
         /// <summary>
         /// An array of cart items that represents the line items of a transaction.
         /// </summary>
-        [JsonProperty("cart_items")]
-        public List<CartItem>? CartItems { get; set; } = null;
+        [JsonProperty("cart_items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<CartItem>?> CartItems { get; set; }
+        public bool ShouldSerializeCartItems() => CartItems.IsSet;
 
         /// <summary>
         /// Details about the payment and the merchant which may end up on the (bank) statement for the payment.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
-        public StatementDescriptor? StatementDescriptor { get; set; } = null;
+        [JsonProperty("statement_descriptor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<StatementDescriptor?> StatementDescriptor { get; set; }
+        public bool ShouldSerializeStatementDescriptor() => StatementDescriptor.IsSet;
 
         /// <summary>
         /// A scheme's transaction identifier to use in connecting a merchant initiated transaction to a previous customer initiated transaction. If not provided, and a qualifying customer initiated transaction has been previously made with the stored payment method, then Gr4vy will populate this value with the identifier returned for that transaction. This field is also know as the Visa Transaction Identifier, or Mastercard Trace ID.
         /// </summary>
-        [JsonProperty("previous_scheme_transaction_id")]
-        public string? PreviousSchemeTransactionId { get; set; } = null;
+        [JsonProperty("previous_scheme_transaction_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PreviousSchemeTransactionId { get; set; }
+        public bool ShouldSerializePreviousSchemeTransactionId() => PreviousSchemeTransactionId.IsSet;
 
         /// <summary>
         /// A scheme's transaction link identifier to use in connecting a merchant initiated transaction to a previous customer initiated transaction. If not provided, and a qualifying customer initiated transaction has been previously made with the stored payment method, then Gr4vy will populate this value with the identifier returned for that transaction. This field is also know as the Mastercard Transaction Link ID (TLID).
         /// </summary>
-        [JsonProperty("previous_transaction_link_id")]
-        public string? PreviousTransactionLinkId { get; set; } = null;
+        [JsonProperty("previous_transaction_link_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PreviousTransactionLinkId { get; set; }
+        public bool ShouldSerializePreviousTransactionLinkId() => PreviousTransactionLinkId.IsSet;
 
         /// <summary>
         /// Information about the browser used by the buyer. This can be used by anti-fraud services.
         /// </summary>
-        [JsonProperty("browser_info")]
-        public BrowserInfo? BrowserInfo { get; set; } = null;
+        [JsonProperty("browser_info", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<BrowserInfo?> BrowserInfo { get; set; }
+        public bool ShouldSerializeBrowserInfo() => BrowserInfo.IsSet;
 
         /// <summary>
         /// The unique identifier of a set of shipping details stored for the buyer. If provided, the created transaction will include a copy of the details at the point of transaction creation; i.e. it will not be affected by later changes to the detail in the database.
         /// </summary>
-        [JsonProperty("shipping_details_id")]
-        public string? ShippingDetailsId { get; set; } = null;
+        [JsonProperty("shipping_details_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ShippingDetailsId { get; set; }
+        public bool ShouldSerializeShippingDetailsId() => ShippingDetailsId.IsSet;
 
         /// <summary>
         /// Allows for passing optional configuration per connection to take advantage of connection specific features. When provided, the data is only passed to the target connection type to prevent sharing configuration across connections. Please note that each of the keys this object are in kebab-case, for example `cybersource-anti-fraud` as they represent the ID of the connector. All the other keys will be snake case, for example `merchant_defined_data` or camel case to match an external API that the connector uses.
         /// </summary>
-        [JsonProperty("connection_options")]
-        public TransactionConnectionOptions? ConnectionOptions { get; set; } = null;
+        [JsonProperty("connection_options", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<TransactionConnectionOptions?> ConnectionOptions { get; set; }
+        public bool ShouldSerializeConnectionOptions() => ConnectionOptions.IsSet;
 
         /// <summary>
         /// Whether to capture the transaction asynchronously when an authorization-capture split occurs.<br/>
@@ -188,103 +206,117 @@ namespace Gr4vy.Models.Components
         /// <br/>
         /// Redirect transactions are not affected by this flag. This flag can only be set to `true` when `intent` is set to `capture`. Please check the public documentation for full authorization-capture split behavior details.
         /// </summary>
-        [JsonProperty("async_capture")]
+        [JsonProperty("async_capture", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? AsyncCapture { get; set; } = false;
 
         /// <summary>
         /// This field represents the fingerprint data to be passed to the active anti-fraud service.
         /// </summary>
-        [JsonProperty("anti_fraud_fingerprint")]
-        public string? AntiFraudFingerprint { get; set; } = null;
+        [JsonProperty("anti_fraud_fingerprint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AntiFraudFingerprint { get; set; }
+        public bool ShouldSerializeAntiFraudFingerprint() => AntiFraudFingerprint.IsSet;
 
         /// <summary>
         /// The unique identifier of an existing payment service. When provided, the created transaction will be processed by the given payment service and any routing rules will be skipped.
         /// </summary>
-        [JsonProperty("payment_service_id")]
-        public string? PaymentServiceId { get; set; } = null;
+        [JsonProperty("payment_service_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PaymentServiceId { get; set; }
+        public bool ShouldSerializePaymentServiceId() => PaymentServiceId.IsSet;
 
         /// <summary>
         /// Marks the transaction as an AFT. Requires the payment service to support this feature, and might `recipient` and `buyer` data.
         /// </summary>
-        [JsonProperty("account_funding_transaction")]
+        [JsonProperty("account_funding_transaction", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? AccountFundingTransaction { get; set; } = false;
 
         /// <summary>
         /// Defines if the transaction will allow for a partial authorization.
         /// </summary>
-        [JsonProperty("allow_partial_authorization")]
+        [JsonProperty("allow_partial_authorization", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? AllowPartialAuthorization { get; set; } = false;
 
         /// <summary>
         /// The recipient of any account to account funding. For use with AFTs.
         /// </summary>
-        [JsonProperty("recipient")]
-        public Recipient? Recipient { get; set; } = null;
+        [JsonProperty("recipient", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Recipient?> Recipient { get; set; }
+        public bool ShouldSerializeRecipient() => Recipient.IsSet;
 
         /// <summary>
         /// The number of installments a buyer is required to make.
         /// </summary>
-        [JsonProperty("installment_count")]
-        public long? InstallmentCount { get; set; } = null;
+        [JsonProperty("installment_count", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> InstallmentCount { get; set; }
+        public bool ShouldSerializeInstallmentCount() => InstallmentCount.IsSet;
 
         /// <summary>
         /// The sales tax amount for this transaction, represented as a monetary amount in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for `$12.99`
         /// </summary>
-        [JsonProperty("tax_amount")]
-        public long? TaxAmount { get; set; } = null;
+        [JsonProperty("tax_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> TaxAmount { get; set; }
+        public bool ShouldSerializeTaxAmount() => TaxAmount.IsSet;
 
         /// <summary>
         /// Merchant tax ID (for example, EIN or VAT number).
         /// </summary>
-        [JsonProperty("merchant_tax_id")]
-        public string? MerchantTaxId { get; set; } = null;
+        [JsonProperty("merchant_tax_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantTaxId { get; set; }
+        public bool ShouldSerializeMerchantTaxId() => MerchantTaxId.IsSet;
 
         /// <summary>
         /// Invoice number or Purchase Order number.
         /// </summary>
-        [JsonProperty("purchase_order_number")]
-        public string? PurchaseOrderNumber { get; set; } = null;
+        [JsonProperty("purchase_order_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PurchaseOrderNumber { get; set; }
+        public bool ShouldSerializePurchaseOrderNumber() => PurchaseOrderNumber.IsSet;
 
         /// <summary>
         /// Customer code or reference.
         /// </summary>
-        [JsonProperty("customer_reference_number")]
-        public string? CustomerReferenceNumber { get; set; } = null;
+        [JsonProperty("customer_reference_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CustomerReferenceNumber { get; set; }
+        public bool ShouldSerializeCustomerReferenceNumber() => CustomerReferenceNumber.IsSet;
 
         /// <summary>
         /// Whether the tax is included in the amount.
         /// </summary>
-        [JsonProperty("amount_includes_tax")]
-        public bool? AmountIncludesTax { get; set; } = null;
+        [JsonProperty("amount_includes_tax", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> AmountIncludesTax { get; set; }
+        public bool ShouldSerializeAmountIncludesTax() => AmountIncludesTax.IsSet;
 
         /// <summary>
         /// The merchant's unique identifier for the sales order or invoice.
         /// </summary>
-        [JsonProperty("supplier_order_number")]
-        public string? SupplierOrderNumber { get; set; } = null;
+        [JsonProperty("supplier_order_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> SupplierOrderNumber { get; set; }
+        public bool ShouldSerializeSupplierOrderNumber() => SupplierOrderNumber.IsSet;
 
         /// <summary>
         /// Total charges for import/export duties.
         /// </summary>
-        [JsonProperty("duty_amount")]
-        public long? DutyAmount { get; set; } = null;
+        [JsonProperty("duty_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> DutyAmount { get; set; }
+        public bool ShouldSerializeDutyAmount() => DutyAmount.IsSet;
 
         /// <summary>
         /// Total shipping amount.
         /// </summary>
-        [JsonProperty("shipping_amount")]
-        public long? ShippingAmount { get; set; } = null;
+        [JsonProperty("shipping_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> ShippingAmount { get; set; }
+        public bool ShouldSerializeShippingAmount() => ShippingAmount.IsSet;
 
         /// <summary>
         /// Defines the client where the session for this transaction is going to be used. Please refer to the connections documentation for more guidance.
         /// </summary>
-        [JsonProperty("integration_client")]
-        public string? IntegrationClient { get; set; } = null;
+        [JsonProperty("integration_client", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IntegrationClient { get; set; }
+        public bool ShouldSerializeIntegrationClient() => IntegrationClient.IsSet;
 
         /// <summary>
         /// The date and time when the buyer's approval window for this transaction expires. If not provided, this is automatically computed from the connector's default expiration time. The value cannot exceed the connector's maximum approval window.
         /// </summary>
-        [JsonProperty("approval_expires_at")]
-        public DateTime? ApprovalExpiresAt { get; set; } = null;
+        [JsonProperty("approval_expires_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> ApprovalExpiresAt { get; set; }
+        public bool ShouldSerializeApprovalExpiresAt() => ApprovalExpiresAt.IsSet;
     }
 }

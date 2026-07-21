@@ -23,67 +23,74 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The monetary amount for this payout, in the smallest currency unit for the given currency, for example `1299` cents to create an authorization for $12.99.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
         /// <summary>
         /// The ISO-4217 currency code for this payout.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Always)]
         public string Currency { get; set; } = default!;
 
         /// <summary>
         /// The ID of the payment service to use for the payout.
         /// </summary>
-        [JsonProperty("payment_service_id")]
+        [JsonProperty("payment_service_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentServiceId { get; set; } = default!;
 
         /// <summary>
         /// The type of payment method to send funds too.
         /// </summary>
-        [JsonProperty("payment_method", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("payment_method", Required = Newtonsoft.Json.Required.Always, NullValueHandling = NullValueHandling.Include)]
         public PayoutCreatePaymentMethod PaymentMethod { get; set; } = default!;
 
         /// <summary>
         /// The type of payout to process.
         /// </summary>
-        [JsonProperty("category")]
-        public string? Category { get; set; } = null;
+        [JsonProperty("category", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Category { get; set; }
+        public bool ShouldSerializeCategory() => Category.IsSet;
 
         /// <summary>
         /// A value that can be used to match the payout against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The `id` of a stored buyer to use for this payout Use this instead of the `buyer` or `buyer_external_identifier`.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// Inline buyer details for the payout. Use this instead of the `buyer_id` or `buyer_external_identifier`.
         /// </summary>
-        [JsonProperty("buyer")]
-        public GuestBuyer? Buyer { get; set; } = null;
+        [JsonProperty("buyer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<GuestBuyer?> Buyer { get; set; }
+        public bool ShouldSerializeBuyer() => Buyer.IsSet;
 
         /// <summary>
         /// The `external_identifier` of a stored buyer to use for this payout. Use this instead of the `buyer_id` or `buyer`.
         /// </summary>
-        [JsonProperty("buyer_external_identifier")]
-        public string? BuyerExternalIdentifier { get; set; } = null;
+        [JsonProperty("buyer_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerExternalIdentifier { get; set; }
+        public bool ShouldSerializeBuyerExternalIdentifier() => BuyerExternalIdentifier.IsSet;
 
         /// <summary>
         /// Merchant information for the source of the payout.
         /// </summary>
-        [JsonProperty("merchant")]
-        public PayoutMerchant? Merchant { get; set; } = null;
+        [JsonProperty("merchant", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<PayoutMerchant?> Merchant { get; set; }
+        public bool ShouldSerializeMerchant() => Merchant.IsSet;
 
         /// <summary>
         /// Optional fields for processing payouts on specific payment services.
         /// </summary>
-        [JsonProperty("connection_options")]
-        public PayoutConnectionOptions? ConnectionOptions { get; set; } = null;
+        [JsonProperty("connection_options", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<PayoutConnectionOptions?> ConnectionOptions { get; set; }
+        public bool ShouldSerializeConnectionOptions() => ConnectionOptions.IsSet;
     }
 }

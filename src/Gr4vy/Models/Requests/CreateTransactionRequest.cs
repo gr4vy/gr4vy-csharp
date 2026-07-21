@@ -35,6 +35,6 @@ namespace Gr4vy.Models.Requests
         public string? XForwardedFor { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public TransactionCreate TransactionCreate { get; set; } = default!;
+        public TransactionCreate TransactionCreate { get; set; } = new();
     }
 }

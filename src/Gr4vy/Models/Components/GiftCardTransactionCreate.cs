@@ -20,19 +20,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The 16-19 digit number for the gift card.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonProperty("number", Required = Newtonsoft.Json.Required.Always)]
         public string Number { get; set; } = default!;
 
         /// <summary>
         /// The PIN for this gift card.
         /// </summary>
-        [JsonProperty("pin")]
+        [JsonProperty("pin", Required = Newtonsoft.Json.Required.Always)]
         public string Pin { get; set; } = default!;
 
         /// <summary>
         /// The monetary amount for this transaction to charge against the gift card, in the smallest currency unit (for example, cents or pence).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
     }
 }

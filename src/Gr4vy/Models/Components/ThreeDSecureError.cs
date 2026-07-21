@@ -17,25 +17,29 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The error code.
         /// </summary>
-        [JsonProperty("code")]
-        public string? Code { get; set; } = null;
+        [JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Code { get; set; }
+        public bool ShouldSerializeCode() => Code.IsSet;
 
         /// <summary>
         /// The error description.
         /// </summary>
-        [JsonProperty("description")]
-        public string? Description { get; set; } = null;
+        [JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Description { get; set; }
+        public bool ShouldSerializeDescription() => Description.IsSet;
 
         /// <summary>
         /// Detail about the 3DS error.
         /// </summary>
-        [JsonProperty("detail")]
-        public string? Detail { get; set; } = null;
+        [JsonProperty("detail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Detail { get; set; }
+        public bool ShouldSerializeDetail() => Detail.IsSet;
 
         /// <summary>
         /// Code indicating the 3-D Secure component that identified the error.
         /// </summary>
-        [JsonProperty("component")]
-        public string? Component { get; set; } = null;
+        [JsonProperty("component", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Component { get; set; }
+        public bool ShouldSerializeComponent() => Component.IsSet;
     }
 }

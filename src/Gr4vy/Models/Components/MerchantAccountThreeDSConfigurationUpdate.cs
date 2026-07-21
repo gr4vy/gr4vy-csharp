@@ -18,178 +18,61 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Acquirer BIN to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_acquirer_bin", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantAcquirerBin
-        {
-            get => _merchantAcquirerBin;
-            set
-            {
-                _merchantAcquirerBin = value;
-                _merchantAcquirerBinSet = true;
-            }
-        }
-
-        private string? _merchantAcquirerBin = null;
-
-        private bool _merchantAcquirerBinSet = false;
-
-        public bool ShouldSerializeMerchantAcquirerBin() => _merchantAcquirerBinSet;
+        [JsonProperty("merchant_acquirer_bin", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantAcquirerBin { get; set; }
+        public bool ShouldSerializeMerchantAcquirerBin() => MerchantAcquirerBin.IsSet;
 
         /// <summary>
         /// Merchant ID to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_acquirer_id", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantAcquirerId
-        {
-            get => _merchantAcquirerId;
-            set
-            {
-                _merchantAcquirerId = value;
-                _merchantAcquirerIdSet = true;
-            }
-        }
+        [JsonProperty("merchant_acquirer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantAcquirerId { get; set; }
+        public bool ShouldSerializeMerchantAcquirerId() => MerchantAcquirerId.IsSet;
 
-        private string? _merchantAcquirerId = null;
-
-        private bool _merchantAcquirerIdSet = false;
-
-        public bool ShouldSerializeMerchantAcquirerId() => _merchantAcquirerIdSet;
-
-        [JsonProperty("merchant_name", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantName
-        {
-            get => _merchantName;
-            set
-            {
-                _merchantName = value;
-                _merchantNameSet = true;
-            }
-        }
-
-        private string? _merchantName = null;
-
-        private bool _merchantNameSet = false;
-
-        public bool ShouldSerializeMerchantName() => _merchantNameSet;
+        [JsonProperty("merchant_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantName { get; set; }
+        public bool ShouldSerializeMerchantName() => MerchantName.IsSet;
 
         /// <summary>
         /// The merchant's ISO 3166-1 numeric country code.
         /// </summary>
-        [JsonProperty("merchant_country_code", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantCountryCode
-        {
-            get => _merchantCountryCode;
-            set
-            {
-                _merchantCountryCode = value;
-                _merchantCountryCodeSet = true;
-            }
-        }
-
-        private string? _merchantCountryCode = null;
-
-        private bool _merchantCountryCodeSet = false;
-
-        public bool ShouldSerializeMerchantCountryCode() => _merchantCountryCodeSet;
+        [JsonProperty("merchant_country_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantCountryCode { get; set; }
+        public bool ShouldSerializeMerchantCountryCode() => MerchantCountryCode.IsSet;
 
         /// <summary>
         /// Merchant category code to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_category_code", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantCategoryCode
-        {
-            get => _merchantCategoryCode;
-            set
-            {
-                _merchantCategoryCode = value;
-                _merchantCategoryCodeSet = true;
-            }
-        }
-
-        private string? _merchantCategoryCode = null;
-
-        private bool _merchantCategoryCodeSet = false;
-
-        public bool ShouldSerializeMerchantCategoryCode() => _merchantCategoryCodeSet;
+        [JsonProperty("merchant_category_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantCategoryCode { get; set; }
+        public bool ShouldSerializeMerchantCategoryCode() => MerchantCategoryCode.IsSet;
 
         /// <summary>
         /// URL to send when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_url", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantUrl
-        {
-            get => _merchantUrl;
-            set
-            {
-                _merchantUrl = value;
-                _merchantUrlSet = true;
-            }
-        }
-
-        private string? _merchantUrl = null;
-
-        private bool _merchantUrlSet = false;
-
-        public bool ShouldSerializeMerchantUrl() => _merchantUrlSet;
+        [JsonProperty("merchant_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantUrl { get; set; }
+        public bool ShouldSerializeMerchantUrl() => MerchantUrl.IsSet;
 
         /// <summary>
         /// The card scheme for this 3DS configuration.
         /// </summary>
-        [JsonProperty("scheme", NullValueHandling = NullValueHandling.Include)]
-        public string? Scheme
-        {
-            get => _scheme;
-            set
-            {
-                _scheme = value;
-                _schemeSet = true;
-            }
-        }
-
-        private string? _scheme = null;
-
-        private bool _schemeSet = false;
-
-        public bool ShouldSerializeScheme() => _schemeSet;
+        [JsonProperty("scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Scheme { get; set; }
+        public bool ShouldSerializeScheme() => Scheme.IsSet;
 
         /// <summary>
         /// ISO 4217 currency code (3 characters). If left null, the configuration will apply to all currencies.
         /// </summary>
-        [JsonProperty("currency", NullValueHandling = NullValueHandling.Include)]
-        public string? Currency
-        {
-            get => _currency;
-            set
-            {
-                _currency = value;
-                _currencySet = true;
-            }
-        }
-
-        private string? _currency = null;
-
-        private bool _currencySet = false;
-
-        public bool ShouldSerializeCurrency() => _currencySet;
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Currency { get; set; }
+        public bool ShouldSerializeCurrency() => Currency.IsSet;
 
         /// <summary>
         /// Any additional information about the 3DS configuration that you would like to store as key-value pairs.
         /// </summary>
-        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? Metadata
-        {
-            get => _metadata;
-            set
-            {
-                _metadata = value;
-                _metadataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _metadata = null;
-
-        private bool _metadataSet = false;
-
-        public bool ShouldSerializeMetadata() => _metadataSet;
+        [JsonProperty("metadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> Metadata { get; set; }
+        public bool ShouldSerializeMetadata() => Metadata.IsSet;
     }
 }

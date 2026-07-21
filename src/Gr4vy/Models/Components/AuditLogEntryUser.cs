@@ -17,34 +17,36 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `user`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "user";
 
         /// <summary>
         /// The ID of the user.
         /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; } = null;
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Id { get; set; }
+        public bool ShouldSerializeId() => Id.IsSet;
 
         /// <summary>
         /// The name of the user.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The email address for this user.
         /// </summary>
-        [JsonProperty("email_address")]
-        public string? EmailAddress { get; set; } = null;
+        [JsonProperty("email_address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> EmailAddress { get; set; }
+        public bool ShouldSerializeEmailAddress() => EmailAddress.IsSet;
 
         /// <summary>
         /// Whether this is a Gr4vy staff user.
         /// </summary>
-        [JsonProperty("is_staff")]
+        [JsonProperty("is_staff", Required = Newtonsoft.Json.Required.Always)]
         public bool IsStaff { get; set; } = default!;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
     }
 }

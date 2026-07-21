@@ -14,28 +14,35 @@ namespace Gr4vy.Models.Components
 
     public class ThreeDSecureV2
     {
-        [JsonProperty("version")]
+        [JsonProperty("version", Required = Newtonsoft.Json.Required.Always)]
         public string Version { get; set; } = default!;
 
-        [JsonProperty("authentication_response")]
-        public string? AuthenticationResponse { get; set; } = null;
+        [JsonProperty("authentication_response", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AuthenticationResponse { get; set; }
+        public bool ShouldSerializeAuthenticationResponse() => AuthenticationResponse.IsSet;
 
-        [JsonProperty("directory_response")]
-        public string? DirectoryResponse { get; set; } = null;
+        [JsonProperty("directory_response", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DirectoryResponse { get; set; }
+        public bool ShouldSerializeDirectoryResponse() => DirectoryResponse.IsSet;
 
-        [JsonProperty("directory_transaction_id")]
-        public string? DirectoryTransactionId { get; set; } = null;
+        [JsonProperty("directory_transaction_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DirectoryTransactionId { get; set; }
+        public bool ShouldSerializeDirectoryTransactionId() => DirectoryTransactionId.IsSet;
 
-        [JsonProperty("transaction_reason")]
-        public string? TransactionReason { get; set; } = null;
+        [JsonProperty("transaction_reason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TransactionReason { get; set; }
+        public bool ShouldSerializeTransactionReason() => TransactionReason.IsSet;
 
-        [JsonProperty("cavv")]
-        public string? Cavv { get; set; } = null;
+        [JsonProperty("cavv", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Cavv { get; set; }
+        public bool ShouldSerializeCavv() => Cavv.IsSet;
 
-        [JsonProperty("eci")]
-        public string? Eci { get; set; } = null;
+        [JsonProperty("eci", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Eci { get; set; }
+        public bool ShouldSerializeEci() => Eci.IsSet;
 
-        [JsonProperty("cardholder_info")]
-        public string? CardholderInfo { get; set; } = null;
+        [JsonProperty("cardholder_info", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardholderInfo { get; set; }
+        public bool ShouldSerializeCardholderInfo() => CardholderInfo.IsSet;
     }
 }

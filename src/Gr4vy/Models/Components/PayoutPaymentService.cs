@@ -17,31 +17,33 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-service`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-service";
 
         /// <summary>
         /// The ID for the payout service.
         /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; } = null;
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Id { get; set; }
+        public bool ShouldSerializeId() => Id.IsSet;
 
         /// <summary>
         /// Always `card`.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Method { get; } = "card";
 
         /// <summary>
         /// The ID of the connection used for this payout.
         /// </summary>
-        [JsonProperty("payment_service_definition_id")]
+        [JsonProperty("payment_service_definition_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentServiceDefinitionId { get; set; } = default!;
 
         /// <summary>
         /// The display name of the connection used for this payout.
         /// </summary>
-        [JsonProperty("display_name")]
-        public string? DisplayName { get; set; } = null;
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DisplayName { get; set; }
+        public bool ShouldSerializeDisplayName() => DisplayName.IsSet;
     }
 }

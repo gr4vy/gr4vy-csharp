@@ -18,6 +18,6 @@ namespace Gr4vy.Models.Requests
     {
         public Func<Task<ListMerchantAccountsResponse?>>? Next {get;set;}
         [SpeakeasyMetadata("")]
-        public Models.Components.MerchantAccounts Result { get; set; } = default!;
+        public Models.Components.MerchantAccounts Result { get; set; } = new();
     }
 }

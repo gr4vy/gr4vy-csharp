@@ -17,141 +17,50 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The type of itinerary object.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public string? Type
-        {
-            get => _type;
-            set
-            {
-                _type = value;
-                _typeSet = true;
-            }
-        }
-
-        private string? _type = null;
-
-        private bool _typeSet = false;
-
-        public bool ShouldSerializeType() => _typeSet;
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Type { get; set; }
+        public bool ShouldSerializeType() => Type.IsSet;
 
         /// <summary>
         /// The booking/itinerary number (if applicable).
         /// </summary>
-        [JsonProperty("sku", NullValueHandling = NullValueHandling.Include)]
-        public string? Sku
-        {
-            get => _sku;
-            set
-            {
-                _sku = value;
-                _skuSet = true;
-            }
-        }
-
-        private string? _sku = null;
-
-        private bool _skuSet = false;
-
-        public bool ShouldSerializeSku() => _skuSet;
+        [JsonProperty("sku", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Sku { get; set; }
+        public bool ShouldSerializeSku() => Sku.IsSet;
 
         /// <summary>
         /// Readable description of the itinerary item.
         /// </summary>
-        [JsonProperty("display_name", NullValueHandling = NullValueHandling.Include)]
-        public string? DisplayName
-        {
-            get => _displayName;
-            set
-            {
-                _displayName = value;
-                _displayNameSet = true;
-            }
-        }
-
-        private string? _displayName = null;
-
-        private bool _displayNameSet = false;
-
-        public bool ShouldSerializeDisplayName() => _displayNameSet;
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DisplayName { get; set; }
+        public bool ShouldSerializeDisplayName() => DisplayName.IsSet;
 
         /// <summary>
         /// The name of the venue where the event is hosted.
         /// </summary>
-        [JsonProperty("venue", NullValueHandling = NullValueHandling.Include)]
-        public string? Venue
-        {
-            get => _venue;
-            set
-            {
-                _venue = value;
-                _venueSet = true;
-            }
-        }
-
-        private string? _venue = null;
-
-        private bool _venueSet = false;
-
-        public bool ShouldSerializeVenue() => _venueSet;
+        [JsonProperty("venue", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Venue { get; set; }
+        public bool ShouldSerializeVenue() => Venue.IsSet;
 
         /// <summary>
         /// The address object that can be parsed.
         /// </summary>
-        [JsonProperty("location", NullValueHandling = NullValueHandling.Include)]
-        public string? Location
-        {
-            get => _location;
-            set
-            {
-                _location = value;
-                _locationSet = true;
-            }
-        }
-
-        private string? _location = null;
-
-        private bool _locationSet = false;
-
-        public bool ShouldSerializeLocation() => _locationSet;
+        [JsonProperty("location", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Location { get; set; }
+        public bool ShouldSerializeLocation() => Location.IsSet;
 
         /// <summary>
         /// The start date of this itinerary item.
         /// </summary>
-        [JsonProperty("date_start", NullValueHandling = NullValueHandling.Include)]
-        public string? DateStart
-        {
-            get => _dateStart;
-            set
-            {
-                _dateStart = value;
-                _dateStartSet = true;
-            }
-        }
-
-        private string? _dateStart = null;
-
-        private bool _dateStartSet = false;
-
-        public bool ShouldSerializeDateStart() => _dateStartSet;
+        [JsonProperty("date_start", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DateStart { get; set; }
+        public bool ShouldSerializeDateStart() => DateStart.IsSet;
 
         /// <summary>
         /// The corporation.
         /// </summary>
-        [JsonProperty("management", NullValueHandling = NullValueHandling.Include)]
-        public string? Management
-        {
-            get => _management;
-            set
-            {
-                _management = value;
-                _managementSet = true;
-            }
-        }
-
-        private string? _management = null;
-
-        private bool _managementSet = false;
-
-        public bool ShouldSerializeManagement() => _managementSet;
+        [JsonProperty("management", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Management { get; set; }
+        public bool ShouldSerializeManagement() => Management.IsSet;
     }
 }

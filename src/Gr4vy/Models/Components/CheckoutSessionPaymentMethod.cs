@@ -18,43 +18,48 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-method`
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-method";
 
         /// <summary>
         /// The ID of the payment method.
         /// </summary>
-        [JsonProperty("id")]
-        public string? Id { get; set; } = null;
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Id { get; set; }
+        public bool ShouldSerializeId() => Id.IsSet;
 
         /// <summary>
         /// Details for credit or debit card payment method.
         /// </summary>
-        [JsonProperty("details")]
-        public CheckoutSessionPaymentMethodDetails? Details { get; set; } = null;
+        [JsonProperty("details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<CheckoutSessionPaymentMethodDetails?> Details { get; set; }
+        public bool ShouldSerializeDetails() => Details.IsSet;
 
         /// <summary>
         /// The last 4 digits of the the card.
         /// </summary>
-        [JsonProperty("label")]
-        public string? Label { get; set; } = null;
+        [JsonProperty("label", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Label { get; set; }
+        public bool ShouldSerializeLabel() => Label.IsSet;
 
         /// <summary>
         /// Always `card`
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Method { get; } = "card";
 
         /// <summary>
         /// The scheme of the card.
         /// </summary>
-        [JsonProperty("scheme")]
-        public string? Scheme { get; set; } = null;
+        [JsonProperty("scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Scheme { get; set; }
+        public bool ShouldSerializeScheme() => Scheme.IsSet;
 
         /// <summary>
         /// The unique hash derived from the card number.
         /// </summary>
-        [JsonProperty("fingerprint")]
-        public string? Fingerprint { get; set; } = null;
+        [JsonProperty("fingerprint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Fingerprint { get; set; }
+        public bool ShouldSerializeFingerprint() => Fingerprint.IsSet;
     }
 }

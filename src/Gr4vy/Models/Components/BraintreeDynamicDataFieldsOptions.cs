@@ -17,61 +17,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes the 3DS status to the Braintree API using `customFields` with the key set to the value of `three_ds_auth_status`
         /// </summary>
-        [JsonProperty("three_ds_auth_status", NullValueHandling = NullValueHandling.Include)]
-        public string? ThreeDsAuthStatus
-        {
-            get => _threeDsAuthStatus;
-            set
-            {
-                _threeDsAuthStatus = value;
-                _threeDsAuthStatusSet = true;
-            }
-        }
-
-        private string? _threeDsAuthStatus = null;
-
-        private bool _threeDsAuthStatusSet = false;
-
-        public bool ShouldSerializeThreeDsAuthStatus() => _threeDsAuthStatusSet;
+        [JsonProperty("three_ds_auth_status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ThreeDsAuthStatus { get; set; }
+        public bool ShouldSerializeThreeDsAuthStatus() => ThreeDsAuthStatus.IsSet;
 
         /// <summary>
         /// Passes the `transaction.purchaseOrderNumber` field when creating a new transaction.
         /// </summary>
-        [JsonProperty("purchase_order_number", NullValueHandling = NullValueHandling.Include)]
-        public string? PurchaseOrderNumber
-        {
-            get => _purchaseOrderNumber;
-            set
-            {
-                _purchaseOrderNumber = value;
-                _purchaseOrderNumberSet = true;
-            }
-        }
-
-        private string? _purchaseOrderNumber = null;
-
-        private bool _purchaseOrderNumberSet = false;
-
-        public bool ShouldSerializePurchaseOrderNumber() => _purchaseOrderNumberSet;
+        [JsonProperty("purchase_order_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PurchaseOrderNumber { get; set; }
+        public bool ShouldSerializePurchaseOrderNumber() => PurchaseOrderNumber.IsSet;
 
         /// <summary>
         /// Passes the `vaultPaymentMethodCriteria` field when creating a new transaction.
         /// </summary>
-        [JsonProperty("vault_payment_method_criteria", NullValueHandling = NullValueHandling.Include)]
-        public string? VaultPaymentMethodCriteria
-        {
-            get => _vaultPaymentMethodCriteria;
-            set
-            {
-                _vaultPaymentMethodCriteria = value;
-                _vaultPaymentMethodCriteriaSet = true;
-            }
-        }
-
-        private string? _vaultPaymentMethodCriteria = null;
-
-        private bool _vaultPaymentMethodCriteriaSet = false;
-
-        public bool ShouldSerializeVaultPaymentMethodCriteria() => _vaultPaymentMethodCriteriaSet;
+        [JsonProperty("vault_payment_method_criteria", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> VaultPaymentMethodCriteria { get; set; }
+        public bool ShouldSerializeVaultPaymentMethodCriteria() => VaultPaymentMethodCriteria.IsSet;
     }
 }

@@ -20,81 +20,29 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The new expiration date for the payment method.
         /// </summary>
-        [JsonProperty("expiration_date", NullValueHandling = NullValueHandling.Include)]
-        public string? ExpirationDate
-        {
-            get => _expirationDate;
-            set
-            {
-                _expirationDate = value;
-                _expirationDateSet = true;
-            }
-        }
-
-        private string? _expirationDate = null;
-
-        private bool _expirationDateSet = false;
-
-        public bool ShouldSerializeExpirationDate() => _expirationDateSet;
+        [JsonProperty("expiration_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExpirationDate { get; set; }
+        public bool ShouldSerializeExpirationDate() => ExpirationDate.IsSet;
 
         /// <summary>
         /// A scheme transaction identifier to associate with this payment method. Explicitly setting this field to `null` will also clear `scheme_transaction_id_scheme` as a side-effect. When setting a new value and `scheme_transaction_id_scheme` is both omitted from the payload and previously unset,`scheme_transaction_id_scheme` will be populated from the payment method's existing `scheme`.
         /// </summary>
-        [JsonProperty("scheme_transaction_id", NullValueHandling = NullValueHandling.Include)]
-        public string? SchemeTransactionId
-        {
-            get => _schemeTransactionId;
-            set
-            {
-                _schemeTransactionId = value;
-                _schemeTransactionIdSet = true;
-            }
-        }
-
-        private string? _schemeTransactionId = null;
-
-        private bool _schemeTransactionIdSet = false;
-
-        public bool ShouldSerializeSchemeTransactionId() => _schemeTransactionIdSet;
+        [JsonProperty("scheme_transaction_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> SchemeTransactionId { get; set; }
+        public bool ShouldSerializeSchemeTransactionId() => SchemeTransactionId.IsSet;
 
         /// <summary>
         /// The scheme associated with `scheme_transaction_id`. Only applies to card payments. When setting a new value for `scheme_transaction_id`, if `scheme_transaction_id_scheme`is both omitted from the payload and previously unset, `scheme_transaction_id_scheme` will be populated from the payment method's existing `scheme`.
         /// </summary>
-        [JsonProperty("scheme_transaction_id_scheme", NullValueHandling = NullValueHandling.Include)]
-        public string? SchemeTransactionIdScheme
-        {
-            get => _schemeTransactionIdScheme;
-            set
-            {
-                _schemeTransactionIdScheme = value;
-                _schemeTransactionIdSchemeSet = true;
-            }
-        }
-
-        private string? _schemeTransactionIdScheme = null;
-
-        private bool _schemeTransactionIdSchemeSet = false;
-
-        public bool ShouldSerializeSchemeTransactionIdScheme() => _schemeTransactionIdSchemeSet;
+        [JsonProperty("scheme_transaction_id_scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> SchemeTransactionIdScheme { get; set; }
+        public bool ShouldSerializeSchemeTransactionIdScheme() => SchemeTransactionIdScheme.IsSet;
 
         /// <summary>
         /// A transaction link identifier to associate with this payment method.
         /// </summary>
-        [JsonProperty("transaction_link_id", NullValueHandling = NullValueHandling.Include)]
-        public string? TransactionLinkId
-        {
-            get => _transactionLinkId;
-            set
-            {
-                _transactionLinkId = value;
-                _transactionLinkIdSet = true;
-            }
-        }
-
-        private string? _transactionLinkId = null;
-
-        private bool _transactionLinkIdSet = false;
-
-        public bool ShouldSerializeTransactionLinkId() => _transactionLinkIdSet;
+        [JsonProperty("transaction_link_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TransactionLinkId { get; set; }
+        public bool ShouldSerializeTransactionLinkId() => TransactionLinkId.IsSet;
     }
 }

@@ -18,61 +18,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Stripe options to support Stripe Connect.
         /// </summary>
-        [JsonProperty("stripe_connect", NullValueHandling = NullValueHandling.Include)]
-        public StripeConnectOptions? StripeConnect
-        {
-            get => _stripeConnect;
-            set
-            {
-                _stripeConnect = value;
-                _stripeConnectSet = true;
-            }
-        }
-
-        private StripeConnectOptions? _stripeConnect = null;
-
-        private bool _stripeConnectSet = false;
-
-        public bool ShouldSerializeStripeConnect() => _stripeConnectSet;
+        [JsonProperty("stripe_connect", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<StripeConnectOptions?> StripeConnect { get; set; }
+        public bool ShouldSerializeStripeConnect() => StripeConnect.IsSet;
 
         /// <summary>
         /// A Stripe customer ID (`cus_xxx`) to associate with the PaymentIntent for network token transactions. When provided, Stripe Radar can access the customer's payment history, dispute rate, and account age to improve risk scoring for returning customers.
         /// </summary>
-        [JsonProperty("customer_id", NullValueHandling = NullValueHandling.Include)]
-        public string? CustomerId
-        {
-            get => _customerId;
-            set
-            {
-                _customerId = value;
-                _customerIdSet = true;
-            }
-        }
-
-        private string? _customerId = null;
-
-        private bool _customerIdSet = false;
-
-        public bool ShouldSerializeCustomerId() => _customerIdSet;
+        [JsonProperty("customer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CustomerId { get; set; }
+        public bool ShouldSerializeCustomerId() => CustomerId.IsSet;
 
         /// <summary>
         /// Passes the `error_on_requires_action` option to the Stripe API. Set to true to fail the payment attempt if it transitions into requires_action. Use this parameter for simpler integrations that don't handle customer actions, such as saving cards without authentication.
         /// </summary>
-        [JsonProperty("error_on_requires_action", NullValueHandling = NullValueHandling.Include)]
-        public bool? ErrorOnRequiresAction
-        {
-            get => _errorOnRequiresAction;
-            set
-            {
-                _errorOnRequiresAction = value;
-                _errorOnRequiresActionSet = true;
-            }
-        }
-
-        private bool? _errorOnRequiresAction = null;
-
-        private bool _errorOnRequiresActionSet = false;
-
-        public bool ShouldSerializeErrorOnRequiresAction() => _errorOnRequiresActionSet;
+        [JsonProperty("error_on_requires_action", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> ErrorOnRequiresAction { get; set; }
+        public bool ShouldSerializeErrorOnRequiresAction() => ErrorOnRequiresAction.IsSet;
     }
 }

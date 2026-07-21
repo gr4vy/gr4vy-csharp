@@ -17,43 +17,44 @@ namespace Gr4vy.Models.Components
     /// </summary>
     public class BrowserInfo
     {
-        [JsonProperty("javascript_enabled")]
+        [JsonProperty("javascript_enabled", Required = Newtonsoft.Json.Required.Always)]
         public bool JavascriptEnabled { get; set; } = default!;
 
-        [JsonProperty("java_enabled")]
+        [JsonProperty("java_enabled", Required = Newtonsoft.Json.Required.Always)]
         public bool JavaEnabled { get; set; } = default!;
 
-        [JsonProperty("language")]
+        [JsonProperty("language", Required = Newtonsoft.Json.Required.Always)]
         public string Language { get; set; } = default!;
 
-        [JsonProperty("color_depth")]
+        [JsonProperty("color_depth", Required = Newtonsoft.Json.Required.Always)]
         public long ColorDepth { get; set; } = default!;
 
-        [JsonProperty("screen_height")]
+        [JsonProperty("screen_height", Required = Newtonsoft.Json.Required.Always)]
         public long ScreenHeight { get; set; } = default!;
 
-        [JsonProperty("screen_width")]
+        [JsonProperty("screen_width", Required = Newtonsoft.Json.Required.Always)]
         public long ScreenWidth { get; set; } = default!;
 
-        [JsonProperty("time_zone_offset")]
+        [JsonProperty("time_zone_offset", Required = Newtonsoft.Json.Required.Always)]
         public long TimeZoneOffset { get; set; } = default!;
 
         /// <summary>
         /// Exact content of the HTTP user-agent header.
         /// </summary>
-        [JsonProperty("user_agent")]
+        [JsonProperty("user_agent", Required = Newtonsoft.Json.Required.Always)]
         public string UserAgent { get; set; } = default!;
 
         /// <summary>
         /// The platform that is being used to access the website.
         /// </summary>
-        [JsonProperty("user_device")]
+        [JsonProperty("user_device", Required = Newtonsoft.Json.Required.Always)]
         public string UserDevice { get; set; } = default!;
 
         /// <summary>
         /// The Accept header of the request from the buyer's browser.
         /// </summary>
-        [JsonProperty("accept_header")]
-        public string? AcceptHeader { get; set; } = null;
+        [JsonProperty("accept_header", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AcceptHeader { get; set; }
+        public bool ShouldSerializeAcceptHeader() => AcceptHeader.IsSet;
     }
 }

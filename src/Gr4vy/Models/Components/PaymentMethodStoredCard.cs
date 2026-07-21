@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Set to `id` to use a stored card.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Method { get; } = "id";
 
         /// <summary>
         /// The ID of the stored card to use.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
     }
 }

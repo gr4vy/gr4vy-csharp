@@ -18,52 +18,54 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-service-token`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-service-token";
 
         /// <summary>
         /// The ID for the payment service token.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The optional URL that the buyer needs to be redirected to to further authorize the token creation.
         /// </summary>
-        [JsonProperty("approval_url")]
-        public string? ApprovalUrl { get; set; } = null;
+        [JsonProperty("approval_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ApprovalUrl { get; set; }
+        public bool ShouldSerializeApprovalUrl() => ApprovalUrl.IsSet;
 
         /// <summary>
         /// The ID of the payment method used to generate this token.
         /// </summary>
-        [JsonProperty("payment_method_id")]
+        [JsonProperty("payment_method_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentMethodId { get; set; } = default!;
 
         /// <summary>
         /// The ID of the payment method used to generate this token.
         /// </summary>
-        [JsonProperty("payment_service_id")]
+        [JsonProperty("payment_service_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentServiceId { get; set; } = default!;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
 
         /// <summary>
         /// The token value. Will be present if succeeded.
         /// </summary>
-        [JsonProperty("token")]
-        public string? Token { get; set; } = null;
+        [JsonProperty("token", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Token { get; set; }
+        public bool ShouldSerializeToken() => Token.IsSet;
 
         /// <summary>
         /// The date and time when this payment service token was first created in our system.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this payment service token was last updated in our system.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
     }
 }

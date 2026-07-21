@@ -21,81 +21,29 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The display name for the buyer.
         /// </summary>
-        [JsonProperty("display_name", NullValueHandling = NullValueHandling.Include)]
-        public string? DisplayName
-        {
-            get => _displayName;
-            set
-            {
-                _displayName = value;
-                _displayNameSet = true;
-            }
-        }
-
-        private string? _displayName = null;
-
-        private bool _displayNameSet = false;
-
-        public bool ShouldSerializeDisplayName() => _displayNameSet;
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DisplayName { get; set; }
+        public bool ShouldSerializeDisplayName() => DisplayName.IsSet;
 
         /// <summary>
         /// The merchant identifier for this buyer.
         /// </summary>
-        [JsonProperty("external_identifier", NullValueHandling = NullValueHandling.Include)]
-        public string? ExternalIdentifier
-        {
-            get => _externalIdentifier;
-            set
-            {
-                _externalIdentifier = value;
-                _externalIdentifierSet = true;
-            }
-        }
-
-        private string? _externalIdentifier = null;
-
-        private bool _externalIdentifierSet = false;
-
-        public bool ShouldSerializeExternalIdentifier() => _externalIdentifierSet;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The buyer account number.
         /// </summary>
-        [JsonProperty("account_number", NullValueHandling = NullValueHandling.Include)]
-        public string? AccountNumber
-        {
-            get => _accountNumber;
-            set
-            {
-                _accountNumber = value;
-                _accountNumberSet = true;
-            }
-        }
-
-        private string? _accountNumber = null;
-
-        private bool _accountNumberSet = false;
-
-        public bool ShouldSerializeAccountNumber() => _accountNumberSet;
+        [JsonProperty("account_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AccountNumber { get; set; }
+        public bool ShouldSerializeAccountNumber() => AccountNumber.IsSet;
 
         /// <summary>
         /// The billing name, address, email, and other fields for this buyer.
         /// </summary>
-        [JsonProperty("billing_details", NullValueHandling = NullValueHandling.Include)]
-        public BillingDetails? BillingDetails
-        {
-            get => _billingDetails;
-            set
-            {
-                _billingDetails = value;
-                _billingDetailsSet = true;
-            }
-        }
-
-        private BillingDetails? _billingDetails = null;
-
-        private bool _billingDetailsSet = false;
-
-        public bool ShouldSerializeBillingDetails() => _billingDetailsSet;
+        [JsonProperty("billing_details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<BillingDetails?> BillingDetails { get; set; }
+        public bool ShouldSerializeBillingDetails() => BillingDetails.IsSet;
     }
 }

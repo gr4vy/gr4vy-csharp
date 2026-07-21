@@ -23,115 +23,134 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The unique identifier of the reservation in the global distribution system.
         /// </summary>
-        [JsonProperty("booking_code")]
-        public string? BookingCode { get; set; } = null;
+        [JsonProperty("booking_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BookingCode { get; set; }
+        public bool ShouldSerializeBookingCode() => BookingCode.IsSet;
 
         /// <summary>
         /// Indicates whether the cardholder is traveling.
         /// </summary>
-        [JsonProperty("is_cardholder_traveling")]
-        public bool? IsCardholderTraveling { get; set; } = null;
+        [JsonProperty("is_cardholder_traveling", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> IsCardholderTraveling { get; set; }
+        public bool ShouldSerializeIsCardholderTraveling() => IsCardholderTraveling.IsSet;
 
         /// <summary>
         /// The address of the place/agency that issued the ticket.
         /// </summary>
-        [JsonProperty("issued_address")]
-        public string? IssuedAddress { get; set; } = null;
+        [JsonProperty("issued_address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IssuedAddress { get; set; }
+        public bool ShouldSerializeIssuedAddress() => IssuedAddress.IsSet;
 
         /// <summary>
         /// The date that the ticket was last issued in the airline reservation system.
         /// </summary>
-        [JsonProperty("issued_at")]
-        public DateTime? IssuedAt { get; set; } = null;
+        [JsonProperty("issued_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> IssuedAt { get; set; }
+        public bool ShouldSerializeIssuedAt() => IssuedAt.IsSet;
 
         /// <summary>
         /// For airline aggregators, three-character IATA code of the airline issuing the ticket.
         /// </summary>
-        [JsonProperty("issuing_carrier_code")]
-        public string? IssuingCarrierCode { get; set; } = null;
+        [JsonProperty("issuing_carrier_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IssuingCarrierCode { get; set; }
+        public bool ShouldSerializeIssuingCarrierCode() => IssuingCarrierCode.IsSet;
 
         /// <summary>
         /// For airline aggregators, name of the airline issuing the ticket.
         /// </summary>
-        [JsonProperty("issuing_carrier_name")]
-        public string? IssuingCarrierName { get; set; } = null;
+        [JsonProperty("issuing_carrier_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IssuingCarrierName { get; set; }
+        public bool ShouldSerializeIssuingCarrierName() => IssuingCarrierName.IsSet;
 
         /// <summary>
         /// For airline aggregators, two-character IATA code of the airline issuing the ticket.
         /// </summary>
-        [JsonProperty("issuing_iata_designator")]
-        public string? IssuingIataDesignator { get; set; } = null;
+        [JsonProperty("issuing_iata_designator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IssuingIataDesignator { get; set; }
+        public bool ShouldSerializeIssuingIataDesignator() => IssuingIataDesignator.IsSet;
 
         /// <summary>
         /// For airline aggregators, three-character ICAO code of the airline issuing the ticket.
         /// </summary>
-        [JsonProperty("issuing_icao_code")]
-        public string? IssuingIcaoCode { get; set; } = null;
+        [JsonProperty("issuing_icao_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IssuingIcaoCode { get; set; }
+        public bool ShouldSerializeIssuingIcaoCode() => IssuingIcaoCode.IsSet;
 
         /// <summary>
         /// An array of separate trip segments. Each leg contains detailed itinerary information.
         /// </summary>
-        [JsonProperty("legs")]
-        public List<AirlineLeg>? Legs { get; set; } = null;
+        [JsonProperty("legs", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<AirlineLeg>?> Legs { get; set; }
+        public bool ShouldSerializeLegs() => Legs.IsSet;
 
         /// <summary>
         /// The Passenger Name Record (PNR) in the airline reservation system.
         /// </summary>
-        [JsonProperty("passenger_name_record")]
-        public string? PassengerNameRecord { get; set; } = null;
+        [JsonProperty("passenger_name_record", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PassengerNameRecord { get; set; }
+        public bool ShouldSerializePassengerNameRecord() => PassengerNameRecord.IsSet;
 
         /// <summary>
         /// An array of the travelling passengers.
         /// </summary>
-        [JsonProperty("passengers")]
-        public List<AirlinePassenger>? Passengers { get; set; } = null;
+        [JsonProperty("passengers", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<AirlinePassenger>?> Passengers { get; set; }
+        public bool ShouldSerializePassengers() => Passengers.IsSet;
 
         /// <summary>
         /// The name of the reservation system.
         /// </summary>
-        [JsonProperty("reservation_system")]
-        public string? ReservationSystem { get; set; } = null;
+        [JsonProperty("reservation_system", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ReservationSystem { get; set; }
+        public bool ShouldSerializeReservationSystem() => ReservationSystem.IsSet;
 
         /// <summary>
         /// Indicates whether the ticket is restricted (refundable).
         /// </summary>
-        [JsonProperty("restricted_ticket")]
-        public bool? RestrictedTicket { get; set; } = null;
+        [JsonProperty("restricted_ticket", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> RestrictedTicket { get; set; }
+        public bool ShouldSerializeRestrictedTicket() => RestrictedTicket.IsSet;
 
         /// <summary>
         /// The delivery method of the ticket.
         /// </summary>
-        [JsonProperty("ticket_delivery_method")]
-        public string? TicketDeliveryMethod { get; set; } = null;
+        [JsonProperty("ticket_delivery_method", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TicketDeliveryMethod { get; set; }
+        public bool ShouldSerializeTicketDeliveryMethod() => TicketDeliveryMethod.IsSet;
 
         /// <summary>
         /// The airline's unique ticket number.
         /// </summary>
-        [JsonProperty("ticket_number")]
-        public string? TicketNumber { get; set; } = null;
+        [JsonProperty("ticket_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TicketNumber { get; set; }
+        public bool ShouldSerializeTicketNumber() => TicketNumber.IsSet;
 
         /// <summary>
         /// The IATA travel agency code.
         /// </summary>
-        [JsonProperty("travel_agency_code")]
-        public string? TravelAgencyCode { get; set; } = null;
+        [JsonProperty("travel_agency_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TravelAgencyCode { get; set; }
+        public bool ShouldSerializeTravelAgencyCode() => TravelAgencyCode.IsSet;
 
         /// <summary>
         /// The reference number of the invoice that was issued by the travel agency.
         /// </summary>
-        [JsonProperty("travel_agency_invoice_number")]
-        public string? TravelAgencyInvoiceNumber { get; set; } = null;
+        [JsonProperty("travel_agency_invoice_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TravelAgencyInvoiceNumber { get; set; }
+        public bool ShouldSerializeTravelAgencyInvoiceNumber() => TravelAgencyInvoiceNumber.IsSet;
 
         /// <summary>
         /// The name of the travel agency.
         /// </summary>
-        [JsonProperty("travel_agency_name")]
-        public string? TravelAgencyName { get; set; } = null;
+        [JsonProperty("travel_agency_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TravelAgencyName { get; set; }
+        public bool ShouldSerializeTravelAgencyName() => TravelAgencyName.IsSet;
 
         /// <summary>
         /// The name of the travel agency plan.
         /// </summary>
-        [JsonProperty("travel_agency_plan_name")]
-        public string? TravelAgencyPlanName { get; set; } = null;
+        [JsonProperty("travel_agency_plan_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TravelAgencyPlanName { get; set; }
+        public bool ShouldSerializeTravelAgencyPlanName() => TravelAgencyPlanName.IsSet;
     }
 }

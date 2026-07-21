@@ -18,55 +18,55 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Last four digits of the PAN.
         /// </summary>
-        [JsonProperty("panLastFour")]
+        [JsonProperty("panLastFour", Required = Newtonsoft.Json.Required.Always)]
         public string PanLastFour { get; set; } = default!;
 
         /// <summary>
         /// Payment Account Reference (PAR). A non-financial reference assigned to each unique PAN.
         /// </summary>
-        [JsonProperty("paymentAccountReference")]
+        [JsonProperty("paymentAccountReference", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentAccountReference { get; set; } = default!;
 
         /// <summary>
         /// 2-digit PAN expiration month.
         /// </summary>
-        [JsonProperty("panExpirationMonth", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("panExpirationMonth", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? PanExpirationMonth { get; set; }
 
         /// <summary>
         /// 4-digit PAN expiration year.
         /// </summary>
-        [JsonProperty("panExpirationYear", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("panExpirationYear", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? PanExpirationYear { get; set; }
 
         /// <summary>
         /// Free-form string used for card or program recognition.
         /// </summary>
-        [JsonProperty("paymentCardDescriptor")]
+        [JsonProperty("paymentCardDescriptor", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentCardDescriptor { get; set; } = default!;
 
         /// <summary>
         /// Card type.
         /// </summary>
-        [JsonProperty("paymentCardType")]
+        [JsonProperty("paymentCardType", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentCardType { get; set; } = default!;
 
         /// <summary>
         /// Card brand.
         /// </summary>
-        [JsonProperty("paymentCardBrand")]
+        [JsonProperty("paymentCardBrand", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentCardBrand { get; set; } = default!;
 
         /// <summary>
         /// Card network.
         /// </summary>
-        [JsonProperty("paymentCardNetwork")]
+        [JsonProperty("paymentCardNetwork", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentCardNetwork { get; set; } = default!;
 
-        [JsonProperty("digitalCardData")]
-        public PazeDigitalCardData DigitalCardData { get; set; } = default!;
+        [JsonProperty("digitalCardData", Required = Newtonsoft.Json.Required.Always)]
+        public PazeDigitalCardData DigitalCardData { get; set; } = new();
 
-        [JsonProperty("billingAddress", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("billingAddress", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public PazeBillingAddress? BillingAddress { get; set; }
     }
 }

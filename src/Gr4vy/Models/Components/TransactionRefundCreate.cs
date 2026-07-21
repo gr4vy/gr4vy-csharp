@@ -17,28 +17,32 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The amount to refund, in the smallest currency unit (e.g., cents). If omitted, a full refund will be requested.
         /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; } = null;
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Amount { get; set; }
+        public bool ShouldSerializeAmount() => Amount.IsSet;
 
-        [JsonProperty("target_type")]
+        [JsonProperty("target_type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? TargetType { get; set; }
 
         /// <summary>
         /// The optional ID of the instrument to refund for. This is only required when the `target_type` is set to `gift-card-redemption`.
         /// </summary>
-        [JsonProperty("target_id")]
-        public string? TargetId { get; set; } = null;
+        [JsonProperty("target_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TargetId { get; set; }
+        public bool ShouldSerializeTargetId() => TargetId.IsSet;
 
         /// <summary>
         /// An optional reason to attach extra context to the refund request.
         /// </summary>
-        [JsonProperty("reason")]
-        public string? Reason { get; set; } = null;
+        [JsonProperty("reason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Reason { get; set; }
+        public bool ShouldSerializeReason() => Reason.IsSet;
 
         /// <summary>
         /// An external identifier that can be used to match the refund against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
     }
 }

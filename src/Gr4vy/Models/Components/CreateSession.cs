@@ -21,28 +21,31 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-service-session`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-service-session";
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
 
         /// <summary>
         /// A generic error code that may be returned when the session could not be generated.
         /// </summary>
-        [JsonProperty("code")]
-        public string? Code { get; set; } = null;
+        [JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Code { get; set; }
+        public bool ShouldSerializeCode() => Code.IsSet;
 
         /// <summary>
         /// The HTTP status code received from the payment service.
         /// </summary>
-        [JsonProperty("status_code")]
-        public long? StatusCode { get; set; } = null;
+        [JsonProperty("status_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> StatusCode { get; set; }
+        public bool ShouldSerializeStatusCode() => StatusCode.IsSet;
 
         /// <summary>
         /// The JSON response body received from the payment service.
         /// </summary>
-        [JsonProperty("response_body")]
-        public Dictionary<string, object>? ResponseBody { get; set; } = null;
+        [JsonProperty("response_body", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, object>?> ResponseBody { get; set; }
+        public bool ShouldSerializeResponseBody() => ResponseBody.IsSet;
     }
 }

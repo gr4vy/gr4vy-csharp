@@ -19,7 +19,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of items returned for this request.
         /// </summary>
-        [JsonProperty("items")]
+        [JsonProperty("items", Required = Newtonsoft.Json.Required.Always)]
         public List<PaymentOption> Items { get; set; } = default!;
     }
 }

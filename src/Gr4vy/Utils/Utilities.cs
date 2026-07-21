@@ -26,7 +26,8 @@ namespace Gr4vy.Utils
             return new JsonConverter[]
             {
                 new IsoDateTimeSerializer(),
-                new EnumConverter()
+                new EnumConverter(),
+                new OptionalNullableJsonConverter()
             };
         }
 
@@ -35,7 +36,8 @@ namespace Gr4vy.Utils
             return new JsonConverter[] {
                 new FlexibleObjectDeserializer(),
                 new EnumConverter(),
-                new AnyDeserializer()
+                new AnyDeserializer(),
+                new OptionalNullableJsonConverter()
             };
         }
 
@@ -53,6 +55,7 @@ namespace Gr4vy.Utils
             return new JsonSerializerSettings()
             {
                 NullValueHandling = NullValueHandling.Ignore,
+                DateParseHandling = DateParseHandling.None,
                 Converters = GetDefaultJsonDeserializers()
             };
         }
@@ -177,6 +180,16 @@ namespace Gr4vy.Utils
 
         public static bool IsDate(object? obj) =>
             obj != null && (obj.GetType() == typeof(DateTime) || obj.GetType() == typeof(LocalDate));
+
+        public static object? UnwrapValue(object? value)
+        {
+            if (value is IOptionalNullable optionalNullable)
+            {
+                return optionalNullable.UnwrappedValue;
+            }
+
+            return value;
+        }
 
         private static string StripSurroundingQuotes(string input)
         {

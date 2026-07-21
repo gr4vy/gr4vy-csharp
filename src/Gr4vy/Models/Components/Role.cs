@@ -15,19 +15,19 @@ namespace Gr4vy.Models.Components
 
     public class Role
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "role";
 
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
-        [JsonProperty("description")]
+        [JsonProperty("description", Required = Newtonsoft.Json.Required.Always)]
         public string Description { get; set; } = default!;
 
-        [JsonProperty("permissions")]
-        public PermissionSet Permissions { get; set; } = default!;
+        [JsonProperty("permissions", Required = Newtonsoft.Json.Required.Always)]
+        public PermissionSet Permissions { get; set; } = new();
     }
 }

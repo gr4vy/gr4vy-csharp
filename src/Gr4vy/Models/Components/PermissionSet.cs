@@ -15,7 +15,7 @@ namespace Gr4vy.Models.Components
 
     public class PermissionSet
     {
-        [JsonProperty("allow")]
+        [JsonProperty("allow", Required = Newtonsoft.Json.Required.Always)]
         public List<string> Allow { get; set; } = default!;
     }
 }

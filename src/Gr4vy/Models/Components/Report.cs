@@ -19,91 +19,97 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `report`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "report";
 
         /// <summary>
         /// The unique ID for the report.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The merchant account ID this report belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The name of the report.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The ID of the user who created the report.
         /// </summary>
-        [JsonProperty("creator_id")]
-        public string? CreatorId { get; set; } = null;
+        [JsonProperty("creator_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CreatorId { get; set; }
+        public bool ShouldSerializeCreatorId() => CreatorId.IsSet;
 
         /// <summary>
         /// The display name of the report creator.
         /// </summary>
-        [JsonProperty("creator_display_name")]
-        public string? CreatorDisplayName { get; set; } = null;
+        [JsonProperty("creator_display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CreatorDisplayName { get; set; }
+        public bool ShouldSerializeCreatorDisplayName() => CreatorDisplayName.IsSet;
 
         /// <summary>
         /// The type of the report creator.
         /// </summary>
-        [JsonProperty("creator_type")]
-        public string? CreatorType { get; set; } = null;
+        [JsonProperty("creator_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CreatorType { get; set; }
+        public bool ShouldSerializeCreatorType() => CreatorType.IsSet;
 
         /// <summary>
         /// The date this report was created at.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date this report was last updated.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
         /// The next scheduled execution time for the report.
         /// </summary>
-        [JsonProperty("next_execution_at")]
-        public DateTime? NextExecutionAt { get; set; } = null;
+        [JsonProperty("next_execution_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> NextExecutionAt { get; set; }
+        public bool ShouldSerializeNextExecutionAt() => NextExecutionAt.IsSet;
 
         /// <summary>
         /// A description of the report.
         /// </summary>
-        [JsonProperty("description")]
-        public string? Description { get; set; } = null;
+        [JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Description { get; set; }
+        public bool ShouldSerializeDescription() => Description.IsSet;
 
-        [JsonProperty("schedule")]
+        [JsonProperty("schedule", Required = Newtonsoft.Json.Required.Always)]
         public string Schedule { get; set; } = default!;
 
         /// <summary>
         /// Whether the report schedule is enabled.
         /// </summary>
-        [JsonProperty("schedule_enabled")]
+        [JsonProperty("schedule_enabled", Required = Newtonsoft.Json.Required.Always)]
         public bool ScheduleEnabled { get; set; } = default!;
 
         /// <summary>
         /// The timezone for the report schedule.
         /// </summary>
-        [JsonProperty("schedule_timezone")]
+        [JsonProperty("schedule_timezone", Required = Newtonsoft.Json.Required.Always)]
         public string ScheduleTimezone { get; set; } = default!;
 
-        [JsonProperty("spec")]
-        public ReportSpec Spec { get; set; } = default!;
+        [JsonProperty("spec", Required = Newtonsoft.Json.Required.Always)]
+        public ReportSpec Spec { get; set; } = new();
 
         /// <summary>
         /// The latest execution summary for the report.
         /// </summary>
-        [JsonProperty("latest_execution")]
-        public ReportExecutionSummary? LatestExecution { get; set; } = null;
+        [JsonProperty("latest_execution", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ReportExecutionSummary?> LatestExecution { get; set; }
+        public bool ShouldSerializeLatestExecution() => LatestExecution.IsSet;
     }
 }

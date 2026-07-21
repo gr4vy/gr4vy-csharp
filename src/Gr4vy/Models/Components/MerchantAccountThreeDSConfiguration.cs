@@ -19,79 +19,79 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Acquirer BIN to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_acquirer_bin")]
+        [JsonProperty("merchant_acquirer_bin", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAcquirerBin { get; set; } = default!;
 
         /// <summary>
         /// Merchant ID to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_acquirer_id")]
+        [JsonProperty("merchant_acquirer_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAcquirerId { get; set; } = default!;
 
-        [JsonProperty("merchant_name")]
+        [JsonProperty("merchant_name", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantName { get; set; } = default!;
 
         /// <summary>
         /// The merchant's ISO 3166-1 numeric country code.
         /// </summary>
-        [JsonProperty("merchant_country_code")]
+        [JsonProperty("merchant_country_code", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantCountryCode { get; set; } = default!;
 
         /// <summary>
         /// Merchant category code to use when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_category_code")]
+        [JsonProperty("merchant_category_code", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantCategoryCode { get; set; } = default!;
 
         /// <summary>
         /// URL to send when calling 3DS through this scheme.
         /// </summary>
-        [JsonProperty("merchant_url")]
+        [JsonProperty("merchant_url", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantUrl { get; set; } = default!;
 
         /// <summary>
         /// Always `merchant-account.three-ds-configuration`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "merchant-account.three-ds-configuration";
 
         /// <summary>
         /// Unique identifier for the 3DS configuration.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// ID of the associated merchant account.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this 3DS configuration was first created in our system.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this 3DS configuration was last updated in our system.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
-        [JsonProperty("scheme")]
+        [JsonProperty("scheme", Required = Newtonsoft.Json.Required.Always)]
         public string Scheme { get; set; } = default!;
 
         /// <summary>
         /// ISO 4217 currency code (3 characters). If null, the configuration applies to all currencies.
         /// </summary>
-        [JsonProperty("currency", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? Currency { get; set; }
 
         /// <summary>
         /// Additional information about the 3DS configuration, stored as key-value pairs.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", Required = Newtonsoft.Json.Required.Always)]
         public Dictionary<string, string> Metadata { get; set; } = default!;
     }
 }

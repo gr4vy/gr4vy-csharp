@@ -17,141 +17,49 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The country code of the beneficiary's address.
         /// </summary>
-        [JsonProperty("country", NullValueHandling = NullValueHandling.Include)]
-        public string Country
-        {
-            get => _country;
-            set
-            {
-                _country = value;
-                _countrySet = true;
-            }
-        }
-
-        private string _country = default!;
-
-        private bool _countrySet = true;
-
-        public bool ShouldSerializeCountry() => _countrySet;
+        [JsonProperty("country", Required = Newtonsoft.Json.Required.Always)]
+        public string Country { get; set; } = default!;
 
         /// <summary>
         /// First line of the beneficiary's address.
         /// </summary>
-        [JsonProperty("address1", NullValueHandling = NullValueHandling.Include)]
-        public string? Address1
-        {
-            get => _address1;
-            set
-            {
-                _address1 = value;
-                _address1Set = true;
-            }
-        }
-
-        private string? _address1 = null;
-
-        private bool _address1Set = false;
-
-        public bool ShouldSerializeAddress1() => _address1Set;
+        [JsonProperty("address1", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Address1 { get; set; }
+        public bool ShouldSerializeAddress1() => Address1.IsSet;
 
         /// <summary>
         /// Second line of the beneficiary's address.
         /// </summary>
-        [JsonProperty("address2", NullValueHandling = NullValueHandling.Include)]
-        public string? Address2
-        {
-            get => _address2;
-            set
-            {
-                _address2 = value;
-                _address2Set = true;
-            }
-        }
-
-        private string? _address2 = null;
-
-        private bool _address2Set = false;
-
-        public bool ShouldSerializeAddress2() => _address2Set;
+        [JsonProperty("address2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Address2 { get; set; }
+        public bool ShouldSerializeAddress2() => Address2.IsSet;
 
         /// <summary>
         /// Zip or postal code of the beneficiary's address.
         /// </summary>
-        [JsonProperty("zip", NullValueHandling = NullValueHandling.Include)]
-        public string? Zip
-        {
-            get => _zip;
-            set
-            {
-                _zip = value;
-                _zipSet = true;
-            }
-        }
-
-        private string? _zip = null;
-
-        private bool _zipSet = false;
-
-        public bool ShouldSerializeZip() => _zipSet;
+        [JsonProperty("zip", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Zip { get; set; }
+        public bool ShouldSerializeZip() => Zip.IsSet;
 
         /// <summary>
         /// State or region of the beneficiary's address.
         /// </summary>
-        [JsonProperty("region", NullValueHandling = NullValueHandling.Include)]
-        public string? Region
-        {
-            get => _region;
-            set
-            {
-                _region = value;
-                _regionSet = true;
-            }
-        }
-
-        private string? _region = null;
-
-        private bool _regionSet = false;
-
-        public bool ShouldSerializeRegion() => _regionSet;
+        [JsonProperty("region", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Region { get; set; }
+        public bool ShouldSerializeRegion() => Region.IsSet;
 
         /// <summary>
         /// Company name associated with the beneficiary's address.
         /// </summary>
-        [JsonProperty("company", NullValueHandling = NullValueHandling.Include)]
-        public string? Company
-        {
-            get => _company;
-            set
-            {
-                _company = value;
-                _companySet = true;
-            }
-        }
-
-        private string? _company = null;
-
-        private bool _companySet = false;
-
-        public bool ShouldSerializeCompany() => _companySet;
+        [JsonProperty("company", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Company { get; set; }
+        public bool ShouldSerializeCompany() => Company.IsSet;
 
         /// <summary>
         /// City of the beneficiary's address.
         /// </summary>
-        [JsonProperty("city", NullValueHandling = NullValueHandling.Include)]
-        public string? City
-        {
-            get => _city;
-            set
-            {
-                _city = value;
-                _citySet = true;
-            }
-        }
-
-        private string? _city = null;
-
-        private bool _citySet = false;
-
-        public bool ShouldSerializeCity() => _citySet;
+        [JsonProperty("city", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> City { get; set; }
+        public bool ShouldSerializeCity() => City.IsSet;
     }
 }

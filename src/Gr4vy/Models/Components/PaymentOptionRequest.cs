@@ -19,37 +19,42 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The metadata to used to evaluate checkout rules, which will help determine the right payment options to display.
         /// </summary>
-        [JsonProperty("metadata")]
-        public Dictionary<string, string>? Metadata { get; set; } = null;
+        [JsonProperty("metadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> Metadata { get; set; }
+        public bool ShouldSerializeMetadata() => Metadata.IsSet;
 
         /// <summary>
         /// The country code used to evaluate checkout rules, and which are used to help determine the right payment options to display.
         /// </summary>
-        [JsonProperty("country")]
-        public string? Country { get; set; } = null;
+        [JsonProperty("country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Country { get; set; }
+        public bool ShouldSerializeCountry() => Country.IsSet;
 
         /// <summary>
         /// The currency code used to evaluate checkout rules, and which are used to help determine the right payment options to display.
         /// </summary>
-        [JsonProperty("currency")]
-        public string? Currency { get; set; } = null;
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Currency { get; set; }
+        public bool ShouldSerializeCurrency() => Currency.IsSet;
 
         /// <summary>
         /// The amount used to evaluate checkout rules, and which are used to help determine the right payment options to display.
         /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; } = null;
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Amount { get; set; }
+        public bool ShouldSerializeAmount() => Amount.IsSet;
 
         /// <summary>
         /// The locale used to determine the labels for each payment option.
         /// </summary>
-        [JsonProperty("locale")]
+        [JsonProperty("locale", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string? Locale { get; set; } = "en";
 
         /// <summary>
         /// The cart items used to evaluate checkout rules, and which are used to help determine the right payment options to display.
         /// </summary>
-        [JsonProperty("cart_items")]
-        public List<CartItem>? CartItems { get; set; } = null;
+        [JsonProperty("cart_items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<CartItem>?> CartItems { get; set; }
+        public bool ShouldSerializeCartItems() => CartItems.IsSet;
     }
 }

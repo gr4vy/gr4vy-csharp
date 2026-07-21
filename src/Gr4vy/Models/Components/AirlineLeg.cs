@@ -18,139 +18,162 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Arrival airport code of leg. 3-letter ISO code according to IATA official directory.
         /// </summary>
-        [JsonProperty("arrival_airport")]
-        public string? ArrivalAirport { get; set; } = null;
+        [JsonProperty("arrival_airport", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ArrivalAirport { get; set; }
+        public bool ShouldSerializeArrivalAirport() => ArrivalAirport.IsSet;
 
         /// <summary>
         /// The date and time of travel in local time at the arrival airport.
         /// </summary>
-        [JsonProperty("arrival_at")]
-        public DateTime? ArrivalAt { get; set; } = null;
+        [JsonProperty("arrival_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> ArrivalAt { get; set; }
+        public bool ShouldSerializeArrivalAt() => ArrivalAt.IsSet;
 
         /// <summary>
         /// Arrival city name.
         /// </summary>
-        [JsonProperty("arrival_city")]
-        public string? ArrivalCity { get; set; } = null;
+        [JsonProperty("arrival_city", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ArrivalCity { get; set; }
+        public bool ShouldSerializeArrivalCity() => ArrivalCity.IsSet;
 
         /// <summary>
         /// Arrival country code in ISO 3166 format.
         /// </summary>
-        [JsonProperty("arrival_country")]
-        public string? ArrivalCountry { get; set; } = null;
+        [JsonProperty("arrival_country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ArrivalCountry { get; set; }
+        public bool ShouldSerializeArrivalCountry() => ArrivalCountry.IsSet;
 
         /// <summary>
         /// 3 character airline code as set by IATA.
         /// </summary>
-        [JsonProperty("carrier_code")]
-        public string? CarrierCode { get; set; } = null;
+        [JsonProperty("carrier_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CarrierCode { get; set; }
+        public bool ShouldSerializeCarrierCode() => CarrierCode.IsSet;
 
         /// <summary>
         /// Name of the airline.
         /// </summary>
-        [JsonProperty("carrier_name")]
-        public string? CarrierName { get; set; } = null;
+        [JsonProperty("carrier_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CarrierName { get; set; }
+        public bool ShouldSerializeCarrierName() => CarrierName.IsSet;
 
         /// <summary>
         /// Two-character IATA code of the airline.
         /// </summary>
-        [JsonProperty("iata_designator")]
-        public string? IataDesignator { get; set; } = null;
+        [JsonProperty("iata_designator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IataDesignator { get; set; }
+        public bool ShouldSerializeIataDesignator() => IataDesignator.IsSet;
 
         /// <summary>
         /// Three-character ICAO code of the airline.
         /// </summary>
-        [JsonProperty("icao_code")]
-        public string? IcaoCode { get; set; } = null;
+        [JsonProperty("icao_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> IcaoCode { get; set; }
+        public bool ShouldSerializeIcaoCode() => IcaoCode.IsSet;
 
         /// <summary>
         /// Coupon number associated with the leg.
         /// </summary>
-        [JsonProperty("coupon_number")]
-        public string? CouponNumber { get; set; } = null;
+        [JsonProperty("coupon_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CouponNumber { get; set; }
+        public bool ShouldSerializeCouponNumber() => CouponNumber.IsSet;
 
         /// <summary>
         /// Departure airport code of leg. 3-letter ISO code according to IATA official directory.
         /// </summary>
-        [JsonProperty("departure_airport")]
-        public string? DepartureAirport { get; set; } = null;
+        [JsonProperty("departure_airport", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DepartureAirport { get; set; }
+        public bool ShouldSerializeDepartureAirport() => DepartureAirport.IsSet;
 
         /// <summary>
         /// The date and time of travel in local time at the departure airport.
         /// </summary>
-        [JsonProperty("departure_at")]
-        public DateTime? DepartureAt { get; set; } = null;
+        [JsonProperty("departure_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DateTime?> DepartureAt { get; set; }
+        public bool ShouldSerializeDepartureAt() => DepartureAt.IsSet;
 
         /// <summary>
         /// Departure city name.
         /// </summary>
-        [JsonProperty("departure_city")]
-        public string? DepartureCity { get; set; } = null;
+        [JsonProperty("departure_city", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DepartureCity { get; set; }
+        public bool ShouldSerializeDepartureCity() => DepartureCity.IsSet;
 
         /// <summary>
         /// Departure airport code of leg. 3-letter ISO code according to IATA official directory.
         /// </summary>
-        [JsonProperty("departure_country")]
-        public string? DepartureCountry { get; set; } = null;
+        [JsonProperty("departure_country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DepartureCountry { get; set; }
+        public bool ShouldSerializeDepartureCountry() => DepartureCountry.IsSet;
 
         /// <summary>
         /// Departure tax amount charged by a country when a person is leaving the country.
         /// </summary>
-        [JsonProperty("departure_tax_amount")]
-        public long? DepartureTaxAmount { get; set; } = null;
+        [JsonProperty("departure_tax_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> DepartureTaxAmount { get; set; }
+        public bool ShouldSerializeDepartureTaxAmount() => DepartureTaxAmount.IsSet;
 
         /// <summary>
         /// Amount of the ticket, for current leg of the trip, excluding taxes and fees.
         /// </summary>
-        [JsonProperty("fare_amount")]
-        public long? FareAmount { get; set; } = null;
+        [JsonProperty("fare_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> FareAmount { get; set; }
+        public bool ShouldSerializeFareAmount() => FareAmount.IsSet;
 
         /// <summary>
         /// The alphanumeric code for the booking class of a ticket.
         /// </summary>
-        [JsonProperty("fare_basis_code")]
-        public string? FareBasisCode { get; set; } = null;
+        [JsonProperty("fare_basis_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FareBasisCode { get; set; }
+        public bool ShouldSerializeFareBasisCode() => FareBasisCode.IsSet;
 
         /// <summary>
         /// Fee amount for current leg of the trip.
         /// </summary>
-        [JsonProperty("fee_amount")]
-        public long? FeeAmount { get; set; } = null;
+        [JsonProperty("fee_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> FeeAmount { get; set; }
+        public bool ShouldSerializeFeeAmount() => FeeAmount.IsSet;
 
         /// <summary>
         /// Indicates service class (first class, business class, etc.).
         /// </summary>
-        [JsonProperty("flight_class")]
-        public string? FlightClass { get; set; } = null;
+        [JsonProperty("flight_class", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FlightClass { get; set; }
+        public bool ShouldSerializeFlightClass() => FlightClass.IsSet;
 
         /// <summary>
         /// Unique identifier of the flight number.
         /// </summary>
-        [JsonProperty("flight_number")]
-        public string? FlightNumber { get; set; } = null;
+        [JsonProperty("flight_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FlightNumber { get; set; }
+        public bool ShouldSerializeFlightNumber() => FlightNumber.IsSet;
 
         /// <summary>
         /// The route type of the flight.
         /// </summary>
-        [JsonProperty("route_type")]
-        public string? RouteType { get; set; } = null;
+        [JsonProperty("route_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RouteType { get; set; }
+        public bool ShouldSerializeRouteType() => RouteType.IsSet;
 
         /// <summary>
         /// Indicates seat class (first class, business class, etc.).
         /// </summary>
-        [JsonProperty("seat_class")]
-        public string? SeatClass { get; set; } = null;
+        [JsonProperty("seat_class", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> SeatClass { get; set; }
+        public bool ShouldSerializeSeatClass() => SeatClass.IsSet;
 
         /// <summary>
         /// Indicates whether a stopover is allowed on this ticket.
         /// </summary>
-        [JsonProperty("stop_over")]
-        public bool? StopOver { get; set; } = null;
+        [JsonProperty("stop_over", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> StopOver { get; set; }
+        public bool ShouldSerializeStopOver() => StopOver.IsSet;
 
         /// <summary>
         /// Amount of the taxes for current leg of the trip.
         /// </summary>
-        [JsonProperty("tax_amount")]
-        public long? TaxAmount { get; set; } = null;
+        [JsonProperty("tax_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> TaxAmount { get; set; }
+        public bool ShouldSerializeTaxAmount() => TaxAmount.IsSet;
     }
 }

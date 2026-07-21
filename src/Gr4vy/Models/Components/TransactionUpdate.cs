@@ -19,61 +19,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// An external identifier that can be used to match the transaction against your own records.
         /// </summary>
-        [JsonProperty("external_identifier", NullValueHandling = NullValueHandling.Include)]
-        public string? ExternalIdentifier
-        {
-            get => _externalIdentifier;
-            set
-            {
-                _externalIdentifier = value;
-                _externalIdentifierSet = true;
-            }
-        }
-
-        private string? _externalIdentifier = null;
-
-        private bool _externalIdentifierSet = false;
-
-        public bool ShouldSerializeExternalIdentifier() => _externalIdentifierSet;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// Additional information about the transaction stored as key-value pairs. If provided, the whole value will be overridden.
         /// </summary>
-        [JsonProperty("metadata", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? Metadata
-        {
-            get => _metadata;
-            set
-            {
-                _metadata = value;
-                _metadataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _metadata = null;
-
-        private bool _metadataSet = false;
-
-        public bool ShouldSerializeMetadata() => _metadataSet;
+        [JsonProperty("metadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> Metadata { get; set; }
+        public bool ShouldSerializeMetadata() => Metadata.IsSet;
 
         /// <summary>
         /// Allows for passing optional configuration per connection to take advantage of connection specific features. When provided, the data is only passed to the target connection type to prevent sharing configuration across connections. Please note that each of the keys this object are in kebab-case, for example `cybersource-anti-fraud` as they represent the ID of the connector. All the other keys will be snake case, for example `merchant_defined_data` or camel case to match an external API that the connector uses. If provided, the whole value will be overridden.
         /// </summary>
-        [JsonProperty("connection_options", NullValueHandling = NullValueHandling.Include)]
-        public TransactionConnectionOptions? ConnectionOptions
-        {
-            get => _connectionOptions;
-            set
-            {
-                _connectionOptions = value;
-                _connectionOptionsSet = true;
-            }
-        }
-
-        private TransactionConnectionOptions? _connectionOptions = null;
-
-        private bool _connectionOptionsSet = false;
-
-        public bool ShouldSerializeConnectionOptions() => _connectionOptionsSet;
+        [JsonProperty("connection_options", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<TransactionConnectionOptions?> ConnectionOptions { get; set; }
+        public bool ShouldSerializeConnectionOptions() => ConnectionOptions.IsSet;
     }
 }

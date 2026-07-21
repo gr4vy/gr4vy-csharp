@@ -17,49 +17,50 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The cardholder authentication value or AAV.
         /// </summary>
-        [JsonProperty("cavv")]
+        [JsonProperty("cavv", Required = Newtonsoft.Json.Required.Always)]
         public string Cavv { get; set; } = default!;
 
         /// <summary>
         /// The ecommerce indicator for the 3DS transaction.
         /// </summary>
-        [JsonProperty("eci")]
+        [JsonProperty("eci", Required = Newtonsoft.Json.Required.Always)]
         public string Eci { get; set; } = default!;
 
         /// <summary>
         /// The version of 3-D Secure that was used.
         /// </summary>
-        [JsonProperty("version")]
+        [JsonProperty("version", Required = Newtonsoft.Json.Required.Always)]
         public string Version { get; set; } = default!;
 
         /// <summary>
         /// For 3-D Secure version 1, the enrolment response. For 3-D Secure version 2 and above, the transaction status from the `ARes`.
         /// </summary>
-        [JsonProperty("directory_response")]
+        [JsonProperty("directory_response", Required = Newtonsoft.Json.Required.Always)]
         public string DirectoryResponse { get; set; } = default!;
 
         /// <summary>
         /// The scheme/brand of the card that is used for 3-D Secure.
         /// </summary>
-        [JsonProperty("scheme")]
-        public string? Scheme { get; set; } = null;
+        [JsonProperty("scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Scheme { get; set; }
+        public bool ShouldSerializeScheme() => Scheme.IsSet;
 
         /// <summary>
         /// The response for the 3DS authentication call.
         /// </summary>
-        [JsonProperty("authentication_response")]
+        [JsonProperty("authentication_response", Required = Newtonsoft.Json.Required.Always)]
         public string AuthenticationResponse { get; set; } = default!;
 
         /// <summary>
         /// The CAVV algorithm used.
         /// </summary>
-        [JsonProperty("cavv_algorithm")]
+        [JsonProperty("cavv_algorithm", Required = Newtonsoft.Json.Required.Always)]
         public string CavvAlgorithm { get; set; } = default!;
 
         /// <summary>
         /// The transaction identifier.
         /// </summary>
-        [JsonProperty("xid")]
+        [JsonProperty("xid", Required = Newtonsoft.Json.Required.Always)]
         public string Xid { get; set; } = default!;
     }
 }

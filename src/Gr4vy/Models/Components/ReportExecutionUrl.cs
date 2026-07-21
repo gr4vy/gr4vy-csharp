@@ -18,13 +18,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A signed URL to download the report execution file.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonProperty("url", Required = Newtonsoft.Json.Required.Always)]
         public string Url { get; set; } = default!;
 
         /// <summary>
         /// The date and time when the download URL expires.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonProperty("expires_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime ExpiresAt { get; set; } = default!;
     }
 }

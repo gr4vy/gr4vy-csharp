@@ -21,6 +21,6 @@ namespace Gr4vy.Models.Requests
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public PazeMobileSessionCreateRequest PazeMobileSessionCreateRequest { get; set; } = default!;
+        public PazeMobileSessionCreateRequest PazeMobileSessionCreateRequest { get; set; } = new();
     }
 }

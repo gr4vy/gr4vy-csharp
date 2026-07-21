@@ -18,81 +18,28 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes `subscription.amount` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("amount", NullValueHandling = NullValueHandling.Include)]
-        public DlocalPIXSubscriptionAmountOptions? Amount
-        {
-            get => _amount;
-            set
-            {
-                _amount = value;
-                _amountSet = true;
-            }
-        }
-
-        private DlocalPIXSubscriptionAmountOptions? _amount = null;
-
-        private bool _amountSet = false;
-
-        public bool ShouldSerializeAmount() => _amountSet;
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DlocalPIXSubscriptionAmountOptions?> Amount { get; set; }
+        public bool ShouldSerializeAmount() => Amount.IsSet;
 
         /// <summary>
         /// Indicates the frequency unit for the subscription. Allowed values are: `WEEKLY`, `MONTHLY`, `QUARTERLY`, `SEMI_ANNUAL`, `ANNUAL`.
         /// </summary>
-        [JsonProperty("frequency", NullValueHandling = NullValueHandling.Include)]
-        public string Frequency
-        {
-            get => _frequency;
-            set
-            {
-                _frequency = value;
-                _frequencySet = true;
-            }
-        }
-
-        private string _frequency = default!;
-
-        private bool _frequencySet = true;
-
-        public bool ShouldSerializeFrequency() => _frequencySet;
+        [JsonProperty("frequency", Required = Newtonsoft.Json.Required.Always)]
+        public string Frequency { get; set; } = default!;
 
         /// <summary>
         /// Defines subscription start date. Must be provided in ISO 8601 format `(YYYY-MM-DD`). If not specified, The default is the current date.
         /// </summary>
-        [JsonProperty("start_date", NullValueHandling = NullValueHandling.Include)]
-        public string? StartDate
-        {
-            get => _startDate;
-            set
-            {
-                _startDate = value;
-                _startDateSet = true;
-            }
-        }
-
-        private string? _startDate = null;
-
-        private bool _startDateSet = false;
-
-        public bool ShouldSerializeStartDate() => _startDateSet;
+        [JsonProperty("start_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> StartDate { get; set; }
+        public bool ShouldSerializeStartDate() => StartDate.IsSet;
 
         /// <summary>
         /// Defines subscription expiration date. Must be provided in ISO 8601 format `(YYYY-MM-DD`). If not provided, the subscription will not expire.
         /// </summary>
-        [JsonProperty("end_date", NullValueHandling = NullValueHandling.Include)]
-        public string? EndDate
-        {
-            get => _endDate;
-            set
-            {
-                _endDate = value;
-                _endDateSet = true;
-            }
-        }
-
-        private string? _endDate = null;
-
-        private bool _endDateSet = false;
-
-        public bool ShouldSerializeEndDate() => _endDateSet;
+        [JsonProperty("end_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> EndDate { get; set; }
+        public bool ShouldSerializeEndDate() => EndDate.IsSet;
     }
 }

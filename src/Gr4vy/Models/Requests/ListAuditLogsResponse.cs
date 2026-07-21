@@ -18,6 +18,6 @@ namespace Gr4vy.Models.Requests
     {
         public Func<Task<ListAuditLogsResponse?>>? Next {get;set;}
         [SpeakeasyMetadata("")]
-        public AuditLogEntries Result { get; set; } = default!;
+        public AuditLogEntries Result { get; set; } = new();
     }
 }

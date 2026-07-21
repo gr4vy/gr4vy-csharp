@@ -22,261 +22,91 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The display name for the payment service.
         /// </summary>
-        [JsonProperty("display_name", NullValueHandling = NullValueHandling.Include)]
-        public string? DisplayName
-        {
-            get => _displayName;
-            set
-            {
-                _displayName = value;
-                _displayNameSet = true;
-            }
-        }
-
-        private string? _displayName = null;
-
-        private bool _displayNameSet = false;
-
-        public bool ShouldSerializeDisplayName() => _displayNameSet;
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DisplayName { get; set; }
+        public bool ShouldSerializeDisplayName() => DisplayName.IsSet;
 
         /// <summary>
         /// The non-secret credential fields that have been configured for this payment service. Any secret fields are omitted.
         /// </summary>
-        [JsonProperty("fields", NullValueHandling = NullValueHandling.Include)]
-        public List<VoidableField>? Fields
-        {
-            get => _fields;
-            set
-            {
-                _fields = value;
-                _fieldsSet = true;
-            }
-        }
-
-        private List<VoidableField>? _fields = null;
-
-        private bool _fieldsSet = false;
-
-        public bool ShouldSerializeFields() => _fieldsSet;
+        [JsonProperty("fields", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<VoidableField>?> Fields { get; set; }
+        public bool ShouldSerializeFields() => Fields.IsSet;
 
         /// <summary>
         /// The non-secret reporting fields that have been configured for this payment service. Any secret fields are omitted.
         /// </summary>
-        [JsonProperty("reporting_fields", NullValueHandling = NullValueHandling.Include)]
-        public List<VoidableField>? ReportingFields
-        {
-            get => _reportingFields;
-            set
-            {
-                _reportingFields = value;
-                _reportingFieldsSet = true;
-            }
-        }
-
-        private List<VoidableField>? _reportingFields = null;
-
-        private bool _reportingFieldsSet = false;
-
-        public bool ShouldSerializeReportingFields() => _reportingFieldsSet;
+        [JsonProperty("reporting_fields", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<VoidableField>?> ReportingFields { get; set; }
+        public bool ShouldSerializeReportingFields() => ReportingFields.IsSet;
 
         /// <summary>
         /// Deprecated field used to define the order in which to process payment services.
         /// </summary>
-        [JsonProperty("position", NullValueHandling = NullValueHandling.Include)]
-        public long? Position
-        {
-            get => _position;
-            set
-            {
-                _position = value;
-                _positionSet = true;
-            }
-        }
-
-        private long? _position = null;
-
-        private bool _positionSet = false;
-
-        public bool ShouldSerializePosition() => _positionSet;
+        [JsonProperty("position", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Position { get; set; }
+        public bool ShouldSerializePosition() => Position.IsSet;
 
         /// <summary>
         /// A list of currencies for which this service is enabled, in ISO 4217 three-letter code format.
         /// </summary>
-        [JsonProperty("accepted_currencies", NullValueHandling = NullValueHandling.Include)]
-        public List<string>? AcceptedCurrencies
-        {
-            get => _acceptedCurrencies;
-            set
-            {
-                _acceptedCurrencies = value;
-                _acceptedCurrenciesSet = true;
-            }
-        }
-
-        private List<string>? _acceptedCurrencies = null;
-
-        private bool _acceptedCurrenciesSet = false;
-
-        public bool ShouldSerializeAcceptedCurrencies() => _acceptedCurrenciesSet;
+        [JsonProperty("accepted_currencies", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<string>?> AcceptedCurrencies { get; set; }
+        public bool ShouldSerializeAcceptedCurrencies() => AcceptedCurrencies.IsSet;
 
         /// <summary>
         /// A list of countries for which this service is enabled, in ISO two-letter code format.
         /// </summary>
-        [JsonProperty("accepted_countries", NullValueHandling = NullValueHandling.Include)]
-        public List<string>? AcceptedCountries
-        {
-            get => _acceptedCountries;
-            set
-            {
-                _acceptedCountries = value;
-                _acceptedCountriesSet = true;
-            }
-        }
-
-        private List<string>? _acceptedCountries = null;
-
-        private bool _acceptedCountriesSet = false;
-
-        public bool ShouldSerializeAcceptedCountries() => _acceptedCountriesSet;
+        [JsonProperty("accepted_countries", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<string>?> AcceptedCountries { get; set; }
+        public bool ShouldSerializeAcceptedCountries() => AcceptedCountries.IsSet;
 
         /// <summary>
         /// Defines if this payment service is currently active.
         /// </summary>
-        [JsonProperty("active", NullValueHandling = NullValueHandling.Include)]
-        public bool? Active
-        {
-            get => _active;
-            set
-            {
-                _active = value;
-                _activeSet = true;
-            }
-        }
-
-        private bool? _active = null;
-
-        private bool _activeSet = false;
-
-        public bool ShouldSerializeActive() => _activeSet;
+        [JsonProperty("active", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> Active { get; set; }
+        public bool ShouldSerializeActive() => Active.IsSet;
 
         /// <summary>
         /// Defines if this payment service has 3DS enabled.
         /// </summary>
-        [JsonProperty("three_d_secure_enabled", NullValueHandling = NullValueHandling.Include)]
-        public bool? ThreeDSecureEnabled
-        {
-            get => _threeDSecureEnabled;
-            set
-            {
-                _threeDSecureEnabled = value;
-                _threeDSecureEnabledSet = true;
-            }
-        }
-
-        private bool? _threeDSecureEnabled = null;
-
-        private bool _threeDSecureEnabledSet = false;
-
-        public bool ShouldSerializeThreeDSecureEnabled() => _threeDSecureEnabledSet;
+        [JsonProperty("three_d_secure_enabled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> ThreeDSecureEnabled { get; set; }
+        public bool ShouldSerializeThreeDSecureEnabled() => ThreeDSecureEnabled.IsSet;
 
         /// <summary>
         /// An object containing a key for each supported card schemes, and for each key an object with the 3DS profile for this service for that scheme.
         /// </summary>
-        [JsonProperty("merchant_profile", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, MerchantProfileScheme?>? MerchantProfile
-        {
-            get => _merchantProfile;
-            set
-            {
-                _merchantProfile = value;
-                _merchantProfileSet = true;
-            }
-        }
-
-        private Dictionary<string, MerchantProfileScheme?>? _merchantProfile = null;
-
-        private bool _merchantProfileSet = false;
-
-        public bool ShouldSerializeMerchantProfile() => _merchantProfileSet;
+        [JsonProperty("merchant_profile", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, MerchantProfileScheme?>?> MerchantProfile { get; set; }
+        public bool ShouldSerializeMerchantProfile() => MerchantProfile.IsSet;
 
         /// <summary>
         /// Defines if this payment service support payment method tokenization.
         /// </summary>
-        [JsonProperty("payment_method_tokenization_enabled", NullValueHandling = NullValueHandling.Include)]
-        public bool? PaymentMethodTokenizationEnabled
-        {
-            get => _paymentMethodTokenizationEnabled;
-            set
-            {
-                _paymentMethodTokenizationEnabled = value;
-                _paymentMethodTokenizationEnabledSet = true;
-            }
-        }
-
-        private bool? _paymentMethodTokenizationEnabled = null;
-
-        private bool _paymentMethodTokenizationEnabledSet = false;
-
-        public bool ShouldSerializePaymentMethodTokenizationEnabled() => _paymentMethodTokenizationEnabledSet;
+        [JsonProperty("payment_method_tokenization_enabled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> PaymentMethodTokenizationEnabled { get; set; }
+        public bool ShouldSerializePaymentMethodTokenizationEnabled() => PaymentMethodTokenizationEnabled.IsSet;
 
         /// <summary>
         /// Defines if this payment service supports network tokens.
         /// </summary>
-        [JsonProperty("network_tokens_enabled", NullValueHandling = NullValueHandling.Include)]
-        public bool? NetworkTokensEnabled
-        {
-            get => _networkTokensEnabled;
-            set
-            {
-                _networkTokensEnabled = value;
-                _networkTokensEnabledSet = true;
-            }
-        }
-
-        private bool? _networkTokensEnabled = null;
-
-        private bool _networkTokensEnabledSet = false;
-
-        public bool ShouldSerializeNetworkTokensEnabled() => _networkTokensEnabledSet;
+        [JsonProperty("network_tokens_enabled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> NetworkTokensEnabled { get; set; }
+        public bool ShouldSerializeNetworkTokensEnabled() => NetworkTokensEnabled.IsSet;
 
         /// <summary>
         /// Defines if this payment service is open loop.
         /// </summary>
-        [JsonProperty("open_loop", NullValueHandling = NullValueHandling.Include)]
-        public bool? OpenLoop
-        {
-            get => _openLoop;
-            set
-            {
-                _openLoop = value;
-                _openLoopSet = true;
-            }
-        }
-
-        private bool? _openLoop = null;
-
-        private bool _openLoopSet = false;
-
-        public bool ShouldSerializeOpenLoop() => _openLoopSet;
+        [JsonProperty("open_loop", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> OpenLoop { get; set; }
+        public bool ShouldSerializeOpenLoop() => OpenLoop.IsSet;
 
         /// <summary>
         /// Defines if this payment service has settlement reporting enabled.
         /// </summary>
-        [JsonProperty("settlement_reporting_enabled", NullValueHandling = NullValueHandling.Include)]
-        public bool? SettlementReportingEnabled
-        {
-            get => _settlementReportingEnabled;
-            set
-            {
-                _settlementReportingEnabled = value;
-                _settlementReportingEnabledSet = true;
-            }
-        }
-
-        private bool? _settlementReportingEnabled = false;
-
-        private bool _settlementReportingEnabledSet = true;
-
-        public bool ShouldSerializeSettlementReportingEnabled() => _settlementReportingEnabledSet;
+        [JsonProperty("settlement_reporting_enabled", Required = Newtonsoft.Json.Required.DisallowNull)]
+        public bool? SettlementReportingEnabled { get; set; } = false;
     }
 }

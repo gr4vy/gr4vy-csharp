@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The ID of the Click to Pay application.
         /// </summary>
-        [JsonProperty("digital_payment_application_id")]
+        [JsonProperty("digital_payment_application_id", Required = Newtonsoft.Json.Required.Always)]
         public string DigitalPaymentApplicationId { get; set; } = default!;
 
         /// <summary>
         /// The merchant name as configured ont he the Click to Pay wallet.
         /// </summary>
-        [JsonProperty("digital_payment_application_name")]
+        [JsonProperty("digital_payment_application_name", Required = Newtonsoft.Json.Required.Always)]
         public string DigitalPaymentApplicationName { get; set; } = default!;
     }
 }

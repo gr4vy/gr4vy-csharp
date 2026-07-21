@@ -18,55 +18,59 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `gift-card-redemption`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "gift-card-redemption";
 
         /// <summary>
         /// The ID for the gift card redemption.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public string Status { get; set; } = default!;
 
         /// <summary>
         /// The amount redeemed for this gift card.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
         /// <summary>
         /// The amount refunded for this gift card. This can not be larger than `amount`.
         /// </summary>
-        [JsonProperty("refunded_amount")]
+        [JsonProperty("refunded_amount", Required = Newtonsoft.Json.Required.Always)]
         public long RefundedAmount { get; set; } = default!;
 
         /// <summary>
         /// The gift card service's unique ID for the redemption.
         /// </summary>
-        [JsonProperty("gift_card_service_redemption_id")]
-        public string? GiftCardServiceRedemptionId { get; set; } = null;
+        [JsonProperty("gift_card_service_redemption_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> GiftCardServiceRedemptionId { get; set; }
+        public bool ShouldSerializeGiftCardServiceRedemptionId() => GiftCardServiceRedemptionId.IsSet;
 
         /// <summary>
         /// If this gift card redemption resulted in an error, this will contain the internal code for the error.
         /// </summary>
-        [JsonProperty("error_code")]
-        public string? ErrorCode { get; set; } = null;
+        [JsonProperty("error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ErrorCode { get; set; }
+        public bool ShouldSerializeErrorCode() => ErrorCode.IsSet;
 
         /// <summary>
         /// If this gift card redemption resulted in an error, this will contain the raw error code received from the gift card provider.
         /// </summary>
-        [JsonProperty("raw_error_code")]
-        public string? RawErrorCode { get; set; } = null;
+        [JsonProperty("raw_error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RawErrorCode { get; set; }
+        public bool ShouldSerializeRawErrorCode() => RawErrorCode.IsSet;
 
         /// <summary>
         /// If this gift card redemption resulted in an error, this will contain the raw error message received from the gift card provider.
         /// </summary>
-        [JsonProperty("raw_error_message")]
-        public string? RawErrorMessage { get; set; } = null;
+        [JsonProperty("raw_error_message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RawErrorMessage { get; set; }
+        public bool ShouldSerializeRawErrorMessage() => RawErrorMessage.IsSet;
 
-        [JsonProperty("gift_card")]
-        public TransactionGiftCard GiftCard { get; set; } = default!;
+        [JsonProperty("gift_card", Required = Newtonsoft.Json.Required.Always)]
+        public TransactionGiftCard GiftCard { get; set; } = new();
     }
 }

@@ -17,21 +17,8 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The `promotionReference` field passed to the purchase API.
         /// </summary>
-        [JsonProperty("promotion_reference", NullValueHandling = NullValueHandling.Include)]
-        public string? PromotionReference
-        {
-            get => _promotionReference;
-            set
-            {
-                _promotionReference = value;
-                _promotionReferenceSet = true;
-            }
-        }
-
-        private string? _promotionReference = null;
-
-        private bool _promotionReferenceSet = false;
-
-        public bool ShouldSerializePromotionReference() => _promotionReferenceSet;
+        [JsonProperty("promotion_reference", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PromotionReference { get; set; }
+        public bool ShouldSerializePromotionReference() => PromotionReference.IsSet;
     }
 }

@@ -17,19 +17,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Merchant Category Code (MCC) of the merchant.
         /// </summary>
-        [JsonProperty("merchantCategoryCode")]
-        public string? MerchantCategoryCode { get; set; } = null;
+        [JsonProperty("merchantCategoryCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantCategoryCode { get; set; }
+        public bool ShouldSerializeMerchantCategoryCode() => MerchantCategoryCode.IsSet;
 
         /// <summary>
         /// Verbosity of the billing address required by the merchant.
         /// </summary>
-        [JsonProperty("billingPreference")]
-        public string? BillingPreference { get; set; } = null;
+        [JsonProperty("billingPreference", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BillingPreference { get; set; }
+        public bool ShouldSerializeBillingPreference() => BillingPreference.IsSet;
 
         /// <summary>
         /// ID returns `payloadId` only (default). PAYMENT returns `payloadId` and `securePayload`.
         /// </summary>
-        [JsonProperty("payloadTypeIndicator")]
-        public string? PayloadTypeIndicator { get; set; } = null;
+        [JsonProperty("payloadTypeIndicator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PayloadTypeIndicator { get; set; }
+        public bool ShouldSerializePayloadTypeIndicator() => PayloadTypeIndicator.IsSet;
     }
 }

@@ -18,37 +18,43 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Traveler name.
         /// </summary>
-        [JsonProperty("passengerName")]
-        public string? PassengerName { get; set; } = null;
+        [JsonProperty("passengerName", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PassengerName { get; set; }
+        public bool ShouldSerializePassengerName() => PassengerName.IsSet;
 
         /// <summary>
         /// Whether departure and return trips are being purchased in the same transaction.
         /// </summary>
-        [JsonProperty("roundTrip")]
-        public bool? RoundTrip { get; set; } = null;
+        [JsonProperty("roundTrip", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> RoundTrip { get; set; }
+        public bool ShouldSerializeRoundTrip() => RoundTrip.IsSet;
 
         /// <summary>
         /// Date and time of departure in ISO 8601 format.
         /// </summary>
-        [JsonProperty("departureDate")]
-        public string? DepartureDate { get; set; } = null;
+        [JsonProperty("departureDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DepartureDate { get; set; }
+        public bool ShouldSerializeDepartureDate() => DepartureDate.IsSet;
 
         /// <summary>
         /// Date and time of return in ISO 8601 format.
         /// </summary>
-        [JsonProperty("returnDate")]
-        public string? ReturnDate { get; set; } = null;
+        [JsonProperty("returnDate", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ReturnDate { get; set; }
+        public bool ShouldSerializeReturnDate() => ReturnDate.IsSet;
 
         /// <summary>
         /// Location from which the traveler departs.
         /// </summary>
-        [JsonProperty("departureLocation")]
-        public PazeLocationAddress? DepartureLocation { get; set; } = null;
+        [JsonProperty("departureLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<PazeLocationAddress?> DepartureLocation { get; set; }
+        public bool ShouldSerializeDepartureLocation() => DepartureLocation.IsSet;
 
         /// <summary>
         /// Location to which the traveler returns.
         /// </summary>
-        [JsonProperty("returnLocation")]
-        public PazeLocationAddress? ReturnLocation { get; set; } = null;
+        [JsonProperty("returnLocation", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<PazeLocationAddress?> ReturnLocation { get; set; }
+        public bool ShouldSerializeReturnLocation() => ReturnLocation.IsSet;
     }
 }
