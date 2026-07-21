@@ -1236,6 +1236,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeTrustlyTrustly() => _trustlyTrustlySet;
 
         /// <summary>
+        /// Custom options to be passed to the `worldpayvap-card` connector.
+        /// </summary>
+        [JsonProperty("worldpayvap-card", NullValueHandling = NullValueHandling.Include)]
+        public WorldpayVapOptions? WorldpayvapCard
+        {
+            get => _worldpayvapCard;
+            set
+            {
+                _worldpayvapCard = value;
+                _worldpayvapCardSet = true;
+            }
+        }
+
+        private WorldpayVapOptions? _worldpayvapCard = null;
+
+        private bool _worldpayvapCardSet = false;
+
+        public bool ShouldSerializeWorldpayvapCard() => _worldpayvapCardSet;
+
+        /// <summary>
         /// Custom options to be passed to the `wpay-everydaypay` connector.
         /// </summary>
         [JsonProperty("wpay-everydaypay", NullValueHandling = NullValueHandling.Include)]
