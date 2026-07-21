@@ -10,7 +10,7 @@ namespace Gr4vy.Tests
 {
     /// <summary>
     /// End-to-end tests against the e2e sandbox proving that the tri-state
-    /// nullable patch on *Update request models behaves correctly on the wire:
+    /// presence-aware serialization on *Update request models behaves correctly on the wire:
     /// explicit null actually clears a field on the server, and an untouched
     /// property leaves the existing value alone (the partial-update path).
     /// </summary>

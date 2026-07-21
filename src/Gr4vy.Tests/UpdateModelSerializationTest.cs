@@ -100,8 +100,9 @@ public class UpdateModelSerializationTests
     [Test]
     public void MerchantAccountUpdate_NonNullDefault_IsStillSerializedWhenUntouched()
     {
-        // AccountUpdaterEnabled is generated with `= false` default; the patch
-        // preserves the pre-patch behavior of always emitting it.
+        // AccountUpdaterEnabled is an optional bool? with a `= false` default, so
+        // presence-aware serialization keeps it as a plain nullable (not
+        // OptionalNullable) and it is always emitted when untouched.
         var update = new MerchantAccountUpdate();
         var json = SerializeToJObject(update);
         Assert.That(json.ContainsKey("account_updater_enabled"), Is.True);
@@ -187,5 +188,31 @@ public class UpdateModelSerializationTests
         var address = json["billing_details"]!["address"]!.ToObject<JObject>()!;
         Assert.That(address.Count, Is.EqualTo(0),
             "An untouched nested Address must serialize as {}.");
+    }
+
+    [Test]
+    public void OptionalNullable_ThreeStates_MapToAbsentNullValue()
+    {
+        // The original C# report (ticket #11133): Address.line2 must support all
+        // three states natively via OptionalNullable<T>, replacing the retired
+        // backing-field/ShouldSerialize patch. This asserts both the wrapper's
+        // API (IsSet/IsNull) and the resulting JSON.
+
+        // Absent: default (untouched) -> IsSet false -> key omitted.
+        var absent = new Address();
+        Assert.That(absent.Line2.IsSet, Is.False);
+        Assert.That(SerializeToJObject(absent).ContainsKey("line2"), Is.False);
+
+        // Explicit null: assigning null is a set-null (not absent) -> JSON null.
+        var cleared = new Address { Line2 = null };
+        Assert.That(cleared.Line2.IsSet, Is.True);
+        Assert.That(cleared.Line2.IsNull, Is.True);
+        Assert.That(SerializeToJObject(cleared)["line2"]!.Type, Is.EqualTo(JTokenType.Null));
+
+        // Value: assigning a value -> serialized value.
+        var set = new Address { Line2 = "Apt 4B" };
+        Assert.That(set.Line2.IsSet, Is.True);
+        Assert.That(set.Line2.IsNull, Is.False);
+        Assert.That(SerializeToJObject(set)["line2"]!.Value<string>(), Is.EqualTo("Apt 4B"));
     }
 }
