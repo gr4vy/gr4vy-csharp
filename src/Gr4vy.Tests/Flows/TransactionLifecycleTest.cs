@@ -12,13 +12,15 @@ namespace Gr4vy.Tests.Flows
     /// The headline merchant story: authorize a card transaction directly against
     /// POST /transactions (the non-checkout-session path), then exercise the
     /// processing lifecycle — capture, refund, sync, list, update, and the
-    /// transaction sub-resources (actions, events, settlements). A separate
-    /// transaction is authorized then voided.
+    /// transaction sub-resources (actions, events, settlements, captures, refund
+    /// settlements). A separate transaction is authorized then voided.
     /// </summary>
     [TestFixture]
     [Parallelizable(ParallelScope.Self)]
     public class TransactionLifecycleTest
     {
+        private const string MissingId = "11111111-1111-1111-1111-111111111111";
+
         private TestMerchant _m = null!;
         private Gr4vySDK Client => _m.Client;
 
@@ -78,6 +80,17 @@ namespace Gr4vy.Tests.Flows
             var settlements = await Client.Transactions.Settlements.ListAsync(txn.Id);
             Assert.That(settlements, Is.Not.Null);
 
+            // 4b. Captures list (happy path — the transaction was captured above).
+            // Getting a specific capture is reached at the request level: the mock
+            // connector does not expose an addressable capture record to fetch by id.
+            var captures = await Client.Transactions.Captures.ListAsync(txn.Id);
+            Assert.That(captures, Is.Not.Null);
+
+            await Reach.ReachesAsync(
+                () => Client.Transactions.Captures.GetAsync(txn.Id, MissingId),
+                "transactions.captures.get"
+            );
+
             // 5. Refund the captured transaction (+ list + get)
             var refund = await Client.Transactions.Refunds.CreateAsync(
                 txn.Id,
@@ -95,6 +108,17 @@ namespace Gr4vy.Tests.Flows
             var topRefund = await Client.Refunds.GetAsync(refund.Id!);
             Assert.That(topRefund.Id, Is.EqualTo(refund.Id));
 
+            // 6b. Refund-settlements list (happy path). Getting a specific refund
+            // settlement is reached at the request level: the mock connector produces
+            // no settlement record to fetch by id.
+            var refundSettlements = await Client.Transactions.RefundSettlements.ListAsync(txn.Id);
+            Assert.That(refundSettlements, Is.Not.Null);
+
+            await Reach.ReachesAsync(
+                () => Client.Transactions.RefundSettlements.GetAsync(txn.Id, MissingId),
+                "transactions.refund-settlements.get"
+            );
+
             // 7. Refund-all + settlement get (reached at the request level — the
             // remaining balance may be zero after the partial refund above, and the
             // mock connector produces no settlement record to fetch by id).
@@ -103,7 +127,7 @@ namespace Gr4vy.Tests.Flows
                 "transactions.refunds.all.create"
             );
             await Reach.ReachesAsync(
-                () => Client.Transactions.Settlements.GetAsync(txn.Id, "11111111-1111-1111-1111-111111111111"),
+                () => Client.Transactions.Settlements.GetAsync(txn.Id, MissingId),
                 "transactions.settlements.get"
             );
         }
