@@ -17,81 +17,25 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Indicates the frequency unit for the subscription. Allowed values are: `DAY`, `WEEK`, `MONTH`, `BI_MONTHLY`, `QUARTER`, `SEMI_ANNUALLY`, `YEAR`, `ONDEMAND`.
         /// </summary>
-        [JsonProperty("subscription_frequency_unit", NullValueHandling = NullValueHandling.Include)]
-        public string SubscriptionFrequencyUnit
-        {
-            get => _subscriptionFrequencyUnit;
-            set
-            {
-                _subscriptionFrequencyUnit = value;
-                _subscriptionFrequencyUnitSet = true;
-            }
-        }
-
-        private string _subscriptionFrequencyUnit = default!;
-
-        private bool _subscriptionFrequencyUnitSet = true;
-
-        public bool ShouldSerializeSubscriptionFrequencyUnit() => _subscriptionFrequencyUnitSet;
+        [JsonProperty("subscription_frequency_unit")]
+        public string SubscriptionFrequencyUnit { get; set; } = default!;
 
         /// <summary>
         /// Indicates the frequency for the subscription.
         /// </summary>
-        [JsonProperty("subscription_frequency", NullValueHandling = NullValueHandling.Include)]
-        public long SubscriptionFrequency
-        {
-            get => _subscriptionFrequency;
-            set
-            {
-                _subscriptionFrequency = value;
-                _subscriptionFrequencySet = true;
-            }
-        }
-
-        private long _subscriptionFrequency = default!;
-
-        private bool _subscriptionFrequencySet = true;
-
-        public bool ShouldSerializeSubscriptionFrequency() => _subscriptionFrequencySet;
+        [JsonProperty("subscription_frequency")]
+        public long SubscriptionFrequency { get; set; } = default!;
 
         /// <summary>
         /// Indicates the start date for the subscription in format `YYYYMMDD`.
         /// </summary>
-        [JsonProperty("subscription_start_at", NullValueHandling = NullValueHandling.Include)]
-        public string SubscriptionStartAt
-        {
-            get => _subscriptionStartAt;
-            set
-            {
-                _subscriptionStartAt = value;
-                _subscriptionStartAtSet = true;
-            }
-        }
-
-        private string _subscriptionStartAt = default!;
-
-        private bool _subscriptionStartAtSet = true;
-
-        public bool ShouldSerializeSubscriptionStartAt() => _subscriptionStartAtSet;
+        [JsonProperty("subscription_start_at")]
+        public string SubscriptionStartAt { get; set; } = default!;
 
         /// <summary>
         /// Indicates the end date for the subscription in format `YYYYMMDD`.
         /// </summary>
-        [JsonProperty("subscription_end_at", NullValueHandling = NullValueHandling.Include)]
-        public string SubscriptionEndAt
-        {
-            get => _subscriptionEndAt;
-            set
-            {
-                _subscriptionEndAt = value;
-                _subscriptionEndAtSet = true;
-            }
-        }
-
-        private string _subscriptionEndAt = default!;
-
-        private bool _subscriptionEndAtSet = true;
-
-        public bool ShouldSerializeSubscriptionEndAt() => _subscriptionEndAtSet;
+        [JsonProperty("subscription_end_at")]
+        public string SubscriptionEndAt { get; set; } = default!;
     }
 }

@@ -136,6 +136,12 @@ namespace Gr4vy.Models.Components
         public Airline? Airline { get; set; } = null;
 
         /// <summary>
+        /// An optional description for the transaction. Forwarded to the payment processor where supported. Unlike `statement_descriptor`, this field has no character limit and does not appear on the buyer's bank statement.
+        /// </summary>
+        [JsonProperty("description")]
+        public string? Description { get; set; } = null;
+
+        /// <summary>
         /// An array of cart items that represents the line items of a transaction.
         /// </summary>
         [JsonProperty("cart_items")]
