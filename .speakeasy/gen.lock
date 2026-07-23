@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: e9ccd67612d4c09803e0af3dcab2a1bd
+  docChecksum: 6ca832dd0ae16fabb782e9d0b4032908
   docVersion: 1.0.0
   speakeasyVersion: 1.790.3
   generationVersion: 2.918.4
-  releaseVersion: 2.8.59
-  configChecksum: fc962d541c2dabd0ede951ab3fcdb7af
+  releaseVersion: 2.8.60
+  configChecksum: ab0ff799acf5167d44b0d018930993aa
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: d856c447-cca4-4656-a9ba-58dc5daa03bd
-  pristine_commit_hash: 99fe5fb7d593c548aed99e5ed9719cd6856cf12e
-  pristine_tree_hash: ce3ca430ac6c63d08c5fa3816c042f8d4b8fbaf3
+  generation_id: 0d75b1ba-4f9b-45a8-acbd-48c04179a47e
+  pristine_commit_hash: 0ab7c4e773077a23284650f9456c72487bcc6233
+  pristine_tree_hash: 8bc4b695402f6443ec40aa0963d58464ea789e0d
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -200,8 +200,8 @@ trackedFiles:
     pristine_git_object: 7004d5702093c58753cc534cad3c9897faa734a3
   docs/Models/Components/Buyer.md:
     id: d3dc7697c834
-    last_write_checksum: sha1:7c5e181f869023909289a3db1987a9b60d32e9cd
-    pristine_git_object: 284daf304dac364ac23671d250b212edb448482f
+    last_write_checksum: sha1:f5aab428c80defdfc498b899c9c25de0aa78fcd0
+    pristine_git_object: 37fba3932b52d99141228a131fa2076977517417
   docs/Models/Components/BuyerCreate.md:
     id: 34966a8064c6
     last_write_checksum: sha1:1dfc0aa82d4a91a9e0241bcb89f9898cff3f392b
@@ -2100,8 +2100,8 @@ trackedFiles:
     pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:ee5beee2d8de0ec81dd634c13f5ab7897539cb3b
-    pristine_git_object: 3aa391ec3f024eeae49dd5cc9342a281eb299303
+    last_write_checksum: sha1:e3864e07e7eb3b85c48252c22ee9da89908912a9
+    pristine_git_object: d19c3aeff44e0a4a1dee7984e2429fe005ab5eb7
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:4b05b2f4cb25a0046b719765211cdd041c1b7441
@@ -2268,8 +2268,8 @@ trackedFiles:
     pristine_git_object: 97ab03e2755e2860e9a9bf1172522dbf59631a14
   src/Gr4vy/Models/Components/Buyer.cs:
     id: d4db60ffcad4
-    last_write_checksum: sha1:121e82a574d036083ebe68f704f2df05d9600e3e
-    pristine_git_object: 1c8beae1d7f80e4c3d8953bc73697c92a0a01d21
+    last_write_checksum: sha1:2fcd993d4f28fd3ad659611f83702e8e104c504b
+    pristine_git_object: 11000868d159346bc38d35270221028ffa86c847
   src/Gr4vy/Models/Components/BuyerCreate.cs:
     id: c8069197b08d
     last_write_checksum: sha1:4adc70c978384df49243dee32d2b17c19319c568
@@ -4000,8 +4000,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:261445a24e4065316194de21b2ef16374f00c341
-    pristine_git_object: cb3a8840f56a6cd68660aa79d54d7709cf5a76ba
+    last_write_checksum: sha1:00b329ae16314fbd7867a20b9c6ab54f73f1af75
+    pristine_git_object: bff5e89fef12bcf35f3c0b1c43cc17667b82873a
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4040,8 +4040,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:3519b8eedb35e8bdc755700dbe14decedf34ba2f
-    pristine_git_object: 08e8a2e18210c080696a6d064399b88acd7035a3
+    last_write_checksum: sha1:6d24e43b743c9afd287df05fabc2b0072090ab9c
+    pristine_git_object: 74222061a311223df9235b645341a943b13ccaca
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -4157,7 +4157,7 @@ examples:
           x-gr4vy-merchant-account-id: "default"
       responses:
         "200":
-          application/json: {"items": [{"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}, {"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
+          application/json: {"items": [{"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}, {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}], "limit": 20}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4194,7 +4194,7 @@ examples:
         application/json: {}
       responses:
         "201":
-          application/json: {"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4230,7 +4230,7 @@ examples:
           x-gr4vy-merchant-account-id: "default"
       responses:
         "200":
-          application/json: {"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -4269,7 +4269,7 @@ examples:
         application/json: {}
       responses:
         "200":
-          application/json: {"type": "buyer", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
+          application/json: {"type": "buyer", "id": "fe26475d-ec3e-4884-9553-f7356683f7f9", "merchant_account_id": "default", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00"}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -8288,7 +8288,19 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.Description` **Added**\n"
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Gr4vy.Buyers.List()`:  `response.items[].Id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.Buyers.Create()`:  `response.id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.Buyers.Get()`:  `response.id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.Buyers.Update()`:  `response.id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.PaymentMethods.List()`:  `response.items[].Buyer.Id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.PaymentMethods.Create()`:  `response.buyer.Id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.PaymentMethods.Get()`:  `response.buyer.Id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.PaymentMethods.Update()`:  `response.buyer.Id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.GiftCards.Get()`:  `response.buyer.Id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.GiftCards.Create()`:  `response.buyer.Id` **Changed** (Breaking ⚠️)
+  * `Gr4vy.GiftCards.List()`:  `response.items[].Buyer.Id` **Changed** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln

@@ -26,7 +26,7 @@ namespace Gr4vy.Models.Components
         /// The ID for the buyer.
         /// </summary>
         [JsonProperty("id")]
-        public string? Id { get; set; } = null;
+        public string Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of the merchant account this buyer belongs to.
