@@ -27,6 +27,8 @@ namespace Gr4vy
     public interface IGiftCards
     {
         public IBalances Balances { get; }
+
+        public IActivations Activations { get; }
         /// <summary>
         /// Get gift card.
         /// </summary>
@@ -157,10 +159,17 @@ namespace Gr4vy
         /// </summary>
         public IBalances Balances { get; private set; }
 
+        /// <summary>
+        /// Activations SubSDK.
+        /// <see cref="IActivations"/>
+        /// </summary>
+        public IActivations Activations { get; private set; }
+
         public GiftCards(SDKConfig config)
         {
             SDKConfiguration = config;
             Balances = new Balances(SDKConfiguration);
+            Activations = new Activations(SDKConfiguration);
         }
 
         /// <summary>
