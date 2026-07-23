@@ -318,6 +318,10 @@ catch(ArgumentException ex) {
 * [Create](docs/sdks/giftcards/README.md#create) - Create gift card
 * [List](docs/sdks/giftcards/README.md#list) - List gift cards
 
+#### [GiftCards.Activations](docs/sdks/activations/README.md)
+
+* [Create](docs/sdks/activations/README.md#create) - Activate a gift card
+
 #### [GiftCards.Balances](docs/sdks/balances/README.md)
 
 * [List](docs/sdks/balances/README.md#list) - List gift card balances

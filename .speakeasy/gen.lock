@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 0e79cbbd369f4daa30bbbbffea3f437d
+  docChecksum: 284b2d7f411f614ae21ab450b70009fb
   docVersion: 1.0.0
   speakeasyVersion: 1.790.3
   generationVersion: 2.918.4
-  releaseVersion: 2.8.61
-  configChecksum: 74c6f883bea759f098559cea17fedaf5
+  releaseVersion: 2.8.62
+  configChecksum: d1d2330609a07107cf72dc15af20be37
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 5afd6bb0-b890-49b6-b6ed-47aa5e066627
-  pristine_commit_hash: 233a26d9385ac49d215084d5365410555fcfe570
-  pristine_tree_hash: 7ef922240e11898c2fca778f699b75504a962161
+  generation_id: dd60a117-041a-4392-9980-e8a446f3d2a5
+  pristine_commit_hash: 2fa41690a18cbc4d416fcc885fad3fe2b796b642
+  pristine_tree_hash: 89119535994571f0aff18a903c1df2b56d3d19c4
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -446,6 +446,10 @@ trackedFiles:
     id: e2686be6f3e3
     last_write_checksum: sha1:1dd0ee8fa5361f3e0aabe43654d3dc4d02969956
     pristine_git_object: 461c8dab94f0b6b39b597e8fc7b2be6d15489708
+  docs/Models/Components/GiftCardActivationCreate.md:
+    id: d8e6c767b7dc
+    last_write_checksum: sha1:5ecc71b4070eed377c18d0ab978321c432c1c520
+    pristine_git_object: c2dadc06925a53a28cd3d62a6ffd9543041977f7
   docs/Models/Components/GiftCardBalanceRequest.md:
     id: 0e351e5aee1e
     last_write_checksum: sha1:a5a08ac14421cfb80cf233e3aa0b2de25fb1bdad
@@ -1330,6 +1334,10 @@ trackedFiles:
     id: 72e6a49fa263
     last_write_checksum: sha1:ccc835fce73119b4ccd95a4fc325e2107887db67
     pristine_git_object: 496b8fee486c64b12dc82e462791e4f02c8b28ee
+  docs/Models/Requests/ActivateGiftCardRequest.md:
+    id: 5f861eb0bcb7
+    last_write_checksum: sha1:4346f823a79dcd56033743ce7a795882fc5a5916
+    pristine_git_object: 5f2ba9a4628da1112ffc6b4e1fb6feb194de9289
   docs/Models/Requests/AddBuyerRequest.md:
     id: eee70dd51b4a
     last_write_checksum: sha1:e4eef9e27c781c78991a3baae00a35fd711332b1
@@ -1874,6 +1882,10 @@ trackedFiles:
     id: e229cf99e666
     last_write_checksum: sha1:6983ab7ed3e755090585adea239f16b082dc0b4d
     pristine_git_object: 9d93a53cdf68188a2e06d3219b0ba602f07085dd
+  docs/sdks/activations/README.md:
+    id: 5e6a3a8cf62a
+    last_write_checksum: sha1:ad6805b557e09727d740ab412cae683bd19368fb
+    pristine_git_object: fe176110c76f32d32c289edef7c1c3d940e1eb4e
   docs/sdks/all/README.md:
     id: 936653be5c4b
     last_write_checksum: sha1:b0b5f0764e38ac746f411cdb9fb104e2284bca72
@@ -2034,6 +2046,10 @@ trackedFiles:
     id: f0f2e84e78b7
     last_write_checksum: sha1:d890ade34ab1a5ad21010addba2cf994c05f093b
     pristine_git_object: ad4d1c1369db18ad757ffeae682f768802c8665f
+  src/Gr4vy/Activations.cs:
+    id: 1015f8ec1621
+    last_write_checksum: sha1:d65bc9a2f3fe73ee5f4045b542889697a2cca9ee
+    pristine_git_object: 6b04db31ec84fa4518a06f9ce9bf1e3385cb2e8b
   src/Gr4vy/All.cs:
     id: 03eee795b76b
     last_write_checksum: sha1:c7755013b7171c969148124120a8e16ba7cf194c
@@ -2096,12 +2112,12 @@ trackedFiles:
     pristine_git_object: 763a632d2c76e1a515e1c96f7b6263a92d2ee27a
   src/Gr4vy/GiftCards.cs:
     id: 46b9c5a0a4dc
-    last_write_checksum: sha1:24c870583fd9c7271a8d0f81c6f9cc59fa44abaf
-    pristine_git_object: e8ef9b2d5d9508ef605157a3aefa872b88542b57
+    last_write_checksum: sha1:efcb1e6ed4eb32010c83954175768874c3da30f9
+    pristine_git_object: f534f4d634a156c628dd3417443002255ef98c47
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:a9bfd0d59106bf555785b254b50050fa8e6e99f5
-    pristine_git_object: 2474fd68f502389648bb7ff1277bb6bdddcc213f
+    last_write_checksum: sha1:00ae63aeed1922d5135336a3946b9a99b8bcfe84
+    pristine_git_object: 06cfd1c336e7df8a71488398555b680054b4570b
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:4b05b2f4cb25a0046b719765211cdd041c1b7441
@@ -2514,6 +2530,10 @@ trackedFiles:
     id: ceb906be9d08
     last_write_checksum: sha1:553171b7009acd1accfec6f7e90bf3af3a75a0a7
     pristine_git_object: 2906d386a82c20f9dbd3878106f0d2a849fe74aa
+  src/Gr4vy/Models/Components/GiftCardActivationCreate.cs:
+    id: 4c9d1bfa667c
+    last_write_checksum: sha1:6bfa717d4c2f551e78c4398c5036ea77c2033019
+    pristine_git_object: 39179cf6f14f42732df88478935b249b98acf5c2
   src/Gr4vy/Models/Components/GiftCardBalanceRequest.cs:
     id: a45f4043a797
     last_write_checksum: sha1:a961d710b096307705bc03cba0cd14ce38290ef3
@@ -3410,6 +3430,10 @@ trackedFiles:
     id: df35c1dd2735
     last_write_checksum: sha1:c00c6cc569fd9c288b003c3a8fd11d71afefc61b
     pristine_git_object: fa34a72a485153e468eb0681c81cf59d0dad1ba2
+  src/Gr4vy/Models/Requests/ActivateGiftCardRequest.cs:
+    id: 574a07d0ce01
+    last_write_checksum: sha1:c44079846ed991331e4bfcc001fcb5a4a3a56705
+    pristine_git_object: 653eed262b07e165fa044cd3496b02ae2a61ab98
   src/Gr4vy/Models/Requests/AddBuyerRequest.cs:
     id: 884300fb57bc
     last_write_checksum: sha1:67de2336649c56dfe73d253d9a2ecefb20007a84
@@ -4000,8 +4024,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:ab0edd8ea4a769dd9496eafab746b03bcee37efc
-    pristine_git_object: 297d581bfdfa345ebfdb5b802b44484b389c2789
+    last_write_checksum: sha1:ea5ec4de6f71ba8bc025e5858ce07156bc80994e
+    pristine_git_object: 64e0ec6a11c53ef55007ebad67156c1134c02f0e
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4040,8 +4064,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:3e9dd355d9facfe7ee3262266ae576d8f90237c8
-    pristine_git_object: 945d5c5acbb1b97da57a0a925dc87277aeb09a8f
+    last_write_checksum: sha1:71579ab48ad7199b29a506fa31b76152f7c4a6a4
+    pristine_git_object: a5f0403007f3eed5ab6d014165ebe3d5a9f70162
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8286,35 +8310,42 @@ examples:
           application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
         "504":
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
+  activate_gift_card:
+    speakeasy-default-activate-gift-card:
+      requestBody:
+        application/json: {"number": "4123455541234561234"}
+      responses:
+        "201":
+          application/json: {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "<id>", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "usage_count": 100, "cit_usage_count": 50}
+        "400":
+          application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
+        "401":
+          application/json: {"type": "error", "code": "unauthorized", "status": 401, "message": "No valid API authentication found"}
+        "403":
+          application/json: {"type": "error", "code": "forbidden", "status": 403, "message": "Request failed validation"}
+        "404":
+          application/json: {"type": "error", "code": "not_found", "status": 404, "message": "The resource could not be found"}
+        "405":
+          application/json: {"type": "error", "code": "method_not_allowed", "status": 405, "message": "Method Not Allowed"}
+        "409":
+          application/json: {"type": "error", "code": "duplicate_record", "status": 409, "message": "Request failed validation"}
+        "422":
+          application/json: {}
+        "425":
+          application/json: {"type": "error", "code": "too_early", "status": 425, "message": "Request failed validation"}
+        "429":
+          application/json: {"type": "error", "code": "too_many_requests", "status": 429, "message": "Request failed validation"}
+        "500":
+          application/json: {"type": "error", "code": "server_error", "status": 500, "message": "Request could not be processed"}
+        "502":
+          application/json: {"type": "error", "code": "bad_gateway", "status": 502, "message": "Request could not be processed"}
+        "504":
+          application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Csharp SDK Changes:
-  * `Gr4vy.Buyers.List()`:  `response.items[].ReconciliationId` **Added**
-  * `Gr4vy.Buyers.Create()`:  `response.reconciliationId` **Added**
-  * `Gr4vy.Buyers.Get()`:  `response.reconciliationId` **Added**
-  * `Gr4vy.Buyers.Update()`:  `response.reconciliationId` **Added**
-  * `Gr4vy.PaymentMethods.List()`:  `response.items[].Buyer.ReconciliationId` **Added**
-  * `Gr4vy.PaymentMethods.Create()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.PaymentMethods.Get()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.PaymentMethods.Update()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.GiftCards.Get()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.GiftCards.Create()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.GiftCards.List()`:  `response.items[].Buyer.ReconciliationId` **Added**
-  * `Gr4vy.Transactions.List()`:  `response.items[].Buyer.ReconciliationId` **Added**
-  * `Gr4vy.Transactions.Create()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.Transactions.Get()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.Transactions.Update()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.Transactions.Capture()`:  `response.union(Transaction).Buyer.ReconciliationId` **Added**
-  * `Gr4vy.Transactions.Void()`:  `response.union(Transaction).Buyer.ReconciliationId` **Added**
-  * `Gr4vy.Transactions.Cancel()`:  `response.transaction.Buyer.ReconciliationId` **Added**
-  * `Gr4vy.Transactions.Sync()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.Payouts.List()`:  `response.items[].Buyer.ReconciliationId` **Added**
-  * `Gr4vy.Payouts.Create()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.Payouts.Get()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.PaymentLinks.Create()`:  `response.buyer.ReconciliationId` **Added**
-  * `Gr4vy.PaymentLinks.List()`:  `response.items[].Buyer.ReconciliationId` **Added**
-  * `Gr4vy.PaymentLinks.Get()`:  `response.buyer.ReconciliationId` **Added**
+  * `Gr4vy.GiftCards.Activations.Create()`: **Added**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
