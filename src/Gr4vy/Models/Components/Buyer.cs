@@ -29,6 +29,12 @@ namespace Gr4vy.Models.Components
         public string Id { get; set; } = default!;
 
         /// <summary>
+        /// The base62 encoded buyer ID. This represents a shorter version of this buyer's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's buyer against our system.
+        /// </summary>
+        [JsonProperty("reconciliation_id")]
+        public string ReconciliationId { get; set; } = default!;
+
+        /// <summary>
         /// The ID of the merchant account this buyer belongs to.
         /// </summary>
         [JsonProperty("merchant_account_id")]
