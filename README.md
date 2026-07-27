@@ -326,6 +326,10 @@ catch(ArgumentException ex) {
 
 * [List](docs/sdks/balances/README.md#list) - List gift card balances
 
+#### [GiftCards.Issuances](docs/sdks/issuances/README.md)
+
+* [Create](docs/sdks/issuances/README.md#create) - Issue a gift card
+
 ### [MerchantAccounts](docs/sdks/merchantaccounts/README.md)
 
 * [List](docs/sdks/merchantaccounts/README.md#list) - List all merchant accounts
