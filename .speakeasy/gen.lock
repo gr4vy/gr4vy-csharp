@@ -1,24 +1,25 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: d3f407213fe4dbb72b3902b0b7c4cd9a
+  docChecksum: 1d5931a5eca4cf84f958591521d3a684
   docVersion: 1.0.0
   speakeasyVersion: 1.791.0
   generationVersion: 2.924.0
-  releaseVersion: 2.8.63
-  configChecksum: 68320d379dfbec06721ff6b4bd126d29
+  releaseVersion: 2.9.0
+  configChecksum: a61eb3717b598289308152039f3aa584
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 8d426d15-423b-42ab-8ab7-f45b08e32df4
-  pristine_commit_hash: beeae2746ad484a7454b2f55fed0ce1d78a3767d
-  pristine_tree_hash: e02416850492bc20814991194bc899f6d177114e
+  generation_id: 047fbae6-be7d-4929-b23b-477d17b16ee2
+  pristine_commit_hash: b26e3b1a093d6b9267142992dd5986a452f21b67
+  pristine_tree_hash: 345cb7afa478d9666d6af1ef3feffa67f1723ba3
 features:
   csharp:
     additionalDependencies: 0.1.0
     constsAndDefaults: 0.0.3
     core: 3.15.25
+    deprecations: 2.81.2
     flattening: 2.81.3
     globalSecurity: 2.83.11
     globalSecurityCallbacks: 0.1.0
@@ -568,12 +569,12 @@ trackedFiles:
     pristine_git_object: fa9a1b0f584aba1f957dec6d482a987d959e5463
   docs/Models/Components/MerchantAccount.md:
     id: 8a6ecfabb4fe
-    last_write_checksum: sha1:cc382756dfc5423f4d5e5d858dfe4f50ab593de5
-    pristine_git_object: 6061a2c95206d0b682455f1c13229b2bfb455d86
+    last_write_checksum: sha1:0b0b85b3310774147f45cfb62e66b15a977bce16
+    pristine_git_object: 7da32d61fc963a80214afb50161380c2a60bc68f
   docs/Models/Components/MerchantAccountCreate.md:
     id: 2319beae5d8c
-    last_write_checksum: sha1:650321d8a26ee314c2cc4dc9f27ece3375eb2dcc
-    pristine_git_object: a2bfc953691556510742679b1ef5f34e74444c08
+    last_write_checksum: sha1:9d9f3872b187201c391962945e233bc59bdf6a42
+    pristine_git_object: 459223e8597eee7462c8c6d8704b6b6694cc2101
   docs/Models/Components/MerchantAccountSummary.md:
     id: e8d6f609a8ba
     last_write_checksum: sha1:e564d29f60765a42bb33685630b9fcd426f43bcc
@@ -596,8 +597,8 @@ trackedFiles:
     pristine_git_object: a2d83302014cec56c66efe39c7f9f7096ecefb15
   docs/Models/Components/MerchantAccountUpdate.md:
     id: 521039f95c1a
-    last_write_checksum: sha1:1860ee94a7b17d1cd9ab1fd28a58d4781429a875
-    pristine_git_object: d199003337990ab37a865477608cf647e8f685db
+    last_write_checksum: sha1:42dc47cca4a59f73045fd54cba9b096f29d60bc3
+    pristine_git_object: 565f55d89818a21c029c45a31847ee94a7d83714
   docs/Models/Components/MerchantAccounts.md:
     id: 9a3841a8da63
     last_write_checksum: sha1:5c52633088d0feb152c1a54aa0f2b15c77e96bad
@@ -2132,8 +2133,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:fefdae4427a5c402e798695a7fea5fe591571c35
-    pristine_git_object: b2ee4a72b1d3045d3a9d62dc2e87da580a4f3308
+    last_write_checksum: sha1:3cf792d6648a7701c2d09376d137680db40cc950
+    pristine_git_object: 3aabcd82450c2a03fad818411402301e7e28b896
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:4b05b2f4cb25a0046b719765211cdd041c1b7441
@@ -2672,12 +2673,12 @@ trackedFiles:
     pristine_git_object: 35df27212a60373ba1fb15b11ea50367ee3beb86
   src/Gr4vy/Models/Components/MerchantAccount.cs:
     id: 41760c6b0725
-    last_write_checksum: sha1:82b04bae1bc37f4910e8994ca03901cacf9484f6
-    pristine_git_object: 4783520558733fac98e735b410d7d5d363ee8e2a
+    last_write_checksum: sha1:904974285aba889b0b838be464811ba05d6a7921
+    pristine_git_object: 35e513499779448b7a37afc18c6addb41ed0e304
   src/Gr4vy/Models/Components/MerchantAccountCreate.cs:
     id: 40fb0469c2fe
-    last_write_checksum: sha1:b636eac1cb9d98e1bfa9272f4a9378ab322d747e
-    pristine_git_object: c07deb2e35c49565050eb58bab41c35c9a03175e
+    last_write_checksum: sha1:4acbe830419466c9171409f2f5ce9059d5f96783
+    pristine_git_object: de0968676eaba360f8c22b1168faa4e5f5eccbc5
   src/Gr4vy/Models/Components/MerchantAccountSummary.cs:
     id: 916a60f343f5
     last_write_checksum: sha1:f74ee34217f80d7c0b694d831f55883ffa12b88f
@@ -2700,8 +2701,8 @@ trackedFiles:
     pristine_git_object: a5b07abb245bd529bd595a0f60e12ea8694f3264
   src/Gr4vy/Models/Components/MerchantAccountUpdate.cs:
     id: 2cdd144e8eb1
-    last_write_checksum: sha1:4979526c9b23bcfae81215026eee32de6dfd590b
-    pristine_git_object: e131b900c657ce8df7efa0ee9aec0f25ba6bb8c9
+    last_write_checksum: sha1:5571f00ad3c7dd8811e06b7743c5526d725a408e
+    pristine_git_object: c432fdf2aa67b3aa58dcf4d1c3931b3ee7b70f56
   src/Gr4vy/Models/Components/MerchantAccounts.cs:
     id: 79a2252533d2
     last_write_checksum: sha1:54c4c399bacc7bd768690178180866cef2296526
@@ -4056,8 +4057,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:d22cf05da7d1fc7c978a377d197b0faa201ad1e4
-    pristine_git_object: 08bec89b32474b5b614b6afec9386c60a8e68592
+    last_write_checksum: sha1:24baf6d4071292a4cf17409b2809776d791e74b1
+    pristine_git_object: 71f7f664dcf84e03cc723e4efae2cc0e1d88d0ec
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4096,8 +4097,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:66a258ac4363263b4a173b61d6b66c3947c05250
-    pristine_git_object: 595fd5953f1df571bc1caf355ed4174ea604bd24
+    last_write_checksum: sha1:75ba9fe88c23ca1202cce832fa6f94516dc65af7
+    pristine_git_object: ba56b47d296822961e69b3110fa50ff2fa9d0963
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8406,9 +8407,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: |
-  ## Csharp SDK Changes:
-  * `Gr4vy.GiftCards.Issuances.Create()`: **Added**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
