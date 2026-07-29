@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Overrides the default report group to pass to the Worldpay VAP API.
         /// </summary>
-        [JsonProperty("reportGroup", NullValueHandling = NullValueHandling.Include)]
-        public string? ReportGroup
-        {
-            get => _reportGroup;
-            set
-            {
-                _reportGroup = value;
-                _reportGroupSet = true;
-            }
-        }
-
-        private string? _reportGroup = null;
-
-        private bool _reportGroupSet = false;
-
-        public bool ShouldSerializeReportGroup() => _reportGroupSet;
+        [JsonProperty("reportGroup")]
+        public string? ReportGroup { get; set; } = null;
     }
 }

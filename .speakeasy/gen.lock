@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 1d5931a5eca4cf84f958591521d3a684
+  docChecksum: b45a49b0a634bfaf329f8e323280e90c
   docVersion: 1.0.0
   speakeasyVersion: 1.791.0
   generationVersion: 2.924.0
-  releaseVersion: 2.9.0
-  configChecksum: a61eb3717b598289308152039f3aa584
+  releaseVersion: 2.9.1
+  configChecksum: 09dd70a8ecf9b9c8b5e7f0f21227508c
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 047fbae6-be7d-4929-b23b-477d17b16ee2
-  pristine_commit_hash: b26e3b1a093d6b9267142992dd5986a452f21b67
-  pristine_tree_hash: 345cb7afa478d9666d6af1ef3feffa67f1723ba3
+  generation_id: 53243035-02cd-4f6f-9cfc-238100acf2d7
+  pristine_commit_hash: 6e88655b998d56b65fbc4a75a687a1d5091d9fd5
+  pristine_tree_hash: 3226603ae07ee072e11d26471f732bd76f86e9ea
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -449,8 +449,8 @@ trackedFiles:
     pristine_git_object: 461c8dab94f0b6b39b597e8fc7b2be6d15489708
   docs/Models/Components/GiftCardActivationCreate.md:
     id: d8e6c767b7dc
-    last_write_checksum: sha1:5ecc71b4070eed377c18d0ab978321c432c1c520
-    pristine_git_object: c2dadc06925a53a28cd3d62a6ffd9543041977f7
+    last_write_checksum: sha1:68d47bce963dcf243fed4e456eff18c026817ba5
+    pristine_git_object: 0b439879c92451165593f294be0519fc6236262a
   docs/Models/Components/GiftCardBalanceRequest.md:
     id: 0e351e5aee1e
     last_write_checksum: sha1:a5a08ac14421cfb80cf233e3aa0b2de25fb1bdad
@@ -1897,8 +1897,8 @@ trackedFiles:
     pristine_git_object: 9d93a53cdf68188a2e06d3219b0ba602f07085dd
   docs/sdks/activations/README.md:
     id: 5e6a3a8cf62a
-    last_write_checksum: sha1:ad6805b557e09727d740ab412cae683bd19368fb
-    pristine_git_object: fe176110c76f32d32c289edef7c1c3d940e1eb4e
+    last_write_checksum: sha1:7f8810270136cf5c8c72e3926a0baa4279b41edf
+    pristine_git_object: d223a6e58c07031ec40bc437f589ac59aabecca4
   docs/sdks/all/README.md:
     id: 936653be5c4b
     last_write_checksum: sha1:b0b5f0764e38ac746f411cdb9fb104e2284bca72
@@ -2065,8 +2065,8 @@ trackedFiles:
     pristine_git_object: ad4d1c1369db18ad757ffeae682f768802c8665f
   src/Gr4vy/Activations.cs:
     id: 1015f8ec1621
-    last_write_checksum: sha1:d65bc9a2f3fe73ee5f4045b542889697a2cca9ee
-    pristine_git_object: 6b04db31ec84fa4518a06f9ce9bf1e3385cb2e8b
+    last_write_checksum: sha1:f0e5ec826ac1ddfc112bb931e3c578cb5384b547
+    pristine_git_object: 48b9d79fcd910886111bb4925421dc135b9b6510
   src/Gr4vy/All.cs:
     id: 03eee795b76b
     last_write_checksum: sha1:c7755013b7171c969148124120a8e16ba7cf194c
@@ -2133,8 +2133,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:3cf792d6648a7701c2d09376d137680db40cc950
-    pristine_git_object: 3aabcd82450c2a03fad818411402301e7e28b896
+    last_write_checksum: sha1:959b48cf373595427549147faa751777b6beb9c0
+    pristine_git_object: 7bcabb0181370ee14aa4fbe9d864fd802a8e952d
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:4b05b2f4cb25a0046b719765211cdd041c1b7441
@@ -2553,8 +2553,8 @@ trackedFiles:
     pristine_git_object: 2906d386a82c20f9dbd3878106f0d2a849fe74aa
   src/Gr4vy/Models/Components/GiftCardActivationCreate.cs:
     id: 4c9d1bfa667c
-    last_write_checksum: sha1:6bfa717d4c2f551e78c4398c5036ea77c2033019
-    pristine_git_object: 39179cf6f14f42732df88478935b249b98acf5c2
+    last_write_checksum: sha1:aa368147ddd504280bc52281b3c7287613cb4e90
+    pristine_git_object: f5867fa040d74266cc4697d6d9119187d9bc88d8
   src/Gr4vy/Models/Components/GiftCardBalanceRequest.cs:
     id: a45f4043a797
     last_write_checksum: sha1:a961d710b096307705bc03cba0cd14ce38290ef3
@@ -4057,8 +4057,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:24baf6d4071292a4cf17409b2809776d791e74b1
-    pristine_git_object: 71f7f664dcf84e03cc723e4efae2cc0e1d88d0ec
+    last_write_checksum: sha1:1cc811a8c4f03e837bac7d747459c56a2532a9ad
+    pristine_git_object: 7aaf779e0115a3f4b35518ccbe3f7cefd2c34216
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4097,8 +4097,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:75ba9fe88c23ca1202cce832fa6f94516dc65af7
-    pristine_git_object: ba56b47d296822961e69b3110fa50ff2fa9d0963
+    last_write_checksum: sha1:e0db3ada791287099d3fe47331492d9a47c00c2c
+    pristine_git_object: ec71d1aac3921504a498cd0c1eb7f58cd174ea48
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8346,7 +8346,7 @@ examples:
   activate_gift_card:
     speakeasy-default-activate-gift-card:
       requestBody:
-        application/json: {"number": "4123455541234561234"}
+        application/json: {"number": "4123455541234561234", "store": false}
       responses:
         "201":
           application/json: {"type": "gift-card", "id": "356d56e5-fe16-42ae-97ee-8d55d846ae2e", "merchant_account_id": "default", "gift_card_service": {"type": "gift-card-service", "id": "35b60feec-a7c7-4844-b503-f39b09192d81", "gift_card_service_definition_id": "<id>", "display_name": "Qwikcilver USA"}, "bin": "412345", "sub_bin": "554", "last4": "1234", "created_at": "2013-07-16T19:23:00.000+00:00", "updated_at": "2013-07-16T19:23:00.000+00:00", "usage_count": 100, "cit_usage_count": 50}
@@ -8407,6 +8407,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Gr4vy.GiftCards.Activations.Create()`:  `request.giftCardActivationCreate` **Changed**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
