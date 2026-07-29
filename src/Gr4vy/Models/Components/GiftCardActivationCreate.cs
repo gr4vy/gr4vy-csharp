@@ -46,5 +46,23 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("external_identifier")]
         public string? ExternalIdentifier { get; set; } = null;
+
+        /// <summary>
+        /// Whether to store the activated gift card in the vault. When `true`, a `pin` is required.
+        /// </summary>
+        [JsonProperty("store")]
+        public bool? Store { get; set; } = false;
+
+        /// <summary>
+        /// The ID of the buyer to associate this gift card to. Only allowed when `store` is `true`. If this field is provided then the `buyer_external_identifier` field needs to be unset.
+        /// </summary>
+        [JsonProperty("buyer_id")]
+        public string? BuyerId { get; set; } = null;
+
+        /// <summary>
+        /// The `external_identifier` of the buyer to associate this gift card to. Only allowed when `store` is `true`. If this field is provided then the `buyer_id` field needs to be unset.
+        /// </summary>
+        [JsonProperty("buyer_external_identifier")]
+        public string? BuyerExternalIdentifier { get; set; } = null;
     }
 }

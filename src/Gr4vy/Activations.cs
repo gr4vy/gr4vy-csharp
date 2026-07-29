@@ -28,7 +28,7 @@ namespace Gr4vy
         /// Activate a gift card.
         /// </summary>
         /// <remarks>
-        /// Activate a physical gift card through the primary gift card service.
+        /// Activate a physical gift card through the primary gift card service. Set `store` to `true` to also store the activated gift card.
         /// </remarks>
         /// <param name="giftCardActivationCreate">A <see cref="GiftCardActivationCreate"/> parameter.</param>
         /// <param name="idempotencyKey">A unique key that identifies this request. If supported by the gift card service, the value will be forwarded to make the activation idempotent. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.</param>
@@ -74,7 +74,7 @@ namespace Gr4vy
         /// Activate a gift card.
         /// </summary>
         /// <remarks>
-        /// Activate a physical gift card through the primary gift card service.
+        /// Activate a physical gift card through the primary gift card service. Set `store` to `true` to also store the activated gift card.
         /// </remarks>
         /// <param name="giftCardActivationCreate">A <see cref="GiftCardActivationCreate"/> parameter.</param>
         /// <param name="idempotencyKey">A unique key that identifies this request. If supported by the gift card service, the value will be forwarded to make the activation idempotent. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions.</param>
