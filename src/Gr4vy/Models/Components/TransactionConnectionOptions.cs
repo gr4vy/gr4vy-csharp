@@ -536,6 +536,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeCybersourceKcp() => _cybersourceKcpSet;
 
         /// <summary>
+        /// Custom options to be passed to the `dlocal-card` connector.
+        /// </summary>
+        [JsonProperty("dlocal-card", NullValueHandling = NullValueHandling.Include)]
+        public DlocalCardOptions? DlocalCard
+        {
+            get => _dlocalCard;
+            set
+            {
+                _dlocalCard = value;
+                _dlocalCardSet = true;
+            }
+        }
+
+        private DlocalCardOptions? _dlocalCard = null;
+
+        private bool _dlocalCardSet = false;
+
+        public bool ShouldSerializeDlocalCard() => _dlocalCardSet;
+
+        /// <summary>
         /// Custom options to be passed to the `dlocal-nequi` connector.
         /// </summary>
         [JsonProperty("dlocal-nequi", NullValueHandling = NullValueHandling.Include)]
