@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: baf9c226d798baa2d03d9bff232e7119
+  docChecksum: 5b3c1c32d7b0bfe4b1153166b7f061ac
   docVersion: 1.0.0
   speakeasyVersion: 1.791.1
   generationVersion: 2.926.2
-  releaseVersion: 2.9.3
-  configChecksum: bc884bb2c9ff5972d9a15c09445131b6
+  releaseVersion: 2.9.4
+  configChecksum: e60e21484b4ddcc8e67d782ad52a69fa
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: e9ba3b7b-876f-47a4-a43d-4a5c289b0eff
-  pristine_commit_hash: 50d6a663277fe5a0f7742949d6ade0f9e3713539
-  pristine_tree_hash: 97e4d5ab4c2e6b99c1f01a1b478954805c41d562
+  generation_id: 51359952-8a9a-4398-ad92-1b9e63ce4250
+  pristine_commit_hash: a7d9d378964f12e2241920faeb33d91e99cc7859
+  pristine_tree_hash: d4f1aaf4c4ebf706a306f9485ceae4b4ed6dff1f
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -61,8 +61,8 @@ trackedFiles:
     pristine_git_object: 4a502ae5a435a4b1af14cd401f195aa85c937e50
   docs/Models/Components/APIKeyPair.md:
     id: c5ac3fd7eb82
-    last_write_checksum: sha1:af2461c4a1855d7ad30042eed5a4af75de710cf2
-    pristine_git_object: 85007bd5c319a10e3b6d421fd19536683a6a9ebe
+    last_write_checksum: sha1:3966eb0bc5377dfe96007f56b7ae0fea9195be1e
+    pristine_git_object: 4a75148f1e783c9d901bc8a39ca14280f86e46aa
   docs/Models/Components/APIKeyPairCreate.md:
     id: c7e1e45b86c7
     last_write_checksum: sha1:fae5e43393f0f677e8570c9165cae07b38c4623f
@@ -2137,8 +2137,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:5561ea1675e44a7140e539ec927fba1c9ef1f955
-    pristine_git_object: 63059e9bc909c2fdafbea6c25fc3f93f114731e3
+    last_write_checksum: sha1:62f8b28450f2674563f77945120002659a15e96d
+    pristine_git_object: edc53399c3a0af7a2367c1773ef0d8458b020df5
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:4b05b2f4cb25a0046b719765211cdd041c1b7441
@@ -2169,8 +2169,8 @@ trackedFiles:
     pristine_git_object: 1275c219f25246a523322685a3e9f00cae3dbf4f
   src/Gr4vy/Models/Components/APIKeyPair.cs:
     id: 17488aa56eea
-    last_write_checksum: sha1:8b8294d8d2157393a6ea57ca37170e8d255c6014
-    pristine_git_object: 60e6bb1136d6b5faa7fa30bf51c74c9acf99d1b8
+    last_write_checksum: sha1:5e7883ae2eef400c74b1493b1f31d66f54a1b29e
+    pristine_git_object: 6005fd56d983527af291fa7528a2f12da42d0e98
   src/Gr4vy/Models/Components/APIKeyPairCreate.cs:
     id: 3b7d10c5af90
     last_write_checksum: sha1:c09d688d15ea2c986b19a8cf08dd257cc4c7133c
@@ -4065,8 +4065,8 @@ trackedFiles:
     pristine_git_object: 12c3a1740123afaf1e169b04587807c12c166ce1
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:686c13c5628801b0f6cd41f7c99829ec77515774
-    pristine_git_object: 240fa0f4a7d584aa16e5f957c3f6ccd075fb5187
+    last_write_checksum: sha1:8040abe902c9483f9637434fdcd2ad77cdcf9fa5
+    pristine_git_object: 45e9c299a776e9c6732e8260771b74f5f4f244a2
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4105,8 +4105,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:c732ba50abb16ec758b2af456c06d2289f65de6a
-    pristine_git_object: a788eb481ba2dd4bd7a739f1ce1d18a0bf59ed3f
+    last_write_checksum: sha1:86b0ef0f69463ee864020c9fa19402f74e4af20b
+    pristine_git_object: c2cb963803e2ebb4efd3c0f9ebd7164cc6d05648
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8417,14 +8417,10 @@ examplesVersion: 1.0.2
 generatedTests: {}
 releaseNotes: |
   ## Csharp SDK Changes:
-  * `Gr4vy.Transactions.List()`:  `response.items[].ReauthorizedFromTransactionId` **Added**
-  * `Gr4vy.Transactions.Create()`:  `response.reauthorizedFromTransactionId` **Added**
-  * `Gr4vy.Transactions.Get()`:  `response.reauthorizedFromTransactionId` **Added**
-  * `Gr4vy.Transactions.Update()`:  `response.reauthorizedFromTransactionId` **Added**
-  * `Gr4vy.Transactions.Capture()`:  `response.union(Transaction).ReauthorizedFromTransactionId` **Added**
-  * `Gr4vy.Transactions.Void()`:  `response.union(Transaction).ReauthorizedFromTransactionId` **Added**
-  * `Gr4vy.Transactions.Cancel()`:  `response.transaction.ReauthorizedFromTransactionId` **Added**
-  * `Gr4vy.Transactions.Sync()`:  `response.reauthorizedFromTransactionId` **Added**
+  * `Gr4vy.ApiKeyPairs.List()`:  `response.items[].LastUsedAt` **Added**
+  * `Gr4vy.ApiKeyPairs.Create()`:  `response.lastUsedAt` **Added**
+  * `Gr4vy.ApiKeyPairs.Get()`:  `response.lastUsedAt` **Added**
+  * `Gr4vy.ApiKeyPairs.Update()`:  `response.lastUsedAt` **Added**
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
