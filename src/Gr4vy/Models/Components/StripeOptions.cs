@@ -18,21 +18,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Stripe options to support Stripe Connect.
         /// </summary>
-        [JsonProperty("stripe_connect", NullValueHandling = NullValueHandling.Include)]
-        public StripeConnectOptions? StripeConnect
-        {
-            get => _stripeConnect;
-            set
-            {
-                _stripeConnect = value;
-                _stripeConnectSet = true;
-            }
-        }
-
-        private StripeConnectOptions? _stripeConnect = null;
-
-        private bool _stripeConnectSet = false;
-
-        public bool ShouldSerializeStripeConnect() => _stripeConnectSet;
+        [JsonProperty("stripe_connect")]
+        public StripeConnectOptions? StripeConnect { get; set; } = null;
     }
 }

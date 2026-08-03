@@ -9,22 +9,15 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class MockCardOptions
+    public class TransactionAuthorizationIncrementCreate
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// The amount by which to increment the authorization, in the smallest currency unit of the transaction's currency. For example, `1299` cents to increment the authorization by `$12.99`.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
-
-        /// <summary>
-        /// When set to true, prevents retries on failed transactions.
-        /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("amount")]
+        public long Amount { get; set; } = default!;
     }
 }

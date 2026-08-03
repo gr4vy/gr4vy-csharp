@@ -12,6 +12,7 @@
 * [Void](#void) - Void transaction
 * [Cancel](#cancel) - Cancel transaction
 * [Sync](#sync) - Sync transaction
+* [IncrementAuthorization](#incrementauthorization) - Increment transaction authorization
 
 ## List
 
@@ -502,6 +503,63 @@ var res = await sdk.Transactions.SyncAsync(transactionId: "2ee546e0-3b11-478e-af
 ### Response
 
 **[Transaction](../../Models/Components/Transaction.md)**
+
+### Errors
+
+| Error Type                              | Status Code                             | Content Type                            |
+| --------------------------------------- | --------------------------------------- | --------------------------------------- |
+| Gr4vy.Models.Errors.Error400            | 400                                     | application/json                        |
+| Gr4vy.Models.Errors.Error401            | 401                                     | application/json                        |
+| Gr4vy.Models.Errors.Error403            | 403                                     | application/json                        |
+| Gr4vy.Models.Errors.Error404            | 404                                     | application/json                        |
+| Gr4vy.Models.Errors.Error405            | 405                                     | application/json                        |
+| Gr4vy.Models.Errors.Error409            | 409                                     | application/json                        |
+| Gr4vy.Models.Errors.HTTPValidationError | 422                                     | application/json                        |
+| Gr4vy.Models.Errors.Error425            | 425                                     | application/json                        |
+| Gr4vy.Models.Errors.Error429            | 429                                     | application/json                        |
+| Gr4vy.Models.Errors.Error500            | 500                                     | application/json                        |
+| Gr4vy.Models.Errors.Error502            | 502                                     | application/json                        |
+| Gr4vy.Models.Errors.Error504            | 504                                     | application/json                        |
+| Gr4vy.Models.Errors.APIException        | 4XX, 5XX                                | \*/\*                                   |
+
+## IncrementAuthorization
+
+Increment the transaction authorization amount of a given transaction_id.
+
+### Example Usage
+
+<!-- UsageSnippet language="csharp" operationID="increment_transaction_authorization" method="post" path="/transactions/{transaction_id}/authorization/increment" -->
+```csharp
+using Gr4vy;
+using Gr4vy.Models.Components;
+
+var sdk = new Gr4vySDK(
+    merchantAccountId: "default",
+    bearerAuth: "<YOUR_BEARER_TOKEN_HERE>"
+);
+
+var res = await sdk.Transactions.IncrementAuthorizationAsync(
+    transactionId: "7099948d-7286-47e4-aad8-b68f7eb44591",
+    transactionAuthorizationIncrementCreate: new TransactionAuthorizationIncrementCreate() {
+        Amount = 1299,
+    }
+);
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                             | Type                                                                                                                                                                                                  | Required                                                                                                                                                                                              | Description                                                                                                                                                                                           | Example                                                                                                                                                                                               |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `TransactionId`                                                                                                                                                                                       | *string*                                                                                                                                                                                              | :heavy_check_mark:                                                                                                                                                                                    | The unique identifier of the transaction.                                                                                                                                                             | 7099948d-7286-47e4-aad8-b68f7eb44591                                                                                                                                                                  |
+| `TransactionAuthorizationIncrementCreate`                                                                                                                                                             | [TransactionAuthorizationIncrementCreate](../../Models/Components/TransactionAuthorizationIncrementCreate.md)                                                                                         | :heavy_check_mark:                                                                                                                                                                                    | N/A                                                                                                                                                                                                   |                                                                                                                                                                                                       |
+| `MerchantAccountId`                                                                                                                                                                                   | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | The ID of the merchant account to use for this request.                                                                                                                                               | default                                                                                                                                                                                               |
+| `IdempotencyKey`                                                                                                                                                                                      | *string*                                                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                                                    | A unique key that identifies this request. Providing this header will make this an idempotent request. We recommend using V4 UUIDs, or another random string with enough entropy to avoid collisions. | request-12345                                                                                                                                                                                         |
+
+### Response
+
+**[TransactionAuthorizationIncrement](../../Models/Components/TransactionAuthorizationIncrement.md)**
 
 ### Errors
 
