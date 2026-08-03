@@ -207,6 +207,12 @@ namespace Gr4vy.Models.Components
         public bool Disputed { get; set; } = default!;
 
         /// <summary>
+        /// The identifier of the transaction from which this transaction was reauthorized.
+        /// </summary>
+        [JsonProperty("reauthorized_from_transaction_id")]
+        public string? ReauthorizedFromTransactionId { get; set; } = null;
+
+        /// <summary>
         /// Contains information about an airline travel, if applicable.
         /// </summary>
         [JsonProperty("airline")]
