@@ -441,6 +441,7 @@ catch(ArgumentException ex) {
 * [Void](docs/sdks/transactions/README.md#void) - Void transaction
 * [Cancel](docs/sdks/transactions/README.md#cancel) - Cancel transaction
 * [Sync](docs/sdks/transactions/README.md#sync) - Sync transaction
+* [IncrementAuthorization](docs/sdks/transactions/README.md#incrementauthorization) - Increment transaction authorization
 
 #### [Transactions.Actions](docs/sdks/actions/README.md)
 
