@@ -69,6 +69,12 @@ namespace Gr4vy.Models.Components
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
+        /// The date and time when this API key pair was last used to authenticate, or `null` if it has never been used.
+        /// </summary>
+        [JsonProperty("last_used_at")]
+        public DateTime? LastUsedAt { get; set; } = null;
+
+        /// <summary>
         /// The user or API key pair that created this API key pair.
         /// </summary>
         [JsonProperty("creator")]
