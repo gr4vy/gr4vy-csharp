@@ -18,19 +18,61 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Options to pass to the `instrument` resource in the Wpay PayTo API.
         /// </summary>
-        [JsonProperty("instrument")]
-        public WpayPaytoResourceOptions? Instrument { get; set; } = null;
+        [JsonProperty("instrument", NullValueHandling = NullValueHandling.Include)]
+        public WpayPaytoResourceOptions? Instrument
+        {
+            get => _instrument;
+            set
+            {
+                _instrument = value;
+                _instrumentSet = true;
+            }
+        }
+
+        private WpayPaytoResourceOptions? _instrument = null;
+
+        private bool _instrumentSet = false;
+
+        public bool ShouldSerializeInstrument() => _instrumentSet;
 
         /// <summary>
         /// Options to pass to the `payment` resource in the Wpay PayTo API.
         /// </summary>
-        [JsonProperty("payment")]
-        public WpayPaytoResourceOptions? Payment { get; set; } = null;
+        [JsonProperty("payment", NullValueHandling = NullValueHandling.Include)]
+        public WpayPaytoResourceOptions? Payment
+        {
+            get => _payment;
+            set
+            {
+                _payment = value;
+                _paymentSet = true;
+            }
+        }
+
+        private WpayPaytoResourceOptions? _payment = null;
+
+        private bool _paymentSet = false;
+
+        public bool ShouldSerializePayment() => _paymentSet;
 
         /// <summary>
         /// Options to pass to the `refund` resource in the Wpay PayTo API.
         /// </summary>
-        [JsonProperty("refund")]
-        public WpayPaytoResourceOptions? Refund { get; set; } = null;
+        [JsonProperty("refund", NullValueHandling = NullValueHandling.Include)]
+        public WpayPaytoResourceOptions? Refund
+        {
+            get => _refund;
+            set
+            {
+                _refund = value;
+                _refundSet = true;
+            }
+        }
+
+        private WpayPaytoResourceOptions? _refund = null;
+
+        private bool _refundSet = false;
+
+        public bool ShouldSerializeRefund() => _refundSet;
     }
 }
