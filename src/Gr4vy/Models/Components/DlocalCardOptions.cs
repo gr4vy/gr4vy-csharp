@@ -9,22 +9,15 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class MockCardOptions
+    public class DlocalCardOptions
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// Indicates whether to force dlocal hosted 3D Secure authentication for the card transaction.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
-
-        /// <summary>
-        /// When set to true, prevents retries on failed transactions.
-        /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("three_dsecure_force")]
+        public bool? ThreeDsecureForce { get; set; } = null;
     }
 }
