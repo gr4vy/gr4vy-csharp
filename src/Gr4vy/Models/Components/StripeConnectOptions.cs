@@ -17,31 +17,101 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The Stripe Connect account to target using the `Stripe-Account` header.
         /// </summary>
-        [JsonProperty("stripe_account")]
-        public string? StripeAccount { get; set; } = null;
+        [JsonProperty("stripe_account", NullValueHandling = NullValueHandling.Include)]
+        public string? StripeAccount
+        {
+            get => _stripeAccount;
+            set
+            {
+                _stripeAccount = value;
+                _stripeAccountSet = true;
+            }
+        }
+
+        private string? _stripeAccount = null;
+
+        private bool _stripeAccountSet = false;
+
+        public bool ShouldSerializeStripeAccount() => _stripeAccountSet;
 
         /// <summary>
         /// The fee to charge the connected account.
         /// </summary>
-        [JsonProperty("application_fee_amount")]
-        public long? ApplicationFeeAmount { get; set; } = null;
+        [JsonProperty("application_fee_amount", NullValueHandling = NullValueHandling.Include)]
+        public long? ApplicationFeeAmount
+        {
+            get => _applicationFeeAmount;
+            set
+            {
+                _applicationFeeAmount = value;
+                _applicationFeeAmountSet = true;
+            }
+        }
+
+        private long? _applicationFeeAmount = null;
+
+        private bool _applicationFeeAmountSet = false;
+
+        public bool ShouldSerializeApplicationFeeAmount() => _applicationFeeAmountSet;
 
         /// <summary>
         /// The Stripe Connect account to target using the `on_behalf_of` request parameter.
         /// </summary>
-        [JsonProperty("on_behalf_of")]
-        public string? OnBehalfOf { get; set; } = null;
+        [JsonProperty("on_behalf_of", NullValueHandling = NullValueHandling.Include)]
+        public string? OnBehalfOf
+        {
+            get => _onBehalfOf;
+            set
+            {
+                _onBehalfOf = value;
+                _onBehalfOfSet = true;
+            }
+        }
+
+        private string? _onBehalfOf = null;
+
+        private bool _onBehalfOfSet = false;
+
+        public bool ShouldSerializeOnBehalfOf() => _onBehalfOfSet;
 
         /// <summary>
         /// The Stripe Connect account to target using the `transfer_data.destination` request parameter.
         /// </summary>
-        [JsonProperty("transfer_data_destination")]
-        public string? TransferDataDestination { get; set; } = null;
+        [JsonProperty("transfer_data_destination", NullValueHandling = NullValueHandling.Include)]
+        public string? TransferDataDestination
+        {
+            get => _transferDataDestination;
+            set
+            {
+                _transferDataDestination = value;
+                _transferDataDestinationSet = true;
+            }
+        }
+
+        private string? _transferDataDestination = null;
+
+        private bool _transferDataDestinationSet = false;
+
+        public bool ShouldSerializeTransferDataDestination() => _transferDataDestinationSet;
 
         /// <summary>
         /// A string that identifies the payment as part of a group.
         /// </summary>
-        [JsonProperty("transfer_group")]
-        public string? TransferGroup { get; set; } = null;
+        [JsonProperty("transfer_group", NullValueHandling = NullValueHandling.Include)]
+        public string? TransferGroup
+        {
+            get => _transferGroup;
+            set
+            {
+                _transferGroup = value;
+                _transferGroupSet = true;
+            }
+        }
+
+        private string? _transferGroup = null;
+
+        private bool _transferGroupSet = false;
+
+        public bool ShouldSerializeTransferGroup() => _transferGroupSet;
     }
 }
