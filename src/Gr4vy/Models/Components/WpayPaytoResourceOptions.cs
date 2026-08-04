@@ -18,7 +18,21 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Simulate responses for this resource.
         /// </summary>
-        [JsonProperty("simulation")]
-        public WpayPaytoSimulationOptions? Simulation { get; set; } = null;
+        [JsonProperty("simulation", NullValueHandling = NullValueHandling.Include)]
+        public WpayPaytoSimulationOptions? Simulation
+        {
+            get => _simulation;
+            set
+            {
+                _simulation = value;
+                _simulationSet = true;
+            }
+        }
+
+        private WpayPaytoSimulationOptions? _simulation = null;
+
+        private bool _simulationSet = false;
+
+        public bool ShouldSerializeSimulation() => _simulationSet;
     }
 }
