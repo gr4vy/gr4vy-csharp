@@ -9,8 +9,10 @@ namespace Gr4vy.Tests.Processing
 {
     /// <summary>
     /// Transaction operations not covered by the lifecycle flow: manual update
-    /// (metadata round-trip) and cancel (reached at the request level — an already
-    /// authorized mock transaction cannot be cancelled).
+    /// (metadata round-trip), cancel and authorization increment (both reached at
+    /// the request level — an already authorized mock transaction cannot be
+    /// cancelled, and the mock connector does not support incremental
+    /// authorization).
     /// </summary>
     [TestFixture]
     [Parallelizable(ParallelScope.Self)]
@@ -67,6 +69,22 @@ namespace Gr4vy.Tests.Processing
             await Reach.ReachesAsync(
                 () => Client.Transactions.CancelAsync(txn.Id),
                 "transactions.cancel"
+            );
+        }
+
+        [Test]
+        public async Task IncrementAuthorization_IsReached()
+        {
+            // Incremental authorization is a PSP capability the mock connector does
+            // not offer, so we authorize for real and accept a clean rejection.
+            var txn = await AuthorizeAsync();
+            await Reach.ReachesAsync(
+                () =>
+                    Client.Transactions.IncrementAuthorizationAsync(
+                        txn.Id,
+                        new TransactionAuthorizationIncrementCreate { Amount = 500 }
+                    ),
+                "transactions.increment-authorization"
             );
         }
     }
