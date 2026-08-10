@@ -31,7 +31,7 @@ namespace Gr4vy.Models.Components
         public bool? Active { get; set; } = true;
 
         /// <summary>
-        /// The ID of the role to assign to the API key pair. Exactly one role is supported. The caller can only assign a role whose scopes are a subset of its own.
+        /// The IDs of the roles to assign to the API key pair. The caller can only assign roles whose scopes are a subset of its own.
         /// </summary>
         [JsonProperty("role_ids")]
         public List<string> RoleIds { get; set; } = default!;

@@ -18,22 +18,8 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The frequency at which the shopper will be charged. Possible values: weekly, monthly, quarterly, half-yearly, and yearly.
         /// </summary>
-        [JsonProperty("frequency", NullValueHandling = NullValueHandling.Include)]
-        public string? Frequency
-        {
-            get => _frequency;
-            set
-            {
-                _frequency = value;
-                _frequencySet = true;
-            }
-        }
-
-        private string? _frequency = null;
-
-        private bool _frequencySet = false;
-
-        public bool ShouldSerializeFrequency() => _frequencySet;
+        [JsonProperty("frequency")]
+        public string? Frequency { get; set; } = null;
 
         /// <summary>
         /// For a billing plan where the payment amount is fixed, the currency and value for each recurring payment.
@@ -44,61 +30,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Start date of the billing plan, in YYYY-MM-DD format.
         /// </summary>
-        [JsonProperty("startsAt", NullValueHandling = NullValueHandling.Include)]
-        public string? StartsAt
-        {
-            get => _startsAt;
-            set
-            {
-                _startsAt = value;
-                _startsAtSet = true;
-            }
-        }
-
-        private string? _startsAt = null;
-
-        private bool _startsAtSet = false;
-
-        public bool ShouldSerializeStartsAt() => _startsAtSet;
+        [JsonProperty("startsAt")]
+        public string? StartsAt { get; set; } = null;
 
         /// <summary>
         /// End date of the billing plan, in YYYY-MM-DD format. The end date must align with the frequency and the start date of the billing plan. If left blank, the subscription will continue indefinitely unless it is cancelled by the shopper.
         /// </summary>
-        [JsonProperty("endsAt", NullValueHandling = NullValueHandling.Include)]
-        public string? EndsAt
-        {
-            get => _endsAt;
-            set
-            {
-                _endsAt = value;
-                _endsAtSet = true;
-            }
-        }
-
-        private string? _endsAt = null;
-
-        private bool _endsAtSet = false;
-
-        public bool ShouldSerializeEndsAt() => _endsAtSet;
+        [JsonProperty("endsAt")]
+        public string? EndsAt { get; set; } = null;
 
         /// <summary>
         /// The text that that will be shown on the shopper's bank statement for the recurring payments. We recommend to add a descriptive text about the subscription to let your shoppers recognize your recurring payments.
         /// </summary>
-        [JsonProperty("recurringStatement", NullValueHandling = NullValueHandling.Include)]
-        public string? RecurringStatement
-        {
-            get => _recurringStatement;
-            set
-            {
-                _recurringStatement = value;
-                _recurringStatementSet = true;
-            }
-        }
-
-        private string? _recurringStatement = null;
-
-        private bool _recurringStatementSet = false;
-
-        public bool ShouldSerializeRecurringStatement() => _recurringStatementSet;
+        [JsonProperty("recurringStatement")]
+        public string? RecurringStatement { get; set; } = null;
     }
 }
