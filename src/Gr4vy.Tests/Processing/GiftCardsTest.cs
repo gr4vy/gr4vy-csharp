@@ -8,9 +8,10 @@ namespace Gr4vy.Tests.Processing
 {
     /// <summary>
     /// Gift card endpoints. The mock environment has no gift-card service, so
-    /// create/get/delete/balances are exercised at the request level (a real
-    /// request is sent and a documented API error is accepted) while list is a
-    /// happy path. This keeps every gift-card operation reached, never skipped.
+    /// create/get/delete/balances/activations/issuances are exercised at the
+    /// request level (a real request is sent and a documented API error is
+    /// accepted) while list is a happy path. This keeps every gift-card
+    /// operation reached, never skipped.
     /// </summary>
     [TestFixture]
     [Parallelizable(ParallelScope.Self)]
@@ -49,6 +50,43 @@ namespace Gr4vy.Tests.Processing
             await Reach.ReachesAsync(
                 () => Client.GiftCards.DeleteAsync(MissingId),
                 "gift-cards.delete"
+            );
+        }
+
+        [Test]
+        public async Task GiftCardActivation_IsReached()
+        {
+            // Activating a gift card needs a configured gift-card service.
+            await Reach.ReachesAsync(
+                () =>
+                    Client.GiftCards.Activations.CreateAsync(
+                        new GiftCardActivationCreate
+                        {
+                            Number = "4111111111111111",
+                            Pin = "1234",
+                            Amount = 1299,
+                            Currency = "USD",
+                        }
+                    ),
+                "gift-cards.activations.create"
+            );
+        }
+
+        [Test]
+        public async Task GiftCardIssuance_IsReached()
+        {
+            // Issuing a gift card needs a configured gift-card service with a theme.
+            await Reach.ReachesAsync(
+                () =>
+                    Client.GiftCards.Issuances.CreateAsync(
+                        new GiftCardIssuanceCreate
+                        {
+                            Theme = "default",
+                            Amount = 1299,
+                            Currency = "USD",
+                        }
+                    ),
+                "gift-cards.issuances.create"
             );
         }
     }
