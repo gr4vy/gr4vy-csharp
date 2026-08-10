@@ -20,12 +20,16 @@ public static class JWTScope
     public const string AntiFraudServiceDefinitionsWrite = "anti-fraud-service-definitions.write";
     public const string AntiFraudServicesRead = "anti-fraud-services.read";
     public const string AntiFraudServicesWrite = "anti-fraud-services.write";
+    public const string ApiKeyPairsRead = "api-key-pairs.read";
+    public const string ApiKeyPairsWrite = "api-key-pairs.write";
     public const string ApiLogsRead = "api-logs.read";
     public const string ApiLogsWrite = "api-logs.write";
     public const string ApplePayCertificatesRead = "apple-pay-certificates.read";
     public const string ApplePayCertificatesWrite = "apple-pay-certificates.write";
     public const string AuditLogsRead = "audit-logs.read";
     public const string AuditLogsWrite = "audit-logs.write";
+    public const string BinCheckerRead = "bin-checker.read";
+    public const string BinCheckerWrite = "bin-checker.write";
     public const string BuyersRead = "buyers.read";
     public const string BuyersWrite = "buyers.write";
     public const string BuyersBillingDetailsRead = "buyers.billing-details.read";
@@ -66,6 +70,8 @@ public static class JWTScope
     public const string ReportsWrite = "reports.write";
     public const string RolesRead = "roles.read";
     public const string RolesWrite = "roles.write";
+    public const string ThreeDSScenariosRead = "three-ds-scenarios.read";
+    public const string ThreeDSScenariosWrite = "three-ds-scenarios.write";
     public const string TransactionsRead = "transactions.read";
     public const string TransactionsWrite = "transactions.write";
     public const string UsersMeRead = "users.me.read";
