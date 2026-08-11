@@ -18,101 +18,31 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Set to `true` to enable Auto Rescue for a transaction. Use the `maxDaysToRescue` to specify a rescue window.
         /// </summary>
-        [JsonProperty("autoRescue", NullValueHandling = NullValueHandling.Include)]
-        public bool? AutoRescue
-        {
-            get => _autoRescue;
-            set
-            {
-                _autoRescue = value;
-                _autoRescueSet = true;
-            }
-        }
-
-        private bool? _autoRescue = null;
-
-        private bool _autoRescueSet = false;
-
-        public bool ShouldSerializeAutoRescue() => _autoRescueSet;
+        [JsonProperty("autoRescue")]
+        public bool? AutoRescue { get; set; } = null;
 
         /// <summary>
         /// The rescue window for a transaction, in days, when `autoRescue` is set to `true`. You can specify a value between 1 and 48. For cards, the default is one calendar month. For SEPA, the default is 42 days.
         /// </summary>
-        [JsonProperty("maxDaysToRescue", NullValueHandling = NullValueHandling.Include)]
-        public long? MaxDaysToRescue
-        {
-            get => _maxDaysToRescue;
-            set
-            {
-                _maxDaysToRescue = value;
-                _maxDaysToRescueSet = true;
-            }
-        }
-
-        private long? _maxDaysToRescue = null;
-
-        private bool _maxDaysToRescueSet = false;
-
-        public bool ShouldSerializeMaxDaysToRescue() => _maxDaysToRescueSet;
+        [JsonProperty("maxDaysToRescue")]
+        public long? MaxDaysToRescue { get; set; } = null;
 
         /// <summary>
         /// Passes additional data to the Adyen API when creating a transaction.
         /// </summary>
-        [JsonProperty("additionalData", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? AdditionalData
-        {
-            get => _additionalData;
-            set
-            {
-                _additionalData = value;
-                _additionalDataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _additionalData = null;
-
-        private bool _additionalDataSet = false;
-
-        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
+        [JsonProperty("additionalData")]
+        public Dictionary<string, string>? AdditionalData { get; set; } = null;
 
         /// <summary>
         /// The rescue scenario to simulate for a transaction, when `autoRescue` is set to `true`.
         /// </summary>
-        [JsonProperty("autoRescueSepaScenario", NullValueHandling = NullValueHandling.Include)]
-        public string? AutoRescueSepaScenario
-        {
-            get => _autoRescueSepaScenario;
-            set
-            {
-                _autoRescueSepaScenario = value;
-                _autoRescueSepaScenarioSet = true;
-            }
-        }
-
-        private string? _autoRescueSepaScenario = null;
-
-        private bool _autoRescueSepaScenarioSet = false;
-
-        public bool ShouldSerializeAutoRescueSepaScenario() => _autoRescueSepaScenarioSet;
+        [JsonProperty("autoRescueSepaScenario")]
+        public string? AutoRescueSepaScenario { get; set; } = null;
 
         /// <summary>
         /// The name on the SEPA bank account.
         /// </summary>
-        [JsonProperty("ownerName", NullValueHandling = NullValueHandling.Include)]
-        public string? OwnerName
-        {
-            get => _ownerName;
-            set
-            {
-                _ownerName = value;
-                _ownerNameSet = true;
-            }
-        }
-
-        private string? _ownerName = null;
-
-        private bool _ownerNameSet = false;
-
-        public bool ShouldSerializeOwnerName() => _ownerNameSet;
+        [JsonProperty("ownerName")]
+        public string? OwnerName { get; set; } = null;
     }
 }
