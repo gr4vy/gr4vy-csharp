@@ -12,6 +12,7 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class Role
     {
@@ -24,10 +25,34 @@ namespace Gr4vy.Models.Components
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
+        /// <summary>
+        /// The unique, human-readable identifier for the role.
+        /// </summary>
+        [JsonProperty("slug")]
+        public string Slug { get; set; } = default!;
+
         [JsonProperty("description")]
         public string Description { get; set; } = default!;
 
         [JsonProperty("permissions")]
         public PermissionSet Permissions { get; set; } = default!;
+
+        /// <summary>
+        /// The types of resource this role can be assigned to.
+        /// </summary>
+        [JsonProperty("assignable_to")]
+        public List<string> AssignableTo { get; set; } = default!;
+
+        /// <summary>
+        /// The slugs of the roles this role is an add-on of. Empty when this role is not an add-on.
+        /// </summary>
+        [JsonProperty("applies_to")]
+        public List<string> AppliesTo { get; set; } = default!;
+
+        /// <summary>
+        /// Whether this role can be assigned on its own, without being combined with another role.
+        /// </summary>
+        [JsonProperty("is_standalone_assignable")]
+        public bool IsStandaloneAssignable { get; set; } = default!;
     }
 }
