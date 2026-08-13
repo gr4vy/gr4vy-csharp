@@ -7,21 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Gr4vy.Models.Components
+namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
+    using System;
+    using System.Threading.Tasks;
 
-    /// <summary>
-    /// The permissions granted by a role.
-    /// </summary>
-    public class PermissionSet
+    public class ListRolesResponse
     {
-        /// <summary>
-        /// The scopes granted by this role.
-        /// </summary>
-        [JsonProperty("allow")]
-        public List<string> Allow { get; set; } = default!;
+        public Func<Task<ListRolesResponse?>>? Next {get;set;}
+        [SpeakeasyMetadata("")]
+        public CollectionRole Result { get; set; } = default!;
     }
 }

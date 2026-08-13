@@ -424,6 +424,10 @@ catch(ArgumentException ex) {
 * [Url](docs/sdks/executions/README.md#url) - Create URL for executed report
 * [Get](docs/sdks/executions/README.md#get) - Get executed report
 
+### [Roles](docs/sdks/roles/README.md)
+
+* [List](docs/sdks/roles/README.md#list) - List all roles
+
 ### [ThreeDsScenarios](docs/sdks/threedsscenarios/README.md)
 
 * [Create](docs/sdks/threedsscenarios/README.md#create) - Create a 3DS scenario

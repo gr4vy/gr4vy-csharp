@@ -7,21 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Gr4vy.Models.Components
+namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Utils;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
 
-    /// <summary>
-    /// The permissions granted by a role.
-    /// </summary>
-    public class PermissionSet
+    public class ListRolesRequest
     {
         /// <summary>
-        /// The scopes granted by this role.
+        /// A pointer to the page of results to return.
         /// </summary>
-        [JsonProperty("allow")]
-        public List<string> Allow { get; set; } = default!;
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=cursor")]
+        public string? Cursor { get; set; } = null;
+
+        /// <summary>
+        /// The maximum number of items that are returned.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
+        public long? Limit { get; set; } = 20;
     }
 }

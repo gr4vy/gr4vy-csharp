@@ -56,6 +56,8 @@ namespace Gr4vy
 
         public ICheckoutSessions CheckoutSessions { get; }
 
+        public IRoles Roles { get; }
+
         public IMerchantAccounts MerchantAccounts { get; }
 
         public IThreeDsScenarios ThreeDsScenarios { get; }
@@ -139,6 +141,10 @@ namespace Gr4vy
         /// </summary>
         public ICheckoutSessions CheckoutSessions { get; private set; }
         /// <summary>
+        /// The Roles sub-SDK.
+        /// </summary>
+        public IRoles Roles { get; private set; }
+        /// <summary>
         /// The MerchantAccounts sub-SDK.
         /// </summary>
         public IMerchantAccounts MerchantAccounts { get; private set; }
@@ -195,6 +201,8 @@ namespace Gr4vy
             ReportExecutions = new ReportExecutions(SDKConfiguration);
 
             CheckoutSessions = new CheckoutSessions(SDKConfiguration);
+
+            Roles = new Roles(SDKConfiguration);
 
             MerchantAccounts = new MerchantAccounts(SDKConfiguration);
 
@@ -300,6 +308,8 @@ namespace Gr4vy
             ReportExecutions = new ReportExecutions(SDKConfiguration);
 
             CheckoutSessions = new CheckoutSessions(SDKConfiguration);
+
+            Roles = new Roles(SDKConfiguration);
 
             MerchantAccounts = new MerchantAccounts(SDKConfiguration);
 
