@@ -7,18 +7,17 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Gr4vy.Models.Components
+namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
+    using System;
+    using System.Threading.Tasks;
 
-    public class AdyenOptions
+    public class ListRolesResponse
     {
-        /// <summary>
-        /// Passes additional data to the Adyen API when creating a transaction.
-        /// </summary>
-        [JsonProperty("additionalData")]
-        public Dictionary<string, string>? AdditionalData { get; set; } = null;
+        public Func<Task<ListRolesResponse?>>? Next {get;set;}
+        [SpeakeasyMetadata("")]
+        public CollectionRole Result { get; set; } = default!;
     }
 }

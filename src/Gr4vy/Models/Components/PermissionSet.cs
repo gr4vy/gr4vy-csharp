@@ -13,8 +13,14 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
+    /// <summary>
+    /// The permissions granted by a role.
+    /// </summary>
     public class PermissionSet
     {
+        /// <summary>
+        /// The scopes granted by this role.
+        /// </summary>
         [JsonProperty("allow")]
         public List<string> Allow { get; set; } = default!;
     }

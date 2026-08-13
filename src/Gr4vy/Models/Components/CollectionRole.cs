@@ -14,24 +14,30 @@ namespace Gr4vy.Models.Components
     using Newtonsoft.Json;
     using System.Collections.Generic;
 
-    public class ForterAntiFraudOptionsCartItem
+    public class CollectionRole
     {
         /// <summary>
-        /// Basic information about the cart item.
+        /// A list of items returned for this request.
         /// </summary>
-        [JsonProperty("basic_item_data")]
-        public ForterAntiFraudOptionsCartItemBasicItemData? BasicItemData { get; set; } = null;
+        [JsonProperty("items")]
+        public List<Role> Items { get; set; } = default!;
 
         /// <summary>
-        /// Details about how the item will be delivered.
+        /// The number of items for this page.
         /// </summary>
-        [JsonProperty("delivery_details")]
-        public ForterAntiFraudOptionsCartItemDeliveryDetails? DeliveryDetails { get; set; } = null;
+        [JsonProperty("limit")]
+        public long? Limit { get; set; } = 20;
 
         /// <summary>
-        /// List of beneficiaries who will receive this item.
+        /// The cursor pointing at the next page of items.
         /// </summary>
-        [JsonProperty("beneficiaries")]
-        public List<ForterAntiFraudOptionsCartItemBeneficiary>? Beneficiaries { get; set; } = null;
+        [JsonProperty("next_cursor")]
+        public string? NextCursor { get; set; } = null;
+
+        /// <summary>
+        /// The cursor pointing at the previous page of items.
+        /// </summary>
+        [JsonProperty("previous_cursor")]
+        public string? PreviousCursor { get; set; } = null;
     }
 }

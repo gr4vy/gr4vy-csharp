@@ -16,12 +16,21 @@ namespace Gr4vy.Models.Components
 
     public class Role
     {
+        /// <summary>
+        /// Always `role`.
+        /// </summary>
         [JsonProperty("type")]
         public string Type { get; } = "role";
 
+        /// <summary>
+        /// The unique ID for the role.
+        /// </summary>
         [JsonProperty("id")]
         public string Id { get; set; } = default!;
 
+        /// <summary>
+        /// The human-readable name of the role.
+        /// </summary>
         [JsonProperty("name")]
         public string Name { get; set; } = default!;
 
@@ -31,9 +40,15 @@ namespace Gr4vy.Models.Components
         [JsonProperty("slug")]
         public string Slug { get; set; } = default!;
 
+        /// <summary>
+        /// A description of the access this role grants.
+        /// </summary>
         [JsonProperty("description")]
         public string Description { get; set; } = default!;
 
+        /// <summary>
+        /// The permissions granted by a role.
+        /// </summary>
         [JsonProperty("permissions")]
         public PermissionSet Permissions { get; set; } = default!;
 

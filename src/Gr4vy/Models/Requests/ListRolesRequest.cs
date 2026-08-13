@@ -7,24 +7,22 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 #nullable enable
-namespace Gr4vy.Models.Components
+namespace Gr4vy.Models.Requests
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
-    using Newtonsoft.Json;
 
-    public class MockCardOptions
+    public class ListRolesRequest
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// A pointer to the page of results to return.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=cursor")]
+        public string? Cursor { get; set; } = null;
 
         /// <summary>
-        /// When set to true, prevents retries on failed transactions.
+        /// The maximum number of items that are returned.
         /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")]
+        public long? Limit { get; set; } = 20;
     }
 }
