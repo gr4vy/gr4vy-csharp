@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 00b93b9a9487bbc814897efe8cdb5ce8
+  docChecksum: c656daa82ebbbb136c4fff048bb9db74
   docVersion: 1.0.0
   speakeasyVersion: 1.796.0
   generationVersion: 2.932.15
-  releaseVersion: 2.10.6
-  configChecksum: 8f4d05cb047acba73b292ba2b7786d26
+  releaseVersion: 2.10.7
+  configChecksum: c9b0d8fe8c2f1c5e64be04637bbb4281
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: a762f754-4006-4b3c-a367-00e2c05e25e0
-  pristine_commit_hash: b476d2f6c079d4a7095cf6e9bf7cdaf5bed23a8f
-  pristine_tree_hash: a95b28f574a7b1f325fa86fef431f38ed8446752
+  generation_id: 2ab5b326-3afe-4ec3-8597-6c6b7b593ff8
+  pristine_commit_hash: 7579c00e76ccf6ec0dee1b33ed7730c1d1d64f45
+  pristine_tree_hash: 85ee23a24a0aafd34d3205bc4c521d7677005ea5
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -57,8 +57,8 @@ trackedFiles:
     pristine_git_object: b73cd1e8957859fddd6e8311354794e21424a0aa
   docs/Models/Components/ACHBankPaymentMethodCreate.md:
     id: 7f6eac8c63fc
-    last_write_checksum: sha1:40cadb2362e664765f46029bf74a5286eb74ea2c
-    pristine_git_object: 4a502ae5a435a4b1af14cd401f195aa85c937e50
+    last_write_checksum: sha1:f4dd92865d4d7499c59cbd497b55abfedf3d1db5
+    pristine_git_object: aeeacd7f5f3609284b14615298c02444a1489f32
   docs/Models/Components/APIKeyPair.md:
     id: c5ac3fd7eb82
     last_write_checksum: sha1:3966eb0bc5377dfe96007f56b7ae0fea9195be1e
@@ -2165,8 +2165,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:2268c857b559341d8e4fa6ef580c1a7af6f0e771
-    pristine_git_object: 5b6aa0fcadfd4a285b830ad58ff74fa8bda37d49
+    last_write_checksum: sha1:e266d5c9ffc5c8b15839d0e06c5d6b7380e73033
+    pristine_git_object: 9bd9d5edb9f852abc65409d9ec1fdf002e9cb332
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:42798416e271ab46961e81505088b60a0e045e68
@@ -2193,8 +2193,8 @@ trackedFiles:
     pristine_git_object: d63b55fd0ac95f60078965812c51410b969a193a
   src/Gr4vy/Models/Components/ACHBankPaymentMethodCreate.cs:
     id: 278e34244f10
-    last_write_checksum: sha1:cde298a24ffff3af3ac0ba27eba294ad18538b48
-    pristine_git_object: 1275c219f25246a523322685a3e9f00cae3dbf4f
+    last_write_checksum: sha1:864b4c1b9f16801c7388b1476dfada7f0c4f6884
+    pristine_git_object: a00ae87ea227f114aae76f2c8b80c32e707dfb4f
   src/Gr4vy/Models/Components/APIKeyPair.cs:
     id: 17488aa56eea
     last_write_checksum: sha1:5e7883ae2eef400c74b1493b1f31d66f54a1b29e
@@ -4121,8 +4121,8 @@ trackedFiles:
     pristine_git_object: a7053ccd58775f2c7ff2f6401ba068fb96871c48
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:b5a592473dd888436f34ccec179bd19be1b105d6
-    pristine_git_object: b65fc9e037ad5fb6ea15be4c1b4bbce8f98a8190
+    last_write_checksum: sha1:b9c960af94584ce5b7b4b203ea60ead75a50101a
+    pristine_git_object: f731b60085695c5ba14ec4d2011fdb1321649a3e
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4161,8 +4161,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:8935dc57561b17d9afc7310517aad8ca941ae6f8
-    pristine_git_object: 857d76b89968a6c24e928237e6012ea4bab3b9c4
+    last_write_checksum: sha1:f7b809015159fc10c7620b0381676fa91468051c
+    pristine_git_object: 1cb00aecf1530e39a5e77ddfe79866559fa7e2a0
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8542,7 +8542,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.PaymentServices.List()`: \n  *  `request.IncludeFields` **Added**\n"
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.PaymentMethods.Create()`: \n  *  `requestBody.union(ACHBankPaymentMethodCreate).AccountType` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
