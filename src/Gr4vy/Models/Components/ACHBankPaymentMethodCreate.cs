@@ -72,9 +72,9 @@ namespace Gr4vy.Models.Components
         public bool? IsTokenized { get; set; } = false;
 
         /// <summary>
-        /// Specify whether this is a `checking` or `savings` account.
+        /// Specify whether this is a `checking` or `savings` account. Defaults to `checking`.
         /// </summary>
         [JsonProperty("account_type")]
-        public string AccountType { get; set; } = default!;
+        public string? AccountType { get; set; } = "checking";
     }
 }
