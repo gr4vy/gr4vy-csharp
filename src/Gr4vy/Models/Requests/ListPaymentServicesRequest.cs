@@ -38,6 +38,12 @@ namespace Gr4vy.Models.Requests
         public bool? Deleted { get; set; } = null;
 
         /// <summary>
+        /// Include the non-secret credential and reporting fields for each payment service. Disable this to reduce response time if you don't need them.
+        /// </summary>
+        [SpeakeasyMetadata("queryParam:style=form,explode=true,name=include_fields")]
+        public bool? IncludeFields { get; set; } = true;
+
+        /// <summary>
         /// The ID of the merchant account to use for this request.
         /// </summary>
         [SpeakeasyMetadata("header:style=simple,explode=false,name=x-gr4vy-merchant-account-id")]

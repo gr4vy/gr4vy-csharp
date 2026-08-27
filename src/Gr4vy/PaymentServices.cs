@@ -390,6 +390,7 @@ namespace Gr4vy
                     Cursor = nextCursor,
                     Limit = request?.Limit,
                     Deleted = request?.Deleted,
+                    IncludeFields = request?.IncludeFields,
                     MerchantAccountId = request?.MerchantAccountId
                 };
 
