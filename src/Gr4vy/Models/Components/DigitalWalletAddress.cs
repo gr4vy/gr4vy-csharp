@@ -17,101 +17,31 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The first line of the address.
         /// </summary>
-        [JsonProperty("line1", NullValueHandling = NullValueHandling.Include)]
-        public string Line1
-        {
-            get => _line1;
-            set
-            {
-                _line1 = value;
-                _line1Set = true;
-            }
-        }
-
-        private string _line1 = default!;
-
-        private bool _line1Set = true;
-
-        public bool ShouldSerializeLine1() => _line1Set;
+        [JsonProperty("line1")]
+        public string Line1 { get; set; } = default!;
 
         /// <summary>
         /// The second line of the address.
         /// </summary>
-        [JsonProperty("line2", NullValueHandling = NullValueHandling.Include)]
-        public string? Line2
-        {
-            get => _line2;
-            set
-            {
-                _line2 = value;
-                _line2Set = true;
-            }
-        }
-
-        private string? _line2 = null;
-
-        private bool _line2Set = false;
-
-        public bool ShouldSerializeLine2() => _line2Set;
+        [JsonProperty("line2")]
+        public string? Line2 { get; set; } = null;
 
         /// <summary>
         /// The city for the address.
         /// </summary>
-        [JsonProperty("city", NullValueHandling = NullValueHandling.Include)]
-        public string City
-        {
-            get => _city;
-            set
-            {
-                _city = value;
-                _citySet = true;
-            }
-        }
-
-        private string _city = default!;
-
-        private bool _citySet = true;
-
-        public bool ShouldSerializeCity() => _citySet;
+        [JsonProperty("city")]
+        public string City { get; set; } = default!;
 
         /// <summary>
         /// The code of state, county, or province for the address in ISO 3166-2 format.
         /// </summary>
-        [JsonProperty("state_code", NullValueHandling = NullValueHandling.Include)]
-        public string StateCode
-        {
-            get => _stateCode;
-            set
-            {
-                _stateCode = value;
-                _stateCodeSet = true;
-            }
-        }
-
-        private string _stateCode = default!;
-
-        private bool _stateCodeSet = true;
-
-        public bool ShouldSerializeStateCode() => _stateCodeSet;
+        [JsonProperty("state_code")]
+        public string StateCode { get; set; } = default!;
 
         /// <summary>
         /// The zip or postal code for the address.
         /// </summary>
-        [JsonProperty("postal_code", NullValueHandling = NullValueHandling.Include)]
-        public string PostalCode
-        {
-            get => _postalCode;
-            set
-            {
-                _postalCode = value;
-                _postalCodeSet = true;
-            }
-        }
-
-        private string _postalCode = default!;
-
-        private bool _postalCodeSet = true;
-
-        public bool ShouldSerializePostalCode() => _postalCodeSet;
+        [JsonProperty("postal_code")]
+        public string PostalCode { get; set; } = default!;
     }
 }
