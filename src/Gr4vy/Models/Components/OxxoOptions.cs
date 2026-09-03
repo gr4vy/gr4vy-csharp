@@ -17,13 +17,41 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Defines a custom expiration time (unix time) after which Oxxo payment requests are cancelled.
         /// </summary>
-        [JsonProperty("payment_method_expires_at")]
-        public long? PaymentMethodExpiresAt { get; set; } = null;
+        [JsonProperty("payment_method_expires_at", NullValueHandling = NullValueHandling.Include)]
+        public long? PaymentMethodExpiresAt
+        {
+            get => _paymentMethodExpiresAt;
+            set
+            {
+                _paymentMethodExpiresAt = value;
+                _paymentMethodExpiresAtSet = true;
+            }
+        }
+
+        private long? _paymentMethodExpiresAt = null;
+
+        private bool _paymentMethodExpiresAtSet = false;
+
+        public bool ShouldSerializePaymentMethodExpiresAt() => _paymentMethodExpiresAtSet;
 
         /// <summary>
         /// Approval URL that will receive a charge payment method reference.
         /// </summary>
-        [JsonProperty("approval_url")]
-        public string? ApprovalUrl { get; set; } = null;
+        [JsonProperty("approval_url", NullValueHandling = NullValueHandling.Include)]
+        public string? ApprovalUrl
+        {
+            get => _approvalUrl;
+            set
+            {
+                _approvalUrl = value;
+                _approvalUrlSet = true;
+            }
+        }
+
+        private string? _approvalUrl = null;
+
+        private bool _approvalUrlSet = false;
+
+        public bool ShouldSerializeApprovalUrl() => _approvalUrlSet;
     }
 }
