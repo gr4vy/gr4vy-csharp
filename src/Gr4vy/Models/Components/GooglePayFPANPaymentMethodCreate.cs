@@ -70,5 +70,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("security_code")]
         public object? SecurityCode { get; set; } = null;
+
+        /// <summary>
+        /// Expiry of the Google Pay token the PAN was decrypted from, as milliseconds since the epoch.
+        /// </summary>
+        [JsonProperty("message_expiration")]
+        public string? MessageExpiration { get; set; } = null;
     }
 }

@@ -448,26 +448,6 @@ namespace Gr4vy.Models.Components
 
                 try
                 {
-                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.GooglePayFPANPaymentMethodCreate)
-                    {
-                        GooglePayFPANPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<GooglePayFPANPaymentMethodCreate>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(GooglePayFPANPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.GooglePayFPANPaymentMethodCreate), "GooglePayFPANPaymentMethodCreate"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                try
-                {
                     return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.GooglePayPaymentMethodCreate)
                     {
                         GooglePayPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<GooglePayPaymentMethodCreate>(json)
@@ -516,6 +496,26 @@ namespace Gr4vy.Models.Components
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(PazePaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.PazePaymentMethodCreate), "PazePaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.GooglePayFPANPaymentMethodCreate)
+                    {
+                        GooglePayFPANPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<GooglePayFPANPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(GooglePayFPANPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.GooglePayFPANPaymentMethodCreate), "GooglePayFPANPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
