@@ -38,7 +38,7 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeExpirationDate() => _expirationDateSet;
 
         /// <summary>
-        /// A scheme transaction identifier to associate with this payment method. Explicitly setting this field to `null` will also clear `scheme_transaction_id_scheme` as a side-effect. When setting a new value and `scheme_transaction_id_scheme` is both omitted from the payload and previously unset,`scheme_transaction_id_scheme` will be populated from the payment method's existing `scheme`.
+        /// A scheme transaction identifier to associate with this payment method. Explicitly setting this field to `null` will also clear `scheme_transaction_id_scheme` as a side-effect. When setting a new value and `scheme_transaction_id_scheme` is both omitted from the payload and previously unset, `scheme_transaction_id_scheme` will be populated from the payment method's existing `scheme`.
         /// </summary>
         [JsonProperty("scheme_transaction_id", NullValueHandling = NullValueHandling.Include)]
         public string? SchemeTransactionId
@@ -58,7 +58,7 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeSchemeTransactionId() => _schemeTransactionIdSet;
 
         /// <summary>
-        /// The scheme associated with `scheme_transaction_id`. Only applies to card payments. When setting a new value for `scheme_transaction_id`, if `scheme_transaction_id_scheme`is both omitted from the payload and previously unset, `scheme_transaction_id_scheme` will be populated from the payment method's existing `scheme`.
+        /// The scheme associated with `scheme_transaction_id`. Only applies to card payments. When setting a new value for `scheme_transaction_id`, if `scheme_transaction_id_scheme` is both omitted from the payload and previously unset, `scheme_transaction_id_scheme` will be populated from the payment method's existing `scheme`.
         /// </summary>
         [JsonProperty("scheme_transaction_id_scheme", NullValueHandling = NullValueHandling.Include)]
         public string? SchemeTransactionIdScheme
