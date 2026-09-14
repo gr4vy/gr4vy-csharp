@@ -9,22 +9,15 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class MockCardOptions
+    public class PaypalDirectOrderOptions
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// The ID of an existing PayPal order that was already created and approved by the buyer entirely outside of Gr4vy. Gr4vy retrieves this order and authorizes (or captures) it directly, without creating an order of its own.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
-
-        /// <summary>
-        /// When set to true, prevents retries on failed transactions.
-        /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("order_id")]
+        public string OrderId { get; set; } = default!;
     }
 }
