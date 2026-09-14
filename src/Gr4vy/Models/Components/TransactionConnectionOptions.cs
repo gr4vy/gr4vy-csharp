@@ -1056,6 +1056,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializePaypalPaypal() => _paypalPaypalSet;
 
         /// <summary>
+        /// Custom options to be passed to the `paypal-paypaldirectorder` connector.
+        /// </summary>
+        [JsonProperty("paypal-paypaldirectorder", NullValueHandling = NullValueHandling.Include)]
+        public PaypalDirectOrderOptions? PaypalPaypaldirectorder
+        {
+            get => _paypalPaypaldirectorder;
+            set
+            {
+                _paypalPaypaldirectorder = value;
+                _paypalPaypaldirectorderSet = true;
+            }
+        }
+
+        private PaypalDirectOrderOptions? _paypalPaypaldirectorder = null;
+
+        private bool _paypalPaypaldirectorderSet = false;
+
+        public bool ShouldSerializePaypalPaypaldirectorder() => _paypalPaypaldirectorderSet;
+
+        /// <summary>
         /// Custom options to be passed to the `paypal-paypalpaylater` connector.
         /// </summary>
         [JsonProperty("paypal-paypalpaylater", NullValueHandling = NullValueHandling.Include)]

@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 949b831c8b5de47392e424c6c056ddf4
+  docChecksum: 7310ca9d88cc6a3e9c57f0b7298351d9
   docVersion: 1.0.0
-  speakeasyVersion: 1.796.4
-  generationVersion: 2.935.1
-  releaseVersion: 2.10.11
-  configChecksum: ece0843ce5c0b26a7cc22bee6e144c42
+  speakeasyVersion: 1.797.0
+  generationVersion: 2.937.18
+  releaseVersion: 2.10.12
+  configChecksum: d7647b463ff2be9f4e79f3d10595ad8f
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: dd85b941-65f1-4762-8f43-a06c30daa6f9
-  pristine_commit_hash: f0937179a72e844211569adc00b005717247b463
-  pristine_tree_hash: 8e871aac1b122263fa3d3fd5b8f77b964732005b
+  generation_id: a9520f6b-1aea-4acf-b1af-611123360f0e
+  pristine_commit_hash: b14ea4f3b0a4376a39d20ed98ff30c0a0bd04a12
+  pristine_tree_hash: 6a172d5e895d9d6360214fed2a0ccd607e4d7327
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -807,6 +807,10 @@ trackedFiles:
     id: 97e7f67e6dbf
     last_write_checksum: sha1:70e63ef3aadfbb0e1f085924cd2cdb2286cca506
     pristine_git_object: 6e1158d3c5bbdb8105b76daacda7a88d9f636cc9
+  docs/Models/Components/PaypalDirectOrderOptions.md:
+    id: 4a4118ce0fd4
+    last_write_checksum: sha1:ac07b323a6a5b18ad406b0114cef834c6a447eb6
+    pristine_git_object: 19e9480532c8fa598690e81ad3dd8950c2746236
   docs/Models/Components/PaypalOptions.md:
     id: 95376f8186fb
     last_write_checksum: sha1:78c92a2a9cc9dc96db3d52c1bbfe8717e46a591d
@@ -1201,8 +1205,8 @@ trackedFiles:
     pristine_git_object: 5aa2db6e2c89d7c92129980e976277e6be1654b5
   docs/Models/Components/TransactionConnectionOptions.md:
     id: 4cb8597cc3b4
-    last_write_checksum: sha1:cf4c8ecb1403f19352ced9412b61211890adfd83
-    pristine_git_object: 2681b306ae83ae7dc63419a3c257513566c73b19
+    last_write_checksum: sha1:e4f0f38633f28b3cf0ece85ea20a6bc4478e4947
+    pristine_git_object: f5e768ff7aacf61bd77c95438553ca11d0ca1a62
   docs/Models/Components/TransactionCreate.md:
     id: d1e261241de9
     last_write_checksum: sha1:e1ff081f145668b846950b6ca04b2ab6841b2a7b
@@ -2165,8 +2169,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:6bc3b85bbdc1fd6add3490d7f1b5b35ca32e396e
-    pristine_git_object: 73440fa6fa794f11b2148f4c2689e2e30cac53ed
+    last_write_checksum: sha1:c3ced278c61cfd086bfb8be7c40b154450cc71bc
+    pristine_git_object: 36f63a86ffa2b067a7051d1d5a58c08fb55333e2
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:42798416e271ab46961e81505088b60a0e045e68
@@ -2943,6 +2947,10 @@ trackedFiles:
     id: 7e90a4e24624
     last_write_checksum: sha1:933ee693f2141f20fed8bb4f5808959af8d0b712
     pristine_git_object: 21a0f772ca8434e253bbf80b593067eeaa89b69b
+  src/Gr4vy/Models/Components/PaypalDirectOrderOptions.cs:
+    id: 3b39b59af2df
+    last_write_checksum: sha1:a31b01fa843ed6c017a39d6499ed015ef3971c22
+    pristine_git_object: 26391e1a7f6e9831d9bcea24ee55a1b49a3b276f
   src/Gr4vy/Models/Components/PaypalOptions.cs:
     id: 6af8f811d0bb
     last_write_checksum: sha1:bbaec7d3f0c64b37e0148c8265ddf67e5c4b5cd0
@@ -3337,8 +3345,8 @@ trackedFiles:
     pristine_git_object: 543e6651abe5c16623beba0ab140b70fbc923c9c
   src/Gr4vy/Models/Components/TransactionConnectionOptions.cs:
     id: d588699e12a3
-    last_write_checksum: sha1:59247db03f0ec1f40ed13e70f627d5d4d1fcb0a3
-    pristine_git_object: 3d08326c962dd7b1011cfb82274afec5b9678a67
+    last_write_checksum: sha1:32ecbf30ace7a3b1b9f7e3373fa1fe2da927834d
+    pristine_git_object: a5b14a692f15089d0ec901db8871e04cf07a161e
   src/Gr4vy/Models/Components/TransactionCreate.cs:
     id: 87491918b33e
     last_write_checksum: sha1:3a9cb4256f28cca3fce6a0b6524d712aba3e106b
@@ -4121,8 +4129,8 @@ trackedFiles:
     pristine_git_object: a7053ccd58775f2c7ff2f6401ba068fb96871c48
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:6bd32a5c6ff74e45807b5a658be318cee978b28b
-    pristine_git_object: 97cd92d12c5156dfea15e1efd1c878e7f4bfe7b5
+    last_write_checksum: sha1:c50a6c3268cb2d8e656b4a8b604d6bf69d1cb3bc
+    pristine_git_object: 38f581e400c5f9579cae8fbb8a8dde643b09ae66
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4161,8 +4169,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:5999fc99f18a9f46f60fde5cbead1f15159e1e80
-    pristine_git_object: 33095a9439eafd1ef7dc03ff77ea4eabb122b6dd
+    last_write_checksum: sha1:2bf4f7bae194284216d6eb9e693e98b645543490
+    pristine_git_object: b6e27a67b590b28f76148f2d1997ebfec9b3a87a
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8542,6 +8550,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.PaypalPaypaldirectorder` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.PaypalPaypaldirectorder` **Added**\n* `Gr4vy.PaymentLinks.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.PaypalPaypaldirectorder` **Added**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
