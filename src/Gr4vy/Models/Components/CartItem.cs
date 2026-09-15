@@ -82,6 +82,18 @@ namespace Gr4vy.Models.Components
         public List<string>? Categories { get; set; } = null;
 
         /// <summary>
+        /// A list of strings containing product subcategories for the item.
+        /// </summary>
+        [JsonProperty("subcategories")]
+        public List<string>? Subcategories { get; set; } = null;
+
+        /// <summary>
+        /// The brand of the item.
+        /// </summary>
+        [JsonProperty("brand")]
+        public string? Brand { get; set; } = null;
+
+        /// <summary>
         /// The product type of the cart item.
         /// </summary>
         [JsonProperty("product_type")]
