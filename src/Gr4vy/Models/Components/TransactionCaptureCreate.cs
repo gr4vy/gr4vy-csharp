@@ -38,6 +38,12 @@ namespace Gr4vy.Models.Components
         public List<CartItem>? CartItems { get; set; } = null;
 
         /// <summary>
+        /// An array of shipment tracking details for this capture.
+        /// </summary>
+        [JsonProperty("tracking")]
+        public List<Tracking>? Tracking { get; set; } = null;
+
+        /// <summary>
         /// Whether this is marked as the final capture for the associated transaction. Must be `true` or omitted when multi-capture is not enabled; a value of `false` is only valid when multi-capture is available on the connection.
         /// </summary>
         [JsonProperty("final")]
