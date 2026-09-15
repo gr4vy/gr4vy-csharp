@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Indicates to PowerTranz whether to skip the 3DS authentication for this transaction.
         /// </summary>
-        [JsonProperty("skipThreeDSecure", NullValueHandling = NullValueHandling.Include)]
-        public bool? SkipThreeDSecure
-        {
-            get => _skipThreeDSecure;
-            set
-            {
-                _skipThreeDSecure = value;
-                _skipThreeDSecureSet = true;
-            }
-        }
-
-        private bool? _skipThreeDSecure = null;
-
-        private bool _skipThreeDSecureSet = false;
-
-        public bool ShouldSerializeSkipThreeDSecure() => _skipThreeDSecureSet;
+        [JsonProperty("skipThreeDSecure")]
+        public bool? SkipThreeDSecure { get; set; } = null;
     }
 }
