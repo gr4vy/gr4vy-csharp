@@ -17,141 +17,43 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The type of itinerary object.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public string? Type
-        {
-            get => _type;
-            set
-            {
-                _type = value;
-                _typeSet = true;
-            }
-        }
-
-        private string? _type = null;
-
-        private bool _typeSet = false;
-
-        public bool ShouldSerializeType() => _typeSet;
+        [JsonProperty("type")]
+        public string? Type { get; set; } = null;
 
         /// <summary>
         /// The booking/itinerary number (if applicable).
         /// </summary>
-        [JsonProperty("sku", NullValueHandling = NullValueHandling.Include)]
-        public string? Sku
-        {
-            get => _sku;
-            set
-            {
-                _sku = value;
-                _skuSet = true;
-            }
-        }
-
-        private string? _sku = null;
-
-        private bool _skuSet = false;
-
-        public bool ShouldSerializeSku() => _skuSet;
+        [JsonProperty("sku")]
+        public string? Sku { get; set; } = null;
 
         /// <summary>
         /// Readable description of the itinerary item.
         /// </summary>
-        [JsonProperty("display_name", NullValueHandling = NullValueHandling.Include)]
-        public string? DisplayName
-        {
-            get => _displayName;
-            set
-            {
-                _displayName = value;
-                _displayNameSet = true;
-            }
-        }
-
-        private string? _displayName = null;
-
-        private bool _displayNameSet = false;
-
-        public bool ShouldSerializeDisplayName() => _displayNameSet;
+        [JsonProperty("display_name")]
+        public string? DisplayName { get; set; } = null;
 
         /// <summary>
         /// The name of the venue where the event is hosted.
         /// </summary>
-        [JsonProperty("venue", NullValueHandling = NullValueHandling.Include)]
-        public string? Venue
-        {
-            get => _venue;
-            set
-            {
-                _venue = value;
-                _venueSet = true;
-            }
-        }
-
-        private string? _venue = null;
-
-        private bool _venueSet = false;
-
-        public bool ShouldSerializeVenue() => _venueSet;
+        [JsonProperty("venue")]
+        public string? Venue { get; set; } = null;
 
         /// <summary>
         /// The address object that can be parsed.
         /// </summary>
-        [JsonProperty("location", NullValueHandling = NullValueHandling.Include)]
-        public string? Location
-        {
-            get => _location;
-            set
-            {
-                _location = value;
-                _locationSet = true;
-            }
-        }
-
-        private string? _location = null;
-
-        private bool _locationSet = false;
-
-        public bool ShouldSerializeLocation() => _locationSet;
+        [JsonProperty("location")]
+        public string? Location { get; set; } = null;
 
         /// <summary>
         /// The start date of this itinerary item.
         /// </summary>
-        [JsonProperty("date_start", NullValueHandling = NullValueHandling.Include)]
-        public string? DateStart
-        {
-            get => _dateStart;
-            set
-            {
-                _dateStart = value;
-                _dateStartSet = true;
-            }
-        }
-
-        private string? _dateStart = null;
-
-        private bool _dateStartSet = false;
-
-        public bool ShouldSerializeDateStart() => _dateStartSet;
+        [JsonProperty("date_start")]
+        public string? DateStart { get; set; } = null;
 
         /// <summary>
         /// The corporation.
         /// </summary>
-        [JsonProperty("management", NullValueHandling = NullValueHandling.Include)]
-        public string? Management
-        {
-            get => _management;
-            set
-            {
-                _management = value;
-                _managementSet = true;
-            }
-        }
-
-        private string? _management = null;
-
-        private bool _managementSet = false;
-
-        public bool ShouldSerializeManagement() => _managementSet;
+        [JsonProperty("management")]
+        public string? Management { get; set; } = null;
     }
 }

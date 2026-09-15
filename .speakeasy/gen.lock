@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 7310ca9d88cc6a3e9c57f0b7298351d9
+  docChecksum: c0592fb7a7ca46506cb6c36d3aedc536
   docVersion: 1.0.0
   speakeasyVersion: 1.797.0
   generationVersion: 2.937.18
-  releaseVersion: 2.10.12
-  configChecksum: d7647b463ff2be9f4e79f3d10595ad8f
+  releaseVersion: 2.10.13
+  configChecksum: 80c0983a11532d4dbe6a1230707b7ae8
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: a9520f6b-1aea-4acf-b1af-611123360f0e
-  pristine_commit_hash: b14ea4f3b0a4376a39d20ed98ff30c0a0bd04a12
-  pristine_tree_hash: 6a172d5e895d9d6360214fed2a0ccd607e4d7327
+  generation_id: dc5af2cf-3809-41ea-bf08-9bab0feb54e1
+  pristine_commit_hash: ee63e74c684b75cebe7c219dd427c3f4fd7afbfa
+  pristine_tree_hash: efe1a2d164a85ab664cd089f5a185506ef9e4519
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -241,8 +241,8 @@ trackedFiles:
     pristine_git_object: 6b040b775e0a44b9da6e6dff3a2e76217e3f4223
   docs/Models/Components/CartItem.md:
     id: d7366edb5067
-    last_write_checksum: sha1:06d51ea8e03b83194ec1df467c60bd95024f241c
-    pristine_git_object: da9ca0ffab7b41d23e642ac0f424b5c400ab99da
+    last_write_checksum: sha1:7e0e90a8f10ec857f89ea7039f3488b013808e1c
+    pristine_git_object: 4d7e9e9b4e1301cd157c0f5f9eb1ae1dd5f42750
   docs/Models/Components/ChaseOptions.md:
     id: 97e795b42af2
     last_write_checksum: sha1:77288f072d95fd80e65ca3d67d7684cc0635aaf5
@@ -2169,8 +2169,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:c3ced278c61cfd086bfb8be7c40b154450cc71bc
-    pristine_git_object: 36f63a86ffa2b067a7051d1d5a58c08fb55333e2
+    last_write_checksum: sha1:559b498daeeae3fbd2299b4c173583364574587e
+    pristine_git_object: 913e2030200338a77600b154e0fa92fbd0c630d7
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:42798416e271ab46961e81505088b60a0e045e68
@@ -2381,8 +2381,8 @@ trackedFiles:
     pristine_git_object: 71dd01f018bdece566e1bb8ff79f0e1e7e42933f
   src/Gr4vy/Models/Components/CartItem.cs:
     id: 13331f7980c2
-    last_write_checksum: sha1:ad983b2bf402622e63cff7a67cc97fddd00acaf9
-    pristine_git_object: 6c22e15d8c8a8423847ac4ebc0906120811e14e2
+    last_write_checksum: sha1:588148765ad6ff12dd0c55524c68d44d70bcad95
+    pristine_git_object: 987aa2a1c6cd8f2b926487f9c5883578862354e9
   src/Gr4vy/Models/Components/ChaseOptions.cs:
     id: 1d839e53ad8b
     last_write_checksum: sha1:3bf248e64b15014231a87c924db0259f8d19af9e
@@ -4129,8 +4129,8 @@ trackedFiles:
     pristine_git_object: a7053ccd58775f2c7ff2f6401ba068fb96871c48
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:c50a6c3268cb2d8e656b4a8b604d6bf69d1cb3bc
-    pristine_git_object: 38f581e400c5f9579cae8fbb8a8dde643b09ae66
+    last_write_checksum: sha1:9c13d5467f9160d4cac4cf31a5f483b6f43cb1be
+    pristine_git_object: dd10ae4ad4072ef3de3148c62f489c4ec8c09c69
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4169,8 +4169,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:2bf4f7bae194284216d6eb9e693e98b645543490
-    pristine_git_object: b6e27a67b590b28f76148f2d1997ebfec9b3a87a
+    last_write_checksum: sha1:f3b8485dd731f77c734ec9e9ccd90652244757cd
+    pristine_git_object: 67c0009e6a5edfac9aa6a4c8bdde7a7fff5a0bca
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8550,7 +8550,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.PaypalPaypaldirectorder` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.PaypalPaypaldirectorder` **Added**\n* `Gr4vy.PaymentLinks.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.PaypalPaypaldirectorder` **Added**\n"
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.CartItems[]` **Changed**\n  *  `response.cartItems[]` **Changed**\n* `Gr4vy.Transactions.Get()`:  `response.cartItems[]` **Changed**\n* `Gr4vy.Transactions.Update()`:  `response.cartItems[]` **Changed**\n* `Gr4vy.Transactions.Capture()`: \n  *  `request.TransactionCaptureCreate.CartItems[]` **Changed**\n  *  `response.union(Transaction).CartItems[]` **Changed**\n* `Gr4vy.Transactions.Void()`:  `response.union(Transaction).CartItems[]` **Changed**\n* `Gr4vy.Transactions.Cancel()`:  `response.transaction.CartItems[]` **Changed**\n* `Gr4vy.Transactions.Sync()`:  `response.cartItems[]` **Changed**\n* `Gr4vy.Transactions.IncrementAuthorization()`:  `response.transaction.CartItems[]` **Changed**\n* `Gr4vy.Transactions.Captures.List()`:  `response.items[].CartItems[]` **Changed**\n* `Gr4vy.Transactions.Captures.Get()`:  `response.cartItems[]` **Changed**\n* `Gr4vy.PaymentOptions.List()`: \n  *  `request.paymentOptionRequest.CartItems[]` **Changed**\n* `Gr4vy.CheckoutSessions.Create()`: \n  *  `request.checkoutSessionCreate.CartItems[]` **Changed**\n  *  `response.cartItems[]` **Changed**\n* `Gr4vy.CheckoutSessions.Update()`: \n  *  `request.checkoutSessionCreate.CartItems[]` **Changed**\n  *  `response.cartItems[]` **Changed**\n* `Gr4vy.CheckoutSessions.Get()`:  `response.cartItems[]` **Changed**\n* `Gr4vy.PaymentLinks.Create()`: \n  *  `request.paymentLinkCreate.CartItems[]` **Changed**\n  *  `response.cartItems[]` **Changed**\n* `Gr4vy.PaymentLinks.List()`:  `response.items[].CartItems[]` **Changed**\n* `Gr4vy.PaymentLinks.Get()`:  `response.cartItems[]` **Changed**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
