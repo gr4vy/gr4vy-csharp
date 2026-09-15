@@ -17,31 +17,101 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes `wallet.name` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("name")]
-        public string? Name { get; set; } = null;
+        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
+        public string? Name
+        {
+            get => _name;
+            set
+            {
+                _name = value;
+                _nameSet = true;
+            }
+        }
+
+        private string? _name = null;
+
+        private bool _nameSet = false;
+
+        public bool ShouldSerializeName() => _nameSet;
 
         /// <summary>
         /// Passes `wallet.email` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("email")]
-        public string? Email { get; set; } = null;
+        [JsonProperty("email", NullValueHandling = NullValueHandling.Include)]
+        public string? Email
+        {
+            get => _email;
+            set
+            {
+                _email = value;
+                _emailSet = true;
+            }
+        }
+
+        private string? _email = null;
+
+        private bool _emailSet = false;
+
+        public bool ShouldSerializeEmail() => _emailSet;
 
         /// <summary>
         /// Passes `wallet.token` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("token")]
-        public string? Token { get; set; } = null;
+        [JsonProperty("token", NullValueHandling = NullValueHandling.Include)]
+        public string? Token
+        {
+            get => _token;
+            set
+            {
+                _token = value;
+                _tokenSet = true;
+            }
+        }
+
+        private string? _token = null;
+
+        private bool _tokenSet = false;
+
+        public bool ShouldSerializeToken() => _tokenSet;
 
         /// <summary>
         /// Passes `wallet.username` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("username")]
-        public string? Username { get; set; } = null;
+        [JsonProperty("username", NullValueHandling = NullValueHandling.Include)]
+        public string? Username
+        {
+            get => _username;
+            set
+            {
+                _username = value;
+                _usernameSet = true;
+            }
+        }
+
+        private string? _username = null;
+
+        private bool _usernameSet = false;
+
+        public bool ShouldSerializeUsername() => _usernameSet;
 
         /// <summary>
         /// Passes `wallet.verify` to the dLocal API for those connectors that need it.
         /// </summary>
-        [JsonProperty("verify")]
-        public bool? Verify { get; set; } = null;
+        [JsonProperty("verify", NullValueHandling = NullValueHandling.Include)]
+        public bool? Verify
+        {
+            get => _verify;
+            set
+            {
+                _verify = value;
+                _verifySet = true;
+            }
+        }
+
+        private bool? _verify = null;
+
+        private bool _verifySet = false;
+
+        public bool ShouldSerializeVerify() => _verifySet;
     }
 }
