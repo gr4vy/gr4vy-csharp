@@ -12,6 +12,7 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     public class TransactionCapture
     {
@@ -77,5 +78,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("shipping_details")]
         public Models.Components.ShippingDetails? ShippingDetails { get; set; } = null;
+
+        /// <summary>
+        /// The shipment tracking details associated with the capture.
+        /// </summary>
+        [JsonProperty("tracking")]
+        public List<Tracking>? Tracking { get; set; } = null;
     }
 }
