@@ -16,81 +16,25 @@ namespace Gr4vy.Models.Components
 
     public class ForterAntiFraudOptionsCartItemBeneficiary
     {
-        [JsonProperty("personal_details", NullValueHandling = NullValueHandling.Include)]
-        public ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails PersonalDetails
-        {
-            get => _personalDetails;
-            set
-            {
-                _personalDetails = value;
-                _personalDetailsSet = true;
-            }
-        }
-
-        private ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails _personalDetails = default!;
-
-        private bool _personalDetailsSet = true;
-
-        public bool ShouldSerializePersonalDetails() => _personalDetailsSet;
+        [JsonProperty("personal_details")]
+        public ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails PersonalDetails { get; set; } = default!;
 
         /// <summary>
         /// Address information of the beneficiary.
         /// </summary>
-        [JsonProperty("address", NullValueHandling = NullValueHandling.Include)]
-        public ForterAntiFraudOptionsCartItemBeneficiaryAddress? Address
-        {
-            get => _address;
-            set
-            {
-                _address = value;
-                _addressSet = true;
-            }
-        }
-
-        private ForterAntiFraudOptionsCartItemBeneficiaryAddress? _address = null;
-
-        private bool _addressSet = false;
-
-        public bool ShouldSerializeAddress() => _addressSet;
+        [JsonProperty("address")]
+        public ForterAntiFraudOptionsCartItemBeneficiaryAddress? Address { get; set; } = null;
 
         /// <summary>
         /// Phone numbers associated with the beneficiary.
         /// </summary>
-        [JsonProperty("phone", NullValueHandling = NullValueHandling.Include)]
-        public List<ForterAntiFraudOptionsCartItemBeneficiaryPhone>? Phone
-        {
-            get => _phone;
-            set
-            {
-                _phone = value;
-                _phoneSet = true;
-            }
-        }
-
-        private List<ForterAntiFraudOptionsCartItemBeneficiaryPhone>? _phone = null;
-
-        private bool _phoneSet = false;
-
-        public bool ShouldSerializePhone() => _phoneSet;
+        [JsonProperty("phone")]
+        public List<ForterAntiFraudOptionsCartItemBeneficiaryPhone>? Phone { get; set; } = null;
 
         /// <summary>
         /// Comments related to the beneficiary.
         /// </summary>
-        [JsonProperty("comments", NullValueHandling = NullValueHandling.Include)]
-        public ForterAntiFraudOptionsCartItemBeneficiaryComments? Comments
-        {
-            get => _comments;
-            set
-            {
-                _comments = value;
-                _commentsSet = true;
-            }
-        }
-
-        private ForterAntiFraudOptionsCartItemBeneficiaryComments? _comments = null;
-
-        private bool _commentsSet = false;
-
-        public bool ShouldSerializeComments() => _commentsSet;
+        [JsonProperty("comments")]
+        public ForterAntiFraudOptionsCartItemBeneficiaryComments? Comments { get; set; } = null;
     }
 }

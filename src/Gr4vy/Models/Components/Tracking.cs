@@ -9,22 +9,24 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class MockCardOptions
+    public class Tracking
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// The tracking number for the shipment.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
+        [JsonProperty("number")]
+        public string Number { get; set; } = default!;
+
+        [JsonProperty("carrier")]
+        public string Carrier { get; set; } = default!;
 
         /// <summary>
-        /// When set to true, prevents retries on failed transactions.
+        /// The URL to track the shipment.
         /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("url")]
+        public string? Url { get; set; } = null;
     }
 }

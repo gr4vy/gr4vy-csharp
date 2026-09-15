@@ -17,61 +17,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// First name of the beneficiary.
         /// </summary>
-        [JsonProperty("first_name", NullValueHandling = NullValueHandling.Include)]
-        public string? FirstName
-        {
-            get => _firstName;
-            set
-            {
-                _firstName = value;
-                _firstNameSet = true;
-            }
-        }
-
-        private string? _firstName = null;
-
-        private bool _firstNameSet = false;
-
-        public bool ShouldSerializeFirstName() => _firstNameSet;
+        [JsonProperty("first_name")]
+        public string? FirstName { get; set; } = null;
 
         /// <summary>
         /// Last name of the beneficiary.
         /// </summary>
-        [JsonProperty("last_name", NullValueHandling = NullValueHandling.Include)]
-        public string? LastName
-        {
-            get => _lastName;
-            set
-            {
-                _lastName = value;
-                _lastNameSet = true;
-            }
-        }
-
-        private string? _lastName = null;
-
-        private bool _lastNameSet = false;
-
-        public bool ShouldSerializeLastName() => _lastNameSet;
+        [JsonProperty("last_name")]
+        public string? LastName { get; set; } = null;
 
         /// <summary>
         /// Email address of the beneficiary.
         /// </summary>
-        [JsonProperty("email", NullValueHandling = NullValueHandling.Include)]
-        public string? Email
-        {
-            get => _email;
-            set
-            {
-                _email = value;
-                _emailSet = true;
-            }
-        }
-
-        private string? _email = null;
-
-        private bool _emailSet = false;
-
-        public bool ShouldSerializeEmail() => _emailSet;
+        [JsonProperty("email")]
+        public string? Email { get; set; } = null;
     }
 }
