@@ -9,22 +9,15 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class MockCardOptions
+    public class RepayBankOptions
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// The Nacha Standard Entry Class code describing how the account holder authorized an ACH debit. When omitted, `TelDebit` is used for a `moto` payment source and `WebDebit` otherwise. Ignored for business accounts, which Repay requires to use `CcdDebit`.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
-
-        /// <summary>
-        /// When set to true, prevents retries on failed transactions.
-        /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("sec_code")]
+        public string? SecCode { get; set; } = null;
     }
 }
