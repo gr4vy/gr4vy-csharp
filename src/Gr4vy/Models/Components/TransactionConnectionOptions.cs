@@ -1116,6 +1116,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializePowertranzCard() => _powertranzCardSet;
 
         /// <summary>
+        /// Custom options to be passed to the `repay-bank` connector.
+        /// </summary>
+        [JsonProperty("repay-bank", NullValueHandling = NullValueHandling.Include)]
+        public RepayBankOptions? RepayBank
+        {
+            get => _repayBank;
+            set
+            {
+                _repayBank = value;
+                _repayBankSet = true;
+            }
+        }
+
+        private RepayBankOptions? _repayBank = null;
+
+        private bool _repayBankSet = false;
+
+        public bool ShouldSerializeRepayBank() => _repayBankSet;
+
+        /// <summary>
         /// Custom options to be passed to the `riskified-anti-fraud` connector.
         /// </summary>
         [JsonProperty("riskified-anti-fraud", NullValueHandling = NullValueHandling.Include)]
