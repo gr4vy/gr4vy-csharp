@@ -17,7 +17,21 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The default cryptocurrency to present at checkout. This can be used to ensure the user is presented with the same currency in both your checkout and the Giving Block checkout.
         /// </summary>
-        [JsonProperty("defaultCryptocurrency")]
-        public string? DefaultCryptocurrency { get; set; } = null;
+        [JsonProperty("defaultCryptocurrency", NullValueHandling = NullValueHandling.Include)]
+        public string? DefaultCryptocurrency
+        {
+            get => _defaultCryptocurrency;
+            set
+            {
+                _defaultCryptocurrency = value;
+                _defaultCryptocurrencySet = true;
+            }
+        }
+
+        private string? _defaultCryptocurrency = null;
+
+        private bool _defaultCryptocurrencySet = false;
+
+        public bool ShouldSerializeDefaultCryptocurrency() => _defaultCryptocurrencySet;
     }
 }

@@ -17,13 +17,41 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Overrides the default report group to pass to the Worldpay VAP API.
         /// </summary>
-        [JsonProperty("reportGroup")]
-        public string? ReportGroup { get; set; } = null;
+        [JsonProperty("reportGroup", NullValueHandling = NullValueHandling.Include)]
+        public string? ReportGroup
+        {
+            get => _reportGroup;
+            set
+            {
+                _reportGroup = value;
+                _reportGroupSet = true;
+            }
+        }
+
+        private string? _reportGroup = null;
+
+        private bool _reportGroupSet = false;
+
+        public bool ShouldSerializeReportGroup() => _reportGroupSet;
 
         /// <summary>
         /// Overrides the `orderId` passed to the Worldpay VAP API, which defaults to the Gr4vy transaction ID.
         /// </summary>
-        [JsonProperty("orderId")]
-        public string? OrderId { get; set; } = null;
+        [JsonProperty("orderId", NullValueHandling = NullValueHandling.Include)]
+        public string? OrderId
+        {
+            get => _orderId;
+            set
+            {
+                _orderId = value;
+                _orderIdSet = true;
+            }
+        }
+
+        private string? _orderId = null;
+
+        private bool _orderIdSet = false;
+
+        public bool ShouldSerializeOrderId() => _orderIdSet;
     }
 }
