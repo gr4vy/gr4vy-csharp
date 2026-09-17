@@ -127,5 +127,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("cart_items")]
         public List<CartItem>? CartItems { get; set; } = null;
+
+        /// <summary>
+        /// The shipment tracking details associated with the capture.
+        /// </summary>
+        [JsonProperty("tracking")]
+        public List<Tracking>? Tracking { get; set; } = null;
     }
 }
