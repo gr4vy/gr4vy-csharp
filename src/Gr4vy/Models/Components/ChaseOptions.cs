@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Custom order comment.
         /// </summary>
-        [JsonProperty("comments", NullValueHandling = NullValueHandling.Include)]
-        public string? Comments
-        {
-            get => _comments;
-            set
-            {
-                _comments = value;
-                _commentsSet = true;
-            }
-        }
-
-        private string? _comments = null;
-
-        private bool _commentsSet = false;
-
-        public bool ShouldSerializeComments() => _commentsSet;
+        [JsonProperty("comments")]
+        public string? Comments { get; set; } = null;
     }
 }

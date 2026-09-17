@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The Nacha Standard Entry Class code describing how the account holder authorized an ACH debit. When omitted, `TelDebit` is used for a `moto` payment source and `WebDebit` otherwise. Ignored for business accounts, which Repay requires to use `CcdDebit`.
         /// </summary>
-        [JsonProperty("sec_code", NullValueHandling = NullValueHandling.Include)]
-        public string? SecCode
-        {
-            get => _secCode;
-            set
-            {
-                _secCode = value;
-                _secCodeSet = true;
-            }
-        }
-
-        private string? _secCode = null;
-
-        private bool _secCodeSet = false;
-
-        public bool ShouldSerializeSecCode() => _secCodeSet;
+        [JsonProperty("sec_code")]
+        public string? SecCode { get; set; } = null;
     }
 }

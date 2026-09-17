@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Indicates whether the item is a physical good or a service/digital item.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public string? Type
-        {
-            get => _type;
-            set
-            {
-                _type = value;
-                _typeSet = true;
-            }
-        }
-
-        private string? _type = null;
-
-        private bool _typeSet = false;
-
-        public bool ShouldSerializeType() => _typeSet;
+        [JsonProperty("type")]
+        public string? Type { get; set; } = null;
     }
 }
