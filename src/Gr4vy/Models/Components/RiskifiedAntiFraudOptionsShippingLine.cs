@@ -12,30 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class RiskifiedAntiFraudOptionsLineItem
+    public class RiskifiedAntiFraudOptionsShippingLine
     {
         /// <summary>
-        /// Indicates whether the item will be shipped or picked up.
-        /// </summary>
-        [JsonProperty("delivered_to", NullValueHandling = NullValueHandling.Include)]
-        public string? DeliveredTo
-        {
-            get => _deliveredTo;
-            set
-            {
-                _deliveredTo = value;
-                _deliveredToSet = true;
-            }
-        }
-
-        private string? _deliveredTo = null;
-
-        private bool _deliveredToSet = false;
-
-        public bool ShouldSerializeDeliveredTo() => _deliveredToSet;
-
-        /// <summary>
-        /// The shipping address this item is delivered to. Must be `base-shipping-address` for the address derived from the transaction, or the `id` of an `additional_shipping_addresses` entry. Must not be provided when `additional_shipping_addresses` is empty.
+        /// The shipping address this delivery charge applies to. Must be `base-shipping-address` for the address derived from the transaction, or the `id` of an `additional_shipping_addresses` entry. Must not be provided when `additional_shipping_addresses` is empty.
         /// </summary>
         [JsonProperty("shipping_address_id", NullValueHandling = NullValueHandling.Include)]
         public string? ShippingAddressId
