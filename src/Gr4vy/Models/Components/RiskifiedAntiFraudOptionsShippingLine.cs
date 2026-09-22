@@ -9,22 +9,15 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class MockCardOptions
+    public class RiskifiedAntiFraudOptionsShippingLine
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// The shipping address this delivery charge applies to. Must be `base-shipping-address` for the address derived from the transaction, or the `id` of an `additional_shipping_addresses` entry. Must not be provided when `additional_shipping_addresses` is empty.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
-
-        /// <summary>
-        /// When set to true, prevents retries on failed transactions.
-        /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("shipping_address_id")]
+        public string? ShippingAddressId { get; set; } = null;
     }
 }
