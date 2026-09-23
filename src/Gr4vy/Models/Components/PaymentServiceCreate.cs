@@ -102,5 +102,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("settlement_reporting_enabled")]
         public bool? SettlementReportingEnabled { get; set; } = false;
+
+        /// <summary>
+        /// Defines if this payment service has refund ingestion enabled.
+        /// </summary>
+        [JsonProperty("refund_ingestion_enabled")]
+        public bool? RefundIngestionEnabled { get; set; } = false;
     }
 }
