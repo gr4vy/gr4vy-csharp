@@ -114,7 +114,11 @@ jobs:
         with:
           dotnet-version: 8
 
+      # continue-on-error so a broken suite still refreshes the comment (with a
+      # warning) instead of leaving the previous, now stale, one in place.
       - name: Run tests with HTTP tracking
+        id: suite
+        continue-on-error: true
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
           # Record outgoing HTTP calls so endpoint reach is measured from real
@@ -125,11 +129,29 @@ jobs:
       - name: Build endpoint coverage report
         run: node scripts/endpoint-coverage.mjs
 
+      - name: Flag incomplete reach
+        if: steps.suite.outcome != 'success'
+        env:
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          {
+            echo "> ⚠️ **The test suite failed in [this run]($RUN_URL), so the reach below is incomplete.** It refreshes when CI is re-run."
+            echo
+            cat coverage/endpoint-coverage.md
+          } > coverage/endpoint-coverage.tmp
+          mv coverage/endpoint-coverage.tmp coverage/endpoint-coverage.md
+
       - name: Comment coverage on the PR
         uses: marocchino/sticky-pull-request-comment@d2ad0de260ae8b0235ce059e63f2949ba9e05943 # v2.9.3
         with:
           header: test-coverage
           path: coverage/endpoint-coverage.md
+
+      # Keep the job red when the suite failed, so re-running failed jobs reruns
+      # coverage and replaces the warning.
+      - name: Fail if the test suite failed
+        if: steps.suite.outcome != 'success'
+        run: exit 1
 
   merge:
     needs: ci-complete
