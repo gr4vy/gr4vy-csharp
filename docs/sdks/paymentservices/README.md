@@ -111,6 +111,7 @@ var res = await sdk.PaymentServices.CreateAsync(paymentServiceCreate: new Paymen
     },
     ThreeDSecureEnabled = true,
     SettlementReportingEnabled = true,
+    RefundIngestionEnabled = true,
 });
 
 // handle response
@@ -215,6 +216,7 @@ var res = await sdk.PaymentServices.UpdateAsync(
     paymentServiceId: "fffd152a-9532-4087-9a4f-de58754210f0",
     paymentServiceUpdate: new PaymentServiceUpdate() {
         SettlementReportingEnabled = true,
+        RefundIngestionEnabled = true,
     }
 );
 

@@ -278,5 +278,25 @@ namespace Gr4vy.Models.Components
         private bool _settlementReportingEnabledSet = true;
 
         public bool ShouldSerializeSettlementReportingEnabled() => _settlementReportingEnabledSet;
+
+        /// <summary>
+        /// Defines if this payment service has refund ingestion enabled.
+        /// </summary>
+        [JsonProperty("refund_ingestion_enabled", NullValueHandling = NullValueHandling.Include)]
+        public bool? RefundIngestionEnabled
+        {
+            get => _refundIngestionEnabled;
+            set
+            {
+                _refundIngestionEnabled = value;
+                _refundIngestionEnabledSet = true;
+            }
+        }
+
+        private bool? _refundIngestionEnabled = false;
+
+        private bool _refundIngestionEnabledSet = true;
+
+        public bool ShouldSerializeRefundIngestionEnabled() => _refundIngestionEnabledSet;
     }
 }
