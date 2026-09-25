@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 184f9cb44d718c41a683f69a0fd77172
+  docChecksum: 2331e4cf1d6cae7409d459a743ccef9b
   docVersion: 1.0.0
-  speakeasyVersion: 1.798.0
-  generationVersion: 2.938.0
-  releaseVersion: 2.10.19
-  configChecksum: 473a572f96a40fc5dd01060c6c6a8410
+  speakeasyVersion: 1.799.0
+  generationVersion: 2.941.0
+  releaseVersion: 2.10.20
+  configChecksum: 28e3684d2db804c770a9206925ff5ac4
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 0dc67bc2-4394-47c6-80e0-6fa4d1dc9c55
-  pristine_commit_hash: d00ad78275febf20e74cf29bcec3299d65484c6d
-  pristine_tree_hash: 9d17f7e0e163d5b8b784391a24d6a953604a8bbf
+  generation_id: 1df850bb-b436-4190-a07a-7794a9c12b17
+  pristine_commit_hash: 66a56f3aab37131b46dd4e09d489832b71ad8d93
+  pristine_tree_hash: fb777ddc11e2632cb7c1c724525aa276021311bb
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1059,6 +1059,10 @@ trackedFiles:
     id: d4558c89db70
     last_write_checksum: sha1:7f6098ba1b353e67c1f4a2c4124fd725c8320f18
     pristine_git_object: 503fdfa68b6bf68a74f46e3a10d5cc89ddc05b43
+  docs/Models/Components/RyftCardOptions.md:
+    id: 8affd3091ceb
+    last_write_checksum: sha1:0efd64de79ce3c3703fae7fe34adafa01ce5224d
+    pristine_git_object: bf3aafbfd126cdd6ba964772d160e79f958cade9
   docs/Models/Components/SEPABankPaymentMethodCreate.md:
     id: 2a23ebedda1b
     last_write_checksum: sha1:12751d08fad6c77da3e5655ae9b99c0f7defa751
@@ -1221,8 +1225,8 @@ trackedFiles:
     pristine_git_object: 0aeba86c142f899bc657d559092da5e73d2f2b3c
   docs/Models/Components/TransactionConnectionOptions.md:
     id: 4cb8597cc3b4
-    last_write_checksum: sha1:c6651d8a5a0851cbaca15150446b5ebb9a386f99
-    pristine_git_object: 59b0af6e3a90a58cffb1f75d4f91950e02d2ff9d
+    last_write_checksum: sha1:db1196eb6d81126e60d4b4187407ba6784e1ebd9
+    pristine_git_object: 0b4487fdaf786920af6b205ce7245d7026a6a59f
   docs/Models/Components/TransactionCreate.md:
     id: d1e261241de9
     last_write_checksum: sha1:e1ff081f145668b846950b6ca04b2ab6841b2a7b
@@ -2185,8 +2189,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:8b06f531e1d05d8da69daf9018f4160f45c0f6f2
-    pristine_git_object: 30c21b7d65e53011feb1724cc5a45bb4d2595fba
+    last_write_checksum: sha1:6e0056c2ee83962d592f5b7560d97974a059f61b
+    pristine_git_object: 34b60963d38218f1a3f5c592eb6053e3b9a0d551
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:42798416e271ab46961e81505088b60a0e045e68
@@ -3215,6 +3219,10 @@ trackedFiles:
     id: b91670089645
     last_write_checksum: sha1:257bfd19349e1b5c7f65ed5efc57bc93bd7d8a7a
     pristine_git_object: b115936eba222901cd21fd6f478791e9761317b3
+  src/Gr4vy/Models/Components/RyftCardOptions.cs:
+    id: 18b2b10d18fd
+    last_write_checksum: sha1:6e3e25c82bf4b9c6630f27b92b443bad993e374c
+    pristine_git_object: 05c63e1318f443e267fe46f2fe131117af9aecf6
   src/Gr4vy/Models/Components/SEPABankPaymentMethodCreate.cs:
     id: 8b4396507b58
     last_write_checksum: sha1:63d6302cbebd23541b9691752bf473c1218cb11e
@@ -3377,8 +3385,8 @@ trackedFiles:
     pristine_git_object: 80749f14b8f5371afc9004688b05ac7fa2aabcea
   src/Gr4vy/Models/Components/TransactionConnectionOptions.cs:
     id: d588699e12a3
-    last_write_checksum: sha1:c5fc3888b864aa23d0882c556cefdad4e3568ac9
-    pristine_git_object: 6d082725828881cc200432693122cb00fe21a164
+    last_write_checksum: sha1:c2d635b4f71f6cf7ff7aaf3edf9c3f7f0093fcc3
+    pristine_git_object: 2c183755efc2c571f10b9d24eec36a488d895c2f
   src/Gr4vy/Models/Components/TransactionCreate.cs:
     id: 87491918b33e
     last_write_checksum: sha1:3a9cb4256f28cca3fce6a0b6524d712aba3e106b
@@ -4161,8 +4169,8 @@ trackedFiles:
     pristine_git_object: a7053ccd58775f2c7ff2f6401ba068fb96871c48
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:14ada926f798904052e6a7d6cd40be7f6fca3498
-    pristine_git_object: 984dbc41f7ae468eabc3622edd5b935b1341302b
+    last_write_checksum: sha1:4c334a1f93715b937ebd543261cee2e98b8942e9
+    pristine_git_object: 0b145779bb42a788a5d59277a94dd1949587e8cb
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4201,8 +4209,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:2aef484c69c0e08671f11c742c4ff5f66587aa3a
-    pristine_git_object: 149f35f58896e19877337e6ee73c3afd67f69df6
+    last_write_checksum: sha1:e2131390e9524f48e5aed2cc24cafbf5e72a6aa1
+    pristine_git_object: bc3fdedd04fff2e3020a4c3ecf1e3e7c90ae74ff
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -8582,7 +8590,7 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.PaymentServices.List()`:  `response.items[].RefundIngestionEnabled` **Added**\n* `Gr4vy.PaymentServices.Create()`: \n  *  `request.paymentServiceCreate.RefundIngestionEnabled` **Added**\n  *  `response.refundIngestionEnabled` **Added**\n* `Gr4vy.PaymentServices.Get()`:  `response.refundIngestionEnabled` **Added**\n* `Gr4vy.PaymentServices.Update()`: \n  *  `request.paymentServiceUpdate.RefundIngestionEnabled` **Added**\n  *  `response.refundIngestionEnabled` **Added**\n"
+releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.ConnectionOptions.RyftCard` **Added**\n* `Gr4vy.Transactions.Update()`: \n  *  `request.transactionUpdate.ConnectionOptions.RyftCard` **Added**\n* `Gr4vy.PaymentLinks.Create()`: \n  *  `request.paymentLinkCreate.ConnectionOptions.RyftCard` **Added**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln

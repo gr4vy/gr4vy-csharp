@@ -9,22 +9,21 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
-    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
 
-    public class MockCardOptions
+    public class RyftCardOptions
     {
         /// <summary>
-        /// Allows for mocking the merchant advice code.
+        /// Ryft linked sub-account ID, sent as the `Account` header.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
+        [JsonProperty("sub_account_id")]
+        public string? SubAccountId { get; set; } = null;
 
         /// <summary>
-        /// When set to true, prevents retries on failed transactions.
+        /// Platform Fee in the transaction currency's smallest unit. Sent as Ryft's `platformFee` field.
         /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("platform_fee")]
+        public long? PlatformFee { get; set; } = null;
     }
 }
