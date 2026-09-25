@@ -17,13 +17,41 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Ryft linked sub-account ID, sent as the `Account` header.
         /// </summary>
-        [JsonProperty("sub_account_id")]
-        public string? SubAccountId { get; set; } = null;
+        [JsonProperty("sub_account_id", NullValueHandling = NullValueHandling.Include)]
+        public string? SubAccountId
+        {
+            get => _subAccountId;
+            set
+            {
+                _subAccountId = value;
+                _subAccountIdSet = true;
+            }
+        }
+
+        private string? _subAccountId = null;
+
+        private bool _subAccountIdSet = false;
+
+        public bool ShouldSerializeSubAccountId() => _subAccountIdSet;
 
         /// <summary>
         /// Platform Fee in the transaction currency's smallest unit. Sent as Ryft's `platformFee` field.
         /// </summary>
-        [JsonProperty("platform_fee")]
-        public long? PlatformFee { get; set; } = null;
+        [JsonProperty("platform_fee", NullValueHandling = NullValueHandling.Include)]
+        public long? PlatformFee
+        {
+            get => _platformFee;
+            set
+            {
+                _platformFee = value;
+                _platformFeeSet = true;
+            }
+        }
+
+        private long? _platformFee = null;
+
+        private bool _platformFeeSet = false;
+
+        public bool ShouldSerializePlatformFee() => _platformFeeSet;
     }
 }
