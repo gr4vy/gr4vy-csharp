@@ -1156,6 +1156,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeRiskifiedAntiFraud() => _riskifiedAntiFraudSet;
 
         /// <summary>
+        /// Custom options to be passed to the `ryft-card` connector.
+        /// </summary>
+        [JsonProperty("ryft-card", NullValueHandling = NullValueHandling.Include)]
+        public RyftCardOptions? RyftCard
+        {
+            get => _ryftCard;
+            set
+            {
+                _ryftCard = value;
+                _ryftCardSet = true;
+            }
+        }
+
+        private RyftCardOptions? _ryftCard = null;
+
+        private bool _ryftCardSet = false;
+
+        public bool ShouldSerializeRyftCard() => _ryftCardSet;
+
+        /// <summary>
         /// Custom options to be passed to the `stripe-affirm` connector.
         /// </summary>
         [JsonProperty("stripe-affirm", NullValueHandling = NullValueHandling.Include)]
