@@ -292,5 +292,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("approval_expires_at")]
         public DateTime? ApprovalExpiresAt { get; set; } = null;
+
+        /// <summary>
+        /// Whether the authorization amount is expected to be modified in the future or not.
+        /// </summary>
+        [JsonProperty("is_amount_estimated")]
+        public bool? IsAmountEstimated { get; set; } = null;
     }
 }
