@@ -19,31 +19,101 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The delivery type.
         /// </summary>
-        [JsonProperty("delivery_type")]
-        public string? DeliveryType { get; set; } = null;
+        [JsonProperty("delivery_type", NullValueHandling = NullValueHandling.Include)]
+        public string? DeliveryType
+        {
+            get => _deliveryType;
+            set
+            {
+                _deliveryType = value;
+                _deliveryTypeSet = true;
+            }
+        }
+
+        private string? _deliveryType = null;
+
+        private bool _deliveryTypeSet = false;
+
+        public bool ShouldSerializeDeliveryType() => _deliveryTypeSet;
 
         /// <summary>
         /// The delivery method.
         /// </summary>
-        [JsonProperty("delivery_method")]
-        public string? DeliveryMethod { get; set; } = null;
+        [JsonProperty("delivery_method", NullValueHandling = NullValueHandling.Include)]
+        public string? DeliveryMethod
+        {
+            get => _deliveryMethod;
+            set
+            {
+                _deliveryMethod = value;
+                _deliveryMethodSet = true;
+            }
+        }
+
+        private string? _deliveryMethod = null;
+
+        private bool _deliveryMethodSet = false;
+
+        public bool ShouldSerializeDeliveryMethod() => _deliveryMethodSet;
 
         /// <summary>
         /// Defines if this payment is made using guest checkout.
         /// </summary>
-        [JsonProperty("is_guest_buyer")]
-        public bool? IsGuestBuyer { get; set; } = null;
+        [JsonProperty("is_guest_buyer", NullValueHandling = NullValueHandling.Include)]
+        public bool? IsGuestBuyer
+        {
+            get => _isGuestBuyer;
+            set
+            {
+                _isGuestBuyer = value;
+                _isGuestBuyerSet = true;
+            }
+        }
+
+        private bool? _isGuestBuyer = null;
+
+        private bool _isGuestBuyerSet = false;
+
+        public bool ShouldSerializeIsGuestBuyer() => _isGuestBuyerSet;
 
         /// <summary>
         /// A list of cart items details to pass to the Forter API.
         /// </summary>
-        [JsonProperty("cart_items")]
-        public List<ForterAntiFraudOptionsCartItem>? CartItems { get; set; } = null;
+        [JsonProperty("cart_items", NullValueHandling = NullValueHandling.Include)]
+        public List<ForterAntiFraudOptionsCartItem>? CartItems
+        {
+            get => _cartItems;
+            set
+            {
+                _cartItems = value;
+                _cartItemsSet = true;
+            }
+        }
+
+        private List<ForterAntiFraudOptionsCartItem>? _cartItems = null;
+
+        private bool _cartItemsSet = false;
+
+        public bool ShouldSerializeCartItems() => _cartItemsSet;
 
         /// <summary>
         /// Information about the discount applied to this order.
         /// </summary>
-        [JsonProperty("total_discount")]
-        public ForterAntiFraudOptionsDiscount? TotalDiscount { get; set; } = null;
+        [JsonProperty("total_discount", NullValueHandling = NullValueHandling.Include)]
+        public ForterAntiFraudOptionsDiscount? TotalDiscount
+        {
+            get => _totalDiscount;
+            set
+            {
+                _totalDiscount = value;
+                _totalDiscountSet = true;
+            }
+        }
+
+        private ForterAntiFraudOptionsDiscount? _totalDiscount = null;
+
+        private bool _totalDiscountSet = false;
+
+        public bool ShouldSerializeTotalDiscount() => _totalDiscountSet;
     }
 }
