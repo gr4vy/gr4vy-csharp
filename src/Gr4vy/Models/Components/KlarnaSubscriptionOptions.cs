@@ -17,81 +17,25 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The name of the subscription product. The recommended format includes a subscription id and double curly brackets.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string Name
-        {
-            get => _name;
-            set
-            {
-                _name = value;
-                _nameSet = true;
-            }
-        }
-
-        private string _name = default!;
-
-        private bool _nameSet = true;
-
-        public bool ShouldSerializeName() => _nameSet;
+        [JsonProperty("name")]
+        public string Name { get; set; } = default!;
 
         /// <summary>
         /// The cadence unit for the subscription plan.
         /// </summary>
-        [JsonProperty("interval", NullValueHandling = NullValueHandling.Include)]
-        public string Interval
-        {
-            get => _interval;
-            set
-            {
-                _interval = value;
-                _intervalSet = true;
-            }
-        }
-
-        private string _interval = default!;
-
-        private bool _intervalSet = true;
-
-        public bool ShouldSerializeInterval() => _intervalSet;
+        [JsonProperty("interval")]
+        public string Interval { get; set; } = default!;
 
         /// <summary>
         /// The number corresponding to the interval unit.
         /// </summary>
-        [JsonProperty("interval_count", NullValueHandling = NullValueHandling.Include)]
-        public long IntervalCount
-        {
-            get => _intervalCount;
-            set
-            {
-                _intervalCount = value;
-                _intervalCountSet = true;
-            }
-        }
-
-        private long _intervalCount = default!;
-
-        private bool _intervalCountSet = true;
-
-        public bool ShouldSerializeIntervalCount() => _intervalCountSet;
+        [JsonProperty("interval_count")]
+        public long IntervalCount { get; set; } = default!;
 
         /// <summary>
         /// Reference to a SKU in the transaction's cart items to link subscription to.
         /// </summary>
-        [JsonProperty("reference", NullValueHandling = NullValueHandling.Include)]
-        public string Reference
-        {
-            get => _reference;
-            set
-            {
-                _reference = value;
-                _referenceSet = true;
-            }
-        }
-
-        private string _reference = default!;
-
-        private bool _referenceSet = true;
-
-        public bool ShouldSerializeReference() => _referenceSet;
+        [JsonProperty("reference")]
+        public string Reference { get; set; } = default!;
     }
 }

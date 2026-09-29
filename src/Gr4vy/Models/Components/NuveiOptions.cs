@@ -18,41 +18,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// General data about the customer provided by the merchant.
         /// </summary>
-        [JsonProperty("customData", NullValueHandling = NullValueHandling.Include)]
-        public string? CustomData
-        {
-            get => _customData;
-            set
-            {
-                _customData = value;
-                _customDataSet = true;
-            }
-        }
-
-        private string? _customData = null;
-
-        private bool _customDataSet = false;
-
-        public bool ShouldSerializeCustomData() => _customDataSet;
+        [JsonProperty("customData")]
+        public string? CustomData { get; set; } = null;
 
         /// <summary>
         /// Provides additional airline data for Nuvei payments.
         /// </summary>
-        [JsonProperty("airlineData", NullValueHandling = NullValueHandling.Include)]
-        public NuveiAirlineDataOptions? AirlineData
-        {
-            get => _airlineData;
-            set
-            {
-                _airlineData = value;
-                _airlineDataSet = true;
-            }
-        }
-
-        private NuveiAirlineDataOptions? _airlineData = null;
-
-        private bool _airlineDataSet = false;
-
-        public bool ShouldSerializeAirlineData() => _airlineDataSet;
+        [JsonProperty("airlineData")]
+        public NuveiAirlineDataOptions? AirlineData { get; set; } = null;
     }
 }

@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Indicates to Gr4vy whether or not the stored Trustly agreement needs refreshing.
         /// </summary>
-        [JsonProperty("refreshSplitToken", NullValueHandling = NullValueHandling.Include)]
-        public bool? RefreshSplitToken
-        {
-            get => _refreshSplitToken;
-            set
-            {
-                _refreshSplitToken = value;
-                _refreshSplitTokenSet = true;
-            }
-        }
-
-        private bool? _refreshSplitToken = null;
-
-        private bool _refreshSplitTokenSet = false;
-
-        public bool ShouldSerializeRefreshSplitToken() => _refreshSplitTokenSet;
+        [JsonProperty("refreshSplitToken")]
+        public bool? RefreshSplitToken { get; set; } = null;
     }
 }
