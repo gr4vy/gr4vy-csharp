@@ -17,13 +17,41 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The seat class of the booking.
         /// </summary>
-        [JsonProperty("seatClass")]
-        public string? SeatClass { get; set; } = null;
+        [JsonProperty("seatClass", NullValueHandling = NullValueHandling.Include)]
+        public string? SeatClass
+        {
+            get => _seatClass;
+            set
+            {
+                _seatClass = value;
+                _seatClassSet = true;
+            }
+        }
+
+        private string? _seatClass = null;
+
+        private bool _seatClassSet = false;
+
+        public bool ShouldSerializeSeatClass() => _seatClassSet;
 
         /// <summary>
         /// Indicates whether the cardholder is also a passenger.
         /// </summary>
-        [JsonProperty("isCardholderTraveling")]
-        public bool? IsCardholderTraveling { get; set; } = null;
+        [JsonProperty("isCardholderTraveling", NullValueHandling = NullValueHandling.Include)]
+        public bool? IsCardholderTraveling
+        {
+            get => _isCardholderTraveling;
+            set
+            {
+                _isCardholderTraveling = value;
+                _isCardholderTravelingSet = true;
+            }
+        }
+
+        private bool? _isCardholderTraveling = null;
+
+        private bool _isCardholderTravelingSet = false;
+
+        public bool ShouldSerializeIsCardholderTraveling() => _isCardholderTravelingSet;
     }
 }

@@ -21,25 +21,81 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The display name for the buyer.
         /// </summary>
-        [JsonProperty("display_name")]
-        public string? DisplayName { get; set; } = null;
+        [JsonProperty("display_name", NullValueHandling = NullValueHandling.Include)]
+        public string? DisplayName
+        {
+            get => _displayName;
+            set
+            {
+                _displayName = value;
+                _displayNameSet = true;
+            }
+        }
+
+        private string? _displayName = null;
+
+        private bool _displayNameSet = false;
+
+        public bool ShouldSerializeDisplayName() => _displayNameSet;
 
         /// <summary>
         /// The merchant identifier for this buyer.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", NullValueHandling = NullValueHandling.Include)]
+        public string? ExternalIdentifier
+        {
+            get => _externalIdentifier;
+            set
+            {
+                _externalIdentifier = value;
+                _externalIdentifierSet = true;
+            }
+        }
+
+        private string? _externalIdentifier = null;
+
+        private bool _externalIdentifierSet = false;
+
+        public bool ShouldSerializeExternalIdentifier() => _externalIdentifierSet;
 
         /// <summary>
         /// The buyer account number.
         /// </summary>
-        [JsonProperty("account_number")]
-        public string? AccountNumber { get; set; } = null;
+        [JsonProperty("account_number", NullValueHandling = NullValueHandling.Include)]
+        public string? AccountNumber
+        {
+            get => _accountNumber;
+            set
+            {
+                _accountNumber = value;
+                _accountNumberSet = true;
+            }
+        }
+
+        private string? _accountNumber = null;
+
+        private bool _accountNumberSet = false;
+
+        public bool ShouldSerializeAccountNumber() => _accountNumberSet;
 
         /// <summary>
         /// The billing name, address, email, and other fields for this buyer.
         /// </summary>
-        [JsonProperty("billing_details")]
-        public BillingDetails? BillingDetails { get; set; } = null;
+        [JsonProperty("billing_details", NullValueHandling = NullValueHandling.Include)]
+        public BillingDetails? BillingDetails
+        {
+            get => _billingDetails;
+            set
+            {
+                _billingDetails = value;
+                _billingDetailsSet = true;
+            }
+        }
+
+        private BillingDetails? _billingDetails = null;
+
+        private bool _billingDetailsSet = false;
+
+        public bool ShouldSerializeBillingDetails() => _billingDetailsSet;
     }
 }

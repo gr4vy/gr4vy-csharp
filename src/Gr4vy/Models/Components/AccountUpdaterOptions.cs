@@ -23,25 +23,81 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// When the `response_code` is set to `updated`, the payment method's account number will be updated to this value.
         /// </summary>
-        [JsonProperty("account_number")]
-        public string? AccountNumber { get; set; } = null;
+        [JsonProperty("account_number", NullValueHandling = NullValueHandling.Include)]
+        public string? AccountNumber
+        {
+            get => _accountNumber;
+            set
+            {
+                _accountNumber = value;
+                _accountNumberSet = true;
+            }
+        }
+
+        private string? _accountNumber = null;
+
+        private bool _accountNumberSet = false;
+
+        public bool ShouldSerializeAccountNumber() => _accountNumberSet;
 
         /// <summary>
         /// When the `response_code` is set to `updated`, the payment method's expiration month will be updated to this value.
         /// </summary>
-        [JsonProperty("expiration_month")]
-        public string? ExpirationMonth { get; set; } = null;
+        [JsonProperty("expiration_month", NullValueHandling = NullValueHandling.Include)]
+        public string? ExpirationMonth
+        {
+            get => _expirationMonth;
+            set
+            {
+                _expirationMonth = value;
+                _expirationMonthSet = true;
+            }
+        }
+
+        private string? _expirationMonth = null;
+
+        private bool _expirationMonthSet = false;
+
+        public bool ShouldSerializeExpirationMonth() => _expirationMonthSet;
 
         /// <summary>
         /// When the `response_code` is set to `updated`, the payment method's expiration year will be updated to this value.
         /// </summary>
-        [JsonProperty("expiration_year")]
-        public string? ExpirationYear { get; set; } = null;
+        [JsonProperty("expiration_year", NullValueHandling = NullValueHandling.Include)]
+        public string? ExpirationYear
+        {
+            get => _expirationYear;
+            set
+            {
+                _expirationYear = value;
+                _expirationYearSet = true;
+            }
+        }
+
+        private string? _expirationYear = null;
+
+        private bool _expirationYearSet = false;
+
+        public bool ShouldSerializeExpirationYear() => _expirationYearSet;
 
         /// <summary>
         /// The type of error code to simulate.
         /// </summary>
-        [JsonProperty("error_code")]
-        public string? ErrorCode { get; set; } = null;
+        [JsonProperty("error_code", NullValueHandling = NullValueHandling.Include)]
+        public string? ErrorCode
+        {
+            get => _errorCode;
+            set
+            {
+                _errorCode = value;
+                _errorCodeSet = true;
+            }
+        }
+
+        private string? _errorCode = null;
+
+        private bool _errorCodeSet = false;
+
+        public bool ShouldSerializeErrorCode() => _errorCodeSet;
     }
 }

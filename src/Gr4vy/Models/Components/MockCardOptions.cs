@@ -18,13 +18,41 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Allows for mocking the merchant advice code.
         /// </summary>
-        [JsonProperty("merchant_advice_code")]
-        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode { get; set; } = null;
+        [JsonProperty("merchant_advice_code", NullValueHandling = NullValueHandling.Include)]
+        public MockCardMerchantAdviceCodeOptions? MerchantAdviceCode
+        {
+            get => _merchantAdviceCode;
+            set
+            {
+                _merchantAdviceCode = value;
+                _merchantAdviceCodeSet = true;
+            }
+        }
+
+        private MockCardMerchantAdviceCodeOptions? _merchantAdviceCode = null;
+
+        private bool _merchantAdviceCodeSet = false;
+
+        public bool ShouldSerializeMerchantAdviceCode() => _merchantAdviceCodeSet;
 
         /// <summary>
         /// When set to true, prevents retries on failed transactions.
         /// </summary>
-        [JsonProperty("skip_retry")]
-        public bool? SkipRetry { get; set; } = null;
+        [JsonProperty("skip_retry", NullValueHandling = NullValueHandling.Include)]
+        public bool? SkipRetry
+        {
+            get => _skipRetry;
+            set
+            {
+                _skipRetry = value;
+                _skipRetrySet = true;
+            }
+        }
+
+        private bool? _skipRetry = null;
+
+        private bool _skipRetrySet = false;
+
+        public bool ShouldSerializeSkipRetry() => _skipRetrySet;
     }
 }
