@@ -60,6 +60,10 @@ namespace Gr4vy.Models.Requests
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_id")]
         public string? BuyerId { get; set; } = null;
 
+        /// <summary>
+        /// Deprecated. Filters the results to only the items for which the `buyer` has an `email_address` that matches this value. This filter can be slow and is not recommended for use in automated systems. Use `buyer_search`, `buyer_external_identifier` or `buyer_id` instead.
+        /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=buyer_email_address")]
         public string? BuyerEmailAddress { get; set; } = null;
 
@@ -88,31 +92,31 @@ namespace Gr4vy.Models.Requests
         public List<string>? Metadata { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have an `amount` that is equal to the provided `amount_eq` value.
+        /// Filters for transactions that have an `amount` that is equal to the provided `amount_eq` value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=amount_eq")]
         public long? AmountEq { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have an `amount` that is less than or equal to the `amount_lte` value.
+        /// Filters for transactions that have an `amount` that is less than or equal to the `amount_lte` value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=amount_lte")]
         public long? AmountLte { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have an `amount` that is greater than or equal to the `amount_gte` value.
+        /// Filters for transactions that have an `amount` that is greater than or equal to the `amount_gte` value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=amount_gte")]
         public long? AmountGte { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have matching `currency` values. The `currency` values provided must be formatted as 3-letter ISO currency code.
+        /// Filters for transactions that have matching `currency` values. The `currency` values provided must be formatted as 3-letter ISO currency code. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=currency")]
         public List<string>? Currency { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have matching `country` values.
+        /// Filters for transactions that have matching `country` values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=country")]
         public List<string>? Country { get; set; } = null;
@@ -130,13 +134,13 @@ namespace Gr4vy.Models.Requests
         public string? PaymentMethodLabel { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions where the `payment_method_scheme` matches one of the provided values.
+        /// Filters for transactions where the `payment_method_scheme` matches one of the provided values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_method_scheme")]
         public List<string>? PaymentMethodScheme { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have a payment method with a country that matches with the provided value.
+        /// Filters for transactions that have a payment method with a country that matches with the provided value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_method_country")]
         public string? PaymentMethodCountry { get; set; } = null;
@@ -145,7 +149,7 @@ namespace Gr4vy.Models.Requests
         public string? PaymentMethodFingerprint { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have matching `method` values.
+        /// Filters for transactions that have matching `method` values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=method")]
         public List<string>? Method { get; set; } = null;
@@ -199,13 +203,14 @@ namespace Gr4vy.Models.Requests
         public string? GiftCardId { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have at least one gift card redemption where the last 4 digits of its gift card number matches exactly with the provided value.
+        /// Deprecated. Filters for transactions that have at least one gift card redemption where the last 4 digits of its gift card number matches exactly with the provided value. This filter can be slow and is not recommended for use in automated systems. Use `gift_card_id` instead.
         /// </summary>
+        [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=gift_card_last4")]
         public string? GiftCardLast4 { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that have at least one associated settlement record.
+        /// Filters for transactions that have at least one associated settlement record. When filtering on `false`, combine it with `created_at_gte` and `created_at_lte` for best performance.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=has_settlements")]
         public bool? HasSettlements { get; set; } = null;
@@ -217,25 +222,25 @@ namespace Gr4vy.Models.Requests
         public string? PaymentMethodBin { get; set; } = null;
 
         /// <summary>
-        /// Filters the results to only the transactions that have a payment source that matches with any of the provided values.
+        /// Filters the results to only the transactions that have a payment source that matches with any of the provided values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_source")]
         public List<string>? PaymentSource { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions where the `is_subsequent_payment` matches the provided value.
+        /// Filters for transactions where the `is_subsequent_payment` matches the provided value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=is_subsequent_payment")]
         public bool? IsSubsequentPayment { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions where the `merchant_initiated` matches the provided value.
+        /// Filters for transactions where the `merchant_initiated` matches the provided value. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=merchant_initiated")]
         public bool? MerchantInitiated { get; set; } = null;
 
         /// <summary>
-        /// Filters for transactions that attempted 3DS authentication or not.
+        /// Filters for transactions that attempted 3DS authentication or not. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=used_3ds")]
         public bool? Used3ds { get; set; } = null;
