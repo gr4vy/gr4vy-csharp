@@ -58,4 +58,27 @@ public class WebhookVerifierTests
             Webhooks.VerifyWebhook(Payload, Secret, ValidSignature, null, 0));
         StringAssert.Contains("Missing header values", ex.Message);
     }
+
+    [Test]
+    public void VerifyWebhook_ValidSignatureInAnyPosition_ShouldNotThrow()
+    {
+        var header = "other,78aca0c78005107a654a957b8566fa6e0e5e06aea92d7da72a6da9e5a690d013";
+        Assert.DoesNotThrow(() => Webhooks.VerifyWebhook(Payload, Secret, header, "1744018920", 0));
+    }
+
+    [Test]
+    public void VerifyWebhook_UpperCaseSignature_ShouldNotThrow()
+    {
+        var header = "78ACA0C78005107A654A957B8566FA6E0E5E06AEA92D7DA72A6DA9E5A690D013";
+        Assert.DoesNotThrow(() => Webhooks.VerifyWebhook(Payload, Secret, header, "1744018920", 0));
+    }
+
+    [Test]
+    public void VerifyWebhook_NearlyMatchingSignature_ShouldThrow()
+    {
+        var header = "78aca0c78005107a654a957b8566fa6e0e5e06aea92d7da72a6da9e5a690d014";
+        var ex = Assert.Throws<ArgumentException>(() =>
+            Webhooks.VerifyWebhook(Payload, Secret, header, "1744018920", 0));
+        StringAssert.Contains("No matching signature found", ex.Message);
+    }
 }

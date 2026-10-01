@@ -33,7 +33,11 @@ public static class Webhooks
         var expectedSignatureBytes = hmac.ComputeHash(dataBytes);
         var expectedSignature = BitConverter.ToString(expectedSignatureBytes).Replace("-", "").ToLowerInvariant();
 
-        if (!signatures.Contains(expectedSignature, StringComparer.OrdinalIgnoreCase))
+        // Compare in constant time, so the check doesn't leak how much of one matched.
+        // Signatures are hex, so they're compared lower-cased, as before.
+        var expected = Encoding.ASCII.GetBytes(expectedSignature);
+        if (!signatures.Any(signature => CryptographicOperations.FixedTimeEquals(
+                Encoding.ASCII.GetBytes(signature.ToLowerInvariant()), expected)))
         {
             throw new ArgumentException("No matching signature found");
         }
