@@ -19,13 +19,41 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes additional data to the Adyen API when creating a transaction.
         /// </summary>
-        [JsonProperty("additionalData")]
-        public Dictionary<string, string>? AdditionalData { get; set; } = null;
+        [JsonProperty("additionalData", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, string>? AdditionalData
+        {
+            get => _additionalData;
+            set
+            {
+                _additionalData = value;
+                _additionalDataSet = true;
+            }
+        }
+
+        private Dictionary<string, string>? _additionalData = null;
+
+        private bool _additionalDataSet = false;
+
+        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
 
         /// <summary>
         /// Passes `pixRecurring` data to Adyen.
         /// </summary>
-        [JsonProperty("pixRecurring")]
-        public AdyenPixRecurringOptions? PixRecurring { get; set; } = null;
+        [JsonProperty("pixRecurring", NullValueHandling = NullValueHandling.Include)]
+        public AdyenPixRecurringOptions? PixRecurring
+        {
+            get => _pixRecurring;
+            set
+            {
+                _pixRecurring = value;
+                _pixRecurringSet = true;
+            }
+        }
+
+        private AdyenPixRecurringOptions? _pixRecurring = null;
+
+        private bool _pixRecurringSet = false;
+
+        public bool ShouldSerializePixRecurring() => _pixRecurringSet;
     }
 }
