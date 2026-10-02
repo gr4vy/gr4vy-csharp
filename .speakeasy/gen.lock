@@ -3,17 +3,17 @@ id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
   docChecksum: 5a1c084a8cd626dfe38467560ffa6369
   docVersion: 1.0.0
-  speakeasyVersion: 1.800.0
+  speakeasyVersion: 1.800.1
   generationVersion: 2.943.0
-  releaseVersion: 2.10.23
-  configChecksum: b09f24f7a0a3456c64590b5ff97462f8
+  releaseVersion: 2.10.24
+  configChecksum: a41b15dbd820cd34a8acee72068c9478
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: e16e8d60-993b-4cea-b31f-b59d48002dad
-  pristine_commit_hash: 9e641361f23ea84b952cd10fff143f79b6118eee
-  pristine_tree_hash: cb96818568db7dcd972c1efc851cf7b87fbc9974
+  generation_id: eb16dcd8-968c-43c0-96bc-989e1ff8e91c
+  pristine_commit_hash: f001d3f9d5168ad25fa156e7f0d8c388ea557200
+  pristine_tree_hash: f94e8375496aeb6a36f1e64e9b221404b5ed002c
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -2189,8 +2189,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:f70ec0e1b1ccef4631080c49fc98b5ce3d5f79d6
-    pristine_git_object: 5caa05fc084e54e127f204af0756101fa2814772
+    last_write_checksum: sha1:6b97cc8558a6b9e5da643c63fb9291cdcf759a08
+    pristine_git_object: 8b6f9a555c3489019aeda83741acced3f6943630
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:42798416e271ab46961e81505088b60a0e045e68
@@ -4169,8 +4169,8 @@ trackedFiles:
     pristine_git_object: a7053ccd58775f2c7ff2f6401ba068fb96871c48
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:4f39469a1e1321e7d969a03ccd8295c11b530595
-    pristine_git_object: a10246b96ab8ec054a2757b2f47afd841c18175c
+    last_write_checksum: sha1:3fc5fdcfd938e0f49163e7948858e1d61c28e307
+    pristine_git_object: 610628512a1cf03c01baca7939b7bf80f562045e
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4209,8 +4209,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:5a31fdb5285ed39823abc32c112d4d142fedd23f
-    pristine_git_object: 06898d0ee541d2d1bc91a18836c57077636da460
+    last_write_checksum: sha1:562f4951c991b991f6db1692c7c6bc183ced0b95
+    pristine_git_object: 487b4368d05fb6c9b63f96698a40a03a3599da11
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b

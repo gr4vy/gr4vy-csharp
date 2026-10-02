@@ -18,61 +18,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of merchant defined data to be passed to the Cybersource Decision Manager API. Each key needs to be a numeric string.
         /// </summary>
-        [JsonProperty("merchant_defined_data", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? MerchantDefinedData
-        {
-            get => _merchantDefinedData;
-            set
-            {
-                _merchantDefinedData = value;
-                _merchantDefinedDataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _merchantDefinedData = null;
-
-        private bool _merchantDefinedDataSet = false;
-
-        public bool ShouldSerializeMerchantDefinedData() => _merchantDefinedDataSet;
+        [JsonProperty("merchant_defined_data")]
+        public Dictionary<string, string>? MerchantDefinedData { get; set; } = null;
 
         /// <summary>
         /// The merchant ID to use for this transaction. This requires a meta key to be set up for use with Cybersource Decision Manager, and this overrides the connector configuration.
         /// </summary>
-        [JsonProperty("meta_key_merchant_id", NullValueHandling = NullValueHandling.Include)]
-        public string? MetaKeyMerchantId
-        {
-            get => _metaKeyMerchantId;
-            set
-            {
-                _metaKeyMerchantId = value;
-                _metaKeyMerchantIdSet = true;
-            }
-        }
-
-        private string? _metaKeyMerchantId = null;
-
-        private bool _metaKeyMerchantIdSet = false;
-
-        public bool ShouldSerializeMetaKeyMerchantId() => _metaKeyMerchantIdSet;
+        [JsonProperty("meta_key_merchant_id")]
+        public string? MetaKeyMerchantId { get; set; } = null;
 
         /// <summary>
         /// The shipping method for this transaction.
         /// </summary>
-        [JsonProperty("shipping_method", NullValueHandling = NullValueHandling.Include)]
-        public string? ShippingMethod
-        {
-            get => _shippingMethod;
-            set
-            {
-                _shippingMethod = value;
-                _shippingMethodSet = true;
-            }
-        }
-
-        private string? _shippingMethod = null;
-
-        private bool _shippingMethodSet = false;
-
-        public bool ShouldSerializeShippingMethod() => _shippingMethodSet;
+        [JsonProperty("shipping_method")]
+        public string? ShippingMethod { get; set; } = null;
     }
 }
