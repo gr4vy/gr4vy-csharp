@@ -9,10 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class TransactionEvent
     {
@@ -32,7 +35,7 @@ namespace Gr4vy.Models.Components
         /// The specific event name.
         /// </summary>
         [JsonProperty("name")]
-        public string Name { get; set; } = default!;
+        public Name Name { get; set; } = default!;
 
         /// <summary>
         /// The date this event was created at.

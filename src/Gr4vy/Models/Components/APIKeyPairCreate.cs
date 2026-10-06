@@ -9,9 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class APIKeyPairCreate
     {
@@ -22,7 +26,7 @@ namespace Gr4vy.Models.Components
         public string DisplayName { get; set; } = default!;
 
         [JsonProperty("algorithm")]
-        public string? Algorithm { get; set; }
+        public CertificateAlgorithm? Algorithm { get; set; }
 
         /// <summary>
         /// Whether the API key pair should be active and usable once created.

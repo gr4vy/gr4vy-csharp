@@ -13,7 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// A full transaction resource.
@@ -57,7 +59,7 @@ namespace Gr4vy.Models.Components
         public long Amount { get; set; } = default!;
 
         [JsonProperty("status")]
-        public string Status { get; set; } = default!;
+        public TransactionStatus Status { get; set; } = default!;
 
         /// <summary>
         /// The amount for this transaction that has been authorized for the `payment_method`. This can be less than the `amount` if gift cards were used.
@@ -108,7 +110,7 @@ namespace Gr4vy.Models.Components
         public string? ExternalIdentifier { get; set; } = null;
 
         [JsonProperty("intent")]
-        public string Intent { get; set; } = default!;
+        public TransactionIntent Intent { get; set; } = default!;
 
         /// <summary>
         /// The payment method used for this transaction.
@@ -120,13 +122,13 @@ namespace Gr4vy.Models.Components
         /// The method used for the transaction.
         /// </summary>
         [JsonProperty("method")]
-        public string? Method { get; set; } = null;
+        public Method? Method { get; set; } = null;
 
         /// <summary>
         /// The name of the instrument used to process the transaction.
         /// </summary>
         [JsonProperty("instrument_type")]
-        public string? InstrumentType { get; set; } = null;
+        public InstrumentType? InstrumentType { get; set; } = null;
 
         /// <summary>
         /// The standardized error code set by Gr4vy.
@@ -228,25 +230,25 @@ namespace Gr4vy.Models.Components
         /// The response code received from the payment service for the Address Verification Check (AVS). This code is mapped to a standardized Gr4vy AVS response code.
         /// </summary>
         [JsonProperty("avs_response_code")]
-        public string? AvsResponseCode { get; set; } = null;
+        public AVSResponseCode? AvsResponseCode { get; set; } = null;
 
         /// <summary>
         /// The response code received from the payment service for the Card Verification Value (CVV). This code is mapped to a standardized Gr4vy CVV response code.
         /// </summary>
         [JsonProperty("cvv_response_code")]
-        public string? CvvResponseCode { get; set; } = null;
+        public CVVResponseCode? CvvResponseCode { get; set; } = null;
 
         /// <summary>
         /// The mapped decision received from the anti-fraud service. In case of a review decision this field is not updated once the review is resolved.
         /// </summary>
         [JsonProperty("anti_fraud_decision")]
-        public string? AntiFraudDecision { get; set; } = null;
+        public AntiFraudDecision? AntiFraudDecision { get; set; } = null;
 
         /// <summary>
         /// The way payment method information made it to this transaction.
         /// </summary>
         [JsonProperty("payment_source")]
-        public string PaymentSource { get; set; } = default!;
+        public TransactionPaymentSource PaymentSource { get; set; } = default!;
 
         /// <summary>
         /// Indicates whether the transaction was initiated by the merchant or the customer.
@@ -345,7 +347,7 @@ namespace Gr4vy.Models.Components
         public DateTime? BuyerApprovalTimedoutAt { get; set; } = null;
 
         [JsonProperty("intent_outcome")]
-        public string IntentOutcome { get; set; } = default!;
+        public TransactionIntentOutcome IntentOutcome { get; set; } = default!;
 
         /// <summary>
         /// The outcome of the original intent of a transaction. This allows you to understand if the intent of the transaction (e.g. `capture` or `authorize`) has been achieved when dealing with multiple payment instruments.

@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TransactionRefundCreate
     {
@@ -21,7 +26,7 @@ namespace Gr4vy.Models.Components
         public long? Amount { get; set; } = null;
 
         [JsonProperty("target_type")]
-        public string? TargetType { get; set; }
+        public RefundTargetType? TargetType { get; set; }
 
         /// <summary>
         /// The optional ID of the instrument to refund for. This is only required when the `target_type` is set to `gift-card-redemption`.

@@ -32,7 +32,7 @@ var res = await sdk.MerchantAccounts.ThreeDsConfiguration.CreateAsync(
         MerchantCountryCode = "840",
         MerchantCategoryCode = "1234",
         MerchantUrl = "https://example.com",
-        Scheme = "<value>",
+        Scheme = CardScheme.Rupay,
         Metadata = new Dictionary<string, string>() {
             { "key", "<value>" },
             { "key1", "<value>" },

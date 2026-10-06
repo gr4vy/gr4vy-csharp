@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Create a Google Pay payment with an FPAN.
@@ -51,7 +56,7 @@ namespace Gr4vy.Models.Components
         /// The type of the card used.
         /// </summary>
         [JsonProperty("card_type")]
-        public string? CardType { get; set; } = null;
+        public CardType? CardType { get; set; } = null;
 
         /// <summary>
         /// Aways `googlepay_pan_only`.

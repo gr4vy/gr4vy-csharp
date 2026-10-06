@@ -9,9 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
+    using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ListPaymentLinksRequest
     {
@@ -79,7 +83,7 @@ namespace Gr4vy.Models.Requests
         /// Filters the results to only the payment links that have a `status` that matches with any of the provided status values.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")]
-        public List<string>? Status { get; set; } = null;
+        public List<PaymentLinkStatus>? Status { get; set; } = null;
 
         /// <summary>
         /// Filters the results to only get the items for which some of the buyer data contains exactly the provided `buyer_search` values.

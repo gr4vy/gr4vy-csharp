@@ -13,7 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Payment Method<br/>
@@ -77,19 +79,19 @@ namespace Gr4vy.Models.Components
         public DateTime? LastReplacedAt { get; set; } = null;
 
         [JsonProperty("method")]
-        public string Method { get; set; } = default!;
+        public Method Method { get; set; } = default!;
 
         /// <summary>
         /// The mode to use with this payment method.
         /// </summary>
         [JsonProperty("mode")]
-        public string? Mode { get; set; } = null;
+        public Mode? Mode { get; set; } = null;
 
         /// <summary>
         /// The scheme of the card. Only applies to card payments.
         /// </summary>
         [JsonProperty("scheme")]
-        public string? Scheme { get; set; } = null;
+        public CardScheme? Scheme { get; set; } = null;
 
         /// <summary>
         /// The ID for the payment method.
@@ -107,7 +109,7 @@ namespace Gr4vy.Models.Components
         /// Additional schemes of the card besides the primary scheme. Only applies to card payment methods.
         /// </summary>
         [JsonProperty("additional_schemes")]
-        public List<string>? AdditionalSchemes { get; set; } = null;
+        public List<CardScheme>? AdditionalSchemes { get; set; } = null;
 
         /// <summary>
         /// The timestamp when this payment method was last used in a transaction for client initiated transactions.
@@ -149,7 +151,7 @@ namespace Gr4vy.Models.Components
         /// The scheme associated with scheme_transaction_id. Only applies to card payments.
         /// </summary>
         [JsonProperty("scheme_transaction_id_scheme", NullValueHandling = NullValueHandling.Include)]
-        public string? SchemeTransactionIdScheme { get; set; }
+        public CardScheme? SchemeTransactionIdScheme { get; set; }
 
         /// <summary>
         /// The transaction link identifier stored against this payment method.

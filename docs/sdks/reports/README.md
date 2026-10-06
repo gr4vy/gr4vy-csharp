@@ -85,7 +85,7 @@ var sdk = new Gr4vySDK(
 
 var res = await sdk.Reports.CreateAsync(reportCreate: new ReportCreate() {
     Name = "Monthly Transaction Report",
-    Schedule = "<value>",
+    Schedule = ReportSchedule.Daily,
     ScheduleEnabled = true,
     ScheduleTimezone = "UTC",
     Spec = new Spec() {

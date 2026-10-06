@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ListPaymentMethodsRequest
     {
@@ -39,7 +44,7 @@ namespace Gr4vy.Models.Requests
         public string? BuyerExternalIdentifier { get; set; } = null;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")]
-        public List<string>? Status { get; set; } = null;
+        public List<PaymentMethodStatus>? Status { get; set; } = null;
 
         /// <summary>
         /// The external identifier of the payment method to filter by.

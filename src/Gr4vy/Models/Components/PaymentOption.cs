@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class PaymentOption
     {
@@ -25,7 +29,7 @@ namespace Gr4vy.Models.Components
         public string? IconUrl { get; set; } = null;
 
         [JsonProperty("mode")]
-        public string Mode { get; set; } = default!;
+        public Mode Mode { get; set; } = default!;
 
         [JsonProperty("label")]
         public string? Label { get; set; } = null;

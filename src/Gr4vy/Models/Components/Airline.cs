@@ -13,7 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Information about an airline travel.
@@ -102,7 +104,7 @@ namespace Gr4vy.Models.Components
         /// The delivery method of the ticket.
         /// </summary>
         [JsonProperty("ticket_delivery_method")]
-        public string? TicketDeliveryMethod { get; set; } = null;
+        public TicketDeliveryMethod? TicketDeliveryMethod { get; set; } = null;
 
         /// <summary>
         /// The airline's unique ticket number.

@@ -12,7 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Request body for registering a new digital wallet.
@@ -20,7 +23,7 @@ namespace Gr4vy.Models.Components
     public class DigitalWalletCreate
     {
         [JsonProperty("provider")]
-        public string Provider { get; set; } = default!;
+        public DigitalWalletProvider Provider { get; set; } = default!;
 
         [JsonProperty("merchant_name")]
         public string MerchantName { get; set; } = default!;

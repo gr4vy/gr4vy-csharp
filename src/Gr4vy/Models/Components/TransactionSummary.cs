@@ -13,7 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// A transaction, summarised.
@@ -57,7 +59,7 @@ namespace Gr4vy.Models.Components
         public long Amount { get; set; } = default!;
 
         [JsonProperty("status")]
-        public string Status { get; set; } = default!;
+        public TransactionStatus Status { get; set; } = default!;
 
         /// <summary>
         /// The amount for this transaction that has been authorized for the `payment_method`. This can be less than the `amount` if gift cards were used.
@@ -108,7 +110,7 @@ namespace Gr4vy.Models.Components
         public string? ExternalIdentifier { get; set; } = null;
 
         [JsonProperty("intent")]
-        public string Intent { get; set; } = default!;
+        public TransactionIntent Intent { get; set; } = default!;
 
         /// <summary>
         /// The payment method used for this transaction.
@@ -120,13 +122,13 @@ namespace Gr4vy.Models.Components
         /// The method used for the transaction.
         /// </summary>
         [JsonProperty("method")]
-        public string? Method { get; set; } = null;
+        public Method? Method { get; set; } = null;
 
         /// <summary>
         /// The name of the instrument used to process the transaction.
         /// </summary>
         [JsonProperty("instrument_type")]
-        public string? InstrumentType { get; set; } = null;
+        public InstrumentType? InstrumentType { get; set; } = null;
 
         /// <summary>
         /// The standardized error code set by Gr4vy.

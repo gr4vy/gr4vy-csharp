@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class PazeMaskedCard
     {
@@ -49,19 +53,19 @@ namespace Gr4vy.Models.Components
         /// Card type.
         /// </summary>
         [JsonProperty("paymentCardType")]
-        public string PaymentCardType { get; set; } = default!;
+        public Paymentcardtype PaymentCardType { get; set; } = default!;
 
         /// <summary>
         /// Card brand.
         /// </summary>
         [JsonProperty("paymentCardBrand")]
-        public string PaymentCardBrand { get; set; } = default!;
+        public Paymentcardbrand PaymentCardBrand { get; set; } = default!;
 
         /// <summary>
         /// Card network.
         /// </summary>
         [JsonProperty("paymentCardNetwork")]
-        public string PaymentCardNetwork { get; set; } = default!;
+        public Paymentcardnetwork PaymentCardNetwork { get; set; } = default!;
 
         [JsonProperty("digitalCardData")]
         public PazeDigitalCardData DigitalCardData { get; set; } = default!;

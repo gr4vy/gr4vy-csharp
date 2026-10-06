@@ -18,101 +18,31 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A dictionary of merchant defined data, to be passed to Wpay for anti-fraud control.
         /// </summary>
-        [JsonProperty("merchant_defined_data", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? MerchantDefinedData
-        {
-            get => _merchantDefinedData;
-            set
-            {
-                _merchantDefinedData = value;
-                _merchantDefinedDataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _merchantDefinedData = null;
-
-        private bool _merchantDefinedDataSet = false;
-
-        public bool ShouldSerializeMerchantDefinedData() => _merchantDefinedDataSet;
+        [JsonProperty("merchant_defined_data")]
+        public Dictionary<string, string>? MerchantDefinedData { get; set; } = null;
 
         /// <summary>
         /// The customer ID for the Everyday Rewards account.
         /// </summary>
-        [JsonProperty("customerId", NullValueHandling = NullValueHandling.Include)]
-        public string? CustomerId
-        {
-            get => _customerId;
-            set
-            {
-                _customerId = value;
-                _customerIdSet = true;
-            }
-        }
-
-        private string? _customerId = null;
-
-        private bool _customerIdSet = false;
-
-        public bool ShouldSerializeCustomerId() => _customerIdSet;
+        [JsonProperty("customerId")]
+        public string? CustomerId { get; set; } = null;
 
         /// <summary>
         /// The access token for the Everyday Rewards account.
         /// </summary>
-        [JsonProperty("rewardsAccessToken", NullValueHandling = NullValueHandling.Include)]
-        public string? RewardsAccessToken
-        {
-            get => _rewardsAccessToken;
-            set
-            {
-                _rewardsAccessToken = value;
-                _rewardsAccessTokenSet = true;
-            }
-        }
-
-        private string? _rewardsAccessToken = null;
-
-        private bool _rewardsAccessTokenSet = false;
-
-        public bool ShouldSerializeRewardsAccessToken() => _rewardsAccessTokenSet;
+        [JsonProperty("rewardsAccessToken")]
+        public string? RewardsAccessToken { get; set; } = null;
 
         /// <summary>
         /// The ID of the device on which the payment is occuring.
         /// </summary>
-        [JsonProperty("deviceId", NullValueHandling = NullValueHandling.Include)]
-        public string? DeviceId
-        {
-            get => _deviceId;
-            set
-            {
-                _deviceId = value;
-                _deviceIdSet = true;
-            }
-        }
-
-        private string? _deviceId = null;
-
-        private bool _deviceIdSet = false;
-
-        public bool ShouldSerializeDeviceId() => _deviceIdSet;
+        [JsonProperty("deviceId")]
+        public string? DeviceId { get; set; } = null;
 
         /// <summary>
         /// Whether the transaction should redirect post-payment.
         /// </summary>
-        [JsonProperty("postPaymentRedirect", NullValueHandling = NullValueHandling.Include)]
-        public bool? PostPaymentRedirect
-        {
-            get => _postPaymentRedirect;
-            set
-            {
-                _postPaymentRedirect = value;
-                _postPaymentRedirectSet = true;
-            }
-        }
-
-        private bool? _postPaymentRedirect = null;
-
-        private bool _postPaymentRedirectSet = false;
-
-        public bool ShouldSerializePostPaymentRedirect() => _postPaymentRedirectSet;
+        [JsonProperty("postPaymentRedirect")]
+        public bool? PostPaymentRedirect { get; set; } = null;
     }
 }

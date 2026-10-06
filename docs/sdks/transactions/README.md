@@ -44,8 +44,8 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     BuyerId = "fe26475d-ec3e-4884-9553-f7356683f7f9",
     BuyerEmailAddress = "john@example.com",
     IpAddress = "8.214.133.47",
-    Status = new List<string>() {
-        "authorization_succeeded",
+    Status = new List<TransactionStatus>() {
+        TransactionStatus.AuthorizationSucceeded,
     },
     Id = "7099948d-7286-47e4-aad8-b68f7eb44591",
     PaymentServiceTransactionId = "tx-12345",
@@ -79,8 +79,8 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     },
     PaymentMethodCountry = "[\"US\"]",
     PaymentMethodFingerprint = "a50b85c200ee0795d6fd33a5c66f37a4564f554355c5b46a756aac485dd168a4",
-    Method = new List<string>() {
-        "card",
+    Method = new List<Method>() {
+        Method.Card,
     },
     ErrorCode = new List<string>() {
         "insufficient_funds",
@@ -94,8 +94,8 @@ ListTransactionsRequest req = new ListTransactionsRequest() {
     GiftCardLast4 = "7890",
     HasSettlements = true,
     PaymentMethodBin = "411111",
-    PaymentSource = new List<string>() {
-        "recurring",
+    PaymentSource = new List<TransactionPaymentSource>() {
+        TransactionPaymentSource.Recurring,
     },
     IsSubsequentPayment = true,
     MerchantInitiated = true,

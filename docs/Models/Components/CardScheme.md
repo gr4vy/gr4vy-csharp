@@ -1,0 +1,43 @@
+# CardScheme
+
+## Example Usage
+
+```csharp
+using Gr4vy.Models.Components;
+
+var value = CardScheme.Accel;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = CardScheme.Of("custom_value");
+```
+
+
+## Values
+
+| Name              | Value             |
+| ----------------- | ----------------- |
+| `Accel`           | accel             |
+| `Amex`            | amex              |
+| `Bancontact`      | bancontact        |
+| `CarteBancaire`   | carte-bancaire    |
+| `Cirrus`          | cirrus            |
+| `Culiance`        | culiance          |
+| `Dankort`         | dankort           |
+| `DinersClub`      | diners-club       |
+| `Discover`        | discover          |
+| `EftposAustralia` | eftpos-australia  |
+| `Elo`             | elo               |
+| `Hipercard`       | hipercard         |
+| `Jcb`             | jcb               |
+| `Maestro`         | maestro           |
+| `Mastercard`      | mastercard        |
+| `Mir`             | mir               |
+| `Nyce`            | nyce              |
+| `Other`           | other             |
+| `Pulse`           | pulse             |
+| `Qcard`           | qcard             |
+| `Rupay`           | rupay             |
+| `Star`            | star              |
+| `Uatp`            | uatp              |
+| `Unionpay`        | unionpay          |
+| `Visa`            | visa              |

@@ -11,6 +11,11 @@ namespace Gr4vy.Models.Requests
 {
     using Gr4vy.Models.Requests;
     using Gr4vy.Utils;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ListBuyerGiftCardsRequest
     {
@@ -30,7 +35,7 @@ namespace Gr4vy.Models.Requests
         /// The direction to sort the gift cards in.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=order_by")]
-        public string? OrderBy { get; set; } = "desc";
+        public ListBuyerGiftCardsOrderBy? OrderBy { get; set; } = Gr4vy.Models.Requests.ListBuyerGiftCardsOrderBy.Desc;
 
         /// <summary>
         /// The ID of the merchant account to use for this request.

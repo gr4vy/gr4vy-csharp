@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TransactionThreeDSecureSummary
     {
@@ -25,13 +29,13 @@ namespace Gr4vy.Models.Components
         /// The status of the 3DS challenge for this transaction.
         /// </summary>
         [JsonProperty("status")]
-        public string? Status { get; set; } = null;
+        public ThreeDSecureStatus? Status { get; set; } = null;
 
         /// <summary>
         /// The method used for 3DS authentication for this transaction.
         /// </summary>
         [JsonProperty("method")]
-        public string? Method { get; set; } = null;
+        public ThreeDSecureMethod? Method { get; set; } = null;
 
         /// <summary>
         /// The 3DS data used for this transaction. To see full details about the 3DS calls please use our transaction events API.
