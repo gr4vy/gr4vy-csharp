@@ -4,9 +4,6 @@ info:
     title: Mark all enums as open enums
     version: 0.0.0
 actions: 
-  # - target: $..*[?@.enum]
-  #   update:
-  #     x-speakeasy-unknown-values: allow
-  # For now we actually delete the enums cause C# does not support open enums yet
-  - target: $..*.enum
-    remove: true
+  - target: $..*[?@.enum]
+    update:
+      x-speakeasy-unknown-values: allow
