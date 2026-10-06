@@ -22,7 +22,21 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Indicates whether the item is a physical good or a service/digital item.
         /// </summary>
-        [JsonProperty("type")]
-        public ForterAntiFraudOptionsCartItemBasicItemDataType? Type { get; set; } = null;
+        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
+        public ForterAntiFraudOptionsCartItemBasicItemDataType? Type
+        {
+            get => _type;
+            set
+            {
+                _type = value;
+                _typeSet = true;
+            }
+        }
+
+        private ForterAntiFraudOptionsCartItemBasicItemDataType? _type = null;
+
+        private bool _typeSet = false;
+
+        public bool ShouldSerializeType() => _typeSet;
     }
 }
