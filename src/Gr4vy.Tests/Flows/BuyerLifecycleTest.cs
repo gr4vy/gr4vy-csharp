@@ -105,7 +105,7 @@ namespace Gr4vy.Tests.Flows
                         ),
                 }
             );
-            Assert.That(txn.Status, Is.EqualTo("authorization_succeeded"));
+            Assert.That((string)txn.Status, Is.EqualTo("authorization_succeeded"));
 
             // 6. Buyer get + list
             var buyerGet = await Client.Buyers.GetAsync(buyer.Id!);
