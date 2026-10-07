@@ -18,61 +18,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Split payment values to pass to the Adyen API on payment authorization. See <a href="https://docs.adyen.com/platforms/online-payments/split-transactions/split-payments-at-authorization/">the Adyen docs</a> for details on the format and contents of the list.
         /// </summary>
-        [JsonProperty("authorization", NullValueHandling = NullValueHandling.Include)]
-        public List<Dictionary<string, object>>? Authorization
-        {
-            get => _authorization;
-            set
-            {
-                _authorization = value;
-                _authorizationSet = true;
-            }
-        }
-
-        private List<Dictionary<string, object>>? _authorization = null;
-
-        private bool _authorizationSet = false;
-
-        public bool ShouldSerializeAuthorization() => _authorizationSet;
+        [JsonProperty("authorization")]
+        public List<Dictionary<string, object>>? Authorization { get; set; } = null;
 
         /// <summary>
         /// Split payment values to pass to the Adyen API on payment capture. See <a href="https://docs.adyen.com/platforms/online-payments/split-transactions/split-payments-at-capture/">the Adyen docs</a> for details on the format and contents of the list.
         /// </summary>
-        [JsonProperty("capture", NullValueHandling = NullValueHandling.Include)]
-        public List<Dictionary<string, object>>? Capture
-        {
-            get => _capture;
-            set
-            {
-                _capture = value;
-                _captureSet = true;
-            }
-        }
-
-        private List<Dictionary<string, object>>? _capture = null;
-
-        private bool _captureSet = false;
-
-        public bool ShouldSerializeCapture() => _captureSet;
+        [JsonProperty("capture")]
+        public List<Dictionary<string, object>>? Capture { get; set; } = null;
 
         /// <summary>
         /// Split payment values to pass to the Adyen API on payment refund. See <a href="https://docs.adyen.com/platforms/online-payments/split-transactions/split-refunds/">the Adyen docs</a> for details on the format and contents of the list.
         /// </summary>
-        [JsonProperty("refund", NullValueHandling = NullValueHandling.Include)]
-        public List<Dictionary<string, object>>? Refund
-        {
-            get => _refund;
-            set
-            {
-                _refund = value;
-                _refundSet = true;
-            }
-        }
-
-        private List<Dictionary<string, object>>? _refund = null;
-
-        private bool _refundSet = false;
-
-        public bool ShouldSerializeRefund() => _refundSet;
+        [JsonProperty("refund")]
+        public List<Dictionary<string, object>>? Refund { get; set; } = null;
     }
 }

@@ -19,61 +19,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of line items details to override when passing to the Riskified API. Entries are matched by position against the cart items sent to Riskified, which excludes `discount`, `shipping_fee`, `sales_tax` and `store_credit` items.
         /// </summary>
-        [JsonProperty("line_items", NullValueHandling = NullValueHandling.Include)]
-        public List<RiskifiedAntiFraudOptionsLineItem>? LineItems
-        {
-            get => _lineItems;
-            set
-            {
-                _lineItems = value;
-                _lineItemsSet = true;
-            }
-        }
-
-        private List<RiskifiedAntiFraudOptionsLineItem>? _lineItems = null;
-
-        private bool _lineItemsSet = false;
-
-        public bool ShouldSerializeLineItems() => _lineItemsSet;
+        [JsonProperty("line_items")]
+        public List<RiskifiedAntiFraudOptionsLineItem>? LineItems { get; set; } = null;
 
         /// <summary>
         /// A list of shipping lines details to override when passing to the Riskified API. Entries are matched by position against the `shipping_fee` cart items.
         /// </summary>
-        [JsonProperty("shipping_lines", NullValueHandling = NullValueHandling.Include)]
-        public List<RiskifiedAntiFraudOptionsShippingLine>? ShippingLines
-        {
-            get => _shippingLines;
-            set
-            {
-                _shippingLines = value;
-                _shippingLinesSet = true;
-            }
-        }
-
-        private List<RiskifiedAntiFraudOptionsShippingLine>? _shippingLines = null;
-
-        private bool _shippingLinesSet = false;
-
-        public bool ShouldSerializeShippingLines() => _shippingLinesSet;
+        [JsonProperty("shipping_lines")]
+        public List<RiskifiedAntiFraudOptionsShippingLine>? ShippingLines { get; set; } = null;
 
         /// <summary>
         /// Additional destinations for orders shipped to more than one address. The address derived from the transaction is always sent first; these are appended after it and may not use the reserved `base-shipping-address` id.
         /// </summary>
-        [JsonProperty("additional_shipping_addresses", NullValueHandling = NullValueHandling.Include)]
-        public List<RiskifiedAntiFraudOptionsShippingAddress>? AdditionalShippingAddresses
-        {
-            get => _additionalShippingAddresses;
-            set
-            {
-                _additionalShippingAddresses = value;
-                _additionalShippingAddressesSet = true;
-            }
-        }
-
-        private List<RiskifiedAntiFraudOptionsShippingAddress>? _additionalShippingAddresses = null;
-
-        private bool _additionalShippingAddressesSet = false;
-
-        public bool ShouldSerializeAdditionalShippingAddresses() => _additionalShippingAddressesSet;
+        [JsonProperty("additional_shipping_addresses")]
+        public List<RiskifiedAntiFraudOptionsShippingAddress>? AdditionalShippingAddresses { get; set; } = null;
     }
 }
