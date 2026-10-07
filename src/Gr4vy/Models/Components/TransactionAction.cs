@@ -9,10 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class TransactionAction
     {
@@ -23,10 +26,10 @@ namespace Gr4vy.Models.Components
         public string Type { get; } = "action";
 
         [JsonProperty("id")]
-        public string Id { get; set; } = default!;
+        public FlowAction Id { get; set; } = default!;
 
         [JsonProperty("flow")]
-        public string Flow { get; set; } = default!;
+        public Flow Flow { get; set; } = default!;
 
         /// <summary>
         /// The ID of the rule that triggered this action.

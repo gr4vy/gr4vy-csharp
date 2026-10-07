@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class CheckoutSessionPaymentMethodDetails
     {
@@ -30,7 +35,7 @@ namespace Gr4vy.Models.Components
         /// The payment scheme of the card.
         /// </summary>
         [JsonProperty("card_type")]
-        public string? CardType { get; set; } = null;
+        public CardType? CardType { get; set; } = null;
 
         /// <summary>
         /// The card issuer.

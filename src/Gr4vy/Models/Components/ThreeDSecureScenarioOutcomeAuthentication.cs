@@ -9,29 +9,20 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ThreeDSecureScenarioOutcomeAuthentication
     {
         /// <summary>
         /// 3DS transaction status.
         /// </summary>
-        [JsonProperty("transaction_status", NullValueHandling = NullValueHandling.Include)]
-        public string TransactionStatus
-        {
-            get => _transactionStatus;
-            set
-            {
-                _transactionStatus = value;
-                _transactionStatusSet = true;
-            }
-        }
-
-        private string _transactionStatus = default!;
-
-        private bool _transactionStatusSet = true;
-
-        public bool ShouldSerializeTransactionStatus() => _transactionStatusSet;
+        [JsonProperty("transaction_status")]
+        public ThreeDSecureScenarioOutcomeAuthenticationTransactionStatus TransactionStatus { get; set; } = default!;
     }
 }

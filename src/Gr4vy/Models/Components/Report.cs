@@ -13,6 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class Report
     {
@@ -56,7 +59,7 @@ namespace Gr4vy.Models.Components
         /// The type of the report creator.
         /// </summary>
         [JsonProperty("creator_type")]
-        public string? CreatorType { get; set; } = null;
+        public ReportCreatorType? CreatorType { get; set; } = null;
 
         /// <summary>
         /// The date this report was created at.
@@ -83,7 +86,7 @@ namespace Gr4vy.Models.Components
         public string? Description { get; set; } = null;
 
         [JsonProperty("schedule")]
-        public string Schedule { get; set; } = default!;
+        public ReportSchedule Schedule { get; set; } = default!;
 
         /// <summary>
         /// Whether the report schedule is enabled.

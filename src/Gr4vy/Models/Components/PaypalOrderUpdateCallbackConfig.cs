@@ -9,50 +9,26 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class PaypalOrderUpdateCallbackConfig
     {
         /// <summary>
         /// The URL for the webhook endpoint you provide for PayPal to send you order update events.
         /// </summary>
-        [JsonProperty("callback_url", NullValueHandling = NullValueHandling.Include)]
-        public string? CallbackUrl
-        {
-            get => _callbackUrl;
-            set
-            {
-                _callbackUrl = value;
-                _callbackUrlSet = true;
-            }
-        }
-
-        private string? _callbackUrl = null;
-
-        private bool _callbackUrlSet = false;
-
-        public bool ShouldSerializeCallbackUrl() => _callbackUrlSet;
+        [JsonProperty("callback_url")]
+        public string? CallbackUrl { get; set; } = null;
 
         /// <summary>
         /// The events that trigger a callback.
         /// </summary>
-        [JsonProperty("callback_events", NullValueHandling = NullValueHandling.Include)]
-        public List<string>? CallbackEvents
-        {
-            get => _callbackEvents;
-            set
-            {
-                _callbackEvents = value;
-                _callbackEventsSet = true;
-            }
-        }
-
-        private List<string>? _callbackEvents = null;
-
-        private bool _callbackEventsSet = false;
-
-        public bool ShouldSerializeCallbackEvents() => _callbackEventsSet;
+        [JsonProperty("callback_events")]
+        public List<CallbackEvent>? CallbackEvents { get; set; } = null;
     }
 }

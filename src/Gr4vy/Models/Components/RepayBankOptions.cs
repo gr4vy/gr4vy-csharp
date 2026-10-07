@@ -9,29 +9,20 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class RepayBankOptions
     {
         /// <summary>
         /// The Nacha Standard Entry Class code describing how the account holder authorized an ACH debit. When omitted, `TelDebit` is used for a `moto` payment source and `WebDebit` otherwise. Ignored for business accounts, which Repay requires to use `CcdDebit`.
         /// </summary>
-        [JsonProperty("sec_code", NullValueHandling = NullValueHandling.Include)]
-        public string? SecCode
-        {
-            get => _secCode;
-            set
-            {
-                _secCode = value;
-                _secCodeSet = true;
-            }
-        }
-
-        private string? _secCode = null;
-
-        private bool _secCodeSet = false;
-
-        public bool ShouldSerializeSecCode() => _secCodeSet;
+        [JsonProperty("sec_code")]
+        public SecCode? SecCode { get; set; } = null;
     }
 }

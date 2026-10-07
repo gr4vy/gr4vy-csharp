@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// A single field that needs to be submitted for a payment service when it is created.
@@ -36,7 +41,7 @@ namespace Gr4vy.Models.Components
         public bool Required { get; set; } = default!;
 
         [JsonProperty("format")]
-        public string Format { get; set; } = default!;
+        public DefinitionFieldFormat Format { get; set; } = default!;
 
         /// <summary>
         /// Defines if this field is secret. When `true` the field's value is not returned when querying the payment service information.

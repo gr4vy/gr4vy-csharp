@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ThreeDSecureDataV2
     {
@@ -42,7 +47,7 @@ namespace Gr4vy.Models.Components
         /// The scheme/brand of the card that is used for 3-D Secure.
         /// </summary>
         [JsonProperty("scheme")]
-        public string? Scheme { get; set; } = null;
+        public CardScheme? Scheme { get; set; } = null;
 
         /// <summary>
         /// The transaction status after a the 3DS challenge. This will be null in case of a frictionless 3DS flow.

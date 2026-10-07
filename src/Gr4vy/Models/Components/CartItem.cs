@@ -9,9 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class CartItem
     {
@@ -97,7 +101,7 @@ namespace Gr4vy.Models.Components
         /// The product type of the cart item.
         /// </summary>
         [JsonProperty("product_type")]
-        public string? ProductType { get; set; } = null;
+        public ProductType? ProductType { get; set; } = null;
 
         /// <summary>
         /// The seller country of the cart item.

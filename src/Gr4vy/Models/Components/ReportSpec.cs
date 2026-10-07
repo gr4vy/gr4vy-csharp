@@ -9,14 +9,18 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ReportSpec
     {
         [JsonProperty("model")]
-        public string Model { get; set; } = default!;
+        public ReportSpecModel Model { get; set; } = default!;
 
         /// <summary>
         /// The parameters for the report model.

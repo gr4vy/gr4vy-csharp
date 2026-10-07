@@ -13,6 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ReportExecution
     {
@@ -41,7 +44,7 @@ namespace Gr4vy.Models.Components
         public DateTime UpdatedAt { get; set; } = default!;
 
         [JsonProperty("status")]
-        public string Status { get; set; } = default!;
+        public ReportExecutionStatus Status { get; set; } = default!;
 
         [JsonProperty("context")]
         public ReportExecutionContext Context { get; set; } = default!;

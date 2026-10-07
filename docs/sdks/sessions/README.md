@@ -140,7 +140,7 @@ var res = await sdk.DigitalWallets.Sessions.PazeMobileSessionCreateAsync(pazeMob
     SessionId = "24e4dbb9-4f5e-43e8-8375-e9fd45650bc9",
     AccessToken = "<value>",
     CallbackURLScheme = "Gr4vyCallback",
-    Intent = "EXPRESS_CHECKOUT",
+    Intent = Intent.ExpressCheckout,
 });
 
 // handle response
@@ -299,7 +299,7 @@ var res = await sdk.DigitalWallets.Sessions.PazeMobileSessionCompleteAsync(pazeS
     SessionId = "7c1cba03-d20e-4a3f-9d77-e5dc23a39ac2",
     Code = "eyJhdWQiOm51bGwsImtpZCI6IjE3...",
     AccessToken = "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
-    TransactionType = "PURCHASE",
+    TransactionType = PazeSessionCompleteRequestTransactiontype.Purchase,
 });
 
 // handle response

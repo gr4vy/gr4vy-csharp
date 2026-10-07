@@ -13,7 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Capture
     {
@@ -60,7 +62,7 @@ namespace Gr4vy.Models.Components
         public long Amount { get; set; } = default!;
 
         [JsonProperty("status")]
-        public string Status { get; set; } = default!;
+        public CaptureStatus Status { get; set; } = default!;
 
         /// <summary>
         /// Whether this is marked as the final capture for the associated transaction.

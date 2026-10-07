@@ -13,7 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class PaymentService
     {
@@ -45,7 +47,7 @@ namespace Gr4vy.Models.Components
         public bool? Active { get; set; } = true;
 
         [JsonProperty("method")]
-        public string Method { get; set; } = default!;
+        public Method Method { get; set; } = default!;
 
         /// <summary>
         /// The display name for the payment service.
@@ -60,7 +62,7 @@ namespace Gr4vy.Models.Components
         public long Position { get; set; } = default!;
 
         [JsonProperty("status")]
-        public string? Status { get; set; }
+        public PaymentServiceStatus? Status { get; set; }
 
         /// <summary>
         /// A list of currencies for which this service is enabled, in ISO 4217 three-letter code format.

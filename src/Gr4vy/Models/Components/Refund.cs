@@ -13,6 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class Refund
     {
@@ -41,7 +44,7 @@ namespace Gr4vy.Models.Components
         public string? PaymentServiceRefundId { get; set; } = null;
 
         [JsonProperty("status")]
-        public string Status { get; set; } = default!;
+        public RefundStatus Status { get; set; } = default!;
 
         /// <summary>
         /// The ISO 4217 currency code for this refund. Will always match that of the associated transaction.
@@ -62,7 +65,7 @@ namespace Gr4vy.Models.Components
         public string? Reason { get; set; } = null;
 
         [JsonProperty("target_type")]
-        public string TargetType { get; set; } = default!;
+        public RefundTargetType TargetType { get; set; } = default!;
 
         /// <summary>
         /// The optional ID of the instrument that was refunded. This may be `null` if the instrument was not stored.

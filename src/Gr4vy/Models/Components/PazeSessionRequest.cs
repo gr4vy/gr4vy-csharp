@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class PazeSessionRequest
     {
@@ -18,7 +23,7 @@ namespace Gr4vy.Models.Components
         /// The platform that the Paze session is being created for. Defaults to `web`.
         /// </summary>
         [JsonProperty("source")]
-        public string? Source { get; set; } = "web";
+        public Source? Source { get; set; } = Gr4vy.Models.Components.Source.Web;
 
         /// <summary>
         /// The domain on which Paze is being loaded. Required when `source` is `web`.

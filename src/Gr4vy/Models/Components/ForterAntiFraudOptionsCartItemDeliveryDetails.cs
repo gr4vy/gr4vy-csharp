@@ -9,49 +9,26 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ForterAntiFraudOptionsCartItemDeliveryDetails
     {
         /// <summary>
         /// The type of delivery for this cart item.
         /// </summary>
-        [JsonProperty("delivery_type", NullValueHandling = NullValueHandling.Include)]
-        public string? DeliveryType
-        {
-            get => _deliveryType;
-            set
-            {
-                _deliveryType = value;
-                _deliveryTypeSet = true;
-            }
-        }
-
-        private string? _deliveryType = null;
-
-        private bool _deliveryTypeSet = false;
-
-        public bool ShouldSerializeDeliveryType() => _deliveryTypeSet;
+        [JsonProperty("delivery_type")]
+        public ForterAntiFraudOptionsCartItemDeliveryDetailsDeliveryType? DeliveryType { get; set; } = null;
 
         /// <summary>
         /// The method of delivery for this cart item.
         /// </summary>
-        [JsonProperty("delivery_method", NullValueHandling = NullValueHandling.Include)]
-        public string? DeliveryMethod
-        {
-            get => _deliveryMethod;
-            set
-            {
-                _deliveryMethod = value;
-                _deliveryMethodSet = true;
-            }
-        }
-
-        private string? _deliveryMethod = null;
-
-        private bool _deliveryMethodSet = false;
-
-        public bool ShouldSerializeDeliveryMethod() => _deliveryMethodSet;
+        [JsonProperty("delivery_method")]
+        public string? DeliveryMethod { get; set; } = null;
     }
 }

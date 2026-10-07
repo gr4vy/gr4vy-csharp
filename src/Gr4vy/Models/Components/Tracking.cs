@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class Tracking
     {
@@ -21,7 +26,7 @@ namespace Gr4vy.Models.Components
         public string Number { get; set; } = default!;
 
         [JsonProperty("carrier")]
-        public string Carrier { get; set; } = default!;
+        public ShippingCarrier Carrier { get; set; } = default!;
 
         /// <summary>
         /// The URL to track the shipment.

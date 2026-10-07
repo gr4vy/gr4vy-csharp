@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// PayoutCreate<br/>
@@ -48,7 +52,7 @@ namespace Gr4vy.Models.Components
         /// The type of payout to process.
         /// </summary>
         [JsonProperty("category")]
-        public string? Category { get; set; } = null;
+        public PayoutCategory? Category { get; set; } = null;
 
         /// <summary>
         /// A value that can be used to match the payout against your own records.

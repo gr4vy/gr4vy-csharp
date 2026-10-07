@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Defines the date at which the payment will expire if not completed. Must be provided in ISO 8601 format `(YYYY-MM-DD`). If not specified, it defaults to 7 days in the future from the current date.
         /// </summary>
-        [JsonProperty("payment_method_expires_at", NullValueHandling = NullValueHandling.Include)]
-        public string? PaymentMethodExpiresAt
-        {
-            get => _paymentMethodExpiresAt;
-            set
-            {
-                _paymentMethodExpiresAt = value;
-                _paymentMethodExpiresAtSet = true;
-            }
-        }
-
-        private string? _paymentMethodExpiresAt = null;
-
-        private bool _paymentMethodExpiresAtSet = false;
-
-        public bool ShouldSerializePaymentMethodExpiresAt() => _paymentMethodExpiresAtSet;
+        [JsonProperty("payment_method_expires_at")]
+        public string? PaymentMethodExpiresAt { get; set; } = null;
     }
 }

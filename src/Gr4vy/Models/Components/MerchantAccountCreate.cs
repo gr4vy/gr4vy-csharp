@@ -9,10 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class MerchantAccountCreate
     {
@@ -80,7 +83,7 @@ namespace Gr4vy.Models.Components
         /// Card schemes accepted when creating jobs using this set of Loon API keys. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
         [JsonProperty("loon_accepted_schemes")]
-        public List<string>? LoonAcceptedSchemes { get; set; } = null;
+        public List<CardScheme>? LoonAcceptedSchemes { get; set; } = null;
 
         /// <summary>
         /// Merchant account ID provided by Pagos to identify this merchant account on the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.

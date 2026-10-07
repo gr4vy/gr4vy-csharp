@@ -9,7 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ListAuditLogsRequest
     {
@@ -29,7 +35,7 @@ namespace Gr4vy.Models.Requests
         /// Filters the results to only the items for which the `audit-log` has an `action` that matches this value.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=action")]
-        public string? Action { get; set; } = null;
+        public AuditLogAction? Action { get; set; } = null;
 
         /// <summary>
         /// Filters the results to only the items for which the `user` has an `id` that matches this value.

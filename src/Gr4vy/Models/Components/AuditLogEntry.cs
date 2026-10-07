@@ -13,6 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class AuditLogEntry
     {
@@ -38,7 +41,7 @@ namespace Gr4vy.Models.Components
         public AuditLogEntryResource Resource { get; set; } = default!;
 
         [JsonProperty("action")]
-        public string Action { get; set; } = default!;
+        public AuditLogAction Action { get; set; } = default!;
 
         [JsonProperty("user")]
         public AuditLogEntryUser User { get; set; } = default!;

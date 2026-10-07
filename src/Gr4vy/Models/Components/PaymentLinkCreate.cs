@@ -13,7 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class PaymentLinkCreate
     {
@@ -114,7 +116,7 @@ namespace Gr4vy.Models.Components
         public string Currency { get; set; } = default!;
 
         [JsonProperty("intent")]
-        public string? Intent { get; set; }
+        public TransactionIntent? Intent { get; set; }
 
         /// <summary>
         /// The return URL after payment completion.
@@ -138,7 +140,7 @@ namespace Gr4vy.Models.Components
         /// The way payment method information made it to this transaction.
         /// </summary>
         [JsonProperty("payment_source")]
-        public string? PaymentSource { get; set; }
+        public TransactionPaymentSource? PaymentSource { get; set; }
 
         /// <summary>
         /// Whether to store the payment method for future use.

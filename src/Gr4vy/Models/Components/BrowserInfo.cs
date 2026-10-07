@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Merchant provided browser info.
@@ -48,7 +53,7 @@ namespace Gr4vy.Models.Components
         /// The platform that is being used to access the website.
         /// </summary>
         [JsonProperty("user_device")]
-        public string UserDevice { get; set; } = default!;
+        public UserDevice UserDevice { get; set; } = default!;
 
         /// <summary>
         /// The Accept header of the request from the buyer's browser.

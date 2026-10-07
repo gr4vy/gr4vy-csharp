@@ -9,9 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
+    using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ListAllReportExecutionsRequest
     {
@@ -49,7 +53,7 @@ namespace Gr4vy.Models.Requests
         /// Filters the results to only the reports that have a `status` that matches with any of the provided status values.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")]
-        public List<string>? Status { get; set; } = null;
+        public List<ReportExecutionStatus>? Status { get; set; } = null;
 
         /// <summary>
         /// Filters the results to only the reports that were created by the users with these IDs.

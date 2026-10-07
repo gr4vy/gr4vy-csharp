@@ -9,9 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// The session data received from the payment service.
@@ -25,7 +29,7 @@ namespace Gr4vy.Models.Components
         public string Type { get; } = "payment-service-session";
 
         [JsonProperty("status")]
-        public string Status { get; set; } = default!;
+        public CreateSessionStatus Status { get; set; } = default!;
 
         /// <summary>
         /// A generic error code that may be returned when the session could not be generated.

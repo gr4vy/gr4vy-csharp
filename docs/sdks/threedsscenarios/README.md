@@ -29,7 +29,7 @@ var res = await sdk.ThreeDsScenarios.CreateAsync(threeDSecureScenarioCreate: new
     Conditions = new ThreeDSecureScenarioConditions() {},
     Outcome = new ThreeDSecureScenarioOutcome() {
         Authentication = new ThreeDSecureScenarioOutcomeAuthentication() {
-            TransactionStatus = "Y",
+            TransactionStatus = ThreeDSecureScenarioOutcomeAuthenticationTransactionStatus.Y,
         },
     },
 });

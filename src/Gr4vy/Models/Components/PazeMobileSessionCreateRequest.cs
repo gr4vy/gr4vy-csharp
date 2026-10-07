@@ -12,7 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class PazeMobileSessionCreateRequest
     {
@@ -41,7 +44,7 @@ namespace Gr4vy.Models.Components
         /// Primary intent of the checkout session.
         /// </summary>
         [JsonProperty("intent")]
-        public string Intent { get; set; } = default!;
+        public Intent Intent { get; set; } = default!;
 
         /// <summary>
         /// Currency and amount of the transaction. Required when intent is EXPRESS_CHECKOUT.
@@ -53,19 +56,19 @@ namespace Gr4vy.Models.Components
         /// Type of transaction.
         /// </summary>
         [JsonProperty("transactionType")]
-        public string? TransactionType { get; set; } = null;
+        public PazeMobileSessionCreateRequestTransactionType? TransactionType { get; set; } = null;
 
         /// <summary>
         /// Whether to collect a shipping address from the consumer.
         /// </summary>
         [JsonProperty("shippingPreference")]
-        public string? ShippingPreference { get; set; } = null;
+        public ShippingPreference? ShippingPreference { get; set; } = null;
 
         /// <summary>
         /// Verbosity of billing address required.
         /// </summary>
         [JsonProperty("billingPreference")]
-        public string? BillingPreference { get; set; } = null;
+        public PazeMobileSessionCreateRequestBillingPreference? BillingPreference { get; set; } = null;
 
         /// <summary>
         /// Consumer email address for checkout flow optimization.
@@ -95,7 +98,7 @@ namespace Gr4vy.Models.Components
         /// Accepted payment card networks. Empty list or absence means all networks accepted.
         /// </summary>
         [JsonProperty("acceptedPaymentCardNetworks")]
-        public List<string>? AcceptedPaymentCardNetworks { get; set; } = null;
+        public List<AcceptedPaymentCardNetwork>? AcceptedPaymentCardNetworks { get; set; } = null;
 
         /// <summary>
         /// Set to true to enable Paze checkout even if the provided email address or phone number does not match a Paze wallet.
