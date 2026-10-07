@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class DlocalUPIRecurringInfoOptions
     {
@@ -18,7 +23,7 @@ namespace Gr4vy.Models.Components
         /// Indicates the frequency unit for the subscription. Allowed values are: `DAY`, `WEEK`, `MONTH`, `BI_MONTHLY`, `QUARTER`, `SEMI_ANNUALLY`, `YEAR`, `ONDEMAND`.
         /// </summary>
         [JsonProperty("subscription_frequency_unit", NullValueHandling = NullValueHandling.Include)]
-        public string SubscriptionFrequencyUnit
+        public SubscriptionFrequencyUnit SubscriptionFrequencyUnit
         {
             get => _subscriptionFrequencyUnit;
             set
@@ -28,7 +33,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string _subscriptionFrequencyUnit = default!;
+        private SubscriptionFrequencyUnit _subscriptionFrequencyUnit = default!;
 
         private bool _subscriptionFrequencyUnitSet = true;
 

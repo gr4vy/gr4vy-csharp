@@ -9,10 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class MerchantAccountThreeDSConfiguration
     {
@@ -80,7 +83,7 @@ namespace Gr4vy.Models.Components
         public DateTime UpdatedAt { get; set; } = default!;
 
         [JsonProperty("scheme")]
-        public string Scheme { get; set; } = default!;
+        public CardScheme Scheme { get; set; } = default!;
 
         /// <summary>
         /// ISO 4217 currency code (3 characters). If null, the configuration applies to all currencies.

@@ -12,7 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ForterAntiFraudOptions
     {
@@ -20,7 +23,7 @@ namespace Gr4vy.Models.Components
         /// The delivery type.
         /// </summary>
         [JsonProperty("delivery_type", NullValueHandling = NullValueHandling.Include)]
-        public string? DeliveryType
+        public ForterAntiFraudOptionsDeliveryType? DeliveryType
         {
             get => _deliveryType;
             set
@@ -30,7 +33,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _deliveryType = null;
+        private ForterAntiFraudOptionsDeliveryType? _deliveryType = null;
 
         private bool _deliveryTypeSet = false;
 

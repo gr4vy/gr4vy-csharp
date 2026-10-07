@@ -9,9 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class PaypalOrderUpdateCallbackConfig
     {
@@ -39,7 +43,7 @@ namespace Gr4vy.Models.Components
         /// The events that trigger a callback.
         /// </summary>
         [JsonProperty("callback_events", NullValueHandling = NullValueHandling.Include)]
-        public List<string>? CallbackEvents
+        public List<CallbackEvent>? CallbackEvents
         {
             get => _callbackEvents;
             set
@@ -49,7 +53,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private List<string>? _callbackEvents = null;
+        private List<CallbackEvent>? _callbackEvents = null;
 
         private bool _callbackEventsSet = false;
 

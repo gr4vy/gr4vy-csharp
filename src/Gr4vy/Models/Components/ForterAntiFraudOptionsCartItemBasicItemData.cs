@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ForterAntiFraudOptionsCartItemBasicItemData
     {
@@ -18,7 +23,7 @@ namespace Gr4vy.Models.Components
         /// Indicates whether the item is a physical good or a service/digital item.
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public string? Type
+        public ForterAntiFraudOptionsCartItemBasicItemDataType? Type
         {
             get => _type;
             set
@@ -28,7 +33,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _type = null;
+        private ForterAntiFraudOptionsCartItemBasicItemDataType? _type = null;
 
         private bool _typeSet = false;
 

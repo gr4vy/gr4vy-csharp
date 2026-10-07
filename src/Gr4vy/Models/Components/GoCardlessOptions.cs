@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class GoCardlessOptions
     {
@@ -18,7 +23,7 @@ namespace Gr4vy.Models.Components
         /// Specifies the high-level purpose of a mandate and/or payment using a set of pre-defined categories. Required for the PayTo scheme, optional for all others.
         /// </summary>
         [JsonProperty("purpose_code", NullValueHandling = NullValueHandling.Include)]
-        public string? PurposeCode
+        public PurposeCode? PurposeCode
         {
             get => _purposeCode;
             set
@@ -28,7 +33,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _purposeCode = null;
+        private PurposeCode? _purposeCode = null;
 
         private bool _purposeCodeSet = false;
 

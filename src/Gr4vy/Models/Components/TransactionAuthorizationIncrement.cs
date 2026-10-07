@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TransactionAuthorizationIncrement
     {
@@ -22,7 +26,7 @@ namespace Gr4vy.Models.Components
         public string Type { get; } = "transaction-authorization-increment";
 
         [JsonProperty("status")]
-        public string Status { get; set; } = default!;
+        public IncrementalAuthorizationStatus Status { get; set; } = default!;
 
         /// <summary>
         /// The standardized error code set by Gr4vy.

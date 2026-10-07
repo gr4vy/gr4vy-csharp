@@ -12,7 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class PaymentServiceDefinition
     {
@@ -35,7 +38,7 @@ namespace Gr4vy.Models.Components
         public string DisplayName { get; set; } = default!;
 
         [JsonProperty("method")]
-        public string Method { get; set; } = default!;
+        public Method Method { get; set; } = default!;
 
         /// <summary>
         /// A list of credentials and related fields which can be configured for this service.
@@ -62,7 +65,7 @@ namespace Gr4vy.Models.Components
         public List<string> SupportedCountries { get; set; } = default!;
 
         [JsonProperty("mode")]
-        public string Mode { get; set; } = default!;
+        public Mode Mode { get; set; } = default!;
 
         /// <summary>
         /// An icon to display for the payment service.
@@ -89,6 +92,6 @@ namespace Gr4vy.Models.Components
         /// List of supported integration clients. Defaults to redirect for most redirect connectors.
         /// </summary>
         [JsonProperty("supported_integration_clients", NullValueHandling = NullValueHandling.Include)]
-        public List<string>? SupportedIntegrationClients { get; set; }
+        public List<IntegrationClient>? SupportedIntegrationClients { get; set; }
     }
 }

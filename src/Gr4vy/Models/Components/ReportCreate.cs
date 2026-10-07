@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ReportCreate
     {
@@ -28,7 +32,7 @@ namespace Gr4vy.Models.Components
         public string? Description { get; set; } = null;
 
         [JsonProperty("schedule")]
-        public string Schedule { get; set; } = default!;
+        public ReportSchedule Schedule { get; set; } = default!;
 
         /// <summary>
         /// Whether the report schedule is enabled.

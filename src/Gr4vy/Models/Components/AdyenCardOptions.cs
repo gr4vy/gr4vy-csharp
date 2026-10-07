@@ -12,7 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class AdyenCardOptions
     {
@@ -80,7 +83,7 @@ namespace Gr4vy.Models.Components
         /// The rescue scenario to simulate for a transaction, when `autoRescue` is set to `true`.
         /// </summary>
         [JsonProperty("autoRescueScenario", NullValueHandling = NullValueHandling.Include)]
-        public string? AutoRescueScenario
+        public AdyenCardAutoRescueScenariosEnum? AutoRescueScenario
         {
             get => _autoRescueScenario;
             set
@@ -90,7 +93,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _autoRescueScenario = null;
+        private AdyenCardAutoRescueScenariosEnum? _autoRescueScenario = null;
 
         private bool _autoRescueScenarioSet = false;
 

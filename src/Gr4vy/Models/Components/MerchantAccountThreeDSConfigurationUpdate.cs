@@ -9,9 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class MerchantAccountThreeDSConfigurationUpdate
     {
@@ -136,7 +140,7 @@ namespace Gr4vy.Models.Components
         /// The card scheme for this 3DS configuration.
         /// </summary>
         [JsonProperty("scheme", NullValueHandling = NullValueHandling.Include)]
-        public string? Scheme
+        public CardScheme? Scheme
         {
             get => _scheme;
             set
@@ -146,7 +150,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _scheme = null;
+        private CardScheme? _scheme = null;
 
         private bool _schemeSet = false;
 

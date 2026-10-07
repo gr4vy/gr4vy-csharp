@@ -30,7 +30,7 @@ var sdk = new Gr4vySDK(
 );
 
 ListPaymentServicesRequest req = new ListPaymentServicesRequest() {
-    Method = "card",
+    Method = Method.Card,
     Cursor = "ZXhhbXBsZTE",
     Deleted = true,
 };

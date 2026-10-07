@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class DlocalPIXSubscriptionOptions
     {
@@ -39,7 +43,7 @@ namespace Gr4vy.Models.Components
         /// Indicates the frequency unit for the subscription. Allowed values are: `WEEKLY`, `MONTHLY`, `QUARTERLY`, `SEMI_ANNUAL`, `ANNUAL`.
         /// </summary>
         [JsonProperty("frequency", NullValueHandling = NullValueHandling.Include)]
-        public string Frequency
+        public Frequency Frequency
         {
             get => _frequency;
             set
@@ -49,7 +53,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string _frequency = default!;
+        private Frequency _frequency = default!;
 
         private bool _frequencySet = true;
 

@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class NetworkTokenPaymentMethodCreate
     {
@@ -48,13 +53,13 @@ namespace Gr4vy.Models.Components
         /// The optional source of the decrypted device token.
         /// </summary>
         [JsonProperty("card_source")]
-        public string? CardSource { get; set; } = null;
+        public CardSource? CardSource { get; set; } = null;
 
         /// <summary>
         /// The original card scheme for which the token was generated.
         /// </summary>
         [JsonProperty("card_scheme")]
-        public string? CardScheme { get; set; } = null;
+        public CardScheme? CardScheme { get; set; } = null;
 
         /// <summary>
         /// The last 4 digits of the original card used to generate the token.

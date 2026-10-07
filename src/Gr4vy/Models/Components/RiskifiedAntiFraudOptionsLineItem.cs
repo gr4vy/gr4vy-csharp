@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class RiskifiedAntiFraudOptionsLineItem
     {
@@ -18,7 +23,7 @@ namespace Gr4vy.Models.Components
         /// Indicates whether the item will be shipped or picked up.
         /// </summary>
         [JsonProperty("delivered_to", NullValueHandling = NullValueHandling.Include)]
-        public string? DeliveredTo
+        public DeliveredTo? DeliveredTo
         {
             get => _deliveredTo;
             set
@@ -28,7 +33,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _deliveredTo = null;
+        private DeliveredTo? _deliveredTo = null;
 
         private bool _deliveredToSet = false;
 

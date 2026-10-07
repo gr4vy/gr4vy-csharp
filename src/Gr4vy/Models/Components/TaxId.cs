@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TaxId
     {
@@ -35,7 +40,7 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeValue() => _valueSet;
 
         [JsonProperty("kind", NullValueHandling = NullValueHandling.Include)]
-        public string Kind
+        public TaxIdKind Kind
         {
             get => _kind;
             set
@@ -45,7 +50,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string _kind = default!;
+        private TaxIdKind _kind = default!;
 
         private bool _kindSet = true;
 

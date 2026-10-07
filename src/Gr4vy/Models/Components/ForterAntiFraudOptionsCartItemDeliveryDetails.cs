@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ForterAntiFraudOptionsCartItemDeliveryDetails
     {
@@ -18,7 +23,7 @@ namespace Gr4vy.Models.Components
         /// The type of delivery for this cart item.
         /// </summary>
         [JsonProperty("delivery_type", NullValueHandling = NullValueHandling.Include)]
-        public string? DeliveryType
+        public ForterAntiFraudOptionsCartItemDeliveryDetailsDeliveryType? DeliveryType
         {
             get => _deliveryType;
             set
@@ -28,7 +33,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _deliveryType = null;
+        private ForterAntiFraudOptionsCartItemDeliveryDetailsDeliveryType? _deliveryType = null;
 
         private bool _deliveryTypeSet = false;
 

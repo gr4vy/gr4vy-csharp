@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class PaypalShippingOptionsItem
     {
@@ -79,7 +83,7 @@ namespace Gr4vy.Models.Components
         /// A classification for the method of purchase fulfillment.
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public string? Type
+        public PaypalShippingOptionsItemType? Type
         {
             get => _type;
             set
@@ -89,7 +93,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _type = null;
+        private PaypalShippingOptionsItemType? _type = null;
 
         private bool _typeSet = false;
 

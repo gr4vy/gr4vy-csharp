@@ -13,7 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class TransactionCreate
     {
@@ -72,7 +74,7 @@ namespace Gr4vy.Models.Components
         public string? ExternalIdentifier { get; set; } = null;
 
         [JsonProperty("intent")]
-        public string? Intent { get; set; }
+        public TransactionIntent? Intent { get; set; }
 
         /// <summary>
         /// Whether or not to also try and store the payment method with us so that it can be used again for future use. This is only supported for payment methods that support this feature. There are also a few restrictions on how the flag may be set:<br/>
@@ -127,7 +129,7 @@ namespace Gr4vy.Models.Components
         /// The way payment method information made it to this transaction.
         /// </summary>
         [JsonProperty("payment_source")]
-        public string? PaymentSource { get; set; }
+        public TransactionPaymentSource? PaymentSource { get; set; }
 
         /// <summary>
         /// The airline addendum data which describes the airline booking associated with this transaction.
@@ -285,7 +287,7 @@ namespace Gr4vy.Models.Components
         /// Defines the client where the session for this transaction is going to be used. Please refer to the connections documentation for more guidance.
         /// </summary>
         [JsonProperty("integration_client")]
-        public string? IntegrationClient { get; set; } = null;
+        public IntegrationClient? IntegrationClient { get; set; } = null;
 
         /// <summary>
         /// The date and time when the buyer's approval window for this transaction expires. If not provided, this is automatically computed from the connector's default expiration time. The value cannot exceed the connector's maximum approval window.

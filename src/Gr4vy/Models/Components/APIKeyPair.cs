@@ -13,7 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class APIKeyPair
     {
@@ -42,7 +44,7 @@ namespace Gr4vy.Models.Components
         public string DisplayName { get; set; } = default!;
 
         [JsonProperty("algorithm")]
-        public string Algorithm { get; set; } = default!;
+        public CertificateAlgorithm Algorithm { get; set; } = default!;
 
         /// <summary>
         /// Whether the API key pair is active and can be used to authenticate.

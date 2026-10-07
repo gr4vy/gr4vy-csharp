@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class PazeTransactionOptions
     {
@@ -24,12 +29,12 @@ namespace Gr4vy.Models.Components
         /// Verbosity of the billing address required by the merchant.
         /// </summary>
         [JsonProperty("billingPreference")]
-        public string? BillingPreference { get; set; } = null;
+        public PazeTransactionOptionsBillingPreference? BillingPreference { get; set; } = null;
 
         /// <summary>
         /// ID returns `payloadId` only (default). PAYMENT returns `payloadId` and `securePayload`.
         /// </summary>
         [JsonProperty("payloadTypeIndicator")]
-        public string? PayloadTypeIndicator { get; set; } = null;
+        public PayloadTypeIndicator? PayloadTypeIndicator { get; set; } = null;
     }
 }

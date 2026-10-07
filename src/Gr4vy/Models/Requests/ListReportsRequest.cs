@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
+    using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ListReportsRequest
     {
@@ -30,7 +35,7 @@ namespace Gr4vy.Models.Requests
         /// Filters the reports by the type of schedule at which they run.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=schedule")]
-        public List<string>? Schedule { get; set; } = null;
+        public List<ReportSchedule>? Schedule { get; set; } = null;
 
         /// <summary>
         /// Filters the reports by wether their schedule is enabled.

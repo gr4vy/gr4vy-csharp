@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class AuditLogEntryUser
     {
@@ -45,6 +50,6 @@ namespace Gr4vy.Models.Components
         public bool IsStaff { get; set; } = default!;
 
         [JsonProperty("status")]
-        public string Status { get; set; } = default!;
+        public UserStatus Status { get; set; } = default!;
     }
 }

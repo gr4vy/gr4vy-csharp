@@ -9,9 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class AirlineLeg
     {
@@ -133,7 +137,7 @@ namespace Gr4vy.Models.Components
         /// The route type of the flight.
         /// </summary>
         [JsonProperty("route_type")]
-        public string? RouteType { get; set; } = null;
+        public RouteType? RouteType { get; set; } = null;
 
         /// <summary>
         /// Indicates seat class (first class, business class, etc.).

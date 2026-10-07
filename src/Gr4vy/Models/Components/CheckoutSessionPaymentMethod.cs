@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class CheckoutSessionPaymentMethod
     {
@@ -49,7 +53,7 @@ namespace Gr4vy.Models.Components
         /// The scheme of the card.
         /// </summary>
         [JsonProperty("scheme")]
-        public string? Scheme { get; set; } = null;
+        public CardScheme? Scheme { get; set; } = null;
 
         /// <summary>
         /// The unique hash derived from the card number.

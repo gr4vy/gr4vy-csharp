@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class PazeSessionCompleteRequest
     {
@@ -37,7 +41,7 @@ namespace Gr4vy.Models.Components
         /// The type of transaction being completed. PURCHASE for a one-off checkout, CARD_ON_FILE to retain the card for future use, or BOTH.
         /// </summary>
         [JsonProperty("transactionType")]
-        public string TransactionType { get; set; } = default!;
+        public PazeSessionCompleteRequestTransactiontype TransactionType { get; set; } = default!;
 
         /// <summary>
         /// Client configuration data overriding values configured during merchant onboarding.
@@ -55,7 +59,7 @@ namespace Gr4vy.Models.Components
         /// Card network to process the transaction on. If not provided, Paze defaults to the network on the front of the card.
         /// </summary>
         [JsonProperty("processingNetwork")]
-        public string? ProcessingNetwork { get; set; } = null;
+        public ProcessingNetwork? ProcessingNetwork { get; set; } = null;
 
         /// <summary>
         /// Additional purchase context used by Paze for risk scoring.

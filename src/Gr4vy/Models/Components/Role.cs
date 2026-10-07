@@ -12,7 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class Role
     {
@@ -56,7 +59,7 @@ namespace Gr4vy.Models.Components
         /// The types of resource this role can be assigned to.
         /// </summary>
         [JsonProperty("assignable_to")]
-        public List<string> AssignableTo { get; set; } = default!;
+        public List<RoleAssigneeType> AssignableTo { get; set; } = default!;
 
         /// <summary>
         /// The slugs of the roles this role is an add-on of. Empty when this role is not an add-on.

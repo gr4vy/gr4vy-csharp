@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class BraintreeDynamicDataFieldsOptions
     {
@@ -58,7 +63,7 @@ namespace Gr4vy.Models.Components
         /// Passes the `vaultPaymentMethodCriteria` field when creating a new transaction.
         /// </summary>
         [JsonProperty("vault_payment_method_criteria", NullValueHandling = NullValueHandling.Include)]
-        public string? VaultPaymentMethodCriteria
+        public VaultPaymentMethodCriteria? VaultPaymentMethodCriteria
         {
             get => _vaultPaymentMethodCriteria;
             set
@@ -68,7 +73,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _vaultPaymentMethodCriteria = null;
+        private VaultPaymentMethodCriteria? _vaultPaymentMethodCriteria = null;
 
         private bool _vaultPaymentMethodCriteriaSet = false;
 

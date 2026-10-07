@@ -9,13 +9,18 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class PaymentServiceConfiguration
     {
         [JsonProperty("approval_ui_target")]
-        public string ApprovalUiTarget { get; set; } = default!;
+        public ApprovalTarget ApprovalUiTarget { get; set; } = default!;
 
         /// <summary>
         /// Height of the approval interface in either pixels or view height (vh).

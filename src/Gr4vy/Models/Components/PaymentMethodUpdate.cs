@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Request body for updating a stored payment method.
@@ -61,7 +66,7 @@ namespace Gr4vy.Models.Components
         /// The scheme associated with `scheme_transaction_id`. Only applies to card payments. When setting a new value for `scheme_transaction_id`, if `scheme_transaction_id_scheme` is both omitted from the payload and previously unset, `scheme_transaction_id_scheme` will be populated from the payment method's existing `scheme`.
         /// </summary>
         [JsonProperty("scheme_transaction_id_scheme", NullValueHandling = NullValueHandling.Include)]
-        public string? SchemeTransactionIdScheme
+        public CardScheme? SchemeTransactionIdScheme
         {
             get => _schemeTransactionIdScheme;
             set
@@ -71,7 +76,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string? _schemeTransactionIdScheme = null;
+        private CardScheme? _schemeTransactionIdScheme = null;
 
         private bool _schemeTransactionIdSchemeSet = false;
 

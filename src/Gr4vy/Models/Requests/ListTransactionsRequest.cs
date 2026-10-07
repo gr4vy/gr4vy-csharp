@@ -9,9 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Requests
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
+    using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class ListTransactionsRequest
     {
@@ -74,7 +78,7 @@ namespace Gr4vy.Models.Requests
         /// Filters the results to only the transactions that have a `status` that matches with any of the provided status values.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=status")]
-        public List<string>? Status { get; set; } = null;
+        public List<TransactionStatus>? Status { get; set; } = null;
 
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=id")]
         public string? Id { get; set; } = null;
@@ -152,7 +156,7 @@ namespace Gr4vy.Models.Requests
         /// Filters for transactions that have matching `method` values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=method")]
-        public List<string>? Method { get; set; } = null;
+        public List<Method>? Method { get; set; } = null;
 
         /// <summary>
         /// Filters for transactions where the `error_code` matches one for the provided values.
@@ -225,7 +229,7 @@ namespace Gr4vy.Models.Requests
         /// Filters the results to only the transactions that have a payment source that matches with any of the provided values. For best performance, combine it with `created_at_gte` and `created_at_lte`.
         /// </summary>
         [SpeakeasyMetadata("queryParam:style=form,explode=true,name=payment_source")]
-        public List<string>? PaymentSource { get; set; } = null;
+        public List<TransactionPaymentSource>? PaymentSource { get; set; } = null;
 
         /// <summary>
         /// Filters for transactions where the `is_subsequent_payment` matches the provided value. For best performance, combine it with `created_at_gte` and `created_at_lte`.

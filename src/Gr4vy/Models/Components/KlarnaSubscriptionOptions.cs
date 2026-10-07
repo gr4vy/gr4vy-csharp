@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class KlarnaSubscriptionOptions
     {
@@ -38,7 +43,7 @@ namespace Gr4vy.Models.Components
         /// The cadence unit for the subscription plan.
         /// </summary>
         [JsonProperty("interval", NullValueHandling = NullValueHandling.Include)]
-        public string Interval
+        public Interval Interval
         {
             get => _interval;
             set
@@ -48,7 +53,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string _interval = default!;
+        private Interval _interval = default!;
 
         private bool _intervalSet = true;
 

@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class DlocalPIXSubscriptionAmountOptions
     {
@@ -18,7 +23,7 @@ namespace Gr4vy.Models.Components
         /// Indicates the amount type unit for the subscription. Allowed values are: `FIXED`, `VARIABLE`.
         /// </summary>
         [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public string Type
+        public DlocalPIXSubscriptionAmountOptionsType Type
         {
             get => _type;
             set
@@ -28,7 +33,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private string _type = default!;
+        private DlocalPIXSubscriptionAmountOptionsType _type = default!;
 
         private bool _typeSet = true;
 

@@ -13,6 +13,9 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Utils;
     using Newtonsoft.Json;
     using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class TransactionPaymentMethod
     {
@@ -71,19 +74,19 @@ namespace Gr4vy.Models.Components
         public DateTime? LastReplacedAt { get; set; } = null;
 
         [JsonProperty("method")]
-        public string Method { get; set; } = default!;
+        public Method Method { get; set; } = default!;
 
         /// <summary>
         /// The mode to use with this payment method.
         /// </summary>
         [JsonProperty("mode")]
-        public string? Mode { get; set; } = null;
+        public Mode? Mode { get; set; } = null;
 
         /// <summary>
         /// The scheme of the card. Only applies to card payments.
         /// </summary>
         [JsonProperty("scheme")]
-        public string? Scheme { get; set; } = null;
+        public CardScheme? Scheme { get; set; } = null;
 
         /// <summary>
         /// The ID of the payment method.
@@ -95,7 +98,7 @@ namespace Gr4vy.Models.Components
         /// The browser target that an approval URL must be opened in. If any or null, then there is no specific requirement.
         /// </summary>
         [JsonProperty("approval_target")]
-        public string? ApprovalTarget { get; set; } = null;
+        public ApprovalTarget? ApprovalTarget { get; set; } = null;
 
         /// <summary>
         /// An external identifier that can be used to match the payment method against your own records.

@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     public class ReportSummary
     {
@@ -54,6 +59,6 @@ namespace Gr4vy.Models.Components
         /// The type of the report creator.
         /// </summary>
         [JsonProperty("creator_type")]
-        public string? CreatorType { get; set; } = null;
+        public ReportCreatorType? CreatorType { get; set; } = null;
     }
 }

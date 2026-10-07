@@ -12,6 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// ACH Bank Payment Method<br/>
@@ -75,6 +79,6 @@ namespace Gr4vy.Models.Components
         /// Specify whether this is a `checking` or `savings` account. Defaults to `checking`.
         /// </summary>
         [JsonProperty("account_type")]
-        public string? AccountType { get; set; } = "checking";
+        public AccountType? AccountType { get; set; } = Gr4vy.Models.Components.AccountType.Checking;
     }
 }
