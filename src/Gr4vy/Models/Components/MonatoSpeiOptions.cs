@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Approval URL that will receive a charge payment method reference.
         /// </summary>
-        [JsonProperty("approval_url", NullValueHandling = NullValueHandling.Include)]
-        public string ApprovalUrl
-        {
-            get => _approvalUrl;
-            set
-            {
-                _approvalUrl = value;
-                _approvalUrlSet = true;
-            }
-        }
-
-        private string _approvalUrl = default!;
-
-        private bool _approvalUrlSet = true;
-
-        public bool ShouldSerializeApprovalUrl() => _approvalUrlSet;
+        [JsonProperty("approval_url")]
+        public string ApprovalUrl { get; set; } = default!;
     }
 }

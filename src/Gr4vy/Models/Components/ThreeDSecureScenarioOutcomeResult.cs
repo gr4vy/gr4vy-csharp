@@ -22,21 +22,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// 3DS result.
         /// </summary>
-        [JsonProperty("transaction_status", NullValueHandling = NullValueHandling.Include)]
-        public ThreeDSecureScenarioOutcomeResultTransactionStatus TransactionStatus
-        {
-            get => _transactionStatus;
-            set
-            {
-                _transactionStatus = value;
-                _transactionStatusSet = true;
-            }
-        }
-
-        private ThreeDSecureScenarioOutcomeResultTransactionStatus _transactionStatus = default!;
-
-        private bool _transactionStatusSet = true;
-
-        public bool ShouldSerializeTransactionStatus() => _transactionStatusSet;
+        [JsonProperty("transaction_status")]
+        public ThreeDSecureScenarioOutcomeResultTransactionStatus TransactionStatus { get; set; } = default!;
     }
 }
