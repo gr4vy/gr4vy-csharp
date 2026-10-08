@@ -74,6 +74,7 @@ namespace Gr4vy.Models.Components
         public static readonly Name PaymentConnectorReportChargebackPosted = new Name("payment-connector-report-chargeback-posted");
         public static readonly Name PaymentConnectorReportChargebackReversalPosted = new Name("payment-connector-report-chargeback-reversal-posted");
         public static readonly Name PaymentConnectorTransactionWebhookProcessed = new Name("payment-connector-transaction-webhook-processed");
+        public static readonly Name RefundIngested = new Name("refund-ingested");
         public static readonly Name DigitalWalletApplePayTokenDecrypted = new Name("digital-wallet-apple-pay-token-decrypted");
         public static readonly Name DigitalWalletGooglePayTokenDecrypted = new Name("digital-wallet-google-pay-token-decrypted");
         public static readonly Name DigitalWalletClickToPayTokenDecrypted = new Name("digital-wallet-click-to-pay-token-decrypted");
@@ -141,6 +142,7 @@ namespace Gr4vy.Models.Components
                 ["payment-connector-report-chargeback-posted"] = PaymentConnectorReportChargebackPosted,
                 ["payment-connector-report-chargeback-reversal-posted"] = PaymentConnectorReportChargebackReversalPosted,
                 ["payment-connector-transaction-webhook-processed"] = PaymentConnectorTransactionWebhookProcessed,
+                ["refund-ingested"] = RefundIngested,
                 ["digital-wallet-apple-pay-token-decrypted"] = DigitalWalletApplePayTokenDecrypted,
                 ["digital-wallet-google-pay-token-decrypted"] = DigitalWalletGooglePayTokenDecrypted,
                 ["digital-wallet-click-to-pay-token-decrypted"] = DigitalWalletClickToPayTokenDecrypted,

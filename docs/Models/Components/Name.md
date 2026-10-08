@@ -70,6 +70,7 @@ var custom = Name.Of("custom_value");
 | `PaymentConnectorReportChargebackPosted`                                 | payment-connector-report-chargeback-posted                               |
 | `PaymentConnectorReportChargebackReversalPosted`                         | payment-connector-report-chargeback-reversal-posted                      |
 | `PaymentConnectorTransactionWebhookProcessed`                            | payment-connector-transaction-webhook-processed                          |
+| `RefundIngested`                                                         | refund-ingested                                                          |
 | `DigitalWalletApplePayTokenDecrypted`                                    | digital-wallet-apple-pay-token-decrypted                                 |
 | `DigitalWalletGooglePayTokenDecrypted`                                   | digital-wallet-google-pay-token-decrypted                                |
 | `DigitalWalletClickToPayTokenDecrypted`                                  | digital-wallet-click-to-pay-token-decrypted                              |
