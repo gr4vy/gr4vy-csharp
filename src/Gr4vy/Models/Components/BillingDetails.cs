@@ -18,37 +18,121 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The first name(s) or given name for the buyer.
         /// </summary>
-        [JsonProperty("first_name")]
-        public string? FirstName { get; set; } = null;
+        [JsonProperty("first_name", NullValueHandling = NullValueHandling.Include)]
+        public string? FirstName
+        {
+            get => _firstName;
+            set
+            {
+                _firstName = value;
+                _firstNameSet = true;
+            }
+        }
+
+        private string? _firstName = null;
+
+        private bool _firstNameSet = false;
+
+        public bool ShouldSerializeFirstName() => _firstNameSet;
 
         /// <summary>
         /// The last name, or family name, of the buyer.
         /// </summary>
-        [JsonProperty("last_name")]
-        public string? LastName { get; set; } = null;
+        [JsonProperty("last_name", NullValueHandling = NullValueHandling.Include)]
+        public string? LastName
+        {
+            get => _lastName;
+            set
+            {
+                _lastName = value;
+                _lastNameSet = true;
+            }
+        }
+
+        private string? _lastName = null;
+
+        private bool _lastNameSet = false;
+
+        public bool ShouldSerializeLastName() => _lastNameSet;
 
         /// <summary>
         /// The email address for the buyer.
         /// </summary>
-        [JsonProperty("email_address")]
-        public string? EmailAddress { get; set; } = null;
+        [JsonProperty("email_address", NullValueHandling = NullValueHandling.Include)]
+        public string? EmailAddress
+        {
+            get => _emailAddress;
+            set
+            {
+                _emailAddress = value;
+                _emailAddressSet = true;
+            }
+        }
+
+        private string? _emailAddress = null;
+
+        private bool _emailAddressSet = false;
+
+        public bool ShouldSerializeEmailAddress() => _emailAddressSet;
 
         /// <summary>
         /// The phone number for the buyer which should be formatted according to the E164 number standard.
         /// </summary>
-        [JsonProperty("phone_number")]
-        public string? PhoneNumber { get; set; } = null;
+        [JsonProperty("phone_number", NullValueHandling = NullValueHandling.Include)]
+        public string? PhoneNumber
+        {
+            get => _phoneNumber;
+            set
+            {
+                _phoneNumber = value;
+                _phoneNumberSet = true;
+            }
+        }
+
+        private string? _phoneNumber = null;
+
+        private bool _phoneNumberSet = false;
+
+        public bool ShouldSerializePhoneNumber() => _phoneNumberSet;
 
         /// <summary>
         /// The billing address for the buyer.
         /// </summary>
-        [JsonProperty("address")]
-        public Address? Address { get; set; } = null;
+        [JsonProperty("address", NullValueHandling = NullValueHandling.Include)]
+        public Address? Address
+        {
+            get => _address;
+            set
+            {
+                _address = value;
+                _addressSet = true;
+            }
+        }
+
+        private Address? _address = null;
+
+        private bool _addressSet = false;
+
+        public bool ShouldSerializeAddress() => _addressSet;
 
         /// <summary>
         /// The tax ID information associated with the billing details.
         /// </summary>
-        [JsonProperty("tax_id")]
-        public TaxId? TaxId { get; set; } = null;
+        [JsonProperty("tax_id", NullValueHandling = NullValueHandling.Include)]
+        public TaxId? TaxId
+        {
+            get => _taxId;
+            set
+            {
+                _taxId = value;
+                _taxIdSet = true;
+            }
+        }
+
+        private TaxId? _taxId = null;
+
+        private bool _taxIdSet = false;
+
+        public bool ShouldSerializeTaxId() => _taxIdSet;
     }
 }

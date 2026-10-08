@@ -17,8 +17,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The MAC to return for this request.
         /// </summary>
-        [JsonProperty("result")]
-        public string? Result { get; set; } = null;
+        [JsonProperty("result", NullValueHandling = NullValueHandling.Include)]
+        public string? Result
+        {
+            get => _result;
+            set
+            {
+                _result = value;
+                _resultSet = true;
+            }
+        }
+
+        private string? _result = null;
+
+        private bool _resultSet = false;
+
+        public bool ShouldSerializeResult() => _resultSet;
 
         /// <summary>
         /// When set, the MAC is only returned if the card number matches this account number.
