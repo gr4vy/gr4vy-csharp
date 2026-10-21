@@ -22,21 +22,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Specifies the high-level purpose of a mandate and/or payment using a set of pre-defined categories. Required for the PayTo scheme, optional for all others.
         /// </summary>
-        [JsonProperty("purpose_code", NullValueHandling = NullValueHandling.Include)]
-        public PurposeCode? PurposeCode
-        {
-            get => _purposeCode;
-            set
-            {
-                _purposeCode = value;
-                _purposeCodeSet = true;
-            }
-        }
-
-        private PurposeCode? _purposeCode = null;
-
-        private bool _purposeCodeSet = false;
-
-        public bool ShouldSerializePurposeCode() => _purposeCodeSet;
+        [JsonProperty("purpose_code")]
+        public PurposeCode? PurposeCode { get; set; } = null;
     }
 }

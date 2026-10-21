@@ -18,81 +18,25 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The merchant ID to use for this transaction. This requires a meta key to be set up for use with Cybersource, and this overrides the connector configuration.
         /// </summary>
-        [JsonProperty("meta_key_merchant_id", NullValueHandling = NullValueHandling.Include)]
-        public string? MetaKeyMerchantId
-        {
-            get => _metaKeyMerchantId;
-            set
-            {
-                _metaKeyMerchantId = value;
-                _metaKeyMerchantIdSet = true;
-            }
-        }
-
-        private string? _metaKeyMerchantId = null;
-
-        private bool _metaKeyMerchantIdSet = false;
-
-        public bool ShouldSerializeMetaKeyMerchantId() => _metaKeyMerchantIdSet;
+        [JsonProperty("meta_key_merchant_id")]
+        public string? MetaKeyMerchantId { get; set; } = null;
 
         /// <summary>
         /// A list of merchant defined data to be passed to the Cybersource. Each key needs to be a numeric string.
         /// </summary>
-        [JsonProperty("merchant_defined_information", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? MerchantDefinedInformation
-        {
-            get => _merchantDefinedInformation;
-            set
-            {
-                _merchantDefinedInformation = value;
-                _merchantDefinedInformationSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _merchantDefinedInformation = null;
-
-        private bool _merchantDefinedInformationSet = false;
-
-        public bool ShouldSerializeMerchantDefinedInformation() => _merchantDefinedInformationSet;
+        [JsonProperty("merchant_defined_information")]
+        public Dictionary<string, string>? MerchantDefinedInformation { get; set; } = null;
 
         /// <summary>
         /// The shipping method for this transaction.
         /// </summary>
-        [JsonProperty("ship_to_method", NullValueHandling = NullValueHandling.Include)]
-        public string? ShipToMethod
-        {
-            get => _shipToMethod;
-            set
-            {
-                _shipToMethod = value;
-                _shipToMethodSet = true;
-            }
-        }
-
-        private string? _shipToMethod = null;
-
-        private bool _shipToMethodSet = false;
-
-        public bool ShouldSerializeShipToMethod() => _shipToMethodSet;
+        [JsonProperty("ship_to_method")]
+        public string? ShipToMethod { get; set; } = null;
 
         /// <summary>
         /// Brief description of the order or any comment you wish to add to the order.
         /// </summary>
-        [JsonProperty("comments", NullValueHandling = NullValueHandling.Include)]
-        public string? Comments
-        {
-            get => _comments;
-            set
-            {
-                _comments = value;
-                _commentsSet = true;
-            }
-        }
-
-        private string? _comments = null;
-
-        private bool _commentsSet = false;
-
-        public bool ShouldSerializeComments() => _commentsSet;
+        [JsonProperty("comments")]
+        public string? Comments { get; set; } = null;
     }
 }

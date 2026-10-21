@@ -17,41 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The simulation being requested. Please refer to the developer guide for a list of all available simulations.
         /// </summary>
-        [JsonProperty("simulate", NullValueHandling = NullValueHandling.Include)]
-        public string? Simulate
-        {
-            get => _simulate;
-            set
-            {
-                _simulate = value;
-                _simulateSet = true;
-            }
-        }
-
-        private string? _simulate = null;
-
-        private bool _simulateSet = false;
-
-        public bool ShouldSerializeSimulate() => _simulateSet;
+        [JsonProperty("simulate")]
+        public string? Simulate { get; set; } = null;
 
         /// <summary>
         /// The delay in seconds before the requested simulation is executed.
         /// </summary>
-        [JsonProperty("delay", NullValueHandling = NullValueHandling.Include)]
-        public long? Delay
-        {
-            get => _delay;
-            set
-            {
-                _delay = value;
-                _delaySet = true;
-            }
-        }
-
-        private long? _delay = null;
-
-        private bool _delaySet = false;
-
-        public bool ShouldSerializeDelay() => _delaySet;
+        [JsonProperty("delay")]
+        public long? Delay { get; set; } = null;
     }
 }

@@ -24,241 +24,73 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Unique identifier for this address, referenced by `line_items[].shipping_address_id` and `shipping_lines[].shipping_address_id`.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Include)]
-        public string Id
-        {
-            get => _id;
-            set
-            {
-                _id = value;
-                _idSet = true;
-            }
-        }
-
-        private string _id = default!;
-
-        private bool _idSet = true;
-
-        public bool ShouldSerializeId() => _idSet;
+        [JsonProperty("id")]
+        public string Id { get; set; } = default!;
 
         /// <summary>
         /// First name of the recipient at this address.
         /// </summary>
-        [JsonProperty("first_name", NullValueHandling = NullValueHandling.Include)]
-        public string? FirstName
-        {
-            get => _firstName;
-            set
-            {
-                _firstName = value;
-                _firstNameSet = true;
-            }
-        }
-
-        private string? _firstName = null;
-
-        private bool _firstNameSet = false;
-
-        public bool ShouldSerializeFirstName() => _firstNameSet;
+        [JsonProperty("first_name")]
+        public string? FirstName { get; set; } = null;
 
         /// <summary>
         /// Last name of the recipient at this address.
         /// </summary>
-        [JsonProperty("last_name", NullValueHandling = NullValueHandling.Include)]
-        public string? LastName
-        {
-            get => _lastName;
-            set
-            {
-                _lastName = value;
-                _lastNameSet = true;
-            }
-        }
-
-        private string? _lastName = null;
-
-        private bool _lastNameSet = false;
-
-        public bool ShouldSerializeLastName() => _lastNameSet;
+        [JsonProperty("last_name")]
+        public string? LastName { get; set; } = null;
 
         /// <summary>
         /// The phone number of the recipient at this address, which should be formatted according to the E164 number standard.
         /// </summary>
-        [JsonProperty("phone", NullValueHandling = NullValueHandling.Include)]
-        public string? Phone
-        {
-            get => _phone;
-            set
-            {
-                _phone = value;
-                _phoneSet = true;
-            }
-        }
-
-        private string? _phone = null;
-
-        private bool _phoneSet = false;
-
-        public bool ShouldSerializePhone() => _phoneSet;
+        [JsonProperty("phone")]
+        public string? Phone { get; set; } = null;
 
         /// <summary>
         /// The city for the address.
         /// </summary>
-        [JsonProperty("city", NullValueHandling = NullValueHandling.Include)]
-        public string? City
-        {
-            get => _city;
-            set
-            {
-                _city = value;
-                _citySet = true;
-            }
-        }
-
-        private string? _city = null;
-
-        private bool _citySet = false;
-
-        public bool ShouldSerializeCity() => _citySet;
+        [JsonProperty("city")]
+        public string? City { get; set; } = null;
 
         /// <summary>
         /// The country for the address in ISO 3166 format. The country name sent to Riskified is derived from this value.
         /// </summary>
-        [JsonProperty("country_code", NullValueHandling = NullValueHandling.Include)]
-        public string? CountryCode
-        {
-            get => _countryCode;
-            set
-            {
-                _countryCode = value;
-                _countryCodeSet = true;
-            }
-        }
-
-        private string? _countryCode = null;
-
-        private bool _countryCodeSet = false;
-
-        public bool ShouldSerializeCountryCode() => _countryCodeSet;
+        [JsonProperty("country_code")]
+        public string? CountryCode { get; set; } = null;
 
         /// <summary>
         /// The postal code or zip code for the address.
         /// </summary>
-        [JsonProperty("zip", NullValueHandling = NullValueHandling.Include)]
-        public string? Zip
-        {
-            get => _zip;
-            set
-            {
-                _zip = value;
-                _zipSet = true;
-            }
-        }
-
-        private string? _zip = null;
-
-        private bool _zipSet = false;
-
-        public bool ShouldSerializeZip() => _zipSet;
+        [JsonProperty("zip")]
+        public string? Zip { get; set; } = null;
 
         /// <summary>
         /// The state, county, or province for the address.
         /// </summary>
-        [JsonProperty("province", NullValueHandling = NullValueHandling.Include)]
-        public string? Province
-        {
-            get => _province;
-            set
-            {
-                _province = value;
-                _provinceSet = true;
-            }
-        }
-
-        private string? _province = null;
-
-        private bool _provinceSet = false;
-
-        public bool ShouldSerializeProvince() => _provinceSet;
+        [JsonProperty("province")]
+        public string? Province { get; set; } = null;
 
         /// <summary>
         /// The code of the state, county, or province for the address. Riskified expects the subdivision on its own, without the country prefix used by ISO 3166-2.
         /// </summary>
-        [JsonProperty("province_code", NullValueHandling = NullValueHandling.Include)]
-        public string? ProvinceCode
-        {
-            get => _provinceCode;
-            set
-            {
-                _provinceCode = value;
-                _provinceCodeSet = true;
-            }
-        }
-
-        private string? _provinceCode = null;
-
-        private bool _provinceCodeSet = false;
-
-        public bool ShouldSerializeProvinceCode() => _provinceCodeSet;
+        [JsonProperty("province_code")]
+        public string? ProvinceCode { get; set; } = null;
 
         /// <summary>
         /// The first line of the address.
         /// </summary>
-        [JsonProperty("address1", NullValueHandling = NullValueHandling.Include)]
-        public string? Address1
-        {
-            get => _address1;
-            set
-            {
-                _address1 = value;
-                _address1Set = true;
-            }
-        }
-
-        private string? _address1 = null;
-
-        private bool _address1Set = false;
-
-        public bool ShouldSerializeAddress1() => _address1Set;
+        [JsonProperty("address1")]
+        public string? Address1 { get; set; } = null;
 
         /// <summary>
         /// The second line of the address.
         /// </summary>
-        [JsonProperty("address2", NullValueHandling = NullValueHandling.Include)]
-        public string? Address2
-        {
-            get => _address2;
-            set
-            {
-                _address2 = value;
-                _address2Set = true;
-            }
-        }
-
-        private string? _address2 = null;
-
-        private bool _address2Set = false;
-
-        public bool ShouldSerializeAddress2() => _address2Set;
+        [JsonProperty("address2")]
+        public string? Address2 { get; set; } = null;
 
         /// <summary>
         /// The optional name of the company or organisation to add to the address.
         /// </summary>
-        [JsonProperty("company", NullValueHandling = NullValueHandling.Include)]
-        public string? Company
-        {
-            get => _company;
-            set
-            {
-                _company = value;
-                _companySet = true;
-            }
-        }
-
-        private string? _company = null;
-
-        private bool _companySet = false;
-
-        public bool ShouldSerializeCompany() => _companySet;
+        [JsonProperty("company")]
+        public string? Company { get; set; } = null;
     }
 }

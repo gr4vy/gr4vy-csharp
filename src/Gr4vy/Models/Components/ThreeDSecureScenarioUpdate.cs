@@ -18,41 +18,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Conditions for the scenario.
         /// </summary>
-        [JsonProperty("conditions", NullValueHandling = NullValueHandling.Include)]
-        public ThreeDSecureScenarioConditions? Conditions
-        {
-            get => _conditions;
-            set
-            {
-                _conditions = value;
-                _conditionsSet = true;
-            }
-        }
-
-        private ThreeDSecureScenarioConditions? _conditions = null;
-
-        private bool _conditionsSet = false;
-
-        public bool ShouldSerializeConditions() => _conditionsSet;
+        [JsonProperty("conditions")]
+        public ThreeDSecureScenarioConditions? Conditions { get; set; } = null;
 
         /// <summary>
         /// Outcome for the scenario.
         /// </summary>
-        [JsonProperty("outcome", NullValueHandling = NullValueHandling.Include)]
-        public ThreeDSecureScenarioOutcome? Outcome
-        {
-            get => _outcome;
-            set
-            {
-                _outcome = value;
-                _outcomeSet = true;
-            }
-        }
-
-        private ThreeDSecureScenarioOutcome? _outcome = null;
-
-        private bool _outcomeSet = false;
-
-        public bool ShouldSerializeOutcome() => _outcomeSet;
+        [JsonProperty("outcome")]
+        public ThreeDSecureScenarioOutcome? Outcome { get; set; } = null;
     }
 }

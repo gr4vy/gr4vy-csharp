@@ -14,38 +14,10 @@ namespace Gr4vy.Models.Components
 
     public class VoidableField
     {
-        [JsonProperty("key", NullValueHandling = NullValueHandling.Include)]
-        public string Key
-        {
-            get => _key;
-            set
-            {
-                _key = value;
-                _keySet = true;
-            }
-        }
+        [JsonProperty("key")]
+        public string Key { get; set; } = default!;
 
-        private string _key = default!;
-
-        private bool _keySet = true;
-
-        public bool ShouldSerializeKey() => _keySet;
-
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
-        public string Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-                _valueSet = true;
-            }
-        }
-
-        private string _value = default!;
-
-        private bool _valueSet = true;
-
-        public bool ShouldSerializeValue() => _valueSet;
+        [JsonProperty("value")]
+        public string Value { get; set; } = default!;
     }
 }
