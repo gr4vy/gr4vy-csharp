@@ -19,28 +19,140 @@ namespace Gr4vy.Models.Components
     /// </summary>
     public class DigitalWalletUpdate
     {
-        [JsonProperty("merchant_name")]
-        public string? MerchantName { get; set; } = null;
+        [JsonProperty("merchant_name", NullValueHandling = NullValueHandling.Include)]
+        public string? MerchantName
+        {
+            get => _merchantName;
+            set
+            {
+                _merchantName = value;
+                _merchantNameSet = true;
+            }
+        }
 
-        [JsonProperty("domain_names")]
-        public List<string>? DomainNames { get; set; } = null;
+        private string? _merchantName = null;
 
-        [JsonProperty("merchant_display_name")]
-        public string? MerchantDisplayName { get; set; } = null;
+        private bool _merchantNameSet = false;
 
-        [JsonProperty("merchant_url")]
-        public string? MerchantUrl { get; set; } = null;
+        public bool ShouldSerializeMerchantName() => _merchantNameSet;
 
-        [JsonProperty("merchant_country_code")]
-        public string? MerchantCountryCode { get; set; } = null;
+        [JsonProperty("domain_names", NullValueHandling = NullValueHandling.Include)]
+        public List<string>? DomainNames
+        {
+            get => _domainNames;
+            set
+            {
+                _domainNames = value;
+                _domainNamesSet = true;
+            }
+        }
 
-        [JsonProperty("merchant_category_code")]
-        public string? MerchantCategoryCode { get; set; } = null;
+        private List<string>? _domainNames = null;
 
-        [JsonProperty("address")]
-        public DigitalWalletAddress? Address { get; set; } = null;
+        private bool _domainNamesSet = false;
 
-        [JsonProperty("extra_configuration")]
-        public Dictionary<string, object>? ExtraConfiguration { get; set; } = null;
+        public bool ShouldSerializeDomainNames() => _domainNamesSet;
+
+        [JsonProperty("merchant_display_name", NullValueHandling = NullValueHandling.Include)]
+        public string? MerchantDisplayName
+        {
+            get => _merchantDisplayName;
+            set
+            {
+                _merchantDisplayName = value;
+                _merchantDisplayNameSet = true;
+            }
+        }
+
+        private string? _merchantDisplayName = null;
+
+        private bool _merchantDisplayNameSet = false;
+
+        public bool ShouldSerializeMerchantDisplayName() => _merchantDisplayNameSet;
+
+        [JsonProperty("merchant_url", NullValueHandling = NullValueHandling.Include)]
+        public string? MerchantUrl
+        {
+            get => _merchantUrl;
+            set
+            {
+                _merchantUrl = value;
+                _merchantUrlSet = true;
+            }
+        }
+
+        private string? _merchantUrl = null;
+
+        private bool _merchantUrlSet = false;
+
+        public bool ShouldSerializeMerchantUrl() => _merchantUrlSet;
+
+        [JsonProperty("merchant_country_code", NullValueHandling = NullValueHandling.Include)]
+        public string? MerchantCountryCode
+        {
+            get => _merchantCountryCode;
+            set
+            {
+                _merchantCountryCode = value;
+                _merchantCountryCodeSet = true;
+            }
+        }
+
+        private string? _merchantCountryCode = null;
+
+        private bool _merchantCountryCodeSet = false;
+
+        public bool ShouldSerializeMerchantCountryCode() => _merchantCountryCodeSet;
+
+        [JsonProperty("merchant_category_code", NullValueHandling = NullValueHandling.Include)]
+        public string? MerchantCategoryCode
+        {
+            get => _merchantCategoryCode;
+            set
+            {
+                _merchantCategoryCode = value;
+                _merchantCategoryCodeSet = true;
+            }
+        }
+
+        private string? _merchantCategoryCode = null;
+
+        private bool _merchantCategoryCodeSet = false;
+
+        public bool ShouldSerializeMerchantCategoryCode() => _merchantCategoryCodeSet;
+
+        [JsonProperty("address", NullValueHandling = NullValueHandling.Include)]
+        public DigitalWalletAddress? Address
+        {
+            get => _address;
+            set
+            {
+                _address = value;
+                _addressSet = true;
+            }
+        }
+
+        private DigitalWalletAddress? _address = null;
+
+        private bool _addressSet = false;
+
+        public bool ShouldSerializeAddress() => _addressSet;
+
+        [JsonProperty("extra_configuration", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, object>? ExtraConfiguration
+        {
+            get => _extraConfiguration;
+            set
+            {
+                _extraConfiguration = value;
+                _extraConfigurationSet = true;
+            }
+        }
+
+        private Dictionary<string, object>? _extraConfiguration = null;
+
+        private bool _extraConfigurationSet = false;
+
+        public bool ShouldSerializeExtraConfiguration() => _extraConfigurationSet;
     }
 }

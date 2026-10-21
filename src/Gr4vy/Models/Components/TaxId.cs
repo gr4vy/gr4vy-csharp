@@ -22,10 +22,38 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The tax ID for the buyer.
         /// </summary>
-        [JsonProperty("value")]
-        public string Value { get; set; } = default!;
+        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
+        public string Value
+        {
+            get => _value;
+            set
+            {
+                _value = value;
+                _valueSet = true;
+            }
+        }
 
-        [JsonProperty("kind")]
-        public TaxIdKind Kind { get; set; } = default!;
+        private string _value = default!;
+
+        private bool _valueSet = true;
+
+        public bool ShouldSerializeValue() => _valueSet;
+
+        [JsonProperty("kind", NullValueHandling = NullValueHandling.Include)]
+        public TaxIdKind Kind
+        {
+            get => _kind;
+            set
+            {
+                _kind = value;
+                _kindSet = true;
+            }
+        }
+
+        private TaxIdKind _kind = default!;
+
+        private bool _kindSet = true;
+
+        public bool ShouldSerializeKind() => _kindSet;
     }
 }

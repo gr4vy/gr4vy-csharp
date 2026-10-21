@@ -17,7 +17,21 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The shipping address this delivery charge applies to. Must be `base-shipping-address` for the address derived from the transaction, or the `id` of an `additional_shipping_addresses` entry. Must not be provided when `additional_shipping_addresses` is empty.
         /// </summary>
-        [JsonProperty("shipping_address_id")]
-        public string? ShippingAddressId { get; set; } = null;
+        [JsonProperty("shipping_address_id", NullValueHandling = NullValueHandling.Include)]
+        public string? ShippingAddressId
+        {
+            get => _shippingAddressId;
+            set
+            {
+                _shippingAddressId = value;
+                _shippingAddressIdSet = true;
+            }
+        }
+
+        private string? _shippingAddressId = null;
+
+        private bool _shippingAddressIdSet = false;
+
+        public bool ShouldSerializeShippingAddressId() => _shippingAddressIdSet;
     }
 }

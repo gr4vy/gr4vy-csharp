@@ -17,7 +17,21 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The ID of an existing PayPal order that was already created and approved by the buyer entirely outside of Gr4vy. Gr4vy retrieves this order and authorizes (or captures) it directly, without creating an order of its own.
         /// </summary>
-        [JsonProperty("order_id")]
-        public string OrderId { get; set; } = default!;
+        [JsonProperty("order_id", NullValueHandling = NullValueHandling.Include)]
+        public string OrderId
+        {
+            get => _orderId;
+            set
+            {
+                _orderId = value;
+                _orderIdSet = true;
+            }
+        }
+
+        private string _orderId = default!;
+
+        private bool _orderIdSet = true;
+
+        public bool ShouldSerializeOrderId() => _orderIdSet;
     }
 }

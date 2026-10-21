@@ -17,43 +17,141 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The country code of the beneficiary's address.
         /// </summary>
-        [JsonProperty("country")]
-        public string Country { get; set; } = default!;
+        [JsonProperty("country", NullValueHandling = NullValueHandling.Include)]
+        public string Country
+        {
+            get => _country;
+            set
+            {
+                _country = value;
+                _countrySet = true;
+            }
+        }
+
+        private string _country = default!;
+
+        private bool _countrySet = true;
+
+        public bool ShouldSerializeCountry() => _countrySet;
 
         /// <summary>
         /// First line of the beneficiary's address.
         /// </summary>
-        [JsonProperty("address1")]
-        public string? Address1 { get; set; } = null;
+        [JsonProperty("address1", NullValueHandling = NullValueHandling.Include)]
+        public string? Address1
+        {
+            get => _address1;
+            set
+            {
+                _address1 = value;
+                _address1Set = true;
+            }
+        }
+
+        private string? _address1 = null;
+
+        private bool _address1Set = false;
+
+        public bool ShouldSerializeAddress1() => _address1Set;
 
         /// <summary>
         /// Second line of the beneficiary's address.
         /// </summary>
-        [JsonProperty("address2")]
-        public string? Address2 { get; set; } = null;
+        [JsonProperty("address2", NullValueHandling = NullValueHandling.Include)]
+        public string? Address2
+        {
+            get => _address2;
+            set
+            {
+                _address2 = value;
+                _address2Set = true;
+            }
+        }
+
+        private string? _address2 = null;
+
+        private bool _address2Set = false;
+
+        public bool ShouldSerializeAddress2() => _address2Set;
 
         /// <summary>
         /// Zip or postal code of the beneficiary's address.
         /// </summary>
-        [JsonProperty("zip")]
-        public string? Zip { get; set; } = null;
+        [JsonProperty("zip", NullValueHandling = NullValueHandling.Include)]
+        public string? Zip
+        {
+            get => _zip;
+            set
+            {
+                _zip = value;
+                _zipSet = true;
+            }
+        }
+
+        private string? _zip = null;
+
+        private bool _zipSet = false;
+
+        public bool ShouldSerializeZip() => _zipSet;
 
         /// <summary>
         /// State or region of the beneficiary's address.
         /// </summary>
-        [JsonProperty("region")]
-        public string? Region { get; set; } = null;
+        [JsonProperty("region", NullValueHandling = NullValueHandling.Include)]
+        public string? Region
+        {
+            get => _region;
+            set
+            {
+                _region = value;
+                _regionSet = true;
+            }
+        }
+
+        private string? _region = null;
+
+        private bool _regionSet = false;
+
+        public bool ShouldSerializeRegion() => _regionSet;
 
         /// <summary>
         /// Company name associated with the beneficiary's address.
         /// </summary>
-        [JsonProperty("company")]
-        public string? Company { get; set; } = null;
+        [JsonProperty("company", NullValueHandling = NullValueHandling.Include)]
+        public string? Company
+        {
+            get => _company;
+            set
+            {
+                _company = value;
+                _companySet = true;
+            }
+        }
+
+        private string? _company = null;
+
+        private bool _companySet = false;
+
+        public bool ShouldSerializeCompany() => _companySet;
 
         /// <summary>
         /// City of the beneficiary's address.
         /// </summary>
-        [JsonProperty("city")]
-        public string? City { get; set; } = null;
+        [JsonProperty("city", NullValueHandling = NullValueHandling.Include)]
+        public string? City
+        {
+            get => _city;
+            set
+            {
+                _city = value;
+                _citySet = true;
+            }
+        }
+
+        private string? _city = null;
+
+        private bool _citySet = false;
+
+        public bool ShouldSerializeCity() => _citySet;
     }
 }
