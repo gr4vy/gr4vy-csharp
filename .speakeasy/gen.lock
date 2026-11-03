@@ -5,15 +5,15 @@ management:
   docVersion: 1.0.0
   speakeasyVersion: 1.806.0
   generationVersion: 2.956.1
-  releaseVersion: 2.11.4
-  configChecksum: 9ec8ac9a0cb2fd2b12ee18e7bb07af3c
+  releaseVersion: 2.11.5
+  configChecksum: 5e8e99ccdf8cf7492d23f8b018d99032
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 4f33cbef-6c94-4360-a898-57d9162db35d
-  pristine_commit_hash: c84265482dc4f908ba8ed3e85b14d3a49fcb9467
-  pristine_tree_hash: 391650a53d3f6e0c7dd006c0c50c935b10440ec5
+  generation_id: 03cbd39e-4314-4765-83e5-71258b83289a
+  pristine_commit_hash: d96ac7cd760521f5f95ad6a29cccd0cb165ce2c6
+  pristine_tree_hash: 89ac34b234e4ee34af5a3775d32eed3fde7fd28b
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -2542,8 +2542,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:1ab003040201fdbbe9ae3b9130c4598ebd8f1ee5
-    pristine_git_object: a61e2b8fb2a8ae55d379a49a4f11ea47e2ef1232
+    last_write_checksum: sha1:65070054e5306cc0baeea6ddf43ec89dcb8f5db8
+    pristine_git_object: 2b7a319fde841b941a0189b9f69db351bc954aa6
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:42798416e271ab46961e81505088b60a0e045e68
@@ -4874,8 +4874,8 @@ trackedFiles:
     pristine_git_object: a7053ccd58775f2c7ff2f6401ba068fb96871c48
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:1b20d25d648f089f4a3defb62e8aec85340033f7
-    pristine_git_object: 2c4c03921f1caeaa250efd1112963c298255a875
+    last_write_checksum: sha1:6f1e40e5f47a99397b43afb2948eab6189cc2862
+    pristine_git_object: a498c43904c57aa600c5c50bdab59d5969e45046
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4914,8 +4914,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:191c1e9a9e7b9820b10e3ea6d0e7d98c21ba358c
-    pristine_git_object: 17b1c858dddf8641fbf9bda3ce096d794ecfc9ad
+    last_write_checksum: sha1:d3d8a08ec87eacb530da6b0892e1bba87055cd8f
+    pristine_git_object: 2f6c523c9d30b42a543bf800ad9a1c14ba64283d
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -9295,7 +9295,6 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.Buyers.PaymentMethods.List()`:  `response.items[]` **Changed**\n* `Gr4vy.PaymentMethods.List()`:  `response.items[]` **Changed**\n* `Gr4vy.PaymentMethods.Create()`: \n  *  `requestBody.union(RedirectPaymentMethodCreate).Method` **Changed**\n  *  `response` **Changed**\n* `Gr4vy.PaymentMethods.Get()`:  `response` **Changed**\n* `Gr4vy.PaymentMethods.Update()`: \n  *  `request.paymentMethodUpdate.SchemeTransactionIdScheme.Enum(dinacard)` **Added**\n  *  `response` **Changed**\n* `Gr4vy.Transactions.List()`: \n  *  `request.Method` **Changed**\n  *  `response.items[].PaymentMethod` **Changed**\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod` **Changed**\n  *  `response.paymentMethod` **Changed**\n* `Gr4vy.Transactions.Get()`:  `response.paymentMethod` **Changed**\n* `Gr4vy.Transactions.Update()`:  `response.paymentMethod` **Changed**\n* `Gr4vy.Transactions.Capture()`:  `response.union(Transaction).PaymentMethod` **Changed**\n* `Gr4vy.Transactions.Void()`:  `response.union(Transaction).PaymentMethod` **Changed**\n* `Gr4vy.Transactions.Cancel()`:  `response.transaction.PaymentMethod` **Changed**\n* `Gr4vy.Transactions.Sync()`:  `response.paymentMethod` **Changed**\n* `Gr4vy.Transactions.IncrementAuthorization()`:  `response.transaction.PaymentMethod` **Changed**\n* `Gr4vy.PaymentServiceDefinitions.List()`:  `response.items[].Method` **Changed**\n* `Gr4vy.PaymentServiceDefinitions.Get()`:  `response.method` **Changed**\n* `Gr4vy.PaymentServices.List()`: \n  *  `request.Method` **Changed**\n  *  `response.items[].Method` **Changed**\n* `Gr4vy.PaymentServices.Create()`:  `response.method` **Changed**\n* `Gr4vy.PaymentServices.Get()`:  `response.method` **Changed**\n* `Gr4vy.PaymentServices.Update()`:  `response.method` **Changed**\n* `Gr4vy.AuditLogs.List()`:  `response.items[].User.Status.Enum(reset)` **Added**\n* `Gr4vy.CheckoutSessions.Create()`:  `response.paymentMethod.Scheme.Enum(dinacard)` **Added**\n* `Gr4vy.CheckoutSessions.Update()`:  `response.paymentMethod.Scheme.Enum(dinacard)` **Added**\n* `Gr4vy.CheckoutSessions.Get()`:  `response.paymentMethod.Scheme.Enum(dinacard)` **Added**\n* `Gr4vy.MerchantAccounts.List()`:  `response.items[].LoonAcceptedSchemes[].Enum(dinacard)` **Added**\n* `Gr4vy.MerchantAccounts.Create()`: \n  *  `request.LoonAcceptedSchemes[].Enum(dinacard)` **Added**\n  *  `response.loonAcceptedSchemes[].Enum(dinacard)` **Added**\n* `Gr4vy.MerchantAccounts.Get()`:  `response.loonAcceptedSchemes[].Enum(dinacard)` **Added**\n* `Gr4vy.MerchantAccounts.Update()`: \n  *  `request.merchantAccountUpdate.LoonAcceptedSchemes[].Enum(dinacard)` **Added**\n  *  `response.loonAcceptedSchemes[].Enum(dinacard)` **Added**\n* `Gr4vy.MerchantAccounts.ThreeDsConfiguration.Create()`: \n  *  `request.merchantAccountThreeDsConfigurationCreate.Scheme.Enum(dinacard)` **Added**\n  *  `response.scheme.Enum(dinacard)` **Added**\n* `Gr4vy.MerchantAccounts.ThreeDsConfiguration.List()`:  `response.items[].Scheme.Enum(dinacard)` **Added**\n* `Gr4vy.MerchantAccounts.ThreeDsConfiguration.Update()`: \n  *  `request.merchantAccountThreeDsConfigurationUpdate.Scheme.Enum(dinacard)` **Added**\n  *  `response.scheme.Enum(dinacard)` **Added**\n* `Gr4vy.Payouts.List()`:  `response.items[].PaymentMethod` **Changed**\n* `Gr4vy.Payouts.Create()`: \n  *  `request.payoutCreate.PaymentMethod.union(PaymentMethodCard).CardScheme.Enum(dinacard)` **Added**\n  *  `response.paymentMethod` **Changed**\n* `Gr4vy.Payouts.Get()`:  `response.paymentMethod` **Changed**\n* `Gr4vy.PaymentLinks.Create()`: \n  *  `request.paymentLinkCreate.Airline` **Added**\n  *  `response.airline` **Added**\n* `Gr4vy.PaymentLinks.List()`:  `response.items[].Airline` **Added**\n* `Gr4vy.PaymentLinks.Get()`:  `response.airline` **Added**\n"
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln

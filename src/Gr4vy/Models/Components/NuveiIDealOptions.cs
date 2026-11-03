@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Additional data to be sent to Nuvei.
         /// </summary>
-        [JsonProperty("customData", NullValueHandling = NullValueHandling.Include)]
-        public string? CustomData
-        {
-            get => _customData;
-            set
-            {
-                _customData = value;
-                _customDataSet = true;
-            }
-        }
-
-        private string? _customData = null;
-
-        private bool _customDataSet = false;
-
-        public bool ShouldSerializeCustomData() => _customDataSet;
+        [JsonProperty("customData")]
+        public string? CustomData { get; set; } = null;
     }
 }
