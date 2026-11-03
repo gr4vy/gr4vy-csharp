@@ -19,7 +19,7 @@ jobs:
     environment: sdk-release
     steps:
       - id: bot
-        uses: gr4vy/sdk-release/release-bot@d992659f79dc88ba0bbfc61fd9acbc9e8e15855d
+        uses: gr4vy/sdk-release/release-bot@f956131fcbeaa05d2afcd763f7f8e8122ed823e2
         with:
           sdk: csharp
           run-id: ${{ github.event.workflow_run.id }}

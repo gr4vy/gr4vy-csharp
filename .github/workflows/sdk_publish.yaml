@@ -33,7 +33,7 @@ jobs:
       version: ${{ steps.gate.outputs.version }}
     steps:
       - id: gate
-        uses: gr4vy/sdk-release/publish-gate@d992659f79dc88ba0bbfc61fd9acbc9e8e15855d
+        uses: gr4vy/sdk-release/publish-gate@f956131fcbeaa05d2afcd763f7f8e8122ed823e2
         with:
           head-sha: ${{ github.event.workflow_run.head_sha || github.sha }}
           bot-login: gr4vy-sdk-release[bot]
