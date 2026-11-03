@@ -73,13 +73,13 @@ via `Reach.ReachesAsync` — a real request is sent (so the endpoint is reached 
 counts toward coverage) and a documented API error is accepted. These are always
 explicit, never silently skipped.
 
-## Endpoint coverage on PRs
+## Endpoint coverage
 
-CI runs the suite once with `GR4VY_TRACK_HTTP=1`, which records the method + path
-of every request to `coverage/http/*.jsonl`. `scripts/endpoint-coverage.mjs`
-matches those against the operation catalogue built from `src/Gr4vy/*.cs` and
-posts a sticky PR comment listing endpoint reach and any **not-reached**
-operations.
+The daily CI run (or a manual one) runs the suite once with `GR4VY_TRACK_HTTP=1`,
+which records the method + path of every request to `coverage/http/*.jsonl`.
+`scripts/endpoint-coverage.mjs` matches those against the operation catalogue
+built from `src/Gr4vy/*.cs`, writes the report to the run summary, and posts any
+**not-reached** operations to Slack.
 
 This matters for generated SDK-regen PRs: a new OpenAPI spec adds new operations
 but no tests, so newly generated endpoints show up as "not reached" and tests can
@@ -87,6 +87,17 @@ be backfilled over time.
 
 ## CI
 
-`.github/workflows/ci.yaml` shards the fixtures across a matrix, gates auto-merge
-on a single stable `ci-complete` check (which only succeeds when every shard
-passed), and posts the coverage comment in a separate, non-blocking job.
+`.github/workflows/ci.yaml` runs:
+
+- **offline** — builds and runs the tests that need no sandbox (auth, webhook
+  signatures, the tri-state `*Update` serialization), on every PR and on `main`.
+- **test** — the live suite, sharded across a matrix, on `main` only: the key
+  lives in the `e2e` Environment, which only `main` can use.
+- **ci-complete** — the single stable check the branch ruleset requires. On a PR
+  it means offline passed; on `main` it also means every shard passed.
+- **coverage** — the daily endpoint-reach report above. It never gates anything.
+
+Speakeasy regen PRs get the tri-state patch from the generation job itself
+(`sdk_generation.yaml`), are merged by the release bot (`sdk_merge.yaml`), and
+`sdk_publish.yaml` releases to NuGet once `main` is green. See
+[gr4vy/sdk-release](https://github.com/gr4vy/sdk-release).
