@@ -19,3 +19,4 @@ var custom = UserStatus.Of("custom_value");
 | `Active`  | active    |
 | `Pending` | pending   |
 | `Deleted` | deleted   |
+| `Reset`   | reset     |

@@ -58,22 +58,22 @@ namespace Gr4vy.Models.Components
         public string Scheme { get; } = "ach";
 
         /// <summary>
-        /// The account number for this ACH bank account.
+        /// Whether the account number is tokenized.
+        /// </summary>
+        [JsonProperty("is_tokenized")]
+        public bool? IsTokenized { get; set; } = false;
+
+        /// <summary>
+        /// The account number for this ACH bank account, made up of at most 17 digits. Spaces and dashes are ignored. Any format is accepted when `is_tokenized` is `true`.
         /// </summary>
         [JsonProperty("account_number")]
         public string AccountNumber { get; set; } = default!;
 
         /// <summary>
-        /// The routing number for this ACH bank account.
+        /// The routing number for this ACH bank account, made up of 9 digits. Spaces and dashes are ignored.
         /// </summary>
         [JsonProperty("routing_number")]
         public string RoutingNumber { get; set; } = default!;
-
-        /// <summary>
-        /// Whether the account number is tokenized.
-        /// </summary>
-        [JsonProperty("is_tokenized")]
-        public bool? IsTokenized { get; set; } = false;
 
         /// <summary>
         /// Specify whether this is a `checking` or `savings` account. Defaults to `checking`.

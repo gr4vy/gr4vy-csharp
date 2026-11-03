@@ -54,13 +54,13 @@ namespace Gr4vy.Models.Components
         public string Scheme { get; } = "sepa";
 
         /// <summary>
-        /// The IBAN for this SEPA bank account.
+        /// The IBAN for this SEPA bank account. Spaces are ignored and it is not case sensitive.
         /// </summary>
         [JsonProperty("account_number")]
         public string AccountNumber { get; set; } = default!;
 
         /// <summary>
-        /// The BIC for this SEPA bank account.
+        /// The BIC for this SEPA bank account, of 8 or 11 characters. Spaces are ignored and it is not case sensitive.
         /// </summary>
         [JsonProperty("routing_number")]
         public string? RoutingNumber { get; set; } = null;

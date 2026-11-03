@@ -23,6 +23,7 @@ var custom = CardScheme.Of("custom_value");
 | `Cirrus`          | cirrus            |
 | `Culiance`        | culiance          |
 | `Dankort`         | dankort           |
+| `Dinacard`        | dinacard          |
 | `DinersClub`      | diners-club       |
 | `Discover`        | discover          |
 | `EftposAustralia` | eftpos-australia  |

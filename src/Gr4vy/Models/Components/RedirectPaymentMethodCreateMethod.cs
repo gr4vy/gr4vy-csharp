@@ -27,12 +27,16 @@ namespace Gr4vy.Models.Components
         public static readonly RedirectPaymentMethodCreateMethod Afterpay = new RedirectPaymentMethodCreateMethod("afterpay");
         public static readonly RedirectPaymentMethodCreateMethod Alipay = new RedirectPaymentMethodCreateMethod("alipay");
         public static readonly RedirectPaymentMethodCreateMethod Alipayhk = new RedirectPaymentMethodCreateMethod("alipayhk");
+        public static readonly RedirectPaymentMethodCreateMethod Alipayplus = new RedirectPaymentMethodCreateMethod("alipayplus");
+        public static readonly RedirectPaymentMethodCreateMethod Alma = new RedirectPaymentMethodCreateMethod("alma");
         public static readonly RedirectPaymentMethodCreateMethod Arcuspaynetwork = new RedirectPaymentMethodCreateMethod("arcuspaynetwork");
         public static readonly RedirectPaymentMethodCreateMethod Bacs = new RedirectPaymentMethodCreateMethod("bacs");
         public static readonly RedirectPaymentMethodCreateMethod Bancontact = new RedirectPaymentMethodCreateMethod("bancontact");
+        public static readonly RedirectPaymentMethodCreateMethod Bcmcmobile = new RedirectPaymentMethodCreateMethod("bcmcmobile");
         public static readonly RedirectPaymentMethodCreateMethod Bcp = new RedirectPaymentMethodCreateMethod("bcp");
         public static readonly RedirectPaymentMethodCreateMethod Becs = new RedirectPaymentMethodCreateMethod("becs");
         public static readonly RedirectPaymentMethodCreateMethod Bitpay = new RedirectPaymentMethodCreateMethod("bitpay");
+        public static readonly RedirectPaymentMethodCreateMethod Bizum = new RedirectPaymentMethodCreateMethod("bizum");
         public static readonly RedirectPaymentMethodCreateMethod Blik = new RedirectPaymentMethodCreateMethod("blik");
         public static readonly RedirectPaymentMethodCreateMethod Boleto = new RedirectPaymentMethodCreateMethod("boleto");
         public static readonly RedirectPaymentMethodCreateMethod Boost = new RedirectPaymentMethodCreateMethod("boost");
@@ -49,9 +53,11 @@ namespace Gr4vy.Models.Components
         public static readonly RedirectPaymentMethodCreateMethod Dcb = new RedirectPaymentMethodCreateMethod("dcb");
         public static readonly RedirectPaymentMethodCreateMethod Dlocal = new RedirectPaymentMethodCreateMethod("dlocal");
         public static readonly RedirectPaymentMethodCreateMethod Duitnow = new RedirectPaymentMethodCreateMethod("duitnow");
+        public static readonly RedirectPaymentMethodCreateMethod Ebankingfi = new RedirectPaymentMethodCreateMethod("ebankingfi");
         public static readonly RedirectPaymentMethodCreateMethod Ebanx = new RedirectPaymentMethodCreateMethod("ebanx");
         public static readonly RedirectPaymentMethodCreateMethod Eckoh = new RedirectPaymentMethodCreateMethod("eckoh");
         public static readonly RedirectPaymentMethodCreateMethod Efecty = new RedirectPaymentMethodCreateMethod("efecty");
+        public static readonly RedirectPaymentMethodCreateMethod Eftpad = new RedirectPaymentMethodCreateMethod("eftpad");
         public static readonly RedirectPaymentMethodCreateMethod Eps = new RedirectPaymentMethodCreateMethod("eps");
         public static readonly RedirectPaymentMethodCreateMethod Everydaypay = new RedirectPaymentMethodCreateMethod("everydaypay");
         public static readonly RedirectPaymentMethodCreateMethod Gcash = new RedirectPaymentMethodCreateMethod("gcash");
@@ -75,7 +81,9 @@ namespace Gr4vy.Models.Components
         public static readonly RedirectPaymentMethodCreateMethod Linepay = new RedirectPaymentMethodCreateMethod("linepay");
         public static readonly RedirectPaymentMethodCreateMethod Linkaja = new RedirectPaymentMethodCreateMethod("linkaja");
         public static readonly RedirectPaymentMethodCreateMethod Maybankqrpay = new RedirectPaymentMethodCreateMethod("maybankqrpay");
+        public static readonly RedirectPaymentMethodCreateMethod Mbway = new RedirectPaymentMethodCreateMethod("mbway");
         public static readonly RedirectPaymentMethodCreateMethod Mercadopago = new RedirectPaymentMethodCreateMethod("mercadopago");
+        public static readonly RedirectPaymentMethodCreateMethod Mobilepay = new RedirectPaymentMethodCreateMethod("mobilepay");
         public static readonly RedirectPaymentMethodCreateMethod Multibanco = new RedirectPaymentMethodCreateMethod("multibanco");
         public static readonly RedirectPaymentMethodCreateMethod Multipago = new RedirectPaymentMethodCreateMethod("multipago");
         public static readonly RedirectPaymentMethodCreateMethod Netbanking = new RedirectPaymentMethodCreateMethod("netbanking");
@@ -93,6 +101,7 @@ namespace Gr4vy.Models.Components
         public static readonly RedirectPaymentMethodCreateMethod P24 = new RedirectPaymentMethodCreateMethod("p24");
         public static readonly RedirectPaymentMethodCreateMethod Pagoefectivo = new RedirectPaymentMethodCreateMethod("pagoefectivo");
         public static readonly RedirectPaymentMethodCreateMethod Paybybank = new RedirectPaymentMethodCreateMethod("paybybank");
+        public static readonly RedirectPaymentMethodCreateMethod Paybybankeu = new RedirectPaymentMethodCreateMethod("paybybankeu");
         public static readonly RedirectPaymentMethodCreateMethod Payid = new RedirectPaymentMethodCreateMethod("payid");
         public static readonly RedirectPaymentMethodCreateMethod Paymaya = new RedirectPaymentMethodCreateMethod("paymaya");
         public static readonly RedirectPaymentMethodCreateMethod Paysquad = new RedirectPaymentMethodCreateMethod("paysquad");
@@ -109,6 +118,7 @@ namespace Gr4vy.Models.Components
         public static readonly RedirectPaymentMethodCreateMethod Rapipago = new RedirectPaymentMethodCreateMethod("rapipago");
         public static readonly RedirectPaymentMethodCreateMethod Razorpay = new RedirectPaymentMethodCreateMethod("razorpay");
         public static readonly RedirectPaymentMethodCreateMethod Redpagos = new RedirectPaymentMethodCreateMethod("redpagos");
+        public static readonly RedirectPaymentMethodCreateMethod Riverty = new RedirectPaymentMethodCreateMethod("riverty");
         public static readonly RedirectPaymentMethodCreateMethod Scalapay = new RedirectPaymentMethodCreateMethod("scalapay");
         public static readonly RedirectPaymentMethodCreateMethod Sepa = new RedirectPaymentMethodCreateMethod("sepa");
         public static readonly RedirectPaymentMethodCreateMethod Servipag = new RedirectPaymentMethodCreateMethod("servipag");
@@ -131,6 +141,7 @@ namespace Gr4vy.Models.Components
         public static readonly RedirectPaymentMethodCreateMethod Truemoney = new RedirectPaymentMethodCreateMethod("truemoney");
         public static readonly RedirectPaymentMethodCreateMethod Trustly = new RedirectPaymentMethodCreateMethod("trustly");
         public static readonly RedirectPaymentMethodCreateMethod Trustlyeurope = new RedirectPaymentMethodCreateMethod("trustlyeurope");
+        public static readonly RedirectPaymentMethodCreateMethod Twint = new RedirectPaymentMethodCreateMethod("twint");
         public static readonly RedirectPaymentMethodCreateMethod Upi = new RedirectPaymentMethodCreateMethod("upi");
         public static readonly RedirectPaymentMethodCreateMethod Venmo = new RedirectPaymentMethodCreateMethod("venmo");
         public static readonly RedirectPaymentMethodCreateMethod Vipps = new RedirectPaymentMethodCreateMethod("vipps");
@@ -149,12 +160,16 @@ namespace Gr4vy.Models.Components
                 ["afterpay"] = Afterpay,
                 ["alipay"] = Alipay,
                 ["alipayhk"] = Alipayhk,
+                ["alipayplus"] = Alipayplus,
+                ["alma"] = Alma,
                 ["arcuspaynetwork"] = Arcuspaynetwork,
                 ["bacs"] = Bacs,
                 ["bancontact"] = Bancontact,
+                ["bcmcmobile"] = Bcmcmobile,
                 ["bcp"] = Bcp,
                 ["becs"] = Becs,
                 ["bitpay"] = Bitpay,
+                ["bizum"] = Bizum,
                 ["blik"] = Blik,
                 ["boleto"] = Boleto,
                 ["boost"] = Boost,
@@ -171,9 +186,11 @@ namespace Gr4vy.Models.Components
                 ["dcb"] = Dcb,
                 ["dlocal"] = Dlocal,
                 ["duitnow"] = Duitnow,
+                ["ebankingfi"] = Ebankingfi,
                 ["ebanx"] = Ebanx,
                 ["eckoh"] = Eckoh,
                 ["efecty"] = Efecty,
+                ["eftpad"] = Eftpad,
                 ["eps"] = Eps,
                 ["everydaypay"] = Everydaypay,
                 ["gcash"] = Gcash,
@@ -197,7 +214,9 @@ namespace Gr4vy.Models.Components
                 ["linepay"] = Linepay,
                 ["linkaja"] = Linkaja,
                 ["maybankqrpay"] = Maybankqrpay,
+                ["mbway"] = Mbway,
                 ["mercadopago"] = Mercadopago,
+                ["mobilepay"] = Mobilepay,
                 ["multibanco"] = Multibanco,
                 ["multipago"] = Multipago,
                 ["netbanking"] = Netbanking,
@@ -215,6 +234,7 @@ namespace Gr4vy.Models.Components
                 ["p24"] = P24,
                 ["pagoefectivo"] = Pagoefectivo,
                 ["paybybank"] = Paybybank,
+                ["paybybankeu"] = Paybybankeu,
                 ["payid"] = Payid,
                 ["paymaya"] = Paymaya,
                 ["paysquad"] = Paysquad,
@@ -231,6 +251,7 @@ namespace Gr4vy.Models.Components
                 ["rapipago"] = Rapipago,
                 ["razorpay"] = Razorpay,
                 ["redpagos"] = Redpagos,
+                ["riverty"] = Riverty,
                 ["scalapay"] = Scalapay,
                 ["sepa"] = Sepa,
                 ["servipag"] = Servipag,
@@ -253,6 +274,7 @@ namespace Gr4vy.Models.Components
                 ["truemoney"] = Truemoney,
                 ["trustly"] = Trustly,
                 ["trustlyeurope"] = Trustlyeurope,
+                ["twint"] = Twint,
                 ["upi"] = Upi,
                 ["venmo"] = Venmo,
                 ["vipps"] = Vipps,

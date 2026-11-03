@@ -54,13 +54,13 @@ namespace Gr4vy.Models.Components
         public string Scheme { get; } = "bacs";
 
         /// <summary>
-        /// The account number for this BACS bank account.
+        /// The account number for this BACS bank account, made up of 8 digits. A 6 or 7 digit number is padded with leading zeros. Spaces and dashes are ignored.
         /// </summary>
         [JsonProperty("account_number")]
         public string AccountNumber { get; set; } = default!;
 
         /// <summary>
-        /// The sort code for this BACS bank account.
+        /// The sort code for this BACS bank account, made up of 6 digits. Spaces and dashes are ignored.
         /// </summary>
         [JsonProperty("routing_number")]
         public string RoutingNumber { get; set; } = default!;
