@@ -137,6 +137,12 @@ namespace Gr4vy.Models.Components
         public List<CartItem>? CartItems { get; set; }
 
         /// <summary>
+        /// The airline addendum data which describes the airline booking associated with this payment link.
+        /// </summary>
+        [JsonProperty("airline", NullValueHandling = NullValueHandling.Include)]
+        public Airline? Airline { get; set; }
+
+        /// <summary>
         /// Arbitrary metadata for the payment link.
         /// </summary>
         [JsonProperty("metadata")]

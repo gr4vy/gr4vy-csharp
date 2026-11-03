@@ -21,14 +21,18 @@ var custom = Method.Of("custom_value");
 | `Afterpay`          | afterpay            |
 | `Alipay`            | alipay              |
 | `Alipayhk`          | alipayhk            |
+| `Alipayplus`        | alipayplus          |
+| `Alma`              | alma                |
 | `Applepay`          | applepay            |
 | `Arcuspaynetwork`   | arcuspaynetwork     |
 | `Bacs`              | bacs                |
 | `Bancontact`        | bancontact          |
 | `Bank`              | bank                |
+| `Bcmcmobile`        | bcmcmobile          |
 | `Bcp`               | bcp                 |
 | `Becs`              | becs                |
 | `Bitpay`            | bitpay              |
+| `Bizum`             | bizum               |
 | `Blik`              | blik                |
 | `Ach`               | ach                 |
 | `Boleto`            | boleto              |
@@ -48,9 +52,11 @@ var custom = Method.Of("custom_value");
 | `Dcb`               | dcb                 |
 | `Dlocal`            | dlocal              |
 | `Duitnow`           | duitnow             |
+| `Ebankingfi`        | ebankingfi          |
 | `Ebanx`             | ebanx               |
 | `Eckoh`             | eckoh               |
 | `Efecty`            | efecty              |
+| `Eftpad`            | eftpad              |
 | `Eps`               | eps                 |
 | `Everydaypay`       | everydaypay         |
 | `Gcash`             | gcash               |
@@ -77,7 +83,9 @@ var custom = Method.Of("custom_value");
 | `Linepay`           | linepay             |
 | `Linkaja`           | linkaja             |
 | `Maybankqrpay`      | maybankqrpay        |
+| `Mbway`             | mbway               |
 | `Mercadopago`       | mercadopago         |
+| `Mobilepay`         | mobilepay           |
 | `Multibanco`        | multibanco          |
 | `Multipago`         | multipago           |
 | `Nequi`             | nequi               |
@@ -96,6 +104,7 @@ var custom = Method.Of("custom_value");
 | `P24`               | p24                 |
 | `Pagoefectivo`      | pagoefectivo        |
 | `Paybybank`         | paybybank           |
+| `Paybybankeu`       | paybybankeu         |
 | `Payid`             | payid               |
 | `Paymaya`           | paymaya             |
 | `Paysquad`          | paysquad            |
@@ -114,6 +123,7 @@ var custom = Method.Of("custom_value");
 | `Razorpay`          | razorpay            |
 | `Rapipago`          | rapipago            |
 | `Redpagos`          | redpagos            |
+| `Riverty`           | riverty             |
 | `Scalapay`          | scalapay            |
 | `Sepa`              | sepa                |
 | `Servipag`          | servipag            |
@@ -136,6 +146,7 @@ var custom = Method.Of("custom_value");
 | `Truemoney`         | truemoney           |
 | `Trustly`           | trustly             |
 | `Trustlyeurope`     | trustlyeurope       |
+| `Twint`             | twint               |
 | `Upi`               | upi                 |
 | `Venmo`             | venmo               |
 | `Vipps`             | vipps               |

@@ -17,41 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Amount in the smallest currency unit for the given currency.
         /// </summary>
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
-        public long? Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-                _valueSet = true;
-            }
-        }
-
-        private long? _value = null;
-
-        private bool _valueSet = false;
-
-        public bool ShouldSerializeValue() => _valueSet;
+        [JsonProperty("value")]
+        public long? Value { get; set; } = null;
 
         /// <summary>
         /// ISO 4217 currency code.
         /// </summary>
-        [JsonProperty("currency", NullValueHandling = NullValueHandling.Include)]
-        public string? Currency
-        {
-            get => _currency;
-            set
-            {
-                _currency = value;
-                _currencySet = true;
-            }
-        }
-
-        private string? _currency = null;
-
-        private bool _currencySet = false;
-
-        public bool ShouldSerializeCurrency() => _currencySet;
+        [JsonProperty("currency")]
+        public string? Currency { get; set; } = null;
     }
 }

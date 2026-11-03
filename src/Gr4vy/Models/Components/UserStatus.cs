@@ -22,13 +22,15 @@ namespace Gr4vy.Models.Components
         public static readonly UserStatus Active = new UserStatus("active");
         public static readonly UserStatus Pending = new UserStatus("pending");
         public static readonly UserStatus Deleted = new UserStatus("deleted");
+        public static readonly UserStatus Reset = new UserStatus("reset");
 
         private static readonly Dictionary <string, UserStatus> _knownValues =
             new Dictionary <string, UserStatus> ()
             {
                 ["active"] = Active,
                 ["pending"] = Pending,
-                ["deleted"] = Deleted
+                ["deleted"] = Deleted,
+                ["reset"] = Reset
             };
 
         private static readonly ConcurrentDictionary<string, UserStatus> _values =

@@ -26,6 +26,7 @@ namespace Gr4vy.Models.Components
         public static readonly CardScheme Cirrus = new CardScheme("cirrus");
         public static readonly CardScheme Culiance = new CardScheme("culiance");
         public static readonly CardScheme Dankort = new CardScheme("dankort");
+        public static readonly CardScheme Dinacard = new CardScheme("dinacard");
         public static readonly CardScheme DinersClub = new CardScheme("diners-club");
         public static readonly CardScheme Discover = new CardScheme("discover");
         public static readonly CardScheme EftposAustralia = new CardScheme("eftpos-australia");
@@ -55,6 +56,7 @@ namespace Gr4vy.Models.Components
                 ["cirrus"] = Cirrus,
                 ["culiance"] = Culiance,
                 ["dankort"] = Dankort,
+                ["dinacard"] = Dinacard,
                 ["diners-club"] = DinersClub,
                 ["discover"] = Discover,
                 ["eftpos-australia"] = EftposAustralia,
