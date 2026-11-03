@@ -118,12 +118,15 @@ jobs:
             exit 1
           fi
 
-  # Endpoint reach from the daily (or a manual) run: runs the full suite once,
-  # un-sharded, with HTTP tracking, writes the report to the run summary and posts
-  # to Slack when an operation had no real request. A report, not a gate, and it
-  # never runs on a push, so it never delays a release.
+  # Endpoint reach from the daily (or a manual) run: once the live shards are done,
+  # runs the full suite again, un-sharded, with HTTP tracking, writes the report to
+  # the run summary and posts to Slack when an operation had no real request. A
+  # report, not a gate, and it never runs on a push, so it never delays a release.
   coverage:
-    if: github.ref == 'refs/heads/main' && (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
+    needs: test
+    if: >-
+      always() && needs.test.result != 'cancelled' && github.ref == 'refs/heads/main' &&
+      (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     timeout-minutes: 10
     environment: e2e
