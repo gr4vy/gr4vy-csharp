@@ -62,9 +62,9 @@ jobs:
       # from the generated branch). The release bot trusts this one extra author
       # for C# only.
       - name: Apply the tri-state nullable patch
+        id: patch
         if: steps.generate.outputs.branch_name != ''
         env:
-          GH_TOKEN: ${{ steps.app.outputs.token }}
           BRANCH: ${{ steps.generate.outputs.branch_name }}
         run: |
           git show "$GITHUB_SHA:.speakeasy/scripts/patch_update_models.py" > "$RUNNER_TEMP/patch_update_models.py"
@@ -80,7 +80,16 @@ jobs:
           git config user.email "350364636+gr4vy-sdk-generate[bot]@users.noreply.github.com"
           git add src/Gr4vy/Models/Components
           git commit -m "fix: apply tri-state nullable patch to *Update models"
-          git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$BRANCH"
+          echo "patched=true" >> "$GITHUB_OUTPUT"
+
+      # Only this step sees the App token, so the patch script never runs with it.
+      - name: Push the patch to the PR branch
+        if: steps.patch.outputs.patched == 'true'
+        working-directory: ${{ runner.temp }}/regen
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          BRANCH: ${{ steps.generate.outputs.branch_name }}
+        run: git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$BRANCH"
 
   notify:
     needs: generate
