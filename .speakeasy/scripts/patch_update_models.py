@@ -238,7 +238,7 @@ def main(argv: list[str]) -> int:
             "Path to the SDK repo root. Defaults to the repo containing this "
             "script. Used by CI when the script lives in a different checkout "
             "(trusted base) than the files being patched (untrusted PR head); "
-            "see .github/workflows/patch_speakeasy_regen.yaml."
+            "see .github/workflows/sdk_generation.yaml."
         ),
     )
     args = parser.parse_args(argv[1:])

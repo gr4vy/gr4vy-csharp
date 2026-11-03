@@ -1,49 +1,172 @@
 name: Publish SDK
-permissions:
-  checks: write
-  contents: write
-  pull-requests: write
-  statuses: write
-  id-token: write
 "on":
-  push:
+  workflow_run: # zizmor: ignore[dangerous-triggers] never checks out or runs PR code
+    workflows:
+      - CI
+    types:
+      - completed
     branches:
       - main
-    paths:
-      - .speakeasy/gen.lock
   workflow_dispatch: {}
-jobs:
-  publish:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-publish.yaml@fe37b336cd1948f1e2e60383fd94bfb884318cf2 # v15
-    with:
-      target: csharp
-    secrets:
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      nuget_api_key: ${{ secrets.NUGET_API_KEY }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
 
-  notify:
-    needs: publish
+permissions:
+  contents: read
+
+concurrency:
+  group: publish
+  cancel-in-progress: false
+
+jobs:
+  gate:
+    if: >-
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/main') ||
+      (github.event.workflow_run.event == 'push' && github.event.workflow_run.conclusion == 'success' &&
+       github.event.workflow_run.head_branch == 'main')
     runs-on: ubuntu-latest
-    if: always()
+    timeout-minutes: 5
+    permissions:
+      contents: read
+      pull-requests: read
+    outputs:
+      publish: ${{ steps.gate.outputs.publish }}
+      mode: ${{ github.event_name == 'workflow_dispatch' && 'manual' || steps.gate.outputs.mode }}
+      version: ${{ steps.gate.outputs.version }}
+    steps:
+      - id: gate
+        uses: gr4vy/sdk-release/publish-gate@f956131fcbeaa05d2afcd763f7f8e8122ed823e2
+        with:
+          head-sha: ${{ github.event.workflow_run.head_sha || github.sha }}
+          bot-login: gr4vy-sdk-release[bot]
+
+  request-approval:
+    needs: gate
+    if: needs.gate.outputs.publish == 'true' && needs.gate.outputs.mode == 'manual'
+    runs-on: ubuntu-latest
     steps:
       - name: Slack Notification
         uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2
-        if: github.ref == 'refs/heads/main'
         env:
-            SLACK_USERNAME: C# SDK 
+            SLACK_USERNAME: C# SDK
+            SLACK_TITLE: C# SDK
+            SLACK_WEBHOOK: ${{ secrets.SLACK_SDK_WEBHOOK_URL }}
+            SLACK_CHANNEL: sdk-updates
+            SLACK_MSG_AUTHOR: gr4vy-code
+            SLACK_ICON_EMOJI: ":gr4vy:"
+            SLACK_COLOR: "#F3AB0E"
+            SLACK_MESSAGE: "v${{ needs.gate.outputs.version }} is waiting for release approval: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+            SLACK_FOOTER: ""
+
+  approve:
+    needs: gate
+    if: needs.gate.outputs.publish == 'true' && needs.gate.outputs.mode == 'manual'
+    runs-on: ubuntu-latest
+    environment: release-manual
+    steps:
+      - run: echo "Release approved."
+
+  # Packs and pushes to NuGet.org with NuGet trusted publishing (a short-lived
+  # key from GitHub OIDC, tied to this workflow and the sdk-release Environment),
+  # then has the release bot tag the commit.
+  publish:
+    needs: [gate, approve]
+    if: >-
+      always() && needs.gate.outputs.publish == 'true' &&
+      (needs.gate.outputs.mode == 'auto' || needs.approve.result == 'success')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    environment: sdk-release
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Mint a gr4vy-sdk-release token
+        id: app
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ secrets.SDK_RELEASE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.SDK_RELEASE_APP_PRIVATE_KEY }}
+          repositories: ${{ github.event.repository.name }}
+          permission-contents: write
+
+      - name: Check out the release commit
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          persist-credentials: false
+
+      - name: Use .NET 8
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: 8
+
+      - name: Check the version
+        id: version
+        env:
+          VERSION: ${{ needs.gate.outputs.version }}
+        run: |
+          PACKAGE_VERSION=$(sed -n 's:.*<Version>\(.*\)</Version>.*:\1:p' src/Gr4vy/Gr4vy.csproj)
+          if [ "$PACKAGE_VERSION" != "$VERSION" ]; then
+            echo "::error::Gr4vy.csproj is $PACKAGE_VERSION but gen.lock is $VERSION"
+            exit 1
+          fi
+          if curl -sf https://api.nuget.org/v3-flatcontainer/gr4vy/index.json | jq -e --arg v "$VERSION" '.versions | index($v)' >/dev/null; then
+            echo "Gr4vy $VERSION is already on NuGet"
+            echo "published=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Pack
+        if: steps.version.outputs.published != 'true'
+        run: dotnet pack src/Gr4vy/Gr4vy.csproj -c Release -o out
+
+      - name: Log in to NuGet with OIDC
+        id: nuget
+        if: steps.version.outputs.published != 'true'
+        uses: NuGet/login@8d196754b4036150537f80ac539e15c2f1028841 # v1.2.0
+        with:
+          user: ${{ vars.NUGET_USER }}
+
+      - name: Push to NuGet
+        if: steps.version.outputs.published != 'true'
+        env:
+          NUGET_API_KEY: ${{ steps.nuget.outputs.NUGET_API_KEY }}
+        run: dotnet nuget push "out/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json
+
+      - name: Create the GitHub release
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          VERSION: ${{ needs.gate.outputs.version }}
+          SHA: ${{ github.event.workflow_run.head_sha || github.sha }}
+        run: |
+          {
+            echo "[Gr4vy $VERSION](https://www.nuget.org/packages/Gr4vy/$VERSION)"
+            echo
+            yq -r '.releaseNotes // ""' .speakeasy/gen.lock
+          } > release-notes.md
+          gh release create "v$VERSION" --repo "$GITHUB_REPOSITORY" --target "$SHA" \
+            --title "csharp - v$VERSION" --notes-file release-notes.md
+
+  notify:
+    needs: [gate, publish]
+    runs-on: ubuntu-latest
+    if: always() && (needs.gate.result == 'failure' || needs.publish.result != 'skipped')
+    steps:
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2
+        env:
+            SLACK_USERNAME: C# SDK
             SLACK_TITLE: C# SDK
             SLACK_WEBHOOK: ${{ secrets.SLACK_SDK_WEBHOOK_URL }}
             SLACK_CHANNEL: sdk-updates
             SLACK_MSG_AUTHOR: gr4vy-code
             SLACK_ICON_EMOJI: ":gr4vy:"
             SLACK_COLOR: "${{ contains(needs.*.result, 'failure') && 'failure' || 'success' }}"
-            SLACK_MESSAGE_ON_SUCCESS: "SDK publishing succeeded - `${{ github.event.head_commit.message }}`"
-            SLACK_MESSAGE_ON_FAILURE: "SDK publishing failed - `${{ github.event.head_commit.message }}`"
+            SLACK_MESSAGE_ON_SUCCESS: "SDK publishing succeeded - `${{ github.event.workflow_run.head_commit.message || 'manual dispatch' }}`"
+            SLACK_MESSAGE_ON_FAILURE: "SDK publishing failed - `${{ github.event.workflow_run.head_commit.message || 'manual dispatch' }}`"
             SLACK_FOOTER: ""
 
   dispatch:
     needs: publish
+    if: always() && needs.publish.result == 'success'
     strategy:
       matrix:
         repo:

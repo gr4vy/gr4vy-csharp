@@ -1,13 +1,9 @@
 name: Generate SDK
 permissions:
-  checks: write
-  contents: write
-  pull-requests: write
-  statuses: write
-  id-token: write
+  contents: read
 "on":
   repository_dispatch:
-        types: openapi_published
+    types: openapi_published
   workflow_dispatch:
     inputs:
       force:
@@ -19,17 +15,81 @@ permissions:
         type: string
   schedule:
     - cron: 0 0 * * *
+concurrency:
+  group: generate
+  cancel-in-progress: false
+
 jobs:
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/workflow-executor.yaml@fe37b336cd1948f1e2e60383fd94bfb884318cf2 # v15
-    with:
-      force: ${{ github.event.inputs.force }}
-      mode: pr
-      set_version: ${{ github.event.inputs.set_version }}
-    secrets:
-      github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      nuget_api_key: ${{ secrets.NUGET_API_KEY }}
-      speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+    runs-on: ubuntu-22.04
+    timeout-minutes: 30
+    environment: sdk-generate
+    steps:
+      - name: Mint a gr4vy-sdk-generate token
+        id: app
+        uses: actions/create-github-app-token@64ab729a6294000f5aa4a4bc0b73d1f32bc45510 # v3.3.0
+        with:
+          client-id: ${{ secrets.SDK_GENERATE_APP_CLIENT_ID }}
+          private-key: ${{ secrets.SDK_GENERATE_APP_PRIVATE_KEY }}
+          repositories: ${{ github.event.repository.name }}
+          permission-contents: write
+          permission-issues: write
+          permission-pull-requests: write
+
+      - name: Check out the repo
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Generate the SDK
+        id: generate
+        uses: speakeasy-api/sdk-generation-action@6cd5ba5c0f635337847068ad8410ca9a8651e175 # v15
+        with:
+          speakeasy_version: latest
+          github_access_token: ${{ steps.app.outputs.token }}
+          pr_creation_pat: ${{ steps.app.outputs.token }}
+          speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
+          mode: pr
+          target: csharp
+          force: ${{ github.event.inputs.force }}
+          set_version: ${{ github.event.inputs.set_version }}
+          enable_sdk_changelog: true
+
+      # Speakeasy resets the *Update models' tri-state (unset / null / value)
+      # handling on every regen. Re-apply it to the PR branch straight away, as the
+      # same App, using the patch script from the commit this run started on (not
+      # from the generated branch). The release bot trusts this one extra author
+      # for C# only.
+      - name: Apply the tri-state nullable patch
+        id: patch
+        if: steps.generate.outputs.branch_name != ''
+        env:
+          BRANCH: ${{ steps.generate.outputs.branch_name }}
+        run: |
+          git show "$GITHUB_SHA:.speakeasy/scripts/patch_update_models.py" > "$RUNNER_TEMP/patch_update_models.py"
+          git fetch --no-tags origin "$BRANCH"
+          git worktree add --detach "$RUNNER_TEMP/regen" FETCH_HEAD
+          python3 "$RUNNER_TEMP/patch_update_models.py" "$RUNNER_TEMP/regen"
+          cd "$RUNNER_TEMP/regen"
+          if git diff --quiet -- src/Gr4vy/Models/Components; then
+            echo "No tri-state patches to apply."
+            exit 0
+          fi
+          git config user.name "gr4vy-sdk-generate[bot]"
+          git config user.email "350364636+gr4vy-sdk-generate[bot]@users.noreply.github.com"
+          git add src/Gr4vy/Models/Components
+          git commit -m "fix: apply tri-state nullable patch to *Update models"
+          echo "patched=true" >> "$GITHUB_OUTPUT"
+
+      # Only this step sees the App token, so the patch script never runs with it.
+      - name: Push the patch to the PR branch
+        if: steps.patch.outputs.patched == 'true'
+        working-directory: ${{ runner.temp }}/regen
+        env:
+          GH_TOKEN: ${{ steps.app.outputs.token }}
+          BRANCH: ${{ steps.generate.outputs.branch_name }}
+        run: git push "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" "HEAD:refs/heads/$BRANCH"
 
   notify:
     needs: generate

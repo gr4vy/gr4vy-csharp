@@ -17,21 +17,53 @@ on:
     # -> every endpoint 500s (Sentry CORE-API-1N0). Keep these apart.
     - cron: 50 8 * * 1-5
 
-jobs:
-  test:
-    runs-on: ubuntu-latest
+# A new push to a PR cancels the previous in-flight run (the generation job
+# pushes the tri-state patch straight after Speakeasy's commit). Runs on main
+# are never cancelled: the publish workflow waits for each one to finish.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
+permissions:
+  contents: read
+
+jobs:
+  # Builds the SDK and tests, and runs the tests that need no sandbox: JWT auth,
+  # webhook signatures and the tri-state *Update serialization the regen patch
+  # protects. Runs everywhere, including PRs.
+  offline:
+    runs-on: ubuntu-latest
     timeout-minutes: 10
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+        with:
+          persist-credentials: false
+
+      - name: Use .NET 8
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
+        with:
+          dotnet-version: 8
+
+      - name: Run offline tests
+        run: dotnet test src/Gr4vy.Tests --filter "FullyQualifiedName~AuthTests|FullyQualifiedName~WebhookVerifierTests|FullyQualifiedName~UpdateModelSerializationTests"
+
+  # The live E2E suite against the real sandbox. Each test fixture provisions its
+  # own merchant account, so fixtures are isolated and safe to run in parallel —
+  # both within a job (LevelOfParallelism, see AssemblyInfo.cs) and split across
+  # these shards. Each shard owns a slice of the fixtures via a test filter; add
+  # a shard by extending this list. Runs on main only (push, schedule, dispatch):
+  # the key lives in the `e2e` Environment, which only main can use.
+  test:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    environment: e2e
     strategy:
       fail-fast: false
       matrix:
         dotnet:
           - 8
-        # The E2E suite runs against the real sandbox with PRIVATE_KEY. Each test
-        # fixture provisions its own merchant account, so fixtures are isolated and
-        # safe to run in parallel — both within a job (LevelOfParallelism, see
-        # AssemblyInfo.cs) and split across these shards. Each shard owns a slice of
-        # the fixtures via a test filter; add a shard by extending this list.
         shard:
           - name: flows
             filter: FullyQualifiedName~Gr4vy.Tests.Flows
@@ -42,13 +74,11 @@ jobs:
           - name: other
             filter: FullyQualifiedName!~Gr4vy.Tests.Flows&FullyQualifiedName!~Gr4vy.Tests.Processing&FullyQualifiedName!~Gr4vy.Tests.Backoffice
 
-    permissions:
-      contents: write
-      pull-requests: write
-
     steps:
       - name: Check out the repo
         uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+        with:
+          persist-credentials: false
 
       - name: Use .NET ${{ matrix.dotnet }}
         uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
@@ -58,64 +88,59 @@ jobs:
       - name: Run tests (${{ matrix.shard.name }})
         env:
           PRIVATE_KEY: ${{ secrets.PRIVATE_KEY }}
-        run: |
-          dotnet test src/Gr4vy.Tests --filter "${{ matrix.shard.filter }}"
+          FILTER: ${{ matrix.shard.filter }}
+        run: dotnet test src/Gr4vy.Tests --filter "$FILTER"
 
-  # Single, stable status check that gates merge. The `test` job fans out across a
-  # dotnet × shard matrix, so its per-job names change whenever the matrix changes
-  # — which silently breaks any branch ruleset that requires the old names. This
-  # job gives the ruleset one fixed context ("ci-complete") to require, and it only
-  # succeeds when every shard passed. It also performs the auto-approve once, after
-  # all shards are green, rather than prematurely per shard.
+  # Single, stable status check the branch ruleset requires. The `test` job fans
+  # out across a dotnet × shard matrix, so its per-job names change whenever the
+  # matrix changes. On a PR it means the offline tests passed; on main it also
+  # means every live shard passed, which is what the publish workflow waits for.
   ci-complete:
-    needs: test
+    needs: [offline, test]
     if: always()
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
     steps:
-      - name: Verify all test shards passed
+      - name: Verify all jobs passed
+        env:
+          OFFLINE: ${{ needs.offline.result }}
+          TEST: ${{ needs.test.result }}
+          ON_MAIN: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
         run: |
-          if [ "${{ needs.test.result }}" != "success" ]; then
-            echo "test matrix result: ${{ needs.test.result }}"
+          if [ "$OFFLINE" != "success" ]; then
+            echo "offline: $OFFLINE"
             exit 1
           fi
-      - name: Auto-approve generated SDK PRs
-        if: ${{ github.event.pull_request.user.login == 'github-actions[bot]' }}
-        uses: hmarr/auto-approve-action@8f929096a962e83ccdfa8afcf855f39f12d4dac7 # v4
-        with:
-          github-token: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
+          if [ "$ON_MAIN" != "true" ] && [ "$TEST" = "skipped" ]; then
+            exit 0
+          fi
+          if [ "$TEST" != "success" ]; then
+            echo "test: $TEST"
+            exit 1
+          fi
 
-  # Reports endpoint reach as a sticky PR comment. Runs the full suite once
-  # (un-sharded) with HTTP tracking so a single coverage report is produced. This
-  # job is intentionally NOT a dependency of `merge`, so it never blocks the
-  # auto-merge of generated SDK PRs.
-  #
-  # Purpose: generated SDK PRs (new OpenAPI spec -> Speakeasy regen) add new
-  # operations but no E2E tests. This comment surfaces every operation the suite
-  # does not yet reach, so newly generated endpoints show up as "not reached" and
-  # tests can be added for them over time.
+  # Endpoint reach from the daily (or a manual) run: once the live shards are done,
+  # runs the full suite again, un-sharded, with HTTP tracking, writes the report to
+  # the run summary and posts to Slack when an operation had no real request. A
+  # report, not a gate, and it never runs on a push, so it never delays a release.
   coverage:
+    needs: test
+    if: >-
+      always() && needs.test.result != 'cancelled' && github.ref == 'refs/heads/main' &&
+      (github.event_name == 'schedule' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     timeout-minutes: 10
-    if: github.event_name == 'pull_request'
-
-    permissions:
-      contents: read
-      pull-requests: write
-
+    environment: e2e
     steps:
       - name: Check out the repo
         uses: actions/checkout@ee0669bd1cc54295c223e0bb666b733df41de1c5 # v2
+        with:
+          persist-credentials: false
 
       - name: Use .NET 8
         uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4
         with:
           dotnet-version: 8
 
-      # continue-on-error so a broken suite still refreshes the comment (with a
-      # warning) instead of leaving the previous, now stale, one in place.
       - name: Run tests with HTTP tracking
         id: suite
         continue-on-error: true
@@ -127,64 +152,26 @@ jobs:
         run: dotnet test src/Gr4vy.Tests
 
       - name: Build endpoint coverage report
-        run: node scripts/endpoint-coverage.mjs
-
-      - name: Flag incomplete reach
-        if: steps.suite.outcome != 'success'
+        id: report
         env:
-          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          SUITE: ${{ steps.suite.outcome }}
         run: |
+          node scripts/endpoint-coverage.mjs
+          if [ "$SUITE" != "success" ]; then
+            echo "> ⚠️ **The test suite failed in this run, so the reach below is incomplete.**" >> "$GITHUB_STEP_SUMMARY"
+            echo >> "$GITHUB_STEP_SUMMARY"
+          fi
+          cat coverage/endpoint-coverage.md >> "$GITHUB_STEP_SUMMARY"
           {
-            echo "> ⚠️ **The test suite failed in [this run]($RUN_URL), so the reach below is incomplete.** It refreshes when CI is re-run."
-            echo
-            cat coverage/endpoint-coverage.md
-          } > coverage/endpoint-coverage.tmp
-          mv coverage/endpoint-coverage.tmp coverage/endpoint-coverage.md
+            echo "summary=$(grep -o '[0-9]* / [0-9]*' coverage/endpoint-coverage.md | head -1)"
+            echo "missing<<EOF"
+            grep '^- `' coverage/endpoint-coverage.md || true
+            echo "EOF"
+          } >> "$GITHUB_OUTPUT"
 
-      - name: Comment coverage on the PR
-        uses: marocchino/sticky-pull-request-comment@d2ad0de260ae8b0235ce059e63f2949ba9e05943 # v2.9.3
-        with:
-          header: test-coverage
-          path: coverage/endpoint-coverage.md
-
-      # Keep the job red when the suite failed, so re-running failed jobs reruns
-      # coverage and replaces the warning.
-      - name: Fail if the test suite failed
-        if: steps.suite.outcome != 'success'
-        run: exit 1
-
-  merge:
-    needs: ci-complete
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: write
-      pull-requests: write
-
-    steps:
-      - id: automerge
-        name: automerge
-        if: "github.event.pull_request.user.login == 'github-actions[bot]'"
-        uses: "pascalgn/automerge-action@7961b8b5eec56cc088c140b56d864285eabd3f67" # v0.16.4
-        env:
-          GITHUB_TOKEN: ${{ secrets.DISPATCH_ACCESS_TOKEN }}
-          MERGE_LABELS: ''
-          MERGE_REQUIRED_APPROVALS: 0
-          MERGE_METHOD: squash
-          MERGE_COMMIT_MESSAGE: "pull-request-title"
-          MERGE_ERROR_FAIL: true
-          MERGE_DELETE_BRANCH: true
-          MERGE_FORKS: false
-          UPDATE_METHOD: rebase
-
-  notify:
-    needs: test
-    runs-on: ubuntu-latest
-    if: ${{ contains(needs.*.result, 'failure') }}
-    steps:
-      - name: Slack Notification
+      - name: Post unreached endpoints to Slack
+        if: steps.report.outputs.missing != ''
         uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2
-        if: github.ref == 'refs/heads/main' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'github-actions[bot]')
         env:
             SLACK_USERNAME: C# SDK
             SLACK_TITLE: C# SDK
@@ -192,7 +179,25 @@ jobs:
             SLACK_CHANNEL: sdk-updates
             SLACK_MSG_AUTHOR: gr4vy-code
             SLACK_ICON_EMOJI: ":gr4vy:"
-            SLACK_COLOR: "${{ contains(needs.*.result, 'failure') && 'failure' || 'success' }}"
-            SLACK_MESSAGE_ON_SUCCESS: "CI passed - `${{ github.event.head_commit.message }}`"
-            SLACK_MESSAGE_ON_FAILURE: "CI failed - `${{ github.event.head_commit.message }}`"
+            SLACK_COLOR: "warning"
+            SLACK_MESSAGE: "Endpoint coverage ${{ steps.report.outputs.summary }}. No live test reached:\n${{ steps.report.outputs.missing }}"
+            SLACK_FOOTER: ""
+
+  notify:
+    needs: [offline, test]
+    runs-on: ubuntu-latest
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
+    steps:
+      - name: Slack Notification
+        uses: rtCamp/action-slack-notify@e31e87e03dd19038e411e38ae27cbad084a90661 # v2
+        if: github.ref == 'refs/heads/main' || (github.event_name == 'pull_request' && github.event.pull_request.user.login == 'gr4vy-sdk-generate[bot]')
+        env:
+            SLACK_USERNAME: C# SDK
+            SLACK_TITLE: C# SDK
+            SLACK_WEBHOOK: ${{ secrets.SLACK_SDK_WEBHOOK_URL }}
+            SLACK_CHANNEL: sdk-updates
+            SLACK_MSG_AUTHOR: gr4vy-code
+            SLACK_ICON_EMOJI: ":gr4vy:"
+            SLACK_COLOR: "failure"
+            SLACK_MESSAGE_ON_FAILURE: "CI failed - `${{ github.event.head_commit.message || github.event.pull_request.title }}`"
             SLACK_FOOTER: ""
