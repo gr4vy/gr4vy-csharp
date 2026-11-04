@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Gr4vy;
 using Gr4vy.Models.Components;
+using Gr4vy.Tests.Utils;
 using NUnit.Framework;
 
 namespace Gr4vy.Tests
@@ -46,6 +47,7 @@ namespace Gr4vy.Tests
                     DisplayName = merchantAccountId,
                 }
             );
+            TestEnvironment.TrackMerchantAccount(merchantAccountId, privateKey);
 
             _client = new Gr4vySDK(
                 id: "e2e",

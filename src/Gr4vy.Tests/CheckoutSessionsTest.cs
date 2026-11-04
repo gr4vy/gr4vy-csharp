@@ -91,6 +91,7 @@ namespace Gr4vy.Tests
                     DisplayName = merchantAccountId,
                 }
             );
+            Utils.TestEnvironment.TrackMerchantAccount(merchantAccountId, privateKey);
 
             /**
             * Adds a custom HTTP client that inserts random fields in the response,
