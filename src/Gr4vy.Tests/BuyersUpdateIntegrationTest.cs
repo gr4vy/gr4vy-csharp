@@ -40,6 +40,7 @@ namespace Gr4vy.Tests
                 .Replace("-", "")
                 .ToLower();
 
+            TestEnvironment.TrackMerchantAccount(merchantAccountId, privateKey);
             await bootstrap.MerchantAccounts.CreateAsync(
                 new MerchantAccountCreate()
                 {
@@ -47,7 +48,6 @@ namespace Gr4vy.Tests
                     DisplayName = merchantAccountId,
                 }
             );
-            TestEnvironment.TrackMerchantAccount(merchantAccountId, privateKey);
 
             _client = new Gr4vySDK(
                 id: "e2e",

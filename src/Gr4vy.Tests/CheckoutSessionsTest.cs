@@ -84,6 +84,7 @@ namespace Gr4vy.Tests
                 .Replace("-", "")
                 .ToLower();
 
+            Utils.TestEnvironment.TrackMerchantAccount(merchantAccountId, privateKey);
             var response = await gr4vy.MerchantAccounts.CreateAsync(
                 new MerchantAccountCreate()
                 {
@@ -91,7 +92,6 @@ namespace Gr4vy.Tests
                     DisplayName = merchantAccountId,
                 }
             );
-            Utils.TestEnvironment.TrackMerchantAccount(merchantAccountId, privateKey);
 
             /**
             * Adds a custom HTTP client that inserts random fields in the response,

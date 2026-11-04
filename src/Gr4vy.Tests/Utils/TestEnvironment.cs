@@ -69,11 +69,11 @@ namespace Gr4vy.Tests.Utils
                 .Replace("-", "")
                 .ToLowerInvariant();
 
+            TrackMerchantAccount(merchantAccountId, privateKey);
+
             var merchantAccount = await adminClient.MerchantAccounts.CreateAsync(
                 new MerchantAccountCreate { Id = merchantAccountId, DisplayName = merchantAccountId }
             );
-
-            TrackMerchantAccount(merchantAccount.Id!, privateKey);
 
             var client = CreateClient(privateKey, merchantAccount.Id);
 
