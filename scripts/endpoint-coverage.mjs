@@ -1,4 +1,4 @@
-// Summarises endpoint reach for the PR comment.
+// Summarises endpoint reach for the daily coverage report.
 //
 // Reach is computed from *observed HTTP calls*, not code coverage: the test HTTP
 // client (src/Gr4vy.Tests/Utils/TestEnvironment.cs, gated on GR4VY_TRACK_HTTP)
@@ -8,7 +8,7 @@
 // operation reached only if a matching request was actually sent — so an
 // operation that fails local validation before issuing a request does not count.
 //
-// Writes coverage/endpoint-coverage.md (for the PR comment) and prints it.
+// Writes coverage/endpoint-coverage.md (for the run summary and Slack) and prints it.
 // Exits 0 always — this is a report, not a gate.
 import { mkdirSync, readdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
