@@ -84,6 +84,7 @@ namespace Gr4vy.Tests
                 .Replace("-", "")
                 .ToLower();
 
+            Utils.TestEnvironment.TrackMerchantAccount(merchantAccountId, privateKey);
             var response = await gr4vy.MerchantAccounts.CreateAsync(
                 new MerchantAccountCreate()
                 {

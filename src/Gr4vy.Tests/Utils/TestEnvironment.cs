@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Concurrent;
 using System.IO;
 using System.Net.Http;
 using System.Security.Cryptography;
@@ -27,6 +28,9 @@ namespace Gr4vy.Tests.Utils
     public static class TestEnvironment
     {
         public const string ApiBaseUrl = "https://api.sandbox.e2e.gr4vy.app";
+
+        // Merchant account id → signing key; deleted once the run finishes (see MerchantAccountCleanup).
+        private static readonly ConcurrentDictionary<string, string> CreatedMerchantAccounts = new();
 
         public static string LoadPrivateKey()
         {
@@ -65,6 +69,8 @@ namespace Gr4vy.Tests.Utils
                 .Replace("-", "")
                 .ToLowerInvariant();
 
+            TrackMerchantAccount(merchantAccountId, privateKey);
+
             var merchantAccount = await adminClient.MerchantAccounts.CreateAsync(
                 new MerchantAccountCreate { Id = merchantAccountId, DisplayName = merchantAccountId }
             );
@@ -83,6 +89,53 @@ namespace Gr4vy.Tests.Utils
             );
 
             return new TestMerchant(client, merchantAccount.Id!, privateKey);
+        }
+
+        /// <summary>Records a merchant account a suite created so it is deleted after the run.</summary>
+        public static void TrackMerchantAccount(string merchantAccountId, string privateKey)
+        {
+            CreatedMerchantAccounts[merchantAccountId] = privateKey;
+        }
+
+        /// <summary>
+        /// Deletes every tracked merchant account. The endpoint is not in the public
+        /// spec, so it is called directly. Failures are logged, never thrown: cleanup
+        /// must not fail the run.
+        /// </summary>
+        public static async Task DeleteCreatedMerchantAccountsAsync()
+        {
+            using var http = new HttpClient { Timeout = TimeSpan.FromSeconds(30) };
+            foreach (var (merchantAccountId, privateKey) in CreatedMerchantAccounts)
+            {
+                try
+                {
+                    using var request = new HttpRequestMessage(
+                        HttpMethod.Delete,
+                        $"{ApiBaseUrl}/merchant-accounts/{Uri.EscapeDataString(merchantAccountId)}"
+                    );
+                    request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue(
+                        "Bearer",
+                        Auth.GetToken(privateKey)
+                    );
+                    using var response = await http.SendAsync(request);
+                    if (
+                        response.StatusCode != System.Net.HttpStatusCode.NoContent
+                        && response.StatusCode != System.Net.HttpStatusCode.NotFound
+                    )
+                    {
+                        TestContext.Progress.WriteLine(
+                            $"Failed to delete merchant account {merchantAccountId}: HTTP {(int)response.StatusCode}"
+                        );
+                    }
+                }
+                catch (Exception e)
+                {
+                    TestContext.Progress.WriteLine(
+                        $"Failed to delete merchant account {merchantAccountId}: {e.Message}"
+                    );
+                }
+            }
+            CreatedMerchantAccounts.Clear();
         }
     }
 

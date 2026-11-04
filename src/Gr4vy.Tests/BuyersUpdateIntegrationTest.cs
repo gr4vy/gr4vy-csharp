@@ -4,6 +4,7 @@ using System.Security.Cryptography;
 using System.Threading.Tasks;
 using Gr4vy;
 using Gr4vy.Models.Components;
+using Gr4vy.Tests.Utils;
 using NUnit.Framework;
 
 namespace Gr4vy.Tests
@@ -39,6 +40,7 @@ namespace Gr4vy.Tests
                 .Replace("-", "")
                 .ToLower();
 
+            TestEnvironment.TrackMerchantAccount(merchantAccountId, privateKey);
             await bootstrap.MerchantAccounts.CreateAsync(
                 new MerchantAccountCreate()
                 {
