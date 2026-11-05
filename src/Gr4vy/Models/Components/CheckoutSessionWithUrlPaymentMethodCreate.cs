@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Create a payment with a checkout session ID (and an optional URL for 3DS).
@@ -52,5 +57,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("redirect_url")]
         public string? RedirectUrl { get; set; } = null;
+
+        /// <summary>
+        /// The preferred card scheme to use when processing a co-badged card.
+        /// </summary>
+        [JsonProperty("preferred_scheme")]
+        public CheckoutSessionWithUrlPaymentMethodCreatePreferredScheme? PreferredScheme { get; set; } = null;
     }
 }

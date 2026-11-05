@@ -17,41 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The start date of the booking in ISO 8601 format (YYYY-MM-DD). Required for certain MCCs.
         /// </summary>
-        [JsonProperty("booking_start_date", NullValueHandling = NullValueHandling.Include)]
-        public string? BookingStartDate
-        {
-            get => _bookingStartDate;
-            set
-            {
-                _bookingStartDate = value;
-                _bookingStartDateSet = true;
-            }
-        }
-
-        private string? _bookingStartDate = null;
-
-        private bool _bookingStartDateSet = false;
-
-        public bool ShouldSerializeBookingStartDate() => _bookingStartDateSet;
+        [JsonProperty("booking_start_date")]
+        public string? BookingStartDate { get; set; } = null;
 
         /// <summary>
         /// The end date of the booking in ISO 8601 format (YYYY-MM-DD). Required for certain MCCs.
         /// </summary>
-        [JsonProperty("booking_end_date", NullValueHandling = NullValueHandling.Include)]
-        public string? BookingEndDate
-        {
-            get => _bookingEndDate;
-            set
-            {
-                _bookingEndDate = value;
-                _bookingEndDateSet = true;
-            }
-        }
-
-        private string? _bookingEndDate = null;
-
-        private bool _bookingEndDateSet = false;
-
-        public bool ShouldSerializeBookingEndDate() => _bookingEndDateSet;
+        [JsonProperty("booking_end_date")]
+        public string? BookingEndDate { get; set; } = null;
     }
 }

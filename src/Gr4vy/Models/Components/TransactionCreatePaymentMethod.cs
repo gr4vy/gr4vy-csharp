@@ -308,26 +308,6 @@ namespace Gr4vy.Models.Components
 
                 try
                 {
-                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CheckoutSessionWithUrlPaymentMethodCreate)
-                    {
-                        CheckoutSessionWithUrlPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CheckoutSessionWithUrlPaymentMethodCreate>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(CheckoutSessionWithUrlPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CheckoutSessionWithUrlPaymentMethodCreate), "CheckoutSessionWithUrlPaymentMethodCreate"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                try
-                {
                     return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.PlaidPaymentMethodCreate)
                     {
                         PlaidPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<PlaidPaymentMethodCreate>(json)
@@ -356,6 +336,26 @@ namespace Gr4vy.Models.Components
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(RedirectPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.RedirectPaymentMethodCreate), "RedirectPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CheckoutSessionWithUrlPaymentMethodCreate)
+                    {
+                        CheckoutSessionWithUrlPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CheckoutSessionWithUrlPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(CheckoutSessionWithUrlPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CheckoutSessionWithUrlPaymentMethodCreate), "CheckoutSessionWithUrlPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -416,26 +416,6 @@ namespace Gr4vy.Models.Components
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(ClickToPayFPANPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.ClickToPayFPANPaymentMethodCreate), "ClickToPayFPANPaymentMethodCreate"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                try
-                {
-                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CardWithUrlPaymentMethodCreate)
-                    {
-                        CardWithUrlPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CardWithUrlPaymentMethodCreate>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(CardWithUrlPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CardWithUrlPaymentMethodCreate), "CardWithUrlPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
@@ -516,6 +496,26 @@ namespace Gr4vy.Models.Components
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(GooglePayFPANPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.GooglePayFPANPaymentMethodCreate), "GooglePayFPANPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CardWithUrlPaymentMethodCreate)
+                    {
+                        CardWithUrlPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CardWithUrlPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(CardWithUrlPaymentMethodCreate), new TransactionCreatePaymentMethod(TransactionCreatePaymentMethodType.CardWithUrlPaymentMethodCreate), "CardWithUrlPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {

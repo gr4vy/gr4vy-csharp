@@ -71,6 +71,12 @@ namespace Gr4vy.Models.Components
         public string? SecurityCode { get; set; } = null;
 
         /// <summary>
+        /// The preferred card scheme to use when processing a co-badged card.
+        /// </summary>
+        [JsonProperty("preferred_scheme")]
+        public CardWithUrlPaymentMethodCreatePreferredScheme? PreferredScheme { get; set; } = null;
+
+        /// <summary>
         /// The URL to redirect a user back to after the complete 3DS in browser.
         /// </summary>
         [JsonProperty("redirect_url")]
