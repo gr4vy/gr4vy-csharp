@@ -9,8 +9,13 @@
 #nullable enable
 namespace Gr4vy.Models.Components
 {
+    using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Linq;
 
     /// <summary>
     /// Create a transaction with the ID (token) of a stored payment method (and an optional URL for approval).
@@ -34,6 +39,12 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("security_code")]
         public string? SecurityCode { get; set; } = null;
+
+        /// <summary>
+        /// The preferred card scheme to use when processing a co-badged card.
+        /// </summary>
+        [JsonProperty("preferred_scheme")]
+        public TokenPaymentMethodCreatePreferredScheme? PreferredScheme { get; set; } = null;
 
         /// <summary>
         /// The URL to redirect a user back to after they approve the transaction in the browser.

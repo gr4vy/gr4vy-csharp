@@ -66,5 +66,11 @@ namespace Gr4vy.Models.Components
         /// </summary>
         [JsonProperty("security_code")]
         public string? SecurityCode { get; set; } = null;
+
+        /// <summary>
+        /// The preferred card scheme to use when processing a co-badged card.
+        /// </summary>
+        [JsonProperty("preferred_scheme")]
+        public CardPaymentMethodCreatePreferredScheme? PreferredScheme { get; set; } = null;
     }
 }

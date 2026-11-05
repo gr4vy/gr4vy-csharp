@@ -232,26 +232,6 @@ namespace Gr4vy.Models.Requests
 
                 try
                 {
-                    return new Body(BodyType.CardPaymentMethodCreate)
-                    {
-                        CardPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CardPaymentMethodCreate>(json)
-                    };
-                }
-                catch (ResponseBodyDeserializer.MissingMemberException)
-                {
-                    fallbackCandidates.Add((typeof(CardPaymentMethodCreate), new Body(BodyType.CardPaymentMethodCreate), "CardPaymentMethodCreate"));
-                }
-                catch (ResponseBodyDeserializer.DeserializationException)
-                {
-                    // try next option
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-
-                try
-                {
                     return new Body(BodyType.BACSBankPaymentMethodCreate)
                     {
                         BACSBankPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<BACSBankPaymentMethodCreate>(json)
@@ -280,6 +260,26 @@ namespace Gr4vy.Models.Requests
                 catch (ResponseBodyDeserializer.MissingMemberException)
                 {
                     fallbackCandidates.Add((typeof(SEPABankPaymentMethodCreate), new Body(BodyType.SEPABankPaymentMethodCreate), "SEPABankPaymentMethodCreate"));
+                }
+                catch (ResponseBodyDeserializer.DeserializationException)
+                {
+                    // try next option
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+
+                try
+                {
+                    return new Body(BodyType.CardPaymentMethodCreate)
+                    {
+                        CardPaymentMethodCreate = ResponseBodyDeserializer.DeserializeUndiscriminatedUnionMember<CardPaymentMethodCreate>(json)
+                    };
+                }
+                catch (ResponseBodyDeserializer.MissingMemberException)
+                {
+                    fallbackCandidates.Add((typeof(CardPaymentMethodCreate), new Body(BodyType.CardPaymentMethodCreate), "CardPaymentMethodCreate"));
                 }
                 catch (ResponseBodyDeserializer.DeserializationException)
                 {
