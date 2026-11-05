@@ -19,13 +19,41 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes additional discounts to the Affirm widget.
         /// </summary>
-        [JsonProperty("discounts")]
-        public Dictionary<string, Dictionary<string, object>>? Discounts { get; set; } = null;
+        [JsonProperty("discounts", NullValueHandling = NullValueHandling.Include)]
+        public Dictionary<string, Dictionary<string, object>>? Discounts
+        {
+            get => _discounts;
+            set
+            {
+                _discounts = value;
+                _discountsSet = true;
+            }
+        }
+
+        private Dictionary<string, Dictionary<string, object>>? _discounts = null;
+
+        private bool _discountsSet = false;
+
+        public bool ShouldSerializeDiscounts() => _discountsSet;
 
         /// <summary>
         /// Passes itinerary data to the Affirm API.
         /// </summary>
-        [JsonProperty("itinerary")]
-        public AffirmItineraryOptions? Itinerary { get; set; } = null;
+        [JsonProperty("itinerary", NullValueHandling = NullValueHandling.Include)]
+        public AffirmItineraryOptions? Itinerary
+        {
+            get => _itinerary;
+            set
+            {
+                _itinerary = value;
+                _itinerarySet = true;
+            }
+        }
+
+        private AffirmItineraryOptions? _itinerary = null;
+
+        private bool _itinerarySet = false;
+
+        public bool ShouldSerializeItinerary() => _itinerarySet;
     }
 }
