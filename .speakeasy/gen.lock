@@ -1,19 +1,19 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 2e4ffe2ff70d3069fe84ede23e10c39b
+  docChecksum: 52aaedac64a06a39bddac52407bfddb0
   docVersion: 1.0.0
   speakeasyVersion: 1.806.0
   generationVersion: 2.956.1
-  releaseVersion: 2.11.7
-  configChecksum: d181b400f3b9d104198c5931c5921b3d
+  releaseVersion: 2.11.8
+  configChecksum: 24399b8e6079af913b755925f6f73b31
   repoURL: https://github.com/gr4vy/gr4vy-csharp.git
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: e4743acf-2e23-49d3-849e-131411693bc9
-  pristine_commit_hash: 568f91faf59c73f82e4a673ac657df6130c0aec8
-  pristine_tree_hash: fae80b57468caf27383440dc5f40b5f2ffc69ca6
+  generation_id: 81531a4e-a9d4-4b5d-8d13-3466a413032a
+  pristine_commit_hash: 6778a8de448f9aad463675d16fa6a49d891b0d49
+  pristine_tree_hash: a2d8eaf2d324d6bbbc8d0823361fca307d9283b3
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -906,8 +906,8 @@ trackedFiles:
     pristine_git_object: 5a5df72587043b357818b2245176dda7a68da5b3
   docs/Models/Components/PaymentOption.md:
     id: 316f46371b30
-    last_write_checksum: sha1:e5e817cb9d3f9e2f52fdf7f85dbab50a57e98182
-    pristine_git_object: 33d6e1a915e808c0f5899719c9291271970f17e4
+    last_write_checksum: sha1:5d19b8d2430bb1fdb7d2dd9668232c5817bda958
+    pristine_git_object: 4ae160b7d5506121e32a0fc2cd46ccec411baadd
   docs/Models/Components/PaymentOptionContext.md:
     id: 90f95a0979d0
     last_write_checksum: sha1:be7cc13206ea6dcb4d115e33f62b6bd7cb9d009a
@@ -2558,8 +2558,8 @@ trackedFiles:
     pristine_git_object: 47e4aae45de7f5d7a69eb67926a50ce82051de38
   src/Gr4vy/Gr4vy.csproj:
     id: 76fb0924ceb4
-    last_write_checksum: sha1:4b835e99e3db5f92a00772366be890c1d44779f8
-    pristine_git_object: bfee62a4575009971ed845bc34c993366f7113f3
+    last_write_checksum: sha1:7b7f0961dc41375fb9ce607cf31978695b6be414
+    pristine_git_object: bc3221d725bf85c5768eba44fe704dc00ca36ac8
   src/Gr4vy/Gr4vySDK.cs:
     id: 78d019c58e3f
     last_write_checksum: sha1:42798416e271ab46961e81505088b60a0e045e68
@@ -3434,8 +3434,8 @@ trackedFiles:
     pristine_git_object: 3247ebd3e7daf2a67d09618e13e89761e4441c4b
   src/Gr4vy/Models/Components/PaymentOption.cs:
     id: 930029741a9e
-    last_write_checksum: sha1:f9575e13e5d2f79a4950d8b1e4c3e769fdbb0f28
-    pristine_git_object: 07ea5b950db58c2864467a88d5a7b96cd730aa23
+    last_write_checksum: sha1:f9570f4ff5a295f649f28449d3c6a89b420fac56
+    pristine_git_object: d6144b5e20df88ba1431b90cb54ed1dbdb1d129a
   src/Gr4vy/Models/Components/PaymentOptionContext.cs:
     id: d8c568c1bf31
     last_write_checksum: sha1:4bb9bc99d43b7f9dc8c6fc4bd35a34b95f08bdc5
@@ -4906,8 +4906,8 @@ trackedFiles:
     pristine_git_object: a7053ccd58775f2c7ff2f6401ba068fb96871c48
   src/Gr4vy/SDKConfig.cs:
     id: 0e727b36146b
-    last_write_checksum: sha1:9b2e323f63885137ede611d1519545ed05eec807
-    pristine_git_object: 36c44fc8904eac549ddf4f8a91afa0513db8445c
+    last_write_checksum: sha1:eb837af253c1bfa19c897be19c61c9c35cd4ce39
+    pristine_git_object: b5140a30267d8cb73d32d1ed100efcb2ce4d7dd0
   src/Gr4vy/Sessions.cs:
     id: c84a7fed2fbf
     last_write_checksum: sha1:1f2b7e0e8d27eba9688df32b3cc9fa7067b1b7e8
@@ -4946,8 +4946,8 @@ trackedFiles:
     pristine_git_object: 43995931e0ad9691940abd0276c53a38720baf63
   src/Gr4vy/Utils/Constants.cs:
     id: ad1333e279e9
-    last_write_checksum: sha1:5edd54e3450dd24f0ad9809a06f3c0e46af309c5
-    pristine_git_object: f9959130430149d3c1fbd441a439642314c3f81d
+    last_write_checksum: sha1:edac84fd7bb398c78b7c6027ac3002fecf6b4141
+    pristine_git_object: 9bc2334383634aa04e6dbd68b436e132f5d3b749
   src/Gr4vy/Utils/DecimalStrConverter.cs:
     id: e52059f09f9a
     last_write_checksum: sha1:30c79fed5d459d48e9c6083d5cfe4ee23356478b
@@ -7069,7 +7069,7 @@ examples:
         application/json: {"locale": "en"}
       responses:
         "200":
-          application/json: {"items": [{"type": "payment-option", "method": "<value>", "mode": "card", "can_store_payment_method": true, "can_delay_capture": false}]}
+          application/json: {"items": [{"type": "payment-option", "method": "<value>", "icon_url": "https://legal-fibre.com/", "mode": "card", "label": "<value>", "can_store_payment_method": true, "can_delay_capture": false}]}
         "400":
           application/json: {"type": "error", "code": "bad_request", "status": 400, "message": "Request failed validation"}
         "401":
@@ -9327,7 +9327,9 @@ examples:
           application/json: {"type": "error", "code": "gateway_timeout", "status": 504, "message": "Request could not be processed"}
 examplesVersion: 1.0.2
 generatedTests: {}
-releaseNotes: "## Csharp SDK Changes:\n* `Gr4vy.PaymentMethods.Create()`: \n  *  `requestBody.union(CardPaymentMethodCreate).PreferredScheme` **Added**\n* `Gr4vy.Transactions.Create()`: \n  *  `request.transactionCreate.PaymentMethod` **Changed**\n"
+releaseNotes: |
+  ## Csharp SDK Changes:
+  * `Gr4vy.PaymentOptions.List()`:  `response.items[]` **Changed** (Breaking ⚠️)
 generatedFiles:
   - .gitattributes
   - Gr4vy.sln
