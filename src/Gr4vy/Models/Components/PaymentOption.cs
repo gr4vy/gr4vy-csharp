@@ -26,13 +26,13 @@ namespace Gr4vy.Models.Components
         public string Method { get; set; } = default!;
 
         [JsonProperty("icon_url")]
-        public string? IconUrl { get; set; } = null;
+        public string IconUrl { get; set; } = default!;
 
         [JsonProperty("mode")]
         public Mode Mode { get; set; } = default!;
 
         [JsonProperty("label")]
-        public string? Label { get; set; } = null;
+        public string Label { get; set; } = default!;
 
         [JsonProperty("can_store_payment_method")]
         public bool CanStorePaymentMethod { get; set; } = default!;
