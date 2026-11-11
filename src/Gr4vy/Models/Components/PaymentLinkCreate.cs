@@ -116,7 +116,7 @@ namespace Gr4vy.Models.Components
         public string Currency { get; set; } = default!;
 
         [JsonProperty("intent")]
-        public TransactionIntent? Intent { get; set; }
+        public PaymentLinkIntent? Intent { get; set; }
 
         /// <summary>
         /// The return URL after payment completion.
