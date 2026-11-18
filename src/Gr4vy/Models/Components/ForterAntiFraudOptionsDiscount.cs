@@ -18,25 +18,81 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The coupon code applied to the order.
         /// </summary>
-        [JsonProperty("coupon_code_used")]
-        public string CouponCodeUsed { get; set; } = default!;
+        [JsonProperty("coupon_code_used", NullValueHandling = NullValueHandling.Include)]
+        public string CouponCodeUsed
+        {
+            get => _couponCodeUsed;
+            set
+            {
+                _couponCodeUsed = value;
+                _couponCodeUsedSet = true;
+            }
+        }
+
+        private string _couponCodeUsed = default!;
+
+        private bool _couponCodeUsedSet = true;
+
+        public bool ShouldSerializeCouponCodeUsed() => _couponCodeUsedSet;
 
         /// <summary>
         /// The type of discount applied to the order.
         /// </summary>
-        [JsonProperty("discount_type")]
-        public string DiscountType { get; set; } = default!;
+        [JsonProperty("discount_type", NullValueHandling = NullValueHandling.Include)]
+        public string DiscountType
+        {
+            get => _discountType;
+            set
+            {
+                _discountType = value;
+                _discountTypeSet = true;
+            }
+        }
+
+        private string _discountType = default!;
+
+        private bool _discountTypeSet = true;
+
+        public bool ShouldSerializeDiscountType() => _discountTypeSet;
 
         /// <summary>
         /// Monetary details of the discount amount.
         /// </summary>
-        [JsonProperty("coupon_discount_amount")]
-        public ForterAntiFraudOptionsDiscountCouponDiscountAmount? CouponDiscountAmount { get; set; } = null;
+        [JsonProperty("coupon_discount_amount", NullValueHandling = NullValueHandling.Include)]
+        public ForterAntiFraudOptionsDiscountCouponDiscountAmount? CouponDiscountAmount
+        {
+            get => _couponDiscountAmount;
+            set
+            {
+                _couponDiscountAmount = value;
+                _couponDiscountAmountSet = true;
+            }
+        }
+
+        private ForterAntiFraudOptionsDiscountCouponDiscountAmount? _couponDiscountAmount = null;
+
+        private bool _couponDiscountAmountSet = false;
+
+        public bool ShouldSerializeCouponDiscountAmount() => _couponDiscountAmountSet;
 
         /// <summary>
         /// The percentage discount applied via the coupon.
         /// </summary>
-        [JsonProperty("coupon_discount_percent")]
-        public string? CouponDiscountPercent { get; set; } = null;
+        [JsonProperty("coupon_discount_percent", NullValueHandling = NullValueHandling.Include)]
+        public string? CouponDiscountPercent
+        {
+            get => _couponDiscountPercent;
+            set
+            {
+                _couponDiscountPercent = value;
+                _couponDiscountPercentSet = true;
+            }
+        }
+
+        private string? _couponDiscountPercent = null;
+
+        private bool _couponDiscountPercentSet = false;
+
+        public bool ShouldSerializeCouponDiscountPercent() => _couponDiscountPercentSet;
     }
 }
