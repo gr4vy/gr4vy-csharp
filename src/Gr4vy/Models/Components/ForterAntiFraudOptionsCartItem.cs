@@ -19,61 +19,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Basic information about the cart item.
         /// </summary>
-        [JsonProperty("basic_item_data", NullValueHandling = NullValueHandling.Include)]
-        public ForterAntiFraudOptionsCartItemBasicItemData? BasicItemData
-        {
-            get => _basicItemData;
-            set
-            {
-                _basicItemData = value;
-                _basicItemDataSet = true;
-            }
-        }
-
-        private ForterAntiFraudOptionsCartItemBasicItemData? _basicItemData = null;
-
-        private bool _basicItemDataSet = false;
-
-        public bool ShouldSerializeBasicItemData() => _basicItemDataSet;
+        [JsonProperty("basic_item_data")]
+        public ForterAntiFraudOptionsCartItemBasicItemData? BasicItemData { get; set; } = null;
 
         /// <summary>
         /// Details about how the item will be delivered.
         /// </summary>
-        [JsonProperty("delivery_details", NullValueHandling = NullValueHandling.Include)]
-        public ForterAntiFraudOptionsCartItemDeliveryDetails? DeliveryDetails
-        {
-            get => _deliveryDetails;
-            set
-            {
-                _deliveryDetails = value;
-                _deliveryDetailsSet = true;
-            }
-        }
-
-        private ForterAntiFraudOptionsCartItemDeliveryDetails? _deliveryDetails = null;
-
-        private bool _deliveryDetailsSet = false;
-
-        public bool ShouldSerializeDeliveryDetails() => _deliveryDetailsSet;
+        [JsonProperty("delivery_details")]
+        public ForterAntiFraudOptionsCartItemDeliveryDetails? DeliveryDetails { get; set; } = null;
 
         /// <summary>
         /// List of beneficiaries who will receive this item.
         /// </summary>
-        [JsonProperty("beneficiaries", NullValueHandling = NullValueHandling.Include)]
-        public List<ForterAntiFraudOptionsCartItemBeneficiary>? Beneficiaries
-        {
-            get => _beneficiaries;
-            set
-            {
-                _beneficiaries = value;
-                _beneficiariesSet = true;
-            }
-        }
-
-        private List<ForterAntiFraudOptionsCartItemBeneficiary>? _beneficiaries = null;
-
-        private bool _beneficiariesSet = false;
-
-        public bool ShouldSerializeBeneficiaries() => _beneficiariesSet;
+        [JsonProperty("beneficiaries")]
+        public List<ForterAntiFraudOptionsCartItemBeneficiary>? Beneficiaries { get; set; } = null;
     }
 }
