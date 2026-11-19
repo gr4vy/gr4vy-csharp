@@ -112,6 +112,12 @@ namespace Gr4vy.Models.Components
         public List<CardScheme>? AdditionalSchemes { get; set; } = null;
 
         /// <summary>
+        /// The preferred card scheme to use when processing a co-badged card.
+        /// </summary>
+        [JsonProperty("preferred_scheme")]
+        public PaymentMethodPreferredScheme? PreferredScheme { get; set; } = null;
+
+        /// <summary>
         /// The timestamp when this payment method was last used in a transaction for client initiated transactions.
         /// </summary>
         [JsonProperty("cit_last_used_at")]

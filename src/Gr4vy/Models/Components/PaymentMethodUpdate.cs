@@ -101,5 +101,25 @@ namespace Gr4vy.Models.Components
         private bool _transactionLinkIdSet = false;
 
         public bool ShouldSerializeTransactionLinkId() => _transactionLinkIdSet;
+
+        /// <summary>
+        /// The preferred card scheme to use when processing a co-badged card.
+        /// </summary>
+        [JsonProperty("preferred_scheme", NullValueHandling = NullValueHandling.Include)]
+        public PaymentMethodUpdatePreferredScheme? PreferredScheme
+        {
+            get => _preferredScheme;
+            set
+            {
+                _preferredScheme = value;
+                _preferredSchemeSet = true;
+            }
+        }
+
+        private PaymentMethodUpdatePreferredScheme? _preferredScheme = null;
+
+        private bool _preferredSchemeSet = false;
+
+        public bool ShouldSerializePreferredScheme() => _preferredSchemeSet;
     }
 }
