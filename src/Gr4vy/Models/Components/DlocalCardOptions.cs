@@ -17,21 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Indicates whether to force dlocal hosted 3D Secure authentication for the card transaction.
         /// </summary>
-        [JsonProperty("three_dsecure_force", NullValueHandling = NullValueHandling.Include)]
-        public bool? ThreeDsecureForce
-        {
-            get => _threeDsecureForce;
-            set
-            {
-                _threeDsecureForce = value;
-                _threeDsecureForceSet = true;
-            }
-        }
-
-        private bool? _threeDsecureForce = null;
-
-        private bool _threeDsecureForceSet = false;
-
-        public bool ShouldSerializeThreeDsecureForce() => _threeDsecureForceSet;
+        [JsonProperty("three_dsecure_force")]
+        public bool? ThreeDsecureForce { get; set; } = null;
     }
 }
