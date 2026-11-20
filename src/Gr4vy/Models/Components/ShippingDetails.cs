@@ -18,49 +18,49 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The first name(s) or given name for the buyer.
         /// </summary>
-        [JsonProperty("first_name")]
+        [JsonProperty("first_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? FirstName { get; set; } = null;
 
         /// <summary>
         /// The last name, or family name, of the buyer.
         /// </summary>
-        [JsonProperty("last_name")]
+        [JsonProperty("last_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? LastName { get; set; } = null;
 
         /// <summary>
         /// The email address for the buyer.
         /// </summary>
-        [JsonProperty("email_address")]
+        [JsonProperty("email_address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? EmailAddress { get; set; } = null;
 
         /// <summary>
         /// The phone number for the buyer which should be formatted according to the E164 number standard.
         /// </summary>
-        [JsonProperty("phone_number")]
+        [JsonProperty("phone_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? PhoneNumber { get; set; } = null;
 
         /// <summary>
         /// The billing address for the buyer.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public Address? Address { get; set; } = null;
 
         /// <summary>
         /// The ID for the shipping details.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Id { get; set; } = null;
 
         /// <summary>
         /// The ID for the buyer.
         /// </summary>
-        [JsonProperty("buyer_id")]
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? BuyerId { get; set; } = null;
 
         /// <summary>
         /// Always `shipping-details`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "shipping-details";
     }
 }

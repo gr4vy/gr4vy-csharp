@@ -21,7 +21,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The scopes granted by this role.
         /// </summary>
-        [JsonProperty("allow")]
+        [JsonProperty("allow", Required = Newtonsoft.Json.Required.Always)]
         public List<string> Allow { get; set; } = default!;
     }
 }

@@ -20,67 +20,67 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// An array of cart items that represents the line items of a transaction.
         /// </summary>
-        [JsonProperty("cart_items")]
+        [JsonProperty("cart_items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public List<CartItem>? CartItems { get; set; } = null;
 
         /// <summary>
         /// Any additional information about the transaction that you would like to store as key-value pairs. This data is passed to payment service providers that support it.
         /// </summary>
-        [JsonProperty("metadata")]
+        [JsonProperty("metadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public Dictionary<string, string>? Metadata { get; set; } = null;
 
         /// <summary>
         /// Provide buyer details for the transaction. No buyer resource will be created on Gr4vy when used.
         /// </summary>
-        [JsonProperty("buyer")]
+        [JsonProperty("buyer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public GuestBuyer? Buyer { get; set; } = null;
 
         /// <summary>
         /// The airline addendum data which describes the airline booking associated with this transaction.
         /// </summary>
-        [JsonProperty("airline")]
+        [JsonProperty("airline", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public Airline? Airline { get; set; } = null;
 
         /// <summary>
         /// The total amount for this transaction.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public long? Amount { get; set; } = null;
 
         /// <summary>
         /// The currency code for this transaction.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Currency { get; set; } = null;
 
         /// <summary>
         /// The unique identifier of an existing payment service. When provided, the created transaction will be processed by the given payment service and any routing rules will be skipped.
         /// </summary>
-        [JsonProperty("payment_service_id")]
+        [JsonProperty("payment_service_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? PaymentServiceId { get; set; } = null;
 
         /// <summary>
         /// Always `checkout-session`
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "checkout-session";
 
         /// <summary>
         /// The ID for the checkout session.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this checkout session expires.
         /// </summary>
-        [JsonProperty("expires_at")]
+        [JsonProperty("expires_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime ExpiresAt { get; set; } = default!;
 
         /// <summary>
         /// Information about the payment method stored on the checkout session.
         /// </summary>
-        [JsonProperty("payment_method")]
+        [JsonProperty("payment_method", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public CheckoutSessionPaymentMethod? PaymentMethod { get; set; } = null;
     }
 }

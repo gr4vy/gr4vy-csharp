@@ -17,87 +17,35 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The type of response to simulate.
         /// </summary>
-        [JsonProperty("response_code")]
+        [JsonProperty("response_code", Required = Newtonsoft.Json.Required.Default)]
         public string? ResponseCode { get; } = "updated";
 
         /// <summary>
         /// When the `response_code` is set to `updated`, the payment method's account number will be updated to this value.
         /// </summary>
-        [JsonProperty("account_number", NullValueHandling = NullValueHandling.Include)]
-        public string? AccountNumber
-        {
-            get => _accountNumber;
-            set
-            {
-                _accountNumber = value;
-                _accountNumberSet = true;
-            }
-        }
-
-        private string? _accountNumber = null;
-
-        private bool _accountNumberSet = false;
-
-        public bool ShouldSerializeAccountNumber() => _accountNumberSet;
+        [JsonProperty("account_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AccountNumber { get; set; }
+        public bool ShouldSerializeAccountNumber() => AccountNumber.IsSet;
 
         /// <summary>
         /// When the `response_code` is set to `updated`, the payment method's expiration month will be updated to this value.
         /// </summary>
-        [JsonProperty("expiration_month", NullValueHandling = NullValueHandling.Include)]
-        public string? ExpirationMonth
-        {
-            get => _expirationMonth;
-            set
-            {
-                _expirationMonth = value;
-                _expirationMonthSet = true;
-            }
-        }
-
-        private string? _expirationMonth = null;
-
-        private bool _expirationMonthSet = false;
-
-        public bool ShouldSerializeExpirationMonth() => _expirationMonthSet;
+        [JsonProperty("expiration_month", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExpirationMonth { get; set; }
+        public bool ShouldSerializeExpirationMonth() => ExpirationMonth.IsSet;
 
         /// <summary>
         /// When the `response_code` is set to `updated`, the payment method's expiration year will be updated to this value.
         /// </summary>
-        [JsonProperty("expiration_year", NullValueHandling = NullValueHandling.Include)]
-        public string? ExpirationYear
-        {
-            get => _expirationYear;
-            set
-            {
-                _expirationYear = value;
-                _expirationYearSet = true;
-            }
-        }
-
-        private string? _expirationYear = null;
-
-        private bool _expirationYearSet = false;
-
-        public bool ShouldSerializeExpirationYear() => _expirationYearSet;
+        [JsonProperty("expiration_year", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExpirationYear { get; set; }
+        public bool ShouldSerializeExpirationYear() => ExpirationYear.IsSet;
 
         /// <summary>
         /// The type of error code to simulate.
         /// </summary>
-        [JsonProperty("error_code", NullValueHandling = NullValueHandling.Include)]
-        public string? ErrorCode
-        {
-            get => _errorCode;
-            set
-            {
-                _errorCode = value;
-                _errorCodeSet = true;
-            }
-        }
-
-        private string? _errorCode = null;
-
-        private bool _errorCodeSet = false;
-
-        public bool ShouldSerializeErrorCode() => _errorCodeSet;
+        [JsonProperty("error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ErrorCode { get; set; }
+        public bool ShouldSerializeErrorCode() => ErrorCode.IsSet;
     }
 }

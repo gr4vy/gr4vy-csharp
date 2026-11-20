@@ -22,43 +22,43 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-method`
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-method";
 
         /// <summary>
         /// The ID of the payment method.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Id { get; set; } = null;
 
         /// <summary>
         /// Details for credit or debit card payment method.
         /// </summary>
-        [JsonProperty("details")]
+        [JsonProperty("details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public CheckoutSessionPaymentMethodDetails? Details { get; set; } = null;
 
         /// <summary>
         /// The last 4 digits of the the card.
         /// </summary>
-        [JsonProperty("label")]
+        [JsonProperty("label", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Label { get; set; } = null;
 
         /// <summary>
         /// Always `card`
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Method { get; } = "card";
 
         /// <summary>
         /// The scheme of the card.
         /// </summary>
-        [JsonProperty("scheme")]
+        [JsonProperty("scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public CardScheme? Scheme { get; set; } = null;
 
         /// <summary>
         /// The unique hash derived from the card number.
         /// </summary>
-        [JsonProperty("fingerprint")]
+        [JsonProperty("fingerprint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Fingerprint { get; set; } = null;
     }
 }

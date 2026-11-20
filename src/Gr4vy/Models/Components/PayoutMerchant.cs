@@ -18,43 +18,44 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The name of the merchant.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// Unique value which identifies a merchant for processing transactions, also known as a MID.
         /// </summary>
-        [JsonProperty("identification_number")]
+        [JsonProperty("identification_number", Required = Newtonsoft.Json.Required.Always)]
         public string IdentificationNumber { get; set; } = default!;
 
         /// <summary>
         /// The phone number for the merchant which should be formatted according to the E164 number standard.
         /// </summary>
-        [JsonProperty("phone_number")]
+        [JsonProperty("phone_number", Required = Newtonsoft.Json.Required.Always)]
         public string PhoneNumber { get; set; } = default!;
 
         /// <summary>
         /// Merchant website URL.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonProperty("url", Required = Newtonsoft.Json.Required.Always)]
         public string Url { get; set; } = default!;
 
         /// <summary>
         /// Value to explain charges or payments on bank statements.
         /// </summary>
-        [JsonProperty("statement_descriptor")]
+        [JsonProperty("statement_descriptor", Required = Newtonsoft.Json.Required.Always)]
         public string StatementDescriptor { get; set; } = default!;
 
         /// <summary>
         /// Merchant classification for the type of goods or services it provides.
         /// </summary>
-        [JsonProperty("merchant_category_code")]
+        [JsonProperty("merchant_category_code", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantCategoryCode { get; set; } = default!;
 
         /// <summary>
         /// The address for the merchant.
         /// </summary>
-        [JsonProperty("address")]
-        public Address? Address { get; set; } = null;
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Address?> Address { get; set; }
+        public bool ShouldSerializeAddress() => Address.IsSet;
     }
 }

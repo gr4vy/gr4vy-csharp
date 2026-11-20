@@ -18,7 +18,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of payment method IDs to request an update for.
         /// </summary>
-        [JsonProperty("payment_method_ids")]
+        [JsonProperty("payment_method_ids", Required = Newtonsoft.Json.Required.Always)]
         public List<string> PaymentMethodIds { get; set; } = default!;
     }
 }

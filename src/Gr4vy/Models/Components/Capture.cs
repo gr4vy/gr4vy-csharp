@@ -22,118 +22,118 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `capture`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "capture";
 
         /// <summary>
         /// The unique identifier for the capture.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The merchant account this capture belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The ID of the transaction associated with this capture.
         /// </summary>
-        [JsonProperty("transaction_id")]
+        [JsonProperty("transaction_id", Required = Newtonsoft.Json.Required.Always)]
         public string TransactionId { get; set; } = default!;
 
         /// <summary>
         /// The payment service's unique ID for the capture.
         /// </summary>
-        [JsonProperty("xid")]
+        [JsonProperty("xid", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Xid { get; set; } = null;
 
         /// <summary>
         /// The ISO 4217 currency code for this capture.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Always)]
         public string Currency { get; set; } = default!;
 
         /// <summary>
         /// The capture amount in the smallest currency unit.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public CaptureStatus Status { get; set; } = default!;
 
         /// <summary>
         /// Whether this is marked as the final capture for the associated transaction.
         /// </summary>
-        [JsonProperty("final")]
+        [JsonProperty("final", Required = Newtonsoft.Json.Required.Always)]
         public bool Final { get; set; } = default!;
 
         /// <summary>
         /// The date and time this capture was created.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time this capture was last updated.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time the capture was completed.
         /// </summary>
-        [JsonProperty("captured_at")]
+        [JsonProperty("captured_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public DateTime? CapturedAt { get; set; } = null;
 
         /// <summary>
         /// An external identifier that can be used to match the capture against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? ExternalIdentifier { get; set; } = null;
 
         /// <summary>
         /// The standardized error code set by Gr4vy.
         /// </summary>
-        [JsonProperty("error_code")]
+        [JsonProperty("error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? ErrorCode { get; set; } = null;
 
         /// <summary>
         /// The ISO response code.
         /// </summary>
-        [JsonProperty("iso_response_code")]
+        [JsonProperty("iso_response_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? IsoResponseCode { get; set; } = null;
 
         /// <summary>
         /// This is the response code received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_code")]
+        [JsonProperty("raw_response_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? RawResponseCode { get; set; } = null;
 
         /// <summary>
         /// This is the response description received from the payment service. This can be set to any value and is not standardized across different payment services.
         /// </summary>
-        [JsonProperty("raw_response_description")]
+        [JsonProperty("raw_response_description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? RawResponseDescription { get; set; } = null;
 
         /// <summary>
         /// The external identifier of the associated transaction.
         /// </summary>
-        [JsonProperty("transaction_external_identifier")]
+        [JsonProperty("transaction_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? TransactionExternalIdentifier { get; set; } = null;
 
         /// <summary>
         /// An array of cart items that represents the line items of this capture.
         /// </summary>
-        [JsonProperty("cart_items")]
+        [JsonProperty("cart_items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public List<CartItem>? CartItems { get; set; } = null;
 
         /// <summary>
         /// The shipment tracking details associated with the capture.
         /// </summary>
-        [JsonProperty("tracking")]
+        [JsonProperty("tracking", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public List<Tracking>? Tracking { get; set; } = null;
     }
 }

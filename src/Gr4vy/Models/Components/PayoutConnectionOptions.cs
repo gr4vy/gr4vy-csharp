@@ -18,7 +18,8 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Custom options for `checkout-card` payment service.
         /// </summary>
-        [JsonProperty("checkout-card")]
-        public CheckoutPayoutOptions? CheckoutCard { get; set; } = null;
+        [JsonProperty("checkout-card", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<CheckoutPayoutOptions?> CheckoutCard { get; set; }
+        public bool ShouldSerializeCheckoutCard() => CheckoutCard.IsSet;
     }
 }

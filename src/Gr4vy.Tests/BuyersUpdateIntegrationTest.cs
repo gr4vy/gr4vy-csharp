@@ -158,18 +158,18 @@ namespace Gr4vy.Tests
 
             var fetched = await _client.Buyers.GetAsync(created.Id!);
             Assert.That(fetched.BillingDetails, Is.Not.Null);
-            var addr = fetched.BillingDetails!.Address;
+            var addr = fetched.BillingDetails!.Address.ValueOrDefault;
             Assert.That(addr, Is.Not.Null);
-            Assert.That(addr!.HouseNumberOrName, Is.Null);
-            Assert.That(addr.Line2, Is.Null);
-            Assert.That(addr.State, Is.Null);
-            Assert.That(addr.Organization, Is.Null);
+            Assert.That(addr!.HouseNumberOrName.ValueOrDefault, Is.Null);
+            Assert.That(addr.Line2.ValueOrDefault, Is.Null);
+            Assert.That(addr.State.ValueOrDefault, Is.Null);
+            Assert.That(addr.Organization.ValueOrDefault, Is.Null);
             Assert.That(
-                addr.City,
+                addr.City.ValueOrDefault,
                 Is.EqualTo("Auckland"),
                 "Untouched nested fields must not be cleared."
             );
-            Assert.That(addr.Line1, Is.EqualTo("122A Newton Road"));
+            Assert.That(addr.Line1.ValueOrDefault, Is.EqualTo("122A Newton Road"));
         }
 
         [Test]

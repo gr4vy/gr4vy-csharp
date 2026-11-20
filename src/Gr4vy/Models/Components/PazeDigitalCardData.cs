@@ -17,19 +17,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// URI hosting the card art image.
         /// </summary>
-        [JsonProperty("artUri")]
+        [JsonProperty("artUri", Required = Newtonsoft.Json.Required.Always)]
         public string ArtUri { get; set; } = default!;
 
         /// <summary>
         /// Card art height in pixels.
         /// </summary>
-        [JsonProperty("artHeight")]
+        [JsonProperty("artHeight", Required = Newtonsoft.Json.Required.Always)]
         public long ArtHeight { get; set; } = default!;
 
         /// <summary>
         /// Card art width in pixels.
         /// </summary>
-        [JsonProperty("artWidth")]
+        [JsonProperty("artWidth", Required = Newtonsoft.Json.Required.Always)]
         public long ArtWidth { get; set; } = default!;
     }
 }

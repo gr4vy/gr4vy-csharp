@@ -22,43 +22,43 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `report`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "report";
 
         /// <summary>
         /// The unique ID for the report.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The merchant account ID this report belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The name of the report.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The ID of the user who created the report.
         /// </summary>
-        [JsonProperty("creator_id")]
+        [JsonProperty("creator_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? CreatorId { get; set; } = null;
 
         /// <summary>
         /// The display name of the report creator.
         /// </summary>
-        [JsonProperty("creator_display_name")]
+        [JsonProperty("creator_display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? CreatorDisplayName { get; set; } = null;
 
         /// <summary>
         /// The type of the report creator.
         /// </summary>
-        [JsonProperty("creator_type")]
+        [JsonProperty("creator_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public ReportCreatorType? CreatorType { get; set; } = null;
     }
 }

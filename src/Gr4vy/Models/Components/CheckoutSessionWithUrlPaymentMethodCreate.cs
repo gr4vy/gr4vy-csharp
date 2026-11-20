@@ -25,43 +25,48 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `checkout-session`
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Method { get; } = "checkout-session";
 
         /// <summary>
         /// The ID for the checkout session.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The merchant reference that can be used to match the payment method against your own records.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The `id` of a stored buyer to use Use this instead of the `buyer_external_identifier`.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// The `external_identifier` of a stored buyer to use. Use this instead of the `buyer_id`.
         /// </summary>
-        [JsonProperty("buyer_external_identifier")]
-        public string? BuyerExternalIdentifier { get; set; } = null;
+        [JsonProperty("buyer_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerExternalIdentifier { get; set; }
+        public bool ShouldSerializeBuyerExternalIdentifier() => BuyerExternalIdentifier.IsSet;
 
         /// <summary>
         /// The URL to redirect a user back to after the complete 3DS in browser.
         /// </summary>
-        [JsonProperty("redirect_url")]
-        public string? RedirectUrl { get; set; } = null;
+        [JsonProperty("redirect_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RedirectUrl { get; set; }
+        public bool ShouldSerializeRedirectUrl() => RedirectUrl.IsSet;
 
         /// <summary>
         /// The preferred card scheme to use when processing a co-badged card.
         /// </summary>
-        [JsonProperty("preferred_scheme")]
-        public CheckoutSessionWithUrlPaymentMethodCreatePreferredScheme? PreferredScheme { get; set; } = null;
+        [JsonProperty("preferred_scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<CheckoutSessionWithUrlPaymentMethodCreatePreferredScheme?> PreferredScheme { get; set; }
+        public bool ShouldSerializePreferredScheme() => PreferredScheme.IsSet;
     }
 }

@@ -18,7 +18,7 @@ namespace Gr4vy.Models.Errors
 
     public class HTTPValidationErrorPayload
     {
-        [JsonProperty("detail")]
+        [JsonProperty("detail", Required = Newtonsoft.Json.Required.DisallowNull)]
         public List<ValidationError>? Detail { get; set; }
     }
 

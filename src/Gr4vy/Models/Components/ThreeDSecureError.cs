@@ -17,25 +17,25 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The error code.
         /// </summary>
-        [JsonProperty("code")]
+        [JsonProperty("code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Code { get; set; } = null;
 
         /// <summary>
         /// The error description.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Description { get; set; } = null;
 
         /// <summary>
         /// Detail about the 3DS error.
         /// </summary>
-        [JsonProperty("detail")]
+        [JsonProperty("detail", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Detail { get; set; } = null;
 
         /// <summary>
         /// Code indicating the 3-D Secure component that identified the error.
         /// </summary>
-        [JsonProperty("component")]
+        [JsonProperty("component", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Component { get; set; } = null;
     }
 }

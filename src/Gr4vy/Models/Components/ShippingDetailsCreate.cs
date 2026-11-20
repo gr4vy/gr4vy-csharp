@@ -18,31 +18,36 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The first name(s) or given name for the buyer.
         /// </summary>
-        [JsonProperty("first_name")]
-        public string? FirstName { get; set; } = null;
+        [JsonProperty("first_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FirstName { get; set; }
+        public bool ShouldSerializeFirstName() => FirstName.IsSet;
 
         /// <summary>
         /// The last name, or family name, of the buyer.
         /// </summary>
-        [JsonProperty("last_name")]
-        public string? LastName { get; set; } = null;
+        [JsonProperty("last_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> LastName { get; set; }
+        public bool ShouldSerializeLastName() => LastName.IsSet;
 
         /// <summary>
         /// The email address for the buyer.
         /// </summary>
-        [JsonProperty("email_address")]
-        public string? EmailAddress { get; set; } = null;
+        [JsonProperty("email_address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> EmailAddress { get; set; }
+        public bool ShouldSerializeEmailAddress() => EmailAddress.IsSet;
 
         /// <summary>
         /// The phone number for the buyer which should be formatted according to the E164 number standard.
         /// </summary>
-        [JsonProperty("phone_number")]
-        public string? PhoneNumber { get; set; } = null;
+        [JsonProperty("phone_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PhoneNumber { get; set; }
+        public bool ShouldSerializePhoneNumber() => PhoneNumber.IsSet;
 
         /// <summary>
         /// The billing address for the buyer.
         /// </summary>
-        [JsonProperty("address")]
-        public Address? Address { get; set; } = null;
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Address?> Address { get; set; }
+        public bool ShouldSerializeAddress() => Address.IsSet;
     }
 }

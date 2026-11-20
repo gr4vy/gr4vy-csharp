@@ -22,31 +22,34 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The first name of the recipient.
         /// </summary>
-        [JsonProperty("first_name")]
+        [JsonProperty("first_name", Required = Newtonsoft.Json.Required.Always)]
         public string FirstName { get; set; } = default!;
 
         /// <summary>
         /// The last name of the recipient.
         /// </summary>
-        [JsonProperty("last_name")]
+        [JsonProperty("last_name", Required = Newtonsoft.Json.Required.Always)]
         public string LastName { get; set; } = default!;
 
         /// <summary>
         /// The recipient of the fund's address.
         /// </summary>
-        [JsonProperty("address")]
-        public Address? Address { get; set; } = null;
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Address?> Address { get; set; }
+        public bool ShouldSerializeAddress() => Address.IsSet;
 
         /// <summary>
         /// The account number of the recipient. Depending on the type of funds transfer, this could be a wallet ID, bank accoutn number, or email address.
         /// </summary>
-        [JsonProperty("account_number")]
-        public string? AccountNumber { get; set; } = null;
+        [JsonProperty("account_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AccountNumber { get; set; }
+        public bool ShouldSerializeAccountNumber() => AccountNumber.IsSet;
 
         /// <summary>
         /// The date of birth of the recipient.
         /// </summary>
-        [JsonProperty("date_of_birth")]
-        public LocalDate? DateOfBirth { get; set; } = null;
+        [JsonProperty("date_of_birth", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<LocalDate?> DateOfBirth { get; set; }
+        public bool ShouldSerializeDateOfBirth() => DateOfBirth.IsSet;
     }
 }

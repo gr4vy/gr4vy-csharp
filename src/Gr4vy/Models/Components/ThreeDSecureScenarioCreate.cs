@@ -15,10 +15,10 @@ namespace Gr4vy.Models.Components
 
     public class ThreeDSecureScenarioCreate
     {
-        [JsonProperty("conditions")]
-        public ThreeDSecureScenarioConditions Conditions { get; set; } = default!;
+        [JsonProperty("conditions", Required = Newtonsoft.Json.Required.Always)]
+        public ThreeDSecureScenarioConditions Conditions { get; set; } = new();
 
-        [JsonProperty("outcome")]
-        public ThreeDSecureScenarioOutcome Outcome { get; set; } = default!;
+        [JsonProperty("outcome", Required = Newtonsoft.Json.Required.Always)]
+        public ThreeDSecureScenarioOutcome Outcome { get; set; } = new();
     }
 }

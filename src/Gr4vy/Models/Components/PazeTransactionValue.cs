@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// ISO 4217 currency code of the transaction.
         /// </summary>
-        [JsonProperty("transactionCurrency")]
+        [JsonProperty("transactionCurrency", Required = Newtonsoft.Json.Required.Always)]
         public string TransactionCurrency { get; set; } = default!;
 
         /// <summary>
         /// Amount of the transaction including dollar and cents, e.g. '99.95'.
         /// </summary>
-        [JsonProperty("transactionAmount")]
+        [JsonProperty("transactionAmount", Required = Newtonsoft.Json.Required.Always)]
         public string TransactionAmount { get; set; } = default!;
     }
 }

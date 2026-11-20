@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using Gr4vy.Models.Components;
 using Gr4vy.Utils;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
@@ -9,6 +10,9 @@ public class UpdateModelSerializationTests
 {
     private static JObject SerializeToJObject(object value) =>
         JObject.Parse(Utilities.SerializeJSON(value));
+
+    private static T Deserialize<T>(string json) =>
+        JsonConvert.DeserializeObject<T>(json, Utilities.GetDefaultJsonDeserializerSettings())!;
 
     [Test]
     public void BuyerUpdate_UnsetField_IsOmitted()
@@ -87,7 +91,7 @@ public class UpdateModelSerializationTests
         var asNull = new MerchantAccountUpdate { LoonAcceptedSchemes = null };
         var asValue = new MerchantAccountUpdate
         {
-            LoonAcceptedSchemes = new() { "visa", "mastercard" },
+            LoonAcceptedSchemes = new List<CardScheme> { "visa", "mastercard" },
         };
 
         Assert.That(SerializeToJObject(unset).ContainsKey("loon_accepted_schemes"), Is.False);
@@ -187,5 +191,35 @@ public class UpdateModelSerializationTests
         var address = json["billing_details"]!["address"]!.ToObject<JObject>()!;
         Assert.That(address.Count, Is.EqualTo(0),
             "An untouched nested Address must serialize as {}.");
+    }
+
+    [Test]
+    public void WrappedFields_DeserializeAbsentNullAndValue()
+    {
+        var buyer = Deserialize<Buyer>(@"{
+            ""type"": ""buyer"", ""id"": ""b1"", ""reconciliation_id"": ""r1"",
+            ""merchant_account_id"": ""default"",
+            ""created_at"": ""2026-01-01T00:00:00Z"", ""updated_at"": ""2026-01-01T00:00:00Z"",
+            ""billing_details"": {
+                ""first_name"": ""2026-01-02T03:04:05Z"",
+                ""last_name"": null,
+                ""address"": { ""line1"": ""1 Main St"", ""line2"": null }
+            }
+        }");
+        var billing = buyer.BillingDetails!;
+        Assert.That(billing.FirstName.Value, Is.EqualTo("2026-01-02T03:04:05Z"));
+        Assert.That(billing.LastName.IsNull, Is.True);
+        Assert.That(billing.EmailAddress.IsSet, Is.False);
+        var address = billing.Address.Value!;
+        Assert.That(address.Line1.Value, Is.EqualTo("1 Main St"));
+        Assert.That(address.Line2.IsNull, Is.True);
+        Assert.That(address.City.IsSet, Is.False);
+
+        var item = Deserialize<CartItem>(
+            @"{""name"": ""Shoe"", ""quantity"": 1, ""unit_amount"": 100, ""categories"": [""a"", ""b""], ""subcategories"": null}"
+        );
+        Assert.That(item.Categories.Value, Is.EqualTo(new[] { "a", "b" }));
+        Assert.That(item.Subcategories.IsNull, Is.True);
+        Assert.That(item.Brand.IsSet, Is.False);
     }
 }

@@ -19,7 +19,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of gift cards to request a balance for.
         /// </summary>
-        [JsonProperty("items")]
+        [JsonProperty("items", Required = Newtonsoft.Json.Required.Always)]
         public List<Item> Items { get; set; } = default!;
     }
 }

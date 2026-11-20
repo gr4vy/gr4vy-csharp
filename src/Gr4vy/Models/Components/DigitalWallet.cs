@@ -22,106 +22,106 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `digital-wallet`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "digital-wallet";
 
         /// <summary>
         /// The ID for the digital wallet.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of the merchant account this digital wallet belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
-        [JsonProperty("provider")]
+        [JsonProperty("provider", Required = Newtonsoft.Json.Required.Always)]
         public DigitalWalletProvider Provider { get; set; } = default!;
 
         /// <summary>
         /// The name of the merchant the digital wallet is registered to.
         /// </summary>
-        [JsonProperty("merchant_name")]
+        [JsonProperty("merchant_name", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantName { get; set; } = default!;
 
         /// <summary>
         /// The consumer facing name of the merchant.
         /// </summary>
-        [JsonProperty("merchant_display_name")]
+        [JsonProperty("merchant_display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? MerchantDisplayName { get; set; } = null;
 
         /// <summary>
         /// The main URL of the merchant.
         /// </summary>
-        [JsonProperty("merchant_url")]
+        [JsonProperty("merchant_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? MerchantUrl { get; set; } = null;
 
         /// <summary>
         /// The country code where the merchant is registered.
         /// </summary>
-        [JsonProperty("merchant_country_code")]
+        [JsonProperty("merchant_country_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? MerchantCountryCode { get; set; } = null;
 
         /// <summary>
         /// Merchant classification for the type of goods or services it provides.
         /// </summary>
-        [JsonProperty("merchant_category_code")]
+        [JsonProperty("merchant_category_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? MerchantCategoryCode { get; set; } = null;
 
         /// <summary>
         /// The merchant address associated with the digital wallet.
         /// </summary>
-        [JsonProperty("address")]
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public DigitalWalletAddress? Address { get; set; } = null;
 
         /// <summary>
         /// Provider-specific configuration. Currently only used by Paze.
         /// </summary>
-        [JsonProperty("extra_configuration")]
+        [JsonProperty("extra_configuration", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public Dictionary<string, object>? ExtraConfiguration { get; set; } = null;
 
         /// <summary>
         /// The list of domain names that a digital wallet can be used on (deprecated).
         /// </summary>
-        [JsonProperty("domain_names")]
+        [JsonProperty("domain_names", Required = Newtonsoft.Json.Required.Always)]
         public List<string> DomainNames { get; set; } = default!;
 
         /// <summary>
         /// The number of active custom certificates registered for this digital wallet (Apple Pay only).
         /// </summary>
-        [JsonProperty("active_certificate_count")]
+        [JsonProperty("active_certificate_count", Required = Newtonsoft.Json.Required.DisallowNull)]
         public long? ActiveCertificateCount { get; set; } = 0;
 
         /// <summary>
         /// The number of pending custom certificates registered for this digital wallet (Apple Pay only).
         /// </summary>
-        [JsonProperty("pending_certificate_count")]
+        [JsonProperty("pending_certificate_count", Required = Newtonsoft.Json.Required.DisallowNull)]
         public long? PendingCertificateCount { get; set; } = 0;
 
         /// <summary>
         /// The number of expired custom certificates registered for this digital wallet (Apple Pay only).
         /// </summary>
-        [JsonProperty("expired_certificate_count")]
+        [JsonProperty("expired_certificate_count", Required = Newtonsoft.Json.Required.DisallowNull)]
         public long? ExpiredCertificateCount { get; set; } = 0;
 
         /// <summary>
         /// Custom attributes for some digital wallets. Currently only used by Click to Pay.
         /// </summary>
-        [JsonProperty("fields")]
+        [JsonProperty("fields", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public Dictionary<string, object>? Fields { get; set; } = null;
 
         /// <summary>
         /// The date this buyer was created at.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date this buyer was last updated at.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
     }
 }

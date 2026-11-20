@@ -27,6 +27,6 @@ namespace Gr4vy.Models.Requests
         public string ThreeDsConfigurationId { get; set; } = default!;
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public MerchantAccountThreeDSConfigurationUpdate MerchantAccountThreeDSConfigurationUpdate { get; set; } = default!;
+        public MerchantAccountThreeDSConfigurationUpdate MerchantAccountThreeDSConfigurationUpdate { get; set; } = new();
     }
 }

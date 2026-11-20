@@ -16,81 +16,28 @@ namespace Gr4vy.Models.Components
 
     public class ForterAntiFraudOptionsCartItemBeneficiary
     {
-        [JsonProperty("personal_details", NullValueHandling = NullValueHandling.Include)]
-        public ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails PersonalDetails
-        {
-            get => _personalDetails;
-            set
-            {
-                _personalDetails = value;
-                _personalDetailsSet = true;
-            }
-        }
-
-        private ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails _personalDetails = default!;
-
-        private bool _personalDetailsSet = true;
-
-        public bool ShouldSerializePersonalDetails() => _personalDetailsSet;
+        [JsonProperty("personal_details", Required = Newtonsoft.Json.Required.Always)]
+        public ForterAntiFraudOptionsCartItemBeneficiaryPersonalDetails PersonalDetails { get; set; } = new();
 
         /// <summary>
         /// Address information of the beneficiary.
         /// </summary>
-        [JsonProperty("address", NullValueHandling = NullValueHandling.Include)]
-        public ForterAntiFraudOptionsCartItemBeneficiaryAddress? Address
-        {
-            get => _address;
-            set
-            {
-                _address = value;
-                _addressSet = true;
-            }
-        }
-
-        private ForterAntiFraudOptionsCartItemBeneficiaryAddress? _address = null;
-
-        private bool _addressSet = false;
-
-        public bool ShouldSerializeAddress() => _addressSet;
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ForterAntiFraudOptionsCartItemBeneficiaryAddress?> Address { get; set; }
+        public bool ShouldSerializeAddress() => Address.IsSet;
 
         /// <summary>
         /// Phone numbers associated with the beneficiary.
         /// </summary>
-        [JsonProperty("phone", NullValueHandling = NullValueHandling.Include)]
-        public List<ForterAntiFraudOptionsCartItemBeneficiaryPhone>? Phone
-        {
-            get => _phone;
-            set
-            {
-                _phone = value;
-                _phoneSet = true;
-            }
-        }
-
-        private List<ForterAntiFraudOptionsCartItemBeneficiaryPhone>? _phone = null;
-
-        private bool _phoneSet = false;
-
-        public bool ShouldSerializePhone() => _phoneSet;
+        [JsonProperty("phone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<ForterAntiFraudOptionsCartItemBeneficiaryPhone>?> Phone { get; set; }
+        public bool ShouldSerializePhone() => Phone.IsSet;
 
         /// <summary>
         /// Comments related to the beneficiary.
         /// </summary>
-        [JsonProperty("comments", NullValueHandling = NullValueHandling.Include)]
-        public ForterAntiFraudOptionsCartItemBeneficiaryComments? Comments
-        {
-            get => _comments;
-            set
-            {
-                _comments = value;
-                _commentsSet = true;
-            }
-        }
-
-        private ForterAntiFraudOptionsCartItemBeneficiaryComments? _comments = null;
-
-        private bool _commentsSet = false;
-
-        public bool ShouldSerializeComments() => _commentsSet;
+        [JsonProperty("comments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ForterAntiFraudOptionsCartItemBeneficiaryComments?> Comments { get; set; }
+        public bool ShouldSerializeComments() => Comments.IsSet;
     }
 }

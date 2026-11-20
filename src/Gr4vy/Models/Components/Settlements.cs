@@ -22,7 +22,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The list of settlement objects.
         /// </summary>
-        [JsonProperty("items")]
+        [JsonProperty("items", Required = Newtonsoft.Json.Required.Always)]
         public List<Settlement> Items { get; set; } = default!;
     }
 }

@@ -20,37 +20,37 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `account-updater-job`
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "account-updater-job";
 
         /// <summary>
         /// The ID for the account updater job.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of the merchant account this job belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// A list of the payment methods that have been scheduled for an update.
         /// </summary>
-        [JsonProperty("inquiries")]
+        [JsonProperty("inquiries", Required = Newtonsoft.Json.Required.Always)]
         public List<AccountUpdaterInquirySummary> Inquiries { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this payment method was first created in our system.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this payment method was last updated in our system.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
     }
 }

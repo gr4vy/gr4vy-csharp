@@ -17,41 +17,15 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The start date of the booking in ISO 8601 format (YYYY-MM-DD). Required for certain MCCs.
         /// </summary>
-        [JsonProperty("booking_start_date", NullValueHandling = NullValueHandling.Include)]
-        public string? BookingStartDate
-        {
-            get => _bookingStartDate;
-            set
-            {
-                _bookingStartDate = value;
-                _bookingStartDateSet = true;
-            }
-        }
-
-        private string? _bookingStartDate = null;
-
-        private bool _bookingStartDateSet = false;
-
-        public bool ShouldSerializeBookingStartDate() => _bookingStartDateSet;
+        [JsonProperty("booking_start_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BookingStartDate { get; set; }
+        public bool ShouldSerializeBookingStartDate() => BookingStartDate.IsSet;
 
         /// <summary>
         /// The end date of the booking in ISO 8601 format (YYYY-MM-DD). Required for certain MCCs.
         /// </summary>
-        [JsonProperty("booking_end_date", NullValueHandling = NullValueHandling.Include)]
-        public string? BookingEndDate
-        {
-            get => _bookingEndDate;
-            set
-            {
-                _bookingEndDate = value;
-                _bookingEndDateSet = true;
-            }
-        }
-
-        private string? _bookingEndDate = null;
-
-        private bool _bookingEndDateSet = false;
-
-        public bool ShouldSerializeBookingEndDate() => _bookingEndDateSet;
+        [JsonProperty("booking_end_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BookingEndDate { get; set; }
+        public bool ShouldSerializeBookingEndDate() => BookingEndDate.IsSet;
     }
 }

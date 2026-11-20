@@ -97,7 +97,7 @@ be backfilled over time.
   it means offline passed; on `main` it also means every shard passed.
 - **coverage** — the daily endpoint-reach report above. It never gates anything.
 
-Speakeasy regen PRs get the tri-state patch from the generation job itself
-(`sdk_generation.yaml`), are merged by the release bot (`sdk_merge.yaml`), and
+Speakeasy regen PRs come from the generation job (`sdk_generation.yaml`), are
+merged by the release bot (`sdk_merge.yaml`), and
 `sdk_publish.yaml` releases to NuGet once `main` is green. See
 [gr4vy/sdk-release](https://github.com/gr4vy/sdk-release).

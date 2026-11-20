@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The processing channel to be used for the payment.
         /// </summary>
-        [JsonProperty("processing_channel_id")]
+        [JsonProperty("processing_channel_id", Required = Newtonsoft.Json.Required.Always)]
         public string ProcessingChannelId { get; set; } = default!;
 
         /// <summary>
         /// The ID of the currency account that will fund the payout.
         /// </summary>
-        [JsonProperty("source_id")]
+        [JsonProperty("source_id", Required = Newtonsoft.Json.Required.Always)]
         public string SourceId { get; set; } = default!;
     }
 }

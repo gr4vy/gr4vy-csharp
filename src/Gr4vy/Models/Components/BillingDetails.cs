@@ -18,121 +18,43 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The first name(s) or given name for the buyer.
         /// </summary>
-        [JsonProperty("first_name", NullValueHandling = NullValueHandling.Include)]
-        public string? FirstName
-        {
-            get => _firstName;
-            set
-            {
-                _firstName = value;
-                _firstNameSet = true;
-            }
-        }
-
-        private string? _firstName = null;
-
-        private bool _firstNameSet = false;
-
-        public bool ShouldSerializeFirstName() => _firstNameSet;
+        [JsonProperty("first_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FirstName { get; set; }
+        public bool ShouldSerializeFirstName() => FirstName.IsSet;
 
         /// <summary>
         /// The last name, or family name, of the buyer.
         /// </summary>
-        [JsonProperty("last_name", NullValueHandling = NullValueHandling.Include)]
-        public string? LastName
-        {
-            get => _lastName;
-            set
-            {
-                _lastName = value;
-                _lastNameSet = true;
-            }
-        }
-
-        private string? _lastName = null;
-
-        private bool _lastNameSet = false;
-
-        public bool ShouldSerializeLastName() => _lastNameSet;
+        [JsonProperty("last_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> LastName { get; set; }
+        public bool ShouldSerializeLastName() => LastName.IsSet;
 
         /// <summary>
         /// The email address for the buyer.
         /// </summary>
-        [JsonProperty("email_address", NullValueHandling = NullValueHandling.Include)]
-        public string? EmailAddress
-        {
-            get => _emailAddress;
-            set
-            {
-                _emailAddress = value;
-                _emailAddressSet = true;
-            }
-        }
-
-        private string? _emailAddress = null;
-
-        private bool _emailAddressSet = false;
-
-        public bool ShouldSerializeEmailAddress() => _emailAddressSet;
+        [JsonProperty("email_address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> EmailAddress { get; set; }
+        public bool ShouldSerializeEmailAddress() => EmailAddress.IsSet;
 
         /// <summary>
         /// The phone number for the buyer which should be formatted according to the E164 number standard.
         /// </summary>
-        [JsonProperty("phone_number", NullValueHandling = NullValueHandling.Include)]
-        public string? PhoneNumber
-        {
-            get => _phoneNumber;
-            set
-            {
-                _phoneNumber = value;
-                _phoneNumberSet = true;
-            }
-        }
-
-        private string? _phoneNumber = null;
-
-        private bool _phoneNumberSet = false;
-
-        public bool ShouldSerializePhoneNumber() => _phoneNumberSet;
+        [JsonProperty("phone_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PhoneNumber { get; set; }
+        public bool ShouldSerializePhoneNumber() => PhoneNumber.IsSet;
 
         /// <summary>
         /// The billing address for the buyer.
         /// </summary>
-        [JsonProperty("address", NullValueHandling = NullValueHandling.Include)]
-        public Address? Address
-        {
-            get => _address;
-            set
-            {
-                _address = value;
-                _addressSet = true;
-            }
-        }
-
-        private Address? _address = null;
-
-        private bool _addressSet = false;
-
-        public bool ShouldSerializeAddress() => _addressSet;
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Address?> Address { get; set; }
+        public bool ShouldSerializeAddress() => Address.IsSet;
 
         /// <summary>
         /// The tax ID information associated with the billing details.
         /// </summary>
-        [JsonProperty("tax_id", NullValueHandling = NullValueHandling.Include)]
-        public TaxId? TaxId
-        {
-            get => _taxId;
-            set
-            {
-                _taxId = value;
-                _taxIdSet = true;
-            }
-        }
-
-        private TaxId? _taxId = null;
-
-        private bool _taxIdSet = false;
-
-        public bool ShouldSerializeTaxId() => _taxIdSet;
+        [JsonProperty("tax_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<TaxId?> TaxId { get; set; }
+        public bool ShouldSerializeTaxId() => TaxId.IsSet;
     }
 }

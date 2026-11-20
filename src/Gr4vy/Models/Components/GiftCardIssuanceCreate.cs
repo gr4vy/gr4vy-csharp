@@ -20,25 +20,26 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The provider theme code to issue the gift card against.
         /// </summary>
-        [JsonProperty("theme")]
+        [JsonProperty("theme", Required = Newtonsoft.Json.Required.Always)]
         public string Theme { get; set; } = default!;
 
         /// <summary>
         /// The amount to load onto the gift card, in the smallest denomination for the currency.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
         /// <summary>
         /// The ISO-4217 currency code for the `amount`.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Always)]
         public string Currency { get; set; } = default!;
 
         /// <summary>
         /// An optional external identifier for this issuance.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
     }
 }

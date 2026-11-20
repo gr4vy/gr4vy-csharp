@@ -17,7 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Defines if the request is merchant initiated or not.
         /// </summary>
-        [JsonProperty("merchant_initiated")]
+        [JsonProperty("merchant_initiated", Required = Newtonsoft.Json.Required.Always)]
         public bool MerchantInitiated { get; set; } = default!;
     }
 }

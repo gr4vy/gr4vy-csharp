@@ -18,6 +18,6 @@ namespace Gr4vy.Models.Requests
     {
         public Func<Task<ListRolesResponse?>>? Next {get;set;}
         [SpeakeasyMetadata("")]
-        public CollectionRole Result { get; set; } = default!;
+        public CollectionRole Result { get; set; } = new();
     }
 }

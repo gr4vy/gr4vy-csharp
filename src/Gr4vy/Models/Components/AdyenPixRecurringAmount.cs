@@ -17,41 +17,15 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Amount in the smallest currency unit for the given currency.
         /// </summary>
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
-        public long? Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-                _valueSet = true;
-            }
-        }
-
-        private long? _value = null;
-
-        private bool _valueSet = false;
-
-        public bool ShouldSerializeValue() => _valueSet;
+        [JsonProperty("value", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Value { get; set; }
+        public bool ShouldSerializeValue() => Value.IsSet;
 
         /// <summary>
         /// ISO 4217 currency code.
         /// </summary>
-        [JsonProperty("currency", NullValueHandling = NullValueHandling.Include)]
-        public string? Currency
-        {
-            get => _currency;
-            set
-            {
-                _currency = value;
-                _currencySet = true;
-            }
-        }
-
-        private string? _currency = null;
-
-        private bool _currencySet = false;
-
-        public bool ShouldSerializeCurrency() => _currencySet;
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Currency { get; set; }
+        public bool ShouldSerializeCurrency() => Currency.IsSet;
     }
 }

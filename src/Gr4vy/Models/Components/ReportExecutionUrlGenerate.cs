@@ -17,7 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The URL expiration time, in minutes.
         /// </summary>
-        [JsonProperty("expires_in")]
+        [JsonProperty("expires_in", Required = Newtonsoft.Json.Required.DisallowNull)]
         public long? ExpiresIn { get; set; } = 5;
     }
 }

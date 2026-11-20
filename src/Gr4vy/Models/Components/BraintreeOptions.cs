@@ -19,61 +19,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes a discount amount to be applied to the transaction when using Braintree.
         /// </summary>
-        [JsonProperty("discount_amount", NullValueHandling = NullValueHandling.Include)]
-        public long? DiscountAmount
-        {
-            get => _discountAmount;
-            set
-            {
-                _discountAmount = value;
-                _discountAmountSet = true;
-            }
-        }
-
-        private long? _discountAmount = null;
-
-        private bool _discountAmountSet = false;
-
-        public bool ShouldSerializeDiscountAmount() => _discountAmountSet;
+        [JsonProperty("discount_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> DiscountAmount { get; set; }
+        public bool ShouldSerializeDiscountAmount() => DiscountAmount.IsSet;
 
         /// <summary>
         /// Passes `customFields` to the Braintree API when creating a new payment. Custom fields allow you to customize your checkout experience by collecting specific information about your customers and their purchases.
         /// </summary>
-        [JsonProperty("custom_fields", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? CustomFields
-        {
-            get => _customFields;
-            set
-            {
-                _customFields = value;
-                _customFieldsSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _customFields = null;
-
-        private bool _customFieldsSet = false;
-
-        public bool ShouldSerializeCustomFields() => _customFieldsSet;
+        [JsonProperty("custom_fields", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> CustomFields { get; set; }
+        public bool ShouldSerializeCustomFields() => CustomFields.IsSet;
 
         /// <summary>
         /// Additional dynamic fields to pass to the Braintree API.
         /// </summary>
-        [JsonProperty("dynamic_data_fields", NullValueHandling = NullValueHandling.Include)]
-        public BraintreeDynamicDataFieldsOptions? DynamicDataFields
-        {
-            get => _dynamicDataFields;
-            set
-            {
-                _dynamicDataFields = value;
-                _dynamicDataFieldsSet = true;
-            }
-        }
-
-        private BraintreeDynamicDataFieldsOptions? _dynamicDataFields = null;
-
-        private bool _dynamicDataFieldsSet = false;
-
-        public bool ShouldSerializeDynamicDataFields() => _dynamicDataFieldsSet;
+        [JsonProperty("dynamic_data_fields", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<BraintreeDynamicDataFieldsOptions?> DynamicDataFields { get; set; }
+        public bool ShouldSerializeDynamicDataFields() => DynamicDataFields.IsSet;
     }
 }

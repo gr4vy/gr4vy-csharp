@@ -18,6 +18,6 @@ namespace Gr4vy.Models.Requests
     {
         public Func<Task<ListApiKeyPairsResponse?>>? Next {get;set;}
         [SpeakeasyMetadata("")]
-        public CollectionAPIKeyPair Result { get; set; } = default!;
+        public CollectionAPIKeyPair Result { get; set; } = new();
     }
 }

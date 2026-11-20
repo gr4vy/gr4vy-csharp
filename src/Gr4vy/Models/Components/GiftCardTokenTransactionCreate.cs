@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The ID for the gift card to charge.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The monetary amount for this transaction to charge against the gift card, in the smallest currency unit (for example, cents or pence).
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
     }
 }

@@ -21,6 +21,6 @@ namespace Gr4vy.Models.Requests
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public VerifyCredentials VerifyCredentials { get; set; } = default!;
+        public VerifyCredentials VerifyCredentials { get; set; } = new();
     }
 }

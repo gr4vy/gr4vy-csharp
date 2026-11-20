@@ -22,49 +22,53 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Aways `click-to-pay`.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public string Method { get; } = "click-to-pay";
 
         /// <summary>
         /// The device token.
         /// </summary>
-        [JsonProperty("token")]
+        [JsonProperty("token", Required = Newtonsoft.Json.Required.Always)]
         public string Token { get; set; } = default!;
 
         /// <summary>
         /// The payment cryptogram for the device token.
         /// </summary>
-        [JsonProperty("cryptogram")]
+        [JsonProperty("cryptogram", Required = Newtonsoft.Json.Required.Always)]
         public string Cryptogram { get; set; } = default!;
 
         /// <summary>
         /// The expiration date of the device token.
         /// </summary>
-        [JsonProperty("expiration_date")]
+        [JsonProperty("expiration_date", Required = Newtonsoft.Json.Required.Always)]
         public string ExpirationDate { get; set; } = default!;
 
         /// <summary>
         /// The ID of the buyer to associate this transaction to.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// The external identifier of the buyer to create a transaction for.
         /// </summary>
-        [JsonProperty("buyer_external_identifier")]
-        public string? BuyerExternalIdentifier { get; set; } = null;
+        [JsonProperty("buyer_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerExternalIdentifier { get; set; }
+        public bool ShouldSerializeBuyerExternalIdentifier() => BuyerExternalIdentifier.IsSet;
 
         /// <summary>
         /// The external identifier of the payment method to filter by.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// The URL to redirect a user back to after the complete 3DS in browser.
         /// </summary>
-        [JsonProperty("redirect_url")]
-        public string? RedirectUrl { get; set; } = null;
+        [JsonProperty("redirect_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RedirectUrl { get; set; }
+        public bool ShouldSerializeRedirectUrl() => RedirectUrl.IsSet;
     }
 }

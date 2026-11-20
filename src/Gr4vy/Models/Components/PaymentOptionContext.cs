@@ -16,16 +16,16 @@ namespace Gr4vy.Models.Components
 
     public class PaymentOptionContext
     {
-        [JsonProperty("approval_ui")]
+        [JsonProperty("approval_ui", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public PaymentOptionContextApprovalUI? ApprovalUi { get; set; } = null;
 
-        [JsonProperty("required_fields")]
+        [JsonProperty("required_fields", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public Dictionary<string, RequiredFields2>? RequiredFields { get; set; } = null;
 
-        [JsonProperty("redirect_requires_popup")]
+        [JsonProperty("redirect_requires_popup", Required = Newtonsoft.Json.Required.Always)]
         public bool RedirectRequiresPopup { get; set; } = default!;
 
-        [JsonProperty("requires_tokenized_redirect_popup")]
+        [JsonProperty("requires_tokenized_redirect_popup", Required = Newtonsoft.Json.Required.Always)]
         public bool RequiresTokenizedRedirectPopup { get; set; } = default!;
     }
 }

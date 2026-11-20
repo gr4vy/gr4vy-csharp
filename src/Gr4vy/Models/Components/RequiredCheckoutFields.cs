@@ -21,13 +21,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of transaction fields that are required to process a payment for this service.
         /// </summary>
-        [JsonProperty("required_fields")]
+        [JsonProperty("required_fields", Required = Newtonsoft.Json.Required.Always)]
         public List<string> RequiredFields { get; set; } = default!;
 
         /// <summary>
         /// The conditions under which these fields are required.
         /// </summary>
-        [JsonProperty("conditions")]
+        [JsonProperty("conditions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public Dictionary<string, object>? Conditions { get; set; } = null;
     }
 }
