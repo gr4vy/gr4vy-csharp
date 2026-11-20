@@ -18,40 +18,40 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// First name of the consumer.
         /// </summary>
-        [JsonProperty("firstName", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("firstName", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? FirstName { get; set; }
 
         /// <summary>
         /// Last name of the consumer.
         /// </summary>
-        [JsonProperty("lastName", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("lastName", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? LastName { get; set; }
 
         /// <summary>
         /// Full name of the consumer.
         /// </summary>
-        [JsonProperty("fullName")]
+        [JsonProperty("fullName", Required = Newtonsoft.Json.Required.Always)]
         public string FullName { get; set; } = default!;
 
         /// <summary>
         /// ISO 3166-1 alpha-2 country code.
         /// </summary>
-        [JsonProperty("countryCode", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("countryCode", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? CountryCode { get; set; }
 
         /// <summary>
         /// ISO 639-1 language code associated with the wallet.
         /// </summary>
-        [JsonProperty("languageCode", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("languageCode", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? LanguageCode { get; set; }
 
         /// <summary>
         /// Email address of the consumer.
         /// </summary>
-        [JsonProperty("emailAddress")]
+        [JsonProperty("emailAddress", Required = Newtonsoft.Json.Required.Always)]
         public string EmailAddress { get; set; } = default!;
 
-        [JsonProperty("mobileNumber", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("mobileNumber", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public PazeMobileNumber? MobileNumber { get; set; }
     }
 }

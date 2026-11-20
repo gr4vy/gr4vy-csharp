@@ -17,19 +17,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `account-updater-inquiry`
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "account-updater-inquiry";
 
         /// <summary>
         /// The ID for the account updater inquiry.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of the payment method.
         /// </summary>
-        [JsonProperty("payment_method_id")]
+        [JsonProperty("payment_method_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentMethodId { get; set; } = default!;
     }
 }

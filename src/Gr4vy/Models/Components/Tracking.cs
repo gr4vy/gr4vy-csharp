@@ -22,16 +22,17 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The tracking number for the shipment.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonProperty("number", Required = Newtonsoft.Json.Required.Always)]
         public string Number { get; set; } = default!;
 
-        [JsonProperty("carrier")]
+        [JsonProperty("carrier", Required = Newtonsoft.Json.Required.Always)]
         public ShippingCarrier Carrier { get; set; } = default!;
 
         /// <summary>
         /// The URL to track the shipment.
         /// </summary>
-        [JsonProperty("url")]
-        public string? Url { get; set; } = null;
+        [JsonProperty("url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Url { get; set; }
+        public bool ShouldSerializeUrl() => Url.IsSet;
     }
 }

@@ -17,81 +17,29 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Customer type ("N" for persona natural, "J" for persona jurídica).
         /// </summary>
-        [JsonProperty("userType", NullValueHandling = NullValueHandling.Include)]
-        public string? UserType
-        {
-            get => _userType;
-            set
-            {
-                _userType = value;
-                _userTypeSet = true;
-            }
-        }
-
-        private string? _userType = null;
-
-        private bool _userTypeSet = false;
-
-        public bool ShouldSerializeUserType() => _userTypeSet;
+        [JsonProperty("userType", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> UserType { get; set; }
+        public bool ShouldSerializeUserType() => UserType.IsSet;
 
         /// <summary>
         /// Customer's document type.
         /// </summary>
-        [JsonProperty("userFisNumber", NullValueHandling = NullValueHandling.Include)]
-        public string? UserFisNumber
-        {
-            get => _userFisNumber;
-            set
-            {
-                _userFisNumber = value;
-                _userFisNumberSet = true;
-            }
-        }
-
-        private string? _userFisNumber = null;
-
-        private bool _userFisNumberSet = false;
-
-        public bool ShouldSerializeUserFisNumber() => _userFisNumberSet;
+        [JsonProperty("userFisNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> UserFisNumber { get; set; }
+        public bool ShouldSerializeUserFisNumber() => UserFisNumber.IsSet;
 
         /// <summary>
         /// Customer's document number.
         /// </summary>
-        [JsonProperty("fiscalNumber", NullValueHandling = NullValueHandling.Include)]
-        public string? FiscalNumber
-        {
-            get => _fiscalNumber;
-            set
-            {
-                _fiscalNumber = value;
-                _fiscalNumberSet = true;
-            }
-        }
-
-        private string? _fiscalNumber = null;
-
-        private bool _fiscalNumberSet = false;
-
-        public bool ShouldSerializeFiscalNumber() => _fiscalNumberSet;
+        [JsonProperty("fiscalNumber", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FiscalNumber { get; set; }
+        public bool ShouldSerializeFiscalNumber() => FiscalNumber.IsSet;
 
         /// <summary>
         /// The bank code of the selected bank.
         /// </summary>
-        [JsonProperty("bankCode", NullValueHandling = NullValueHandling.Include)]
-        public string? BankCode
-        {
-            get => _bankCode;
-            set
-            {
-                _bankCode = value;
-                _bankCodeSet = true;
-            }
-        }
-
-        private string? _bankCode = null;
-
-        private bool _bankCodeSet = false;
-
-        public bool ShouldSerializeBankCode() => _bankCodeSet;
+        [JsonProperty("bankCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BankCode { get; set; }
+        public bool ShouldSerializeBankCode() => BankCode.IsSet;
     }
 }

@@ -17,7 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The domain on which Google Pay is being loaded.
         /// </summary>
-        [JsonProperty("origin_domain")]
+        [JsonProperty("origin_domain", Required = Newtonsoft.Json.Required.Always)]
         public string OriginDomain { get; set; } = default!;
     }
 }

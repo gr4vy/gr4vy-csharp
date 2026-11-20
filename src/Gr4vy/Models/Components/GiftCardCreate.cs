@@ -17,25 +17,27 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The 16-19 digit number for the gift card.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonProperty("number", Required = Newtonsoft.Json.Required.Always)]
         public string Number { get; set; } = default!;
 
         /// <summary>
         /// The PIN for this gift card.
         /// </summary>
-        [JsonProperty("pin")]
+        [JsonProperty("pin", Required = Newtonsoft.Json.Required.Always)]
         public string Pin { get; set; } = default!;
 
         /// <summary>
         /// The ID of the buyer to associate this gift card to. If this field is provided then the `buyer_external_identifier` field needs to be unset.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// The `external_identifier` of the buyer to associate this gift card to. If this field is provided then the `buyer_id` field needs to be unset.
         /// </summary>
-        [JsonProperty("buyer_external_identifier")]
-        public string? BuyerExternalIdentifier { get; set; } = null;
+        [JsonProperty("buyer_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerExternalIdentifier { get; set; }
+        public bool ShouldSerializeBuyerExternalIdentifier() => BuyerExternalIdentifier.IsSet;
     }
 }

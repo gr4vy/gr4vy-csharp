@@ -18,6 +18,6 @@ namespace Gr4vy.Models.Requests
     {
         public Func<Task<GetThreeDsScenarioResponse?>>? Next {get;set;}
         [SpeakeasyMetadata("")]
-        public ThreeDSecureScenarios Result { get; set; } = default!;
+        public ThreeDSecureScenarios Result { get; set; } = new();
     }
 }

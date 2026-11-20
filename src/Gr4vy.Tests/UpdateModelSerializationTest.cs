@@ -87,7 +87,7 @@ public class UpdateModelSerializationTests
         var asNull = new MerchantAccountUpdate { LoonAcceptedSchemes = null };
         var asValue = new MerchantAccountUpdate
         {
-            LoonAcceptedSchemes = new() { "visa", "mastercard" },
+            LoonAcceptedSchemes = new List<CardScheme> { "visa", "mastercard" },
         };
 
         Assert.That(SerializeToJObject(unset).ContainsKey("loon_accepted_schemes"), Is.False);

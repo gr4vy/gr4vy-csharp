@@ -17,7 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The amount by which to increment the authorization, in the smallest currency unit of the transaction's currency. For example, `1299` cents to increment the authorization by `$12.99`.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
     }
 }

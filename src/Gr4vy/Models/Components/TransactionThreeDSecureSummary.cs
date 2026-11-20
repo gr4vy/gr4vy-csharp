@@ -22,37 +22,37 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The version of 3DS used for this transaction.
         /// </summary>
-        [JsonProperty("version")]
+        [JsonProperty("version", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Version { get; set; } = null;
 
         /// <summary>
         /// The status of the 3DS challenge for this transaction.
         /// </summary>
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public ThreeDSecureStatus? Status { get; set; } = null;
 
         /// <summary>
         /// The method used for 3DS authentication for this transaction.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public ThreeDSecureMethod? Method { get; set; } = null;
 
         /// <summary>
         /// The 3DS data used for this transaction. To see full details about the 3DS calls please use our transaction events API.
         /// </summary>
-        [JsonProperty("response_data", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("response_data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public ResponseData? ResponseData { get; set; } = null;
 
         /// <summary>
         /// The error data received from our 3DS server. This will not be populated if the customer failed the authentication with a status code of `N`, `R`, or `U`. To see full details about the 3DS calls in those situations please use our transaction events API.
         /// </summary>
-        [JsonProperty("error_data")]
+        [JsonProperty("error_data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public ThreeDSecureError? ErrorData { get; set; } = null;
 
         /// <summary>
         /// The amount used for 3DS authentication.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public long? Amount { get; set; } = null;
     }
 }

@@ -17,19 +17,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The account holder's first name.
         /// </summary>
-        [JsonProperty("first_name")]
-        public string? FirstName { get; set; } = null;
+        [JsonProperty("first_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> FirstName { get; set; }
+        public bool ShouldSerializeFirstName() => FirstName.IsSet;
 
         /// <summary>
         /// The account holder's last name.
         /// </summary>
-        [JsonProperty("last_name")]
-        public string? LastName { get; set; } = null;
+        [JsonProperty("last_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> LastName { get; set; }
+        public bool ShouldSerializeLastName() => LastName.IsSet;
 
         /// <summary>
         /// The account holder's company name.
         /// </summary>
-        [JsonProperty("company_name")]
-        public string? CompanyName { get; set; } = null;
+        [JsonProperty("company_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CompanyName { get; set; }
+        public bool ShouldSerializeCompanyName() => CompanyName.IsSet;
     }
 }

@@ -18,101 +18,36 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A dictionary of merchant defined data, to be passed to Wpay for anti-fraud control.
         /// </summary>
-        [JsonProperty("merchant_defined_data", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? MerchantDefinedData
-        {
-            get => _merchantDefinedData;
-            set
-            {
-                _merchantDefinedData = value;
-                _merchantDefinedDataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _merchantDefinedData = null;
-
-        private bool _merchantDefinedDataSet = false;
-
-        public bool ShouldSerializeMerchantDefinedData() => _merchantDefinedDataSet;
+        [JsonProperty("merchant_defined_data", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> MerchantDefinedData { get; set; }
+        public bool ShouldSerializeMerchantDefinedData() => MerchantDefinedData.IsSet;
 
         /// <summary>
         /// The customer ID for the Everyday Rewards account.
         /// </summary>
-        [JsonProperty("customerId", NullValueHandling = NullValueHandling.Include)]
-        public string? CustomerId
-        {
-            get => _customerId;
-            set
-            {
-                _customerId = value;
-                _customerIdSet = true;
-            }
-        }
-
-        private string? _customerId = null;
-
-        private bool _customerIdSet = false;
-
-        public bool ShouldSerializeCustomerId() => _customerIdSet;
+        [JsonProperty("customerId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CustomerId { get; set; }
+        public bool ShouldSerializeCustomerId() => CustomerId.IsSet;
 
         /// <summary>
         /// The access token for the Everyday Rewards account.
         /// </summary>
-        [JsonProperty("rewardsAccessToken", NullValueHandling = NullValueHandling.Include)]
-        public string? RewardsAccessToken
-        {
-            get => _rewardsAccessToken;
-            set
-            {
-                _rewardsAccessToken = value;
-                _rewardsAccessTokenSet = true;
-            }
-        }
-
-        private string? _rewardsAccessToken = null;
-
-        private bool _rewardsAccessTokenSet = false;
-
-        public bool ShouldSerializeRewardsAccessToken() => _rewardsAccessTokenSet;
+        [JsonProperty("rewardsAccessToken", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RewardsAccessToken { get; set; }
+        public bool ShouldSerializeRewardsAccessToken() => RewardsAccessToken.IsSet;
 
         /// <summary>
         /// The ID of the device on which the payment is occuring.
         /// </summary>
-        [JsonProperty("deviceId", NullValueHandling = NullValueHandling.Include)]
-        public string? DeviceId
-        {
-            get => _deviceId;
-            set
-            {
-                _deviceId = value;
-                _deviceIdSet = true;
-            }
-        }
-
-        private string? _deviceId = null;
-
-        private bool _deviceIdSet = false;
-
-        public bool ShouldSerializeDeviceId() => _deviceIdSet;
+        [JsonProperty("deviceId", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> DeviceId { get; set; }
+        public bool ShouldSerializeDeviceId() => DeviceId.IsSet;
 
         /// <summary>
         /// Whether the transaction should redirect post-payment.
         /// </summary>
-        [JsonProperty("postPaymentRedirect", NullValueHandling = NullValueHandling.Include)]
-        public bool? PostPaymentRedirect
-        {
-            get => _postPaymentRedirect;
-            set
-            {
-                _postPaymentRedirect = value;
-                _postPaymentRedirectSet = true;
-            }
-        }
-
-        private bool? _postPaymentRedirect = null;
-
-        private bool _postPaymentRedirectSet = false;
-
-        public bool ShouldSerializePostPaymentRedirect() => _postPaymentRedirectSet;
+        [JsonProperty("postPaymentRedirect", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> PostPaymentRedirect { get; set; }
+        public bool ShouldSerializePostPaymentRedirect() => PostPaymentRedirect.IsSet;
     }
 }

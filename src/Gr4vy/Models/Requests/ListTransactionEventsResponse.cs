@@ -18,6 +18,6 @@ namespace Gr4vy.Models.Requests
     {
         public Func<Task<ListTransactionEventsResponse?>>? Next {get;set;}
         [SpeakeasyMetadata("")]
-        public TransactionEvents Result { get; set; } = default!;
+        public TransactionEvents Result { get; set; } = new();
     }
 }

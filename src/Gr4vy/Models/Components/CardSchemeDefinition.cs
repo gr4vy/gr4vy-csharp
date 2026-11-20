@@ -17,25 +17,25 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `card-scheme-definition`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "card-scheme-definition";
 
         /// <summary>
         /// The ID for the card scheme.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The icon for this card scheme.
         /// </summary>
-        [JsonProperty("icon_url")]
+        [JsonProperty("icon_url", Required = Newtonsoft.Json.Required.Always)]
         public string IconUrl { get; set; } = default!;
 
         /// <summary>
         /// The display name of this card scheme.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
     }
 }

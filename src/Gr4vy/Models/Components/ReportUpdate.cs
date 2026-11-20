@@ -17,61 +17,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The name of the report.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string? Name
-        {
-            get => _name;
-            set
-            {
-                _name = value;
-                _nameSet = true;
-            }
-        }
-
-        private string? _name = null;
-
-        private bool _nameSet = false;
-
-        public bool ShouldSerializeName() => _nameSet;
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Name { get; set; }
+        public bool ShouldSerializeName() => Name.IsSet;
 
         /// <summary>
         /// A description of the report.
         /// </summary>
-        [JsonProperty("description", NullValueHandling = NullValueHandling.Include)]
-        public string? Description
-        {
-            get => _description;
-            set
-            {
-                _description = value;
-                _descriptionSet = true;
-            }
-        }
-
-        private string? _description = null;
-
-        private bool _descriptionSet = false;
-
-        public bool ShouldSerializeDescription() => _descriptionSet;
+        [JsonProperty("description", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Description { get; set; }
+        public bool ShouldSerializeDescription() => Description.IsSet;
 
         /// <summary>
         /// Whether the report schedule is enabled.
         /// </summary>
-        [JsonProperty("schedule_enabled", NullValueHandling = NullValueHandling.Include)]
-        public bool? ScheduleEnabled
-        {
-            get => _scheduleEnabled;
-            set
-            {
-                _scheduleEnabled = value;
-                _scheduleEnabledSet = true;
-            }
-        }
-
-        private bool? _scheduleEnabled = null;
-
-        private bool _scheduleEnabledSet = false;
-
-        public bool ShouldSerializeScheduleEnabled() => _scheduleEnabledSet;
+        [JsonProperty("schedule_enabled", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<bool?> ScheduleEnabled { get; set; }
+        public bool ShouldSerializeScheduleEnabled() => ScheduleEnabled.IsSet;
     }
 }

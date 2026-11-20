@@ -27,142 +27,142 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-method`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-method";
 
         /// <summary>
         /// The optional URL that the buyer needs to be redirected to to further authorize their payment.
         /// </summary>
-        [JsonProperty("approval_url")]
+        [JsonProperty("approval_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? ApprovalUrl { get; set; } = null;
 
         /// <summary>
         /// The 2-letter ISO code of the country this payment method can be used for. If this value is null the payment method may be used in multiple countries.
         /// </summary>
-        [JsonProperty("country")]
+        [JsonProperty("country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Country { get; set; } = null;
 
         /// <summary>
         /// The ISO-4217 currency code that this payment method can be used for. If this value is null the payment method may be used for multiple currencies.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Currency { get; set; } = null;
 
         /// <summary>
         /// Details for credit or debit card payment method.
         /// </summary>
-        [JsonProperty("details")]
+        [JsonProperty("details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public PaymentMethodDetailsCard? Details { get; set; } = null;
 
         /// <summary>
         /// The expiration date for the payment method.
         /// </summary>
-        [JsonProperty("expiration_date")]
+        [JsonProperty("expiration_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? ExpirationDate { get; set; } = null;
 
         /// <summary>
         /// The unique hash derived from the payment method identifier (e.g. card number).
         /// </summary>
-        [JsonProperty("fingerprint")]
+        [JsonProperty("fingerprint", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Fingerprint { get; set; } = null;
 
         /// <summary>
         /// A label for the card or the account. For a paypal payment method this is the user's email address. For a card it is the last 4 digits of the card.
         /// </summary>
-        [JsonProperty("label")]
+        [JsonProperty("label", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Label { get; set; } = null;
 
         /// <summary>
         /// The date and time when this card was last replaced by the account updater.
         /// </summary>
-        [JsonProperty("last_replaced_at")]
+        [JsonProperty("last_replaced_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public DateTime? LastReplacedAt { get; set; } = null;
 
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public Method Method { get; set; } = default!;
 
         /// <summary>
         /// The mode to use with this payment method.
         /// </summary>
-        [JsonProperty("mode")]
+        [JsonProperty("mode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public Mode? Mode { get; set; } = null;
 
         /// <summary>
         /// The scheme of the card. Only applies to card payments.
         /// </summary>
-        [JsonProperty("scheme")]
+        [JsonProperty("scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public CardScheme? Scheme { get; set; } = null;
 
         /// <summary>
         /// The ID for the payment method.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of the merchant account this buyer belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// Additional schemes of the card besides the primary scheme. Only applies to card payment methods.
         /// </summary>
-        [JsonProperty("additional_schemes")]
+        [JsonProperty("additional_schemes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public List<CardScheme>? AdditionalSchemes { get; set; } = null;
 
         /// <summary>
         /// The preferred card scheme to use when processing a co-badged card.
         /// </summary>
-        [JsonProperty("preferred_scheme")]
+        [JsonProperty("preferred_scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public PaymentMethodSummaryPreferredScheme? PreferredScheme { get; set; } = null;
 
         /// <summary>
         /// The timestamp when this payment method was last used in a transaction for client initiated transactions.
         /// </summary>
-        [JsonProperty("cit_last_used_at")]
+        [JsonProperty("cit_last_used_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public DateTime? CitLastUsedAt { get; set; } = null;
 
         /// <summary>
         /// The number of times this payment method has been used in transactions for client initiated transactions.
         /// </summary>
-        [JsonProperty("cit_usage_count")]
+        [JsonProperty("cit_usage_count", Required = Newtonsoft.Json.Required.Always)]
         public long CitUsageCount { get; set; } = default!;
 
         /// <summary>
         /// Whether this card has a pending replacement that hasn't been applied yet.
         /// </summary>
-        [JsonProperty("has_replacement")]
+        [JsonProperty("has_replacement", Required = Newtonsoft.Json.Required.Always)]
         public bool HasReplacement { get; set; } = default!;
 
         /// <summary>
         /// The timestamp when this payment method was last used in a transaction.
         /// </summary>
-        [JsonProperty("last_used_at")]
+        [JsonProperty("last_used_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public DateTime? LastUsedAt { get; set; } = null;
 
         /// <summary>
         /// The number of times this payment method has been used in transactions.
         /// </summary>
-        [JsonProperty("usage_count")]
+        [JsonProperty("usage_count", Required = Newtonsoft.Json.Required.Always)]
         public long UsageCount { get; set; } = default!;
 
         /// <summary>
         /// The scheme transaction identifier stored against this payment method.
         /// </summary>
-        [JsonProperty("scheme_transaction_id", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("scheme_transaction_id", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? SchemeTransactionId { get; set; }
 
         /// <summary>
         /// The scheme associated with scheme_transaction_id. Only applies to card payments.
         /// </summary>
-        [JsonProperty("scheme_transaction_id_scheme", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("scheme_transaction_id_scheme", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public CardScheme? SchemeTransactionIdScheme { get; set; }
 
         /// <summary>
         /// The transaction link identifier stored against this payment method.
         /// </summary>
-        [JsonProperty("transaction_link_id")]
+        [JsonProperty("transaction_link_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? TransactionLinkId { get; set; } = null;
     }
 }

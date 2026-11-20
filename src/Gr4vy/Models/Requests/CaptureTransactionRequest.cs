@@ -40,6 +40,6 @@ namespace Gr4vy.Models.Requests
         public string? IdempotencyKey { get; set; } = null;
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public TransactionCaptureCreate TransactionCaptureCreate { get; set; } = default!;
+        public TransactionCaptureCreate TransactionCaptureCreate { get; set; } = new();
     }
 }

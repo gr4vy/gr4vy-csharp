@@ -22,55 +22,55 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `role`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "role";
 
         /// <summary>
         /// The unique ID for the role.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The human-readable name of the role.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The unique, human-readable identifier for the role.
         /// </summary>
-        [JsonProperty("slug")]
+        [JsonProperty("slug", Required = Newtonsoft.Json.Required.Always)]
         public string Slug { get; set; } = default!;
 
         /// <summary>
         /// A description of the access this role grants.
         /// </summary>
-        [JsonProperty("description")]
+        [JsonProperty("description", Required = Newtonsoft.Json.Required.Always)]
         public string Description { get; set; } = default!;
 
         /// <summary>
         /// The permissions granted by a role.
         /// </summary>
-        [JsonProperty("permissions")]
-        public PermissionSet Permissions { get; set; } = default!;
+        [JsonProperty("permissions", Required = Newtonsoft.Json.Required.Always)]
+        public PermissionSet Permissions { get; set; } = new();
 
         /// <summary>
         /// The types of resource this role can be assigned to.
         /// </summary>
-        [JsonProperty("assignable_to")]
+        [JsonProperty("assignable_to", Required = Newtonsoft.Json.Required.Always)]
         public List<RoleAssigneeType> AssignableTo { get; set; } = default!;
 
         /// <summary>
         /// The slugs of the roles this role is an add-on of. Empty when this role is not an add-on.
         /// </summary>
-        [JsonProperty("applies_to")]
+        [JsonProperty("applies_to", Required = Newtonsoft.Json.Required.Always)]
         public List<string> AppliesTo { get; set; } = default!;
 
         /// <summary>
         /// Whether this role can be assigned on its own, without being combined with another role.
         /// </summary>
-        [JsonProperty("is_standalone_assignable")]
+        [JsonProperty("is_standalone_assignable", Required = Newtonsoft.Json.Required.Always)]
         public bool IsStandaloneAssignable { get; set; } = default!;
     }
 }

@@ -17,9 +17,8 @@ on:
     # -> every endpoint 500s (Sentry CORE-API-1N0). Keep these apart.
     - cron: 50 8 * * 1-5
 
-# A new push to a PR cancels the previous in-flight run (the generation job
-# pushes the tri-state patch straight after Speakeasy's commit). Runs on main
-# are never cancelled: the publish workflow waits for each one to finish.
+# A new push to a PR cancels the previous in-flight run. Runs on main are
+# never cancelled: the publish workflow waits for each one to finish.
 concurrency:
   group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: ${{ github.event_name == 'pull_request' }}
@@ -29,8 +28,8 @@ permissions:
 
 jobs:
   # Builds the SDK and tests, and runs the tests that need no sandbox: JWT auth,
-  # webhook signatures and the tri-state *Update serialization the regen patch
-  # protects. Runs everywhere, including PRs.
+  # webhook signatures and the tri-state *Update serialization. Runs everywhere,
+  # including PRs.
   offline:
     runs-on: ubuntu-latest
     timeout-minutes: 10

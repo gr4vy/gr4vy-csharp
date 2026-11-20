@@ -22,34 +22,34 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `user`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "user";
 
         /// <summary>
         /// The ID of the user.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Id { get; set; } = null;
 
         /// <summary>
         /// The name of the user.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
 
         /// <summary>
         /// The email address for this user.
         /// </summary>
-        [JsonProperty("email_address")]
+        [JsonProperty("email_address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? EmailAddress { get; set; } = null;
 
         /// <summary>
         /// Whether this is a Gr4vy staff user.
         /// </summary>
-        [JsonProperty("is_staff")]
+        [JsonProperty("is_staff", Required = Newtonsoft.Json.Required.Always)]
         public bool IsStaff { get; set; } = default!;
 
-        [JsonProperty("status")]
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.Always)]
         public UserStatus Status { get; set; } = default!;
     }
 }

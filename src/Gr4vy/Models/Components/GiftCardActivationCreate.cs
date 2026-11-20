@@ -20,49 +20,55 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The 16-19 digit number for the gift card.
         /// </summary>
-        [JsonProperty("number")]
+        [JsonProperty("number", Required = Newtonsoft.Json.Required.Always)]
         public string Number { get; set; } = default!;
 
         /// <summary>
         /// The PIN for this gift card.
         /// </summary>
-        [JsonProperty("pin")]
-        public string? Pin { get; set; } = null;
+        [JsonProperty("pin", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Pin { get; set; }
+        public bool ShouldSerializePin() => Pin.IsSet;
 
         /// <summary>
         /// The amount to load onto the gift card, in the smallest denomination for the currency. Required if `currency` is provided.
         /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; } = null;
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Amount { get; set; }
+        public bool ShouldSerializeAmount() => Amount.IsSet;
 
         /// <summary>
         /// The ISO-4217 currency code for the `amount`. Required if `amount` is provided.
         /// </summary>
-        [JsonProperty("currency")]
-        public string? Currency { get; set; } = null;
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Currency { get; set; }
+        public bool ShouldSerializeCurrency() => Currency.IsSet;
 
         /// <summary>
         /// An optional external identifier for this activation.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// Whether to store the activated gift card in the vault. When `true`, a `pin` is required.
         /// </summary>
-        [JsonProperty("store")]
+        [JsonProperty("store", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? Store { get; set; } = false;
 
         /// <summary>
         /// The ID of the buyer to associate this gift card to. Only allowed when `store` is `true`. If this field is provided then the `buyer_external_identifier` field needs to be unset.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// The `external_identifier` of the buyer to associate this gift card to. Only allowed when `store` is `true`. If this field is provided then the `buyer_id` field needs to be unset.
         /// </summary>
-        [JsonProperty("buyer_external_identifier")]
-        public string? BuyerExternalIdentifier { get; set; } = null;
+        [JsonProperty("buyer_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerExternalIdentifier { get; set; }
+        public bool ShouldSerializeBuyerExternalIdentifier() => BuyerExternalIdentifier.IsSet;
     }
 }

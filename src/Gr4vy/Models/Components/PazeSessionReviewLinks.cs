@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Follow-up link to change the selected card.
         /// </summary>
-        [JsonProperty("CHANGE_CARD", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("CHANGE_CARD", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? ChangeCard { get; set; }
 
         /// <summary>
         /// Follow-up link to change the shipping address.
         /// </summary>
-        [JsonProperty("CHANGE_SHIPPING_ADDRESS", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("CHANGE_SHIPPING_ADDRESS", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? ChangeShippingAddress { get; set; }
     }
 }

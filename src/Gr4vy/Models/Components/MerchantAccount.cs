@@ -22,157 +22,157 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `merchant-account`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "merchant-account";
 
         /// <summary>
         /// The ID for the merchant account.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The display name for the buyer.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
 
         /// <summary>
         /// Client key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
-        [JsonProperty("loon_client_key")]
+        [JsonProperty("loon_client_key", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? LoonClientKey { get; set; } = null;
 
         /// <summary>
         /// Secret key provided by Pagos to authenticate to the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
-        [JsonProperty("loon_secret_key")]
+        [JsonProperty("loon_secret_key", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? LoonSecretKey { get; set; } = null;
 
         /// <summary>
         /// Card schemes accepted when creating jobs using this set of Loon API keys. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
-        [JsonProperty("loon_accepted_schemes")]
+        [JsonProperty("loon_accepted_schemes", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public List<CardScheme>? LoonAcceptedSchemes { get; set; } = null;
 
         /// <summary>
         /// Merchant account ID provided by Pagos to identify this merchant account on the Loon API. Loon is the Account Updater service we use and if the field is not set or if it's set to null, the Account Updater service doesn't get configured. If the field is set to `null`, the other `loon_*` fields must be set to null as well.
         /// </summary>
-        [JsonProperty("loon_merchant_account_id")]
+        [JsonProperty("loon_merchant_account_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? LoonMerchantAccountId { get; set; } = null;
 
         /// <summary>
         /// The public key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
-        [JsonProperty("account_updater_request_encryption_key")]
+        [JsonProperty("account_updater_request_encryption_key", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? AccountUpdaterRequestEncryptionKey { get; set; } = null;
 
         /// <summary>
         /// The ID of the key used to encrypt the request to the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
-        [JsonProperty("account_updater_request_encryption_key_id")]
+        [JsonProperty("account_updater_request_encryption_key_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? AccountUpdaterRequestEncryptionKeyId { get; set; } = null;
 
         /// <summary>
         /// The key used to decrypt the response from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
-        [JsonProperty("account_updater_response_decryption_key")]
+        [JsonProperty("account_updater_response_decryption_key", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? AccountUpdaterResponseDecryptionKey { get; set; } = null;
 
         /// <summary>
         /// The ID of the key used to decrypt the request from the Real-Time Account Updater service. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `null`, the Account Updater service doesn't get called. If the field is set, the other `account_updater_*` fields must be set as well.
         /// </summary>
         [Obsolete("This field will be removed in a future release, please migrate away from it as soon as possible")]
-        [JsonProperty("account_updater_response_decryption_key_id")]
+        [JsonProperty("account_updater_response_decryption_key_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? AccountUpdaterResponseDecryptionKeyId { get; set; } = null;
 
         /// <summary>
         /// Whether the Real-Time Account Updater service is enabled for this merchant account. The Account Updater service is used to update card details when cards are lost, stolen or expired. If the field is not set or if it's set to `false`, the Account Updater service doesn't get called if a payment fails with expired or invalid card details. If the field is set to `true`, the service is called. Please note that for this to work the other `account_updater_* fields` must be set as well.
         /// </summary>
-        [JsonProperty("account_updater_enabled")]
+        [JsonProperty("account_updater_enabled", Required = Newtonsoft.Json.Required.Always)]
         public bool AccountUpdaterEnabled { get; set; } = default!;
 
         /// <summary>
         /// The maximum monetary amount allowed for over-capture, in the smallest currency unit, for example `1299` cents to allow for an over-capture of `$12.99`.
         /// </summary>
-        [JsonProperty("over_capture_amount")]
+        [JsonProperty("over_capture_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public long? OverCaptureAmount { get; set; } = null;
 
         /// <summary>
         /// The maximum percentage allowed for over-capture, for example `25` to allow for an over-capture of `25%` of the original transaction amount.
         /// </summary>
-        [JsonProperty("over_capture_percentage")]
+        [JsonProperty("over_capture_percentage", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public long? OverCapturePercentage { get; set; } = null;
 
         /// <summary>
         /// Requestor ID provided for Visa after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("visa_network_tokens_requestor_id")]
+        [JsonProperty("visa_network_tokens_requestor_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? VisaNetworkTokensRequestorId { get; set; } = null;
 
         /// <summary>
         /// Application ID provided for Visa after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("visa_network_tokens_app_id")]
+        [JsonProperty("visa_network_tokens_app_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? VisaNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
         /// Requestor ID provided for American Express after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("amex_network_tokens_requestor_id")]
+        [JsonProperty("amex_network_tokens_requestor_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? AmexNetworkTokensRequestorId { get; set; } = null;
 
         /// <summary>
         /// Application ID provided for American Express after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("amex_network_tokens_app_id")]
+        [JsonProperty("amex_network_tokens_app_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? AmexNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
         /// Requestor ID provided for Mastercard after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("mastercard_network_tokens_requestor_id")]
+        [JsonProperty("mastercard_network_tokens_requestor_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? MastercardNetworkTokensRequestorId { get; set; } = null;
 
         /// <summary>
         /// Application ID provided for Mastercard after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("mastercard_network_tokens_app_id")]
+        [JsonProperty("mastercard_network_tokens_app_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? MastercardNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
         /// Requestor ID provided for Discover after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("discover_network_tokens_requestor_id")]
+        [JsonProperty("discover_network_tokens_requestor_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? DiscoverNetworkTokensRequestorId { get; set; } = null;
 
         /// <summary>
         /// Application ID provided for Discover after onboarding to use Network Tokens.
         /// </summary>
-        [JsonProperty("discover_network_tokens_app_id")]
+        [JsonProperty("discover_network_tokens_app_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? DiscoverNetworkTokensAppId { get; set; } = null;
 
         /// <summary>
         /// When enabled network tokens will be generated asynchronously and only used on subsequent transactions to speed up transaction processing.
         /// </summary>
-        [JsonProperty("async_network_tokens_enabled")]
+        [JsonProperty("async_network_tokens_enabled", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? AsyncNetworkTokensEnabled { get; set; } = false;
 
         /// <summary>
         /// The date this merchant account was created at.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date this merchant account was last updated at.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
     }
 }

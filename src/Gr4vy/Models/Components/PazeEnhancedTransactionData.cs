@@ -18,13 +18,15 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Details pertaining to electronic commerce purchases.
         /// </summary>
-        [JsonProperty("ecomData")]
-        public PazeEcomData? EcomData { get; set; } = null;
+        [JsonProperty("ecomData", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<PazeEcomData?> EcomData { get; set; }
+        public bool ShouldSerializeEcomData() => EcomData.IsSet;
 
         /// <summary>
         /// Details pertaining to travel bookings.
         /// </summary>
-        [JsonProperty("travelData")]
-        public PazeTravelData? TravelData { get; set; } = null;
+        [JsonProperty("travelData", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<PazeTravelData?> TravelData { get; set; }
+        public bool ShouldSerializeTravelData() => TravelData.IsSet;
     }
 }

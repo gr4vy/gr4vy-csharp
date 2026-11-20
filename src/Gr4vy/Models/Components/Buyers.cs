@@ -19,25 +19,25 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of items returned for this request.
         /// </summary>
-        [JsonProperty("items")]
+        [JsonProperty("items", Required = Newtonsoft.Json.Required.Always)]
         public List<Buyer> Items { get; set; } = default!;
 
         /// <summary>
         /// The number of items for this page.
         /// </summary>
-        [JsonProperty("limit")]
+        [JsonProperty("limit", Required = Newtonsoft.Json.Required.DisallowNull)]
         public long? Limit { get; set; } = 20;
 
         /// <summary>
         /// The cursor pointing at the next page of items.
         /// </summary>
-        [JsonProperty("next_cursor")]
+        [JsonProperty("next_cursor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? NextCursor { get; set; } = null;
 
         /// <summary>
         /// The cursor pointing at the previous page of items.
         /// </summary>
-        [JsonProperty("previous_cursor")]
+        [JsonProperty("previous_cursor", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? PreviousCursor { get; set; } = null;
     }
 }

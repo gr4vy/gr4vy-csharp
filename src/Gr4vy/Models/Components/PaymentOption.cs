@@ -19,28 +19,28 @@ namespace Gr4vy.Models.Components
 
     public class PaymentOption
     {
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-option";
 
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public string Method { get; set; } = default!;
 
-        [JsonProperty("icon_url")]
+        [JsonProperty("icon_url", Required = Newtonsoft.Json.Required.Always)]
         public string IconUrl { get; set; } = default!;
 
-        [JsonProperty("mode")]
+        [JsonProperty("mode", Required = Newtonsoft.Json.Required.Always)]
         public Mode Mode { get; set; } = default!;
 
-        [JsonProperty("label")]
+        [JsonProperty("label", Required = Newtonsoft.Json.Required.Always)]
         public string Label { get; set; } = default!;
 
-        [JsonProperty("can_store_payment_method")]
+        [JsonProperty("can_store_payment_method", Required = Newtonsoft.Json.Required.Always)]
         public bool CanStorePaymentMethod { get; set; } = default!;
 
-        [JsonProperty("can_delay_capture")]
+        [JsonProperty("can_delay_capture", Required = Newtonsoft.Json.Required.Always)]
         public bool CanDelayCapture { get; set; } = default!;
 
-        [JsonProperty("context", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("context", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public Context? Context { get; set; } = null;
     }
 }

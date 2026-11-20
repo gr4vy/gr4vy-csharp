@@ -21,13 +21,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The report model. One of `transactions`, `transaction_retries`, `detailed_settlement`, `accounts_receivables`.
         /// </summary>
-        [JsonProperty("model")]
+        [JsonProperty("model", Required = Newtonsoft.Json.Required.Always)]
         public string Model { get; set; } = default!;
 
         /// <summary>
         /// The parameters for the report, specific to the model.
         /// </summary>
-        [JsonProperty("params")]
+        [JsonProperty("params", Required = Newtonsoft.Json.Required.Always)]
         public Dictionary<string, object> Params { get; set; } = default!;
     }
 }

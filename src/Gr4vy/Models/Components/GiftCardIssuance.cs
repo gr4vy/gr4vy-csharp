@@ -19,64 +19,64 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `gift-card-issuance`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "gift-card-issuance";
 
         /// <summary>
         /// The ID for the gift card issuance.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The ID of the merchant account this gift card issuance belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
-        [JsonProperty("gift_card_service")]
-        public GiftCardService GiftCardService { get; set; } = default!;
+        [JsonProperty("gift_card_service", Required = Newtonsoft.Json.Required.Always)]
+        public GiftCardService GiftCardService { get; set; } = new();
 
         /// <summary>
         /// The identifier for this issuance as provided by the gift card service.
         /// </summary>
-        [JsonProperty("gift_card_service_payment_issuance_id")]
+        [JsonProperty("gift_card_service_payment_issuance_id", Required = Newtonsoft.Json.Required.Always)]
         public string GiftCardServicePaymentIssuanceId { get; set; } = default!;
 
         /// <summary>
         /// The URL for the issued gift card.
         /// </summary>
-        [JsonProperty("url")]
+        [JsonProperty("url", Required = Newtonsoft.Json.Required.Always)]
         public string Url { get; set; } = default!;
 
         /// <summary>
         /// The amount loaded onto the gift card, in the smallest denomination for the currency.
         /// </summary>
-        [JsonProperty("amount")]
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Always)]
         public long Amount { get; set; } = default!;
 
         /// <summary>
         /// The ISO-4217 currency code for the `amount`.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Always)]
         public string Currency { get; set; } = default!;
 
         /// <summary>
         /// The external identifier provided when issuing the gift card.
         /// </summary>
-        [JsonProperty("external_identifier")]
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? ExternalIdentifier { get; set; } = null;
 
         /// <summary>
         /// The date and time when this gift card was issued.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this gift card issuance was last updated.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
     }
 }

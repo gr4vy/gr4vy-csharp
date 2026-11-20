@@ -17,101 +17,36 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The Stripe Connect account to target using the `Stripe-Account` header.
         /// </summary>
-        [JsonProperty("stripe_account", NullValueHandling = NullValueHandling.Include)]
-        public string? StripeAccount
-        {
-            get => _stripeAccount;
-            set
-            {
-                _stripeAccount = value;
-                _stripeAccountSet = true;
-            }
-        }
-
-        private string? _stripeAccount = null;
-
-        private bool _stripeAccountSet = false;
-
-        public bool ShouldSerializeStripeAccount() => _stripeAccountSet;
+        [JsonProperty("stripe_account", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> StripeAccount { get; set; }
+        public bool ShouldSerializeStripeAccount() => StripeAccount.IsSet;
 
         /// <summary>
         /// The fee to charge the connected account.
         /// </summary>
-        [JsonProperty("application_fee_amount", NullValueHandling = NullValueHandling.Include)]
-        public long? ApplicationFeeAmount
-        {
-            get => _applicationFeeAmount;
-            set
-            {
-                _applicationFeeAmount = value;
-                _applicationFeeAmountSet = true;
-            }
-        }
-
-        private long? _applicationFeeAmount = null;
-
-        private bool _applicationFeeAmountSet = false;
-
-        public bool ShouldSerializeApplicationFeeAmount() => _applicationFeeAmountSet;
+        [JsonProperty("application_fee_amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> ApplicationFeeAmount { get; set; }
+        public bool ShouldSerializeApplicationFeeAmount() => ApplicationFeeAmount.IsSet;
 
         /// <summary>
         /// The Stripe Connect account to target using the `on_behalf_of` request parameter.
         /// </summary>
-        [JsonProperty("on_behalf_of", NullValueHandling = NullValueHandling.Include)]
-        public string? OnBehalfOf
-        {
-            get => _onBehalfOf;
-            set
-            {
-                _onBehalfOf = value;
-                _onBehalfOfSet = true;
-            }
-        }
-
-        private string? _onBehalfOf = null;
-
-        private bool _onBehalfOfSet = false;
-
-        public bool ShouldSerializeOnBehalfOf() => _onBehalfOfSet;
+        [JsonProperty("on_behalf_of", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> OnBehalfOf { get; set; }
+        public bool ShouldSerializeOnBehalfOf() => OnBehalfOf.IsSet;
 
         /// <summary>
         /// The Stripe Connect account to target using the `transfer_data.destination` request parameter.
         /// </summary>
-        [JsonProperty("transfer_data_destination", NullValueHandling = NullValueHandling.Include)]
-        public string? TransferDataDestination
-        {
-            get => _transferDataDestination;
-            set
-            {
-                _transferDataDestination = value;
-                _transferDataDestinationSet = true;
-            }
-        }
-
-        private string? _transferDataDestination = null;
-
-        private bool _transferDataDestinationSet = false;
-
-        public bool ShouldSerializeTransferDataDestination() => _transferDataDestinationSet;
+        [JsonProperty("transfer_data_destination", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TransferDataDestination { get; set; }
+        public bool ShouldSerializeTransferDataDestination() => TransferDataDestination.IsSet;
 
         /// <summary>
         /// A string that identifies the payment as part of a group.
         /// </summary>
-        [JsonProperty("transfer_group", NullValueHandling = NullValueHandling.Include)]
-        public string? TransferGroup
-        {
-            get => _transferGroup;
-            set
-            {
-                _transferGroup = value;
-                _transferGroupSet = true;
-            }
-        }
-
-        private string? _transferGroup = null;
-
-        private bool _transferGroupSet = false;
-
-        public bool ShouldSerializeTransferGroup() => _transferGroupSet;
+        [JsonProperty("transfer_group", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> TransferGroup { get; set; }
+        public bool ShouldSerializeTransferGroup() => TransferGroup.IsSet;
     }
 }

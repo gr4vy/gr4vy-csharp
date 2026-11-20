@@ -20,13 +20,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The ID of the configured field.
         /// </summary>
-        [JsonProperty("key")]
+        [JsonProperty("key", Required = Newtonsoft.Json.Required.Always)]
         public string Key { get; set; } = default!;
 
         /// <summary>
         /// The value of the configured field.
         /// </summary>
-        [JsonProperty("value")]
+        [JsonProperty("value", Required = Newtonsoft.Json.Required.Always)]
         public string Value { get; set; } = default!;
     }
 }

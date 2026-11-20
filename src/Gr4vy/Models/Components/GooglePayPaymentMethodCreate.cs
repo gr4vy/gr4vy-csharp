@@ -21,61 +21,69 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The external identifier of the buyer to create a payment for.
         /// </summary>
-        [JsonProperty("buyer_external_identifier")]
-        public string? BuyerExternalIdentifier { get; set; } = null;
+        [JsonProperty("buyer_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerExternalIdentifier { get; set; }
+        public bool ShouldSerializeBuyerExternalIdentifier() => BuyerExternalIdentifier.IsSet;
 
         /// <summary>
         /// The ID of the buyer to retrieve billing details for.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// The card holder name associated to the original card for the token.
         /// </summary>
-        [JsonProperty("cardholder_name")]
-        public string? CardholderName { get; set; } = null;
+        [JsonProperty("cardholder_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardholderName { get; set; }
+        public bool ShouldSerializeCardholderName() => CardholderName.IsSet;
 
         /// <summary>
         /// The URL to redirect a user back to after the complete 3DS in browser.
         /// </summary>
-        [JsonProperty("redirect_url")]
-        public string? RedirectUrl { get; set; } = null;
+        [JsonProperty("redirect_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> RedirectUrl { get; set; }
+        public bool ShouldSerializeRedirectUrl() => RedirectUrl.IsSet;
 
         /// <summary>
         /// The last 4 digits of the original card used to generate the token.
         /// </summary>
-        [JsonProperty("card_suffix")]
-        public string? CardSuffix { get; set; } = null;
+        [JsonProperty("card_suffix", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardSuffix { get; set; }
+        public bool ShouldSerializeCardSuffix() => CardSuffix.IsSet;
 
         /// <summary>
         /// The original card scheme for which the token was generated.
         /// </summary>
-        [JsonProperty("card_scheme")]
-        public string? CardScheme { get; set; } = null;
+        [JsonProperty("card_scheme", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardScheme { get; set; }
+        public bool ShouldSerializeCardScheme() => CardScheme.IsSet;
 
         /// <summary>
         /// The payment scheme of the card.
         /// </summary>
-        [JsonProperty("card_type")]
-        public string? CardType { get; set; } = null;
+        [JsonProperty("card_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> CardType { get; set; }
+        public bool ShouldSerializeCardType() => CardType.IsSet;
 
         /// <summary>
         /// Always `googlepay`
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.Always)]
         public string Method { get; } = "googlepay";
 
         /// <summary>
         /// The opaque token as received from the Google Pay JS library. This format may change between JS library versions.
         /// </summary>
-        [JsonProperty("token", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("token", Required = Newtonsoft.Json.Required.Always, NullValueHandling = NullValueHandling.Include)]
         public Token Token { get; set; } = default!;
 
         /// <summary>
         /// The assurance details provided by Google Pay.
         /// </summary>
-        [JsonProperty("assurance_details")]
-        public GooglePayAssuranceDetails? AssuranceDetails { get; set; } = null;
+        [JsonProperty("assurance_details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<GooglePayAssuranceDetails?> AssuranceDetails { get; set; }
+        public bool ShouldSerializeAssuranceDetails() => AssuranceDetails.IsSet;
     }
 }

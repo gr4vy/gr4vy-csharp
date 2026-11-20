@@ -17,49 +17,49 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Name of the organization or entity at the address.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Name { get; set; } = null;
 
         /// <summary>
         /// Line 1 of the address.
         /// </summary>
-        [JsonProperty("line1")]
+        [JsonProperty("line1", Required = Newtonsoft.Json.Required.Always)]
         public string Line1 { get; set; } = default!;
 
         /// <summary>
         /// Line 2 of the address.
         /// </summary>
-        [JsonProperty("line2")]
+        [JsonProperty("line2", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Line2 { get; set; } = null;
 
         /// <summary>
         /// Line 3 of the address.
         /// </summary>
-        [JsonProperty("line3")]
+        [JsonProperty("line3", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Line3 { get; set; } = null;
 
         /// <summary>
         /// City.
         /// </summary>
-        [JsonProperty("city")]
+        [JsonProperty("city", Required = Newtonsoft.Json.Required.Always)]
         public string City { get; set; } = default!;
 
         /// <summary>
         /// State or region.
         /// </summary>
-        [JsonProperty("state")]
+        [JsonProperty("state", Required = Newtonsoft.Json.Required.Always)]
         public string State { get; set; } = default!;
 
         /// <summary>
         /// Postal code.
         /// </summary>
-        [JsonProperty("zip")]
+        [JsonProperty("zip", Required = Newtonsoft.Json.Required.Always)]
         public string Zip { get; set; } = default!;
 
         /// <summary>
         /// ISO 3166-1 alpha-2 country code.
         /// </summary>
-        [JsonProperty("countryCode")]
+        [JsonProperty("countryCode", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? CountryCode { get; set; } = null;
     }
 }

@@ -19,19 +19,20 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The ID of the payment service definition to verify the fields against.
         /// </summary>
-        [JsonProperty("payment_service_definition_id")]
+        [JsonProperty("payment_service_definition_id", Required = Newtonsoft.Json.Required.Always)]
         public string PaymentServiceDefinitionId { get; set; } = default!;
 
         /// <summary>
         /// The optional ID of the configured payment service. New fields will be merged with any existing fields already stored before they are verified.
         /// </summary>
-        [JsonProperty("payment_service_id")]
-        public string? PaymentServiceId { get; set; } = null;
+        [JsonProperty("payment_service_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PaymentServiceId { get; set; }
+        public bool ShouldSerializePaymentServiceId() => PaymentServiceId.IsSet;
 
         /// <summary>
         /// The fields and their values, or a set of updated fields to merge with existing values.
         /// </summary>
-        [JsonProperty("fields")]
+        [JsonProperty("fields", Required = Newtonsoft.Json.Required.Always)]
         public List<Field> Fields { get; set; } = default!;
     }
 }
