@@ -17,61 +17,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The discount amount in USD.
         /// </summary>
-        [JsonProperty("amount_usd", NullValueHandling = NullValueHandling.Include)]
-        public string? AmountUsd
-        {
-            get => _amountUsd;
-            set
-            {
-                _amountUsd = value;
-                _amountUsdSet = true;
-            }
-        }
-
-        private string? _amountUsd = null;
-
-        private bool _amountUsdSet = false;
-
-        public bool ShouldSerializeAmountUsd() => _amountUsdSet;
+        [JsonProperty("amount_usd")]
+        public string? AmountUsd { get; set; } = null;
 
         /// <summary>
         /// The discount amount in local currency.
         /// </summary>
-        [JsonProperty("amount_local_currency", NullValueHandling = NullValueHandling.Include)]
-        public string? AmountLocalCurrency
-        {
-            get => _amountLocalCurrency;
-            set
-            {
-                _amountLocalCurrency = value;
-                _amountLocalCurrencySet = true;
-            }
-        }
-
-        private string? _amountLocalCurrency = null;
-
-        private bool _amountLocalCurrencySet = false;
-
-        public bool ShouldSerializeAmountLocalCurrency() => _amountLocalCurrencySet;
+        [JsonProperty("amount_local_currency")]
+        public string? AmountLocalCurrency { get; set; } = null;
 
         /// <summary>
         /// The currency code for the discount amount.
         /// </summary>
-        [JsonProperty("currency", NullValueHandling = NullValueHandling.Include)]
-        public string? Currency
-        {
-            get => _currency;
-            set
-            {
-                _currency = value;
-                _currencySet = true;
-            }
-        }
-
-        private string? _currency = null;
-
-        private bool _currencySet = false;
-
-        public bool ShouldSerializeCurrency() => _currencySet;
+        [JsonProperty("currency")]
+        public string? Currency { get; set; } = null;
     }
 }
