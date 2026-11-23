@@ -1,7 +1,7 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: f32a42cf935f1c419db4ef4875d43e5b
+  docChecksum: b6dfd88c2f413a5b2faade6523590b77
   docVersion: 1.0.0
   speakeasyVersion: 1.811.0
   generationVersion: 2.968.1
@@ -11,9 +11,9 @@ management:
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 20ddde00-d376-4ee9-b2d2-cd360db2b050
-  pristine_commit_hash: c8aae5c2234e6af031f6442661b9a64bb6303638
-  pristine_tree_hash: 56c618bf4fa055dd98d947b8458171ed11dc43ec
+  generation_id: 954217cc-eba7-495e-8ecb-9a7cc519285b
+  pristine_commit_hash: b249d9c1a4b0098548b4a15f5820243250a5ecc8
+  pristine_tree_hash: 59b97162c2e7f378b474cd40b87011b1eb8c284a
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -1328,10 +1328,14 @@ trackedFiles:
     id: ef5cc7a381b5
     last_write_checksum: sha1:8bf53eeb0d4bc59553519752b9f212e62655a436
     pristine_git_object: d5e241d9f984af35aafe915bd63d282af196f813
+  docs/Models/Components/RiskifiedAccountType.md:
+    id: 21ecabb675d9
+    last_write_checksum: sha1:6380ce5e17d119ce966625ba707b427e8fc49097
+    pristine_git_object: af42630ca94216c89ebe694aab6dbe4955a2a084
   docs/Models/Components/RiskifiedAntiFraudOptions.md:
     id: b5e66cc0e9bd
-    last_write_checksum: sha1:e6dc1e3ceeb244a4b73d0f0c00f9cb274ed001da
-    pristine_git_object: 68eaf468b5dcacb28ae15bf17667291eb7d0ed98
+    last_write_checksum: sha1:a55f1bac92645f8876baf04460b1907d18e25de0
+    pristine_git_object: f57527140eada57c8a96eb8b0cc87af7ee097248
   docs/Models/Components/RiskifiedAntiFraudOptionsLineItem.md:
     id: "247104722631"
     last_write_checksum: sha1:e216e48e78649c4ab893b05979d19cd3517a8a5e
@@ -3872,10 +3876,14 @@ trackedFiles:
     id: 81c582b117f2
     last_write_checksum: sha1:f3b057f7b264ae7c792997bb3176c6b04b2189ca
     pristine_git_object: 21045e93088541f0e9910f777a5ad69b9daecd99
+  src/Gr4vy/Models/Components/RiskifiedAccountType.cs:
+    id: c9f38e57f03d
+    last_write_checksum: sha1:185c916cfd60bea0eec9bfe3419940a43fe37cb4
+    pristine_git_object: decb44e8fa85fbfe800d2ea172bd56172dd28956
   src/Gr4vy/Models/Components/RiskifiedAntiFraudOptions.cs:
     id: ca291eaed77d
-    last_write_checksum: sha1:1f2e58cc920288aeb7a0e3ec1a415d9e750ceb4a
-    pristine_git_object: 711edb6b9640c8529a2410a967a30ee22b6b43a7
+    last_write_checksum: sha1:1b836125d5757aabd5ad4d8a21abab8b4f1d068f
+    pristine_git_object: 5ed3044313dd4fce525e626957ced66fc230f270
   src/Gr4vy/Models/Components/RiskifiedAntiFraudOptionsLineItem.cs:
     id: 521524305ccc
     last_write_checksum: sha1:3a9e2279e22bf85a340d02da1a9e4f398eb1b0e3

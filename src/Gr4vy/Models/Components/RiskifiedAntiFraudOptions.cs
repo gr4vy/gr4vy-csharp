@@ -12,7 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class RiskifiedAntiFraudOptions
     {
@@ -36,5 +39,12 @@ namespace Gr4vy.Models.Components
         [JsonProperty("additional_shipping_addresses", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public OptionalNullable<List<RiskifiedAntiFraudOptionsShippingAddress>?> AdditionalShippingAddresses { get; set; }
         public bool ShouldSerializeAdditionalShippingAddresses() => AdditionalShippingAddresses.IsSet;
+
+        /// <summary>
+        /// Overrides the customer account type sent to Riskified. When not set, the customer is sent as `registered` if the transaction has a buyer, and as `guest` otherwise. When the account type is `guest`, the customer `id` and `created_at` are not sent to Riskified, even if the transaction has a buyer.
+        /// </summary>
+        [JsonProperty("account_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<RiskifiedAccountType?> AccountType { get; set; }
+        public bool ShouldSerializeAccountType() => AccountType.IsSet;
     }
 }
