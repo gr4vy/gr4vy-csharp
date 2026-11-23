@@ -12,7 +12,10 @@ namespace Gr4vy.Models.Components
     using Gr4vy.Models.Components;
     using Gr4vy.Utils;
     using Newtonsoft.Json;
+    using System;
+    using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
 
     public class RiskifiedAntiFraudOptions
     {
@@ -75,5 +78,25 @@ namespace Gr4vy.Models.Components
         private bool _additionalShippingAddressesSet = false;
 
         public bool ShouldSerializeAdditionalShippingAddresses() => _additionalShippingAddressesSet;
+
+        /// <summary>
+        /// Overrides the customer account type sent to Riskified. When not set, the customer is sent as `registered` if the transaction has a buyer, and as `guest` otherwise. When the account type is `guest`, the customer `id` and `created_at` are not sent to Riskified, even if the transaction has a buyer.
+        /// </summary>
+        [JsonProperty("account_type", NullValueHandling = NullValueHandling.Include)]
+        public RiskifiedAccountType? AccountType
+        {
+            get => _accountType;
+            set
+            {
+                _accountType = value;
+                _accountTypeSet = true;
+            }
+        }
+
+        private RiskifiedAccountType? _accountType = null;
+
+        private bool _accountTypeSet = false;
+
+        public bool ShouldSerializeAccountType() => _accountTypeSet;
     }
 }
