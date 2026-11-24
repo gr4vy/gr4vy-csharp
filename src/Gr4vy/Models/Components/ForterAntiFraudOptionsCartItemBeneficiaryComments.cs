@@ -17,19 +17,61 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Comments from the user to the merchant.
         /// </summary>
-        [JsonProperty("user_comments_to_merchant")]
-        public string? UserCommentsToMerchant { get; set; } = null;
+        [JsonProperty("user_comments_to_merchant", NullValueHandling = NullValueHandling.Include)]
+        public string? UserCommentsToMerchant
+        {
+            get => _userCommentsToMerchant;
+            set
+            {
+                _userCommentsToMerchant = value;
+                _userCommentsToMerchantSet = true;
+            }
+        }
+
+        private string? _userCommentsToMerchant = null;
+
+        private bool _userCommentsToMerchantSet = false;
+
+        public bool ShouldSerializeUserCommentsToMerchant() => _userCommentsToMerchantSet;
 
         /// <summary>
         /// Message intended for the beneficiary of the item.
         /// </summary>
-        [JsonProperty("message_to_beneficiary")]
-        public string? MessageToBeneficiary { get; set; } = null;
+        [JsonProperty("message_to_beneficiary", NullValueHandling = NullValueHandling.Include)]
+        public string? MessageToBeneficiary
+        {
+            get => _messageToBeneficiary;
+            set
+            {
+                _messageToBeneficiary = value;
+                _messageToBeneficiarySet = true;
+            }
+        }
+
+        private string? _messageToBeneficiary = null;
+
+        private bool _messageToBeneficiarySet = false;
+
+        public bool ShouldSerializeMessageToBeneficiary() => _messageToBeneficiarySet;
 
         /// <summary>
         /// Comments from the merchant about this transaction.
         /// </summary>
-        [JsonProperty("merchant_comments")]
-        public string? MerchantComments { get; set; } = null;
+        [JsonProperty("merchant_comments", NullValueHandling = NullValueHandling.Include)]
+        public string? MerchantComments
+        {
+            get => _merchantComments;
+            set
+            {
+                _merchantComments = value;
+                _merchantCommentsSet = true;
+            }
+        }
+
+        private string? _merchantComments = null;
+
+        private bool _merchantCommentsSet = false;
+
+        public bool ShouldSerializeMerchantComments() => _merchantCommentsSet;
     }
 }
