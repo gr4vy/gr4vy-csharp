@@ -358,6 +358,7 @@ catch(ArgumentException ex) {
 * [Get](docs/sdks/paymentmethods/README.md#get) - Get payment method
 * [Update](docs/sdks/paymentmethods/README.md#update) - Update payment method
 * [Delete](docs/sdks/paymentmethods/README.md#delete) - Delete payment method
+* [Detokenize](docs/sdks/paymentmethods/README.md#detokenize) - Detokenize a payment method
 
 #### [PaymentMethods.NetworkTokens](docs/sdks/networktokens/README.md)
 
