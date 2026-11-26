@@ -436,6 +436,26 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeBraintreeCard() => _braintreeCardSet;
 
         /// <summary>
+        /// Custom options to be passed to the `chaseorbital-bank` connector.
+        /// </summary>
+        [JsonProperty("chaseorbital-bank", NullValueHandling = NullValueHandling.Include)]
+        public ChaseBankOptions? ChaseorbitalBank
+        {
+            get => _chaseorbitalBank;
+            set
+            {
+                _chaseorbitalBank = value;
+                _chaseorbitalBankSet = true;
+            }
+        }
+
+        private ChaseBankOptions? _chaseorbitalBank = null;
+
+        private bool _chaseorbitalBankSet = false;
+
+        public bool ShouldSerializeChaseorbitalBank() => _chaseorbitalBankSet;
+
+        /// <summary>
         /// Custom options to be passed to the `chaseorbital-card` connector.
         /// </summary>
         [JsonProperty("chaseorbital-card", NullValueHandling = NullValueHandling.Include)]

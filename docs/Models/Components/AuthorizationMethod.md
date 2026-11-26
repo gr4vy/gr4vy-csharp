@@ -1,0 +1,20 @@
+# AuthorizationMethod
+
+## Example Usage
+
+```csharp
+using Gr4vy.Models.Components;
+
+var value = AuthorizationMethod.Mail;
+
+// Open enum: use .Of() to create instances from custom string values
+var custom = AuthorizationMethod.Of("custom_value");
+```
+
+
+## Values
+
+| Name        | Value       |
+| ----------- | ----------- |
+| `Mail`      | mail        |
+| `Telephone` | telephone   |
