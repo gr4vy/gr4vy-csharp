@@ -18,19 +18,61 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Provides subscription information to Klarna.
         /// </summary>
-        [JsonProperty("subscription")]
-        public KlarnaSubscriptionOptions? Subscription { get; set; } = null;
+        [JsonProperty("subscription", NullValueHandling = NullValueHandling.Include)]
+        public KlarnaSubscriptionOptions? Subscription
+        {
+            get => _subscription;
+            set
+            {
+                _subscription = value;
+                _subscriptionSet = true;
+            }
+        }
+
+        private KlarnaSubscriptionOptions? _subscription = null;
+
+        private bool _subscriptionSet = false;
+
+        public bool ShouldSerializeSubscription() => _subscriptionSet;
 
         /// <summary>
         /// When set to `true`, this will authorize the transaction with Klarna for the purposes of tokenizing the payment method with the transaction details. No funds will be captured and the authorization will be automatically voided. This is useful for up-sell scenarios where you want to tokenize a Klarna payment method for future use.
         /// </summary>
-        [JsonProperty("token_only_mode")]
-        public bool? TokenOnlyMode { get; set; } = null;
+        [JsonProperty("token_only_mode", NullValueHandling = NullValueHandling.Include)]
+        public bool? TokenOnlyMode
+        {
+            get => _tokenOnlyMode;
+            set
+            {
+                _tokenOnlyMode = value;
+                _tokenOnlyModeSet = true;
+            }
+        }
+
+        private bool? _tokenOnlyMode = null;
+
+        private bool _tokenOnlyModeSet = false;
+
+        public bool ShouldSerializeTokenOnlyMode() => _tokenOnlyModeSet;
 
         /// <summary>
         /// An authorization token returned by the Klarna Express Checkout JS SDK after the buyer completes payment in the embedded widget. When provided, the connector skips the HPP redirect and places the Klarna order directly using this token.
         /// </summary>
-        [JsonProperty("authorization_token")]
-        public string? AuthorizationToken { get; set; } = null;
+        [JsonProperty("authorization_token", NullValueHandling = NullValueHandling.Include)]
+        public string? AuthorizationToken
+        {
+            get => _authorizationToken;
+            set
+            {
+                _authorizationToken = value;
+                _authorizationTokenSet = true;
+            }
+        }
+
+        private string? _authorizationToken = null;
+
+        private bool _authorizationTokenSet = false;
+
+        public bool ShouldSerializeAuthorizationToken() => _authorizationTokenSet;
     }
 }

@@ -22,7 +22,21 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// How the account holder authorized a `moto` or `recurring` ACH debit: by mail (sent to Chase as a written authorization) or by telephone. Only valid with the `moto` or `recurring` payment source. When omitted, the debit is sent as authorized over the internet.
         /// </summary>
-        [JsonProperty("authorization_method")]
-        public AuthorizationMethod? AuthorizationMethod { get; set; } = null;
+        [JsonProperty("authorization_method", NullValueHandling = NullValueHandling.Include)]
+        public AuthorizationMethod? AuthorizationMethod
+        {
+            get => _authorizationMethod;
+            set
+            {
+                _authorizationMethod = value;
+                _authorizationMethodSet = true;
+            }
+        }
+
+        private AuthorizationMethod? _authorizationMethod = null;
+
+        private bool _authorizationMethodSet = false;
+
+        public bool ShouldSerializeAuthorizationMethod() => _authorizationMethodSet;
     }
 }
