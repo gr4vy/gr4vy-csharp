@@ -499,7 +499,7 @@ namespace Gr4vy.Models.Components
         /// Custom options to be passed to the `cybersource-card` connector.
         /// </summary>
         [JsonProperty("cybersource-card", NullValueHandling = NullValueHandling.Include)]
-        public CybersourceOptions? CybersourceCard
+        public CybersourceCardOptions? CybersourceCard
         {
             get => _cybersourceCard;
             set
@@ -509,7 +509,7 @@ namespace Gr4vy.Models.Components
             }
         }
 
-        private CybersourceOptions? _cybersourceCard = null;
+        private CybersourceCardOptions? _cybersourceCard = null;
 
         private bool _cybersourceCardSet = false;
 
@@ -854,6 +854,26 @@ namespace Gr4vy.Models.Components
         private bool _latitudeLatitudedsSet = false;
 
         public bool ShouldSerializeLatitudeLatitudeds() => _latitudeLatitudedsSet;
+
+        /// <summary>
+        /// Custom options to be passed to the `mastercard-card` connector.
+        /// </summary>
+        [JsonProperty("mastercard-card", NullValueHandling = NullValueHandling.Include)]
+        public MastercardCardOptions? MastercardCard
+        {
+            get => _mastercardCard;
+            set
+            {
+                _mastercardCard = value;
+                _mastercardCardSet = true;
+            }
+        }
+
+        private MastercardCardOptions? _mastercardCard = null;
+
+        private bool _mastercardCardSet = false;
+
+        public bool ShouldSerializeMastercardCard() => _mastercardCardSet;
 
         /// <summary>
         /// Custom options to be passed to the `mattilda-tapi` connector.
