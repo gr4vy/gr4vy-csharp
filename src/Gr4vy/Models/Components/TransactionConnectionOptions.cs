@@ -163,6 +163,13 @@ namespace Gr4vy.Models.Components
         public bool ShouldSerializeBraintreeCard() => BraintreeCard.IsSet;
 
         /// <summary>
+        /// Custom options to be passed to the `chaseorbital-bank` connector.
+        /// </summary>
+        [JsonProperty("chaseorbital-bank", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ChaseBankOptions?> ChaseorbitalBank { get; set; }
+        public bool ShouldSerializeChaseorbitalBank() => ChaseorbitalBank.IsSet;
+
+        /// <summary>
         /// Custom options to be passed to the `chaseorbital-card` connector.
         /// </summary>
         [JsonProperty("chaseorbital-card", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]

@@ -1,7 +1,7 @@
 lockVersion: 2.0.0
 id: dff72156-4bdf-460f-b5b3-0759c9c474fb
 management:
-  docChecksum: 25ead6749ad6f5c558fbd729644323cb
+  docChecksum: 16d6fe2ee91be2437b3fe258a6df0d48
   docVersion: 1.0.0
   speakeasyVersion: 1.812.0
   generationVersion: 2.968.1
@@ -11,9 +11,9 @@ management:
   installationURL: https://github.com/gr4vy/gr4vy-csharp
   published: true
 persistentEdits:
-  generation_id: 861044c8-ceb3-4c96-a1f4-3283c84b297d
-  pristine_commit_hash: 3618ab2bea4243bd4765352a99d91fd769977ea9
-  pristine_tree_hash: 84741fe218366128a26b4d640798cfd600f500ae
+  generation_id: 920496c1-ce73-4189-a7b7-ff5822169887
+  pristine_commit_hash: 0a1864fbbec55030ec8671849ada99356f8f9b9e
+  pristine_tree_hash: 21a4b94ae4856d830cc8fce9c2427c0b7987b64f
 features:
   csharp:
     additionalDependencies: 0.1.0
@@ -208,6 +208,10 @@ trackedFiles:
     id: 79523efa3f07
     last_write_checksum: sha1:04444509db1ab070c25faeab3b2980d35b79014f
     pristine_git_object: 05ab815feaae5aa5b64ddce7b8f25858d5926445
+  docs/Models/Components/AuthorizationMethod.md:
+    id: 15754bae4f69
+    last_write_checksum: sha1:ad6a6cdeaf7a50b6ee32a3a1d2d17058de103c86
+    pristine_git_object: 255c792d4d7402b4bafa19b031b7e36570224cda
   docs/Models/Components/BACSBankPaymentMethodCreate.md:
     id: 90a9334878dc
     last_write_checksum: sha1:ed5877d380c12fb9c57c7bacc7c26072579adafc
@@ -320,6 +324,10 @@ trackedFiles:
     id: bf30a44a024f
     last_write_checksum: sha1:016d9884075e394da96066f066dfbfa8214600a8
     pristine_git_object: 900c1648c074742d5d6450a6f38c67fc56d8d65b
+  docs/Models/Components/ChaseBankOptions.md:
+    id: d1e50cdac93c
+    last_write_checksum: sha1:3ab0b36786e8d2158b51851af529000a00ad5bbd
+    pristine_git_object: a5767d7a162a82a8b961e7b081c44fedcf3ff21c
   docs/Models/Components/ChaseOptions.md:
     id: 97e795b42af2
     last_write_checksum: sha1:77288f072d95fd80e65ca3d67d7684cc0635aaf5
@@ -1578,8 +1586,8 @@ trackedFiles:
     pristine_git_object: 0aeba86c142f899bc657d559092da5e73d2f2b3c
   docs/Models/Components/TransactionConnectionOptions.md:
     id: 4cb8597cc3b4
-    last_write_checksum: sha1:db1196eb6d81126e60d4b4187407ba6784e1ebd9
-    pristine_git_object: 0b4487fdaf786920af6b205ce7245d7026a6a59f
+    last_write_checksum: sha1:456fea311489a2116a15f512b1d3d0521f271255
+    pristine_git_object: 405dda146bcc620c6f77ef37f1ad77e49ef31ff3
   docs/Models/Components/TransactionCreate.md:
     id: d1e261241de9
     last_write_checksum: sha1:ae033de55417c77b5f31fc1351704b60cff81747
@@ -2764,6 +2772,10 @@ trackedFiles:
     id: ce491d48ac7b
     last_write_checksum: sha1:22c9ee550cd180c2ea90d05e4e8efc0428d778ee
     pristine_git_object: 10f335c3e65e051216b12065ce3e189d8601b79b
+  src/Gr4vy/Models/Components/AuthorizationMethod.cs:
+    id: d70fd147fe04
+    last_write_checksum: sha1:828fa303310cf0736d7994faf8bb8ef1460f2904
+    pristine_git_object: 623bdea5b863cc29a1a7548a82d2673af068d83b
   src/Gr4vy/Models/Components/BACSBankPaymentMethodCreate.cs:
     id: 6395a00365ed
     last_write_checksum: sha1:a6b8fd414f3dc86e726790b007254444d21d60c2
@@ -2876,6 +2888,10 @@ trackedFiles:
     id: d0ff41f1ff4c
     last_write_checksum: sha1:d6d69aa656ad0ed1191d9d1f983fb13bada3979e
     pristine_git_object: c1617e4939a601c7b299e0147699daed188171b0
+  src/Gr4vy/Models/Components/ChaseBankOptions.cs:
+    id: 3bc7fab67395
+    last_write_checksum: sha1:140df3a7e59b0741ee3da8a2d9ac3135e19a8d7e
+    pristine_git_object: 5e77c23b97be56c0f93592ac21adf517d9b7fb41
   src/Gr4vy/Models/Components/ChaseOptions.cs:
     id: 1d839e53ad8b
     last_write_checksum: sha1:6cf958fcf545efc13a1cefce14c7917650b92a93
@@ -4134,8 +4150,8 @@ trackedFiles:
     pristine_git_object: 030347cbeb428e3fc45b826969aaca47a5b9813f
   src/Gr4vy/Models/Components/TransactionConnectionOptions.cs:
     id: d588699e12a3
-    last_write_checksum: sha1:614ad445e60e9e6d3b018a67d75b1020bf8a2e5f
-    pristine_git_object: f4eb2093c4643020956eec82b5268872530f1278
+    last_write_checksum: sha1:2ac66e31ccadc6dde133eb27d409ae1e179d336d
+    pristine_git_object: db2618b06614992e72f46fb7561fa8a378e5bf5a
   src/Gr4vy/Models/Components/TransactionCreate.cs:
     id: 87491918b33e
     last_write_checksum: sha1:0764d99937ab586f25768f3eeb45d2eb8d05d03b
