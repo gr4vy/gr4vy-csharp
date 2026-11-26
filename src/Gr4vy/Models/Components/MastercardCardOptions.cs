@@ -21,7 +21,21 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The PayFac sub-merchant to send when the connection sponsors the card's scheme.
         /// </summary>
-        [JsonProperty("sub_merchant")]
-        public SubMerchantOptions? SubMerchant { get; set; } = null;
+        [JsonProperty("sub_merchant", NullValueHandling = NullValueHandling.Include)]
+        public SubMerchantOptions? SubMerchant
+        {
+            get => _subMerchant;
+            set
+            {
+                _subMerchant = value;
+                _subMerchantSet = true;
+            }
+        }
+
+        private SubMerchantOptions? _subMerchant = null;
+
+        private bool _subMerchantSet = false;
+
+        public bool ShouldSerializeSubMerchant() => _subMerchantSet;
     }
 }

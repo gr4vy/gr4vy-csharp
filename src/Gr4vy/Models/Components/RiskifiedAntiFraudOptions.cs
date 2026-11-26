@@ -22,25 +22,81 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// A list of line items details to override when passing to the Riskified API. Entries are matched by position against the cart items sent to Riskified, which excludes `discount`, `shipping_fee`, `sales_tax` and `store_credit` items.
         /// </summary>
-        [JsonProperty("line_items")]
-        public List<RiskifiedAntiFraudOptionsLineItem>? LineItems { get; set; } = null;
+        [JsonProperty("line_items", NullValueHandling = NullValueHandling.Include)]
+        public List<RiskifiedAntiFraudOptionsLineItem>? LineItems
+        {
+            get => _lineItems;
+            set
+            {
+                _lineItems = value;
+                _lineItemsSet = true;
+            }
+        }
+
+        private List<RiskifiedAntiFraudOptionsLineItem>? _lineItems = null;
+
+        private bool _lineItemsSet = false;
+
+        public bool ShouldSerializeLineItems() => _lineItemsSet;
 
         /// <summary>
         /// A list of shipping lines details to override when passing to the Riskified API. Entries are matched by position against the `shipping_fee` cart items.
         /// </summary>
-        [JsonProperty("shipping_lines")]
-        public List<RiskifiedAntiFraudOptionsShippingLine>? ShippingLines { get; set; } = null;
+        [JsonProperty("shipping_lines", NullValueHandling = NullValueHandling.Include)]
+        public List<RiskifiedAntiFraudOptionsShippingLine>? ShippingLines
+        {
+            get => _shippingLines;
+            set
+            {
+                _shippingLines = value;
+                _shippingLinesSet = true;
+            }
+        }
+
+        private List<RiskifiedAntiFraudOptionsShippingLine>? _shippingLines = null;
+
+        private bool _shippingLinesSet = false;
+
+        public bool ShouldSerializeShippingLines() => _shippingLinesSet;
 
         /// <summary>
         /// Additional destinations for orders shipped to more than one address. The address derived from the transaction is always sent first; these are appended after it and may not use the reserved `base-shipping-address` id.
         /// </summary>
-        [JsonProperty("additional_shipping_addresses")]
-        public List<RiskifiedAntiFraudOptionsShippingAddress>? AdditionalShippingAddresses { get; set; } = null;
+        [JsonProperty("additional_shipping_addresses", NullValueHandling = NullValueHandling.Include)]
+        public List<RiskifiedAntiFraudOptionsShippingAddress>? AdditionalShippingAddresses
+        {
+            get => _additionalShippingAddresses;
+            set
+            {
+                _additionalShippingAddresses = value;
+                _additionalShippingAddressesSet = true;
+            }
+        }
+
+        private List<RiskifiedAntiFraudOptionsShippingAddress>? _additionalShippingAddresses = null;
+
+        private bool _additionalShippingAddressesSet = false;
+
+        public bool ShouldSerializeAdditionalShippingAddresses() => _additionalShippingAddressesSet;
 
         /// <summary>
         /// Overrides the customer account type sent to Riskified. When not set, the customer is sent as `registered` if the transaction has a buyer, and as `guest` otherwise. When the account type is `guest`, the customer `id` and `created_at` are not sent to Riskified, even if the transaction has a buyer.
         /// </summary>
-        [JsonProperty("account_type")]
-        public RiskifiedAccountType? AccountType { get; set; } = null;
+        [JsonProperty("account_type", NullValueHandling = NullValueHandling.Include)]
+        public RiskifiedAccountType? AccountType
+        {
+            get => _accountType;
+            set
+            {
+                _accountType = value;
+                _accountTypeSet = true;
+            }
+        }
+
+        private RiskifiedAccountType? _accountType = null;
+
+        private bool _accountTypeSet = false;
+
+        public bool ShouldSerializeAccountType() => _accountTypeSet;
     }
 }

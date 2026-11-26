@@ -17,7 +17,21 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The phone number of the beneficiary.
         /// </summary>
-        [JsonProperty("phone")]
-        public string Phone { get; set; } = default!;
+        [JsonProperty("phone", NullValueHandling = NullValueHandling.Include)]
+        public string Phone
+        {
+            get => _phone;
+            set
+            {
+                _phone = value;
+                _phoneSet = true;
+            }
+        }
+
+        private string _phone = default!;
+
+        private bool _phoneSet = true;
+
+        public bool ShouldSerializePhone() => _phoneSet;
     }
 }
