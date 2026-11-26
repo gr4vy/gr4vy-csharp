@@ -22,76 +22,76 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The type of this resource.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "api-key-pair";
 
         /// <summary>
         /// The ID for the API key pair.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The unique thumbprint that identifies the API key pair.
         /// </summary>
-        [JsonProperty("thumbprint")]
+        [JsonProperty("thumbprint", Required = Newtonsoft.Json.Required.Always)]
         public string Thumbprint { get; set; } = default!;
 
         /// <summary>
         /// The display name for the API key pair.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Always)]
         public string DisplayName { get; set; } = default!;
 
-        [JsonProperty("algorithm")]
+        [JsonProperty("algorithm", Required = Newtonsoft.Json.Required.Always)]
         public CertificateAlgorithm Algorithm { get; set; } = default!;
 
         /// <summary>
         /// Whether the API key pair is active and can be used to authenticate.
         /// </summary>
-        [JsonProperty("active")]
+        [JsonProperty("active", Required = Newtonsoft.Json.Required.Always)]
         public bool Active { get; set; } = default!;
 
         /// <summary>
         /// The PEM-encoded private key. Only returned once, in the response to creating the API key pair, and only when Gr4vy generated the key pair. Store it securely, as it cannot be retrieved later.
         /// </summary>
-        [JsonProperty("private_key")]
+        [JsonProperty("private_key", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? PrivateKey { get; set; } = null;
 
         /// <summary>
         /// The date and time when this API key pair was created.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this API key pair was last updated.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date and time when this API key pair was last used to authenticate, or `null` if it has never been used.
         /// </summary>
-        [JsonProperty("last_used_at")]
+        [JsonProperty("last_used_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public DateTime? LastUsedAt { get; set; } = null;
 
         /// <summary>
         /// The user or API key pair that created this API key pair.
         /// </summary>
-        [JsonProperty("creator")]
+        [JsonProperty("creator", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public ApiRoutersApiKeyPairsSchemasCreator? Creator { get; set; } = null;
 
         /// <summary>
         /// The merchant accounts this API key pair has access to. An empty list means it has access to all merchant accounts.
         /// </summary>
-        [JsonProperty("merchant_accounts")]
+        [JsonProperty("merchant_accounts", Required = Newtonsoft.Json.Required.DisallowNull)]
         public List<MerchantAccountSummary>? MerchantAccounts { get; set; }
 
         /// <summary>
         /// The roles assigned to this API key pair.
         /// </summary>
-        [JsonProperty("roles")]
+        [JsonProperty("roles", Required = Newtonsoft.Json.Required.DisallowNull)]
         public List<Role>? Roles { get; set; }
     }
 }

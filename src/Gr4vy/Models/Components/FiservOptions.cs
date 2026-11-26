@@ -18,21 +18,8 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes installment data to the Fiserv API. This is now also a dedicated feature on the Gr4vy API.
         /// </summary>
-        [JsonProperty("installmentOptions", NullValueHandling = NullValueHandling.Include)]
-        public FiservInstallmentOptions? InstallmentOptions
-        {
-            get => _installmentOptions;
-            set
-            {
-                _installmentOptions = value;
-                _installmentOptionsSet = true;
-            }
-        }
-
-        private FiservInstallmentOptions? _installmentOptions = null;
-
-        private bool _installmentOptionsSet = false;
-
-        public bool ShouldSerializeInstallmentOptions() => _installmentOptionsSet;
+        [JsonProperty("installmentOptions", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<FiservInstallmentOptions?> InstallmentOptions { get; set; }
+        public bool ShouldSerializeInstallmentOptions() => InstallmentOptions.IsSet;
     }
 }

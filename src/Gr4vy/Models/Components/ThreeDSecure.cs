@@ -17,7 +17,8 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The amount to be used for 3DS authentication. Optionally set this value to authenticate a greater amount than the transaction amount.
         /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; } = null;
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Amount { get; set; }
+        public bool ShouldSerializeAmount() => Amount.IsSet;
     }
 }

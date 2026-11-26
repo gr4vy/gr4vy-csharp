@@ -17,61 +17,22 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Comments from the user to the merchant.
         /// </summary>
-        [JsonProperty("user_comments_to_merchant", NullValueHandling = NullValueHandling.Include)]
-        public string? UserCommentsToMerchant
-        {
-            get => _userCommentsToMerchant;
-            set
-            {
-                _userCommentsToMerchant = value;
-                _userCommentsToMerchantSet = true;
-            }
-        }
-
-        private string? _userCommentsToMerchant = null;
-
-        private bool _userCommentsToMerchantSet = false;
-
-        public bool ShouldSerializeUserCommentsToMerchant() => _userCommentsToMerchantSet;
+        [JsonProperty("user_comments_to_merchant", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> UserCommentsToMerchant { get; set; }
+        public bool ShouldSerializeUserCommentsToMerchant() => UserCommentsToMerchant.IsSet;
 
         /// <summary>
         /// Message intended for the beneficiary of the item.
         /// </summary>
-        [JsonProperty("message_to_beneficiary", NullValueHandling = NullValueHandling.Include)]
-        public string? MessageToBeneficiary
-        {
-            get => _messageToBeneficiary;
-            set
-            {
-                _messageToBeneficiary = value;
-                _messageToBeneficiarySet = true;
-            }
-        }
-
-        private string? _messageToBeneficiary = null;
-
-        private bool _messageToBeneficiarySet = false;
-
-        public bool ShouldSerializeMessageToBeneficiary() => _messageToBeneficiarySet;
+        [JsonProperty("message_to_beneficiary", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MessageToBeneficiary { get; set; }
+        public bool ShouldSerializeMessageToBeneficiary() => MessageToBeneficiary.IsSet;
 
         /// <summary>
         /// Comments from the merchant about this transaction.
         /// </summary>
-        [JsonProperty("merchant_comments", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantComments
-        {
-            get => _merchantComments;
-            set
-            {
-                _merchantComments = value;
-                _merchantCommentsSet = true;
-            }
-        }
-
-        private string? _merchantComments = null;
-
-        private bool _merchantCommentsSet = false;
-
-        public bool ShouldSerializeMerchantComments() => _merchantCommentsSet;
+        [JsonProperty("merchant_comments", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantComments { get; set; }
+        public bool ShouldSerializeMerchantComments() => MerchantComments.IsSet;
     }
 }

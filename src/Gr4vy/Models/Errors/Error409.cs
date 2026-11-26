@@ -21,38 +21,38 @@ namespace Gr4vy.Models.Errors
         /// <summary>
         /// Always `error`.
         /// </summary>
-        [JsonProperty("type")]
-        public string? Type { get; set; }
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
+        public string? Type { get; set; } = "error";
 
         /// <summary>
         /// Always `duplicate_record`
         /// </summary>
-        [JsonProperty("code")]
-        public string? Code { get; set; }
+        [JsonProperty("code", Required = Newtonsoft.Json.Required.DisallowNull)]
+        public string? Code { get; set; } = "duplicate_record";
 
         /// <summary>
         /// Always `409`.
         /// </summary>
-        [JsonProperty("status")]
-        public long? Status { get; set; }
+        [JsonProperty("status", Required = Newtonsoft.Json.Required.DisallowNull)]
+        public long? Status { get; set; } = 409;
 
         /// <summary>
         /// A human readable message that provides more context to the error.
         /// </summary>
-        [JsonProperty("message")]
-        public string? Message { get; set; }
+        [JsonProperty("message", Required = Newtonsoft.Json.Required.DisallowNull)]
+        public string? Message { get; set; } = "Generic error";
 
         /// <summary>
         /// A list of details that further ellaborate on the error.
         /// </summary>
-        [JsonProperty("details")]
+        [JsonProperty("details", Required = Newtonsoft.Json.Required.DisallowNull)]
         public List<ErrorDetail>? Details { get; set; }
 
         /// <summary>
         /// The ID of the conflicting resource.
         /// </summary>
-        [JsonProperty("resource_id")]
-        public string? ResourceId { get; set; }
+        [JsonProperty("resource_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public string? ResourceId { get; set; } = null;
     }
 
     public class Error409 : BaseException

@@ -22,97 +22,97 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `gift-card`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "gift-card";
 
         /// <summary>
         /// The ID for the gift card.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Id { get; set; } = null;
 
         /// <summary>
         /// The ID of the merchant account this buyer belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The first 6 digits of the full gift card number.
         /// </summary>
-        [JsonProperty("bin")]
+        [JsonProperty("bin", Required = Newtonsoft.Json.Required.Always)]
         public string Bin { get; set; } = default!;
 
         /// <summary>
         /// The 3 digits after the `bin` of the full gift card number.
         /// </summary>
-        [JsonProperty("sub_bin")]
+        [JsonProperty("sub_bin", Required = Newtonsoft.Json.Required.Always)]
         public string SubBin { get; set; } = default!;
 
         /// <summary>
         /// The last 4 digits for the gift card.
         /// </summary>
-        [JsonProperty("last4")]
+        [JsonProperty("last4", Required = Newtonsoft.Json.Required.Always)]
         public string Last4 { get; set; } = default!;
 
         /// <summary>
         /// The ISO-4217 currency code that this gift card has a balance for.
         /// </summary>
-        [JsonProperty("currency")]
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Currency { get; set; } = null;
 
         /// <summary>
         /// The date and time when this gift card expires. This is a full date/time and may be more accurate than the actual expiry date received by the gift card service.
         /// </summary>
-        [JsonProperty("expiration_date")]
+        [JsonProperty("expiration_date", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public DateTime? ExpirationDate { get; set; } = null;
 
         /// <summary>
         /// The amount remaining on the balance for this gift card according to the gift card service. This may be `null` if the balance could not be fetched.
         /// </summary>
-        [JsonProperty("balance")]
+        [JsonProperty("balance", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public long? Balance { get; set; } = null;
 
         /// <summary>
         /// If the last balance update failed, this will contain the internal code for this error.
         /// </summary>
-        [JsonProperty("balance_error_code")]
+        [JsonProperty("balance_error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public GiftCardErrorCode? BalanceErrorCode { get; set; } = null;
 
         /// <summary>
         /// If the last balance update failed, this will contain the the raw error code received from the gift card provider.
         /// </summary>
-        [JsonProperty("balance_raw_error_code")]
+        [JsonProperty("balance_raw_error_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? BalanceRawErrorCode { get; set; } = null;
 
         /// <summary>
         /// If the last balance update failed, this will contain the the raw error message received from the gift card provider.
         /// </summary>
-        [JsonProperty("balance_raw_error_message")]
+        [JsonProperty("balance_raw_error_message", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? BalanceRawErrorMessage { get; set; } = null;
 
         /// <summary>
         /// The timestamp when this gift card was last used in a transaction.
         /// </summary>
-        [JsonProperty("last_used_at")]
+        [JsonProperty("last_used_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public DateTime? LastUsedAt { get; set; } = null;
 
         /// <summary>
         /// The number of times this gift card has been used in transactions.
         /// </summary>
-        [JsonProperty("usage_count")]
+        [JsonProperty("usage_count", Required = Newtonsoft.Json.Required.Always)]
         public long UsageCount { get; set; } = default!;
 
         /// <summary>
         /// The timestamp when this gift card was last used in a transaction for client initiated transactions.
         /// </summary>
-        [JsonProperty("cit_last_used_at")]
+        [JsonProperty("cit_last_used_at", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public DateTime? CitLastUsedAt { get; set; } = null;
 
         /// <summary>
         /// The number of times this gift card has been used in transactions for client initiated transactions.
         /// </summary>
-        [JsonProperty("cit_usage_count")]
+        [JsonProperty("cit_usage_count", Required = Newtonsoft.Json.Required.Always)]
         public long CitUsageCount { get; set; } = default!;
     }
 }

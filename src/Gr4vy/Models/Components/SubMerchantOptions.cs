@@ -24,161 +24,53 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The sub-merchant's identifier.
         /// </summary>
-        [JsonProperty("id", NullValueHandling = NullValueHandling.Include)]
-        public string Id
-        {
-            get => _id;
-            set
-            {
-                _id = value;
-                _idSet = true;
-            }
-        }
-
-        private string _id = default!;
-
-        private bool _idSet = true;
-
-        public bool ShouldSerializeId() => _idSet;
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
+        public string Id { get; set; } = default!;
 
         /// <summary>
         /// The sub-merchant's trading name. On Amex, the connection's PayFac name and this name must not exceed 36 characters combined.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string Name
-        {
-            get => _name;
-            set
-            {
-                _name = value;
-                _nameSet = true;
-            }
-        }
-
-        private string _name = default!;
-
-        private bool _nameSet = true;
-
-        public bool ShouldSerializeName() => _nameSet;
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
+        public string Name { get; set; } = default!;
 
         /// <summary>
         /// The sub-merchant's registered legal name.
         /// </summary>
-        [JsonProperty("legal_name", NullValueHandling = NullValueHandling.Include)]
-        public string? LegalName
-        {
-            get => _legalName;
-            set
-            {
-                _legalName = value;
-                _legalNameSet = true;
-            }
-        }
-
-        private string? _legalName = null;
-
-        private bool _legalNameSet = false;
-
-        public bool ShouldSerializeLegalName() => _legalNameSet;
+        [JsonProperty("legal_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> LegalName { get; set; }
+        public bool ShouldSerializeLegalName() => LegalName.IsSet;
 
         /// <summary>
         /// The sub-merchant's 4-digit merchant category code.
         /// </summary>
-        [JsonProperty("mcc", NullValueHandling = NullValueHandling.Include)]
-        public string Mcc
-        {
-            get => _mcc;
-            set
-            {
-                _mcc = value;
-                _mccSet = true;
-            }
-        }
-
-        private string _mcc = default!;
-
-        private bool _mccSet = true;
-
-        public bool ShouldSerializeMcc() => _mccSet;
+        [JsonProperty("mcc", Required = Newtonsoft.Json.Required.Always)]
+        public string Mcc { get; set; } = default!;
 
         /// <summary>
         /// The sub-merchant's email address. Sent on Cybersource, not sent on Mastercard Gateway.
         /// </summary>
-        [JsonProperty("email", NullValueHandling = NullValueHandling.Include)]
-        public string? Email
-        {
-            get => _email;
-            set
-            {
-                _email = value;
-                _emailSet = true;
-            }
-        }
-
-        private string? _email = null;
-
-        private bool _emailSet = false;
-
-        public bool ShouldSerializeEmail() => _emailSet;
+        [JsonProperty("email", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Email { get; set; }
+        public bool ShouldSerializeEmail() => Email.IsSet;
 
         /// <summary>
         /// The sub-merchant's phone number.
         /// </summary>
-        [JsonProperty("phone", NullValueHandling = NullValueHandling.Include)]
-        public string? Phone
-        {
-            get => _phone;
-            set
-            {
-                _phone = value;
-                _phoneSet = true;
-            }
-        }
-
-        private string? _phone = null;
-
-        private bool _phoneSet = false;
-
-        public bool ShouldSerializePhone() => _phoneSet;
+        [JsonProperty("phone", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Phone { get; set; }
+        public bool ShouldSerializePhone() => Phone.IsSet;
 
         /// <summary>
         /// The sub-merchant's website. Sent as the merchant descriptor URL on Cybersource, not sent on Mastercard Gateway.
         /// </summary>
-        [JsonProperty("website", NullValueHandling = NullValueHandling.Include)]
-        public string? Website
-        {
-            get => _website;
-            set
-            {
-                _website = value;
-                _websiteSet = true;
-            }
-        }
-
-        private string? _website = null;
-
-        private bool _websiteSet = false;
-
-        public bool ShouldSerializeWebsite() => _websiteSet;
+        [JsonProperty("website", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Website { get; set; }
+        public bool ShouldSerializeWebsite() => Website.IsSet;
 
         /// <summary>
         /// The address of a PayFac sub-merchant.
         /// </summary>
-        [JsonProperty("address", NullValueHandling = NullValueHandling.Include)]
-        public SubMerchantAddressOptions Address
-        {
-            get => _address;
-            set
-            {
-                _address = value;
-                _addressSet = true;
-            }
-        }
-
-        private SubMerchantAddressOptions _address = default!;
-
-        private bool _addressSet = true;
-
-        public bool ShouldSerializeAddress() => _addressSet;
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Always)]
+        public SubMerchantAddressOptions Address { get; set; } = new();
     }
 }

@@ -17,7 +17,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The checkout session ID to create a Click to Pay session for.
         /// </summary>
-        [JsonProperty("checkout_session_id")]
+        [JsonProperty("checkout_session_id", Required = Newtonsoft.Json.Required.Always)]
         public string CheckoutSessionId { get; set; } = default!;
     }
 }

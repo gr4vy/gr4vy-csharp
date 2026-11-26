@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The validation URL as provided by the Apple SDK when processing a payment.
         /// </summary>
-        [JsonProperty("validation_url")]
+        [JsonProperty("validation_url", Required = Newtonsoft.Json.Required.Always)]
         public string ValidationUrl { get; set; } = default!;
 
         /// <summary>
         /// The domain on which Apple Pay is being loaded.
         /// </summary>
-        [JsonProperty("domain_name")]
+        [JsonProperty("domain_name", Required = Newtonsoft.Json.Required.Always)]
         public string DomainName { get; set; } = default!;
     }
 }

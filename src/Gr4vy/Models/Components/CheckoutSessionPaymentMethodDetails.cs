@@ -22,25 +22,25 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The first 6 digit of the card.
         /// </summary>
-        [JsonProperty("bin")]
+        [JsonProperty("bin", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Bin { get; set; } = null;
 
         /// <summary>
         /// The country of the card issuer.
         /// </summary>
-        [JsonProperty("card_country")]
+        [JsonProperty("card_country", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? CardCountry { get; set; } = null;
 
         /// <summary>
         /// The payment scheme of the card.
         /// </summary>
-        [JsonProperty("card_type")]
+        [JsonProperty("card_type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public CardType? CardType { get; set; } = null;
 
         /// <summary>
         /// The card issuer.
         /// </summary>
-        [JsonProperty("card_issuer_name")]
+        [JsonProperty("card_issuer_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? CardIssuerName { get; set; } = null;
     }
 }

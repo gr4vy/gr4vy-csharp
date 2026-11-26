@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `network-token-cryptogram`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "network-token-cryptogram";
 
         /// <summary>
         /// The cryptogram of the network token.
         /// </summary>
-        [JsonProperty("cryptogram")]
+        [JsonProperty("cryptogram", Required = Newtonsoft.Json.Required.Always)]
         public string CryptogramValue { get; set; } = default!;
     }
 }

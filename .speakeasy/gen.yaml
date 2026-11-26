@@ -30,7 +30,7 @@ generation:
     generateNewTests: false
     skipResponseBodyAssertions: false
 csharp:
-  version: 2.11.18
+  version: 3.0.0
   additionalDependencies:
     - package: System.IdentityModel.Tokens.Jwt
       version: 8.17.0
@@ -63,12 +63,12 @@ csharp:
   maxMethodParams: 4
   methodArguments: infer-optional-args
   multipartArrayFormat: legacy
-  optionalNullableScope: all
+  optionalNullableScope: writable-models
   outputModelSuffix: output
   packageName: Gr4vy
   packageTags: gr4vy payments orchestration sdk pci credit cards
   partialTypes: false
-  presenceAwareJsonSerialization: false
+  presenceAwareJsonSerialization: true
   respectTitlesForPrimitiveUnionMembers: false
   responseFormat: flat
   schemaValidation: strict

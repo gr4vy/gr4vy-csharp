@@ -18,6 +18,6 @@ namespace Gr4vy.Models.Requests
     {
         public Func<Task<ListBuyersResponse?>>? Next {get;set;}
         [SpeakeasyMetadata("")]
-        public Models.Components.Buyers Result { get; set; } = default!;
+        public Models.Components.Buyers Result { get; set; } = new();
     }
 }

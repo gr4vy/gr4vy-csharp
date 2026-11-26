@@ -20,7 +20,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The ID of the field to fetch a balance for.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
     }
 }

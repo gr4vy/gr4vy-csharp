@@ -14,10 +14,10 @@ namespace Gr4vy.Models.Components
 
     public class PaymentOptionContextApprovalUI
     {
-        [JsonProperty("height")]
+        [JsonProperty("height", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Height { get; set; } = null;
 
-        [JsonProperty("width")]
+        [JsonProperty("width", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Width { get; set; } = null;
     }
 }

@@ -46,10 +46,6 @@ namespace Gr4vy.Utils
                         value = value switch
                         {
                             bool b => b ? "true" : "false",
-                            // Date-looking JSON strings are already parsed into DateTime before this converter runs and the original
-                            // text is no longer available. Reconstruct a best-effort ISO 8601 string instead.
-                            DateTime dt => dt.ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture),
-                            DateTimeOffset dto => dto.ToString("yyyy-MM-dd'T'HH:mm:ss.FFFFFFFK", System.Globalization.CultureInfo.InvariantCulture),
                             _ => Convert.ToString(value, System.Globalization.CultureInfo.InvariantCulture) ?? "",
                         };
                     }

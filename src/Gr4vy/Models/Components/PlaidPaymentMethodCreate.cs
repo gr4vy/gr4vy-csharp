@@ -22,43 +22,48 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `plaid`.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Method { get; } = "plaid";
 
         /// <summary>
         /// The public token obtained after using Plaid Link.
         /// </summary>
-        [JsonProperty("token")]
+        [JsonProperty("token", Required = Newtonsoft.Json.Required.Always)]
         public string Token { get; set; } = default!;
 
         /// <summary>
         /// The Plaid account ID corresponding to the end-user account. If not provided will be fetched from Plaid API expecting to only have one.
         /// </summary>
-        [JsonProperty("account_id")]
-        public string? AccountId { get; set; } = null;
+        [JsonProperty("account_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> AccountId { get; set; }
+        public bool ShouldSerializeAccountId() => AccountId.IsSet;
 
         /// <summary>
         /// The ID of the Plaid payment service related to the provided public token. If not provided will be fetched from the currently active expecting to have a single one.
         /// </summary>
-        [JsonProperty("payment_service_id")]
-        public string? PaymentServiceId { get; set; } = null;
+        [JsonProperty("payment_service_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PaymentServiceId { get; set; }
+        public bool ShouldSerializePaymentServiceId() => PaymentServiceId.IsSet;
 
         /// <summary>
         /// The ID of the buyer to attach the method to.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// The merchant reference for this payment method.
         /// </summary>
-        [JsonProperty("buyer_external_identifier")]
-        public string? BuyerExternalIdentifier { get; set; } = null;
+        [JsonProperty("buyer_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerExternalIdentifier { get; set; }
+        public bool ShouldSerializeBuyerExternalIdentifier() => BuyerExternalIdentifier.IsSet;
 
         /// <summary>
         /// The merchant identifier for this payment method.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
     }
 }

@@ -19,21 +19,8 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Shipping options that the payee or merchant offers to the payer to ship or pick up their items.
         /// </summary>
-        [JsonProperty("options", NullValueHandling = NullValueHandling.Include)]
-        public List<PaypalShippingOptionsItem>? Options
-        {
-            get => _options;
-            set
-            {
-                _options = value;
-                _optionsSet = true;
-            }
-        }
-
-        private List<PaypalShippingOptionsItem>? _options = null;
-
-        private bool _optionsSet = false;
-
-        public bool ShouldSerializeOptions() => _optionsSet;
+        [JsonProperty("options", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<PaypalShippingOptionsItem>?> Options { get; set; }
+        public bool ShouldSerializeOptions() => Options.IsSet;
     }
 }

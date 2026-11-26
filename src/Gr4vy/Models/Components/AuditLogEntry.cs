@@ -22,34 +22,34 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `audit-log`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "audit-log";
 
         /// <summary>
         /// The ID for the audit log entry.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Id { get; set; } = null;
 
         /// <summary>
         /// The ID of the merchant account this entry was created for.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? MerchantAccountId { get; set; } = null;
 
-        [JsonProperty("resource")]
-        public AuditLogEntryResource Resource { get; set; } = default!;
+        [JsonProperty("resource", Required = Newtonsoft.Json.Required.Always)]
+        public AuditLogEntryResource Resource { get; set; } = new();
 
-        [JsonProperty("action")]
+        [JsonProperty("action", Required = Newtonsoft.Json.Required.Always)]
         public AuditLogAction Action { get; set; } = default!;
 
-        [JsonProperty("user")]
-        public AuditLogEntryUser User { get; set; } = default!;
+        [JsonProperty("user", Required = Newtonsoft.Json.Required.Always)]
+        public AuditLogEntryUser User { get; set; } = new();
 
         /// <summary>
         /// The date and time that the action was performed.
         /// </summary>
-        [JsonProperty("timestamp")]
+        [JsonProperty("timestamp", Required = Newtonsoft.Json.Required.Always)]
         public DateTime Timestamp { get; set; } = default!;
     }
 }

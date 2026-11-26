@@ -33,6 +33,6 @@ namespace Gr4vy.Models.Requests
         public string? IdempotencyKey { get; set; } = null;
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public TransactionRefundCreate TransactionRefundCreate { get; set; } = default!;
+        public TransactionRefundCreate TransactionRefundCreate { get; set; } = new();
     }
 }

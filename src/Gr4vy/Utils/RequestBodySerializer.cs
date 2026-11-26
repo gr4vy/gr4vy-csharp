@@ -143,7 +143,7 @@ namespace Gr4vy.Utils
 
                 foreach (var prop in props)
                 {
-                    var val = prop.GetValue(request);
+                    var val = Utilities.UnwrapValue(prop.GetValue(request));
                     if (val == null)
                     {
                         continue;
@@ -252,7 +252,7 @@ namespace Gr4vy.Utils
 
             foreach (var prop in properties)
             {
-                var value = prop.GetValue(request);
+                var value = Utilities.UnwrapValue(prop.GetValue(request));
                 if (value == null)
                 {
                     continue;
@@ -393,7 +393,7 @@ namespace Gr4vy.Utils
 
                     foreach (var prop in props)
                     {
-                        var propValue = prop.GetValue(value);
+                        var propValue = Utilities.UnwrapValue(prop.GetValue(value));
                         if (propValue == null)
                         {
                             continue;
@@ -592,7 +592,7 @@ namespace Gr4vy.Utils
                     continue;
                 }
 
-                var val = prop.GetValue(union);
+                var val = Utilities.UnwrapValue(prop.GetValue(union));
                 if (val != null)
                 {
                     return val;

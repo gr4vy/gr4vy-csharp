@@ -33,6 +33,6 @@ namespace Gr4vy.Models.Requests
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public ShippingDetailsUpdate ShippingDetailsUpdate { get; set; } = default!;
+        public ShippingDetailsUpdate ShippingDetailsUpdate { get; set; } = new();
     }
 }

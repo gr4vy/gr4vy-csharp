@@ -15,10 +15,10 @@ namespace Gr4vy.Models.Components
 
     public class WalletPaymentOptionContext
     {
-        [JsonProperty("merchant_name")]
+        [JsonProperty("merchant_name", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantName { get; set; } = default!;
 
-        [JsonProperty("supported_schemes")]
+        [JsonProperty("supported_schemes", Required = Newtonsoft.Json.Required.Always)]
         public List<string> SupportedSchemes { get; set; } = default!;
     }
 }

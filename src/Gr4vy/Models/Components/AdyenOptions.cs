@@ -18,21 +18,8 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Passes additional data to the Adyen API when creating a transaction.
         /// </summary>
-        [JsonProperty("additionalData", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, string>? AdditionalData
-        {
-            get => _additionalData;
-            set
-            {
-                _additionalData = value;
-                _additionalDataSet = true;
-            }
-        }
-
-        private Dictionary<string, string>? _additionalData = null;
-
-        private bool _additionalDataSet = false;
-
-        public bool ShouldSerializeAdditionalData() => _additionalDataSet;
+        [JsonProperty("additionalData", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> AdditionalData { get; set; }
+        public bool ShouldSerializeAdditionalData() => AdditionalData.IsSet;
     }
 }

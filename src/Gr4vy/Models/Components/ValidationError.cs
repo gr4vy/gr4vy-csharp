@@ -16,19 +16,19 @@ namespace Gr4vy.Models.Components
 
     public class ValidationError
     {
-        [JsonProperty("loc")]
+        [JsonProperty("loc", Required = Newtonsoft.Json.Required.Always)]
         public List<Loc> Loc { get; set; } = default!;
 
-        [JsonProperty("msg")]
+        [JsonProperty("msg", Required = Newtonsoft.Json.Required.Always)]
         public string Msg { get; set; } = default!;
 
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.Always)]
         public string Type { get; set; } = default!;
 
-        [JsonProperty("input")]
+        [JsonProperty("input", Required = Newtonsoft.Json.Required.DisallowNull)]
         public object? Input { get; set; }
 
-        [JsonProperty("ctx")]
+        [JsonProperty("ctx", Required = Newtonsoft.Json.Required.DisallowNull)]
         public ValidationErrorContext? Ctx { get; set; }
     }
 }

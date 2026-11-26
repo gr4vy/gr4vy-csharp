@@ -17,19 +17,20 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The 3 or 4 digit security code often found on the card. This often referred to as the CVV or CVD.
         /// </summary>
-        [JsonProperty("security_code")]
-        public string? SecurityCode { get; set; } = null;
+        [JsonProperty("security_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> SecurityCode { get; set; }
+        public bool ShouldSerializeSecurityCode() => SecurityCode.IsSet;
 
         /// <summary>
         /// Defines if the request is merchant initiated or not.
         /// </summary>
-        [JsonProperty("merchant_initiated")]
+        [JsonProperty("merchant_initiated", Required = Newtonsoft.Json.Required.Always)]
         public bool MerchantInitiated { get; set; } = default!;
 
         /// <summary>
         /// Defines if the request is a subsequent of another request or not.
         /// </summary>
-        [JsonProperty("is_subsequent_payment")]
+        [JsonProperty("is_subsequent_payment", Required = Newtonsoft.Json.Required.Always)]
         public bool IsSubsequentPayment { get; set; } = default!;
     }
 }

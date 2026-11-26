@@ -18,58 +18,18 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The version of 3DS which will be simulated.
         /// </summary>
-        [JsonProperty("version", NullValueHandling = NullValueHandling.Include)]
-        public string? Version
-        {
-            get => _version;
-            set
-            {
-                _version = value;
-                _versionSet = true;
-            }
-        }
+        [JsonProperty("version", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Version { get; set; }
+        public bool ShouldSerializeVersion() => Version.IsSet;
 
-        private string? _version = null;
-
-        private bool _versionSet = false;
-
-        public bool ShouldSerializeVersion() => _versionSet;
-
-        [JsonProperty("authentication", NullValueHandling = NullValueHandling.Include)]
-        public ThreeDSecureScenarioOutcomeAuthentication Authentication
-        {
-            get => _authentication;
-            set
-            {
-                _authentication = value;
-                _authenticationSet = true;
-            }
-        }
-
-        private ThreeDSecureScenarioOutcomeAuthentication _authentication = default!;
-
-        private bool _authenticationSet = true;
-
-        public bool ShouldSerializeAuthentication() => _authenticationSet;
+        [JsonProperty("authentication", Required = Newtonsoft.Json.Required.Always)]
+        public ThreeDSecureScenarioOutcomeAuthentication Authentication { get; set; } = new();
 
         /// <summary>
         /// 3DS result value. Required if authentication status is "C".
         /// </summary>
-        [JsonProperty("result", NullValueHandling = NullValueHandling.Include)]
-        public ThreeDSecureScenarioOutcomeResult? Result
-        {
-            get => _result;
-            set
-            {
-                _result = value;
-                _resultSet = true;
-            }
-        }
-
-        private ThreeDSecureScenarioOutcomeResult? _result = null;
-
-        private bool _resultSet = false;
-
-        public bool ShouldSerializeResult() => _resultSet;
+        [JsonProperty("result", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<ThreeDSecureScenarioOutcomeResult?> Result { get; set; }
+        public bool ShouldSerializeResult() => Result.IsSet;
     }
 }

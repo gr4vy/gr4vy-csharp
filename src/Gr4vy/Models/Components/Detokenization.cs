@@ -17,13 +17,13 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `payment-method-detokenization`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "payment-method-detokenization";
 
         /// <summary>
         /// The card details, encrypted to the merchant's public key as a compact JWE.
         /// </summary>
-        [JsonProperty("encrypted_payload")]
+        [JsonProperty("encrypted_payload", Required = Newtonsoft.Json.Required.Always)]
         public string EncryptedPayload { get; set; } = default!;
     }
 }

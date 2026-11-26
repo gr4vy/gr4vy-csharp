@@ -19,140 +19,36 @@ namespace Gr4vy.Models.Components
     /// </summary>
     public class DigitalWalletUpdate
     {
-        [JsonProperty("merchant_name", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantName
-        {
-            get => _merchantName;
-            set
-            {
-                _merchantName = value;
-                _merchantNameSet = true;
-            }
-        }
+        [JsonProperty("merchant_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantName { get; set; }
+        public bool ShouldSerializeMerchantName() => MerchantName.IsSet;
 
-        private string? _merchantName = null;
+        [JsonProperty("domain_names", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<string>?> DomainNames { get; set; }
+        public bool ShouldSerializeDomainNames() => DomainNames.IsSet;
 
-        private bool _merchantNameSet = false;
+        [JsonProperty("merchant_display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantDisplayName { get; set; }
+        public bool ShouldSerializeMerchantDisplayName() => MerchantDisplayName.IsSet;
 
-        public bool ShouldSerializeMerchantName() => _merchantNameSet;
+        [JsonProperty("merchant_url", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantUrl { get; set; }
+        public bool ShouldSerializeMerchantUrl() => MerchantUrl.IsSet;
 
-        [JsonProperty("domain_names", NullValueHandling = NullValueHandling.Include)]
-        public List<string>? DomainNames
-        {
-            get => _domainNames;
-            set
-            {
-                _domainNames = value;
-                _domainNamesSet = true;
-            }
-        }
+        [JsonProperty("merchant_country_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantCountryCode { get; set; }
+        public bool ShouldSerializeMerchantCountryCode() => MerchantCountryCode.IsSet;
 
-        private List<string>? _domainNames = null;
+        [JsonProperty("merchant_category_code", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> MerchantCategoryCode { get; set; }
+        public bool ShouldSerializeMerchantCategoryCode() => MerchantCategoryCode.IsSet;
 
-        private bool _domainNamesSet = false;
+        [JsonProperty("address", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<DigitalWalletAddress?> Address { get; set; }
+        public bool ShouldSerializeAddress() => Address.IsSet;
 
-        public bool ShouldSerializeDomainNames() => _domainNamesSet;
-
-        [JsonProperty("merchant_display_name", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantDisplayName
-        {
-            get => _merchantDisplayName;
-            set
-            {
-                _merchantDisplayName = value;
-                _merchantDisplayNameSet = true;
-            }
-        }
-
-        private string? _merchantDisplayName = null;
-
-        private bool _merchantDisplayNameSet = false;
-
-        public bool ShouldSerializeMerchantDisplayName() => _merchantDisplayNameSet;
-
-        [JsonProperty("merchant_url", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantUrl
-        {
-            get => _merchantUrl;
-            set
-            {
-                _merchantUrl = value;
-                _merchantUrlSet = true;
-            }
-        }
-
-        private string? _merchantUrl = null;
-
-        private bool _merchantUrlSet = false;
-
-        public bool ShouldSerializeMerchantUrl() => _merchantUrlSet;
-
-        [JsonProperty("merchant_country_code", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantCountryCode
-        {
-            get => _merchantCountryCode;
-            set
-            {
-                _merchantCountryCode = value;
-                _merchantCountryCodeSet = true;
-            }
-        }
-
-        private string? _merchantCountryCode = null;
-
-        private bool _merchantCountryCodeSet = false;
-
-        public bool ShouldSerializeMerchantCountryCode() => _merchantCountryCodeSet;
-
-        [JsonProperty("merchant_category_code", NullValueHandling = NullValueHandling.Include)]
-        public string? MerchantCategoryCode
-        {
-            get => _merchantCategoryCode;
-            set
-            {
-                _merchantCategoryCode = value;
-                _merchantCategoryCodeSet = true;
-            }
-        }
-
-        private string? _merchantCategoryCode = null;
-
-        private bool _merchantCategoryCodeSet = false;
-
-        public bool ShouldSerializeMerchantCategoryCode() => _merchantCategoryCodeSet;
-
-        [JsonProperty("address", NullValueHandling = NullValueHandling.Include)]
-        public DigitalWalletAddress? Address
-        {
-            get => _address;
-            set
-            {
-                _address = value;
-                _addressSet = true;
-            }
-        }
-
-        private DigitalWalletAddress? _address = null;
-
-        private bool _addressSet = false;
-
-        public bool ShouldSerializeAddress() => _addressSet;
-
-        [JsonProperty("extra_configuration", NullValueHandling = NullValueHandling.Include)]
-        public Dictionary<string, object>? ExtraConfiguration
-        {
-            get => _extraConfiguration;
-            set
-            {
-                _extraConfiguration = value;
-                _extraConfigurationSet = true;
-            }
-        }
-
-        private Dictionary<string, object>? _extraConfiguration = null;
-
-        private bool _extraConfigurationSet = false;
-
-        public bool ShouldSerializeExtraConfiguration() => _extraConfigurationSet;
+        [JsonProperty("extra_configuration", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, object>?> ExtraConfiguration { get; set; }
+        public bool ShouldSerializeExtraConfiguration() => ExtraConfiguration.IsSet;
     }
 }

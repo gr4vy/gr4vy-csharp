@@ -19,61 +19,61 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `buyer`.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Type { get; } = "buyer";
 
         /// <summary>
         /// The ID for the buyer.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The base62 encoded buyer ID. This represents a shorter version of this buyer's `id` which is sent to payment services, anti-fraud services, and other connectors. You can use this ID to reconcile a payment service's buyer against our system.
         /// </summary>
-        [JsonProperty("reconciliation_id")]
+        [JsonProperty("reconciliation_id", Required = Newtonsoft.Json.Required.Always)]
         public string ReconciliationId { get; set; } = default!;
 
         /// <summary>
         /// The ID of the merchant account this buyer belongs to.
         /// </summary>
-        [JsonProperty("merchant_account_id")]
+        [JsonProperty("merchant_account_id", Required = Newtonsoft.Json.Required.Always)]
         public string MerchantAccountId { get; set; } = default!;
 
         /// <summary>
         /// The display name for the buyer.
         /// </summary>
-        [JsonProperty("display_name")]
+        [JsonProperty("display_name", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? DisplayName { get; set; } = null;
 
         /// <summary>
         /// The merchant identifier for this buyer.
         /// </summary>
-        [JsonProperty("external_identifier")]
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? ExternalIdentifier { get; set; } = null;
 
         /// <summary>
         /// The billing name, address, email, and other fields for this buyer.
         /// </summary>
-        [JsonProperty("billing_details")]
+        [JsonProperty("billing_details", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public BillingDetails? BillingDetails { get; set; } = null;
 
         /// <summary>
         /// The buyer account number.
         /// </summary>
-        [JsonProperty("account_number")]
+        [JsonProperty("account_number", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? AccountNumber { get; set; } = null;
 
         /// <summary>
         /// The date this buyer was created at.
         /// </summary>
-        [JsonProperty("created_at")]
+        [JsonProperty("created_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime CreatedAt { get; set; } = default!;
 
         /// <summary>
         /// The date this buyer was last updated at.
         /// </summary>
-        [JsonProperty("updated_at")]
+        [JsonProperty("updated_at", Required = Newtonsoft.Json.Required.Always)]
         public DateTime UpdatedAt { get; set; } = default!;
     }
 }

@@ -27,6 +27,6 @@ namespace Gr4vy.Models.Requests
         public string? MerchantAccountId { get; set; }
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public GiftCardActivationCreate GiftCardActivationCreate { get; set; } = default!;
+        public GiftCardActivationCreate GiftCardActivationCreate { get; set; } = new();
     }
 }

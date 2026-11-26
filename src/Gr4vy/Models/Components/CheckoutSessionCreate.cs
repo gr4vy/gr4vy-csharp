@@ -19,49 +19,56 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// An array of cart items that represents the line items of a transaction.
         /// </summary>
-        [JsonProperty("cart_items")]
-        public List<CartItem>? CartItems { get; set; } = null;
+        [JsonProperty("cart_items", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<List<CartItem>?> CartItems { get; set; }
+        public bool ShouldSerializeCartItems() => CartItems.IsSet;
 
         /// <summary>
         /// Any additional information about the transaction that you would like to store as key-value pairs. This data is passed to payment service providers that support it.
         /// </summary>
-        [JsonProperty("metadata")]
-        public Dictionary<string, string>? Metadata { get; set; } = null;
+        [JsonProperty("metadata", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Dictionary<string, string>?> Metadata { get; set; }
+        public bool ShouldSerializeMetadata() => Metadata.IsSet;
 
         /// <summary>
         /// Provide buyer details for the transaction. No buyer resource will be created on Gr4vy when used.
         /// </summary>
-        [JsonProperty("buyer")]
-        public GuestBuyer? Buyer { get; set; } = null;
+        [JsonProperty("buyer", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<GuestBuyer?> Buyer { get; set; }
+        public bool ShouldSerializeBuyer() => Buyer.IsSet;
 
         /// <summary>
         /// The airline addendum data which describes the airline booking associated with this transaction.
         /// </summary>
-        [JsonProperty("airline")]
-        public Airline? Airline { get; set; } = null;
+        [JsonProperty("airline", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<Airline?> Airline { get; set; }
+        public bool ShouldSerializeAirline() => Airline.IsSet;
 
         /// <summary>
         /// The total amount for this transaction.
         /// </summary>
-        [JsonProperty("amount")]
-        public long? Amount { get; set; } = null;
+        [JsonProperty("amount", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<long?> Amount { get; set; }
+        public bool ShouldSerializeAmount() => Amount.IsSet;
 
         /// <summary>
         /// The currency code for this transaction.
         /// </summary>
-        [JsonProperty("currency")]
-        public string? Currency { get; set; } = null;
+        [JsonProperty("currency", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Currency { get; set; }
+        public bool ShouldSerializeCurrency() => Currency.IsSet;
 
         /// <summary>
         /// The unique identifier of an existing payment service. When provided, the created transaction will be processed by the given payment service and any routing rules will be skipped.
         /// </summary>
-        [JsonProperty("payment_service_id")]
-        public string? PaymentServiceId { get; set; } = null;
+        [JsonProperty("payment_service_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> PaymentServiceId { get; set; }
+        public bool ShouldSerializePaymentServiceId() => PaymentServiceId.IsSet;
 
         /// <summary>
         /// The time in seconds when this checkout session expires.
         /// </summary>
-        [JsonProperty("expires_in")]
+        [JsonProperty("expires_in", Required = Newtonsoft.Json.Required.DisallowNull)]
         public double? ExpiresIn { get; set; } = 3600D;
     }
 }

@@ -190,7 +190,7 @@ rw==
             }
             createCalls++;
             var body = System.Text.Encoding.UTF8.GetBytes(
-                "{\"type\":\"checkout-session\",\"id\":\"" + CheckoutSessionId + "\"}"
+                "{\"type\":\"checkout-session\",\"id\":\"" + CheckoutSessionId + "\",\"expires_at\":\"2030-01-01T00:00:00Z\"}"
             );
             context.Response.StatusCode = 201;
             context.Response.ContentType = "application/json";

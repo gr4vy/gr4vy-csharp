@@ -20,7 +20,7 @@ targets:
         sourceRevisionDigest: sha256:ae807f10e9dd9d0733162bc04b551dac8398c6b77dacc6942008e0cf2db8b5b5
         sourceBlobDigest: sha256:0075e98a882ebeaaa3d0aa02fa90df086c3b8650948f31788d523003b726abd1
         codeSamplesNamespace: openapi-csharp-code-samples
-        codeSamplesRevisionDigest: sha256:2be9b23d076c7fea2af495289a3ff9b51c73952c2b13bef5ddd80ecfe0a41719
+        codeSamplesRevisionDigest: sha256:4bb73df46ff3b3bdcef66356db1cd857b27121d5c364dc4709eba0011c42c3f1
 workflow:
     workflowVersion: 1.0.0
     speakeasyVersion: latest

@@ -18,10 +18,10 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Consumer-provided name of the contact person.
         /// </summary>
-        [JsonProperty("contactFullName", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("contactFullName", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public string? ContactFullName { get; set; }
 
-        [JsonProperty("contactPhoneNumber", NullValueHandling = NullValueHandling.Include)]
+        [JsonProperty("contactPhoneNumber", Required = Newtonsoft.Json.Required.AllowNull, NullValueHandling = NullValueHandling.Include)]
         public PazeMobileNumber? ContactPhoneNumber { get; set; }
     }
 }

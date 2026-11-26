@@ -21,6 +21,6 @@ namespace Gr4vy.Models.Requests
         public string MerchantAccountId { get; set; } = default!;
 
         [SpeakeasyMetadata("request:mediaType=application/json")]
-        public MerchantAccountUpdate MerchantAccountUpdate { get; set; } = default!;
+        public MerchantAccountUpdate MerchantAccountUpdate { get; set; } = new();
     }
 }

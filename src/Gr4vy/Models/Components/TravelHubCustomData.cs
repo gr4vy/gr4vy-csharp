@@ -17,61 +17,20 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The key of the custom data field.
         /// </summary>
-        [JsonProperty("name", NullValueHandling = NullValueHandling.Include)]
-        public string Name
-        {
-            get => _name;
-            set
-            {
-                _name = value;
-                _nameSet = true;
-            }
-        }
-
-        private string _name = default!;
-
-        private bool _nameSet = true;
-
-        public bool ShouldSerializeName() => _nameSet;
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
+        public string Name { get; set; } = default!;
 
         /// <summary>
         /// The value of the custom data field.
         /// </summary>
-        [JsonProperty("value", NullValueHandling = NullValueHandling.Include)]
-        public string Value
-        {
-            get => _value;
-            set
-            {
-                _value = value;
-                _valueSet = true;
-            }
-        }
-
-        private string _value = default!;
-
-        private bool _valueSet = true;
-
-        public bool ShouldSerializeValue() => _valueSet;
+        [JsonProperty("value", Required = Newtonsoft.Json.Required.Always)]
+        public string Value { get; set; } = default!;
 
         /// <summary>
         /// The type of the custom data field.
         /// </summary>
-        [JsonProperty("type", NullValueHandling = NullValueHandling.Include)]
-        public string? Type
-        {
-            get => _type;
-            set
-            {
-                _type = value;
-                _typeSet = true;
-            }
-        }
-
-        private string? _type = null;
-
-        private bool _typeSet = false;
-
-        public bool ShouldSerializeType() => _typeSet;
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> Type { get; set; }
+        public bool ShouldSerializeType() => Type.IsSet;
     }
 }

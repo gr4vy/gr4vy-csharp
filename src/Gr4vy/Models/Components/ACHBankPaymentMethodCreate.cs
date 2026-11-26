@@ -27,58 +27,61 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// Always `bank`.
         /// </summary>
-        [JsonProperty("method")]
+        [JsonProperty("method", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Method { get; } = "bank";
 
-        [JsonProperty("account_holder")]
-        public BankAccountHolder AccountHolder { get; set; } = default!;
+        [JsonProperty("account_holder", Required = Newtonsoft.Json.Required.Always)]
+        public BankAccountHolder AccountHolder { get; set; } = new();
 
         /// <summary>
         /// The ID of the buyer to attach the method to.
         /// </summary>
-        [JsonProperty("buyer_id")]
-        public string? BuyerId { get; set; } = null;
+        [JsonProperty("buyer_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerId { get; set; }
+        public bool ShouldSerializeBuyerId() => BuyerId.IsSet;
 
         /// <summary>
         /// The merchant reference for this payment method.
         /// </summary>
-        [JsonProperty("buyer_external_identifier")]
-        public string? BuyerExternalIdentifier { get; set; } = null;
+        [JsonProperty("buyer_external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> BuyerExternalIdentifier { get; set; }
+        public bool ShouldSerializeBuyerExternalIdentifier() => BuyerExternalIdentifier.IsSet;
 
         /// <summary>
         /// The merchant identifier for this payment method.
         /// </summary>
-        [JsonProperty("external_identifier")]
-        public string? ExternalIdentifier { get; set; } = null;
+        [JsonProperty("external_identifier", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<string?> ExternalIdentifier { get; set; }
+        public bool ShouldSerializeExternalIdentifier() => ExternalIdentifier.IsSet;
 
         /// <summary>
         /// Always `ach`.
         /// </summary>
-        [JsonProperty("scheme")]
+        [JsonProperty("scheme", Required = Newtonsoft.Json.Required.DisallowNull)]
         public string Scheme { get; } = "ach";
 
         /// <summary>
         /// Whether the account number is tokenized.
         /// </summary>
-        [JsonProperty("is_tokenized")]
+        [JsonProperty("is_tokenized", Required = Newtonsoft.Json.Required.DisallowNull)]
         public bool? IsTokenized { get; set; } = false;
 
         /// <summary>
         /// The account number for this ACH bank account, made up of at most 17 digits. Spaces and dashes are ignored. Any format is accepted when `is_tokenized` is `true`.
         /// </summary>
-        [JsonProperty("account_number")]
+        [JsonProperty("account_number", Required = Newtonsoft.Json.Required.Always)]
         public string AccountNumber { get; set; } = default!;
 
         /// <summary>
         /// The routing number for this ACH bank account, made up of 9 digits. Spaces and dashes are ignored.
         /// </summary>
-        [JsonProperty("routing_number")]
+        [JsonProperty("routing_number", Required = Newtonsoft.Json.Required.Always)]
         public string RoutingNumber { get; set; } = default!;
 
         /// <summary>
         /// Specify whether this is a `checking` or `savings` account. Defaults to `checking`.
         /// </summary>
-        [JsonProperty("account_type")]
+        [JsonProperty("account_type", Required = Newtonsoft.Json.Required.DisallowNull)]
         public AccountType? AccountType { get; set; } = Gr4vy.Models.Components.AccountType.Checking;
     }
 }

@@ -19,7 +19,7 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The list of actions triggered for a transaction.
         /// </summary>
-        [JsonProperty("items")]
+        [JsonProperty("items", Required = Newtonsoft.Json.Required.Always)]
         public List<TransactionAction> Items { get; set; } = default!;
     }
 }

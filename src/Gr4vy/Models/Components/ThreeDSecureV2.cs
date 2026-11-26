@@ -14,28 +14,28 @@ namespace Gr4vy.Models.Components
 
     public class ThreeDSecureV2
     {
-        [JsonProperty("version")]
+        [JsonProperty("version", Required = Newtonsoft.Json.Required.Always)]
         public string Version { get; set; } = default!;
 
-        [JsonProperty("authentication_response")]
+        [JsonProperty("authentication_response", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? AuthenticationResponse { get; set; } = null;
 
-        [JsonProperty("directory_response")]
+        [JsonProperty("directory_response", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? DirectoryResponse { get; set; } = null;
 
-        [JsonProperty("directory_transaction_id")]
+        [JsonProperty("directory_transaction_id", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? DirectoryTransactionId { get; set; } = null;
 
-        [JsonProperty("transaction_reason")]
+        [JsonProperty("transaction_reason", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? TransactionReason { get; set; } = null;
 
-        [JsonProperty("cavv")]
+        [JsonProperty("cavv", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Cavv { get; set; } = null;
 
-        [JsonProperty("eci")]
+        [JsonProperty("eci", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? Eci { get; set; } = null;
 
-        [JsonProperty("cardholder_info")]
+        [JsonProperty("cardholder_info", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public string? CardholderInfo { get; set; } = null;
     }
 }

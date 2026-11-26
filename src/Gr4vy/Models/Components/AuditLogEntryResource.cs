@@ -17,19 +17,19 @@ namespace Gr4vy.Models.Components
         /// <summary>
         /// The type of the resource.
         /// </summary>
-        [JsonProperty("type")]
+        [JsonProperty("type", Required = Newtonsoft.Json.Required.Always)]
         public string Type { get; set; } = default!;
 
         /// <summary>
         /// The ID of the resource.
         /// </summary>
-        [JsonProperty("id")]
+        [JsonProperty("id", Required = Newtonsoft.Json.Required.Always)]
         public string Id { get; set; } = default!;
 
         /// <summary>
         /// The descriptive name of the resource.
         /// </summary>
-        [JsonProperty("name")]
+        [JsonProperty("name", Required = Newtonsoft.Json.Required.Always)]
         public string Name { get; set; } = default!;
     }
 }
