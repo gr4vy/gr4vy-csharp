@@ -187,7 +187,7 @@ namespace Gr4vy.Models.Components
         /// Custom options to be passed to the `cybersource-card` connector.
         /// </summary>
         [JsonProperty("cybersource-card", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
-        public OptionalNullable<CybersourceOptions?> CybersourceCard { get; set; }
+        public OptionalNullable<CybersourceCardOptions?> CybersourceCard { get; set; }
         public bool ShouldSerializeCybersourceCard() => CybersourceCard.IsSet;
 
         /// <summary>
@@ -308,6 +308,13 @@ namespace Gr4vy.Models.Components
         [JsonProperty("latitude-latitudeds", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
         public OptionalNullable<LatitudeOptions?> LatitudeLatitudeds { get; set; }
         public bool ShouldSerializeLatitudeLatitudeds() => LatitudeLatitudeds.IsSet;
+
+        /// <summary>
+        /// Custom options to be passed to the `mastercard-card` connector.
+        /// </summary>
+        [JsonProperty("mastercard-card", Required = Newtonsoft.Json.Required.Default, NullValueHandling = NullValueHandling.Include)]
+        public OptionalNullable<MastercardCardOptions?> MastercardCard { get; set; }
+        public bool ShouldSerializeMastercardCard() => MastercardCard.IsSet;
 
         /// <summary>
         /// Custom options to be passed to the `mattilda-tapi` connector.
