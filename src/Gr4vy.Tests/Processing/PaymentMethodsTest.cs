@@ -124,5 +124,18 @@ namespace Gr4vy.Tests.Processing
                 "payment-service-tokens.delete"
             );
         }
+
+        [Test]
+        public async Task Detokenize_IsReached()
+        {
+            var pm = await StoreCardAsync();
+
+            // Detokenization encrypts the card to the merchant account's public key,
+            // which the per-run merchant may not have, and is rate limited.
+            await Reach.ReachesAsync(
+                () => Client.PaymentMethods.DetokenizeAsync(pm.Id),
+                "payment-methods.detokenize"
+            );
+        }
     }
 }
